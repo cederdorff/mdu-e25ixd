@@ -18,6 +18,7 @@ Brug:
 Standardadfærd:
   preview       Udskriver titel og Canvas-HTML uden API-kald.
   sync          Opretter siden som kladde eller opdaterer en eksisterende side.
+                Opdaterer også et entydigt tilknyttet modul og modulpunkt.
   --publish     Publicerer siden. Uden flaget bevares status på eksisterende sider.
   --notify      Beder Canvas om at sende opdateringsnotifikation.
 `);
@@ -80,6 +81,10 @@ console.log(`${action}: ${page.title}`);
 console.log(`${baseUrl}/courses/${courseId}/pages/${page.url}`);
 console.log(`Status: ${page.published ? "publiceret" : "kladde"}`);
 
+if (flags.has("--sync-module")) {
+  await syncLinkedModule({ baseUrl, courseId, page, token });
+}
+
 function splitTitle(source) {
   const lines = source.replace(/^\uFEFF/, "").split(/\r?\n/);
   const titleIndex = lines.findIndex((line) => /^#\s+\S/.test(line));
@@ -99,6 +104,66 @@ async function findPagesByTitle(pagesUrl, title, token) {
   searchUrl.searchParams.set("per_page", "100");
   const pages = await canvasRequest(searchUrl, token);
   return pages.filter((page) => page.title.trim() === title);
+}
+
+async function syncLinkedModule({ baseUrl, courseId, page, token }) {
+  const sequenceUrl = new URL(`${baseUrl}/api/v1/courses/${encodeURIComponent(courseId)}/module_item_sequence`);
+  sequenceUrl.searchParams.set("asset_type", "Page");
+  sequenceUrl.searchParams.set("asset_id", page.url);
+
+  const sequence = await canvasRequest(sequenceUrl, token);
+  const linkedItems = sequence.items
+    .map((entry) => entry.current)
+    .filter((item) => item?.type === "Page" && item.page_url === page.url);
+  const moduleIds = [...new Set(linkedItems.map((item) => item.module_id))];
+
+  if (moduleIds.length === 0) {
+    console.log("Modul: Siden er endnu ikke tilføjet til et modul; intet modulnavn blev ændret.");
+    return;
+  }
+
+  if (moduleIds.length > 1) {
+    throw new Error(`Siden findes i ${moduleIds.length} moduler. Modulnavne blev ikke ændret automatisk.`);
+  }
+
+  const moduleId = moduleIds[0];
+  const linkedModule = sequence.modules.find((module) => module.id === moduleId);
+  if (!linkedModule) {
+    throw new Error(`Canvas returnerede modulpunktet, men ikke modul ${moduleId}.`);
+  }
+
+  if (linkedModule.name !== page.title) {
+    const form = new URLSearchParams();
+    form.set("module[name]", page.title);
+    await canvasRequest(
+      `${baseUrl}/api/v1/courses/${encodeURIComponent(courseId)}/modules/${encodeURIComponent(moduleId)}`,
+      token,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: form,
+      },
+    );
+    console.log(`Modulnavn opdateret: ${page.title}`);
+  } else {
+    console.log("Modulnavn: allerede synkroniseret.");
+  }
+
+  for (const item of linkedItems) {
+    if (item.title === page.title) continue;
+    const form = new URLSearchParams();
+    form.set("module_item[title]", page.title);
+    await canvasRequest(
+      `${baseUrl}/api/v1/courses/${encodeURIComponent(courseId)}/modules/${encodeURIComponent(moduleId)}/items/${encodeURIComponent(item.id)}`,
+      token,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: form,
+      },
+    );
+    console.log(`Modulpunkt opdateret: ${page.title}`);
+  }
 }
 
 async function canvasRequest(url, token, options = {}) {

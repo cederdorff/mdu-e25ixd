@@ -72,3 +72,5 @@ npm run canvas:sync -- undervisning/product-optimization/19-08-2026-product-opti
 ```
 
 Scriptet bruger Markdown-filens H1 som Canvas-titel. En side med samme titel opdateres; ellers oprettes en ny. Eksisterende sider beholder deres publiceringsstatus, medmindre `--publish` bruges.
+
+Hvis siden allerede er placeret i ét Canvas-modul, opdaterer `canvas:sync` også modulets navn og modulpunktets titel, så de matcher siden. Publiceringsstatus, placering og øvrige modulindstillinger bevares. Hvis siden ikke ligger i et modul eller ligger i flere moduler, ændres modulnavne ikke automatisk.

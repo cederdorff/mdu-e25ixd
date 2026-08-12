@@ -2,16 +2,16 @@
 
 ## Formål
 
-Undervisningsgangen er et teknisk startskud til 3. semester. Du forbedrer konkrete mangler fra 2. semesters Web App-forløb i en udleveret React-løsning og overfører derefter principperne til din egen Web App. Dagens output er en forbedret løsning og en prioriteret liste til din egen Web App.
+Undervisningsgangen er et teknisk startskud til 3. semester. Vi forbedrer konkrete mangler fra 2. semesters Web App-forløb i en udleveret React-løsning og overfører derefter principperne til jeres egene Web Apps.
 
 <hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
 - Find **GitHub Repo til din Web App fra 2. semester**, og sørg for, at den kan køre lokalt.
-- Kontrollér repository og online deployment. Du skal muligvis genoptage dit Supabase-projekt (resume project).
+- Kontrollér repository og online deployment. Du skal muligvis genoptage dit Supabase-projekt (resume project), for at få appen til at fungere.
 - Har du brug for et React-recap? Begynd eksempelvis med første del af [Scrimba: Learn React](https://scrimba.com/learn-react-c0e), og brug forløbet efter behov.
-- Se også de supplerende links under **Materialer**.
+- Se evt. også de supplerende links under **Materialer**.
 
 <hr style="margin: 2rem 0;">
 
@@ -37,7 +37,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 <li>Afgræns opgaven, og gennemgå altid forslag, kommandoer og ændringer.</li>
 <li>Del aldrig private nøgler, tokens, hele <code>.env</code>-filer eller andre hemmelige oplysninger.</li>
 <li>Du har ansvaret for at forstå, vælge, teste og forklare løsningen.</li>
-<li>Hvad gør RACE? Og hvad gør de ude i branchen?</li>
+<li>Se, hvordan RACE arbejder med AI og agenter, og hvordan I kan bruge værktøjerne i praksis.</li>
 </ul>
 </details>
 

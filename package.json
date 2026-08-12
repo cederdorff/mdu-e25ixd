@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "canvas:preview": "node scripts/sync-canvas-page.js",
-    "canvas:sync": "node scripts/sync-canvas-page.js --push"
+    "canvas:sync": "node scripts/sync-canvas-page.js --push --sync-module"
   },
   "dependencies": {
     "marked": "^16.2.1"
