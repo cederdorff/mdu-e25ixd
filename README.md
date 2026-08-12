@@ -40,3 +40,35 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 - [NKKR/RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 03-12-2026](undervisning/dynamic-user-interface/03-12-2026-optimering-og-eksamensforberedelse.md)
 
 Materialer til undervisningsgangene placeres under [`undervisning/`](undervisning/).
+
+## Synkronisering til Canvas
+
+Undervisningssider kan konverteres fra Markdown til Canvas-HTML og oprettes eller opdateres via Canvas API.
+
+### Første opsætning
+
+1. Kør `npm install`.
+2. Kopiér `.env.example` til `.env`.
+3. Udfyld `CANVAS_BASE_URL`, `CANVAS_COURSE_ID` og `CANVAS_ACCESS_TOKEN` i `.env`.
+
+`.env` er ignoreret af Git. Canvas-tokenet må aldrig committes eller deles.
+
+### Vis siden uden at ændre Canvas
+
+```bash
+npm run canvas:preview -- undervisning/product-optimization/19-08-2026-product-optimization.md
+```
+
+### Opret eller opdatér siden som kladde
+
+```bash
+npm run canvas:sync -- undervisning/product-optimization/19-08-2026-product-optimization.md
+```
+
+Tilføj `--publish` for at publicere siden og `--notify` for at bede Canvas om at sende en opdateringsnotifikation:
+
+```bash
+npm run canvas:sync -- undervisning/product-optimization/19-08-2026-product-optimization.md --publish --notify
+```
+
+Scriptet bruger Markdown-filens H1 som Canvas-titel. En side med samme titel opdateres; ellers oprettes en ny. Eksisterende sider beholder deres publiceringsstatus, medmindre `--publish` bruges.

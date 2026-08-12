@@ -4,12 +4,16 @@
 
 Undervisningsgangen er et teknisk startskud til 3. semester. Du forbedrer konkrete mangler fra 2. semesters Web App-forløb i en udleveret React-løsning og overfører derefter principperne til din egen Web App. Dagens output er en forbedret løsning og en prioriteret liste til din egen Web App.
 
+<hr style="margin: 2rem 0;">
+
 ## Forberedelse
 
 - Find **koden til din Web App fra 2. semester**, og sørg for, at den kan køre lokalt.
 - Kontrollér repository og online deployment. Du skal muligvis genoptage dit Supabase-projekt.
 - Har du brug for et React-recap? Begynd eksempelvis med første del af [Scrimba: Learn React](https://scrimba.com/learn-react-c0e), og brug forløbet efter behov.
 - Se også de supplerende links under **Materialer**.
+
+<hr style="margin: 2rem 0;">
 
 ## Agenda
 
@@ -90,6 +94,8 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 <li>Fortsæt resten som hjemmearbejde.</li>
 </ul>
 </details>
+
+<hr style="margin: 2rem 0;">
 
 ## Materialer
 

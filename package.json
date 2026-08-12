@@ -1,0 +1,12 @@
+{
+  "name": "mdu-e25ixd",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "canvas:preview": "node scripts/sync-canvas-page.mjs",
+    "canvas:sync": "node scripts/sync-canvas-page.mjs --push"
+  },
+  "dependencies": {
+    "marked": "^16.2.1"
+  }
+}
