@@ -4,14 +4,14 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 
 ## Semesteroverblik
 
-- [Grafisk semesteroversigt](docs/semesteroversigt.html)
-- [Modulnavne til Canvas](docs/canvas-moduler.md)
-- [Beskrivelser af forløb og eksamener](docs/forloeb-og-eksamen.md)
+- [Grafisk semesteroversigt](semesteroverblik/semesteroversigt.html)
+- [Modulnavne til Canvas](semesteroverblik/canvas-moduler.md)
+- [Beskrivelser af forløb og eksamener](semesteroverblik/forloeb-og-eksamen.md)
 
 ## Undervisning (RACE)
 
-### Semesterstart
+- [Semesterstart](undervisning/semesterstart/)
+- [Product Optimization](undervisning/product-optimization/)
+- [Dynamic User Interface](undervisning/dynamic-user-interface/)
 
-### Product Optimization
-
-### Dynamic User Interface
+Se [undervisningsmappens README](undervisning/) for den anbefalede struktur til undervisningsgange, slides, opgaver og øvrige materialer.
