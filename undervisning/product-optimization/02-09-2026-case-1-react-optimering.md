@@ -8,7 +8,7 @@ Efter undervisningen skal du have en stabil deployment via GitHub Actions, et ge
 
 ## Forberedelse
 
-- Push de ændringer, der er klar til review, i deres feature branches.
+- Push de ændringer, der er klar til review, til dine feature branches.
 - Opdatér din liste over kendte problemer og gennemførte forbedringer.
 
 ## Agenda

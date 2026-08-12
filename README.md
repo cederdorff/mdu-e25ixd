@@ -16,13 +16,13 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 
 ### Product Optimization
 
-- [RACE - Product optimization: React-status og teknisk kvalitet - 19-08-2026](undervisning/product-optimization/19-08-2026-product-optimization.md)
+- [RACE - Product optimization: Web App-forbedringer og teknisk fundament - 19-08-2026](undervisning/product-optimization/19-08-2026-product-optimization.md)
 - [LAES/NKKR/RACE - Portfolio feedback - 19-08-2026](undervisning/semesterstart/19-08-2026-portfolio-feedback.md)
-- [RACE - Product optimization: JavaScript for React - 21-08-2026](undervisning/product-optimization/21-08-2026-product-optimization.md)
+- [RACE - Product optimization: JavaScript, fejlhåndtering og robuste UI-states - 21-08-2026](undervisning/product-optimization/21-08-2026-product-optimization.md)
 - [RACE - Product optimization: Case 1 · Kick-off og codebase audit - 25-08-2026](undervisning/product-optimization/25-08-2026-case-1-react-optimering.md)
-- [RACE - Product optimization: Case 1 · Refaktorering og komponentarkitektur - 26-08-2026](undervisning/product-optimization/26-08-2026-case-1-react-optimering.md)
+- [RACE - Product optimization: Case 1 · Arkitektur, styling og accessibility - 26-08-2026](undervisning/product-optimization/26-08-2026-case-1-react-optimering.md)
 - [RACE - Product optimization: Case 1 · Datamodellering, relationer og Supabase - 01-09-2026](undervisning/product-optimization/01-09-2026-case-1-react-optimering.md)
-- [RACE - Product optimization: Case 1 · Kvalitetssikring, deployment og review - 02-09-2026](undervisning/product-optimization/02-09-2026-case-1-react-optimering.md)
+- [RACE - Product optimization: Case 1 · PR-review, deployment og dokumenteret effekt - 02-09-2026](undervisning/product-optimization/02-09-2026-case-1-react-optimering.md)
 - [RACE - Product optimization: Portfolio og faglig dokumentation - 12-10-2026](undervisning/product-optimization/12-10-2026-optimering-af-portfolio.md)
 
 ### Dynamic User Interface
