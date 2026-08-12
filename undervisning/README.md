@@ -13,7 +13,7 @@ Opret en Markdown-side til hver undervisningsgang og brug dato og en kort titel 
 ```text
 undervisning/
 ├── semesterstart/
-│   └── 17-08-2026-semesteropstart-og-portfolio.md
+│   └── 17-08-2026-semesterstart.md
 ├── product-optimization/
 │   └── 25-08-2026-case-1-react-optimering.md
 └── dynamic-user-interface/

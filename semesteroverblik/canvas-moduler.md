@@ -9,7 +9,7 @@ Linjer med `>>>` er skillemoduler, der samler undervisningsgangene i faglige for
 “Optimering af eksisterende React-løsning” er en arbejdstitel for Case 1 og kan præciseres, når opgaven er fastlagt.
 
 ```text
-RACE - Semesteropstart & Portfolio - 17-08-2026
+JEBN/RACE - Semesterstart - 17-08-2026
 LAES - Product optimization - 18-08-2026
 RACE - Product optimization: Web App-forbedringer og teknisk fundament - 19-08-2026
 LAES/NKKR/RACE - Portfolio feedback - 19-08-2026

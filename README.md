@@ -12,7 +12,7 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 
 ### Semesterstart
 
-- [RACE - Semesteropstart & Portfolio - 17-08-2026](undervisning/semesterstart/17-08-2026-semesteropstart-og-portfolio.md)
+- [JEBN/RACE - Semesterstart - 17-08-2026](undervisning/semesterstart/17-08-2026-semesterstart.md)
 
 ### Product Optimization
 
