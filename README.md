@@ -10,8 +10,33 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 
 ## Undervisning (RACE)
 
-- [Semesterstart](undervisning/semesterstart/)
-- [Product Optimization](undervisning/product-optimization/)
-- [Dynamic User Interface](undervisning/dynamic-user-interface/)
+### Semesterstart
 
-Se [undervisningsmappens README](undervisning/) for den anbefalede struktur til undervisningsgange, slides, opgaver og øvrige materialer.
+- [RACE - Semesteropstart & Portfolio - 17-08-2026](undervisning/semesterstart/17-08-2026-semesteropstart-og-portfolio.md)
+- [LAES/NKKR/RACE - Portfolio feedback - 19-08-2026](undervisning/semesterstart/19-08-2026-portfolio-feedback.md)
+
+### Product Optimization
+
+- [RACE - Product optimization - 19-08-2026](undervisning/product-optimization/19-08-2026-product-optimization.md)
+- [RACE - Product optimization - 21-08-2026](undervisning/product-optimization/21-08-2026-product-optimization.md)
+- [RACE - Product optimization: Case 1 · Optimering af eksisterende React-løsning - 25-08-2026](undervisning/product-optimization/25-08-2026-case-1-react-optimering.md)
+- [RACE - Product optimization: Case 1 · Optimering af eksisterende React-løsning - 26-08-2026](undervisning/product-optimization/26-08-2026-case-1-react-optimering.md)
+- [RACE - Product optimization: Case 1 · Optimering af eksisterende React-løsning - 01-09-2026](undervisning/product-optimization/01-09-2026-case-1-react-optimering.md)
+- [RACE - Product optimization: Case 1 · Optimering af eksisterende React-løsning - 02-09-2026](undervisning/product-optimization/02-09-2026-case-1-react-optimering.md)
+- [RACE - Product optimization: Optimering af portfolio - 12-10-2026](undervisning/product-optimization/12-10-2026-optimering-af-portfolio.md)
+
+### Dynamic User Interface
+
+- [RACE - Dynamic User Interface - 26-10-2026](undervisning/dynamic-user-interface/26-10-2026-dynamic-user-interface.md)
+- [NKKR/RACE - Dynamic User Interface - 29-10-2026](undervisning/dynamic-user-interface/29-10-2026-dynamic-user-interface.md)
+- [RACE - Dynamic User Interface - 30-10-2026](undervisning/dynamic-user-interface/30-10-2026-dynamic-user-interface.md)
+- [BKI/NKKR/RACE - Dynamic User Interface: Kick-off - 02-11-2026](undervisning/dynamic-user-interface/02-11-2026-kick-off.md)
+- [RACE - Dynamic User Interface - 05-11-2026](undervisning/dynamic-user-interface/05-11-2026-dynamic-user-interface.md)
+- [RACE - Dynamic User Interface - 10-11-2026](undervisning/dynamic-user-interface/10-11-2026-dynamic-user-interface.md)
+- [NKKR/RACE - Dynamic User Interface: Faciliteret vejledning - 16-11-2026](undervisning/dynamic-user-interface/16-11-2026-faciliteret-vejledning.md)
+- [RACE - Dynamic User Interface: Faciliteret vejledning - 23-11-2026](undervisning/dynamic-user-interface/23-11-2026-faciliteret-vejledning.md)
+- [BKI/NKKR/RACE - Dynamic User Interface: Pitch Day - 27-11-2026](undervisning/dynamic-user-interface/27-11-2026-pitch-day.md)
+- [RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 01-12-2026](undervisning/dynamic-user-interface/01-12-2026-optimering-og-eksamensforberedelse.md)
+- [NKKR/RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 03-12-2026](undervisning/dynamic-user-interface/03-12-2026-optimering-og-eksamensforberedelse.md)
+
+Materialer til undervisningsgangene placeres under [`undervisning/`](undervisning/).
