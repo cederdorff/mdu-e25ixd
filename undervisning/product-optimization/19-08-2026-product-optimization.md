@@ -8,8 +8,8 @@ Undervisningsgangen er et teknisk startskud til 3. semester. Du forbedrer konkre
 
 ## Forberedelse
 
-- Find **koden til din Web App fra 2. semester**, og sørg for, at den kan køre lokalt.
-- Kontrollér repository og online deployment. Du skal muligvis genoptage dit Supabase-projekt.
+- Find **GitHub Repo til din Web App fra 2. semester**, og sørg for, at den kan køre lokalt.
+- Kontrollér repository og online deployment. Du skal muligvis genoptage dit Supabase-projekt (resume project).
 - Har du brug for et React-recap? Begynd eksempelvis med første del af [Scrimba: Learn React](https://scrimba.com/learn-react-c0e), og brug forløbet efter behov.
 - Se også de supplerende links under **Materialer**.
 
@@ -19,7 +19,7 @@ Undervisningsgangen er et teknisk startskud til 3. semester. Du forbedrer konkre
 
 Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afprøver forbedringerne undervejs.
 
-<details>
+<details style="margin-left: 1.5rem;">
 <summary><strong>1. Introduktion og baseline</strong></summary>
 <ul>
 <li>Start den udleverede løsning.</li>
@@ -28,7 +28,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </ul>
 </details>
 
-<details>
+<details style="margin-left: 1.5rem;">
 <summary><strong>2. AI og agenter i udviklingsarbejdet</strong></summary>
 <ul>
 <li>Afklar, hvornår AI er nyttig – og hvornår den ikke er.</li>
@@ -41,7 +41,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </ul>
 </details>
 
-<details>
+<details style="margin-left: 1.5rem;">
 <summary><strong>3. GitHub-flow og automatisk deployment</strong></summary>
 <ul>
 <li>Repetér flowet: feature branch → pull request → <code>main</code> → GitHub Actions → GitHub Pages.</li>
@@ -52,7 +52,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </ul>
 </details>
 
-<details>
+<details style="margin-left: 1.5rem;">
 <summary><strong>4. Environment variables lokalt og online</strong></summary>
 <ul>
 <li>Hold konfiguration ude af kildekoden. Brug <code>VITE_SUPABASE_URL</code> og <code>VITE_SUPABASE_APIKEY</code> via <code>import.meta.env</code>.</li>
@@ -62,7 +62,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </ul>
 </details>
 
-<details>
+<details style="margin-left: 1.5rem;">
 <summary><strong>5. Identitet, metadata og template-oprydning</strong></summary>
 <ul>
 <li>Fjern appnavn, logo og andre template-rester.</li>
@@ -70,7 +70,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </ul>
 </details>
 
-<details>
+<details style="margin-left: 1.5rem;">
 <summary><strong>6. Accessibility tilbage i løsningen</strong></summary>
 <ul>
 <li>Genbesøg semantisk HTML, labels, alternativ tekst, tastaturnavigation og synligt fokus.</li>
@@ -78,7 +78,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </ul>
 </details>
 
-<details>
+<details style="margin-left: 1.5rem;">
 <summary><strong>7. Supabase via REST og SDK – kort introduktion</strong></summary>
 <ul>
 <li>Hvad er REST og SDK, hvad er forskellen, og hvad abstraherer SDK'et?</li>
@@ -86,7 +86,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </ul>
 </details>
 
-<details>
+<details style="margin-left: 1.5rem;">
 <summary><strong>8. Gennemgå din egen Web App</strong></summary>
 <ul>
 <li>Undersøg deployment, environment variables, template-rester, metadata, identitet og accessibility.</li>
