@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "canvas:preview": "node scripts/sync-canvas-page.mjs",
-    "canvas:sync": "node scripts/sync-canvas-page.mjs --push"
+    "canvas:preview": "node scripts/sync-canvas-page.js",
+    "canvas:sync": "node scripts/sync-canvas-page.js --push"
   },
   "dependencies": {
     "marked": "^16.2.1"
