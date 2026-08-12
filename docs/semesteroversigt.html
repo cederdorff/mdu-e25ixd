@@ -1021,6 +1021,44 @@ html&gt;body{padding:0}&lt;/style&gt;
       margin-top: 6px;
       color: var(--muted-foreground);
     }
+    #ixd-semester-map .overview {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    #ixd-semester-map .overview-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: baseline;
+      margin-bottom: 18px;
+    }
+    #ixd-semester-map .overview-head p { color: var(--muted-foreground); }
+    #ixd-semester-map .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px 38px;
+    }
+    #ixd-semester-map .overview-item {
+      --overview-color: var(--viz-series-2);
+      min-width: 0;
+      padding: 2px 0 4px 15px;
+      border-left: 4px solid var(--overview-color);
+    }
+    #ixd-semester-map .overview-wordpress { --overview-color: var(--viz-series-4); }
+    #ixd-semester-map .overview-dui { --overview-color: var(--viz-series-5); }
+    #ixd-semester-map .overview-hop { --overview-color: var(--viz-series-1); }
+    #ixd-semester-map .overview-item p {
+      margin-top: 8px;
+      color: var(--muted-foreground);
+    }
+    #ixd-semester-map .overview-item .exam {
+      margin-top: 13px;
+      padding-top: 10px;
+      border-top: 1px solid color-mix(in srgb, var(--overview-color) 45%, transparent);
+      color: var(--foreground);
+    }
+    #ixd-semester-map .overview-item strong { font-weight: 500; }
     #ixd-semester-map .milestones {
       margin-top: 30px;
       padding-top: 18px;
@@ -1094,13 +1132,17 @@ html&gt;body{padding:0}&lt;/style&gt;
       #ixd-semester-map .unit,
       #ixd-semester-map .unit-wide { grid-column: auto; }
       #ixd-semester-map .dui-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #ixd-semester-map .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #ixd-semester-map .milestone-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #ixd-semester-map .overview-head,
       #ixd-semester-map .milestones-head { display: block; }
+      #ixd-semester-map .overview-head p,
       #ixd-semester-map .milestones-head p { margin-top: 6px; }
     }
     @media (max-width: 430px) {
       #ixd-semester-map .product-flow,
       #ixd-semester-map .dui-flow,
+      #ixd-semester-map .overview-grid,
       #ixd-semester-map .milestone-grid { grid-template-columns: 1fr; }
     }
   &lt;/style&gt;
@@ -1173,6 +1215,33 @@ html&gt;body{padding:0}&lt;/style&gt;
     &lt;/article&gt;
   &lt;/div&gt;
 
+  &lt;section class=&quot;overview&quot; aria-labelledby=&quot;ixd-overview-title&quot;&gt;
+    &lt;header class=&quot;overview-head&quot;&gt;
+      &lt;h2 id=&quot;ixd-overview-title&quot;&gt;Forløb og eksamen&lt;/h2&gt;
+      &lt;p&gt;Kort fortalt&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;div class=&quot;overview-grid&quot;&gt;
+      &lt;article class=&quot;overview-item&quot;&gt;
+        &lt;h3&gt;Product optimization&lt;/h3&gt;
+        &lt;p&gt;Tre cases, hvor eksisterende digitale løsninger analyseres, redesignes og optimeres med fokus på UX, tilgængelighed, designsystemer, React, fejlfinding og performance.&lt;/p&gt;
+        &lt;p class=&quot;exam&quot;&gt;&lt;strong&gt;Eksamen:&lt;/strong&gt; Individuel skriftlig prøve med cases og faglige refleksioner på eget portfoliosite.&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;overview-item overview-wordpress&quot;&gt;
+        &lt;h3&gt;WordPress&lt;/h3&gt;
+        &lt;p&gt;Et kort forløb om CMS, domæner og hosting, indholdsstruktur samt tilpasning med HTML, CSS og JavaScript.&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;overview-item overview-dui&quot;&gt;
+        &lt;h3&gt;Dynamic User Interface&lt;/h3&gt;
+        &lt;p&gt;Et gruppeprojekt, hvor der designes og udvikles en kompleks dynamisk brugergrænseflade med React, data og API&#x27;er.&lt;/p&gt;
+        &lt;p class=&quot;exam&quot;&gt;&lt;strong&gt;Eksamen:&lt;/strong&gt; Mundtlig gruppeprøve med præsentation og eksamination om produkt, proces og faglige refleksioner.&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;overview-item overview-hop&quot;&gt;
+        &lt;h3&gt;HOP-uge&lt;/h3&gt;
+        &lt;p&gt;Forberedelse til det nye hovedopgaveformat, hvor en lang rapport erstattes af dokumentation af proces og outputs.&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
   &lt;section class=&quot;milestones&quot; aria-labelledby=&quot;ixd-milestones-title&quot;&gt;
     &lt;header class=&quot;milestones-head&quot;&gt;
       &lt;h2 id=&quot;ixd-milestones-title&quot;&gt;Vigtige datoer&lt;/h2&gt;
@@ -1183,12 +1252,12 @@ html&gt;body{padding:0}&lt;/style&gt;
       &lt;article class=&quot;milestone milestone-start&quot;&gt;&lt;div class=&quot;area&quot;&gt;PORTFOLIO&lt;/div&gt;&lt;time datetime=&quot;2026-08-19&quot;&gt;19. august&lt;/time&gt;&lt;p&gt;Portfoliofeedback&lt;/p&gt;&lt;/article&gt;
       &lt;article class=&quot;milestone milestone-career&quot;&gt;&lt;div class=&quot;area&quot;&gt;PRAKTIK&lt;/div&gt;&lt;time datetime=&quot;2026-09-23&quot;&gt;23. september&lt;/time&gt;&lt;p&gt;Company Day&lt;/p&gt;&lt;/article&gt;
       &lt;article class=&quot;milestone&quot;&gt;&lt;div class=&quot;area&quot;&gt;PRODUCT OPTIMIZATION&lt;/div&gt;&lt;time datetime=&quot;2026-10-14&quot;&gt;14. oktober&lt;/time&gt;&lt;p&gt;Attenderprøve&lt;/p&gt;&lt;/article&gt;
-      &lt;article class=&quot;milestone&quot;&gt;&lt;div class=&quot;area&quot;&gt;PRODUCT OPTIMIZATION&lt;/div&gt;&lt;time datetime=&quot;2026-10-16&quot;&gt;16. oktober&lt;/time&gt;&lt;p&gt;Aflevering&lt;/p&gt;&lt;/article&gt;
+      &lt;article class=&quot;milestone&quot;&gt;&lt;div class=&quot;area&quot;&gt;PRODUCT OPTIMIZATION&lt;/div&gt;&lt;time datetime=&quot;2026-10-16&quot;&gt;16. oktober&lt;/time&gt;&lt;p&gt;Skriftlig prøve · cases og refleksioner på portfolio&lt;/p&gt;&lt;/article&gt;
       &lt;article class=&quot;milestone milestone-career&quot;&gt;&lt;div class=&quot;area&quot;&gt;FÆLLES&lt;/div&gt;&lt;time datetime=&quot;2026-11-04&quot;&gt;4. november&lt;/time&gt;&lt;p&gt;Student Day&lt;/p&gt;&lt;/article&gt;
       &lt;article class=&quot;milestone milestone-dui&quot;&gt;&lt;div class=&quot;area&quot;&gt;DYNAMIC UI&lt;/div&gt;&lt;time datetime=&quot;2026-11-17&quot;&gt;17. november&lt;/time&gt;&lt;p&gt;Attenderprøve&lt;/p&gt;&lt;/article&gt;
       &lt;article class=&quot;milestone milestone-dui&quot;&gt;&lt;div class=&quot;area&quot;&gt;DYNAMIC UI&lt;/div&gt;&lt;time datetime=&quot;2026-11-24&quot;&gt;24. november&lt;/time&gt;&lt;p&gt;Aflevering&lt;/p&gt;&lt;/article&gt;
       &lt;article class=&quot;milestone milestone-dui&quot;&gt;&lt;div class=&quot;area&quot;&gt;DYNAMIC UI&lt;/div&gt;&lt;time datetime=&quot;2026-11-27&quot;&gt;27. november&lt;/time&gt;&lt;p&gt;Pitch Day&lt;/p&gt;&lt;/article&gt;
-      &lt;article class=&quot;milestone milestone-dui&quot;&gt;&lt;div class=&quot;area&quot;&gt;DYNAMIC UI&lt;/div&gt;&lt;time datetime=&quot;2026-12-09&quot;&gt;9.–11. december&lt;/time&gt;&lt;p&gt;Eksamensdage&lt;/p&gt;&lt;/article&gt;
+      &lt;article class=&quot;milestone milestone-dui&quot;&gt;&lt;div class=&quot;area&quot;&gt;DYNAMIC UI&lt;/div&gt;&lt;time datetime=&quot;2026-12-09&quot;&gt;9.–11. december&lt;/time&gt;&lt;p&gt;Mundtlig gruppeprøve · produkt, proces og refleksion&lt;/p&gt;&lt;/article&gt;
     &lt;/div&gt;
   &lt;/section&gt;
 &lt;/section&gt;
