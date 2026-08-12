@@ -11,17 +11,17 @@ Linjer med `>>>` er skillemoduler, der samler undervisningsgangene i faglige for
 ```text
 RACE - Semesteropstart & Portfolio - 17-08-2026
 LAES - Product optimization - 18-08-2026
-RACE - Product optimization - 19-08-2026
+RACE - Product optimization: React-status og teknisk kvalitet - 19-08-2026
 LAES/NKKR/RACE - Portfolio feedback - 19-08-2026
 NKKR - Product optimization - 20-08-2026
-RACE - Product optimization - 21-08-2026
+RACE - Product optimization: JavaScript for React - 21-08-2026
 
 >>> RACE - Product optimization: Case 1 · Optimering af eksisterende React-løsning - 24-08-2026 - 04-09-2026 <<<
 
-RACE - Product optimization: Case 1 · Optimering af eksisterende React-løsning - 25-08-2026
-RACE - Product optimization: Case 1 · Optimering af eksisterende React-løsning - 26-08-2026
-RACE - Product optimization: Case 1 · Optimering af eksisterende React-løsning - 01-09-2026
-RACE - Product optimization: Case 1 · Optimering af eksisterende React-løsning - 02-09-2026
+RACE - Product optimization: Case 1 · Kick-off og codebase audit - 25-08-2026
+RACE - Product optimization: Case 1 · Refaktorering og komponentarkitektur - 26-08-2026
+RACE - Product optimization: Case 1 · Datamodellering, relationer og Supabase - 01-09-2026
+RACE - Product optimization: Case 1 · Kvalitetssikring, deployment og review - 02-09-2026
 
 >>> LAES - Product optimization: Case 2 - 07-09-2026 - 18-09-2026 <<<
 
@@ -39,7 +39,7 @@ NKKR - Product optimization: Case 3 - Design system - 08-10-2026
 
 >>> RACE - Product optimization: Optimering af portfolio - 12-10-2026 - 16-10-2026 <<<
 
-RACE - Product optimization: Optimering af portfolio - 12-10-2026
+RACE - Product optimization: Portfolio og faglig dokumentation - 12-10-2026
 
 >>> PETJ - WordPress - 20-10-2026 - 23-10-2026 <<<
 
