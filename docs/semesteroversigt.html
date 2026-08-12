@@ -888,363 +888,368 @@ svg.lucide {
 html&gt;body{padding:0}&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;section id=&quot;ixd-semester-map&quot; aria-labelledby=&quot;ixd-semester-title&quot;&gt;
+&lt;section id=&quot;ixd-semester-2026&quot; aria-labelledby=&quot;ixd-semester-heading&quot;&gt;
   &lt;style&gt;
-    #ixd-semester-map {
+    #ixd-semester-2026 {
       width: 100%;
       color: var(--foreground);
       font-family: inherit;
     }
-    #ixd-semester-map * { box-sizing: border-box; }
-    #ixd-semester-map h1,
-    #ixd-semester-map h2,
-    #ixd-semester-map h3,
-    #ixd-semester-map p { margin: 0; }
-    #ixd-semester-map h1,
-    #ixd-semester-map h2,
-    #ixd-semester-map h3 { font-weight: 500; letter-spacing: .01em; }
-    #ixd-semester-map .kicker {
+    #ixd-semester-2026 * { box-sizing: border-box; }
+    #ixd-semester-2026 h1,
+    #ixd-semester-2026 h2,
+    #ixd-semester-2026 h3,
+    #ixd-semester-2026 p { margin: 0; }
+    #ixd-semester-2026 h1,
+    #ixd-semester-2026 h2,
+    #ixd-semester-2026 h3,
+    #ixd-semester-2026 strong { font-weight: 500; }
+    #ixd-semester-2026 .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: end;
+      padding: 8px 0 30px;
+    }
+    #ixd-semester-2026 .eyebrow {
+      margin-bottom: 10px;
       color: var(--viz-series-1);
       font-weight: 500;
-      letter-spacing: .08em;
-      margin-bottom: 7px;
+      letter-spacing: .12em;
     }
-    #ixd-semester-map .subtitle {
-      max-width: 700px;
-      margin-top: 8px;
-      color: var(--muted-foreground);
-    }
-    #ixd-semester-map .months {
-      display: grid;
-      grid-template-columns: 2fr 5fr 4fr 4fr 2fr;
-      gap: 6px;
-      margin-top: 30px;
-      color: var(--muted-foreground);
-      text-align: center;
-      font-weight: 500;
-    }
-    #ixd-semester-map .months span {
-      padding-bottom: 9px;
-      border-bottom: 2px solid var(--border);
-    }
-    #ixd-semester-map .road {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.1fr 6.7fr 1.3fr 4.5fr 1.1fr;
-      gap: 12px;
-      align-items: stretch;
-      margin-top: 30px;
-      padding-top: 27px;
-    }
-    #ixd-semester-map .road::before {
-      content: &quot;&quot;;
-      position: absolute;
-      left: 2%;
-      right: 2%;
-      top: 7px;
-      height: 2px;
-      background: var(--border);
-    }
-    #ixd-semester-map .stage {
-      --stage-color: var(--viz-series-1);
-      position: relative;
-      min-width: 0;
-      min-height: 184px;
-      padding: 16px 14px 18px;
-      border-top: 6px solid var(--stage-color);
-      background: color-mix(in srgb, var(--stage-color) 10%, transparent);
-    }
-    #ixd-semester-map .stage::before {
-      content: &quot;&quot;;
-      position: absolute;
-      top: -31px;
-      left: 50%;
-      width: 14px;
-      height: 14px;
-      transform: translateX(-50%);
-      border: 3px solid var(--background);
-      border-radius: 50%;
-      background: var(--stage-color);
-    }
-    #ixd-semester-map .stage-product { --stage-color: var(--viz-series-2); }
-    #ixd-semester-map .stage-wordpress { --stage-color: var(--viz-series-4); }
-    #ixd-semester-map .stage-dui { --stage-color: var(--viz-series-5); }
-    #ixd-semester-map .stage-hop { --stage-color: var(--viz-series-1); }
-    #ixd-semester-map .weeks {
-      margin-bottom: 8px;
-      color: var(--muted-foreground);
-      font-weight: 500;
-      font-variant-numeric: tabular-nums;
-      letter-spacing: .03em;
-      white-space: nowrap;
-    }
-    #ixd-semester-map .stage &gt; p {
+    #ixd-semester-2026 .hero h1 { letter-spacing: -.02em; }
+    #ixd-semester-2026 .intro {
+      max-width: 630px;
       margin-top: 10px;
       color: var(--muted-foreground);
     }
-    #ixd-semester-map .product-flow {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 18px;
-    }
-    #ixd-semester-map .unit {
-      --unit-color: var(--viz-series-2);
-      min-width: 0;
-      padding: 11px 9px 9px;
-      border-top: 3px solid var(--unit-color);
-      background: color-mix(in srgb, var(--unit-color) 8%, transparent);
-      grid-column: span 2;
-    }
-    #ixd-semester-map .unit-career {
-      --unit-color: var(--viz-series-3);
-      background: color-mix(in srgb, var(--unit-color) 13%, transparent);
-    }
-    #ixd-semester-map .unit .weeks { color: var(--unit-color); }
-    #ixd-semester-map .unit-wide { grid-column: span 3; }
-    #ixd-semester-map .unit p {
-      margin-top: 7px;
+    #ixd-semester-2026 .term {
+      padding-bottom: 3px;
       color: var(--muted-foreground);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
-    #ixd-semester-map .dui-flow {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-    #ixd-semester-map .dui-unit {
-      min-width: 0;
-      padding-top: 10px;
-      border-top: 3px solid var(--stage-color);
-    }
-    #ixd-semester-map .dui-unit p {
-      margin-top: 6px;
-      color: var(--muted-foreground);
-    }
-    #ixd-semester-map .overview {
-      margin-top: 28px;
-      padding-top: 18px;
+    #ixd-semester-2026 .timeline {
+      padding: 22px 0 32px;
       border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
-    #ixd-semester-map .overview-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: baseline;
-      margin-bottom: 18px;
-    }
-    #ixd-semester-map .overview-head p { color: var(--muted-foreground); }
-    #ixd-semester-map .overview-grid {
+    #ixd-semester-2026 .months,
+    #ixd-semester-2026 .weeks-row,
+    #ixd-semester-2026 .timeline-body {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 26px 38px;
+      grid-template-columns: repeat(18, minmax(0, 1fr));
     }
-    #ixd-semester-map .overview-item {
-      --overview-color: var(--viz-series-2);
+    #ixd-semester-2026 .months {
+      color: var(--muted-foreground);
+      font-weight: 500;
+    }
+    #ixd-semester-2026 .months span {
+      padding: 0 8px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    #ixd-semester-2026 .month-aug { grid-column: 1 / 4; }
+    #ixd-semester-2026 .month-sep { grid-column: 4 / 8; }
+    #ixd-semester-2026 .month-oct { grid-column: 8 / 12; }
+    #ixd-semester-2026 .month-nov { grid-column: 12 / 17; }
+    #ixd-semester-2026 .month-dec { grid-column: 17 / 19; }
+    #ixd-semester-2026 .weeks-row {
+      margin-top: 9px;
+      color: var(--muted-foreground);
+      font-variant-numeric: tabular-nums;
+      text-align: center;
+    }
+    #ixd-semester-2026 .timeline-body {
+      gap: 7px;
+      margin-top: 20px;
+      align-items: stretch;
+    }
+    #ixd-semester-2026 .phase {
+      --phase-color: var(--viz-series-1);
       min-width: 0;
-      padding: 2px 0 4px 15px;
-      border-left: 4px solid var(--overview-color);
+      min-height: 216px;
+      padding: 15px 13px 16px;
+      border-top: 5px solid var(--phase-color);
+      background: color-mix(in srgb, var(--phase-color) 9%, transparent);
     }
-    #ixd-semester-map .overview-wordpress { --overview-color: var(--viz-series-4); }
-    #ixd-semester-map .overview-dui { --overview-color: var(--viz-series-5); }
-    #ixd-semester-map .overview-hop { --overview-color: var(--viz-series-1); }
-    #ixd-semester-map .overview-item p {
+    #ixd-semester-2026 .phase-product { --phase-color: var(--viz-series-2); grid-column: 2 / 10; }
+    #ixd-semester-2026 .phase-start { grid-column: 1 / 2; }
+    #ixd-semester-2026 .phase-wordpress { --phase-color: var(--viz-series-4); grid-column: 10 / 11; }
+    #ixd-semester-2026 .phase-dui { --phase-color: var(--viz-series-5); grid-column: 11 / 18; }
+    #ixd-semester-2026 .phase-hop { grid-column: 18 / 19; }
+    #ixd-semester-2026 .phase-label {
+      margin-bottom: 8px;
+      color: var(--phase-color);
+      font-weight: 500;
+      letter-spacing: .06em;
+    }
+    #ixd-semester-2026 .phase &gt; p {
       margin-top: 8px;
       color: var(--muted-foreground);
     }
-    #ixd-semester-map .overview-item .exam {
-      margin-top: 13px;
-      padding-top: 10px;
-      border-top: 1px solid color-mix(in srgb, var(--overview-color) 45%, transparent);
+    #ixd-semester-2026 .product-cases {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+    }
+    #ixd-semester-2026 .case {
+      --case-color: var(--viz-series-2);
+      min-width: 0;
+      padding: 11px 8px 8px;
+      border-top: 2px solid var(--case-color);
+    }
+    #ixd-semester-2026 .case-1 { grid-column: span 2; }
+    #ixd-semester-2026 .case-2 { grid-column: span 2; }
+    #ixd-semester-2026 .case-career { --case-color: var(--viz-series-3); grid-column: span 2; }
+    #ixd-semester-2026 .case-3 { grid-column: span 3; }
+    #ixd-semester-2026 .case-portfolio { grid-column: span 3; }
+    #ixd-semester-2026 .case .case-week {
+      margin-bottom: 7px;
+      color: var(--case-color);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    #ixd-semester-2026 .case p {
+      margin-top: 6px;
+      color: var(--muted-foreground);
+    }
+    #ixd-semester-2026 .dui-chain {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) auto minmax(0, .75fr) auto minmax(0, 1.2fr);
+      gap: 10px;
+      align-items: start;
+      margin-top: 18px;
+    }
+    #ixd-semester-2026 .dui-node {
+      padding-top: 11px;
+      border-top: 2px solid var(--phase-color);
+    }
+    #ixd-semester-2026 .dui-node p {
+      margin-top: 6px;
+      color: var(--muted-foreground);
+    }
+    #ixd-semester-2026 .dui-arrow {
+      padding-top: 11px;
+      color: var(--phase-color);
+      font-weight: 500;
+    }
+    #ixd-semester-2026 .dui-context {
+      margin-top: 15px;
+      padding-top: 12px;
+      border-top: 1px solid color-mix(in srgb, var(--phase-color) 38%, transparent);
+      color: var(--muted-foreground);
+    }
+    #ixd-semester-2026 .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 26px;
+    }
+    #ixd-semester-2026 .section-head p { color: var(--muted-foreground); }
+    #ixd-semester-2026 .stories { padding: 42px 0; }
+    #ixd-semester-2026 .story-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 38px 64px;
+    }
+    #ixd-semester-2026 .story {
+      --story-color: var(--viz-series-2);
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 16px;
+      min-width: 0;
+    }
+    #ixd-semester-2026 .story-wordpress { --story-color: var(--viz-series-4); }
+    #ixd-semester-2026 .story-dui { --story-color: var(--viz-series-5); }
+    #ixd-semester-2026 .story-hop { --story-color: var(--viz-series-1); }
+    #ixd-semester-2026 .story-index {
+      padding-top: 2px;
+      border-top: 3px solid var(--story-color);
+      color: var(--story-color);
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+    }
+    #ixd-semester-2026 .story-copy &gt; p {
+      margin-top: 9px;
+      color: var(--muted-foreground);
+    }
+    #ixd-semester-2026 .exam {
+      margin-top: 16px;
+      padding-top: 13px;
+      border-top: 1px solid color-mix(in srgb, var(--story-color) 45%, transparent);
       color: var(--foreground);
     }
-    #ixd-semester-map .overview-item strong { font-weight: 500; }
-    #ixd-semester-map .milestones {
-      margin-top: 30px;
-      padding-top: 18px;
+    #ixd-semester-2026 .milestones {
+      padding: 36px 0 8px;
       border-top: 1px solid var(--border);
     }
-    #ixd-semester-map .milestones-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: baseline;
-      margin-bottom: 15px;
-    }
-    #ixd-semester-map .milestones-head p { color: var(--muted-foreground); }
-    #ixd-semester-map .milestone-grid {
+    #ixd-semester-2026 .milestone-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
+      gap: 22px 18px;
     }
-    #ixd-semester-map .milestone {
+    #ixd-semester-2026 .milestone {
       --milestone-color: var(--viz-series-2);
       min-width: 0;
-      padding: 11px 10px 12px;
+      padding-top: 10px;
       border-top: 3px solid var(--milestone-color);
-      background: color-mix(in srgb, var(--milestone-color) 8%, transparent);
     }
-    #ixd-semester-map .milestone-start { --milestone-color: var(--viz-series-1); }
-    #ixd-semester-map .milestone-career { --milestone-color: var(--viz-series-3); }
-    #ixd-semester-map .milestone-dui { --milestone-color: var(--viz-series-5); }
-    #ixd-semester-map .milestone .area {
-      margin-bottom: 6px;
+    #ixd-semester-2026 .milestone-start { --milestone-color: var(--viz-series-1); }
+    #ixd-semester-2026 .milestone-career { --milestone-color: var(--viz-series-3); }
+    #ixd-semester-2026 .milestone-dui { --milestone-color: var(--viz-series-5); }
+    #ixd-semester-2026 .milestone .area {
+      margin-bottom: 8px;
       color: var(--milestone-color);
       font-weight: 500;
-      letter-spacing: .03em;
+      letter-spacing: .05em;
     }
-    #ixd-semester-map .milestone time {
+    #ixd-semester-2026 .milestone time {
       display: block;
       font-weight: 500;
       font-variant-numeric: tabular-nums;
     }
-    #ixd-semester-map .milestone p {
+    #ixd-semester-2026 .milestone p {
       margin-top: 5px;
       color: var(--muted-foreground);
     }
     @media (max-width: 760px) {
-      #ixd-semester-map .months { display: none; }
-      #ixd-semester-map .road {
+      #ixd-semester-2026 .hero,
+      #ixd-semester-2026 .section-head { grid-template-columns: 1fr; gap: 8px; }
+      #ixd-semester-2026 .term { white-space: normal; }
+      #ixd-semester-2026 .months,
+      #ixd-semester-2026 .weeks-row { display: none; }
+      #ixd-semester-2026 .timeline-body {
         grid-template-columns: 1fr;
-        gap: 14px;
-        margin-top: 24px;
-        padding: 0 0 0 27px;
+        gap: 12px;
+        margin-top: 0;
       }
-      #ixd-semester-map .road::before {
-        top: 0;
-        bottom: 0;
-        left: 8px;
-        right: auto;
-        width: 2px;
-        height: auto;
-      }
-      #ixd-semester-map .stage {
-        min-height: 0;
-        border-top: 0;
-        border-left: 6px solid var(--stage-color);
-      }
-      #ixd-semester-map .stage::before {
-        top: 18px;
-        left: -28px;
-        transform: none;
-      }
-      #ixd-semester-map .product-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      #ixd-semester-map .unit,
-      #ixd-semester-map .unit-wide { grid-column: auto; }
-      #ixd-semester-map .dui-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      #ixd-semester-map .overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      #ixd-semester-map .milestone-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      #ixd-semester-map .overview-head,
-      #ixd-semester-map .milestones-head { display: block; }
-      #ixd-semester-map .overview-head p,
-      #ixd-semester-map .milestones-head p { margin-top: 6px; }
+      #ixd-semester-2026 .phase-start,
+      #ixd-semester-2026 .phase-product,
+      #ixd-semester-2026 .phase-wordpress,
+      #ixd-semester-2026 .phase-dui,
+      #ixd-semester-2026 .phase-hop { grid-column: auto; }
+      #ixd-semester-2026 .phase { min-height: 0; }
+      #ixd-semester-2026 .product-cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      #ixd-semester-2026 .case-1,
+      #ixd-semester-2026 .case-2,
+      #ixd-semester-2026 .case-career,
+      #ixd-semester-2026 .case-3,
+      #ixd-semester-2026 .case-portfolio { grid-column: auto; }
+      #ixd-semester-2026 .story-grid { grid-template-columns: 1fr; }
+      #ixd-semester-2026 .milestone-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 430px) {
-      #ixd-semester-map .product-flow,
-      #ixd-semester-map .dui-flow,
-      #ixd-semester-map .overview-grid,
-      #ixd-semester-map .milestone-grid { grid-template-columns: 1fr; }
+      #ixd-semester-2026 .product-cases,
+      #ixd-semester-2026 .dui-chain,
+      #ixd-semester-2026 .milestone-grid { grid-template-columns: 1fr; }
+      #ixd-semester-2026 .dui-arrow { display: none; }
     }
   &lt;/style&gt;
 
-  &lt;header&gt;
-    &lt;p class=&quot;kicker&quot;&gt;INTERACTION DESIGN · 3. SEMESTER&lt;/p&gt;
-    &lt;h1 id=&quot;ixd-semester-title&quot;&gt;Semesterforløb · efterår 2026&lt;/h1&gt;
-    &lt;p class=&quot;subtitle&quot;&gt;Et samlet overblik over faglige forløb, cases, praktikaktiviteter og semesterets vigtigste datoer.&lt;/p&gt;
+  &lt;header class=&quot;hero&quot;&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;eyebrow&quot;&gt;INTERACTION DESIGN · 3. SEMESTER&lt;/p&gt;
+      &lt;h1 id=&quot;ixd-semester-heading&quot;&gt;Semesterforløb · efterår 2026&lt;/h1&gt;
+      &lt;p class=&quot;intro&quot;&gt;Et samlet overblik over faglige forløb, cases, praktikaktiviteter, prøver og semesterets vigtigste datoer.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;term&quot;&gt;17. august–18. december 2026&lt;/p&gt;
   &lt;/header&gt;
 
-  &lt;div class=&quot;months&quot; aria-hidden=&quot;true&quot;&gt;
-    &lt;span&gt;August&lt;/span&gt;&lt;span&gt;September&lt;/span&gt;&lt;span&gt;Oktober&lt;/span&gt;&lt;span&gt;November&lt;/span&gt;&lt;span&gt;December&lt;/span&gt;
-  &lt;/div&gt;
-
-  &lt;div class=&quot;road&quot; aria-label=&quot;Horisontal tidslinje for semesterets forløb&quot;&gt;
-    &lt;article class=&quot;stage&quot;&gt;
-      &lt;div class=&quot;weeks&quot;&gt;UGE 34&lt;/div&gt;
-      &lt;h3&gt;Semester&lt;wbr&gt;start&lt;/h3&gt;
-    &lt;/article&gt;
-
-    &lt;article class=&quot;stage stage-product&quot;&gt;
-      &lt;div class=&quot;weeks&quot;&gt;UGE 35–42&lt;/div&gt;
-      &lt;h2&gt;Product optimization&lt;/h2&gt;
-      &lt;div class=&quot;product-flow&quot;&gt;
-        &lt;section class=&quot;unit&quot;&gt;
-          &lt;div class=&quot;weeks&quot;&gt;UGE 35–36&lt;/div&gt;
-          &lt;h3&gt;Case 1&lt;/h3&gt;
-          &lt;p&gt;Optimering af eksisterende React-løsning&lt;br&gt;24. august–4. september&lt;/p&gt;
-        &lt;/section&gt;
-        &lt;section class=&quot;unit&quot;&gt;
-          &lt;div class=&quot;weeks&quot;&gt;UGE 37–38&lt;/div&gt;
-          &lt;h3&gt;Case 2&lt;/h3&gt;
-          &lt;p&gt;UX Audit&lt;br&gt;7.–18. september&lt;/p&gt;
-        &lt;/section&gt;
-        &lt;section class=&quot;unit unit-career&quot;&gt;
-          &lt;div class=&quot;weeks&quot;&gt;UGE 39&lt;/div&gt;
-          &lt;h3&gt;Praktik&lt;wbr&gt;aktiviteter&lt;/h3&gt;
-          &lt;p&gt;CV, karrieredag og Company Day&lt;/p&gt;
-        &lt;/section&gt;
-        &lt;section class=&quot;unit unit-wide&quot;&gt;
-          &lt;div class=&quot;weeks&quot;&gt;UGE 40–41&lt;/div&gt;
-          &lt;h3&gt;Case 3&lt;/h3&gt;
-          &lt;p&gt;Branding og designsystem&lt;/p&gt;
-        &lt;/section&gt;
-        &lt;section class=&quot;unit unit-wide&quot;&gt;
-          &lt;div class=&quot;weeks&quot;&gt;UGE 42&lt;/div&gt;
-          &lt;h3&gt;Optimering af portfolio&lt;/h3&gt;
-          &lt;p&gt;12.–16. oktober&lt;/p&gt;
-        &lt;/section&gt;
-      &lt;/div&gt;
-    &lt;/article&gt;
-
-    &lt;article class=&quot;stage stage-wordpress&quot;&gt;
-      &lt;div class=&quot;weeks&quot;&gt;UGE 43&lt;/div&gt;
-      &lt;h3&gt;Word&lt;wbr&gt;Press&lt;/h3&gt;
-    &lt;/article&gt;
-
-    &lt;article class=&quot;stage stage-dui&quot;&gt;
-      &lt;div class=&quot;weeks&quot;&gt;UGE 44–50&lt;/div&gt;
-      &lt;h2&gt;Dynamic User Interface&lt;/h2&gt;
-      &lt;div class=&quot;dui-flow&quot;&gt;
-        &lt;section class=&quot;dui-unit&quot;&gt;&lt;h3&gt;Udvikling&lt;/h3&gt;&lt;p&gt;Undervisning og faciliteret vejledning&lt;/p&gt;&lt;/section&gt;
-        &lt;section class=&quot;dui-unit&quot;&gt;&lt;h3&gt;Afslutning&lt;/h3&gt;&lt;p&gt;Pitch Day, optimering og eksamen&lt;/p&gt;&lt;/section&gt;
-      &lt;/div&gt;
-    &lt;/article&gt;
-
-    &lt;article class=&quot;stage stage-hop&quot;&gt;
-      &lt;div class=&quot;weeks&quot;&gt;UGE 51&lt;/div&gt;
-      &lt;h3&gt;HOP-uge&lt;/h3&gt;
-    &lt;/article&gt;
-  &lt;/div&gt;
-
-  &lt;section class=&quot;overview&quot; aria-labelledby=&quot;ixd-overview-title&quot;&gt;
-    &lt;header class=&quot;overview-head&quot;&gt;
-      &lt;h2 id=&quot;ixd-overview-title&quot;&gt;Forløb og eksamen&lt;/h2&gt;
-      &lt;p&gt;Kort fortalt&lt;/p&gt;
-    &lt;/header&gt;
-    &lt;div class=&quot;overview-grid&quot;&gt;
-      &lt;article class=&quot;overview-item&quot;&gt;
-        &lt;h3&gt;Product optimization&lt;/h3&gt;
-        &lt;p&gt;Tre cases, hvor eksisterende digitale løsninger analyseres, redesignes og optimeres med fokus på UX, tilgængelighed, designsystemer, React, fejlfinding og performance.&lt;/p&gt;
-        &lt;p class=&quot;exam&quot;&gt;&lt;strong&gt;Eksamen:&lt;/strong&gt; Individuel skriftlig prøve med cases og faglige refleksioner på eget portfoliosite.&lt;/p&gt;
+  &lt;section class=&quot;timeline&quot; aria-label=&quot;Semesterets tidslinje fra uge 34 til uge 51&quot;&gt;
+    &lt;div class=&quot;months&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;span class=&quot;month-aug&quot;&gt;August&lt;/span&gt;&lt;span class=&quot;month-sep&quot;&gt;September&lt;/span&gt;&lt;span class=&quot;month-oct&quot;&gt;Oktober&lt;/span&gt;&lt;span class=&quot;month-nov&quot;&gt;November&lt;/span&gt;&lt;span class=&quot;month-dec&quot;&gt;December&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;weeks-row&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;span&gt;34&lt;/span&gt;&lt;span&gt;35&lt;/span&gt;&lt;span&gt;36&lt;/span&gt;&lt;span&gt;37&lt;/span&gt;&lt;span&gt;38&lt;/span&gt;&lt;span&gt;39&lt;/span&gt;&lt;span&gt;40&lt;/span&gt;&lt;span&gt;41&lt;/span&gt;&lt;span&gt;42&lt;/span&gt;&lt;span&gt;43&lt;/span&gt;&lt;span&gt;44&lt;/span&gt;&lt;span&gt;45&lt;/span&gt;&lt;span&gt;46&lt;/span&gt;&lt;span&gt;47&lt;/span&gt;&lt;span&gt;48&lt;/span&gt;&lt;span&gt;49&lt;/span&gt;&lt;span&gt;50&lt;/span&gt;&lt;span&gt;51&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;timeline-body&quot;&gt;
+      &lt;article class=&quot;phase phase-start&quot;&gt;
+        &lt;div class=&quot;phase-label&quot;&gt;UGE 34&lt;/div&gt;
+        &lt;h3&gt;Semester&lt;wbr&gt;start&lt;/h3&gt;
       &lt;/article&gt;
-      &lt;article class=&quot;overview-item overview-wordpress&quot;&gt;
-        &lt;h3&gt;WordPress&lt;/h3&gt;
-        &lt;p&gt;Et kort forløb om CMS, domæner og hosting, indholdsstruktur samt tilpasning med HTML, CSS og JavaScript.&lt;/p&gt;
+
+      &lt;article class=&quot;phase phase-product&quot;&gt;
+        &lt;div class=&quot;phase-label&quot;&gt;UGE 35–42&lt;/div&gt;
+        &lt;h2&gt;Product optimization&lt;/h2&gt;
+        &lt;div class=&quot;product-cases&quot;&gt;
+          &lt;section class=&quot;case case-1&quot;&gt;&lt;div class=&quot;case-week&quot;&gt;35–36&lt;/div&gt;&lt;h3&gt;Case 1&lt;/h3&gt;&lt;p&gt;React-optimering&lt;/p&gt;&lt;/section&gt;
+          &lt;section class=&quot;case case-2&quot;&gt;&lt;div class=&quot;case-week&quot;&gt;37–38&lt;/div&gt;&lt;h3&gt;Case 2&lt;/h3&gt;&lt;p&gt;UX Audit&lt;/p&gt;&lt;/section&gt;
+          &lt;section class=&quot;case case-career&quot;&gt;&lt;div class=&quot;case-week&quot;&gt;39&lt;/div&gt;&lt;h3&gt;Praktik&lt;/h3&gt;&lt;p&gt;Company Day&lt;/p&gt;&lt;/section&gt;
+          &lt;section class=&quot;case case-3&quot;&gt;&lt;div class=&quot;case-week&quot;&gt;40–41&lt;/div&gt;&lt;h3&gt;Case 3&lt;/h3&gt;&lt;p&gt;Branding og designsystem&lt;/p&gt;&lt;/section&gt;
+          &lt;section class=&quot;case case-portfolio&quot;&gt;&lt;div class=&quot;case-week&quot;&gt;42&lt;/div&gt;&lt;h3&gt;Portfolio&lt;/h3&gt;&lt;p&gt;Optimering&lt;/p&gt;&lt;/section&gt;
+        &lt;/div&gt;
       &lt;/article&gt;
-      &lt;article class=&quot;overview-item overview-dui&quot;&gt;
-        &lt;h3&gt;Dynamic User Interface&lt;/h3&gt;
-        &lt;p&gt;Et gruppeprojekt, hvor der designes og udvikles en kompleks dynamisk brugergrænseflade med React, data og API&#x27;er.&lt;/p&gt;
-        &lt;p class=&quot;exam&quot;&gt;&lt;strong&gt;Eksamen:&lt;/strong&gt; Mundtlig gruppeprøve med præsentation og eksamination om produkt, proces og faglige refleksioner.&lt;/p&gt;
+
+      &lt;article class=&quot;phase phase-wordpress&quot;&gt;
+        &lt;div class=&quot;phase-label&quot;&gt;UGE 43&lt;/div&gt;
+        &lt;h3&gt;Word&lt;wbr&gt;Press&lt;/h3&gt;
+        &lt;p&gt;CMS-grundlag&lt;/p&gt;
       &lt;/article&gt;
-      &lt;article class=&quot;overview-item overview-hop&quot;&gt;
+
+      &lt;article class=&quot;phase phase-dui&quot;&gt;
+        &lt;div class=&quot;phase-label&quot;&gt;UGE 44–50&lt;/div&gt;
+        &lt;h2&gt;Dynamic User Interface&lt;/h2&gt;
+        &lt;div class=&quot;dui-chain&quot; aria-label=&quot;Headless WordPress leverer indhold via et API til en React-brugergrænseflade&quot;&gt;
+          &lt;section class=&quot;dui-node&quot;&gt;&lt;h3&gt;Headless WordPress&lt;/h3&gt;&lt;p&gt;Indhold og data&lt;/p&gt;&lt;/section&gt;
+          &lt;span class=&quot;dui-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+          &lt;section class=&quot;dui-node&quot;&gt;&lt;h3&gt;API&lt;/h3&gt;&lt;p&gt;Dataforbindelse&lt;/p&gt;&lt;/section&gt;
+          &lt;span class=&quot;dui-arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;
+          &lt;section class=&quot;dui-node&quot;&gt;&lt;h3&gt;React-interface&lt;/h3&gt;&lt;p&gt;Dynamisk brugeroplevelse&lt;/p&gt;&lt;/section&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;dui-context&quot;&gt;Ét samlet gruppeprojekt · design, udvikling, Pitch Day og mundtlig eksamen&lt;/p&gt;
+      &lt;/article&gt;
+
+      &lt;article class=&quot;phase phase-hop&quot;&gt;
+        &lt;div class=&quot;phase-label&quot;&gt;UGE 51&lt;/div&gt;
         &lt;h3&gt;HOP-uge&lt;/h3&gt;
-        &lt;p&gt;Forberedelse til det nye hovedopgaveformat, hvor en lang rapport erstattes af dokumentation af proces og outputs.&lt;/p&gt;
       &lt;/article&gt;
     &lt;/div&gt;
   &lt;/section&gt;
 
-  &lt;section class=&quot;milestones&quot; aria-labelledby=&quot;ixd-milestones-title&quot;&gt;
-    &lt;header class=&quot;milestones-head&quot;&gt;
-      &lt;h2 id=&quot;ixd-milestones-title&quot;&gt;Vigtige datoer&lt;/h2&gt;
+  &lt;section class=&quot;stories&quot; aria-labelledby=&quot;ixd-stories-heading&quot;&gt;
+    &lt;header class=&quot;section-head&quot;&gt;
+      &lt;h2 id=&quot;ixd-stories-heading&quot;&gt;Forløb og eksamen&lt;/h2&gt;
+      &lt;p&gt;Formål og prøveform · kort fortalt&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;div class=&quot;story-grid&quot;&gt;
+      &lt;article class=&quot;story&quot;&gt;
+        &lt;div class=&quot;story-index&quot;&gt;01&lt;/div&gt;
+        &lt;div class=&quot;story-copy&quot;&gt;
+          &lt;h3&gt;Product optimization&lt;/h3&gt;
+          &lt;p&gt;Tre cases, hvor eksisterende digitale løsninger analyseres, redesignes og optimeres med fokus på UX, tilgængelighed, designsystemer, React, fejlfinding og performance.&lt;/p&gt;
+          &lt;p class=&quot;exam&quot;&gt;&lt;strong&gt;Eksamen:&lt;/strong&gt; Individuel skriftlig prøve med cases og faglige refleksioner på eget portfoliosite.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;story story-wordpress&quot;&gt;
+        &lt;div class=&quot;story-index&quot;&gt;02&lt;/div&gt;
+        &lt;div class=&quot;story-copy&quot;&gt;
+          &lt;h3&gt;WordPress&lt;/h3&gt;
+          &lt;p&gt;Et kort forløb om CMS, domæner og hosting, indholdsstruktur samt tilpasning med HTML, CSS og JavaScript. Forløbet danner grundlag for at bruge WordPress som headless CMS i Dynamic User Interface.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;story story-dui&quot;&gt;
+        &lt;div class=&quot;story-index&quot;&gt;03&lt;/div&gt;
+        &lt;div class=&quot;story-copy&quot;&gt;
+          &lt;h3&gt;Dynamic User Interface&lt;/h3&gt;
+          &lt;p&gt;Et gruppeprojekt, hvor der designes og udvikles en kompleks dynamisk brugergrænseflade i React. Indhold hentes via et API fra WordPress som headless CMS og kombineres med andre data.&lt;/p&gt;
+          &lt;p class=&quot;exam&quot;&gt;&lt;strong&gt;Eksamen:&lt;/strong&gt; Mundtlig gruppeprøve med præsentation og eksamination om produkt, proces og faglige refleksioner.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+      &lt;article class=&quot;story story-hop&quot;&gt;
+        &lt;div class=&quot;story-index&quot;&gt;04&lt;/div&gt;
+        &lt;div class=&quot;story-copy&quot;&gt;
+          &lt;h3&gt;HOP-uge&lt;/h3&gt;
+          &lt;p&gt;Forberedelse til det nye hovedopgaveformat, hvor en lang rapport erstattes af dokumentation af proces og outputs.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&quot;milestones&quot; aria-labelledby=&quot;ixd-milestones-heading&quot;&gt;
+    &lt;header class=&quot;section-head&quot;&gt;
+      &lt;h2 id=&quot;ixd-milestones-heading&quot;&gt;Vigtige datoer&lt;/h2&gt;
       &lt;p&gt;Milepæle, afleveringer og eksamen&lt;/p&gt;
     &lt;/header&gt;
     &lt;div class=&quot;milestone-grid&quot;&gt;

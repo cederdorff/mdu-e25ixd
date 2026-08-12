@@ -8,11 +8,11 @@ Tre cases, hvor eksisterende digitale løsninger analyseres, redesignes og optim
 
 ## WordPress
 
-Et kort forløb om CMS, domæner og hosting, indholdsstruktur samt tilpasning med HTML, CSS og JavaScript.
+Et kort forløb om CMS, domæner og hosting, indholdsstruktur samt tilpasning med HTML, CSS og JavaScript. Forløbet danner grundlag for at bruge WordPress som headless CMS i Dynamic User Interface.
 
 ## Dynamic User Interface
 
-Et gruppeprojekt, hvor der designes og udvikles en kompleks dynamisk brugergrænseflade med React, data og API'er.
+Et gruppeprojekt, hvor der designes og udvikles en kompleks dynamisk brugergrænseflade i React. Indhold hentes via et API fra WordPress som headless CMS og kombineres med andre data.
 
 **Eksamen:** Mundtlig gruppeprøve med præsentation og eksamination om produkt, proces og faglige refleksioner.
 
