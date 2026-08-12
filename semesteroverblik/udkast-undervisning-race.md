@@ -272,7 +272,7 @@ SDK'et, en mere systematisk teknisk audit samt styling og arkitektur behandles s
 
 ### LAES/NKKR/RACE - Portfolio feedback - 19-08-2026
 
-Denne eftermiddag ligger uden for selve Product optimization-forløbet. De studerende kan booke en tid og få undervisernes umiddelbare feedback på et portfolio, som ikke er gennemgået på forhånd.
+Denne eftermiddag ligger uden for selve Product optimization-forløbet. LAES, NKKR og RACE sidder i lokale 4.16A/4.16B kl. 12.00–15.15. De studerende kan komme forbi uden booking og få undervisernes umiddelbare feedback på et portfolio, som ikke er gennemgået på forhånd.
 
 Som forberedelse skal de reflektere over:
 
