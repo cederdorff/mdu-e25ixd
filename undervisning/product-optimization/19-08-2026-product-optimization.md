@@ -99,8 +99,10 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 
 ## Materialer
 
-- **Slides:** Vil blive tilgængelige her
-- **Opgaver:** Udleveret React-løsning, forbedringskrav og tjekliste til egen Web App vil blive tilgængelige her
+- **Slides:**
+  - Vil blive tilgængelige her
+- **Opgaver:**
+  - Udleveret React-løsning, forbedringskrav og tjekliste til egen Web App vil blive tilgængelige her
 - **React:**
   - [Scrimba: Learn React](https://scrimba.com/learn-react-c0e)
   - [React: Learn](https://react.dev/learn)
@@ -109,6 +111,10 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
   - [GitHub Pages](https://vite.dev/guide/static-deploy.html#github-pages)
   - [Custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
   - [GitHub Actions-variabler](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables)
-- **AI og Supabase:**
+- **OpenAI Codex:**
   - [OpenAI Codex](https://developers.openai.com/codex/)
+  - [Codex for VS Code](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt)
+
+- **Supabase:**
   - [Supabase API keys](https://supabase.com/docs/guides/getting-started/api-keys)
+  - [Supabase Project Pausing - How to resume](https://supabase.com/docs/guides/platform/free-project-pausing)
