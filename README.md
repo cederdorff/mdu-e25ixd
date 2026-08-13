@@ -12,32 +12,32 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 
 ### Semesterstart
 
-- [JEBN/RACE - Semesterstart - 17-08-2026](undervisning/semesterstart/17-08-2026-semesterstart.md)
+- [JEBN/RACE - Semesterstart - 17-08-2026](undervisning/semesterstart/race-00-2026-08-17-semesterstart.md)
 
 ### Product Optimization
 
-- [RACE - Product optimization: Web App-forbedringer og teknisk fundament - 19-08-2026](undervisning/product-optimization/19-08-2026-web-app-forbedringer-og-teknisk-fundament.md)
-- [LAES/NKKR/RACE - Portfolio feedback - 19-08-2026](undervisning/semesterstart/19-08-2026-portfolio-feedback.md)
-- [RACE - Product optimization: JavaScript, fejlhåndtering og robuste UI-states - 21-08-2026](undervisning/product-optimization/21-08-2026-product-optimization.md)
-- [RACE - Product optimization: Case 1 · Kick-off og codebase audit - 25-08-2026](undervisning/product-optimization/25-08-2026-case-1-react-optimering.md)
-- [RACE - Product optimization: Case 1 · Arkitektur, styling og accessibility - 26-08-2026](undervisning/product-optimization/26-08-2026-case-1-react-optimering.md)
-- [RACE - Product optimization: Case 1 · Datamodellering, relationer og Supabase - 01-09-2026](undervisning/product-optimization/01-09-2026-case-1-react-optimering.md)
-- [RACE - Product optimization: Case 1 · PR-review, deployment og dokumenteret effekt - 02-09-2026](undervisning/product-optimization/02-09-2026-case-1-react-optimering.md)
-- [RACE - Product optimization: Portfolio og faglig dokumentation - 12-10-2026](undervisning/product-optimization/12-10-2026-optimering-af-portfolio.md)
+- [RACE - Product optimization: Web App-forbedringer og teknisk fundament - 19-08-2026](undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md)
+- [LAES/NKKR/RACE - Portfolio feedback - 19-08-2026](undervisning/semesterstart/race-01-2026-08-19-portfolio-feedback.md)
+- [RACE - Product optimization: JavaScript, fejlhåndtering og robuste UI-states - 21-08-2026](undervisning/product-optimization/race-02-2026-08-21-javascript-fejlhaandtering-og-robuste-ui-states.md)
+- [RACE - Product optimization: Case 1 · Kick-off og codebase audit - 25-08-2026](undervisning/product-optimization/race-03-2026-08-25-case-1-kick-off-og-codebase-audit.md)
+- [RACE - Product optimization: Case 1 · Arkitektur, styling og accessibility - 26-08-2026](undervisning/product-optimization/race-04-2026-08-26-case-1-arkitektur-styling-og-accessibility.md)
+- [RACE - Product optimization: Case 1 · Datamodellering, relationer og Supabase - 01-09-2026](undervisning/product-optimization/race-05-2026-09-01-case-1-datamodellering-relationer-og-supabase.md)
+- [RACE - Product optimization: Case 1 · PR-review, deployment og dokumenteret effekt - 02-09-2026](undervisning/product-optimization/race-06-2026-09-02-case-1-pr-review-deployment-og-dokumenteret-effekt.md)
+- [RACE - Product optimization: Portfolio og faglig dokumentation - 12-10-2026](undervisning/product-optimization/race-07-2026-10-12-portfolio-og-faglig-dokumentation.md)
 
 ### Dynamic User Interface
 
-- [RACE - Dynamic User Interface - 26-10-2026](undervisning/dynamic-user-interface/26-10-2026-dynamic-user-interface.md)
-- [NKKR/RACE - Dynamic User Interface - 29-10-2026](undervisning/dynamic-user-interface/29-10-2026-dynamic-user-interface.md)
-- [RACE - Dynamic User Interface - 30-10-2026](undervisning/dynamic-user-interface/30-10-2026-dynamic-user-interface.md)
-- [BKI/NKKR/RACE - Dynamic User Interface: Kick-off - 02-11-2026](undervisning/dynamic-user-interface/02-11-2026-kick-off.md)
-- [RACE - Dynamic User Interface - 05-11-2026](undervisning/dynamic-user-interface/05-11-2026-dynamic-user-interface.md)
-- [RACE - Dynamic User Interface - 10-11-2026](undervisning/dynamic-user-interface/10-11-2026-dynamic-user-interface.md)
-- [NKKR/RACE - Dynamic User Interface: Faciliteret vejledning - 16-11-2026](undervisning/dynamic-user-interface/16-11-2026-faciliteret-vejledning.md)
-- [RACE - Dynamic User Interface: Faciliteret vejledning - 23-11-2026](undervisning/dynamic-user-interface/23-11-2026-faciliteret-vejledning.md)
-- [BKI/NKKR/RACE - Dynamic User Interface: Pitch Day - 27-11-2026](undervisning/dynamic-user-interface/27-11-2026-pitch-day.md)
-- [RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 01-12-2026](undervisning/dynamic-user-interface/01-12-2026-optimering-og-eksamensforberedelse.md)
-- [NKKR/RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 03-12-2026](undervisning/dynamic-user-interface/03-12-2026-optimering-og-eksamensforberedelse.md)
+- [RACE - Dynamic User Interface - 26-10-2026](undervisning/dynamic-user-interface/race-08-2026-10-26-dynamic-user-interface.md)
+- [NKKR/RACE - Dynamic User Interface - 29-10-2026](undervisning/dynamic-user-interface/race-09-2026-10-29-dynamic-user-interface.md)
+- [RACE - Dynamic User Interface - 30-10-2026](undervisning/dynamic-user-interface/race-10-2026-10-30-dynamic-user-interface.md)
+- [BKI/NKKR/RACE - Dynamic User Interface: Kick-off - 02-11-2026](undervisning/dynamic-user-interface/race-11-2026-11-02-kick-off.md)
+- [RACE - Dynamic User Interface - 05-11-2026](undervisning/dynamic-user-interface/race-12-2026-11-05-dynamic-user-interface.md)
+- [RACE - Dynamic User Interface - 10-11-2026](undervisning/dynamic-user-interface/race-13-2026-11-10-dynamic-user-interface.md)
+- [NKKR/RACE - Dynamic User Interface: Faciliteret vejledning - 16-11-2026](undervisning/dynamic-user-interface/race-14-2026-11-16-faciliteret-vejledning.md)
+- [RACE - Dynamic User Interface: Faciliteret vejledning - 23-11-2026](undervisning/dynamic-user-interface/race-15-2026-11-23-faciliteret-vejledning.md)
+- [BKI/NKKR/RACE - Dynamic User Interface: Pitch Day - 27-11-2026](undervisning/dynamic-user-interface/race-16-2026-11-27-pitch-day.md)
+- [RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 01-12-2026](undervisning/dynamic-user-interface/race-17-2026-12-01-optimering-og-eksamensforberedelse.md)
+- [NKKR/RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 03-12-2026](undervisning/dynamic-user-interface/race-18-2026-12-03-optimering-og-eksamensforberedelse.md)
 
 Materialer til undervisningsgangene placeres under [`undervisning/`](undervisning/).
 
@@ -56,19 +56,19 @@ Undervisningssider kan konverteres fra Markdown til Canvas-HTML og oprettes elle
 ### Vis siden uden at ændre Canvas
 
 ```bash
-npm run canvas:preview -- undervisning/product-optimization/19-08-2026-web-app-forbedringer-og-teknisk-fundament.md
+npm run canvas:preview -- undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
 ```
 
 ### Opret eller opdatér siden som kladde
 
 ```bash
-npm run canvas:sync -- undervisning/product-optimization/19-08-2026-web-app-forbedringer-og-teknisk-fundament.md
+npm run canvas:sync -- undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
 ```
 
 Tilføj `--publish` for at publicere siden og `--notify` for at bede Canvas om at sende en opdateringsnotifikation:
 
 ```bash
-npm run canvas:sync -- undervisning/product-optimization/19-08-2026-web-app-forbedringer-og-teknisk-fundament.md --publish --notify
+npm run canvas:sync -- undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md --publish --notify
 ```
 
 Scriptet bruger Markdown-filens H1 som Canvas-titel. En side med samme titel opdateres; ellers oprettes en ny. Eksisterende sider beholder deres publiceringsstatus, medmindre `--publish` bruges.

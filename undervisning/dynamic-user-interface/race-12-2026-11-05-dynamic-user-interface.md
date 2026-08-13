@@ -17,4 +17,3 @@
 - **Slides:** Vil blive tilgængelige her
 - **Opgaver:** Vil blive tilgængelige her
 - **Links:** Vil blive tilgængelige her
-

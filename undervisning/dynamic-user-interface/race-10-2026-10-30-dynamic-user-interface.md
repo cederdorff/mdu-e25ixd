@@ -1,4 +1,4 @@
-# RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 01-12-2026
+# RACE - Dynamic User Interface - 30-10-2026
 
 ## Formål
 
@@ -17,4 +17,3 @@
 - **Slides:** Vil blive tilgængelige her
 - **Opgaver:** Vil blive tilgængelige her
 - **Links:** Vil blive tilgængelige her
-

@@ -268,7 +268,7 @@ Dagen afgrænses til:
 
 SDK'et, en mere systematisk teknisk audit samt styling og arkitektur behandles senere i semesteret.
 
-[Studenterrettet side](../undervisning/product-optimization/19-08-2026-web-app-forbedringer-og-teknisk-fundament.md)
+[Studenterrettet side](../undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md)
 
 ### LAES/NKKR/RACE - Portfolio feedback - 19-08-2026
 
@@ -287,7 +287,7 @@ Som forberedelse skal de reflektere over:
 - Hvad vil jeg ændre eller prioritere, hvis jeg har mere tid?
 - Hvilken historie fortæller portfolioet om mig?
 
-[Studenterrettet side](../undervisning/semesterstart/19-08-2026-portfolio-feedback.md)
+[Studenterrettet side](../undervisning/semesterstart/race-01-2026-08-19-portfolio-feedback.md)
 
 ### RACE - Product optimization: JavaScript, fejlhåndtering og robuste UI-states - 21-08-2026
 
@@ -312,7 +312,7 @@ Mulige ressourcer:
 - [GeeksforGeeks: JavaScript concepts for React](https://www.geeksforgeeks.org/reactjs/top-javascript-concepts-to-know-before-learning-react/)
 - [Kent C. Dodds: JavaScript to know for React](https://kentcdodds.com/blog/javascript-to-know-for-react)
 
-[Studenterrettet side](../undervisning/product-optimization/21-08-2026-product-optimization.md)
+[Studenterrettet side](../undervisning/product-optimization/race-02-2026-08-21-javascript-fejlhaandtering-og-robuste-ui-states.md)
 
 ### RACE - Product optimization: Case 1 · Kick-off og codebase audit - 25-08-2026
 
@@ -329,28 +329,28 @@ Mulige indbyggede problemer:
 - miljøvariabler eller metadata, der ikke er håndteret korrekt
 - svag dokumentation og utydelig Git-historik
 
-[Studenterrettet side](../undervisning/product-optimization/25-08-2026-case-1-react-optimering.md)
+[Studenterrettet side](../undervisning/product-optimization/race-03-2026-08-25-case-1-kick-off-og-codebase-audit.md)
 
 ### RACE - Product optimization: Case 1 · Arkitektur, styling og accessibility - 26-08-2026
 
 Fokus på refaktorering i små skridt, navngivning, struktur, komponentopdeling, komponentbaseret styling og forbedring af kendte accessibility-elementer.
 
-[Studenterrettet side](../undervisning/product-optimization/26-08-2026-case-1-react-optimering.md)
+[Studenterrettet side](../undervisning/product-optimization/race-04-2026-08-26-case-1-arkitektur-styling-og-accessibility.md)
 
 ### RACE - Product optimization: Case 1 · Datamodellering, relationer og Supabase - 01-09-2026
 
 Post App kan bruges til at synliggøre forskellen mellem duplikerede brugerfelter i posts og en normaliseret løsning med separate `users`- og `posts`-tabeller.
 
-[Studenterrettet side](../undervisning/product-optimization/01-09-2026-case-1-react-optimering.md)
+[Studenterrettet side](../undervisning/product-optimization/race-05-2026-09-01-case-1-datamodellering-relationer-og-supabase.md)
 
 ### RACE - Product optimization: Case 1 · PR-review, deployment og dokumenteret effekt - 02-09-2026
 
 Fokus på peer review af individuelle pull requests, bearbejdning af feedback, deployment via GitHub Actions og dokumenteret før/efter-effekt.
 
-[Studenterrettet side](../undervisning/product-optimization/02-09-2026-case-1-react-optimering.md)
+[Studenterrettet side](../undervisning/product-optimization/race-06-2026-09-02-case-1-pr-review-deployment-og-dokumenteret-effekt.md)
 
 ### RACE - Product optimization: Portfolio og faglig dokumentation - 12-10-2026
 
 De tre cases skal omsættes til tydelig dokumentation af kompetencer, proces, beslutninger, iterationer og resultater på portfolioet.
 
-[Studenterrettet side](../undervisning/product-optimization/12-10-2026-optimering-af-portfolio.md)
+[Studenterrettet side](../undervisning/product-optimization/race-07-2026-10-12-portfolio-og-faglig-dokumentation.md)

@@ -8,16 +8,18 @@ Undervisningsgangene organiseres under deres faglige forløb:
 - `product-optimization/`
 - `dynamic-user-interface/`
 
-Opret en Markdown-side til hver undervisningsgang og brug dato og en kort titel i filnavnet:
+Opret en Markdown-side til hver undervisningsgang. Brug formatet `race-nr-yyyy-mm-dd-kort-titel.md`, så filerne sorteres i undervisningsrækkefølge:
+
+Semesterstart bruger nummer `00`. Aktiviteter på samme undervisningsdag kan dele nummer, som undervisning og portfolio-feedback den 19. august.
 
 ```text
 undervisning/
 ├── semesterstart/
-│   └── 17-08-2026-semesterstart.md
+│   └── race-00-2026-08-17-semesterstart.md
 ├── product-optimization/
-│   └── 25-08-2026-case-1-react-optimering.md
+│   └── race-03-2026-08-25-case-1-kick-off-og-codebase-audit.md
 └── dynamic-user-interface/
-    └── 26-10-2026-dynamic-user-interface.md
+    └── race-08-2026-10-26-dynamic-user-interface.md
 ```
 
 Sidens overskrift skal være identisk med Canvas-modulets navn. Hver side indeholder formål, forberedelse, agenda og materialer. Slides, opgaver, kodeeksempler og øvrige filer kan placeres i forløbets mappe, når de bliver tilgængelige.

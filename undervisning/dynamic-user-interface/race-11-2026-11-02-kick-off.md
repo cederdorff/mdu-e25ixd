@@ -1,4 +1,4 @@
-# NKKR/RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 03-12-2026
+# BKI/NKKR/RACE - Dynamic User Interface: Kick-off - 02-11-2026
 
 ## Formål
 
@@ -17,4 +17,3 @@
 - **Slides:** Vil blive tilgængelige her
 - **Opgaver:** Vil blive tilgængelige her
 - **Links:** Vil blive tilgængelige her
-

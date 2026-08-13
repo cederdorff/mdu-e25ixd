@@ -1,4 +1,4 @@
-# RACE - Dynamic User Interface - 30-10-2026
+# NKKR/RACE - Dynamic User Interface: Faciliteret vejledning - 16-11-2026
 
 ## Formål
 
@@ -17,4 +17,3 @@
 - **Slides:** Vil blive tilgængelige her
 - **Opgaver:** Vil blive tilgængelige her
 - **Links:** Vil blive tilgængelige her
-
