@@ -17,7 +17,7 @@ undervisning/
 ├── semesterstart/
 │   └── race-00-2026-08-17-semesterstart.md
 ├── product-optimization/
-│   └── race-03-2026-08-25-case-1-kick-off-og-codebase-audit.md
+│   └── race-03-2026-08-25-case-1-kick-off-fejlhaandtering-og-robuste-ui-states.md
 └── dynamic-user-interface/
     └── race-08-2026-10-26-dynamic-user-interface.md
 ```

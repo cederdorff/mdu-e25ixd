@@ -194,10 +194,10 @@ Disse emner bør kun inddrages, hvis de understøtter projektet og der er tid:
 
 1. **Web App-forbedringer og teknisk fundament**
    Som startskud til 3. semester skal de studerende forstå og forbedre identificerede mangler fra Web App-forløbet på 2. semester. De arbejder først i en udleveret løsning og overfører derefter forbedringsprincipperne til deres egen Web App. Dagen etablerer et fælles teknisk fundament med fokus på environment-setup, identitet, template-oprydning, accessibility og Supabase via REST sammenlignet med SDK'et.
-2. **JavaScript, fejlhåndtering og robuste UI-states**
-   Centrale JavaScript-koncepter trænes gennem asynkron kode, `try`/`catch`/`finally` og eksplicit håndtering af loading, success, empty og error i React.
-3. **Case 1: Kick-off og codebase audit**  
-   En udleveret React-løsning undersøges. Hver studerende etablerer en baseline og arbejder individuelt gennem issues, feature branches og pull requests.
+2. **JavaScript for React**
+   Basal JavaScript repeteres og trænes med fokus på de koncepter, de studerende møder i React: datatyper, scope, objekter, arrays, funktioner, callbacks, array-metoder, moduler og asynkron kode.
+3. **Case 1: Kick-off, fejlhåndtering og robuste UI-states**
+   En udleveret React-løsning undersøges med fokus på asynkrone flows, fejl og loading-, success-, empty-, error- og retry-states. Hver studerende etablerer en baseline og arbejder individuelt gennem issues, feature branches og pull requests.
 4. **Case 1: Arkitektur, styling og accessibility**
    Fokus er på navngivning, struktur, komponentopdeling og placering af styling tættere på komponenterne. Kendte accessibility-principper anvendes og forbedres.
 5. **Case 1: Datamodellering, relationer og Supabase**  
@@ -289,7 +289,7 @@ Som forberedelse skal de reflektere over:
 
 [Studenterrettet side](../undervisning/semesterstart/race-01-2026-08-19-portfolio-feedback.md)
 
-### RACE - Product optimization: JavaScript, fejlhåndtering og robuste UI-states - 21-08-2026
+### RACE - Product optimization: JavaScript for React - 21-08-2026
 
 Målet er at styrke den JavaScript, der er nødvendig for at forstå og arbejde effektivt i React.
 
@@ -298,10 +298,9 @@ Undervisningen kan organiseres som en lab:
 1. De studerende løser og forklarer en mindre opgave i almindelig JavaScript.
 2. De undersøger et centralt koncept i grupper.
 3. De udfylder en fælles koncepthåndbog og præsenterer deres fund.
-4. De arbejder med forventede fejl via `try`, `catch` og `finally`.
-5. De overfører den samme logik til et React-miljø med loading, success, empty og error states.
-6. De tilføjer forståelig brugerfeedback, retry og beskyttelse mod gentagne handlinger.
-7. De finder og forklarer konceptet i en eksisterende React-komponent.
+4. De løser små opgaver med objekter, arrays, funktioner og array-metoder.
+5. De finder og forklarer de samme koncepter i eksisterende React-komponenter.
+6. De identificerer, hvilke JavaScript-koncepter de selv skal træne videre.
 
 Koncepterne skal målrettes og afgrænses til det, de faktisk bruger i React.
 
@@ -312,11 +311,11 @@ Mulige ressourcer:
 - [GeeksforGeeks: JavaScript concepts for React](https://www.geeksforgeeks.org/reactjs/top-javascript-concepts-to-know-before-learning-react/)
 - [Kent C. Dodds: JavaScript to know for React](https://kentcdodds.com/blog/javascript-to-know-for-react)
 
-[Studenterrettet side](../undervisning/product-optimization/race-02-2026-08-21-javascript-fejlhaandtering-og-robuste-ui-states.md)
+[Studenterrettet side](../undervisning/product-optimization/race-02-2026-08-21-javascript-for-react.md)
 
-### RACE - Product optimization: Case 1 · Kick-off og codebase audit - 25-08-2026
+### RACE - Product optimization: Case 1 · Kick-off, fejlhåndtering og robuste UI-states - 25-08-2026
 
-Case 1 skal fokusere på forbedring af en udleveret, eksisterende React-løsning. Kodebasen skal først udvikles, så den indeholder realistiske problemer og forbedringsmuligheder.
+Case 1 starter med forbedring af fejlhåndtering og UI-states i en udleveret React-løsning. De studerende etablerer en baseline, omsætter fund til issues og implementerer den første forbedring i en feature branch.
 
 Mulige indbyggede problemer:
 
@@ -329,7 +328,7 @@ Mulige indbyggede problemer:
 - miljøvariabler eller metadata, der ikke er håndteret korrekt
 - svag dokumentation og utydelig Git-historik
 
-[Studenterrettet side](../undervisning/product-optimization/race-03-2026-08-25-case-1-kick-off-og-codebase-audit.md)
+[Studenterrettet side](../undervisning/product-optimization/race-03-2026-08-25-case-1-kick-off-fejlhaandtering-og-robuste-ui-states.md)
 
 ### RACE - Product optimization: Case 1 · Arkitektur, styling og accessibility - 26-08-2026
 
