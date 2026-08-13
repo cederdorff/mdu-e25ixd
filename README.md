@@ -16,7 +16,7 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 
 ### Product Optimization
 
-- [RACE - Product optimization: Web App-forbedringer og teknisk fundament - 19-08-2026](undervisning/product-optimization/19-08-2026-product-optimization.md)
+- [RACE - Product optimization: Web App-forbedringer og teknisk fundament - 19-08-2026](undervisning/product-optimization/19-08-2026-web-app-forbedringer-og-teknisk-fundament.md)
 - [LAES/NKKR/RACE - Portfolio feedback - 19-08-2026](undervisning/semesterstart/19-08-2026-portfolio-feedback.md)
 - [RACE - Product optimization: JavaScript, fejlhåndtering og robuste UI-states - 21-08-2026](undervisning/product-optimization/21-08-2026-product-optimization.md)
 - [RACE - Product optimization: Case 1 · Kick-off og codebase audit - 25-08-2026](undervisning/product-optimization/25-08-2026-case-1-react-optimering.md)
@@ -56,19 +56,19 @@ Undervisningssider kan konverteres fra Markdown til Canvas-HTML og oprettes elle
 ### Vis siden uden at ændre Canvas
 
 ```bash
-npm run canvas:preview -- undervisning/product-optimization/19-08-2026-product-optimization.md
+npm run canvas:preview -- undervisning/product-optimization/19-08-2026-web-app-forbedringer-og-teknisk-fundament.md
 ```
 
 ### Opret eller opdatér siden som kladde
 
 ```bash
-npm run canvas:sync -- undervisning/product-optimization/19-08-2026-product-optimization.md
+npm run canvas:sync -- undervisning/product-optimization/19-08-2026-web-app-forbedringer-og-teknisk-fundament.md
 ```
 
 Tilføj `--publish` for at publicere siden og `--notify` for at bede Canvas om at sende en opdateringsnotifikation:
 
 ```bash
-npm run canvas:sync -- undervisning/product-optimization/19-08-2026-product-optimization.md --publish --notify
+npm run canvas:sync -- undervisning/product-optimization/19-08-2026-web-app-forbedringer-og-teknisk-fundament.md --publish --notify
 ```
 
 Scriptet bruger Markdown-filens H1 som Canvas-titel. En side med samme titel opdateres; ellers oprettes en ny. Eksisterende sider beholder deres publiceringsstatus, medmindre `--publish` bruges.

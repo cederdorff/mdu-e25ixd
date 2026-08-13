@@ -268,7 +268,7 @@ Dagen afgrænses til:
 
 SDK'et, en mere systematisk teknisk audit samt styling og arkitektur behandles senere i semesteret.
 
-[Studenterrettet side](../undervisning/product-optimization/19-08-2026-product-optimization.md)
+[Studenterrettet side](../undervisning/product-optimization/19-08-2026-web-app-forbedringer-og-teknisk-fundament.md)
 
 ### LAES/NKKR/RACE - Portfolio feedback - 19-08-2026
 
