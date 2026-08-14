@@ -2,6 +2,11 @@
 
 Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 
+## Slides
+
+- [Reveal.js-præsentationer og lokal opsætning](slides/README.md)
+- [Semesterstart · 17. august 2026](slides/semesterstart/index.html)
+
 ## Semesteroverblik
 
 - [Grafisk semesteroversigt](semesteroverblik/semesteroversigt.html)
