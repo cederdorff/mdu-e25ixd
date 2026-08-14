@@ -53,6 +53,7 @@ body {
 }
 
 .reveal .slides {
+  z-index: 1;
   text-align: left;
 }
 
@@ -1367,6 +1368,10 @@ body {
   --active-photo: url("../assets/company-day.webp");
 }
 
+.reveal:has(.title-photo-slide.present) {
+  --active-photo: url("../assets/semesterstart-react.webp");
+}
+
 .reveal:has(.student-day-slide.present) {
   --active-photo: url("../assets/student-day.webp");
 }
@@ -1409,6 +1414,71 @@ body {
   color: rgb(245 247 246 / 84%);
 }
 
+.reveal .title-photo-slide h1 {
+  max-width: 980px;
+  font-size: 112px;
+  line-height: 0.96;
+}
+
+.reveal .title-photo-slide h1 span {
+  display: block;
+  color: var(--green);
+}
+
+.reveal .title-photo-slide .date {
+  color: rgb(245 247 246 / 72%);
+}
+
+.reveal .title-photo-slide {
+  overflow: hidden;
+}
+
+.reveal > .cover-video::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgb(5 7 6 / 96%) 0%, rgb(5 7 6 / 78%) 48%, rgb(5 7 6 / 12%) 82%),
+    linear-gradient(0deg, rgb(5 7 6 / 76%), transparent 58%);
+  content: "";
+  pointer-events: none;
+}
+
+.reveal > .cover-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+  visibility: hidden;
+}
+
+.reveal:has(.title-photo-slide.present) > .cover-video {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal > .cover-video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 100vw;
+  height: 56.25vw;
+  min-width: 177.78vh;
+  min-height: 100vh;
+  border: 0;
+  transform: translate(-50%, -50%) scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal > .cover-video {
+    display: none;
+  }
+}
+
 .reveal .photo-chapter .semester-overview-link {
   top: 48px;
   right: 72px;
@@ -1425,7 +1495,44 @@ body {
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-template-rows: repeat(2, 215px);
   gap: 16px;
-  margin-top: 38px;
+  margin-top: 22px;
+}
+
+.reveal .study-facilities {
+  margin-top: 18px;
+  color: var(--green);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.reveal .portfolio-approval-slide .grid {
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.reveal .portfolio-approval-slide .panel {
+  min-height: 148px;
+  padding: 20px 26px;
+}
+
+.reveal .portfolio-approval-slide .panel h3 {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  font-size: 30px;
+}
+
+.reveal .portfolio-approval-slide .panel p {
+  font-size: 21px;
+}
+
+.reveal .portfolio-approval-slide .callout {
+  margin-top: 20px;
+  padding: 18px 24px;
+}
+
+.reveal .portfolio-approval-slide .callout p {
+  font-size: 22px;
 }
 
 .reveal .study-collage figure {
@@ -1538,7 +1645,7 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .reveal .office-points {
