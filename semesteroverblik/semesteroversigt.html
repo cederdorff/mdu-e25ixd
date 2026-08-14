@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Semesteroversigt for 3. semester Interaction Design, efterår 2026." />
-    <title>Semesterforløb · Interaction Design · Efterår 2026</title>
+    <meta name="description" content="Semesteroversigt for 3. semester IxD, efterår 2026." />
+    <title>Semesterforløb · IxD · Efterår 2026</title>
     <style>
       :root {
         color-scheme: dark;
@@ -20,11 +20,12 @@
         --green-soft: rgb(62 207 142 / 14%);
         --coral: #f08f73;
         --yellow: #f4c95d;
+        --violet: #b9a2ff;
         --viz-series-1: var(--green);
         --viz-series-2: var(--coral);
         --viz-series-3: var(--green);
         --viz-series-4: var(--yellow);
-        --viz-series-5: var(--green);
+        --viz-series-5: var(--violet);
         --font-size-base: 16px;
         font-family:
           Aptos,
@@ -177,6 +178,17 @@
             font-weight: 700;
             font-variant-numeric: tabular-nums;
             white-space: nowrap;
+          }
+          #ixd-semester-2026 .hero-meta {
+            display: grid;
+            gap: 12px;
+            justify-items: end;
+          }
+          #ixd-semester-2026 .curriculum-link {
+            color: var(--green);
+            font-size: 0.86rem;
+            font-weight: 700;
+            text-underline-offset: 4px;
           }
           #ixd-semester-2026 .timeline {
             padding: 28px;
@@ -445,6 +457,9 @@
             #ixd-semester-2026 .term {
               white-space: normal;
             }
+            #ixd-semester-2026 .hero-meta {
+              justify-items: start;
+            }
             #ixd-semester-2026 .months,
             #ixd-semester-2026 .weeks-row {
               display: none;
@@ -502,13 +517,22 @@
 
         <header class="hero">
           <div>
-            <p class="eyebrow">INTERACTION DESIGN · 3. SEMESTER</p>
+            <p class="eyebrow">IxD · 3. SEMESTER</p>
             <h1 id="ixd-semester-heading">Semesterforløb · efterår 2026</h1>
             <p class="intro">
               Et samlet overblik over faglige forløb, cases, praktikaktiviteter, prøver og semesterets vigtigste datoer.
             </p>
           </div>
-          <p class="term">17. august–18. december 2026</p>
+          <div class="hero-meta">
+            <p class="term">17. august–18. december 2026</p>
+            <a
+              class="curriculum-link"
+              href="https://www.eaaa.dk/media/pazlkzl5/studieordning-multimediedesigner-lokal-del-interactive-design-august-2025-opdateret.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Åbn studieordningen</a
+            >
+          </div>
         </header>
 
         <section class="timeline" aria-label="Semesterets tidslinje fra uge 34 til uge 51">
@@ -544,8 +568,8 @@
                 </section>
                 <section class="case case-career">
                   <div class="case-week">39</div>
-                  <h3>Praktik</h3>
-                  <p>Company Day</p>
+                  <h3>Praktikaktiviteter</h3>
+                  <p>CV-workshop, karrieredag og Company Day</p>
                 </section>
                 <section class="case case-3">
                   <div class="case-week">40–41</div>
@@ -626,7 +650,8 @@
                 <h3>WordPress</h3>
                 <p>
                   Et kort forløb om CMS, domæner og hosting, indholdsstruktur samt tilpasning med HTML, CSS og
-                  JavaScript. Forløbet danner grundlag for at bruge WordPress som headless CMS i Dynamic User Interface.
+                  JavaScript. Det er et kort, selvstændigt CMS-forløb; WordPress kan senere indgå som headless CMS i
+                  Dynamic User Interface.
                 </p>
               </div>
             </article>
