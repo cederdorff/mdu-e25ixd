@@ -8,11 +8,11 @@ Tre cases, hvor eksisterende digitale løsninger analyseres, redesignes og optim
 
 ## WordPress
 
-Et kort forløb om CMS, domæner og hosting, indholdsstruktur samt tilpasning med HTML, CSS og JavaScript. Forløbet danner grundlag for at bruge WordPress som headless CMS i Dynamic User Interface.
+Et kort, selvstændigt forløb om CMS, domæner og hosting, indholdsstruktur samt tilpasning med HTML, CSS og JavaScript. WordPress kan senere indgå som headless CMS i Dynamic User Interface.
 
 ## Dynamic User Interface
 
-Et gruppeprojekt, hvor der designes og udvikles en kompleks dynamisk brugergrænseflade i React. Indhold hentes via et API fra WordPress som headless CMS og kombineres med andre data.
+Et gruppeprojekt, hvor research, UI-design og programmering udvikles i tæt samspil. Der arbejdes med Figma, designsystemer, Next.js og React, Tailwind og shadcn/ui, headless CMS og API'er samt Supabase til datamodellering, authentication, brugerroller og beskyttet adgang. Figma MCP og AI-tools bruges på tværs af design, implementering og review.
 
 **Eksamen:** Mundtlig gruppeprøve med præsentation og eksamination om produkt, proces og faglige refleksioner.
 
