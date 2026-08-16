@@ -58,7 +58,7 @@ body {
 }
 
 .reveal .slides section {
-  position: relative;
+  position: absolute;
   width: 1600px;
   height: 900px;
   padding: 92px 112px 78px;
