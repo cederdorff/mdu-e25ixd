@@ -1,6 +1,5 @@
-import Reveal from "reveal.js";
-import RevealNotes from "reveal.js/plugin/notes";
-import "reveal.js/reveal.css";
+import Reveal from "../vendor/reveal/reveal.mjs";
+import RevealNotes from "../vendor/reveal/notes.mjs";
 
 const deck = new Reveal({
   width: 1600,

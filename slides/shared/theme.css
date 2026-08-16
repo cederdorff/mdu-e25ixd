@@ -1694,6 +1694,29 @@ body {
   color: var(--green);
 }
 
+.reveal .slide-number {
+  right: auto;
+  bottom: 22px;
+  left: 28px;
+  min-width: 58px;
+  padding: 8px 12px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 999px;
+  background: rgb(5 7 6 / 58%);
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.reveal .slide-number-delimiter {
+  margin: 0 5px;
+  color: var(--green);
+}
+
 @media print {
   html,
   body,
