@@ -21,4 +21,12 @@ const deck = new Reveal({
 
 await deck.initialize();
 
+const coverVideo = document.querySelector(".cover-video");
+const syncCoverVideo = () => {
+  coverVideo?.classList.toggle("is-visible", deck.getIndices().h === 0);
+};
+
+deck.on("slidechanged", syncCoverVideo);
+syncCoverVideo();
+
 document.documentElement.classList.add("deck-ready");

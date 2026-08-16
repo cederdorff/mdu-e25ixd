@@ -358,6 +358,121 @@ body {
   font-size: 23px;
 }
 
+.reveal .ai-competence-slide h2,
+.reveal .code-understanding-slide h2 {
+  font-size: 62px;
+}
+
+.reveal .ai-competences {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 52px;
+  margin-top: 42px;
+}
+
+.reveal .ai-competences article {
+  padding-top: 22px;
+  border-top: 4px solid var(--green);
+}
+
+.reveal .ai-competences article:nth-child(2) {
+  border-color: var(--violet);
+}
+
+.reveal .ai-competences span {
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reveal .ai-competences h3 {
+  margin-top: 14px;
+  font-size: 38px;
+}
+
+.reveal .ai-competences p {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 25px;
+}
+
+.reveal .ai-competence-slide blockquote {
+  width: auto;
+  margin-top: 40px;
+  padding: 24px 30px;
+  border-left: 6px solid var(--green);
+  background: rgb(62 207 142 / 10%);
+  color: var(--ink);
+  font-size: 31px;
+  font-style: normal;
+  line-height: 1.3;
+}
+
+.reveal .code-understanding-slide h2 code {
+  color: var(--green);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.78em;
+}
+
+.reveal .code-understanding-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 50px;
+  align-items: center;
+  margin-top: 38px;
+}
+
+.reveal .code-understanding-layout pre {
+  width: auto;
+  margin: 0;
+  padding: 34px 36px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: #050706;
+  box-shadow: 0 24px 70px rgb(0 0 0 / 28%);
+}
+
+.reveal .code-understanding-layout pre code {
+  display: block;
+  max-height: none;
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 25px;
+  line-height: 1.55;
+}
+
+.reveal .code-understanding-layout h3 {
+  margin-bottom: 16px;
+  font-size: 31px;
+}
+
+.reveal .code-understanding-layout ul {
+  margin: 0;
+  padding-left: 30px;
+}
+
+.reveal .code-understanding-layout li {
+  margin: 8px 0;
+  font-size: 23px;
+}
+
+.reveal .code-understanding-layout li code {
+  color: var(--green);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.reveal .code-takeaway {
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 25px;
+}
+
 .reveal .dropin-slide h2 {
   max-width: 1320px;
   font-size: 59px;
@@ -1487,7 +1602,7 @@ body {
   visibility: hidden;
 }
 
-.reveal:has(.title-photo-slide.present) > .cover-video {
+.reveal > .cover-video.is-visible {
   opacity: 1;
   visibility: visible;
 }
