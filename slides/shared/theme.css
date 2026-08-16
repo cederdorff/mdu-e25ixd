@@ -1944,6 +1944,10 @@ body {
   color: var(--green);
 }
 
+.reveal .print-media {
+  display: none !important;
+}
+
 @media print {
   html,
   body,
@@ -1961,6 +1965,22 @@ body {
 
   .reveal::before {
     display: none !important;
+  }
+
+  .reveal > .cover-video,
+  .reveal .screen-media {
+    display: none !important;
+  }
+
+  .reveal .print-media {
+    display: block !important;
+  }
+
+  html.reveal-print .reveal .slides section.photo-chapter {
+    background:
+      linear-gradient(90deg, rgb(5 7 6 / 96%) 0%, rgb(5 7 6 / 80%) 48%, rgb(5 7 6 / 16%) 82%),
+      linear-gradient(0deg, rgb(5 7 6 / 78%), transparent 58%),
+      var(--image) center center / cover no-repeat !important;
   }
 
   .reveal .panel,
