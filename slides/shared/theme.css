@@ -1944,10 +1944,6 @@ body {
   color: var(--green);
 }
 
-.reveal .print-media {
-  display: none !important;
-}
-
 @media print {
   html,
   body,
@@ -1967,13 +1963,8 @@ body {
     display: none !important;
   }
 
-  .reveal > .cover-video,
-  .reveal .screen-media {
+  .reveal > .cover-video {
     display: none !important;
-  }
-
-  .reveal .print-media {
-    display: block !important;
   }
 
   html.reveal-print .reveal .slides section.photo-chapter {
