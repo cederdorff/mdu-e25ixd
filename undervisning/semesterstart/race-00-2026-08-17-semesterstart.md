@@ -50,7 +50,7 @@ Det bliver godt 🤩
 
 ## Materialer
 
-- **Slides:** [Webversion](https://cederdorff.com/mdu-e25ixd/slides/semesterstart/) · [PDF-version](https://cederdorff.com/mdu-e25ixd/slides/semesterstart/?print-pdf)
+- **Slides:** [Semesterstart · 3. semester](https://cederdorff.com/mdu-e25ixd/slides/semesterstart/)
 - **Links**:
   - [Skema](https://cloud.timeedit.net/dk_baa/web/staff/riq61Q06521Z6YQy0Q35Z5l667Z020867Y23Y0gQ70ogZ6QXQuZ57qb6mQcZqrQo.html) – I skal være logget ind for at få adgang. Åbn eventuelt linket igen, når I er logget ind.
   - [Semesteroverblik](https://cederdorff.com/mdu-e25ixd/semesteroverblik/semesteroversigt.html) - Grafisk visualisering af 3. semester
