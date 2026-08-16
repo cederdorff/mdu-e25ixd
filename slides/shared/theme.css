@@ -197,6 +197,15 @@ body {
   color: var(--green);
 }
 
+/* Optically centers lighter text slides while preserving their left alignment. */
+.reveal .v-center {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 76px;
+  padding-bottom: 116px;
+}
+
 .reveal .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
