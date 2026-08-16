@@ -602,37 +602,46 @@
 
         <section class="ai-competence-slide">
           <span class="eyebrow">To kompetencer · begge er nødvendige</span>
-          <h2>Det er ikke nok, at AI kan bygge det</h2>
+          <h2>At bygge med AI er kun halvdelen</h2>
           <div class="ai-competences">
             <article>
               <span>AI-assisted development</span>
               <h3>“Jeg kan bygge med AI”</h3>
-              <p>Jeg kan beskrive behovet, styre processen og få lavet en løsning.</p>
+              <p>Få lavet en løsning, der matcher behovet.</p>
             </article>
             <article>
               <span>Engineering judgement</span>
               <h3>“Jeg kan vurdere AI’ens løsning”</h3>
-              <p>Jeg kan læse, teste og afgøre, om løsningen er rigtig, robust og passende.</p>
+              <p>Forstå, test og vurdér, om løsningen holder.</p>
             </article>
           </div>
-          <blockquote>
-            Vi går fra “Kan du skrive løsningen?” til “Kan du få lavet den rigtige løsning – og ved du, hvorfor den
-            virker?”
-          </blockquote>
+          <div class="ai-shift" aria-label="Fra at skrive løsningen til at skabe og forstå den rigtige løsning">
+            <div class="ai-shift-before">
+              <span>Før</span>
+              <p>Kan du <s>skrive</s> løsningen?</p>
+            </div>
+            <div class="ai-shift-arrow" aria-hidden="true">→</div>
+            <div class="ai-shift-after">
+              <span>Nu</span>
+              <p>Kan du få lavet <strong>den rigtige løsning</strong> – og ved du, <strong>hvorfor den virker?</strong></p>
+            </div>
+          </div>
           <aside class="notes">
             RACEs arbejdshypotese for AI-assisteret udvikling på 3. semester. [Sources] - user-provided framing
             [/Sources]
           </aside>
         </section>
 
-        <section>
+        <section class="ai-paradox-slide">
           <span class="eyebrow">Læringsparadokset</span>
-          <h2>Hvordan vurderer man kode, mens man stadig er ved at lære den?</h2>
-          <p class="statement">
-            Hvis AI både kan skrive svaret og lyde sikker, hvordan opdager man så, at svaret er
-            <strong>forkert, usikkert eller unødigt kompliceret?</strong>
-          </p>
-          <p class="question">Det er en af semesterets vigtigste udfordringer</p>
+          <h2>AI kan lyde sikker – også når den tager fejl</h2>
+          <p class="paradox-question">Hvordan vurderer du svaret, mens du stadig er ved at lære koden?</p>
+          <div class="paradox-signals" aria-label="Tre problemer, du skal kunne opdage">
+            <span>Forkert</span>
+            <span>Usikkert</span>
+            <span>Unødigt kompliceret</span>
+          </div>
+          <p class="paradox-answer">Det kræver nok faglig forståelse til at stille de næste spørgsmål.</p>
           <aside class="notes">
             Invitér gerne til korte reaktioner: hvornår har de selv accepteret kode, de ikke kunne forklare?
           </aside>
@@ -642,9 +651,10 @@
           <span class="eyebrow">At forstå er vigtigere end at huske</span>
           <h2>Du behøver ikke skrive <code>.filter()</code> perfekt fra hukommelsen</h2>
           <div class="code-understanding-layout">
-            <pre><code>const filteredProducts = products.filter(
-  product =&gt; product.category === selectedCategory
-);</code></pre>
+            <pre><code><span class="token keyword">const</span> <span class="token variable">filteredProducts</span> <span class="token operator">=</span> <span class="token source">products</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>
+  <span class="token parameter">product</span> <span class="token operator">=&gt;</span>
+    <span class="token parameter">product</span><span class="token punctuation">.</span><span class="token property">category</span> <span class="token operator">===</span> <span class="token variable">selectedCategory</span>
+<span class="token punctuation">);</span></code></pre>
             <div>
               <h3>Men du skal kunne forklare:</h3>
               <ul>
@@ -706,12 +716,16 @@
           </aside>
         </section>
 
-        <section class="chapter">
+        <section class="photo-chapter internship-chapter-slide">
           <span class="chapter-index">01</span>
           <span class="eyebrow">Praktik</span>
           <h2>Praktikken begynder, før praktikken begynder</h2>
           <p class="kicker">På 3. semester skal I finde retning, virksomhed og den rolle, I gerne vil afprøve.</p>
-          <aside class="notes">[Sources] - Semesterintroduktion E2026.pdf, slide 7–8 og 20 [/Sources]</aside>
+          <aside class="notes">
+            [Sources] - Semesterintroduktion E2026.pdf, slide 7–8 og 20 -
+            https://www.eaaa.dk/media/f4ah25i2/undervisning-paa-erhvervsakademi-aarhus-notater-copyright-eaaadk.jpg,
+            converted to slides/assets/praktik-notater-eaaa.webp [/Sources]
+          </aside>
         </section>
 
         <section>

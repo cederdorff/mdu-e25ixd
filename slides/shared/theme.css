@@ -360,14 +360,14 @@ body {
 
 .reveal .ai-competence-slide h2,
 .reveal .code-understanding-slide h2 {
-  font-size: 62px;
+  font-size: 58px;
 }
 
 .reveal .ai-competences {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 52px;
-  margin-top: 42px;
+  gap: 84px;
+  margin-top: 52px;
 }
 
 .reveal .ai-competences article {
@@ -393,21 +393,102 @@ body {
 }
 
 .reveal .ai-competences p {
-  margin-top: 14px;
+  margin-top: 16px;
   color: var(--muted);
-  font-size: 25px;
+  font-size: 23px;
 }
 
-.reveal .ai-competence-slide blockquote {
-  width: auto;
-  margin-top: 40px;
-  padding: 24px 30px;
-  border-left: 6px solid var(--green);
-  background: rgb(62 207 142 / 10%);
+.reveal .ai-shift {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) 88px minmax(0, 1.2fr);
+  gap: 24px;
+  align-items: center;
+  margin-top: 54px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.reveal .ai-shift span {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.reveal .ai-shift p {
+  font-size: 30px;
+  font-weight: 650;
+  line-height: 1.22;
+}
+
+.reveal .ai-shift-before {
+  opacity: 0.52;
+}
+
+.reveal .ai-shift-before s {
+  text-decoration-color: var(--coral);
+  text-decoration-thickness: 4px;
+}
+
+.reveal .ai-shift-arrow {
+  color: var(--green);
+  font-size: 70px;
+  font-weight: 300;
+  line-height: 1;
+  text-align: center;
+}
+
+.reveal .ai-shift-after {
+  padding-left: 26px;
+  border-left: 5px solid var(--green);
+}
+
+.reveal .ai-shift-after span,
+.reveal .ai-shift-after strong {
+  color: var(--green);
+}
+
+.reveal .ai-paradox-slide h2 {
+  max-width: 1180px;
+  font-size: 70px;
+}
+
+.reveal .paradox-question {
+  max-width: 1040px;
+  margin-top: 54px;
+  color: var(--muted);
+  font-size: 34px;
+  line-height: 1.35;
+}
+
+.reveal .paradox-signals {
+  display: flex;
+  gap: 34px;
+  align-items: baseline;
+  margin-top: 72px;
+}
+
+.reveal .paradox-signals span {
+  color: var(--coral);
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.reveal .paradox-signals span + span::before {
+  margin-right: 34px;
+  color: var(--line-strong);
+  content: "·";
+}
+
+.reveal .paradox-answer {
+  margin-top: 38px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
   color: var(--ink);
-  font-size: 31px;
-  font-style: normal;
-  line-height: 1.3;
+  font-size: 29px;
 }
 
 .reveal .code-understanding-slide h2 code {
@@ -418,8 +499,8 @@ body {
 
 .reveal .code-understanding-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-  gap: 50px;
+  grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.78fr);
+  gap: 44px;
   align-items: center;
   margin-top: 38px;
 }
@@ -442,8 +523,35 @@ body {
   color: var(--ink);
   background: transparent;
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
-  font-size: 25px;
-  line-height: 1.55;
+  font-size: 23px;
+  line-height: 1.62;
+  white-space: pre;
+}
+
+.reveal .token.keyword {
+  color: var(--violet);
+}
+
+.reveal .token.function {
+  color: var(--green);
+}
+
+.reveal .token.parameter {
+  color: var(--coral);
+}
+
+.reveal .token.source,
+.reveal .token.variable {
+  color: var(--yellow);
+}
+
+.reveal .token.property {
+  color: #8bd5ff;
+}
+
+.reveal .token.operator,
+.reveal .token.punctuation {
+  color: var(--muted);
 }
 
 .reveal .code-understanding-layout h3 {
@@ -1505,6 +1613,10 @@ body {
 
 .reveal:has(.dream-internship-slide.present) {
   --active-photo: url("../assets/droemmepraktik-eaaa.webp");
+}
+
+.reveal:has(.internship-chapter-slide.present) {
+  --active-photo: url("../assets/praktik-notater-eaaa.webp");
 }
 
 .reveal:has(.photo-chapter.present) {
