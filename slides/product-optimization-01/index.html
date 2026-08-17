@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RACE · Product Optimization · Web App-forbedringer og teknisk fundament · 19. august 2026."
+    />
+    <title>Web App-forbedringer og teknisk fundament · RACE · 19.08.2026</title>
+    <link rel="stylesheet" href="../vendor/reveal/reveal.css" />
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="po-slide po-title">
+          <span class="eyebrow">Product Optimization · 3. semester</span>
+          <h1>Fra “det virker hos mig” <span>til en robust webapp</span></h1>
+          <p class="lead">Web App-forbedringer og teknisk fundament</p>
+          <p class="date"><span>RACE</span><time datetime="2026-08-19">19. august 2026</time></p>
+          <aside class="notes">
+            Velkommen. I dag tager vi udgangspunkt i noget, I allerede kan: en React-webapp. Fokus er ikke at bygge
+            alt forfra, men at gøre løsningen mere robust, forståelig og klar til at blive delt.
+            [Sources] - undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide po-agenda">
+          <span class="eyebrow">Agenda · 3,5 timer</span>
+          <h2>I dag følger vi appen fra udvikling til drift</h2>
+          <ol class="agenda-track">
+            <li><span class="agenda-time">20 min.</span><strong>Tilbageblik og retning</strong><small>Hvad har vi med — og hvad skal genopfriskes?</small></li>
+            <li><span class="agenda-time">35 min.</span><strong>Codex i udviklingsflowet</strong><small>Kontekst, prompts, review og ansvar.</small></li>
+            <li><span class="agenda-time">50 min.</span><strong>Git → GitHub → Actions → Pages</strong><small>Fra lokal ændring til offentlig webapp.</small></li>
+            <li><span class="agenda-time">35 min.</span><strong>Konfiguration og robusthed</strong><small>Base path, routing, miljøvariabler og sikkerhed.</small></li>
+            <li><span class="agenda-time">25 min.</span><strong>a11y og Supabase-overblik</strong><small>Kort repetition samt REST API kontra SDK.</small></li>
+            <li><span class="agenda-time">30 min.</span><strong>Arbejd videre og saml op</strong><small>Prioritér og afprøv en forbedring i appen.</small></li>
+          </ol>
+          <aside class="notes">
+            Gennemgå planen kort, så de studerende kender rækkefølgen og ved, hvornår der kommer arbejdstid.
+            Varighederne er pejlemærker for de faglige blokke. Justér dem efter behovsafdækningen og dagens flow.
+            [Sources] - User-provided teaching duration and direction, 17 August 2026 [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Forventningsafstemning</span>
+          <h2>To undervisningsgange — to forskellige lag</h2>
+          <div class="focus-split">
+            <article class="focus-today">
+              <time datetime="2026-08-19">I dag · 19. august</time>
+              <h3>Rundt om koden</h3>
+              <p>Konfiguration, udviklingsflow, værktøjer, deployment, miljøvariabler og teknisk opsætning.</p>
+              <strong>Hvordan hænger løsningen sammen?</strong>
+            </article>
+            <article class="focus-friday">
+              <time datetime="2026-08-21">Fredag · 21. august</time>
+              <h3>Inde i koden</h3>
+              <p>JavaScript til React, syntaks, functions, arrays, objects, async/await og kodemønstre.</p>
+              <strong>Hvordan skriver og læser vi koden?</strong>
+            </article>
+          </div>
+          <p class="focus-footnote">Vi ser stadig kode i dag — men som del af et <strong>flow</strong>, ikke som syntakstræning.</p>
+          <aside class="notes">
+            Brug sliden til at afgrænse dagens forventninger. De studerende skal ikke mestre ny JavaScript-syntaks i
+            dag. Kodeeksemplerne bruges til at forstå konfiguration, sammenhænge, fejl og leveringsflow. Fredag zoomer
+            vi ind i selve JavaScript-koden og de koncepter, React bygger på.
+            [Sources]
+            - User-provided teaching direction, 17 August 2026
+            - https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026
+            - https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-javascript-for-react-21-08-2026
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Tilbageblik · 2. semester · RACE 1–11</span>
+          <h2>I startede med JavaScript — og endte med en webapp med database</h2>
+          <div class="semester-arc" aria-label="Programmeringsforløbet på 2. semester">
+            <article>
+              <time datetime="2026-01">Januar</time>
+              <span class="race-range">RACE 1–3</span>
+              <h3>Fundamentet</h3>
+              <p>Dev setup, moderne JavaScript, fetch og de første React-komponenter.</p>
+            </article>
+            <article>
+              <time datetime="2026-02">Februar</time>
+              <span class="race-range">RACE 4–6</span>
+              <h3>Brugerfladen</h3>
+              <p>Props, state, hooks, routing, data fetching, styling og accessibility.</p>
+            </article>
+            <article>
+              <time datetime="2026-03">Marts</time>
+              <span class="race-range">RACE 7</span>
+              <h3>Leveringen</h3>
+              <p>Git, branches, pull requests, samarbejde og deployment til GitHub Pages.</p>
+            </article>
+            <article>
+              <time datetime="2026-04">April–maj</time>
+              <span class="race-range">RACE 8–11</span>
+              <h3>Webappen</h3>
+              <p>Supabase, HTTP, REST, forms, CRUD samt filtrering og sortering.</p>
+            </article>
+          </div>
+          <p class="reflection semester-thesis">Det var ikke 11 løsrevne emner — det var én voksende teknisk kæde.</p>
+          <aside class="notes">
+            Brug 3–4 minutter på tidslinjen. Bed de studerende nævne én ting, de husker fra hver fase. Pointen er ikke
+            at repetere alt nu, men at aktivere deres eksisterende viden og synliggøre progressionen.
+            [Sources]
+            - https://eaaa.instructure.com/courses/30922/pages/race-1-javascript-recap-and-tools-27-01-2026
+            - https://eaaa.instructure.com/courses/30922/pages/race-2-javascript-concepts-for-react-29-01-2026
+            - https://eaaa.instructure.com/courses/30922/pages/race-3-javascript-and-introduction-to-react-30-01-2026
+            - https://eaaa.instructure.com/courses/30922/pages/race-4-react-core-concepts-and-state-eftermiddag-03-02-2026
+            - https://eaaa.instructure.com/courses/30922/pages/race-5-react-router-data-fetching-and-networking-06-02-2026
+            - https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026
+            - https://eaaa.instructure.com/courses/30922/pages/race-7-git-collaboration-and-deployment-02-03-2026
+            - https://github.com/cederdorff/web-app-supabase/tree/main/_lessons
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Den røde tråd</span>
+          <h2>I byggede videre på den samme idé flere gange</h2>
+          <div class="project-thread" aria-label="Projektets udvikling gennem semesteret">
+            <article><span>01</span><h3>Products</h3><p>JavaScript, arrays og fetch</p></article>
+            <article><span>02</span><h3>Product Grid</h3><p>Komponenter, props og state</p></article>
+            <article><span>03</span><h3>Flere sider</h3><p>Router, parametre og API-data</p></article>
+            <article><span>04</span><h3>Brugbar UI</h3><p>Styling, semantik og a11y</p></article>
+            <article><span>05</span><h3>Rigtige data</h3><p>Supabase, forms og CRUD</p></article>
+            <article><span>06</span><h3>Et produkt</h3><p>Filter, sort, Git og deployment</p></article>
+          </div>
+          <p class="project-thread-close">Produktionsdagene var stedet, hvor delene skulle fungere <strong>sammen</strong>.</p>
+          <aside class="notes">
+            Peg gennem kæden fra venstre mod højre. Fremhæv, at nye emner typisk blev lagt oven på en løsning, de
+            allerede kendte. Spørg eventuelt: Hvor i kæden begyndte det at føles komplekst?
+            [Sources]
+            - https://race.notion.site/Customer-Experience-Products-2f4bc239db11803b842ccbbbd83eca99
+            - https://race.notion.site/Product-Grid-with-React-2fbbc239db1180e18bd4d99bea561cfb
+            - https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf
+            - https://github.com/cederdorff/web-app-supabase/blob/main/_lessons/race-10-forms-and-crud.md
+            - https://github.com/cederdorff/web-app-supabase/blob/main/_lessons/race-11-filter-sort-collaboration.md
+            - https://eaaa.instructure.com/courses/30922/pages/race-produktionsdag-09-02-2026-and-10-02-2026
+            - https://eaaa.instructure.com/courses/30922/pages/race-and-mnor-produktionsdag-12-02-2026
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Før vi går i gang</span>
+          <h2>Hvad skal vi have tilbage i hænderne?</h2>
+          <p class="baseline-question">
+            Hvor i kæden vil du gerne have noget <strong>genopfrisket</strong>, forklaret bedre eller prøve igen?
+          </p>
+          <div class="topic-cloud" aria-label="Forslag til emner">
+            <span>JavaScript</span><span>React og hooks</span><span>routing og data</span><span>styling og a11y</span>
+            <span>Git og GitHub</span><span>deployment</span><span>Supabase</span><span>REST og CRUD</span><span>noget andet?</span>
+          </div>
+          <aside class="notes">
+            2 minutter individuelt: Vælg ét sted i kæden, hvor du bliver usikker. Saml derefter svar på tavlen i
+            kategorierne fra sliden. Brug svarene til at justere vægten, men ikke til at erstatte dagens læringsmål.
+            Ca. 7–8 minutter i alt.
+            [Sources] - User-provided teaching direction, 17 August 2026 - https://eaaa.instructure.com/courses/30922/modules [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Teknisk baseline</span>
+          <h2>En webapp er mere end det, vi kan se</h2>
+          <div class="system-layers">
+            <div class="system-stack">
+              <div class="system-layer"><strong>Interface</strong><span>indhold, states og accessibility</span></div>
+              <div class="system-layer"><strong>Applikation</strong><span>React, routes og komponenter</span></div>
+              <div class="system-layer"><strong>Konfiguration</strong><span>base path og miljøvariabler</span></div>
+              <div class="system-layer"><strong>Drift</strong><span>GitHub Actions, Pages og Supabase</span></div>
+            </div>
+            <p class="system-thesis">
+              Appen er først robust, når <strong>hele kæden</strong> fungerer — også uden for din computer.
+            </p>
+          </div>
+          <aside class="notes">
+            Brug dette som dagens gennemgående model. Et visuelt problem kan komme fra data, build-konfiguration eller
+            routing. Derfor skal vi kunne følge hele kæden.
+            [Sources] - https://github.com/cederdorff/react-router-supabase · repository structure and workflow [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide">
+          <span class="chapter-index">01</span>
+          <span class="eyebrow">AI i udviklingsarbejdet</span>
+          <h2>Codex kan arbejde i projektet — men du ejer beslutningen</h2>
+          <p class="kicker">Brug agenten til at undersøge, forklare, ændre og verificere.</p>
+          <aside class="notes">
+            Overgang: Før vi retter appen, skal vi afklare, hvad værktøjet kan, og hvad vores ansvar stadig er.
+            [Sources] - https://learn.chatgpt.com/docs/codex/ide [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Chat eller agent?</span>
+          <h2>Forskellen er handling og adgang til kontekst</h2>
+          <div class="agent-spectrum">
+            <article>
+              <h3>En chat svarer</h3>
+              <ul><li>forklarer et begreb</li><li>foreslår kode</li><li>ser kun det, du deler</li></ul>
+            </article>
+            <div class="agent-arrow" aria-hidden="true">→</div>
+            <article>
+              <h3>En agent arbejder</h3>
+              <ul><li>undersøger filer</li><li>kører kommandoer</li><li>ændrer kode og tester</li></ul>
+            </article>
+          </div>
+          <p class="reflection">Mere handlekraft kræver mere afgrænsning, review og test.</p>
+          <aside class="notes">
+            En agent er ikke automatisk mere korrekt. Den kan bare gennemføre flere led i opgaven. Vis gerne forskellen
+            mellem et løst spørgsmål og en konkret opgave i et åbent repo.
+            [Sources] - https://learn.chatgpt.com/docs/codex/ide [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Codex i VS Code</span>
+          <h2>Den bedste kontekst er ofte allerede åben</h2>
+          <div class="demo-layout">
+            <div class="demo-copy">
+              <span class="demo-label">IDE workflow</span>
+              <h3>Åbn det relevante. Markér det vigtige.</h3>
+              <p>Codex kan bruge åbne filer og markeret kode som kontekst og viser ændringer som et reviewbart diff.</p>
+            </div>
+            <div class="demo-screen">
+              <p>Undersøg <strong>PostsPage.jsx</strong> og deployment-workflowet.<br /><br />
+              Forklar først de vigtigste risici. Ændr ikke noget endnu.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Vis Codex-panelet i VS Code. Åbn PostsPage.jsx og deploy.yml. Fremhæv at åbne filer og markeret kode gør
+            prompten mindre og mere præcis.
+            [Sources] - https://learn.chatgpt.com/docs/codex/ide [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">En brugbar opgavebeskrivelse</span>
+          <h2>Giv Codex mål, kontekst, rammer og kontrol</h2>
+          <dl class="prompt-anatomy">
+            <dt>Mål</dt><dd>Hvad skal være anderledes, når opgaven er løst?</dd>
+            <dt>Kontekst</dt><dd>Hvilke filer, fejl, logs eller observationer betyder noget?</dd>
+            <dt>Rammer</dt><dd>Hvad må ikke ændres, deles eller udvides?</dd>
+            <dt>Kontrol</dt><dd>Hvordan skal løsningen testes og forklares?</dd>
+          </dl>
+          <aside class="notes">
+            Dette er ikke en obligatorisk promptskabelon. Det er fire ting, der reducerer tvetydighed. Start med
+            resultatet, og tilføj kun kontekst, der kan ændre svaret.
+            [Sources] - https://learn.chatgpt.com/docs/prompting [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Live-eksempel · Codex</span>
+          <h2>Fra “den virker ikke” til en afgrænset undersøgelse</h2>
+          <div class="prompt-example">
+            Undersøg hvorfor Posts-siden kan fejle uden at vise brugeren noget.<br /><br />
+            Brug <strong>src/pages/PostsPage.jsx</strong> og den eksisterende Supabase-opsætning.<br />
+            Behold REST og appens nuværende struktur. Del aldrig værdier fra .env.<br />
+            Forklar problemet først. Foreslå derefter den mindste rettelse og hvordan vi tester den.
+          </div>
+          <aside class="notes">
+            Kør prompten live. Stop efter forklaringen, læs planen, og vælg bevidst om agenten skal ændre kode. Hvis
+            tiden er presset, vis kun undersøgelsesdelen.
+            [Sources] - https://learn.chatgpt.com/docs/prompting - https://github.com/cederdorff/react-router-supabase/blob/main/src/pages/PostsPage.jsx
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Efter demoen</span>
+          <h2>Hvad gjorde agenten faktisk?</h2>
+          <div class="commit-chain">
+            <article><h3>Undersøgte</h3><p>læste relevant kode og fandt den aktuelle dataflow.</p></article>
+            <article><h3>Formulerede</h3><p>gjorde symptomet til hypoteser, vi kunne vurdere.</p></article>
+            <article><h3>Verificerede</h3><p>foreslog eller kørte konkrete checks frem for at gætte.</p></article>
+          </div>
+          <p class="reflection">Du skal stadig forstå ændringen godt nok til at forklare og teste den.</p>
+          <aside class="notes">
+            Lad de studerende nævne konkrete handlinger fra demoen. Spørg: Hvad så Codex? Hvad antog den? Hvad skulle
+            vi selv kontrollere?
+            [Sources] - https://learn.chatgpt.com/docs/codex/ide - https://learn.chatgpt.com/docs/prompting [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Sikker arbejdsform</span>
+          <h2>Agenten må gerne hjælpe — aldrig overtage ansvaret</h2>
+          <ul class="guardrail-list">
+            <li><b>01</b><span>Del kun relevante filer, fejl og logs — aldrig private nøgler, tokens eller hele <code>.env</code>.</span></li>
+            <li><b>02</b><span>Afgræns ændringen, og bed om forklaring før store eller uklare indgreb.</span></li>
+            <li><b>03</b><span>Læs diffet. Behold kun ændringer, du forstår og kan forsvare.</span></li>
+            <li><b>04</b><span>Kør appen, lint og relevante tests. Et overbevisende svar er ikke et testresultat.</span></li>
+          </ul>
+          <aside class="notes">
+            Knyt til professionsansvar og eksamen: De studerende skal kunne forklare deres løsning. En agent kan gøre
+            fejl, ændre for meget eller misforstå konteksten.
+            [Sources] - https://learn.chatgpt.com/docs/prompting - https://vite.dev/guide/env-and-mode [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide">
+          <span class="chapter-index">02</span>
+          <span class="eyebrow">Git, GitHub og deployment</span>
+          <h2>En lokal ændring bliver først værdifuld, når flowet holder</h2>
+          <p class="kicker">Nu følger vi ændringen fra VS Code til en offentlig URL.</p>
+          <aside class="notes">
+            Overgang: Codex kan hjælpe os lokalt. Nu skal vi forstå hele leveringskæden.
+            [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Det samlede flow</span>
+          <h2>Fra idé til offentlig webapp</h2>
+          <div class="flow-track" aria-label="Git- og deploymentflow">
+            <article class="flow-node"><h3>Ændr lokalt</h3><p>Redigér og test i VS Code.</p></article>
+            <article class="flow-node"><h3>Stage</h3><p>Vælg præcis hvad der skal med.</p></article>
+            <article class="flow-node"><h3>Commit</h3><p>Gem et navngivet snapshot.</p></article>
+            <article class="flow-node"><h3>Push</h3><p>Send commits til GitHub.</p></article>
+            <article class="flow-node"><h3>Pull request</h3><p>Review ændringen før merge.</p></article>
+            <article class="flow-node"><h3>Main</h3><p>Merge gør ændringen officiel.</p></article>
+            <article class="flow-node"><h3>Actions</h3><p>Installer, byg og deploy.</p></article>
+            <article class="flow-node"><h3>Pages</h3><p>Kontrollér den levende app.</p></article>
+          </div>
+          <aside class="notes">
+            Brug 2–3 minutter på hele billedet før detaljerne. Peg fysisk gennem flowet. Gentag senere samme rækkefølge
+            under live-demoen.
+            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/collaboration-guide.md - https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">1 · Lokalt arbejde</span>
+          <h2>Source Control viser forskellen — ikke sandheden</h2>
+          <div class="screenshot-layout">
+            <div class="screenshot-copy">
+              <p>En ændret fil er endnu ikke en commit. Først læser vi diffet og vælger, hvad der skal med.</p>
+              <ul class="micro-list"><li>Hvad ændrede jeg?</li><li>Hører ændringerne sammen?</li><li>Virker appen stadig?</li></ul>
+            </div>
+            <figure class="browser-frame">
+              <img src="../assets/product-optimization-01/changes-in-source-control.webp" alt="Source Control i VS Code med ændrede filer" />
+            </figure>
+          </div>
+          <aside class="notes">
+            Zoom ind i Source Control-panelet. Vis working tree, diff og stage. Source Control er et overblik over
+            ændringer; det vurderer ikke om de er gode.
+            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/images/changes-in-source-control.png
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">2–4 · Lokal historik møder GitHub</span>
+          <h2>Stage, commit og push er tre forskellige beslutninger</h2>
+          <div class="commit-chain">
+            <article><h3>Stage</h3><p>Vælg filer eller linjer til næste snapshot.</p><span class="command">git add …</span></article>
+            <article><h3>Commit</h3><p>Gem snapshot og forklar formålet kort.</p><span class="command">git commit -m "…"</span></article>
+            <article><h3>Push</h3><p>Send dine lokale commits til remote-repoet.</p><span class="command">git push</span></article>
+          </div>
+          <p class="reflection">En god commit fortæller én sammenhængende historie.</p>
+          <aside class="notes">
+            Vis den samme proces i VS Code-knapper og nævn terminalkommandoerne som det underliggende Git-sprog.
+            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/git-github-slides-master.md [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">5–6 · GitHub og main</span>
+          <h2>GitHub gør ændringen synlig, reviewbar og fælles</h2>
+          <div class="split">
+            <div>
+              <p class="statement">Din branch foreslår en ændring. <strong>Main</strong> er den version, vi er enige om.</p>
+            </div>
+            <div>
+              <ul class="checklist">
+                <li>Push branchen</li>
+                <li>Opret pull request</li>
+                <li>Læs “Files changed”</li>
+                <li>Review og merge</li>
+                <li>Slet den færdige branch</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">
+            Fortæl at dagens individuelle demo kan gå direkte til main, hvis nødvendigt, men at det normale
+            samarbejdsflow bruger feature branch og pull request.
+            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/collaboration-guide.md [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">7 · GitHub Actions</span>
+          <h2>Et push til main starter en reproducerbar byggeproces</h2>
+          <div class="actions-pipeline">
+            <article><h3>Trigger</h3><p>Push til <code>main</code>.</p></article>
+            <article><h3>Checkout</h3><p>Hent repoets filer.</p></article>
+            <article><h3>Node + npm</h3><p>Opsæt Node og kør <code>npm ci</code>.</p></article>
+            <article><h3>Build</h3><p>Byg Vite-appen med online variabler.</p></article>
+            <article><h3>Artifact</h3><p>Pak indholdet af <code>dist</code>.</p></article>
+            <article><h3>Deploy</h3><p>Publicér artifact til Pages.</p></article>
+          </div>
+          <aside class="notes">
+            Åbn .github/workflows/deploy.yml bagefter. Knyt hver YAML-step til én boks. Fremhæv at GitHub bygger fra
+            repoet i et rent miljø — ikke fra den studerendes computer.
+            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml - https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Følg kørslen</span>
+          <h2>Grøn eller rød er kun begyndelsen på forklaringen</h2>
+          <div class="screenshot-layout reverse">
+            <figure class="browser-frame">
+              <img src="../assets/product-optimization-01/actions-running.webp" alt="En GitHub Actions deployment der kører" />
+            </figure>
+            <div class="screenshot-copy">
+              <p>Find workflow run → job → step → log.</p>
+              <ul class="micro-list"><li>Hvad blev udløst?</li><li>Hvor stoppede processen?</li><li>Hvad er den første konkrete fejl?</li></ul>
+            </div>
+          </div>
+          <aside class="notes">
+            Åbn en run. Vis hvordan man klikker fra workflow til job og videre til det fejlede step. Brug Codex til at
+            forklare loggen, ikke til at gætte uden loggen.
+            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/images/actions-running.png [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Fejlsøgning i Actions</span>
+          <h2>Start ved det første fejlede step</h2>
+          <div class="failure-anatomy">
+            <div class="failure-path">
+              <div>Workflow run</div><div>Job: deploy</div><div>Step: Build</div><div>Log: den første konkrete fejl</div>
+            </div>
+            <ul class="failure-questions">
+              <li>Kan fejlen reproduceres med <code>npm run build</code> lokalt?</li>
+              <li>Mangler en variabel, fil eller dependency i GitHub-miljøet?</li>
+              <li>Er rettelsen den mindste ændring, der løser årsagen?</li>
+            </ul>
+          </div>
+          <aside class="notes">
+            Gør forskellen tydelig mellem symptom og årsag. “Deployment failed” er et symptom. En importfejl i build
+            eller manglende variabel er en mere konkret årsag.
+            [Sources] - https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">React Router på GitHub Pages</span>
+          <h2>Tre små detaljer afgør, om routes virker online</h2>
+          <div class="commit-chain">
+            <article><h3>Vite base</h3><p>Buildet skal kende repoets sti på GitHub Pages.</p><span class="command">base: pkg.base</span></article>
+            <article><h3>Router basename</h3><p>BrowserRouter bruger den samme base via Vite.</p><span class="command">import.meta.env.BASE_URL</span></article>
+            <article><h3>SPA fallback</h3><p><code>404.html</code> sender deep links tilbage til appen.</p><span class="command">cp dist/index.html dist/404.html</span></article>
+          </div>
+          <aside class="notes">
+            Test både forsiden og en direkte URL til /posts efter deployment. Forklar hvorfor klient-side routing ellers
+            kan give 404 ved refresh.
+            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/vite.config.js - https://github.com/cederdorff/react-router-supabase/blob/main/src/main.jsx - https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Live-eksempel · hele flowet</span>
+          <h2>Vi sender én synlig forbedring hele vejen igennem</h2>
+          <div class="demo-layout">
+            <div class="demo-copy">
+              <span class="demo-label">Demo</span>
+              <h3>Opdatér titel og metadata</h3>
+              <p>En lille ændring er nok til at se hele systemet arbejde.</p>
+            </div>
+            <div class="demo-screen">
+              <p>lokal ændring<br />→ test<br />→ stage<br />→ commit<br />→ push<br />→ Actions<br />→ GitHub Pages</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Gennemfør ændringen i index.html. Brug VS Code Source Control. Push, åbn Actions, og vent på deployment.
+            Hvis run tager tid, fortsæt til næste slide og vend tilbage senere.
+            [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Efter demoen</span>
+          <h2>Den samme ændring eksisterede i fire forskellige former</h2>
+          <div class="closing-loop">
+            <article><h3>Working tree</h3><p>En lokal forskel i en fil.</p></article>
+            <article><h3>Commit</h3><p>Et snapshot i Git-historikken.</p></article>
+            <article><h3>Repository</h3><p>En delt version på GitHub.</p></article>
+            <article><h3>Deployment</h3><p>Et build, brugeren kan åbne.</p></article>
+          </div>
+          <aside class="notes">
+            Brug ordforrådet præcist. Spørg klassen: Hvornår var ændringen sikker? Hvornår var den delt? Hvornår kunne
+            brugeren se den?
+            [Sources] - https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically [/Sources]
+          </aside>
+        </section>
+
+        <section class="break-slide po-slide">
+          <span class="eyebrow">Pause</span>
+          <h2>10 minutter</h2>
+          <p class="lead">Når vi er tilbage: konfiguration, kvalitet og data.</p>
+          <aside class="notes">10 minutters pause.</aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide">
+          <span class="chapter-index">03</span>
+          <span class="eyebrow">Konfiguration</span>
+          <h2>Samme kode — forskellige miljøer</h2>
+          <p class="kicker">Lokalt og online skal bruge samme variabelnavne, men får værdierne hvert sit sted.</p>
+          <aside class="notes">
+            Overgang: GitHub bygger i et andet miljø end din laptop. Derfor skal konfigurationen følge med på en
+            kontrolleret måde.
+            [Sources] - https://vite.dev/guide/env-and-mode [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Environment variables</span>
+          <h2>Koden læser navne — miljøet leverer værdier</h2>
+          <div class="env-bridge">
+            <article class="env-side">
+              <h3>På din computer</h3>
+              <p>Vite læser lokale værdier, når dev-serveren starter.</p>
+              <code>.env.local<br />VITE_SUPABASE_URL=…<br />VITE_SUPABASE_APIKEY=…</code>
+            </article>
+            <div class="env-arrow" aria-hidden="true">↔</div>
+            <article class="env-side">
+              <h3>I GitHub Actions</h3>
+              <p>Workflowet leverer repository variables til build-steppet.</p>
+              <code>vars.VITE_SUPABASE_URL<br />vars.VITE_SUPABASE_APIKEY</code>
+            </article>
+          </div>
+          <aside class="notes">
+            Vis .env.example som dokumentation af de nødvendige navne. Genstart Vite efter ændringer i lokale env-filer.
+            [Sources] - https://vite.dev/guide/env-and-mode - https://github.com/cederdorff/react-router-supabase/blob/main/.env.example - https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">En vigtig grænse</span>
+          <h2><code>VITE_</code> organiserer værdier — det skjuler dem ikke</h2>
+          <p class="statement">
+            Vite erstatter værdierne under build. Derfor kan de læses i den færdige frontend.
+          </p>
+          <div class="callout">
+            <p><strong>Frontend:</strong> Supabase publishable key kan bruges sammen med korrekt RLS. <strong>Aldrig:</strong> secret- eller service-role keys i browseren.</p>
+          </div>
+          <aside class="notes">
+            .env betyder ikke hemmeligt. Det betyder konfiguration uden hardcoding. VITE_-værdier ender i klientens
+            bundle. Skeln mellem Supabase publishable key og en serverhemmelig nøgle.
+            [Sources] - https://vite.dev/guide/env-and-mode - https://supabase.com/docs/guides/getting-started/api-keys [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Sikker adgang fra frontend</span>
+          <h2>Publishable key identificerer — RLS autoriserer</h2>
+          <div class="security-equation">
+            <article><h3>Publishable key</h3><p>Identificerer Supabase-projektet fra en offentlig klient.</p></article>
+            <span>+</span>
+            <article><h3>Brugerens session</h3><p>Fortæller hvem brugeren er, hvis vedkommende er logget ind.</p></article>
+            <span>+</span>
+            <article><h3>RLS policies</h3><p>Bestemmer hvilke rækker rollen må læse eller ændre.</p></article>
+          </div>
+          <p class="reflection">SDK eller REST ændrer ikke databaseniveauets adgangsregler.</p>
+          <aside class="notes">
+            I starterprojektet må posts læses offentligt, fordi en policy giver lov. Uden passende policy er det ikke
+            nok at have URL og key.
+            [Sources] - https://supabase.com/docs/guides/database/secure-data - https://supabase.com/docs/guides/database/postgres/row-level-security
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide">
+          <span class="chapter-index">04</span>
+          <span class="eyebrow">Den synlige kvalitet</span>
+          <h2>Fjern template-rester — og få accessibility tilbage</h2>
+          <p class="kicker">Nu retter vi det, brugeren og browseren møder først.</p>
+          <aside class="notes">
+            Accessibility er repetition fra 2. semester. Vi bruger det som et audit-lag i den eksisterende app.
+            [Sources] - User-provided Canvas and Notion course context, 17 August 2026 [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Identitet og metadata</span>
+          <h2>En færdig løsning må ikke ligne en starter-template</h2>
+          <ul class="audit-lines">
+            <li><strong>Dokumenttitel</strong><span>Fortæller browseren og søgeresultatet, hvad siden er.</span></li>
+            <li><strong>Meta description</strong><span>Beskriver løsningens indhold og formål kort.</span></li>
+            <li><strong>Favicon og logo</strong><span>Skaber sammenhæng mellem browserfane og interface.</span></li>
+            <li><strong>Sprog</strong><span><code>lang="da"</code> hjælper browser og hjælpemidler.</span></li>
+            <li><strong>Indhold</strong><span>Fjern “Vite + React”, lorem ipsum og irrelevante eksempler.</span></li>
+          </ul>
+          <aside class="notes">
+            Brug gerne den metadataændring, der blev deployet tidligere. Bed de studerende finde mindst én
+            template-rest i starteren.
+            [Sources] - https://github.com/cederdorff/react-router-supabase - https://www.w3.org/WAI/tips/developing/ [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Accessibility · repetition</span>
+          <h2>Fem hurtige blik afslører mange problemer</h2>
+          <div class="a11y-lenses">
+            <article><b>01</b><h3>Struktur</h3><p>Semantiske elementer og logisk heading-hierarki.</p></article>
+            <article><b>02</b><h3>Navne</h3><p>Labels, linktekst og knappers tilgængelige navn.</p></article>
+            <article><b>03</b><h3>Billeder</h3><p>Meningsfuld alt-tekst — eller tom ved dekoration.</p></article>
+            <article><b>04</b><h3>Tastatur</h3><p>Alt kan nås og bruges uden mus.</p></article>
+            <article><b>05</b><h3>Fokus</h3><p>Det er tydeligt, hvor tastaturet befinder sig.</p></article>
+          </div>
+          <aside class="notes">
+            Dette er ikke en fuld audit. Det er en hurtig repetition af jeres 2.-semesterarbejde. Test med Tab-tasten
+            før I åbner et audit-værktøj.
+            [Sources] - https://www.w3.org/WAI/tips/developing/ - https://www.w3.org/WAI/fundamentals/accessibility-principles/
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Live-eksempel · accessibility</span>
+          <h2>Luk musen ude i to minutter</h2>
+          <div class="demo-layout">
+            <div class="demo-copy">
+              <span class="demo-label">Demo</span>
+              <h3>Tab gennem appen</h3>
+              <p>Kan du se fokus? Er rækkefølgen logisk? Kan alle links og kontroller aktiveres?</p>
+            </div>
+            <div class="demo-screen">
+              <p>1. Genindlæs siden<br />2. Brug kun Tab + Shift/Tab<br />3. Brug Enter/Space<br />4. Notér første barriere<br />5. Ret og test igen</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Kør på starterprojektet. Find et reelt problem eller bekræft, at et element fungerer. Vis eventuelt browserens
+            Accessibility tree, men hold fokus på den menneskelige test.
+            [Sources] - https://www.w3.org/WAI/test-evaluate/preliminary/ [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide">
+          <span class="chapter-index">05</span>
+          <span class="eyebrow">Supabase</span>
+          <h2>REST er grænsefladen — SDK’et er et værktøj ovenpå</h2>
+          <p class="kicker">De kan nå de samme data, men de giver os forskellige måder at arbejde på.</p>
+          <aside class="notes">
+            Formålet er begrebsforståelse, ikke at migrere starterprojektet i dag.
+            [Sources] - https://supabase.com/docs/guides/api - https://supabase.com/docs/reference/javascript/introduction [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Supabase Data REST API</span>
+          <h2>Databasen bliver til HTTP-endpoints</h2>
+          <div class="rest-anatomy">
+            <pre class="po-code"><code>const response = await fetch(
+  `${SUPABASE_URL}/rest/v1/posts`,
+  {
+    headers: {
+      apikey: PUBLISHABLE_KEY,
+      "Content-Type": "application/json"
+    }
+  }
+);
+
+const posts = await response.json();</code></pre>
+            <div class="request-parts">
+              <article><h3>URL</h3><p>Projekt + <code>/rest/v1/</code> + tabel.</p></article>
+              <article><h3>HTTP</h3><p>Metode, headers, query-parametre og body.</p></article>
+              <article><h3>Svar</h3><p>Statuskode, headers og JSON-data.</p></article>
+              <article><h3>Din kode</h3><p>Håndterer loading, fejl og tomme resultater.</p></article>
+            </div>
+          </div>
+          <aside class="notes">
+            Supabase auto-genererer Data REST API fra database-schemaet via PostgREST. Sammenlign med den konkrete
+            fetch i PostsPage.jsx.
+            [Sources] - https://supabase.com/docs/guides/api - https://github.com/cederdorff/react-router-supabase/blob/main/src/pages/PostsPage.jsx
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">REST og JavaScript SDK</span>
+          <h2>Samme intention — forskellig mængde håndarbejde</h2>
+          <div class="code-comparison">
+            <article>
+              <h3>Direkte REST med fetch</h3>
+              <pre class="po-code"><code>const response = await fetch(URL, {
+  headers: { apikey: key }
+});
+
+if (!response.ok) {
+  throw new Error("Kunne ikke hente posts");
+}
+
+const data = await response.json();</code></pre>
+            </article>
+            <article>
+              <h3>Supabase JavaScript SDK</h3>
+              <pre class="po-code"><code>const { data, error } = await supabase
+  .from("posts")
+  .select("*");
+
+if (error) {
+  throw error;
+}</code></pre>
+            </article>
+          </div>
+          <p class="reflection">SDK’et giver os et mere specialiseret sprog til API’et.</p>
+          <aside class="notes">
+            Forklar at supabase-js stadig kommunikerer med Supabase-tjenesterne. Query builderen samler URL, headers og
+            parsing i et bibliotek med Supabase-begreber.
+            [Sources] - https://supabase.com/docs/reference/javascript/initializing - https://supabase.com/docs/reference/javascript/select
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Hvad får vi med SDK’et?</span>
+          <h2>Én klient samler flere Supabase-produkter</h2>
+          <div class="sdk-rings">
+            <article><h3>Database</h3><p>Læs, opret, opdatér, slet, filtrér og hent relationer med en query builder.</p></article>
+            <article><h3>Auth</h3><p>Login, sessioner, brugerdata og tokens i samme klient.</p></article>
+            <article><h3>Realtime</h3><p>Lyt til ændringer og byg interfaces, der opdaterer løbende.</p></article>
+            <article><h3>Storage + Functions</h3><p>Arbejd med filer og kald server-side Edge Functions.</p></article>
+          </div>
+          <aside class="notes">
+            Vi vender tilbage til SDK’et, når auth, relationer og mere avanceret dataarbejde gør abstraktionen værdifuld.
+            [Sources] - https://supabase.com/docs/reference/javascript/introduction [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Dagens valg</span>
+          <h2>Vi beholder REST, så netværkslaget forbliver synligt</h2>
+          <div class="split">
+            <div>
+              <p class="statement">I dag skal vi kunne se <strong>URL, headers, status og JSON</strong>.</p>
+            </div>
+            <div>
+              <p class="statement">Senere bruger vi SDK’et, når vi skal bygge <strong>mere</strong> end simple requests.</p>
+            </div>
+          </div>
+          <div class="callout"><p>Valget handler om læringsmål og kompleksitet — ikke om at REST er “forkert”.</p></div>
+          <aside class="notes">
+            Gør dette eksplicit, så de studerende ikke migrerer starteren som en del af dagens opgave. SDK-introen er en
+            forsmag på senere undervisning.
+            [Sources] - User-provided teaching direction, 17 August 2026 - https://supabase.com/docs/guides/api [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide">
+          <span class="chapter-index">06</span>
+          <span class="eyebrow">Arbejdsblok</span>
+          <h2>Find problemet, vælg retningen, dokumentér effekten</h2>
+          <p class="kicker">Først i starterprojektet — derefter i jeres egen Web App.</p>
+          <aside class="notes">
+            Ca. 30 minutter. Start fælles i den udleverede løsning. Hvis tiden tillader det, overfør auditten til egen
+            2.-semesterapp.
+            [Sources] - undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Opgavens arbejdsform</span>
+          <h2>Fire skridt — én dokumenteret forbedring</h2>
+          <div class="assignment-flow">
+            <article><h3>Kør</h3><p>Installér, start og kontrollér routes, data og konsol.</p></article>
+            <article><h3>Undersøg</h3><p>Find konkrete fejl, mangler og template-rester.</p></article>
+            <article><h3>Prioritér</h3><p>Vælg den vigtigste rettelse og begrund valget.</p></article>
+            <article><h3>Forbedr</h3><p>Ret, test og gem før/efter-evidens.</p></article>
+          </div>
+          <p class="po-source-link"><a href="https://github.com/cederdorff/react-router-supabase" target="_blank" rel="noopener noreferrer">Åbn starterprojektet</a></p>
+          <aside class="notes">
+            Henvis til den kommende opgavebeskrivelse og tjekliste. De må bruge Codex, men skal kunne forklare det
+            konkrete problem, ændringen og testen.
+            [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Når alt virker vigtigt</span>
+          <h2>Prioritér efter konsekvens — ikke efter hvor let det ser ud</h2>
+          <div class="priority-stack">
+            <article><h3>Appen kan ikke bruges</h3><p>Build, deployment, routing, data eller blokerende runtime-fejl.</p></article>
+            <article><h3>Brugere bliver udelukket</h3><p>Tastatur, labels, fokus, kontrast eller utilgængelige handlinger.</p></article>
+            <article><h3>Løsningen er misvisende</h3><p>Forkert identitet, metadata, indhold eller uforståelige fejl-states.</p></article>
+            <article><h3>Koden kan forbedres</h3><p>Oprydning, navngivning og struktur uden akut bruger- eller driftskonsekvens.</p></article>
+          </div>
+          <aside class="notes">
+            Prioriteringen er en tommelfingerregel. Bed de studerende skrive én sætning: “Vi vælger X først, fordi Y”.
+            [Sources] - User-provided lesson goals and starter-repository audit scope, 17 August 2026 [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Dagens tekniske fundament</span>
+          <h2>Robusthed er en arbejdsgang, ikke et enkelt fix</h2>
+          <div class="closing-loop">
+            <article><h3>Se hele systemet</h3><p>UI, kode, konfiguration, data og deployment hænger sammen.</p></article>
+            <article><h3>Brug agenten kritisk</h3><p>Afgræns, review og verificér frem for at kopiere blindt.</p></article>
+            <article><h3>Følg flowet</h3><p>Lokal ændring → commit → GitHub → Actions → bruger.</p></article>
+            <article><h3>Dokumentér effekten</h3><p>Vis hvad der blev bedre, og hvordan du ved det.</p></article>
+          </div>
+          <aside class="notes">
+            Knyt tilbage til åbningsmodellen og dagens spørgsmål. Hvilke emner føles mere sikre nu?
+            [Sources] - undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide v-center">
+          <span class="eyebrow">Exit ticket</span>
+          <h2>Hvad vil du undersøge først i din egen Web App?</h2>
+          <p class="exit-question">
+            Skriv én konkret forbedring, <strong>hvorfor den er vigtig</strong>, og hvordan du vil kontrollere effekten.
+          </p>
+          <aside class="notes">
+            Saml svar mundtligt, på tavlen eller digitalt. Brug dem som overgang til hjemmearbejde og næste
+            undervisningsgang.
+            [Sources] - undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
+            [/Sources]
+          </aside>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="../shared/deck.js"></script>
+  </body>
+</html>
