@@ -3,6 +3,7 @@
   --po-blue-soft: rgb(101 167 255 / 14%);
   --po-orange: #f08f73;
   --po-yellow: #f4c95d;
+  --po-violet: #b9a2ff;
 }
 
 .reveal .slides section.po-slide::before {
@@ -57,22 +58,84 @@
 }
 
 .reveal .agenda-track {
-  margin: 34px 0 0 44px;
-  padding-left: 34px;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: agenda;
 }
 
 .reveal .agenda-track li {
-  padding: 9px 0 9px 12px;
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 18px;
+  min-height: 69px;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+  counter-increment: agenda;
+}
+
+.reveal .agenda-track li::before {
+  grid-row: 1 / 3;
+  align-self: start;
+  color: var(--po-blue);
+  content: "0" counter(agenda);
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.reveal .agenda-track strong {
+  grid-column: 2;
   color: var(--ink);
-  font-size: 29px;
-  font-weight: 750;
+  font-size: 23px;
+  line-height: 1.15;
+}
+
+.reveal .agenda-track small {
+  grid-column: 2;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 17px;
   line-height: 1.2;
 }
 
-.reveal .agenda-track li::marker {
-  color: var(--po-blue);
+.reveal .scrimba-brief {
+  max-width: 1240px;
+  margin-top: 60px;
+}
+
+.reveal .scrimba-brief p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 30px;
+  line-height: 1.35;
+}
+
+.reveal .scrimba-brief .scrimba-semester {
+  margin-top: 30px;
+  color: var(--muted);
+  font-size: 24px;
+}
+
+.reveal .scrimba-free-note {
+  max-width: 1320px;
+  margin: 52px 0 0;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
   font-size: 20px;
-  font-weight: 900;
+  line-height: 1.35;
+}
+
+.reveal .scrimba-free-note strong:first-child {
+  color: var(--po-blue);
+}
+
+.reveal .po-scrimba .po-source-link {
+  margin-top: 34px;
 }
 
 .reveal .baseline-question {
@@ -662,7 +725,7 @@
 .reveal .browser-frame img {
   display: block;
   width: 100%;
-  height: 470px;
+  height: 400px;
   object-fit: cover;
   object-position: center top;
 }
@@ -994,8 +1057,8 @@
 }
 
 .reveal .code-comparison + .reflection {
-  margin-top: 22px;
-  font-size: 36px;
+  margin-top: 0;
+  font-size: 32px;
 }
 
 .reveal .sdk-rings {
@@ -1144,4 +1207,183 @@
   bottom: 42px;
   color: var(--muted);
   font-size: 16px;
+}
+
+/* Teaching mode: the label tells students whether to listen, watch or work. */
+.reveal .mode-indicator {
+  position: absolute;
+  top: 88px;
+  right: 112px;
+  padding: 7px 11px;
+  border: 1px solid rgb(101 167 255 / 45%);
+  border-radius: 999px;
+  color: var(--po-blue);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.reveal .po-slide.mode-demo .mode-indicator {
+  border-color: rgb(244 201 93 / 55%);
+  color: var(--po-yellow);
+}
+
+.reveal .po-slide.mode-work .mode-indicator {
+  border-color: rgb(62 207 142 / 55%);
+  color: var(--green);
+}
+
+.reveal .po-slide.mode-shared .mode-indicator {
+  border-color: rgb(185 162 255 / 55%);
+  color: var(--po-violet);
+}
+
+.reveal .slides section.po-slide.mode-demo::before {
+  background: linear-gradient(90deg, var(--po-yellow), transparent);
+}
+
+.reveal .slides section.po-slide.mode-work::before {
+  background: linear-gradient(90deg, var(--green), transparent);
+}
+
+.reveal .slides section.po-slide.mode-shared::before {
+  background: linear-gradient(90deg, var(--po-violet), transparent);
+}
+
+.reveal .po-slide.mode-demo .eyebrow,
+.reveal .po-slide.mode-demo strong {
+  color: var(--po-yellow);
+}
+
+.reveal .po-slide.mode-work .eyebrow,
+.reveal .po-slide.mode-work strong,
+.reveal .po-slide.mode-work a {
+  color: var(--green);
+}
+
+.reveal .po-slide.mode-shared .eyebrow,
+.reveal .po-slide.mode-shared strong {
+  color: var(--po-violet);
+}
+
+.reveal .po-slide.mode-work .demo-screen::before {
+  color: var(--green);
+  content: "TASTATURTEST";
+}
+
+.reveal .mode-work .assignment-flow {
+  margin-top: 42px;
+}
+
+.reveal .mode-work .assignment-flow article {
+  min-height: 225px;
+  padding-top: 60px;
+  border-color: rgb(62 207 142 / 52%);
+}
+
+.reveal .mode-work .assignment-flow article::before {
+  background: var(--green);
+}
+
+.reveal .mode-work .assignment-flow h3 {
+  font-size: 28px;
+}
+
+.reveal .mode-work .assignment-flow p {
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.reveal .done-when,
+.reveal .work-if-stuck {
+  max-width: 1376px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.reveal .work-if-stuck + .done-when {
+  margin-top: 12px;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.reveal .work-columns {
+  display: grid;
+  grid-template-columns: 1fr 0.78fr;
+  gap: 56px;
+  margin-top: 42px;
+}
+
+.reveal .work-columns > div + div {
+  padding-left: 52px;
+  border-left: 1px solid var(--line);
+}
+
+.reveal .work-columns h3 {
+  margin-bottom: 24px;
+  font-size: 29px;
+}
+
+.reveal .compact-prompt {
+  margin-top: 0;
+  padding: 24px 28px;
+  border-color: var(--green);
+  font-size: 21px;
+}
+
+.reveal .work-columns .checklist {
+  margin-top: 0;
+}
+
+.reveal .work-columns .checklist li {
+  padding: 15px 0 15px 38px;
+  font-size: 21px;
+}
+
+.reveal .config-work {
+  grid-template-columns: 1fr 1fr;
+}
+
+.reveal .demo-runbook {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 58px;
+  margin-top: 44px;
+}
+
+.reveal .demo-runbook ol {
+  margin: 0;
+  padding-left: 38px;
+}
+
+.reveal .demo-runbook li {
+  margin-bottom: 22px;
+  padding-left: 10px;
+  font-size: 24px;
+}
+
+.reveal .demo-runbook li::marker {
+  color: var(--po-yellow);
+  font-weight: 900;
+}
+
+.reveal .demo-failure {
+  padding: 30px 32px;
+  border-top: 5px solid var(--po-yellow);
+  background: linear-gradient(180deg, rgb(244 201 93 / 12%), transparent);
+}
+
+.reveal .demo-failure h3 {
+  font-size: 29px;
+}
+
+.reveal .demo-failure p {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.35;
 }

@@ -62,18 +62,40 @@
           <span class="eyebrow">Agenda</span>
           <h2>I dag følger vi appen fra udvikling til drift</h2>
           <ol class="agenda-track">
-            <li>Tilbageblik og retning</li>
-            <li>AI som udviklingspartner</li>
-            <li>Git → GitHub → Actions → Pages</li>
-            <li>Konfiguration og robusthed</li>
-            <li>Accessibility-repetition</li>
-            <li>Supabase: REST API og SDK</li>
-            <li>Arbejd videre og saml op</li>
+            <li><strong>Tilbageblik og retning</strong><small>Hvad har vi med — og hvad skal genopfriskes?</small></li>
+            <li><strong>AI som udviklingspartner</strong><small>Kontekst, prompts, review og ansvar.</small></li>
+            <li><strong>Git → GitHub → Actions → Pages</strong><small>Fra lokal ændring til offentlig webapp.</small></li>
+            <li><strong>Konfiguration og robusthed</strong><small>Base path, routing, miljøvariabler og sikkerhed.</small></li>
+            <li><strong>Accessibility-repetition</strong><small>Semantik, tastatur, fokus og hurtige checks.</small></li>
+            <li><strong>Supabase: REST API og SDK</strong><small>Forskelle, muligheder og hvorfor vi fortsætter med REST.</small></li>
+            <li><strong>Arbejd videre og saml op</strong><small>Prioritér og afprøv en forbedring i appen.</small></li>
           </ol>
           <aside class="notes">
             Gennemgå planen kort, så de studerende kender rækkefølgen. Pauser og præcis tidsstyring håndteres uden for
             agendaen. Justér vægten efter behovsafdækningen og dagens flow.
             [Sources] - User-provided teaching direction, 17 August 2026 [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide po-scrimba">
+          <span class="eyebrow">Nyt værktøj dette semester</span>
+          <h2>Scrimba kombinerer video og kode</h2>
+          <div class="scrimba-brief">
+            <p>Du kan pause en forklaring, ændre underviserens kode direkte i browseren og se resultatet med det samme.</p>
+            <p class="scrimba-semester">Vi kommer til at bruge Scrimba flere gange gennem semesteret — både i undervisningen og som mulighed for repetition.</p>
+          </div>
+          <p class="scrimba-free-note"><strong>Gratis adgang:</strong> Vælg kurser markeret <em>Tier Free</em>. Møder du en betalingsprompt, kan du vælge <strong>Skip</strong> og fortsætte lektionerne; interaktive challenges kan være begrænsede.</p>
+          <p class="po-source-link"><a href="https://scrimba.com/courses" target="_blank" rel="noopener noreferrer">Find gratis kurser på Scrimba</a></p>
+          <aside class="notes">
+            Forklar kort, at Scrimba kan bruges som repetition mellem undervisningsgangene. Demonstrér eventuelt, at
+            man kan pause en scrim og skrive direkte i koden. Hvis en upgrade-modal vises i et gratis kursus, skal de
+            bruge Skip-knappen for at fortsætte videoindholdet; de kan miste adgang til challenge-submission og feedback.
+            [Sources]
+            - https://v1.scrimba.com/about
+            - https://scrimba.com/articles/best-free-coding-websites-and-resources-2026/
+            - https://forum.scrimba.com/t/your-dark-marketing-patterns-kinda-suck/2012
+            - https://forum.scrimba.com/t/accessible-web-design/1989
+            [/Sources]
           </aside>
         </section>
 
@@ -150,7 +172,7 @@
           </aside>
         </section>
 
-        <section class="po-slide">
+        <section class="po-slide mode-shared">
           <span class="eyebrow">Før vi går i gang</span>
           <h2>Hvad skal vi have tilbage i hænderne?</h2>
           <p class="baseline-question">
@@ -186,6 +208,28 @@
             Brug dette som dagens gennemgående model. Et visuelt problem kan komme fra data, build-konfiguration eller
             routing. Derfor skal vi kunne følge hele kæden.
             [Sources] - https://github.com/cederdorff/react-router-supabase · repository structure and workflow [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mode-work">
+          <span class="eyebrow">Opgave 1 · Arbejd individuelt</span>
+          <h2>Opret din egen kopi — og få appen til at køre</h2>
+          <div class="assignment-flow setup-flow">
+            <article><h3>Brug templaten</h3><p>Vælg <strong>Use this template → Create a new repository</strong>. Opret et offentligt repository.</p></article>
+            <article><h3>Tilpas projektet</h3><p>Aktivér Pages med GitHub Actions. Clone projektet, og sæt <code>base</code> i <code>package.json</code> til repository-navnet.</p></article>
+            <article><h3>Tilføj miljøet</h3><p>Kopiér <code>.env.example</code> til <code>.env</code>, og indsæt de udleverede Supabase-værdier.</p></article>
+            <article><h3>Kør og kontrollér</h3><p>Kør <code>npm install</code> og <code>npm run dev</code>. Test navigationen og siden <code>/posts</code>.</p></article>
+          </div>
+          <p class="done-when"><strong>Du er klar, når:</strong> Appen kører lokalt, posts vises, og projektet peger på dit eget GitHub-repository.</p>
+          <p class="po-source-link"><a href="https://github.com/cederdorff/react-router-supabase/generate" target="_blank" rel="noopener noreferrer">Opret repository fra templaten</a></p>
+          <aside class="notes">
+            De arbejder individuelt. Udlevér de to Supabase-værdier, men vis dem ikke på slidet. Hjælp kun med
+            blokeringer i setup. Der er ingen aflevering.
+            [Sources]
+            - https://github.com/cederdorff/react-router-supabase
+            - https://github.com/cederdorff/react-router-supabase/blob/main/docs/template-to-github-pages-setup.md
+            - https://github.com/cederdorff/react-router-supabase/blob/main/docs/supabase-setup.md
+            [/Sources]
           </aside>
         </section>
 
@@ -260,7 +304,7 @@
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">Live-eksempel · Codex</span>
+          <span class="eyebrow">Prompt-eksempel · AI-agent</span>
           <h2>Fra “den virker ikke” til en afgrænset undersøgelse</h2>
           <div class="prompt-example">
             Undersøg hvorfor Posts-siden kan fejle uden at vise brugeren noget.<br /><br />
@@ -269,16 +313,16 @@
             Forklar problemet først. Foreslå derefter den mindste rettelse og hvordan vi tester den.
           </div>
           <aside class="notes">
-            Kør prompten live. Stop efter forklaringen, læs planen, og vælg bevidst om agenten skal ændre kode. Hvis
-            tiden er presset, vis kun undersøgelsesdelen.
+            Gennemgå prompten som eksempel. Live-demoen med AI kommer senere, når en konkret GitHub Actions-log giver
+            agenten et reelt symptom at arbejde ud fra.
             [Sources] - https://learn.chatgpt.com/docs/prompting - https://github.com/cederdorff/react-router-supabase/blob/main/src/pages/PostsPage.jsx
             [/Sources]
           </aside>
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">Efter demoen</span>
-          <h2>Hvad gjorde agenten faktisk?</h2>
+          <span class="eyebrow">Når agenten arbejder</span>
+          <h2>Et godt forløb går fra undersøgelse til verificering</h2>
           <div class="commit-chain">
             <article><h3>Undersøgte</h3><p>læste relevant kode og fandt den aktuelle dataflow.</p></article>
             <article><h3>Formulerede</h3><p>gjorde symptomet til hypoteser, vi kunne vurdere.</p></article>
@@ -286,8 +330,8 @@
           </div>
           <p class="reflection">Du skal stadig forstå ændringen godt nok til at forklare og teste den.</p>
           <aside class="notes">
-            Lad de studerende nævne konkrete handlinger fra demoen. Spørg: Hvad så Codex? Hvad antog den? Hvad skulle
-            vi selv kontrollere?
+            Brug de tre handlinger til at forberede den individuelle kortlægningsopgave. Spørg: Hvad kan agenten se?
+            Hvad må den antage? Hvad skal vi selv kontrollere?
             [Sources] - https://learn.chatgpt.com/docs/codex/ide - https://learn.chatgpt.com/docs/prompting [/Sources]
           </aside>
         </section>
@@ -305,6 +349,32 @@
             Knyt til professionsansvar og eksamen: De studerende skal kunne forklare deres løsning. En agent kan gøre
             fejl, ændre for meget eller misforstå konteksten.
             [Sources] - https://learn.chatgpt.com/docs/prompting - https://vite.dev/guide/env-and-mode [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mode-work">
+          <span class="eyebrow">Opgave 2 · Arbejd individuelt</span>
+          <h2>Brug en AI-agent til at kortlægge projektet</h2>
+          <div class="work-columns">
+            <div>
+              <h3>Giv agenten en afgrænset opgave</h3>
+              <div class="prompt-example compact-prompt">Kortlæg hvordan appen hænger sammen fra <strong>main.jsx</strong> og routes til Supabase og deployment. Peg på de vigtigste filer og forklar deres ansvar. Ændr ikke noget.</div>
+            </div>
+            <div>
+              <h3>Kontrollér svaret i projektet</h3>
+              <ul class="checklist">
+                <li>Find route-konfigurationen</li>
+                <li>Find Supabase-requestet</li>
+                <li>Find base path</li>
+                <li>Find deploy-workflowet</li>
+              </ul>
+            </div>
+          </div>
+          <p class="done-when"><strong>Du er klar, når:</strong> Du selv kan forklare én forbindelse mellem to af filerne — også uden agentens svar.</p>
+          <aside class="notes">
+            De må bruge det AI-værktøj, de har adgang til. Opgaven handler om kontekst og kontrol, ikke om at generere
+            kode. Hvis en studerende ikke bruger en agent, kan filerne kortlægges manuelt.
+            [Sources] - https://github.com/cederdorff/react-router-supabase - https://learn.chatgpt.com/docs/prompting [/Sources]
           </aside>
         </section>
 
@@ -377,24 +447,19 @@
 
         <section class="po-slide">
           <span class="eyebrow">5–6 · GitHub og main</span>
-          <h2>GitHub gør ændringen synlig, reviewbar og fælles</h2>
+          <h2>I dag sender du direkte til main i dit eget repository</h2>
           <div class="split">
             <div>
-              <p class="statement">Din branch foreslår en ændring. <strong>Main</strong> er den version, vi er enige om.</p>
+              <p class="statement"><strong>Main</strong> er den branch, workflowet lytter efter. Et push starter derfor deployment.</p>
             </div>
             <div>
-              <ul class="checklist">
-                <li>Push branchen</li>
-                <li>Opret pull request</li>
-                <li>Læs “Files changed”</li>
-                <li>Review og merge</li>
-                <li>Slet den færdige branch</li>
-              </ul>
+              <p class="statement"><strong>I et team:</strong> feature branch → pull request → review → merge til main.</p>
             </div>
           </div>
+          <div class="callout"><p>Det direkte flow er valgt til dagens individuelle øvelse — ikke som en generel samarbejdsregel.</p></div>
           <aside class="notes">
-            Fortæl at dagens individuelle demo kan gå direkte til main, hvis nødvendigt, men at det normale
-            samarbejdsflow bruger feature branch og pull request.
+            De arbejder hver især i deres eget repository, så dagens flow går direkte til main. Repetér kort, at
+            samarbejde normalt kræver branches og pull requests.
             [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/collaboration-guide.md [/Sources]
           </aside>
         </section>
@@ -473,27 +538,30 @@
           </aside>
         </section>
 
-        <section class="po-slide">
+        <section class="po-slide mode-demo">
           <span class="eyebrow">Live-eksempel · hele flowet</span>
-          <h2>Vi sender én synlig forbedring hele vejen igennem</h2>
-          <div class="demo-layout">
-            <div class="demo-copy">
-              <span class="demo-label">Demo</span>
-              <h3>Opdatér titel og metadata</h3>
-              <p>En lille ændring er nok til at se hele systemet arbejde.</p>
-            </div>
-            <div class="demo-screen">
-              <p>lokal ændring<br />→ test<br />→ stage<br />→ commit<br />→ push<br />→ Actions<br />→ GitHub Pages</p>
+          <h2>Se ændringen rejse fra VS Code til GitHub Pages</h2>
+          <div class="demo-runbook">
+            <ol>
+              <li>Lav en lille synlig ændring, og kør <code>npm run build</code>.</li>
+              <li>Læs diffet, commit ændringen, og push til <code>main</code>.</li>
+              <li>Åbn Actions → workflow run → job → steps.</li>
+              <li>Åbn deployment-URL’en, og kontrollér ændringen.</li>
+            </ol>
+            <div class="demo-failure">
+              <h3>Hvis run bliver rødt</h3>
+              <p>Find det første fejlede step. Giv kun den relevante fejltekst til en AI-agent, og bed først om en forklaring og næste check — ikke en blind rettelse.</p>
             </div>
           </div>
           <aside class="notes">
-            Gennemfør ændringen i index.html. Brug VS Code Source Control. Push, åbn Actions, og vent på deployment.
-            Hvis run tager tid, fortsæt til næste slide og vend tilbage senere.
+            Dette er dagens centrale live-demo. Gennemfør ændringen i index.html eller HomePage.jsx. Brug VS Code Source
+            Control, push til main, og åbn Actions. Vis både workflow summary, job, step og log. Hvis der er en reel fejl,
+            brug den. Ellers vis en tidligere fejlet run eller forklar fejlgrenen uden at fremprovokere en fejl.
             [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
           </aside>
         </section>
 
-        <section class="po-slide">
+        <section class="po-slide mode-shared">
           <span class="eyebrow">Efter demoen</span>
           <h2>Den samme ændring eksisterede i fire forskellige former</h2>
           <div class="closing-loop">
@@ -509,11 +577,25 @@
           </aside>
         </section>
 
-        <section class="break-slide po-slide">
-          <span class="eyebrow">Pause</span>
-          <h2>10 minutter</h2>
-          <p class="lead">Når vi er tilbage: konfiguration, kvalitet og data.</p>
-          <aside class="notes">10 minutters pause.</aside>
+        <section class="po-slide mode-work">
+          <span class="eyebrow">Opgave 3 · Arbejd individuelt</span>
+          <h2>Send din egen ændring gennem hele flowet</h2>
+          <div class="assignment-flow deploy-work-flow">
+            <article><h3>Ændr</h3><p>Ret en synlig tekst eller metadata. Kontrollér ændringen lokalt.</p></article>
+            <article><h3>Gem</h3><p>Kør <code>npm run build</code>, læs diffet, commit, og push til <code>main</code>.</p></article>
+            <article><h3>Følg</h3><p>Åbn Actions. Find workflow run, job, steps og deployment-URL.</p></article>
+            <article><h3>Kontrollér</h3><p>Find ændringen på Pages. Genindlæs også en direkte route.</p></article>
+          </div>
+          <p class="work-if-stuck"><strong>Hvis run fejler:</strong> Find første røde step → læs den konkrete fejl → reproducer lokalt → brug eventuelt en AI-agent til at forklare loggen. Del aldrig værdier fra <code>.env</code>.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Du kan pege på commit, workflow run og den deployede ændring. Der skal ikke afleveres noget.</p>
+          <aside class="notes">
+            Lad deployment køre i baggrunden, mens du hjælper rundt. Hvis Pages endnu ikke er aktiveret, skal de vælge
+            Settings → Pages → GitHub Actions. Posts behøver ikke virke online før konfigurationsopgaven.
+            [Sources]
+            - https://github.com/cederdorff/react-router-supabase/blob/main/docs/template-to-github-pages-setup.md
+            - https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows
+            [/Sources]
+          </aside>
         </section>
 
         <section class="chapter po-chapter po-slide">
@@ -535,7 +617,7 @@
             <article class="env-side">
               <h3>På din computer</h3>
               <p>Vite læser lokale værdier, når dev-serveren starter.</p>
-              <code>.env.local<br />VITE_SUPABASE_URL=…<br />VITE_SUPABASE_APIKEY=…</code>
+              <code>.env<br />VITE_SUPABASE_URL=…<br />VITE_SUPABASE_APIKEY=…</code>
             </article>
             <div class="env-arrow" aria-hidden="true">↔</div>
             <article class="env-side">
@@ -586,6 +668,40 @@
           </aside>
         </section>
 
+        <section class="po-slide mode-work">
+          <span class="eyebrow">Opgave 4 · Arbejd individuelt</span>
+          <h2>Få Posts til at virke både lokalt og på Pages</h2>
+          <div class="work-columns config-work">
+            <div>
+              <h3>På din computer</h3>
+              <ul class="checklist">
+                <li><code>.env</code> indeholder de udleverede værdier</li>
+                <li><code>.env</code> er ikke staged i Git</li>
+                <li><code>/posts</code> viser data lokalt</li>
+                <li><code>npm run build</code> gennemføres</li>
+              </ul>
+            </div>
+            <div>
+              <h3>I dit GitHub-repository</h3>
+              <ul class="checklist">
+                <li>Settings → Secrets and variables → Actions</li>
+                <li>Opret <code>VITE_SUPABASE_URL</code> og <code>VITE_SUPABASE_APIKEY</code> under <strong>Variables</strong></li>
+                <li>Kør workflowet igen med et lille push</li>
+                <li>Test <code>/posts</code> på Pages</li>
+              </ul>
+            </div>
+          </div>
+          <p class="done-when"><strong>Du er klar, når:</strong> Posts vises i begge miljøer, og du kan forklare, hvor værdierne kommer fra hvert sted.</p>
+          <aside class="notes">
+            Skriv variabelnavnene på whiteboardet sammen med de konkrete værdier. De skal oprettes som repository
+            variables, fordi workflowet bruger vars.VITE_SUPABASE_URL og vars.VITE_SUPABASE_APIKEY.
+            [Sources]
+            - https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml
+            - https://github.com/cederdorff/react-router-supabase/blob/main/docs/supabase-setup.md
+            [/Sources]
+          </aside>
+        </section>
+
         <section class="chapter po-chapter po-slide">
           <span class="chapter-index">04</span>
           <span class="eyebrow">Den synlige kvalitet</span>
@@ -632,12 +748,12 @@
           </aside>
         </section>
 
-        <section class="po-slide">
-          <span class="eyebrow">Live-eksempel · accessibility</span>
-          <h2>Luk musen ude i to minutter</h2>
+        <section class="po-slide mode-work">
+          <span class="eyebrow">Opgave 5 · Arbejd individuelt</span>
+          <h2>Luk musen ude — og test din egen app</h2>
           <div class="demo-layout">
             <div class="demo-copy">
-              <span class="demo-label">Demo</span>
+              <span class="demo-label">Din test</span>
               <h3>Tab gennem appen</h3>
               <p>Kan du se fokus? Er rækkefølgen logisk? Kan alle links og kontroller aktiveres?</p>
             </div>
@@ -645,9 +761,10 @@
               <p>1. Genindlæs siden<br />2. Brug kun Tab + Shift/Tab<br />3. Brug Enter/Space<br />4. Notér første barriere<br />5. Ret og test igen</p>
             </div>
           </div>
+          <p class="done-when"><strong>Du er klar, når:</strong> Du har fundet og rettet én barriere — eller kan forklare én vigtig ting, der allerede fungerer.</p>
           <aside class="notes">
-            Kør på starterprojektet. Find et reelt problem eller bekræft, at et element fungerer. Vis eventuelt browserens
-            Accessibility tree, men hold fokus på den menneskelige test.
+            De arbejder individuelt i eget repository. Opgaven er repetition, så stop den, når de har gennemført en
+            reel tastaturtest og kan forklare deres observation.
             [Sources] - https://www.w3.org/WAI/test-evaluate/preliminary/ [/Sources]
           </aside>
         </section>
@@ -765,31 +882,14 @@ if (error) {
 
         <section class="chapter po-chapter po-slide">
           <span class="chapter-index">06</span>
-          <span class="eyebrow">Arbejdsblok</span>
-          <h2>Find problemet, vælg retningen, dokumentér effekten</h2>
-          <p class="kicker">Først i starterprojektet — derefter i jeres egen Web App.</p>
+          <span class="eyebrow">Arbejd videre</span>
+          <h2>Vælg ét sted i kæden og gør det mere robust</h2>
+          <p class="kicker">Ingen aflevering — målet er at få processen og begreberne i fingrene.</p>
           <aside class="notes">
-            Ca. 30 minutter. Start fælles i den udleverede løsning. Hvis tiden tillader det, overfør auditten til egen
-            2.-semesterapp.
+            Definér selv varigheden på whiteboardet. De arbejder videre individuelt i det repository, de har oprettet
+            fra templaten.
             [Sources] - undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
             [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">Opgavens arbejdsform</span>
-          <h2>Fire skridt — én dokumenteret forbedring</h2>
-          <div class="assignment-flow">
-            <article><h3>Kør</h3><p>Installér, start og kontrollér routes, data og konsol.</p></article>
-            <article><h3>Undersøg</h3><p>Find konkrete fejl, mangler og template-rester.</p></article>
-            <article><h3>Prioritér</h3><p>Vælg den vigtigste rettelse og begrund valget.</p></article>
-            <article><h3>Forbedr</h3><p>Ret, test og gem før/efter-evidens.</p></article>
-          </div>
-          <p class="po-source-link"><a href="https://github.com/cederdorff/react-router-supabase" target="_blank" rel="noopener noreferrer">Åbn starterprojektet</a></p>
-          <aside class="notes">
-            Henvis til den kommende opgavebeskrivelse og tjekliste. De må bruge AI-værktøjer, men skal kunne forklare det
-            konkrete problem, ændringen og testen.
-            [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
           </aside>
         </section>
 
@@ -808,6 +908,23 @@ if (error) {
           </aside>
         </section>
 
+        <section class="po-slide mode-work">
+          <span class="eyebrow">Opgave 6 · Arbejd individuelt</span>
+          <h2>Vælg én forbedring og før den helt igennem</h2>
+          <div class="assignment-flow">
+            <article><h3>Find</h3><p>Vælg et konkret problem i deployment, routing, data, metadata eller accessibility.</p></article>
+            <article><h3>Begrund</h3><p>Forklar for dig selv, hvem problemet påvirker, og hvorfor det er vigtigt.</p></article>
+            <article><h3>Forbedr</h3><p>Lav den mindste relevante ændring. Brug gerne en AI-agent med klare rammer.</p></article>
+            <article><h3>Kontrollér</h3><p>Test lokalt, review diffet, push, og kontrollér resultatet online.</p></article>
+          </div>
+          <p class="done-when"><strong>Du er klar, når:</strong> Du kan forklare problemet, ændringen og testen. Du skal ikke aflevere noget.</p>
+          <aside class="notes">
+            Hjælp de studerende med at holde ændringen lille nok. De skal ikke nå alle områder; én gennemført forbedring
+            er bedre end flere halvfærdige ændringer.
+            [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
+          </aside>
+        </section>
+
         <section class="po-slide">
           <span class="eyebrow">Dagens tekniske fundament</span>
           <h2>Robusthed er en arbejdsgang, ikke et enkelt fix</h2>
@@ -815,7 +932,7 @@ if (error) {
             <article><h3>Se hele systemet</h3><p>UI, kode, konfiguration, data og deployment hænger sammen.</p></article>
             <article><h3>Brug agenten kritisk</h3><p>Afgræns, review og verificér frem for at kopiere blindt.</p></article>
             <article><h3>Følg flowet</h3><p>Lokal ændring → commit → GitHub → Actions → bruger.</p></article>
-            <article><h3>Dokumentér effekten</h3><p>Vis hvad der blev bedre, og hvordan du ved det.</p></article>
+            <article><h3>Kontrollér effekten</h3><p>Vis hvad der blev bedre, og hvordan du ved det.</p></article>
           </div>
           <aside class="notes">
             Knyt tilbage til åbningsmodellen og dagens spørgsmål. Hvilke emner føles mere sikre nu?
@@ -824,7 +941,7 @@ if (error) {
           </aside>
         </section>
 
-        <section class="po-slide v-center">
+        <section class="po-slide v-center mode-shared">
           <span class="eyebrow">Exit ticket</span>
           <h2>Hvad vil du undersøge først i din egen Web App?</h2>
           <p class="exit-question">
@@ -840,5 +957,21 @@ if (error) {
       </div>
     </div>
     <script type="module" src="../shared/deck.js"></script>
+    <script type="module">
+      document
+        .querySelectorAll(".slides > section.po-slide:not(.po-title):not(.po-agenda):not(.chapter)")
+        .forEach((slide) => {
+          const indicator = document.createElement("span");
+          indicator.className = "mode-indicator";
+          indicator.textContent = slide.classList.contains("mode-work")
+            ? "ARBEJD INDIVIDUELT"
+            : slide.classList.contains("mode-demo")
+              ? "DEMO · SE MED"
+              : slide.classList.contains("mode-shared")
+                ? "FÆLLES"
+                : "FORKLARING";
+          slide.append(indicator);
+        });
+    </script>
   </body>
 </html>
