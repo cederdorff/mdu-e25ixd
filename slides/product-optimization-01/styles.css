@@ -57,58 +57,22 @@
 }
 
 .reveal .agenda-track {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 72px;
-  margin: 38px 0 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: agenda;
+  margin: 34px 0 0 44px;
+  padding-left: 34px;
 }
 
 .reveal .agenda-track li {
-  display: grid;
-  grid-template-columns: 58px 1fr auto;
-  grid-template-rows: auto auto;
-  column-gap: 18px;
-  min-height: 118px;
-  padding: 16px 0;
-  border-top: 1px solid var(--line);
-  counter-increment: agenda;
-}
-
-.reveal .agenda-track li::before {
-  grid-row: 1 / 3;
-  align-self: start;
-  color: var(--po-blue);
-  content: "0" counter(agenda);
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-}
-
-.reveal .agenda-track .agenda-time {
-  grid-column: 3;
-  grid-row: 1;
-  color: var(--po-blue);
-  font-size: 17px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.reveal .agenda-track strong {
-  grid-column: 2;
+  padding: 9px 0 9px 12px;
   color: var(--ink);
-  font-size: 25px;
+  font-size: 29px;
+  font-weight: 750;
   line-height: 1.2;
 }
 
-.reveal .agenda-track small {
-  grid-column: 2 / 4;
-  margin-top: 7px;
-  color: var(--muted);
-  font-size: 19px;
-  line-height: 1.3;
+.reveal .agenda-track li::marker {
+  color: var(--po-blue);
+  font-size: 20px;
+  font-weight: 900;
 }
 
 .reveal .baseline-question {
@@ -138,14 +102,14 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
-  margin-top: 48px;
+  margin-top: 34px;
   border-top: 3px solid rgb(101 167 255 / 42%);
 }
 
 .reveal .semester-arc article {
   position: relative;
-  min-height: 315px;
-  padding: 34px 28px 22px 0;
+  min-height: 285px;
+  padding: 25px 28px 12px 0;
 }
 
 .reveal .semester-arc article:not(:last-child)::after {
@@ -178,7 +142,7 @@
 }
 
 .reveal .semester-arc h3 {
-  margin-top: 32px;
+  margin-top: 20px;
   font-size: 34px;
 }
 

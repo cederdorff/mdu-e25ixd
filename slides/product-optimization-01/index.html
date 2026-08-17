@@ -28,26 +28,8 @@
           </aside>
         </section>
 
-        <section class="po-slide po-agenda">
-          <span class="eyebrow">Agenda · 3,5 timer</span>
-          <h2>I dag følger vi appen fra udvikling til drift</h2>
-          <ol class="agenda-track">
-            <li><span class="agenda-time">20 min.</span><strong>Tilbageblik og retning</strong><small>Hvad har vi med — og hvad skal genopfriskes?</small></li>
-            <li><span class="agenda-time">35 min.</span><strong>Codex i udviklingsflowet</strong><small>Kontekst, prompts, review og ansvar.</small></li>
-            <li><span class="agenda-time">50 min.</span><strong>Git → GitHub → Actions → Pages</strong><small>Fra lokal ændring til offentlig webapp.</small></li>
-            <li><span class="agenda-time">35 min.</span><strong>Konfiguration og robusthed</strong><small>Base path, routing, miljøvariabler og sikkerhed.</small></li>
-            <li><span class="agenda-time">25 min.</span><strong>a11y og Supabase-overblik</strong><small>Kort repetition samt REST API kontra SDK.</small></li>
-            <li><span class="agenda-time">30 min.</span><strong>Arbejd videre og saml op</strong><small>Prioritér og afprøv en forbedring i appen.</small></li>
-          </ol>
-          <aside class="notes">
-            Gennemgå planen kort, så de studerende kender rækkefølgen og ved, hvornår der kommer arbejdstid.
-            Varighederne er pejlemærker for de faglige blokke. Justér dem efter behovsafdækningen og dagens flow.
-            [Sources] - User-provided teaching duration and direction, 17 August 2026 [/Sources]
-          </aside>
-        </section>
-
         <section class="po-slide">
-          <span class="eyebrow">Forventningsafstemning</span>
+          <span class="eyebrow">Fokus for de to undervisningsgange</span>
           <h2>To undervisningsgange — to forskellige lag</h2>
           <div class="focus-split">
             <article class="focus-today">
@@ -76,6 +58,25 @@
           </aside>
         </section>
 
+        <section class="po-slide po-agenda">
+          <span class="eyebrow">Agenda</span>
+          <h2>I dag følger vi appen fra udvikling til drift</h2>
+          <ol class="agenda-track">
+            <li>Tilbageblik og retning</li>
+            <li>AI som udviklingspartner</li>
+            <li>Git → GitHub → Actions → Pages</li>
+            <li>Konfiguration og robusthed</li>
+            <li>Accessibility-repetition</li>
+            <li>Supabase: REST API og SDK</li>
+            <li>Arbejd videre og saml op</li>
+          </ol>
+          <aside class="notes">
+            Gennemgå planen kort, så de studerende kender rækkefølgen. Pauser og præcis tidsstyring håndteres uden for
+            agendaen. Justér vægten efter behovsafdækningen og dagens flow.
+            [Sources] - User-provided teaching direction, 17 August 2026 [/Sources]
+          </aside>
+        </section>
+
         <section class="po-slide">
           <span class="eyebrow">Tilbageblik · 2. semester · RACE 1–11</span>
           <h2>I startede med JavaScript — og endte med en webapp med database</h2>
@@ -83,29 +84,29 @@
             <article>
               <time datetime="2026-01">Januar</time>
               <span class="race-range">RACE 1–3</span>
-              <h3>Fundamentet</h3>
+              <h3>JavaScript og værktøjer</h3>
               <p>Dev setup, moderne JavaScript, fetch og de første React-komponenter.</p>
             </article>
             <article>
               <time datetime="2026-02">Februar</time>
               <span class="race-range">RACE 4–6</span>
-              <h3>Brugerfladen</h3>
+              <h3>React og komponenter</h3>
               <p>Props, state, hooks, routing, data fetching, styling og accessibility.</p>
             </article>
             <article>
               <time datetime="2026-03">Marts</time>
               <span class="race-range">RACE 7</span>
-              <h3>Leveringen</h3>
+              <h3>Git og deployment</h3>
               <p>Git, branches, pull requests, samarbejde og deployment til GitHub Pages.</p>
             </article>
             <article>
               <time datetime="2026-04">April–maj</time>
               <span class="race-range">RACE 8–11</span>
-              <h3>Webappen</h3>
+              <h3>Supabase og data</h3>
               <p>Supabase, HTTP, REST, forms, CRUD samt filtrering og sortering.</p>
             </article>
           </div>
-          <p class="reflection semester-thesis">Det var ikke 11 løsrevne emner — det var én voksende teknisk kæde.</p>
+          <p class="reflection semester-thesis">Hvert nyt emne byggede videre på det forrige — frem mod en samlet webapp.</p>
           <aside class="notes">
             Brug 3–4 minutter på tidslinjen. Bed de studerende nævne én ting, de husker fra hver fase. Pointen er ikke
             at repetere alt nu, men at aktivere deres eksisterende viden og synliggøre progressionen.
@@ -191,8 +192,8 @@
         <section class="chapter po-chapter po-slide">
           <span class="chapter-index">01</span>
           <span class="eyebrow">AI i udviklingsarbejdet</span>
-          <h2>Codex kan arbejde i projektet — men du ejer beslutningen</h2>
-          <p class="kicker">Brug agenten til at undersøge, forklare, ændre og verificere.</p>
+          <h2>En AI-agent kan arbejde i projektet — men du ejer beslutningen</h2>
+          <p class="kicker">Principperne gælder på tværs af værktøjer. I demoen bruger vi Codex.</p>
           <aside class="notes">
             Overgang: Før vi retter appen, skal vi afklare, hvad værktøjet kan, og hvad vores ansvar stadig er.
             [Sources] - https://learn.chatgpt.com/docs/codex/ide [/Sources]
@@ -222,7 +223,7 @@
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">Codex i VS Code</span>
+          <span class="eyebrow">Eksempel · Codex i VS Code</span>
           <h2>Den bedste kontekst er ofte allerede åben</h2>
           <div class="demo-layout">
             <div class="demo-copy">
@@ -244,7 +245,7 @@
 
         <section class="po-slide">
           <span class="eyebrow">En brugbar opgavebeskrivelse</span>
-          <h2>Giv Codex mål, kontekst, rammer og kontrol</h2>
+          <h2>Giv AI-agenten mål, kontekst, rammer og kontrol</h2>
           <dl class="prompt-anatomy">
             <dt>Mål</dt><dd>Hvad skal være anderledes, når opgaven er løst?</dd>
             <dt>Kontekst</dt><dd>Hvilke filer, fejl, logs eller observationer betyder noget?</dd>
@@ -313,7 +314,7 @@
           <h2>En lokal ændring bliver først værdifuld, når flowet holder</h2>
           <p class="kicker">Nu følger vi ændringen fra VS Code til en offentlig URL.</p>
           <aside class="notes">
-            Overgang: Codex kan hjælpe os lokalt. Nu skal vi forstå hele leveringskæden.
+            Overgang: En AI-agent kan hjælpe os lokalt. Nu skal vi forstå hele leveringskæden.
             [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
           </aside>
         </section>
@@ -430,7 +431,7 @@
             </div>
           </div>
           <aside class="notes">
-            Åbn en run. Vis hvordan man klikker fra workflow til job og videre til det fejlede step. Brug Codex til at
+            Åbn en run. Vis hvordan man klikker fra workflow til job og videre til det fejlede step. Brug en AI-agent til at
             forklare loggen, ikke til at gætte uden loggen.
             [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/images/actions-running.png [/Sources]
           </aside>
@@ -786,7 +787,7 @@ if (error) {
           </div>
           <p class="po-source-link"><a href="https://github.com/cederdorff/react-router-supabase" target="_blank" rel="noopener noreferrer">Åbn starterprojektet</a></p>
           <aside class="notes">
-            Henvis til den kommende opgavebeskrivelse og tjekliste. De må bruge Codex, men skal kunne forklare det
+            Henvis til den kommende opgavebeskrivelse og tjekliste. De må bruge AI-værktøjer, men skal kunne forklare det
             konkrete problem, ændringen og testen.
             [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
           </aside>
