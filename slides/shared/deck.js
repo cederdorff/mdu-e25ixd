@@ -16,7 +16,7 @@ const deck = new Reveal({
   backgroundTransition: "fade",
   slideNumber: "c/t",
   showNotes: false,
-  plugins: [RevealNotes],
+  plugins: [RevealNotes]
 });
 
 await deck.initialize();

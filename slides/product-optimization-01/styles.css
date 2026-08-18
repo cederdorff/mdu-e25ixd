@@ -2392,6 +2392,50 @@
   white-space: pre-wrap;
 }
 
+.reveal pre.po-code code.hljs {
+  display: block;
+  padding: 0;
+  overflow-x: auto;
+  background: transparent;
+}
+
+.reveal pre.po-code .hljs-comment,
+.reveal pre.po-code .hljs-quote {
+  color: #71827a;
+}
+
+.reveal pre.po-code .hljs-keyword,
+.reveal pre.po-code .hljs-selector-tag,
+.reveal pre.po-code .hljs-literal,
+.reveal pre.po-code .hljs-name {
+  color: #ff7b9c;
+}
+
+.reveal pre.po-code .hljs-string,
+.reveal pre.po-code .hljs-regexp,
+.reveal pre.po-code .hljs-attribute,
+.reveal pre.po-code .hljs-symbol {
+  color: #f4c95d;
+}
+
+.reveal pre.po-code .hljs-title,
+.reveal pre.po-code .hljs-title.function_,
+.reveal pre.po-code .hljs-variable,
+.reveal pre.po-code .hljs-template-variable {
+  color: #65a7ff;
+}
+
+.reveal pre.po-code .hljs-number,
+.reveal pre.po-code .hljs-type,
+.reveal pre.po-code .hljs-built_in {
+  color: #3ecf8e;
+}
+
+.reveal pre.po-code .hljs-punctuation,
+.reveal pre.po-code .hljs-operator {
+  color: #d9e2df;
+}
+
 .reveal .request-parts {
   display: grid;
   gap: 16px;
@@ -2428,6 +2472,14 @@
 
 .reveal .code-comparison article:last-child > h3 {
   color: var(--green);
+}
+
+.reveal .comparison-lead {
+  min-height: 54px;
+  margin: -6px 0 16px;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.35;
 }
 
 .reveal .code-comparison + .reflection {

@@ -20,7 +20,6 @@
           <h1>Fra “det virker hos mig” <span>til “det virker hele vejen”</span></h1>
           <p class="lead">Web App-forbedringer og teknisk fundament</p>
           <p class="date"><span>RACE</span><time datetime="2026-08-19">19. august 2026</time></p>
-          
         </section>
 
         <section class="po-slide">
@@ -43,7 +42,6 @@
           <p class="focus-footnote">
             Vi ser stadig kode i dag — men som del af et <strong>flow</strong>, ikke som syntakstræning.
           </p>
-          
         </section>
 
         <section class="po-slide po-agenda">
@@ -99,7 +97,6 @@
               </a>
             </li>
           </ol>
-          
         </section>
 
         <section class="po-slide po-scrimba">
@@ -141,7 +138,6 @@
               <figcaption><strong>Tip:</strong> Se efter det blå <span>Free</span>-mærke på kurserne.</figcaption>
             </figure>
           </div>
-          
         </section>
 
         <section class="po-slide" id="tilbageblik-og-projektstart">
@@ -176,7 +172,6 @@
           <p class="reflection semester-thesis">
             Hvert nyt emne byggede videre på det forrige — frem mod en samlet webapp.
           </p>
-          
         </section>
 
         <section class="po-slide">
@@ -218,7 +213,6 @@
             På ét semester gik I fra basal JavaScript til en webapp med
             <strong>komponenter, routing, database og deployment</strong>.
           </p>
-          
         </section>
 
         <section class="po-slide mode-shared">
@@ -233,7 +227,6 @@
             ><span>Git, samarbejde og deployment</span><span>Supabase</span><span>HTTP og REST API</span
             ><span>forms og CRUD</span><span>filter og sortering</span><span>noget andet?</span>
           </div>
-          
         </section>
 
         <section class="po-slide">
@@ -258,7 +251,6 @@
               <p class="system-thesis-proof">I har allerede arbejdet med alle fire lag.</p>
             </div>
           </div>
-          
         </section>
 
         <section class="po-slide mode-work">
@@ -304,7 +296,6 @@
               >Læs projektets README</a
             >
           </p>
-          
         </section>
 
         <section class="po-slide mode-work local-check-slide">
@@ -335,7 +326,6 @@
           <p class="local-check-next">
             Når forsiden virker lokalt, er du klar til at følge projektet videre gennem Git og GitHub.
           </p>
-          
         </section>
 
         <section class="chapter po-chapter po-slide" id="git-github-deployment">
@@ -343,7 +333,6 @@
           <span class="eyebrow">Git, GitHub og deployment</span>
           <h2>Et push til main sætter resten af flowet i gang</h2>
           <p class="kicker">Vi følger én ændring fra VS Code til GitHub Pages.</p>
-          
         </section>
 
         <section class="po-slide">
@@ -389,7 +378,6 @@
               <p>Kontrollér resultatet på den offentlige URL.</p>
             </article>
           </div>
-          
         </section>
 
         <section class="po-slide git-local-slide">
@@ -411,7 +399,6 @@
               />
             </figure>
           </div>
-          
         </section>
 
         <section class="po-slide git-handoff-slide">
@@ -435,7 +422,6 @@
             </article>
           </div>
           <p class="reflection">En god commit fortæller én sammenhængende historie.</p>
-          
         </section>
 
         <section class="po-slide git-handoff-slide">
@@ -458,7 +444,6 @@
           <div class="callout">
             <p><strong>Senere udvider vi flowet:</strong> branch → pull request → review → main.</p>
           </div>
-          
         </section>
 
         <section class="po-slide git-online-slide">
@@ -485,7 +470,6 @@
           <p class="reflection actions-takeaway">
             GitHub Actions kører workflow-filen på GitHub — ikke på din computer.
           </p>
-          
         </section>
 
         <section class="po-slide git-online-slide actions-inspect-slide">
@@ -511,7 +495,6 @@
             <strong>Klik dig ned i kørslen</strong>
             <span>Workflow run → job → step → log</span>
           </div>
-          
         </section>
 
         <section class="po-slide git-online-slide actions-error-slide">
@@ -549,7 +532,6 @@
           <p class="error-method">
             <strong>Samme metode hver gang:</strong> run → job → første røde step → konkret fejltekst.
           </p>
-          
         </section>
 
         <section class="po-slide git-online-slide agent-error-slide">
@@ -576,7 +558,6 @@
               </p>
             </blockquote>
           </div>
-          
         </section>
 
         <section class="po-slide git-online-slide pages-overview-slide">
@@ -608,7 +589,6 @@
             <strong>Inden første deployment:</strong> Sæt <code>base</code> i projektets <code>package.json</code>, og
             vælg <strong>GitHub Actions</strong> som Pages-kilde i repositoryets indstillinger.
           </p>
-          
         </section>
 
         <section class="po-slide git-online-slide pages-path-slide">
@@ -635,7 +615,6 @@
             <span><strong>Buildfil</strong><code>assets/index.js</code></span>
           </div>
           <p class="reflection">På Pages skal alle tre findes efter den samme base path.</p>
-          
         </section>
 
         <section class="po-slide git-online-slide pages-solutions-slide">
@@ -678,7 +657,6 @@
           <p class="reflection">
             <strong>Base path</strong> retter adresserne. <strong>Fallback</strong> starter appen ved en direkte route.
           </p>
-          
         </section>
 
         <section class="po-slide git-online-slide pages-first-setup-slide">
@@ -689,7 +667,7 @@
               <span class="setup-place">Lokalt · VS Code</span>
               <h3>1 · Ret <code>package.json</code></h3>
               <p class="setup-where">Projektets rodmappe → <code>package.json</code></p>
-              <pre class="po-code"><code>{
+              <pre class="po-code"><code class="language-json">{
   "base": "/web-app-optimization/"
 }</code></pre>
               <p>Værdien skal matche repositoryets navn — inklusive skråstregerne.</p>
@@ -709,7 +687,6 @@
             <span>Gør begge dele før dit første push til <code>main</code>.</span>
             <span>Ved push starter workflowet automatisk.</span>
           </div>
-          
         </section>
 
         <section class="po-slide mode-demo">
@@ -740,7 +717,6 @@
               </p>
             </div>
           </div>
-          
         </section>
 
         <section class="po-slide mode-shared pages-check-slide">
@@ -765,7 +741,6 @@
             </article>
           </div>
           <p class="reflection">Deployment er først kontrolleret, når appen også virker i browseren.</p>
-          
         </section>
 
         <section class="po-slide mode-work">
@@ -809,7 +784,6 @@
             <strong>Du er klar, når:</strong> Workflowet er grønt, billederne vises, og <code>/posts</code> åbner efter
             refresh uden en GitHub 404-side. Der skal ikke afleveres noget.
           </p>
-          
         </section>
 
         <section class="po-slide branch-why-slide" id="feature-branches">
@@ -851,7 +825,6 @@
           <p class="reflection">
             Branches fjerner ikke konflikter — de giver teamet et kontrolleret sted at opdage og løse dem.
           </p>
-          
         </section>
 
         <section class="po-slide branch-deployment-flow-slide" id="branch-til-deployment">
@@ -903,7 +876,6 @@
             <span><strong>Push til feature branch</strong> → ændringen er på GitHub, men deployes ikke</span>
             <span><strong>Merge til main</strong> → main ændres → workflowet starter → Pages opdateres</span>
           </div>
-          
         </section>
 
         <section class="po-slide mode-demo pr-anatomy-slide" id="pull-request">
@@ -943,7 +915,6 @@
           <p class="reflection">
             I et team reviewer en anden person normalt PR’en. I dag øver du selv kontrolpunkterne.
           </p>
-          
         </section>
 
         <section class="po-slide mode-work branch-pr-exercise-slide" id="opgave-branch-og-pr">
@@ -982,7 +953,6 @@
             <strong>Hvis du ikke ser din branch:</strong> Kontrollér, at du valgte <em>Publish Branch</em> — ikke push
             til <code>main</code>.
           </p>
-          
         </section>
 
         <section class="chapter po-chapter po-slide" id="konfiguration-og-environment-variables">
@@ -990,7 +960,6 @@
           <span class="eyebrow">Konfiguration</span>
           <h2>Konfiguration uden hardcoding</h2>
           <p class="kicker">Environment variables giver den samme kode forskellige værdier i forskellige miljøer.</p>
-          
         </section>
 
         <section class="po-slide env-definition-slide">
@@ -1014,7 +983,6 @@
             </article>
           </div>
           <p class="reflection"><code>.env</code> er filen — environment variables er værdierne.</p>
-          
         </section>
 
         <section class="po-slide env-why-slide">
@@ -1027,13 +995,13 @@
           <div class="env-code-choice">
             <article class="env-development">
               <span>Development · lokalt</span>
-              <pre class="po-code"><code>VITE_SUPABASE_URL=
+              <pre class="po-code"><code class="language-bash">VITE_SUPABASE_URL=
 https://dev-project…/posts</code></pre>
               <p>Kan pege på en database med testdata, som vi trygt kan udvikle imod.</p>
             </article>
             <article class="env-production">
               <span>Production · online</span>
-              <pre class="po-code"><code>VITE_SUPABASE_URL=
+              <pre class="po-code"><code class="language-bash">VITE_SUPABASE_URL=
 https://prod-project…/posts</code></pre>
               <p>Kan pege på den database, som den færdige webapp skal bruge.</p>
             </article>
@@ -1044,7 +1012,6 @@ https://prod-project…/posts</code></pre>
             <span><strong>Konfiguration</strong> styres uden for komponenterne</span>
           </div>
           <p class="reflection">Variabelnavnet og koden er de samme — miljøet bestemmer værdien.</p>
-          
         </section>
 
         <section class="po-slide env-environments-slide">
@@ -1071,7 +1038,6 @@ https://prod-project…/posts</code></pre>
           <p class="reflection">
             Vi sender ikke <code>.env</code> til GitHub — vi konfigurerer online-miljøet separat.
           </p>
-          
         </section>
 
         <section class="po-slide env-git-slide">
@@ -1099,7 +1065,6 @@ https://prod-project…/posts</code></pre>
             <span><code>.env</code> må ikke stå i Source Control-listen.</span>
             <span>Hvis den vises: Tilføj <code>.env</code> til <code>.gitignore</code>.</span>
           </div>
-          
         </section>
 
         <section class="po-slide github-environment-locate-slide">
@@ -1121,7 +1086,6 @@ https://prod-project…/posts</code></pre>
               />
             </figure>
           </div>
-          
         </section>
 
         <section class="po-slide github-environment-vars-slide">
@@ -1149,7 +1113,6 @@ https://prod-project…/posts</code></pre>
             </figure>
           </div>
           <p class="reflection">Nye værdier bruges først, næste gang workflowet bygger appen.</p>
-          
         </section>
 
         <section class="po-slide env-browser-boundary-slide">
@@ -1175,7 +1138,6 @@ https://prod-project…/posts</code></pre>
             Brug kun Supabase URL og <strong>publishable key</strong> i frontend — aldrig passwords, private tokens
             eller service-keys.
           </p>
-          
         </section>
 
         <section class="po-slide mode-work">
@@ -1216,7 +1178,6 @@ https://prod-project…/posts</code></pre>
             <strong>Du er klar, når:</strong> De udleverede posts vises både lokalt og på Pages — og <code>.env</code>
             stadig ikke står i Source Control.
           </p>
-          
         </section>
 
         <section class="po-slide mode-work own-environment-work">
@@ -1265,7 +1226,6 @@ https://prod-project…/posts</code></pre>
             <strong>Du er klar, når:</strong> Den samme React-kode viser data fra din Supabase lokalt og online — og
             <code>.env</code> stadig ikke fremgår af Source Control.
           </p>
-          
         </section>
 
         <section class="chapter po-chapter po-slide" id="metadata-og-identitet">
@@ -1273,7 +1233,6 @@ https://prod-project…/posts</code></pre>
           <span class="eyebrow">Metadata og identitet</span>
           <h2>Fjern template-rester — og gør appen til din egen</h2>
           <p class="kicker">Titel, beskrivelse, favicon, sprog og indhold skal passe til løsningen.</p>
-          
         </section>
 
         <section class="po-slide">
@@ -1300,7 +1259,6 @@ https://prod-project…/posts</code></pre>
               ><span>Gennemlæs dokumentation og setup-guides — fjern det, der kun hører til templaten.</span>
             </li>
           </ul>
-          
         </section>
 
         <section class="po-slide mode-work">
@@ -1324,7 +1282,6 @@ https://prod-project…/posts</code></pre>
             <strong>Du er klar, når:</strong> Du har gennemgået alle seks punkter fra forrige slide og kan vise, hvad du
             har ændret, eller hvorfor punktet allerede var på plads.
           </p>
-          
         </section>
 
         <section class="chapter po-chapter po-slide" id="accessibility">
@@ -1332,7 +1289,6 @@ https://prod-project…/posts</code></pre>
           <span class="eyebrow">Accessibility</span>
           <h2>Hov, har I glemt det?</h2>
           <p class="kicker">På 2. semester arbejdede vi med accessibility i React — lad os få det tilbage!</p>
-          
         </section>
 
         <section class="po-slide">
@@ -1373,7 +1329,6 @@ https://prod-project…/posts</code></pre>
               </p>
             </article>
           </div>
-          
         </section>
 
         <section class="po-slide mode-work">
@@ -1410,7 +1365,6 @@ https://prod-project…/posts</code></pre>
             <strong>Du er klar, når:</strong> Du har lavet én forbedring og kan forklare, hvilket a11y-princip du har
             brugt.
           </p>
-          
         </section>
 
         <section class="chapter po-chapter po-slide" id="supabase-rest-og-sdk">
@@ -1418,14 +1372,13 @@ https://prod-project…/posts</code></pre>
           <span class="eyebrow">Supabase</span>
           <h2>REST er grænsefladen — SDK’et er et værktøj ovenpå</h2>
           <p class="kicker">De kan nå de samme data, men de giver os forskellige måder at arbejde på.</p>
-          
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">Supabase Data REST API</span>
-          <h2>Databasen bliver til HTTP-endpoints</h2>
+          <span class="eyebrow">REST · grundidéen</span>
+          <h2>En web app sender requests og modtager responses</h2>
           <div class="rest-anatomy">
-            <pre class="po-code"><code>const response = await fetch(
+            <pre class="po-code"><code class="language-javascript">const response = await fetch(
   `${SUPABASE_URL}/rest/v1/posts`,
   {
     headers: {
@@ -1438,33 +1391,36 @@ https://prod-project…/posts</code></pre>
 const posts = await response.json();</code></pre>
             <div class="request-parts">
               <article>
-                <h3>URL</h3>
-                <p>Projekt + <code>/rest/v1/</code> + tabel.</p>
+                <h3>Request</h3>
+                <p>URL, HTTP-metode, headers og eventuelt en body.</p>
               </article>
               <article>
-                <h3>HTTP</h3>
-                <p>Metode, headers, query-parametre og body.</p>
+                <h3>Metoder</h3>
+                <p>
+                  <code>GET</code> læser, <code>POST</code> opretter, <code>PATCH</code> ændrer,
+                  <code>DELETE</code> fjerner.
+                </p>
               </article>
               <article>
-                <h3>Svar</h3>
-                <p>Statuskode, headers og JSON-data.</p>
+                <h3>Response</h3>
+                <p>Statuskode, headers og data — eller en fejl, vi skal håndtere.</p>
               </article>
               <article>
-                <h3>Din kode</h3>
-                <p>Håndterer loading, fejl og tomme resultater.</p>
+                <h3>REST</h3>
+                <p>Et fælles princip for at arbejde med ressourcer via HTTP.</p>
               </article>
             </div>
           </div>
-          
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">REST og JavaScript SDK</span>
-          <h2>Samme intention — forskellig mængde håndarbejde</h2>
+          <span class="eyebrow">REST · JavaScript · SDK</span>
+          <h2>REST er generelt — SDK’et er platformspecifikt</h2>
           <div class="code-comparison">
             <article>
-              <h3>Direkte REST med fetch</h3>
-              <pre class="po-code"><code>const response = await fetch(URL, {
+              <h3>REST med HTTP</h3>
+              <p class="comparison-lead">Du bruger browserens generelle HTTP-værktøj direkte.</p>
+              <pre class="po-code"><code class="language-javascript">const response = await fetch(URL, {
   headers: { apikey: key }
 });
 
@@ -1476,7 +1432,8 @@ const data = await response.json();</code></pre>
             </article>
             <article>
               <h3>Supabase JavaScript SDK</h3>
-              <pre class="po-code"><code>const { data, error } = await supabase
+              <p class="comparison-lead">Du bruger Supabases eget bibliotek og dets API.</p>
+              <pre class="po-code"><code class="language-javascript">const { data, error } = await supabase
   .from("posts")
   .select("*");
 
@@ -1485,49 +1442,61 @@ if (error) {
 }</code></pre>
             </article>
           </div>
-          <p class="reflection">SDK’et giver os et mere specialiseret sprog til API’et.</p>
-          
+          <div class="callout">
+            <p>
+              <strong>REST:</strong> En generel måde at udveksle data over HTTP på. Den samme forståelse kan bruges med
+              Supabase, Firebase, AWS eller jeres egen backend. <strong>SDK:</strong> Et bibliotek lavet til en bestemt
+              platform eller tjeneste, som pakker requests og responses ind i et mere specialiseret JavaScript-sprog.
+            </p>
+          </div>
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">Hvad får vi med SDK’et?</span>
-          <h2>Én klient samler flere Supabase-produkter</h2>
+          <span class="eyebrow">SDK · næste niveau</span>
+          <h2>Et SDK kan gøre mere end simple requests</h2>
           <div class="sdk-rings">
             <article>
-              <h3>Database</h3>
-              <p>Læs, opret, opdatér, slet, filtrér og hent relationer med en query builder.</p>
+              <h3>Abstraktion</h3>
+              <p>Biblioteket omsætter JavaScript-kald til requests, headers og responses.</p>
             </article>
             <article>
-              <h3>Auth</h3>
-              <p>Login, sessioner, brugerdata og tokens i samme klient.</p>
+              <h3>Flere features</h3>
+              <p>Et SDK kan samle database, auth, realtime, storage eller andre platformstjenester.</p>
             </article>
             <article>
-              <h3>Realtime</h3>
-              <p>Lyt til ændringer og byg interfaces, der opdaterer løbende.</p>
+              <h3>Convenience</h3>
+              <p>Vi skriver mindre gentaget HTTP-kode og arbejder i et sprog, der passer til platformen.</p>
             </article>
             <article>
-              <h3>Storage + Functions</h3>
-              <p>Arbejd med filer og kald server-side Edge Functions.</p>
+              <h3>Stadig netværk</h3>
+              <p>SDK’et fjerner ikke request, response, statuskoder eller fejl — det pakker dem ind.</p>
             </article>
           </div>
-          
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">Dagens valg</span>
-          <h2>Vi beholder REST, så netværkslaget forbliver synligt</h2>
+          <span class="eyebrow">Hvorfor REST på 2. semester?</span>
+          <h2>Vi valgte REST for at gøre teknologien synlig</h2>
           <div class="split">
             <div>
-              <p class="statement">I dag skal vi kunne se <strong>URL, headers, status og JSON</strong>.</p>
+              <p class="statement">
+                I skulle forstå <strong>URL, HTTP-metoder, headers, status og JSON</strong> — uanset om backend senere
+                er Supabase, Firebase, AWS eller jeres egen.
+              </p>
             </div>
             <div>
               <p class="statement">
-                Senere bruger vi SDK’et, når vi skal bygge <strong>mere</strong> end simple requests.
+                Det er helt okay, at nogle brugte SDK’et i web appen. Vi kommer til at bruge SDK’er på
+                <strong>3. semester</strong>.
               </p>
             </div>
           </div>
-          <div class="callout"><p>Valget handler om læringsmål og kompleksitet — ikke om at REST er “forkert”.</p></div>
-          
+          <div class="callout">
+            <p>
+              REST var et bevidst læringsvalg — ikke en dom over SDK’er. Først forstå laget, derefter brug det værktøj,
+              der giver mening.
+            </p>
+          </div>
         </section>
 
         <section class="chapter po-chapter po-slide" id="ai-i-udviklingsarbejdet">
@@ -1535,7 +1504,6 @@ if (error) {
           <span class="eyebrow">AI i udviklingsarbejdet</span>
           <h2>En AI-agent kan arbejde i projektet — men du ejer beslutningen</h2>
           <p class="kicker">Principperne gælder på tværs af værktøjer. I demoen bruger vi Codex.</p>
-          
         </section>
 
         <section class="po-slide">
@@ -1561,7 +1529,6 @@ if (error) {
             </article>
           </div>
           <p class="reflection">Mere handlekraft kræver mere afgrænsning, review og test.</p>
-          
         </section>
 
         <section class="po-slide">
@@ -1580,7 +1547,6 @@ if (error) {
               </p>
             </div>
           </div>
-          
         </section>
 
         <section class="po-slide">
@@ -1596,7 +1562,6 @@ if (error) {
             <dt>Kontrol</dt>
             <dd>Hvordan skal løsningen testes og forklares?</dd>
           </dl>
-          
         </section>
 
         <section class="po-slide">
@@ -1608,7 +1573,6 @@ if (error) {
             Del aldrig værdier fra .env. Forklar årsagen før du ændrer noget.<br />
             Foreslå derefter den mindste rettelse og hvordan vi reproducerer testen lokalt.
           </div>
-          
         </section>
 
         <section class="po-slide">
@@ -1629,7 +1593,6 @@ if (error) {
             </article>
           </div>
           <p class="reflection">Du skal stadig forstå ændringen godt nok til at forklare og teste den.</p>
-          
         </section>
 
         <section class="po-slide">
@@ -1649,7 +1612,6 @@ if (error) {
               <b>04</b><span>Kør appen, lint og relevante tests. Et overbevisende svar er ikke et testresultat.</span>
             </li>
           </ul>
-          
         </section>
 
         <section class="po-slide mode-work">
@@ -1677,20 +1639,18 @@ if (error) {
             <strong>Du er klar, når:</strong> Du selv kan forklare én forbindelse mellem to af filerne — også uden
             agentens svar.
           </p>
-          
         </section>
 
         <section class="chapter po-chapter po-slide" id="forbedr-og-saml-op">
           <span class="chapter-index">07</span>
-          <span class="eyebrow">Arbejd videre</span>
-          <h2>Vælg ét sted i kæden og gør det mere robust</h2>
-          <p class="kicker">Ingen aflevering — målet er at få processen og begreberne i fingrene.</p>
-          
+          <span class="eyebrow">Tag læringen med videre</span>
+          <h2>Brug dagens blik på din egen web app</h2>
+          <p class="kicker">Når du har lyst, kan du overføre dagens læring til et konkret sted i din egen løsning.</p>
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">Når alt virker vigtigt</span>
-          <h2>Prioritér efter konsekvens — ikke efter hvor let det ser ud</h2>
+          <span class="eyebrow">Hvis du arbejder videre</span>
+          <h2>Start dér, hvor en forbedring gør størst forskel</h2>
           <div class="priority-stack">
             <article>
               <h3>Appen kan ikke bruges</h3>
@@ -1709,12 +1669,11 @@ if (error) {
               <p>Oprydning, navngivning og struktur uden akut bruger- eller driftskonsekvens.</p>
             </article>
           </div>
-          
         </section>
 
-        <section class="po-slide mode-work">
-          <span class="eyebrow">Opgave 8 · Arbejd individuelt</span>
-          <h2>Vælg én forbedring og før den helt igennem</h2>
+        <section class="po-slide">
+          <span class="eyebrow">Et muligt næste skridt</span>
+          <h2>Vælg selv, om du vil føre én forbedring videre</h2>
           <div class="assignment-flow">
             <article>
               <h3>Find</h3>
@@ -1734,15 +1693,14 @@ if (error) {
             </article>
           </div>
           <p class="done-when">
-            <strong>Du er klar, når:</strong> Du kan forklare problemet, ændringen og testen. Du skal ikke aflevere
-            noget.
+            <strong>Hvis du gør det:</strong> Forklar problemet, ændringen og hvordan du kontrollerer effekten. Det er
+            helt frivilligt.
           </p>
-          
         </section>
 
         <section class="po-slide">
           <span class="eyebrow">Dagens tekniske fundament</span>
-          <h2>Robusthed er en arbejdsgang, ikke et enkelt fix</h2>
+          <h2>Det er dét, du kan tage med fra i dag</h2>
           <div class="closing-loop">
             <article>
               <h3>Se hele systemet</h3>
@@ -1761,16 +1719,15 @@ if (error) {
               <p>Vis hvad der blev bedre, og hvordan du ved det.</p>
             </article>
           </div>
-          
         </section>
 
         <section class="po-slide v-center mode-shared">
-          <span class="eyebrow">Exit ticket</span>
-          <h2>Hvad vil du undersøge først i din egen Web App?</h2>
+          <span class="eyebrow">Til eftertanke</span>
+          <h2>Er der noget fra i dag, du vil bruge i din egen web app?</h2>
           <p class="exit-question">
-            Skriv én konkret forbedring, <strong>hvorfor den er vigtig</strong>, og hvordan du vil kontrollere effekten.
+            Hvis ja: Notér én konkret forbedring, <strong>hvorfor den er vigtig</strong>, og hvordan du vil kontrollere
+            effekten.
           </p>
-          
         </section>
       </div>
     </div>
