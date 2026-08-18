@@ -29,20 +29,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>2. AI og agenter i udviklingsarbejdet</strong></summary>
-<ul>
-<li>Afklar, hvornår AI er nyttig – og hvornår den ikke er.</li>
-<li>Skeln mellem en chat, der svarer, og en agent, der også kan undersøge filer, køre kommandoer og ændre kode.</li>
-<li>Brug AI til at forklare fejl, undersøge logs, opstille hypoteser og foreslå små rettelser. Giv kun den relevante fejl, kontekst og det ønskede resultat.</li>
-<li>Afgræns opgaven, og gennemgå altid forslag, kommandoer og ændringer.</li>
-<li>Del aldrig private nøgler, tokens, hele <code>.env</code>-filer eller andre hemmelige oplysninger.</li>
-<li>Du har ansvaret for at forstå, vælge, teste og forklare løsningen.</li>
-<li>Se, hvordan RACE arbejder med AI og agenter, og hvordan I kan bruge værktøjerne i praksis.</li>
-</ul>
-</details>
-
-<details style="margin-left: 1.5rem;">
-<summary><strong>3. GitHub-flow og automatisk deployment</strong></summary>
+<summary><strong>2. GitHub-flow og automatisk deployment</strong></summary>
 <ul>
 <li>Repetér flowet: feature branch → pull request → <code>main</code> → GitHub Actions → GitHub Pages.</li>
 <li>Se, hvordan automatisk deployment gør processen ensartet og reproducerbar.</li>
@@ -53,7 +40,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>4. Environment variables lokalt og online</strong></summary>
+<summary><strong>3. Environment variables lokalt og online</strong></summary>
 <ul>
 <li>Hold konfiguration ude af kildekoden. Brug <code>VITE_SUPABASE_URL</code> og <code>VITE_SUPABASE_APIKEY</code> via <code>import.meta.env</code>.</li>
 <li>Brug <code>.env.local</code> lokalt, dokumentér variablerne i <code>.env.example</code>, og commit ikke din lokale <code>.env</code>-fil.</li>
@@ -63,7 +50,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>5. Identitet, metadata og template-oprydning</strong></summary>
+<summary><strong>4. Identitet, metadata og template-oprydning</strong></summary>
 <ul>
 <li>Fjern appnavn, logo og andre template-rester.</li>
 <li>Opdatér dokumenttitel, meta description, favicon og <code>lang</code>, så identitet og metadata passer til løsningen.</li>
@@ -71,7 +58,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>6. Accessibility tilbage i løsningen</strong></summary>
+<summary><strong>5. Accessibility tilbage i løsningen</strong></summary>
 <ul>
 <li>Genbesøg semantisk HTML, labels, alternativ tekst, tastaturnavigation og synligt fokus.</li>
 <li>Find og ret konkrete problemer. Accessibility var et fokus på 2. semester, men manglede i mange Web Apps.</li>
@@ -79,7 +66,7 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>7. Supabase via REST og SDK – kort introduktion</strong></summary>
+<summary><strong>6. Supabase via REST og SDK – kort introduktion</strong></summary>
 <ul>
 <li>Hvad er REST og SDK, hvad er forskellen, og hvad abstraherer SDK'et?</li>
 <li>Behold REST i løsningen. Vi vender tilbage til SDK'et senere på semesteret.</li>
@@ -87,9 +74,25 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>8. Gennemgå din egen Web App</strong></summary>
+<summary><strong>7. AI og agenter i udviklingsarbejdet</strong></summary>
 <ul>
-<li>Undersøg deployment, environment variables, template-rester, metadata, identitet og accessibility.</li>
+<li>Afklar, hvornår AI er nyttig – og hvornår den ikke er.</li>
+<li>Skeln mellem en chat, der svarer, og en agent, der også kan undersøge filer, køre kommandoer og ændre kode.</li>
+<li>Brug AI til at genbesøge et af dagens emner og foreslå en konkret forbedring. Giv kun relevant kode, kontekst og det ønskede resultat.</li>
+<li>Afgræns opgaven, og gennemgå altid forslag, kommandoer og ændringer.</li>
+<li>AI kan tage fejl. Find kilden i projektet, læs diffet, og kontrollér resultatet med konkrete tests.</li>
+<li>Del aldrig private nøgler, tokens, persondata, hele <code>.env</code>-filer eller andre følsomme oplysninger.</li>
+<li>Du har ansvaret for at forstå, vælge, teste og forklare løsningen.</li>
+<li>Dokumentér også, hvis et AI-forslag var forkert eller blev afvist.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>8. Forbedr og evaluér din egen Web App</strong></summary>
+<ul>
+<li>Vælg et af dagens emner, og brug eventuelt AI til at undersøge og forbedre et konkret problem.</li>
+<li>Kontrollér forslaget i projektet, test resultatet, og notér hvis et AI-forslag blev afvist eller korrigeret.</li>
+<li>Undersøg derefter deployment, environment variables, template-rester, metadata, identitet og accessibility.</li>
 <li>Lav en kort, prioriteret forbedringsliste, og begynd på den vigtigste rettelse, hvis der er tid.</li>
 <li>Fortsæt resten som hjemmearbejde.</li>
 </ul>
@@ -100,7 +103,8 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
 ## Materialer
 
 - **Slides:**
-  - Vil blive tilgængelige her
+  - [Web App-forbedringer og teknisk fundament](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/)
+  - [PDF-version: Web App-forbedringer og teknisk fundament](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/?print-pdf)
 - **Opgaver:**
   - Udleveret React-løsning, forbedringskrav og tjekliste til egen Web App vil blive tilgængelige her
 - **React:**
@@ -111,10 +115,6 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
   - [GitHub Pages](https://vite.dev/guide/static-deploy.html#github-pages)
   - [Custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
   - [GitHub Actions-variabler](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables)
-- **OpenAI Codex:**
-  - [OpenAI Codex](https://developers.openai.com/codex/)
-  - [Codex for VS Code](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt)
-
 - **Supabase:**
   - [Supabase API keys](https://supabase.com/docs/guides/getting-started/api-keys)
   - [Supabase Project Pausing - How to resume](https://supabase.com/docs/guides/platform/free-project-pausing)
