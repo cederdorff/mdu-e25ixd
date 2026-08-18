@@ -62,13 +62,13 @@
           <span class="eyebrow">Agenda</span>
           <h2>I dag følger vi appen fra udvikling til drift</h2>
           <ol class="agenda-track">
-            <li><strong>Tilbageblik og retning</strong><small>Hvad har vi med — og hvad skal genopfriskes?</small></li>
+            <li><strong>Tilbageblik og fokus</strong><small>Hvad har vi med — og hvad skal genopfriskes?</small></li>
             <li><strong>AI som udviklingspartner</strong><small>Kontekst, prompts, review og ansvar.</small></li>
-            <li><strong>Git → GitHub → Actions → Pages</strong><small>Fra lokal ændring til offentlig webapp.</small></li>
-            <li><strong>Konfiguration og robusthed</strong><small>Base path, routing, miljøvariabler og sikkerhed.</small></li>
-            <li><strong>Accessibility-repetition</strong><small>Semantik, tastatur, fokus og hurtige checks.</small></li>
+            <li><strong>Git → GitHub → Actions → Pages</strong><small>Fra lokal ændring til offentlig webapp — inklusive fejllogs.</small></li>
+            <li><strong>Konfiguration på tværs af miljøer</strong><small>Base path, routing, .env og GitHub repository variables.</small></li>
+            <li><strong>Metadata og accessibility</strong><small>Fjern template-rester, test tastatur og kontrollér fokus.</small></li>
             <li><strong>Supabase: REST API og SDK</strong><small>Forskelle, muligheder og hvorfor vi fortsætter med REST.</small></li>
-            <li><strong>Arbejd videre og saml op</strong><small>Prioritér og afprøv en forbedring i appen.</small></li>
+            <li><strong>Forbedr og saml op</strong><small>Vælg en forbedring, før den gennem flowet og forklar effekten.</small></li>
           </ol>
           <aside class="notes">
             Gennemgå planen kort, så de studerende kender rækkefølgen. Pauser og præcis tidsstyring håndteres uden for
@@ -80,12 +80,32 @@
         <section class="po-slide po-scrimba">
           <span class="eyebrow">Nyt værktøj dette semester</span>
           <h2>Scrimba kombinerer video og kode</h2>
-          <div class="scrimba-brief">
-            <p>Du kan pause en forklaring, ændre underviserens kode direkte i browseren og se resultatet med det samme.</p>
-            <p class="scrimba-semester">Vi kommer til at bruge Scrimba flere gange gennem semesteret — både i undervisningen og som mulighed for repetition.</p>
+          <div class="scrimba-layout">
+            <div class="scrimba-copy">
+              <div class="scrimba-brief">
+                <p class="scrimba-lead">Videoen er også en kodeeditor.</p>
+                <div class="scrimba-flow" aria-label="Arbejdsgangen i Scrimba">
+                  <span><small>01</small>Pause</span>
+                  <i aria-hidden="true">→</i>
+                  <span><small>02</small>Redigér</span>
+                  <i aria-hidden="true">→</i>
+                  <span><small>03</small>Kør</span>
+                </div>
+                <p class="scrimba-semester">Stop forklaringen, ændr koden direkte i browseren og se resultatet med det samme.</p>
+              </div>
+              <div class="scrimba-free-note">
+                <span class="scrimba-free-badge">Free</span>
+                <p>Vælg gratis kurser. Møder du en betalingsprompt, kan du vælge <strong>Skip</strong> og fortsætte videoen.</p>
+                <a href="https://scrimba.com/courses" target="_blank" rel="noopener noreferrer">Find gratis kurser <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+            <figure class="scrimba-shot">
+              <div class="scrimba-shot-frame">
+                <img src="../assets/product-optimization-01/scrimba.png" alt="Scrimbas dashboard med en oversigt over gratis og betalte kurser" />
+              </div>
+              <figcaption><strong>Tip:</strong> Se efter det blå <span>Free</span>-mærke på kurserne.</figcaption>
+            </figure>
           </div>
-          <p class="scrimba-free-note"><strong>Gratis adgang:</strong> Vælg kurser markeret <em>Tier Free</em>. Møder du en betalingsprompt, kan du vælge <strong>Skip</strong> og fortsætte lektionerne; interaktive challenges kan være begrænsede.</p>
-          <p class="po-source-link"><a href="https://scrimba.com/courses" target="_blank" rel="noopener noreferrer">Find gratis kurser på Scrimba</a></p>
           <aside class="notes">
             Forklar kort, at Scrimba kan bruges som repetition mellem undervisningsgangene. Demonstrér eventuelt, at
             man kan pause en scrim og skrive direkte i koden. Hvis en upgrade-modal vises i et gratis kursus, skal de

@@ -102,40 +102,161 @@
   line-height: 1.2;
 }
 
+.reveal .scrimba-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: 58px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.reveal .scrimba-copy {
+  min-width: 0;
+}
+
 .reveal .scrimba-brief {
-  max-width: 1240px;
-  margin-top: 60px;
+  margin: 0;
 }
 
 .reveal .scrimba-brief p {
   margin: 0;
   color: var(--ink);
-  font-size: 30px;
+  font-size: 22px;
   line-height: 1.35;
+}
+
+.reveal .scrimba-brief .scrimba-lead {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.reveal .scrimba-flow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.reveal .scrimba-flow span {
+  display: grid;
+  gap: 4px;
+  min-width: 104px;
+  padding: 13px 15px;
+  border: 1px solid rgb(101 167 255 / 32%);
+  border-radius: 10px;
+  background: rgb(101 167 255 / 8%);
+  color: var(--ink);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.reveal .scrimba-flow small {
+  color: var(--po-blue);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.reveal .scrimba-flow i {
+  color: rgb(101 167 255 / 55%);
+  font-size: 18px;
+  font-style: normal;
 }
 
 .reveal .scrimba-brief .scrimba-semester {
-  margin-top: 30px;
+  margin-top: 26px;
   color: var(--muted);
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .reveal .scrimba-free-note {
-  max-width: 1320px;
-  margin: 52px 0 0;
-  padding-top: 26px;
-  border-top: 1px solid var(--line);
+  position: relative;
+  margin-top: 34px;
+  padding: 25px 25px 23px;
+  border: 1px solid rgb(101 167 255 / 34%);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgb(101 167 255 / 13%), rgb(101 167 255 / 4%));
+}
+
+.reveal .scrimba-free-note p {
+  margin: 0;
   color: var(--muted);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.35;
 }
 
-.reveal .scrimba-free-note strong:first-child {
+.reveal .scrimba-free-note strong {
   color: var(--po-blue);
 }
 
-.reveal .po-scrimba .po-source-link {
-  margin-top: 34px;
+.reveal .scrimba-free-badge {
+  position: absolute;
+  top: -14px;
+  left: 22px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--po-blue);
+  color: #07121d;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .scrimba-free-note a {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.reveal .scrimba-free-note a:hover {
+  text-decoration: underline;
+}
+
+.reveal .scrimba-shot {
+  position: relative;
+  width: 100%;
+  max-width: 770px;
+  margin: 0;
+  justify-self: end;
+}
+
+.reveal .scrimba-shot::before {
+  position: absolute;
+  z-index: -1;
+  inset: 8% -5% 3% 6%;
+  border-radius: 50%;
+  background: rgb(101 167 255 / 18%);
+  filter: blur(60px);
+  content: "";
+}
+
+.reveal .scrimba-shot-frame {
+  filter: drop-shadow(0 28px 45px rgb(0 0 0 / 32%));
+}
+
+.reveal .scrimba-shot img {
+  display: block;
+  width: 100%;
+}
+
+.reveal .scrimba-shot figcaption {
+  margin-top: 14px;
+  padding-left: 4px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.reveal .scrimba-shot figcaption span {
+  color: var(--po-blue);
+  font-weight: 800;
 }
 
 .reveal .baseline-question {
