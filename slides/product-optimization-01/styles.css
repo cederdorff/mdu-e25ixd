@@ -2555,26 +2555,125 @@
 
 .reveal .sdk-rings {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 58px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 28px;
+  margin-top: 38px;
 }
 
 .reveal .sdk-rings article {
-  min-height: 250px;
-  padding: 30px 24px;
-  border-top: 6px solid var(--green);
-  background: linear-gradient(180deg, var(--green-soft), transparent);
+  position: relative;
+  min-height: 172px;
+  padding: 24px 28px 22px 86px;
+  border-top: 4px solid var(--green);
+  background: linear-gradient(110deg, var(--green-soft), transparent 72%);
+}
+
+.reveal .sdk-rings article:nth-child(2) {
+  border-color: var(--po-blue);
+  background: linear-gradient(110deg, var(--po-blue-soft), transparent 72%);
+}
+
+.reveal .sdk-rings article:nth-child(3) {
+  border-color: var(--po-yellow);
+  background: linear-gradient(110deg, rgb(244 201 93 / 12%), transparent 72%);
+}
+
+.reveal .sdk-rings article:nth-child(4) {
+  border-color: var(--po-violet);
+  background: linear-gradient(110deg, var(--violet-soft), transparent 72%);
+}
+
+.reveal .sdk-index {
+  position: absolute;
+  top: 22px;
+  left: 28px;
+  color: var(--green);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.reveal .sdk-rings article:nth-child(2) .sdk-index {
+  color: var(--po-blue);
+}
+
+.reveal .sdk-rings article:nth-child(3) .sdk-index {
+  color: var(--po-yellow);
+}
+
+.reveal .sdk-rings article:nth-child(4) .sdk-index {
+  color: var(--po-violet);
 }
 
 .reveal .sdk-rings h3 {
-  font-size: 31px;
+  font-size: 29px;
 }
 
 .reveal .sdk-rings p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.reveal .sdk-takeaway {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.reveal .rest-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 42px;
+}
+
+.reveal .rest-choice-grid article {
+  position: relative;
+  min-height: 245px;
+  padding: 28px 30px 24px 88px;
+  border-top: 4px solid var(--po-blue);
+  background: linear-gradient(110deg, var(--po-blue-soft), transparent 74%);
+}
+
+.reveal .rest-choice-grid article:last-child {
+  border-color: var(--green);
+  background: linear-gradient(110deg, var(--green-soft), transparent 74%);
+}
+
+.reveal .rest-choice-index {
+  position: absolute;
+  top: 27px;
+  left: 30px;
+  color: var(--po-blue);
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.reveal .rest-choice-grid article:last-child .rest-choice-index {
+  color: var(--green);
+}
+
+.reveal .rest-choice-grid h3 {
+  font-size: 32px;
+}
+
+.reveal .rest-choice-grid p {
   margin-top: 18px;
   color: var(--muted);
-  font-size: 22px;
+  font-size: 25px;
+  line-height: 1.35;
+}
+
+.reveal .rest-choice-grid p strong {
+  color: inherit;
+}
+
+.reveal .rest-choice-callout {
+  margin-top: 30px;
 }
 
 .reveal .assignment-flow {
