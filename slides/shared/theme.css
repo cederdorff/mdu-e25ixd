@@ -56,6 +56,47 @@ body {
   text-align: left;
 }
 
+.reveal .agenda-link {
+  position: fixed;
+  bottom: 22px;
+  left: 120px;
+  z-index: 2;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 999px;
+  background: rgb(5 7 6 / 58%);
+  color: var(--muted) !important;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-decoration: none !important;
+  backdrop-filter: blur(10px);
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.reveal .agenda-link[hidden] {
+  display: none;
+}
+
+.reveal .agenda-link:hover,
+.reveal .agenda-link:focus-visible {
+  border-color: var(--green);
+  background: rgb(62 207 142 / 12%);
+  color: var(--green) !important;
+}
+
+.reveal .agenda-link:focus-visible {
+  outline: 3px solid rgb(62 207 142 / 45%);
+  outline-offset: 4px;
+}
+
 .reveal .slides section {
   position: absolute;
   width: 1600px;
