@@ -2120,21 +2120,11 @@ body {
 
 /* Reveal's print view resets every section to block with zero padding.
    Restore the live composition so ?print-pdf is a faithful static version. */
-@page {
-  size: 16in 9in;
-  margin: 0;
-}
-
 html.reveal-print,
 html.reveal-print body,
 html.reveal-print .reveal,
 html.reveal-print .reveal .slides {
   background: var(--bg-deep) !important;
-}
-
-html.reveal-print .reveal {
-  width: 1600px !important;
-  height: 900px !important;
 }
 
 html.reveal-print .reveal,
@@ -2144,10 +2134,7 @@ html.reveal-print .reveal * {
 }
 
 html.reveal-print .reveal::before,
-html.reveal-print .reveal > .cover-video,
-html.reveal-print .reveal .agenda-link,
-html.reveal-print .reveal .controls,
-html.reveal-print .reveal .progress {
+html.reveal-print .reveal > .cover-video {
   display: none !important;
 }
 
