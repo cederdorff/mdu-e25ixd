@@ -32,8 +32,7 @@ body {
   background:
     radial-gradient(circle at 50% -10%, rgb(62 207 142 / 22%), transparent 34%),
     radial-gradient(circle at 100% 20%, rgb(62 207 142 / 8%), transparent 28%),
-    linear-gradient(180deg, rgb(255 255 255 / 4%), transparent 24%),
-    var(--bg);
+    linear-gradient(180deg, rgb(255 255 255 / 4%), transparent 24%), var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 34px;
@@ -222,9 +221,7 @@ body {
   padding: 32px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / 3.5%), transparent),
-    var(--surface);
+  background: linear-gradient(180deg, rgb(255 255 255 / 3.5%), transparent), var(--surface);
   box-shadow: 0 20px 60px rgb(0 0 0 / 18%);
 }
 
@@ -1089,7 +1086,6 @@ body {
   background: var(--violet-soft);
   color: var(--violet);
 }
-
 
 .reveal .semester-map-slide h2 {
   font-size: 62px;
@@ -2124,11 +2120,21 @@ body {
 
 /* Reveal's print view resets every section to block with zero padding.
    Restore the live composition so ?print-pdf is a faithful static version. */
+@page {
+  size: 16in 9in;
+  margin: 0;
+}
+
 html.reveal-print,
 html.reveal-print body,
 html.reveal-print .reveal,
 html.reveal-print .reveal .slides {
   background: var(--bg-deep) !important;
+}
+
+html.reveal-print .reveal {
+  width: 1600px !important;
+  height: 900px !important;
 }
 
 html.reveal-print .reveal,
@@ -2138,7 +2144,10 @@ html.reveal-print .reveal * {
 }
 
 html.reveal-print .reveal::before,
-html.reveal-print .reveal > .cover-video {
+html.reveal-print .reveal > .cover-video,
+html.reveal-print .reveal .agenda-link,
+html.reveal-print .reveal .controls,
+html.reveal-print .reveal .progress {
   display: none !important;
 }
 
