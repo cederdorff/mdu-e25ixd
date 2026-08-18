@@ -63,7 +63,7 @@
   margin: 24px 0 0;
   padding: 0;
   list-style: none;
-  counter-reset: agenda;
+  counter-reset: agenda -1;
 }
 
 .reveal .agenda-track li {
@@ -556,9 +556,15 @@
   background: linear-gradient(90deg, var(--po-blue-soft), transparent 78%);
 }
 
-.reveal .system-layer:nth-child(2) { border-left-color: var(--green); }
-.reveal .system-layer:nth-child(3) { border-left-color: var(--yellow); }
-.reveal .system-layer:nth-child(4) { border-left-color: var(--coral); }
+.reveal .system-layer:nth-child(2) {
+  border-left-color: var(--green);
+}
+.reveal .system-layer:nth-child(3) {
+  border-left-color: var(--yellow);
+}
+.reveal .system-layer:nth-child(4) {
+  border-left-color: var(--coral);
+}
 
 .reveal .system-layer strong {
   color: var(--ink);
@@ -984,8 +990,7 @@
   background:
     radial-gradient(circle at 16px 11px, #ef6a5b 0 4px, transparent 5px),
     radial-gradient(circle at 31px 11px, #f4c95d 0 4px, transparent 5px),
-    radial-gradient(circle at 46px 11px, #3ecf8e 0 4px, transparent 5px),
-    #121715;
+    radial-gradient(circle at 46px 11px, #3ecf8e 0 4px, transparent 5px), #121715;
   content: "";
 }
 
@@ -1068,8 +1073,12 @@
   border-top: 6px solid var(--po-blue);
 }
 
-.reveal .commit-chain article:nth-child(2) { border-color: var(--green); }
-.reveal .commit-chain article:nth-child(3) { border-color: var(--yellow); }
+.reveal .commit-chain article:nth-child(2) {
+  border-color: var(--green);
+}
+.reveal .commit-chain article:nth-child(3) {
+  border-color: var(--yellow);
+}
 
 .reveal .git-commit-chain article:nth-child(2) {
   border-color: var(--po-blue);
@@ -1464,6 +1473,18 @@
   color: var(--ink);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 20px;
+}
+
+.reveal .a11y-task-screen::before {
+  color: var(--green);
+  content: "VÆLG DIT FOKUS";
+}
+
+.reveal .demo-layout .demo-copy h3 a {
+  color: var(--ink);
+  text-decoration-color: var(--green);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 8px;
 }
 
 .reveal .actions-pipeline {
@@ -1946,9 +1967,15 @@
   text-transform: uppercase;
 }
 
-.reveal .status-commit { color: var(--green); }
-.reveal .status-local { color: var(--po-yellow); }
-.reveal .status-rule { color: var(--po-blue); }
+.reveal .status-commit {
+  color: var(--green);
+}
+.reveal .status-local {
+  color: var(--po-yellow);
+}
+.reveal .status-rule {
+  color: var(--po-blue);
+}
 
 .reveal .env-file-rules h3 {
   margin-top: 16px;
@@ -2261,8 +2288,12 @@
   background: var(--surface);
 }
 
-.reveal .security-equation article:nth-of-type(2) { border-color: var(--green); }
-.reveal .security-equation article:nth-of-type(3) { border-color: var(--yellow); }
+.reveal .security-equation article:nth-of-type(2) {
+  border-color: var(--green);
+}
+.reveal .security-equation article:nth-of-type(3) {
+  border-color: var(--yellow);
+}
 
 .reveal .security-equation h3 {
   font-size: 29px;
@@ -2307,13 +2338,13 @@
 
 .reveal .a11y-lenses {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
   margin-top: 54px;
 }
 
 .reveal .a11y-lenses article {
-  min-height: 280px;
+  min-height: 220px;
   padding: 28px 20px;
   border-top: 5px solid var(--green);
 }
@@ -2444,6 +2475,45 @@
   counter-increment: work;
 }
 
+.reveal .a11y-assignment-flow {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.reveal .a11y-assignment-flow article:first-child {
+  border-color: rgb(101 167 255 / 72%);
+}
+
+.reveal .a11y-assignment-flow article:nth-child(2) {
+  border-color: rgb(244 201 93 / 72%);
+}
+
+.reveal .a11y-assignment-flow article:nth-child(3) {
+  border-color: rgb(46 220 148 / 72%);
+}
+
+.reveal .a11y-assignment-flow h3 a {
+  color: var(--ink);
+  text-decoration-color: var(--po-blue);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+.reveal .a11y-focus-list {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 22px;
+}
+
+.reveal .a11y-focus-list li::before {
+  margin-right: 10px;
+  color: var(--po-yellow);
+  content: "•";
+}
+
 .reveal .assignment-flow article::before {
   position: absolute;
   top: -25px;
@@ -2488,9 +2558,15 @@
   counter-increment: priority;
 }
 
-.reveal .priority-stack article:nth-child(2) { border-color: var(--yellow); }
-.reveal .priority-stack article:nth-child(3) { border-color: var(--po-blue); }
-.reveal .priority-stack article:nth-child(4) { border-color: var(--green); }
+.reveal .priority-stack article:nth-child(2) {
+  border-color: var(--yellow);
+}
+.reveal .priority-stack article:nth-child(3) {
+  border-color: var(--po-blue);
+}
+.reveal .priority-stack article:nth-child(4) {
+  border-color: var(--green);
+}
 
 .reveal .priority-stack article::before {
   color: var(--muted);
@@ -2522,9 +2598,15 @@
   background: linear-gradient(180deg, var(--po-blue-soft), transparent);
 }
 
-.reveal .closing-loop article:nth-child(2) { border-color: var(--green); }
-.reveal .closing-loop article:nth-child(3) { border-color: var(--yellow); }
-.reveal .closing-loop article:nth-child(4) { border-color: var(--coral); }
+.reveal .closing-loop article:nth-child(2) {
+  border-color: var(--green);
+}
+.reveal .closing-loop article:nth-child(3) {
+  border-color: var(--yellow);
+}
+.reveal .closing-loop article:nth-child(4) {
+  border-color: var(--coral);
+}
 
 .reveal .git-state-loop article:nth-child(1),
 .reveal .git-state-loop article:nth-child(2) {
@@ -2627,7 +2709,6 @@
 
 .reveal .po-slide.mode-work .demo-screen::before {
   color: var(--green);
-  content: "TASTATURTEST";
 }
 
 .reveal .mode-work .assignment-flow {
