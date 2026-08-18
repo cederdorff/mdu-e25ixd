@@ -23,25 +23,25 @@ const deck = new Reveal({
 await deck.initialize();
 
 const agendaSlide = document.querySelector("section#agenda");
-document.querySelectorAll("section.po-slide").forEach((slide) => {
-  if (slide === agendaSlide || slide.querySelector(".agenda-link")) {
-    return;
-  }
-
-  const agendaLink = document.createElement("a");
-  agendaLink.className = "agenda-link";
-  agendaLink.href = "#/agenda";
-  agendaLink.setAttribute("aria-label", "Gå tilbage til agendaen");
-  agendaLink.innerHTML = '<span aria-hidden="true">←</span> Agenda';
-  slide.append(agendaLink);
-});
+const agendaLink = document.createElement("a");
+agendaLink.className = "agenda-link";
+agendaLink.href = "#/agenda";
+agendaLink.setAttribute("aria-label", "Gå tilbage til agendaen");
+agendaLink.textContent = "Agenda";
+document.querySelector(".reveal")?.append(agendaLink);
 
 const coverVideo = document.querySelector(".cover-video");
 const syncCoverVideo = () => {
   coverVideo?.classList.toggle("is-visible", deck.getIndices().h === 0);
 };
 
+const syncAgendaLink = () => {
+  agendaLink.hidden = deck.getCurrentSlide() === agendaSlide;
+};
+
 deck.on("slidechanged", syncCoverVideo);
+deck.on("slidechanged", syncAgendaLink);
 syncCoverVideo();
+syncAgendaLink();
 
 document.documentElement.classList.add("deck-ready");

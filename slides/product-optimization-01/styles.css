@@ -150,30 +150,45 @@
 }
 
 .reveal .agenda-link {
-  position: absolute;
-  right: 112px;
-  bottom: 38px;
+  position: fixed;
+  bottom: 22px;
+  left: 120px;
   z-index: 2;
   display: inline-flex;
   gap: 8px;
   align-items: center;
   padding: 8px 12px;
-  border: 1px solid rgb(101 167 255 / 45%);
+  border: 1px solid rgb(255 255 255 / 14%);
   border-radius: 999px;
-  color: var(--po-blue) !important;
-  font-size: 15px;
-  font-weight: 800;
+  background: rgb(5 7 6 / 58%);
+  color: var(--muted) !important;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   line-height: 1;
   text-decoration: none !important;
+  backdrop-filter: blur(10px);
   transition:
     background-color 160ms ease,
     border-color 160ms ease;
 }
 
+.reveal .agenda-link[hidden] {
+  display: none;
+}
+
+.reveal .slide-number,
+.reveal .slide-number a,
+.reveal .slide-number span {
+  text-decoration: none !important;
+}
+
 .reveal .agenda-link:hover,
 .reveal .agenda-link:focus-visible {
   border-color: var(--po-blue);
-  background: var(--po-blue-soft);
+  background: rgb(101 167 255 / 12%);
+  color: var(--po-blue) !important;
 }
 
 .reveal .agenda-link:focus-visible {
@@ -799,7 +814,7 @@
   display: block;
   margin-bottom: 22px;
   color: var(--muted);
-  content: "CODEX · VS CODE";
+  content: "AI-AGENT · VS CODE";
   font-size: 16px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -1066,6 +1081,18 @@
   height: 400px;
   object-fit: cover;
   object-position: center top;
+}
+
+.reveal .git-local-slide .browser-frame {
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.reveal .git-local-slide .browser-frame::before {
+  display: none;
 }
 
 .reveal .local-check-grid {

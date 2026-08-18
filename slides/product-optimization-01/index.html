@@ -143,8 +143,8 @@
                 </li>
                 <li>
                   <a href="#opgave-8">
-                    <strong>Opgave 8 · Kortlæg projektet med AI</strong>
-                    <small>Få en agent til at forklare koden og samspillet mellem filer.</small>
+                    <strong>Opgave 8 · Brug AI til en forbedring</strong>
+                    <small>Genbesøg et af dagens emner, og få hjælp til en konkret forbedring.</small>
                   </a>
                 </li>
                 <li>
@@ -1566,7 +1566,7 @@ const data = await response.json();</code></pre>
           <span class="chapter-index">06</span>
           <span class="eyebrow">AI i udviklingsarbejdet</span>
           <h2>En AI-agent kan arbejde i projektet — men du ejer beslutningen</h2>
-          <p class="kicker">Principperne gælder på tværs af værktøjer. I demoen bruger vi Codex.</p>
+          <p class="kicker">Principperne gælder på tværs af værktøjer. Vi ser på en AI-agent i VS Code.</p>
         </section>
 
         <section class="po-slide">
@@ -1595,13 +1595,15 @@ const data = await response.json();</code></pre>
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">Eksempel · Codex i VS Code</span>
+          <span class="eyebrow">Eksempel · AI-agent i VS Code</span>
           <h2>Den bedste kontekst er ofte allerede åben</h2>
           <div class="demo-layout">
             <div class="demo-copy">
               <span class="demo-label">IDE workflow</span>
               <h3>Åbn det relevante. Markér det vigtige.</h3>
-              <p>Codex kan bruge åbne filer og markeret kode som kontekst og viser ændringer som et reviewbart diff.</p>
+              <p>
+                En AI-agent kan bruge åbne filer og markeret kode som kontekst og vise ændringer som et reviewbart diff.
+              </p>
             </div>
             <div class="demo-screen">
               <p>
@@ -1613,49 +1615,14 @@ const data = await response.json();</code></pre>
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">En brugbar opgavebeskrivelse</span>
-          <h2>Giv AI-agenten mål, kontekst, rammer og kontrol</h2>
-          <dl class="prompt-anatomy">
-            <dt>Mål</dt>
-            <dd>Hvad skal være anderledes, når opgaven er løst?</dd>
-            <dt>Kontekst</dt>
-            <dd>Hvilke filer, fejl, logs eller observationer betyder noget?</dd>
-            <dt>Rammer</dt>
-            <dd>Hvad må ikke ændres, deles eller udvides?</dd>
-            <dt>Kontrol</dt>
-            <dd>Hvordan skal løsningen testes og forklares?</dd>
-          </dl>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">Prompt-eksempel · AI-agent</span>
-          <h2>Fra “den virker ikke” til en afgrænset undersøgelse</h2>
+          <span class="eyebrow">Eksempel · AI som forbedringspartner</span>
+          <h2>Giv agenten et mål — og behold selv kontrollen</h2>
           <div class="prompt-example">
-            Undersøg hvorfor GitHub Actions-runnet fejlede i build-steppet.<br /><br />
-            Brug den konkrete fejltekst, <strong>package.json</strong> og deployment-workflowet.<br />
-            Del aldrig værdier fra .env. Forklar årsagen før du ændrer noget.<br />
-            Foreslå derefter den mindste rettelse og hvordan vi reproducerer testen lokalt.
+            Jeg vil forbedre <strong>[a11y / metadata / deployment / konfiguration]</strong> i min egen web app.<br /><br />
+            Undersøg de relevante filer, forklar først problemet, og foreslå den mindste ændring.<br />
+            Del aldrig værdier fra <code>.env</code>. Ændr ikke noget, før jeg har godkendt forslaget.<br />
+            Returnér først fund, risiko, forslag og et konkret testkriterium.
           </div>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">Når agenten arbejder</span>
-          <h2>Et godt forløb går fra undersøgelse til verificering</h2>
-          <div class="commit-chain">
-            <article>
-              <h3>Undersøgte</h3>
-              <p>læste relevant kode og fandt den aktuelle dataflow.</p>
-            </article>
-            <article>
-              <h3>Formulerede</h3>
-              <p>gjorde symptomet til hypoteser, vi kunne vurdere.</p>
-            </article>
-            <article>
-              <h3>Verificerede</h3>
-              <p>foreslog eller kørte konkrete checks frem for at gætte.</p>
-            </article>
-          </div>
-          <p class="reflection">Du skal stadig forstå ændringen godt nok til at forklare og teste den.</p>
         </section>
 
         <section class="po-slide">
@@ -1665,42 +1632,48 @@ const data = await response.json();</code></pre>
             <li>
               <b>01</b
               ><span
-                >Del kun relevante filer, fejl og logs — aldrig private nøgler, tokens eller hele
+                >Del kun relevant kode, fejl og logs — aldrig private nøgler, tokens, persondata eller hele
                 <code>.env</code>.</span
               >
             </li>
-            <li><b>02</b><span>Afgræns ændringen, og bed om forklaring før store eller uklare indgreb.</span></li>
-            <li><b>03</b><span>Læs diffet. Behold kun ændringer, du forstår og kan forsvare.</span></li>
+            <li><b>02</b><span>Afgræns ændringen, og aftal hvad der tæller som et godt resultat.</span></li>
+            <li><b>03</b><span>AI kan tage fejl: Find kilden i projektet, og kontrollér agentens påstand.</span></li>
             <li>
-              <b>04</b><span>Kør appen, lint og relevante tests. Et overbevisende svar er ikke et testresultat.</span>
+              <b>04</b
+              ><span>Læs diffet, kør relevante tests, og behold kun ændringer, du forstår og kan forsvare.</span>
             </li>
           </ul>
         </section>
 
         <section class="po-slide mode-work" id="opgave-8">
           <span class="eyebrow">Opgave 8 · Arbejd individuelt</span>
-          <h2>Brug en AI-agent til at kortlægge projektet</h2>
+          <h2>Brug AI til at forbedre noget fra i dag</h2>
           <div class="work-columns">
             <div>
-              <h3>Giv agenten en afgrænset opgave</h3>
-              <div class="prompt-example compact-prompt">
-                Kortlæg hvordan appen hænger sammen fra <strong>main.jsx</strong> og routes til Supabase og deployment.
-                Peg på de vigtigste filer og forklar deres ansvar. Ændr ikke noget.
-              </div>
+              <h3>Vælg ét område</h3>
+              <ul class="checklist">
+                <li>Accessibility: struktur, navne, billeder eller tastatur</li>
+                <li>Metadata og identitet: titel, sprog eller template-rester</li>
+                <li>Deployment eller konfiguration</li>
+                <li>REST, dataflow eller egen Supabase</li>
+              </ul>
             </div>
             <div>
-              <h3>Kontrollér svaret i projektet</h3>
+              <h3>Arbejd med agenten</h3>
+              <div class="prompt-example compact-prompt">
+                Bed agenten undersøge relevante filer, forklare problemet og foreslå den mindste ændring. Aftal
+                rammerne, læs diffet, og ændr kun noget, du selv forstår.
+              </div>
               <ul class="checklist">
-                <li>Find route-konfigurationen</li>
-                <li>Find Supabase-requestet</li>
-                <li>Find base path</li>
-                <li>Find deploy-workflowet</li>
+                <li>Find kilden: Stemmer agentens påstand?</li>
+                <li>Test lokalt og online, hvor det er relevant</li>
+                <li>Notér ét afvist eller korrigeret forslag</li>
               </ul>
             </div>
           </div>
           <p class="done-when">
-            <strong>Du er klar, når:</strong> Du selv kan forklare én forbindelse mellem to af filerne — også uden
-            agentens svar.
+            <strong>Du er klar, når:</strong> Du kan vise en konkret forbedring, forklare hvorfor den var relevant, og
+            dokumentere mindst to måder, du kontrollerede resultatet på.
           </p>
         </section>
 
