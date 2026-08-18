@@ -27,6 +27,17 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run slides:build
+      - name: Copy Markdown files
+        run: |
+          while IFS= read -r -d '' file; do
+            relative_path="${file#./}"
+            mkdir -p "dist/$(dirname "$relative_path")"
+            cp "$file" "dist/$relative_path"
+          done < <(find . -type f -name '*.md' \
+            -not -path './.git/*' \
+            -not -path './node_modules/*' \
+            -not -path './dist/*' \
+            -print0)
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
