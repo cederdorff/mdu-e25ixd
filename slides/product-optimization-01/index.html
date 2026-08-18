@@ -17,14 +17,13 @@
       <div class="slides">
         <section class="po-slide po-title">
           <span class="eyebrow">Product Optimization · 3. semester</span>
-          <h1>Fra “det virker hos mig” <span>til en robust webapp</span></h1>
+          <h1>Fra “det virker hos mig” <span>til “det virker hele vejen”</span></h1>
           <p class="lead">Web App-forbedringer og teknisk fundament</p>
           <p class="date"><span>RACE</span><time datetime="2026-08-19">19. august 2026</time></p>
           <aside class="notes">
-            Velkommen. I dag tager vi udgangspunkt i noget, I allerede kan: en React-webapp. Fokus er ikke at bygge
-            alt forfra, men at gøre løsningen mere robust, forståelig og klar til at blive delt.
-            [Sources] - undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
-            [/Sources]
+            Velkommen. I dag tager vi udgangspunkt i noget, I allerede kan: en React-webapp. Fokus er ikke at bygge alt
+            forfra, men at gøre løsningen mere robust, forståelig og klar til at blive delt. [Sources] -
+            undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md [/Sources]
           </aside>
         </section>
 
@@ -45,14 +44,15 @@
               <strong>Hvordan skriver og læser vi koden?</strong>
             </article>
           </div>
-          <p class="focus-footnote">Vi ser stadig kode i dag — men som del af et <strong>flow</strong>, ikke som syntakstræning.</p>
+          <p class="focus-footnote">
+            Vi ser stadig kode i dag — men som del af et <strong>flow</strong>, ikke som syntakstræning.
+          </p>
           <aside class="notes">
             Brug sliden til at afgrænse dagens forventninger. De studerende skal ikke mestre ny JavaScript-syntaks i
             dag. Kodeeksemplerne bruges til at forstå konfiguration, sammenhænge, fejl og leveringsflow. Fredag zoomer
-            vi ind i selve JavaScript-koden og de koncepter, React bygger på.
-            [Sources]
-            - User-provided teaching direction, 17 August 2026
-            - https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026
+            vi ind i selve JavaScript-koden og de koncepter, React bygger på. [Sources] - User-provided teaching
+            direction, 17 August 2026 -
+            https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026
             - https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-javascript-for-react-21-08-2026
             [/Sources]
           </aside>
@@ -62,18 +62,59 @@
           <span class="eyebrow">Agenda</span>
           <h2>I dag følger vi appen fra udvikling til drift</h2>
           <ol class="agenda-track">
-            <li><strong>Tilbageblik og fokus</strong><small>Hvad har vi med — og hvad skal genopfriskes?</small></li>
-            <li><strong>AI som udviklingspartner</strong><small>Kontekst, prompts, review og ansvar.</small></li>
-            <li><strong>Git → GitHub → Actions → Pages</strong><small>Fra lokal ændring til offentlig webapp — inklusive fejllogs.</small></li>
-            <li><strong>Konfiguration på tværs af miljøer</strong><small>Base path, routing, .env og GitHub repository variables.</small></li>
-            <li><strong>Metadata og accessibility</strong><small>Fjern template-rester, test tastatur og kontrollér fokus.</small></li>
-            <li><strong>Supabase: REST API og SDK</strong><small>Forskelle, muligheder og hvorfor vi fortsætter med REST.</small></li>
-            <li><strong>Forbedr og saml op</strong><small>Vælg en forbedring, før den gennem flowet og forklar effekten.</small></li>
+            <li>
+              <a href="#/tilbageblik-og-projektstart">
+                <strong>Tilbageblik og lokal projektstart</strong>
+                <small>Genaktivér det kendte, opret projektet og få appen til at køre.</small>
+              </a>
+            </li>
+            <li>
+              <a href="#/git-github-deployment">
+                <strong>Git → GitHub → Actions → Pages</strong>
+                <small>Commit, push, base path, routing, deployment, fejllogs samt branch og pull request.</small>
+              </a>
+            </li>
+            <li>
+              <a href="#/konfiguration-og-environment-variables">
+                <strong>Konfiguration på tværs af miljøer</strong>
+                <small>Lokale .env-filer, forskellige værdier i dev/prod og GitHub Environment variables.</small>
+              </a>
+            </li>
+            <li>
+              <a href="#/metadata-og-identitet">
+                <strong>Metadata og identitet</strong>
+                <small>Fjern template-rester, og gør appens titel, beskrivelse og sprog tydelige.</small>
+              </a>
+            </li>
+            <li>
+              <a href="#/accessibility">
+                <strong>Accessibility</strong>
+                <small>Repetér struktur, navne og billeder — og test tastatur og fokus.</small>
+              </a>
+            </li>
+            <li>
+              <a href="#/supabase-rest-og-sdk">
+                <strong>Supabase: REST API og SDK</strong>
+                <small>Forskelle, muligheder og hvorfor vi fortsætter med REST.</small>
+              </a>
+            </li>
+            <li>
+              <a href="#/ai-i-udviklingsarbejdet">
+                <strong>AI som udviklingspartner</strong>
+                <small>Kontekst, prompts, review og ansvar.</small>
+              </a>
+            </li>
+            <li>
+              <a href="#/forbedr-og-saml-op">
+                <strong>Forbedr og saml op</strong>
+                <small>Vælg en forbedring, før den gennem flowet og forklar effekten.</small>
+              </a>
+            </li>
           </ol>
           <aside class="notes">
             Gennemgå planen kort, så de studerende kender rækkefølgen. Pauser og præcis tidsstyring håndteres uden for
-            agendaen. Justér vægten efter behovsafdækningen og dagens flow.
-            [Sources] - User-provided teaching direction, 17 August 2026 [/Sources]
+            agendaen. Justér vægten efter behovsafdækningen og dagens flow. [Sources] - User-provided teaching
+            direction, 17 August 2026 [/Sources]
           </aside>
         </section>
 
@@ -91,35 +132,43 @@
                   <i aria-hidden="true">→</i>
                   <span><small>03</small>Kør</span>
                 </div>
-                <p class="scrimba-semester">Stop forklaringen, ændr koden direkte i browseren og se resultatet med det samme.</p>
+                <p class="scrimba-semester">
+                  Stop forklaringen, ændr koden direkte i browseren og se resultatet med det samme.
+                </p>
               </div>
               <div class="scrimba-free-note">
                 <span class="scrimba-free-badge">Free</span>
-                <p>Vælg gratis kurser. Møder du en betalingsprompt, kan du vælge <strong>Skip</strong> og fortsætte videoen.</p>
-                <a href="https://scrimba.com/courses" target="_blank" rel="noopener noreferrer">Find gratis kurser <span aria-hidden="true">↗</span></a>
+                <p>
+                  Vælg gratis kurser. Møder du en betalingsprompt, kan du vælge <strong>Skip</strong> og fortsætte
+                  videoen.
+                </p>
+                <a href="https://scrimba.com/courses" target="_blank" rel="noopener noreferrer"
+                  >Find gratis kurser <span aria-hidden="true">↗</span></a
+                >
               </div>
             </div>
             <figure class="scrimba-shot">
               <div class="scrimba-shot-frame">
-                <img src="../assets/product-optimization-01/scrimba.png" alt="Scrimbas dashboard med en oversigt over gratis og betalte kurser" />
+                <img
+                  src="../assets/product-optimization-01/scrimba.png"
+                  alt="Scrimbas dashboard med en oversigt over gratis og betalte kurser"
+                />
               </div>
               <figcaption><strong>Tip:</strong> Se efter det blå <span>Free</span>-mærke på kurserne.</figcaption>
             </figure>
           </div>
           <aside class="notes">
-            Forklar kort, at Scrimba kan bruges som repetition mellem undervisningsgangene. Demonstrér eventuelt, at
-            man kan pause en scrim og skrive direkte i koden. Hvis en upgrade-modal vises i et gratis kursus, skal de
-            bruge Skip-knappen for at fortsætte videoindholdet; de kan miste adgang til challenge-submission og feedback.
-            [Sources]
-            - https://v1.scrimba.com/about
-            - https://scrimba.com/articles/best-free-coding-websites-and-resources-2026/
-            - https://forum.scrimba.com/t/your-dark-marketing-patterns-kinda-suck/2012
-            - https://forum.scrimba.com/t/accessible-web-design/1989
-            [/Sources]
+            Forklar kort, at Scrimba kan bruges som repetition mellem undervisningsgangene. Demonstrér eventuelt, at man
+            kan pause en scrim og skrive direkte i koden. Hvis en upgrade-modal vises i et gratis kursus, skal de bruge
+            Skip-knappen for at fortsætte videoindholdet; de kan miste adgang til challenge-submission og feedback.
+            [Sources] - https://v1.scrimba.com/about -
+            https://scrimba.com/articles/best-free-coding-websites-and-resources-2026/ -
+            https://forum.scrimba.com/t/your-dark-marketing-patterns-kinda-suck/2012 -
+            https://forum.scrimba.com/t/accessible-web-design/1989 [/Sources]
           </aside>
         </section>
 
-        <section class="po-slide">
+        <section class="po-slide" id="tilbageblik-og-projektstart">
           <span class="eyebrow">Tilbageblik · 2. semester · RACE 1–11</span>
           <h2>I startede med JavaScript — og endte med en webapp med database</h2>
           <div class="semester-arc" aria-label="Programmeringsforløbet på 2. semester">
@@ -148,20 +197,22 @@
               <p>Supabase, HTTP, REST, forms, CRUD samt filtrering og sortering.</p>
             </article>
           </div>
-          <p class="reflection semester-thesis">Hvert nyt emne byggede videre på det forrige — frem mod en samlet webapp.</p>
+          <p class="reflection semester-thesis">
+            Hvert nyt emne byggede videre på det forrige — frem mod en samlet webapp.
+          </p>
           <aside class="notes">
             Brug 3–4 minutter på tidslinjen. Bed de studerende nævne én ting, de husker fra hver fase. Pointen er ikke
-            at repetere alt nu, men at aktivere deres eksisterende viden og synliggøre progressionen.
-            [Sources]
-            - https://eaaa.instructure.com/courses/30922/pages/race-1-javascript-recap-and-tools-27-01-2026
-            - https://eaaa.instructure.com/courses/30922/pages/race-2-javascript-concepts-for-react-29-01-2026
-            - https://eaaa.instructure.com/courses/30922/pages/race-3-javascript-and-introduction-to-react-30-01-2026
-            - https://eaaa.instructure.com/courses/30922/pages/race-4-react-core-concepts-and-state-eftermiddag-03-02-2026
-            - https://eaaa.instructure.com/courses/30922/pages/race-5-react-router-data-fetching-and-networking-06-02-2026
-            - https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026
-            - https://eaaa.instructure.com/courses/30922/pages/race-7-git-collaboration-and-deployment-02-03-2026
-            - https://github.com/cederdorff/web-app-supabase/tree/main/_lessons
-            [/Sources]
+            at repetere alt nu, men at aktivere deres eksisterende viden og synliggøre progressionen. [Sources] -
+            https://eaaa.instructure.com/courses/30922/pages/race-1-javascript-recap-and-tools-27-01-2026 -
+            https://eaaa.instructure.com/courses/30922/pages/race-2-javascript-concepts-for-react-29-01-2026 -
+            https://eaaa.instructure.com/courses/30922/pages/race-3-javascript-and-introduction-to-react-30-01-2026 -
+            https://eaaa.instructure.com/courses/30922/pages/race-4-react-core-concepts-and-state-eftermiddag-03-02-2026
+            -
+            https://eaaa.instructure.com/courses/30922/pages/race-5-react-router-data-fetching-and-networking-06-02-2026
+            -
+            https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026
+            - https://eaaa.instructure.com/courses/30922/pages/race-7-git-collaboration-and-deployment-02-03-2026 -
+            https://github.com/cederdorff/web-app-supabase/tree/main/_lessons [/Sources]
           </aside>
         </section>
 
@@ -169,26 +220,51 @@
           <span class="eyebrow">Den røde tråd</span>
           <h2>I byggede videre på den samme idé flere gange</h2>
           <div class="project-thread" aria-label="Projektets udvikling gennem semesteret">
-            <article><span>01</span><h3>Products</h3><p>JavaScript, arrays og fetch</p></article>
-            <article><span>02</span><h3>Product Grid</h3><p>Komponenter, props og state</p></article>
-            <article><span>03</span><h3>Flere sider</h3><p>Router, parametre og API-data</p></article>
-            <article><span>04</span><h3>Brugbar UI</h3><p>Styling, semantik og a11y</p></article>
-            <article><span>05</span><h3>Rigtige data</h3><p>Supabase, forms og CRUD</p></article>
-            <article><span>06</span><h3>Et produkt</h3><p>Filter, sort, Git og deployment</p></article>
+            <article>
+              <span>01</span>
+              <h3>Products</h3>
+              <p>JavaScript, arrays og fetch</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Product Grid</h3>
+              <p>Komponenter, props og state</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Flere sider</h3>
+              <p>Router, parametre og API-data</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>Brugbar UI</h3>
+              <p>Styling, semantik og a11y</p>
+            </article>
+            <article>
+              <span>05</span>
+              <h3>Rigtige data</h3>
+              <p>Supabase, forms og CRUD</p>
+            </article>
+            <article>
+              <span>06</span>
+              <h3>Et produkt</h3>
+              <p>Filter, sort, Git og deployment</p>
+            </article>
           </div>
-          <p class="project-thread-close">Produktionsdagene var stedet, hvor delene skulle fungere <strong>sammen</strong>.</p>
+          <p class="project-thread-close">
+            På ét semester gik I fra basal JavaScript til en webapp med
+            <strong>komponenter, routing, database og deployment</strong>.
+          </p>
           <aside class="notes">
             Peg gennem kæden fra venstre mod højre. Fremhæv, at nye emner typisk blev lagt oven på en løsning, de
-            allerede kendte. Spørg eventuelt: Hvor i kæden begyndte det at føles komplekst?
-            [Sources]
-            - https://race.notion.site/Customer-Experience-Products-2f4bc239db11803b842ccbbbd83eca99
-            - https://race.notion.site/Product-Grid-with-React-2fbbc239db1180e18bd4d99bea561cfb
-            - https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf
-            - https://github.com/cederdorff/web-app-supabase/blob/main/_lessons/race-10-forms-and-crud.md
-            - https://github.com/cederdorff/web-app-supabase/blob/main/_lessons/race-11-filter-sort-collaboration.md
-            - https://eaaa.instructure.com/courses/30922/pages/race-produktionsdag-09-02-2026-and-10-02-2026
-            - https://eaaa.instructure.com/courses/30922/pages/race-and-mnor-produktionsdag-12-02-2026
-            [/Sources]
+            allerede kendte. Spørg eventuelt: Hvor i kæden begyndte det at føles komplekst? [Sources] -
+            https://race.notion.site/Customer-Experience-Products-2f4bc239db11803b842ccbbbd83eca99 -
+            https://race.notion.site/Product-Grid-with-React-2fbbc239db1180e18bd4d99bea561cfb -
+            https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf -
+            https://github.com/cederdorff/web-app-supabase/blob/main/_lessons/race-10-forms-and-crud.md -
+            https://github.com/cederdorff/web-app-supabase/blob/main/_lessons/race-11-filter-sort-collaboration.md -
+            https://eaaa.instructure.com/courses/30922/pages/race-produktionsdag-09-02-2026-and-10-02-2026 -
+            https://eaaa.instructure.com/courses/30922/pages/race-and-mnor-produktionsdag-12-02-2026 [/Sources]
           </aside>
         </section>
 
@@ -196,540 +272,1169 @@
           <span class="eyebrow">Før vi går i gang</span>
           <h2>Hvad skal vi have tilbage i hænderne?</h2>
           <p class="baseline-question">
-            Hvor i kæden vil du gerne have noget <strong>genopfrisket</strong>, forklaret bedre eller prøve igen?
+            Hvad vil du gerne have <strong>genopfrisket</strong>, forklaret bedre eller prøve igen?
           </p>
           <div class="topic-cloud" aria-label="Forslag til emner">
-            <span>JavaScript</span><span>React og hooks</span><span>routing og data</span><span>styling og a11y</span>
-            <span>Git og GitHub</span><span>deployment</span><span>Supabase</span><span>REST og CRUD</span><span>noget andet?</span>
+            <span>JavaScript og værktøjer</span><span>components, props, state og hooks</span
+            ><span>routing, fetch og networking</span><span>styling og accessibility</span
+            ><span>Git, samarbejde og deployment</span><span>Supabase</span><span>HTTP og REST API</span
+            ><span>forms og CRUD</span><span>filter og sortering</span><span>noget andet?</span>
           </div>
           <aside class="notes">
             2 minutter individuelt: Vælg ét sted i kæden, hvor du bliver usikker. Saml derefter svar på tavlen i
-            kategorierne fra sliden. Brug svarene til at justere vægten, men ikke til at erstatte dagens læringsmål.
-            Ca. 7–8 minutter i alt.
-            [Sources] - User-provided teaching direction, 17 August 2026 - https://eaaa.instructure.com/courses/30922/modules [/Sources]
+            kategorierne fra sliden. Emnerne spejler RACE 1–11 og skal hjælpe de studerende med at huske forløbet.
+            Brug svarene til at justere vægten, men ikke til at erstatte dagens læringsmål. Ca. 7–8 minutter i alt.
+            [Sources] - User-provided teaching direction, 17 August 2026 -
+            https://eaaa.instructure.com/courses/30922/modules [/Sources]
           </aside>
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">Teknisk baseline</span>
-          <h2>En webapp er mere end det, vi kan se</h2>
+          <span class="eyebrow">Dagens centrale pointe</span>
+          <h2>Programmering sker også rundt om koden</h2>
           <div class="system-layers">
             <div class="system-stack">
-              <div class="system-layer"><strong>Interface</strong><span>indhold, states og accessibility</span></div>
-              <div class="system-layer"><strong>Applikation</strong><span>React, routes og komponenter</span></div>
-              <div class="system-layer"><strong>Konfiguration</strong><span>base path og miljøvariabler</span></div>
-              <div class="system-layer"><strong>Drift</strong><span>GitHub Actions, Pages og Supabase</span></div>
+              <div class="system-layer"><strong>Appens kode</strong><span>HTML, CSS, components, props, state og a11y</span></div>
+              <div class="system-layer"><strong>Integrationer</strong><span>routing, fetch, REST API og Supabase</span></div>
+              <div class="system-layer"><strong>Konfiguration</strong><span>npm og scripts, base path og miljøvariabler</span></div>
+              <div class="system-layer"><strong>Publicering</strong><span>Git, GitHub, Actions og Pages</span></div>
             </div>
-            <p class="system-thesis">
-              Appen er først robust, når <strong>hele kæden</strong> fungerer — også uden for din computer.
-            </p>
+            <div class="system-thesis-wrap">
+              <p class="system-thesis">
+                Koden kan være korrekt — og appen kan stadig <strong>fejle</strong>.
+              </p>
+              <p class="system-thesis-detail">
+                Routing, data, konfiguration og deployment skal også hænge sammen.
+              </p>
+              <p class="system-thesis-proof">I har allerede arbejdet med alle fire lag.</p>
+            </div>
           </div>
           <aside class="notes">
-            Brug dette som dagens gennemgående model. Et visuelt problem kan komme fra data, build-konfiguration eller
-            routing. Derfor skal vi kunne følge hele kæden.
-            [Sources] - https://github.com/cederdorff/react-router-supabase · repository structure and workflow [/Sources]
+            Brug dette som dagens gennemgående model. Knyt hvert lag til noget, de allerede har prøvet: React og a11y,
+            router og Supabase, base path og .env samt GitHub Actions og Pages. Pointen er, at en fejl i webappen ikke
+            nødvendigvis er en syntaksfejl. Vi skal kunne følge hele kæden for at finde årsagen. [Sources] -
+            https://github.com/cederdorff/react-router-supabase · repository structure and workflow [/Sources]
           </aside>
         </section>
 
         <section class="po-slide mode-work">
           <span class="eyebrow">Opgave 1 · Arbejd individuelt</span>
-          <h2>Opret din egen kopi — og få appen til at køre</h2>
+          <h2>Få dit eget projekt til at køre lokalt</h2>
           <div class="assignment-flow setup-flow">
-            <article><h3>Brug templaten</h3><p>Vælg <strong>Use this template → Create a new repository</strong>. Opret et offentligt repository.</p></article>
-            <article><h3>Tilpas projektet</h3><p>Aktivér Pages med GitHub Actions. Clone projektet, og sæt <code>base</code> i <code>package.json</code> til repository-navnet.</p></article>
-            <article><h3>Tilføj miljøet</h3><p>Kopiér <code>.env.example</code> til <code>.env</code>, og indsæt de udleverede Supabase-værdier.</p></article>
-            <article><h3>Kør og kontrollér</h3><p>Kør <code>npm install</code> og <code>npm run dev</code>. Test navigationen og siden <code>/posts</code>.</p></article>
+            <article>
+              <h3>Opret repository</h3>
+              <p class="starter-repo">
+                Start fra
+                <a href="https://github.com/cederdorff/react-router-supabase/generate" target="_blank" rel="noopener noreferrer"
+                  >cederdorff/react-router-supabase</a
+                >.
+              </p>
+              <p>Navngiv det <code>web-app-optimization</code>, og vælg <strong>Public</strong>.</p>
+            </article>
+            <article>
+              <h3>Clone og åbn</h3>
+              <p>
+                Clone dit nye repository til computeren. Åbn derefter projektmappen i <strong>VS Code</strong>.
+              </p>
+            </article>
+            <article>
+              <h3>Installér projektet</h3>
+              <p>Kør <code>npm install</code> i projektmappen.</p>
+              <p>Det installerer de dependencies, projektet har brug for lokalt.</p>
+            </article>
+            <article>
+              <h3>Kør og kontrollér</h3>
+              <p>
+                Kør <code>npm run dev</code>. Test forsiden, navigationen og en direkte route.
+              </p>
+            </article>
           </div>
-          <p class="done-when"><strong>Du er klar, når:</strong> Appen kører lokalt, posts vises, og projektet peger på dit eget GitHub-repository.</p>
-          <p class="po-source-link"><a href="https://github.com/cederdorff/react-router-supabase/generate" target="_blank" rel="noopener noreferrer">Opret repository fra templaten</a></p>
+          <p class="work-if-stuck">
+            <strong>Helt okay lige nu:</strong> <code>/posts</code> viser måske ikke data — det løser vi, når vi arbejder
+            med miljøvariabler.
+          </p>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Appen kører lokalt, og du kan bruge navigationen og åbne en direkte route.
+          </p>
+          <p class="po-source-link">
+            <a
+              href="https://github.com/cederdorff/react-router-supabase"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Læs projektets README</a
+            >
+          </p>
           <aside class="notes">
-            De arbejder individuelt. Udlevér de to Supabase-værdier, men vis dem ikke på slidet. Hjælp kun med
-            blokeringer i setup. Der er ingen aflevering.
-            [Sources]
-            - https://github.com/cederdorff/react-router-supabase
-            - https://github.com/cederdorff/react-router-supabase/blob/main/docs/template-to-github-pages-setup.md
-            - https://github.com/cederdorff/react-router-supabase/blob/main/docs/supabase-setup.md
+            De arbejder individuelt. Hjælp kun med blokeringer i den grundlæggende opsætning. Vent med at udlevere og
+            konfigurere Supabase-værdierne; manglende data på /posts bliver afsættet til miljøvariabler senere. Det
+            Base path og aktivering af Pages venter til deployment-opgaven. Der er ingen aflevering. [Sources] -
+            https://github.com/cederdorff/react-router-supabase -
+            https://github.com/cederdorff/react-router-supabase/blob/main/docs/template-to-github-pages-setup.md -
+            https://github.com/cederdorff/react-router-supabase/blob/main/docs/supabase-setup.md [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mode-work local-check-slide">
+          <span class="eyebrow">Kontrolpunkt · Lokalt miljø</span>
+          <h2>Stop her: Kan du køre appen lokalt?</h2>
+          <div class="local-check-grid">
+            <figure class="local-check local-check-ok">
+              <img
+                src="../assets/product-optimization-01/home-working.png"
+                alt="React-appen kører lokalt, og forsiden vises i browseren"
+              />
+              <figcaption>
+                <strong>Det skal virke</strong>
+                <span><code>npm run dev</code> starter appen, og du kan navigere mellem de almindelige sider.</span>
+              </figcaption>
+            </figure>
+            <figure class="local-check local-check-expected">
+              <img
+                src="../assets/product-optimization-01/posts-error.png"
+                alt="Posts-siden uden indhold og med fejl i browserens console"
+              />
+              <figcaption>
+                <strong>Det skal fejle lige nu</strong>
+                <span><code>/posts</code> mangler endnu forbindelsen til Supabase. Lad fejlen stå indtil videre.</span>
+              </figcaption>
+            </figure>
+          </div>
+          <p class="local-check-next">
+            Når forsiden virker lokalt, er du klar til at følge projektet videre gennem Git og GitHub.
+          </p>
+          <aside class="notes">
+            Stop fælles op her. Bed alle kontrollere, at npm run dev starter projektet, og at Home, About og Contact kan
+            åbnes. Vis derefter /posts og browserens console. Fejlen er forventet, fordi Supabase-konfigurationen ikke
+            er sat endnu; de skal ikke forsøge at løse den nu. [Sources] - User-provided screenshots, 18 August 2026
             [/Sources]
           </aside>
         </section>
 
-        <section class="chapter po-chapter po-slide">
+        <section class="chapter po-chapter po-slide" id="git-github-deployment">
           <span class="chapter-index">01</span>
-          <span class="eyebrow">AI i udviklingsarbejdet</span>
-          <h2>En AI-agent kan arbejde i projektet — men du ejer beslutningen</h2>
-          <p class="kicker">Principperne gælder på tværs af værktøjer. I demoen bruger vi Codex.</p>
+          <span class="eyebrow">Git, GitHub og deployment</span>
+          <h2>Et push til main sætter resten af flowet i gang</h2>
+          <p class="kicker">Vi følger én ændring fra VS Code til GitHub Pages.</p>
           <aside class="notes">
-            Overgang: Før vi retter appen, skal vi afklare, hvad værktøjet kan, og hvad vores ansvar stadig er.
-            [Sources] - https://learn.chatgpt.com/docs/codex/ide [/Sources]
+            Overgang: Projektet kører lokalt. Nu følger vi det videre gennem Git, GitHub, Actions og Pages. [Sources] -
+            https://github.com/cederdorff/react-router-supabase [/Sources]
           </aside>
         </section>
 
         <section class="po-slide">
-          <span class="eyebrow">Chat eller agent?</span>
-          <h2>Forskellen er handling og adgang til kontekst</h2>
-          <div class="agent-spectrum">
-            <article>
-              <h3>En chat svarer</h3>
-              <ul><li>forklarer et begreb</li><li>foreslår kode</li><li>ser kun det, du deler</li></ul>
-            </article>
-            <div class="agent-arrow" aria-hidden="true">→</div>
-            <article>
-              <h3>En agent arbejder</h3>
-              <ul><li>undersøger filer</li><li>kører kommandoer</li><li>ændrer kode og tester</li></ul>
-            </article>
-          </div>
-          <p class="reflection">Mere handlekraft kræver mere afgrænsning, review og test.</p>
-          <aside class="notes">
-            En agent er ikke automatisk mere korrekt. Den kan bare gennemføre flere led i opgaven. Vis gerne forskellen
-            mellem et løst spørgsmål og en konkret opgave i et åbent repo.
-            [Sources] - https://learn.chatgpt.com/docs/codex/ide [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">Eksempel · Codex i VS Code</span>
-          <h2>Den bedste kontekst er ofte allerede åben</h2>
-          <div class="demo-layout">
-            <div class="demo-copy">
-              <span class="demo-label">IDE workflow</span>
-              <h3>Åbn det relevante. Markér det vigtige.</h3>
-              <p>Codex kan bruge åbne filer og markeret kode som kontekst og viser ændringer som et reviewbart diff.</p>
+          <span class="eyebrow">Dagens direkte flow</span>
+          <h2>Fra din computer til en offentlig URL</h2>
+          <div class="flow-environments" aria-label="Flowets tre miljøer">
+            <div class="flow-environment-local">
+              <strong>Lokalt</strong>
+              <span>Din computer · VS Code + Git</span>
             </div>
-            <div class="demo-screen">
-              <p>Undersøg <strong>PostsPage.jsx</strong> og deployment-workflowet.<br /><br />
-              Forklar først de vigtigste risici. Ændr ikke noget endnu.</p>
+            <div class="flow-environment-transfer">
+              <strong>Overførsel</strong>
+              <span>Push</span>
+            </div>
+            <div class="flow-environment-online">
+              <strong>Online</strong>
+              <span>GitHub · Actions · Pages</span>
             </div>
           </div>
-          <aside class="notes">
-            Vis Codex-panelet i VS Code. Åbn PostsPage.jsx og deploy.yml. Fremhæv at åbne filer og markeret kode gør
-            prompten mindre og mere præcis.
-            [Sources] - https://learn.chatgpt.com/docs/codex/ide [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">En brugbar opgavebeskrivelse</span>
-          <h2>Giv AI-agenten mål, kontekst, rammer og kontrol</h2>
-          <dl class="prompt-anatomy">
-            <dt>Mål</dt><dd>Hvad skal være anderledes, når opgaven er løst?</dd>
-            <dt>Kontekst</dt><dd>Hvilke filer, fejl, logs eller observationer betyder noget?</dd>
-            <dt>Rammer</dt><dd>Hvad må ikke ændres, deles eller udvides?</dd>
-            <dt>Kontrol</dt><dd>Hvordan skal løsningen testes og forklares?</dd>
-          </dl>
-          <aside class="notes">
-            Dette er ikke en obligatorisk promptskabelon. Det er fire ting, der reducerer tvetydighed. Start med
-            resultatet, og tilføj kun kontekst, der kan ændre svaret.
-            [Sources] - https://learn.chatgpt.com/docs/prompting [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">Prompt-eksempel · AI-agent</span>
-          <h2>Fra “den virker ikke” til en afgrænset undersøgelse</h2>
-          <div class="prompt-example">
-            Undersøg hvorfor Posts-siden kan fejle uden at vise brugeren noget.<br /><br />
-            Brug <strong>src/pages/PostsPage.jsx</strong> og den eksisterende Supabase-opsætning.<br />
-            Behold REST og appens nuværende struktur. Del aldrig værdier fra .env.<br />
-            Forklar problemet først. Foreslå derefter den mindste rettelse og hvordan vi tester den.
+          <div class="flow-track direct-flow" aria-label="Git- og deploymentflow direkte til main">
+            <article class="flow-node">
+              <h3>Ændr lokalt</h3>
+              <p>Redigér og kontrollér appen i VS Code.</p>
+            </article>
+            <article class="flow-node">
+              <h3>Commit</h3>
+              <p>Gem ændringen som et navngivet snapshot.</p>
+            </article>
+            <article class="flow-node">
+              <h3>Push til main</h3>
+              <p>Send dit commit til GitHub.</p>
+            </article>
+            <article class="flow-node">
+              <h3>Actions starter</h3>
+              <p>Et workflow reagerer på push til main.</p>
+            </article>
+            <article class="flow-node">
+              <h3>Build + deploy</h3>
+              <p>GitHub installerer, bygger og publicerer.</p>
+            </article>
+            <article class="flow-node">
+              <h3>Pages</h3>
+              <p>Kontrollér resultatet på den offentlige URL.</p>
+            </article>
           </div>
           <aside class="notes">
-            Gennemgå prompten som eksempel. Live-demoen med AI kommer senere, når en konkret GitHub Actions-log giver
-            agenten et reelt symptom at arbejde ud fra.
-            [Sources] - https://learn.chatgpt.com/docs/prompting - https://github.com/cederdorff/react-router-supabase/blob/main/src/pages/PostsPage.jsx
+            Brug 2–3 minutter på hele billedet før detaljerne. Peg fysisk gennem de seks trin, og gentag senere samme
+            rækkefølge under live-demoen. I første omgang arbejder vi direkte på main; branches kommer senere.
+            [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/docs/template-to-github-pages-setup.md -
+            https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide git-local-slide">
+          <span class="eyebrow">Lokalt · 1</span>
+          <h2>Source Control viser forskellen — ikke sandheden</h2>
+          <div class="screenshot-layout">
+            <div class="screenshot-copy">
+              <p>En ændret fil er endnu ikke en commit. Først læser vi diffet og vælger, hvad der skal med.</p>
+              <ul class="micro-list">
+                <li>Hvad ændrede jeg?</li>
+                <li>Hører ændringerne sammen?</li>
+                <li>Virker appen stadig?</li>
+              </ul>
+            </div>
+            <figure class="browser-frame">
+              <img
+                src="../assets/product-optimization-01/changes-in-source-control.webp"
+                alt="Source Control i VS Code med ændrede filer"
+              />
+            </figure>
+          </div>
+          <aside class="notes">
+            Zoom ind i Source Control-panelet. Vis working tree, diff og stage. Source Control er et overblik over
+            ændringer; det vurderer ikke om de er gode. [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/docs/images/changes-in-source-control.png
             [/Sources]
           </aside>
         </section>
 
-        <section class="po-slide">
-          <span class="eyebrow">Når agenten arbejder</span>
-          <h2>Et godt forløb går fra undersøgelse til verificering</h2>
-          <div class="commit-chain">
-            <article><h3>Undersøgte</h3><p>læste relevant kode og fandt den aktuelle dataflow.</p></article>
-            <article><h3>Formulerede</h3><p>gjorde symptomet til hypoteser, vi kunne vurdere.</p></article>
-            <article><h3>Verificerede</h3><p>foreslog eller kørte konkrete checks frem for at gætte.</p></article>
+        <section class="po-slide git-handoff-slide">
+          <span class="eyebrow">Lokalt → overførsel · 2–3</span>
+          <h2>Stage, commit og push er tre forskellige beslutninger</h2>
+          <div class="commit-chain git-commit-chain">
+            <article>
+              <h3>Stage</h3>
+              <p>Vælg filer eller linjer til næste snapshot.</p>
+              <span class="command">git add …</span>
+            </article>
+            <article>
+              <h3>Commit</h3>
+              <p>Gem snapshot og forklar formålet kort.</p>
+              <span class="command">git commit -m "…"</span>
+            </article>
+            <article>
+              <h3>Push</h3>
+              <p>Send dine lokale commits til remote-repoet.</p>
+              <span class="command">git push</span>
+            </article>
           </div>
-          <p class="reflection">Du skal stadig forstå ændringen godt nok til at forklare og teste den.</p>
+          <p class="reflection">En god commit fortæller én sammenhængende historie.</p>
           <aside class="notes">
-            Brug de tre handlinger til at forberede den individuelle kortlægningsopgave. Spørg: Hvad kan agenten se?
-            Hvad må den antage? Hvad skal vi selv kontrollere?
-            [Sources] - https://learn.chatgpt.com/docs/codex/ide - https://learn.chatgpt.com/docs/prompting [/Sources]
+            Vis den samme proces i VS Code-knapper og nævn terminalkommandoerne som det underliggende Git-sprog.
+            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/git-github-slides-master.md
+            [/Sources]
           </aside>
         </section>
 
-        <section class="po-slide">
-          <span class="eyebrow">Sikker arbejdsform</span>
-          <h2>Agenten må gerne hjælpe — aldrig overtage ansvaret</h2>
-          <ul class="guardrail-list">
-            <li><b>01</b><span>Del kun relevante filer, fejl og logs — aldrig private nøgler, tokens eller hele <code>.env</code>.</span></li>
-            <li><b>02</b><span>Afgræns ændringen, og bed om forklaring før store eller uklare indgreb.</span></li>
-            <li><b>03</b><span>Læs diffet. Behold kun ændringer, du forstår og kan forsvare.</span></li>
-            <li><b>04</b><span>Kør appen, lint og relevante tests. Et overbevisende svar er ikke et testresultat.</span></li>
-          </ul>
+        <section class="po-slide git-handoff-slide">
+          <span class="eyebrow">Lokalt → online · 3–4</span>
+          <h2>Push er både deling og et startsignal</h2>
+          <div class="commit-chain main-trigger-chain">
+            <article>
+              <h3>Lokalt commit</h3>
+              <p>Ændringen findes i din lokale Git-historik.</p>
+            </article>
+            <article>
+              <h3>Push til main</h3>
+              <p>Commit’et bliver sendt til repositoryet på GitHub.</p>
+            </article>
+            <article>
+              <h3>Actions starter</h3>
+              <p>GitHub Actions registrerer push og starter deployment.</p>
+            </article>
+          </div>
+          <div class="callout">
+            <p><strong>Senere udvider vi flowet:</strong> branch → pull request → review → main.</p>
+          </div>
           <aside class="notes">
-            Knyt til professionsansvar og eksamen: De studerende skal kunne forklare deres løsning. En agent kan gøre
-            fejl, ændre for meget eller misforstå konteksten.
-            [Sources] - https://learn.chatgpt.com/docs/prompting - https://vite.dev/guide/env-and-mode [/Sources]
+            De arbejder hver især i deres eget repository, så dagens første flow går direkte til main. Nævn kun den
+            senere udvidelse kort; branches og pull requests forklares ikke endnu. [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide git-online-slide">
+          <span class="eyebrow">Online · 4–5 · GitHub Actions</span>
+          <h2>Actions følger en fast opskrift efter push til main</h2>
+          <div class="actions-pipeline">
+            <article>
+              <h3>Start</h3>
+              <p>Et push til <code>main</code> udløser workflowet.</p>
+            </article>
+            <article>
+              <h3>Forbered</h3>
+              <p>GitHub henter koden og installerer projektet.</p>
+            </article>
+            <article>
+              <h3>Build</h3>
+              <p>Workflowet bygger den version, der skal online.</p>
+            </article>
+            <article>
+              <h3>Deploy</h3>
+              <p>Det færdige build bliver publiceret på Pages.</p>
+            </article>
+          </div>
+          <p class="reflection actions-takeaway">
+            GitHub Actions kører workflow-filen på GitHub — ikke på din computer.
+          </p>
+          <aside class="notes">
+            Hold først forklaringen på de fire handlinger. Åbn derefter .github/workflows/deploy.yml under demoen, og
+            vis at de mere tekniske steps blandt andet er checkout, opsætning af Node, npm ci, build, upload af artifact
+            og deployment. Fremhæv at GitHub bygger fra repositoryet i et rent online miljø. [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml -
+            https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide git-online-slide actions-inspect-slide">
+          <span class="eyebrow">Online · 5 · Inspicér Actions</span>
+          <h2>Du kan følge workflowet, mens det kører — og når det er færdigt</h2>
+          <div class="actions-status-grid">
+            <figure class="actions-status actions-status-running">
+              <img
+                src="../assets/product-optimization-01/actions-running.webp"
+                alt="GitHub Actions med et workflow run der er i gang"
+              />
+              <figcaption><strong>Kører</strong><span>GitHub arbejder sig gennem workflowet.</span></figcaption>
+            </figure>
+            <figure class="actions-status actions-status-complete">
+              <img
+                src="../assets/product-optimization-01/actions-completed.webp"
+                alt="GitHub Actions med et workflow run der er gennemført"
+              />
+              <figcaption><strong>Færdig</strong><span>Runnet har afsluttet med succes eller fejl.</span></figcaption>
+            </figure>
+          </div>
+          <div class="actions-inspect-path">
+            <strong>Klik dig ned i kørslen</strong>
+            <span>Workflow run → job → step → log</span>
+          </div>
+          <aside class="notes">
+            Vis først Actions-oversigten, mens et run kører, og opdatér derefter siden, når det er færdigt. Klik ind på
+            runnet og vis hierarkiet workflow run → job → step → log. Pointen er, at Actions både viser status og giver
+            adgang til det, der faktisk skete. [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/docs/images/actions-running.png -
+            https://github.com/cederdorff/react-router-supabase/blob/main/docs/images/actions-completed.png [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide git-online-slide actions-error-slide">
+          <span class="eyebrow">Online · 5 · Når Actions fejler</span>
+          <h2>En rød deployment skal åbnes — ikke gættes på</h2>
+          <div class="actions-error-gallery">
+            <figure>
+              <img
+                src="../assets/product-optimization-01/actions-error-enabled.png"
+                alt="Fejlet workflow fordi GitHub Pages ikke er aktiveret"
+              />
+              <figcaption><strong>Pages er ikke aktiveret</strong><span>Fejlen ses i runnets summary.</span></figcaption>
+            </figure>
+            <figure>
+              <img
+                src="../assets/product-optimization-01/actions-error-npm-ci.png"
+                alt="GitHub Actions hvor npm ci fejler i Install dependencies-steppet"
+              />
+              <figcaption><strong><code>npm ci</code> stopper</strong><span>Åbn det første røde step.</span></figcaption>
+            </figure>
+            <figure>
+              <img
+                src="../assets/product-optimization-01/actions-error-package-json.png"
+                alt="GitHub Actions-fejl fordi package.json og package-lock.json ikke er synkroniseret"
+              />
+              <figcaption><strong>Lockfilen er ude af sync</strong><span>Kopiér den konkrete fejltekst.</span></figcaption>
+            </figure>
+          </div>
+          <p class="error-method"><strong>Samme metode hver gang:</strong> run → job → første røde step → konkret fejltekst.</p>
+          <aside class="notes">
+            Screenshotsene viser tre forskellige fejl, ikke ét sammenhængende run. Brug dem til at demonstrere den
+            samme fremgangsmåde: Åbn runnet, find det første røde step, og kopiér den konkrete fejl. “Deployment failed”
+            er kun et symptom. [Sources] - User-provided screenshots, 18 August 2026 -
+            https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide git-online-slide agent-error-slide">
+          <span class="eyebrow">Fejlsøgning · Brug din agent</span>
+          <h2>Giv agenten forskellen mellem lokalt og online</h2>
+          <div class="agent-error-layout">
+            <div class="agent-context">
+              <h3>Giv den fire ting</h3>
+              <ol>
+                <li>Hvad fungerer lokalt?</li>
+                <li>Hvilket step fejler?</li>
+                <li>Hvad er den præcise fejl?</li>
+                <li>Hvilke filer er relevante?</li>
+              </ol>
+              <p>Del aldrig værdier fra <code>.env</code>.</p>
+            </div>
+            <blockquote class="agent-error-prompt">
+              <p>Deployment til GitHub Pages fejler, men projektet fungerer lokalt.</p>
+              <p>Det første fejlede step er: <strong>[navn på step]</strong></p>
+              <p>Her er den konkrete fejl:<br /><strong>[indsæt fejltekst]</strong></p>
+              <p>
+                Forklar den sandsynlige årsag. Vis, hvordan jeg kan reproducere fejlen lokalt, og foreslå den mindste
+                rettelse.
+              </p>
+            </blockquote>
+          </div>
+          <aside class="notes">
+            Demonstrér at du kopierer den konkrete fejl fra Actions og giver den til din agent sammen med forskellen
+            mellem lokalt og online. Tilføj relevante filer som package.json, package-lock.json eller workflow-filen,
+            men aldrig hemmelige værdier. Bed først om årsag og reproduktion; derefter om den mindste rettelse.
+            [Sources] - User-provided teaching workflow, 18 August 2026 [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide git-online-slide pages-overview-slide">
+          <span class="eyebrow">Online · Overblik</span>
+          <h2>Fire dele får appen hele vejen til Pages</h2>
+          <div class="pages-overview-flow">
+            <article>
+              <span>1</span>
+              <h3>Actions bygger</h3>
+              <p>Workflowet installerer projektet og bygger mappen <code>dist</code>.</p>
+            </article>
+            <article>
+              <span>2</span>
+              <h3>Pages publicerer</h3>
+              <p>GitHub gør buildet tilgængeligt på en offentlig URL.</p>
+            </article>
+            <article>
+              <span>3</span>
+              <h3>Base path retter stier</h3>
+              <p>Routes, JavaScript, CSS og billeder findes under repositoryets navn.</p>
+            </article>
+            <article>
+              <span>4</span>
+              <h3>Fallback åbner routes</h3>
+              <p><code>404.html</code> starter React-appen ved direkte links og refresh.</p>
+            </article>
+          </div>
+          <p class="overview-ownership">
+            <strong>Inden første deployment:</strong> Sæt <code>base</code> i projektets <code>package.json</code>, og vælg
+            <strong>GitHub Actions</strong> som Pages-kilde i repositoryets indstillinger.
+          </p>
+          <aside class="notes">
+            Giv først dette overblik uden at åbne kode. Peg på kæden fra build til offentlig app. Skeln derefter mellem
+            det, starteren allerede leverer, og det den studerende selv skal tilpasse: repositoryets base path og Pages'
+            build source. De næste to slides zoomer ind på, hvorfor base path og fallback er nødvendige. [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml -
+            https://github.com/cederdorff/react-router-supabase/blob/main/vite.config.js -
+            https://github.com/cederdorff/react-router-supabase/blob/main/src/main.jsx [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide git-online-slide pages-path-slide">
+          <span class="eyebrow">Online · Først princippet</span>
+          <h2>På Pages ligger appen i en undermappe</h2>
+          <div class="path-comparison" aria-label="Sammenligning af lokal URL og URL på GitHub Pages">
+            <article>
+              <span>Lokalt</span>
+              <code>http://localhost:5173/<strong>posts</strong></code>
+            </article>
+            <div aria-hidden="true">→</div>
+            <article>
+              <span>GitHub Pages</span>
+              <code>https://brugernavn.github.io/<mark>web-app-optimization/</mark><strong>posts</strong></code>
+            </article>
+          </div>
+          <p class="base-definition">
+            <code>/web-app-optimization/</code> er appens <strong>base path</strong>: den del af adressen, der kommer før
+            appens egne routes og filer.
+          </p>
+          <div class="path-examples">
+            <span><strong>Route</strong><code>/posts</code></span>
+            <span><strong>Billede</strong><code>logo.webp</code></span>
+            <span><strong>Buildfil</strong><code>assets/index.js</code></span>
+          </div>
+          <p class="reflection">På Pages skal alle tre findes efter den samme base path.</p>
+          <aside class="notes">
+            Begynd kun med URL'erne. Peg på den fremhævede del og giv den et navn: base path. Forklar derefter, at både
+            routes og filer skal findes under denne sti. Et billede med navnet logo.webp er stadig samme billede; det er
+            browserens adresse til billedet, der ændrer sig. Undgå konfigurationsdetaljerne, indtil begrebet er på plads.
+            [Sources] -
+            https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages -
+            https://vite.dev/guide/build.html#public-base-path -
+            https://github.com/cederdorff/react-router-supabase/blob/main/src/pages/HomePage.jsx [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide git-online-slide pages-solutions-slide">
+          <span class="eyebrow">Online · Så konfigurationen</span>
+          <h2>Vi løser to forskellige Pages-problemer</h2>
+          <div class="pages-problems">
+            <article>
+              <span class="problem-number">1</span>
+              <h3>Adresser til routes og filer</h3>
+              <p class="problem-cause">Pages tilføjer repositoryets navn foran appen.</p>
+              <dl>
+                <div>
+                  <dt>Build</dt>
+                  <dd>Vites <code>base</code> retter stier til JavaScript, CSS og importerede billeder.</dd>
+                </div>
+                <div>
+                  <dt>Public-billeder</dt>
+                  <dd><code>${import.meta.env.BASE_URL}logo.webp</code></dd>
+                </div>
+                <div>
+                  <dt>Routes</dt>
+                  <dd><code>basename={import.meta.env.BASE_URL}</code></dd>
+                </div>
+              </dl>
+            </article>
+            <article>
+              <span class="problem-number">2</span>
+              <h3>Refresh på en app-route</h3>
+              <p class="problem-cause">Pages er en filserver og kan ikke selv finde en React-route som <code>/posts</code>.</p>
+              <div class="fallback-flow">
+                <span>Direkte URL eller refresh</span>
+                <strong>Pages finder ingen fil</strong>
+                <code>404.html → React-appen</code>
+                <span>React Router læser URL’en og viser siden</span>
+              </div>
+            </article>
+          </div>
+          <p class="reflection"><strong>Base path</strong> retter adresserne. <strong>Fallback</strong> starter appen ved en direkte route.</p>
+          <aside class="notes">
+            Hold de to problemer adskilt. Problem 1 handler om adresser: Vite retter genererede buildstier og importerede
+            assets automatisk ud fra base. Filer i public refereres i starteren med BASE_URL, og BrowserRouter bruger den
+            samme værdi som basename. Problem 2 opstår først ved en direkte URL eller refresh: GitHub Pages leder efter en
+            fysisk fil, men /posts er en route i browseren. Workflowet kopierer derfor index.html til 404.html, så React
+            kan starte og routeren kan læse URL’en. [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/vite.config.js -
+            https://github.com/cederdorff/react-router-supabase/blob/main/src/main.jsx -
+            https://github.com/cederdorff/react-router-supabase/blob/main/src/pages/HomePage.jsx -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide git-online-slide pages-first-setup-slide">
+          <span class="eyebrow">Opsætning · Én gang før første deployment</span>
+          <h2>Sæt base lokalt — vælg Actions online</h2>
+          <div class="first-deploy-setup">
+            <article class="setup-local">
+              <span class="setup-place">Lokalt · VS Code</span>
+              <h3>1 · Ret <code>package.json</code></h3>
+              <p class="setup-where">Projektets rodmappe → <code>package.json</code></p>
+              <pre class="po-code"><code>{
+  "base": "/web-app-optimization/"
+}</code></pre>
+              <p>Værdien skal matche repositoryets navn — inklusive skråstregerne.</p>
+            </article>
+            <article class="setup-online">
+              <span class="setup-place">Online · GitHub</span>
+              <h3>2 · Vælg deployment-kilde</h3>
+              <p class="settings-path">
+                <code>Repository → Settings → Pages</code><br />
+                <code>Build and deployment → Source → GitHub Actions</code>
+              </p>
+              <p>Det kobler Pages til workflowet, der allerede ligger i starteren.</p>
+            </article>
+          </div>
+          <div class="first-deploy-timing">
+            <strong>Hvornår?</strong>
+            <span>Gør begge dele før dit første push til <code>main</code>.</span>
+            <span>Ved push starter workflowet automatisk.</span>
+          </div>
+          <aside class="notes">
+            Dette er et handlingsslide. Vis de to steder fysisk: package.json i VS Code og Settings → Pages på GitHub.
+            Præcisér sproget: GitHub Actions er normalt allerede tilgængeligt; her vælger vi GitHub Actions som Pages'
+            deployment-kilde. Begge indstillinger sættes én gang per nyt repository, før første push til main, så det
+            første workflow run kan deploye til Pages. Hvis repositoryet får et andet navn, skal base ændres tilsvarende.
+            [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/package.json -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml -
+            https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mode-demo">
+          <span class="eyebrow">Live-demo · Pages fra start til kontrol</span>
+          <h2>Se hele Pages-opsætningen virke</h2>
+          <div class="demo-runbook">
+            <ol>
+              <li><span class="flow-scope scope-local">VS Code</span>Sæt <code>base</code> i <code>package.json</code>.</li>
+              <li><span class="flow-scope scope-online">GitHub</span>Vælg <code>GitHub Actions</code> som Source under Pages.</li>
+              <li><span class="flow-scope scope-local">Lokalt</span>Lav en synlig ændring, kør build, og commit.</li>
+              <li><span class="flow-scope scope-transfer">Push</span>Push dit commit til <code>main</code>.</li>
+              <li><span class="flow-scope scope-online">Actions</span>Følg workflowet, der starter automatisk.</li>
+              <li><span class="flow-scope scope-online">Pages</span>Kontrollér forside, billeder og refresh på <code>/posts</code>.</li>
+            </ol>
+            <div class="demo-failure">
+              <h3>Skeln mellem to fejl</h3>
+              <p>
+                En forventet Supabase-fejl på <code>/posts</code> er okay nu. En GitHub 404 eller manglende billeder
+                betyder, at Pages-konfigurationen ikke er færdig.
+              </p>
+            </div>
+          </div>
+          <aside class="notes">
+            Dette er dagens centrale live-demo. Vis først base i package.json og at Pages bruger GitHub Actions. Lav en
+            synlig ændring i HomePage.jsx, kør npm run build, review diffet, commit og push til main. Følg workflowet og
+            kontrollér derefter den offentlige app: CSS, et importeret billede, billedet fra public, navigation og en
+            refresh på /posts. Posts må gerne vise den forventede datafejl; pointen er, at React-appen åbner i stedet for
+            GitHubs 404-side. Hvis workflowet fejler, åbn første røde step og brug den konkrete fejltekst.
+            [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mode-shared pages-check-slide">
+          <span class="eyebrow">Fælles · Efter demoen</span>
+          <h2>Et grønt workflow er ikke hele kontrollen</h2>
+          <div class="closing-loop pages-check-loop">
+            <article>
+              <h3>Build</h3>
+              <p>Workflowet er grønt, og Pages har publiceret et deployment.</p>
+            </article>
+            <article>
+              <h3>Forside</h3>
+              <p>Styling, JavaScript og den synlige ændring er indlæst.</p>
+            </article>
+            <article>
+              <h3>Billeder</h3>
+              <p>Både importerede billeder og filer fra <code>public</code> vises.</p>
+            </article>
+            <article>
+              <h3>Direkte route</h3>
+              <p><code>/posts</code> åbner efter refresh uden en GitHub 404-side.</p>
+            </article>
+          </div>
+          <p class="reflection">Deployment er først kontrolleret, når appen også virker i browseren.</p>
+          <aside class="notes">
+            Brug dette som fælles checkliste efter demoen. Understreg, at Actions kun fortæller, om workflowets steps
+            lykkedes. Den funktionelle kontrol foregår på Pages-URL'en. På /posts er en Supabase-datafejl forventet på
+            dette tidspunkt; en GitHub 404-side er ikke. [Sources] -
+            https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows -
+            https://github.com/cederdorff/react-router-supabase/blob/main/docs/template-to-github-pages-setup.md [/Sources]
           </aside>
         </section>
 
         <section class="po-slide mode-work">
           <span class="eyebrow">Opgave 2 · Arbejd individuelt</span>
-          <h2>Brug en AI-agent til at kortlægge projektet</h2>
-          <div class="work-columns">
-            <div>
-              <h3>Giv agenten en afgrænset opgave</h3>
-              <div class="prompt-example compact-prompt">Kortlæg hvordan appen hænger sammen fra <strong>main.jsx</strong> og routes til Supabase og deployment. Peg på de vigtigste filer og forklar deres ansvar. Ændr ikke noget.</div>
-            </div>
-            <div>
-              <h3>Kontrollér svaret i projektet</h3>
-              <ul class="checklist">
-                <li>Find route-konfigurationen</li>
-                <li>Find Supabase-requestet</li>
-                <li>Find base path</li>
-                <li>Find deploy-workflowet</li>
-              </ul>
-            </div>
+          <h2>Konfigurér, deploy og kontrollér din app</h2>
+          <div class="task-prerequisite">
+            <strong>Gør dette én gang før første push til <code>main</code>:</strong>
+            <span><b>I VS Code:</b> Sæt <code>"base": "/web-app-optimization/"</code> i projektets <code>package.json</code>.</span>
+            <span><b>På GitHub:</b> Vælg <code>Repository → Settings → Pages → Source: GitHub Actions</code>.</span>
           </div>
-          <p class="done-when"><strong>Du er klar, når:</strong> Du selv kan forklare én forbindelse mellem to af filerne — også uden agentens svar.</p>
-          <aside class="notes">
-            De må bruge det AI-værktøj, de har adgang til. Opgaven handler om kontekst og kontrol, ikke om at generere
-            kode. Hvis en studerende ikke bruger en agent, kan filerne kortlægges manuelt.
-            [Sources] - https://github.com/cederdorff/react-router-supabase - https://learn.chatgpt.com/docs/prompting [/Sources]
-          </aside>
-        </section>
-
-        <section class="chapter po-chapter po-slide">
-          <span class="chapter-index">02</span>
-          <span class="eyebrow">Git, GitHub og deployment</span>
-          <h2>En lokal ændring bliver først værdifuld, når flowet holder</h2>
-          <p class="kicker">Nu følger vi ændringen fra VS Code til en offentlig URL.</p>
-          <aside class="notes">
-            Overgang: En AI-agent kan hjælpe os lokalt. Nu skal vi forstå hele leveringskæden.
-            [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">Det samlede flow</span>
-          <h2>Fra idé til offentlig webapp</h2>
-          <div class="flow-track" aria-label="Git- og deploymentflow">
-            <article class="flow-node"><h3>Ændr lokalt</h3><p>Redigér og test i VS Code.</p></article>
-            <article class="flow-node"><h3>Stage</h3><p>Vælg præcis hvad der skal med.</p></article>
-            <article class="flow-node"><h3>Commit</h3><p>Gem et navngivet snapshot.</p></article>
-            <article class="flow-node"><h3>Push</h3><p>Send commits til GitHub.</p></article>
-            <article class="flow-node"><h3>Pull request</h3><p>Review ændringen før merge.</p></article>
-            <article class="flow-node"><h3>Main</h3><p>Merge gør ændringen officiel.</p></article>
-            <article class="flow-node"><h3>Actions</h3><p>Installer, byg og deploy.</p></article>
-            <article class="flow-node"><h3>Pages</h3><p>Kontrollér den levende app.</p></article>
-          </div>
-          <aside class="notes">
-            Brug 2–3 minutter på hele billedet før detaljerne. Peg fysisk gennem flowet. Gentag senere samme rækkefølge
-            under live-demoen.
-            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/collaboration-guide.md - https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically
-            [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">1 · Lokalt arbejde</span>
-          <h2>Source Control viser forskellen — ikke sandheden</h2>
-          <div class="screenshot-layout">
-            <div class="screenshot-copy">
-              <p>En ændret fil er endnu ikke en commit. Først læser vi diffet og vælger, hvad der skal med.</p>
-              <ul class="micro-list"><li>Hvad ændrede jeg?</li><li>Hører ændringerne sammen?</li><li>Virker appen stadig?</li></ul>
-            </div>
-            <figure class="browser-frame">
-              <img src="../assets/product-optimization-01/changes-in-source-control.webp" alt="Source Control i VS Code med ændrede filer" />
-            </figure>
-          </div>
-          <aside class="notes">
-            Zoom ind i Source Control-panelet. Vis working tree, diff og stage. Source Control er et overblik over
-            ændringer; det vurderer ikke om de er gode.
-            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/images/changes-in-source-control.png
-            [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">2–4 · Lokal historik møder GitHub</span>
-          <h2>Stage, commit og push er tre forskellige beslutninger</h2>
-          <div class="commit-chain">
-            <article><h3>Stage</h3><p>Vælg filer eller linjer til næste snapshot.</p><span class="command">git add …</span></article>
-            <article><h3>Commit</h3><p>Gem snapshot og forklar formålet kort.</p><span class="command">git commit -m "…"</span></article>
-            <article><h3>Push</h3><p>Send dine lokale commits til remote-repoet.</p><span class="command">git push</span></article>
-          </div>
-          <p class="reflection">En god commit fortæller én sammenhængende historie.</p>
-          <aside class="notes">
-            Vis den samme proces i VS Code-knapper og nævn terminalkommandoerne som det underliggende Git-sprog.
-            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/git-github-slides-master.md [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">5–6 · GitHub og main</span>
-          <h2>I dag sender du direkte til main i dit eget repository</h2>
-          <div class="split">
-            <div>
-              <p class="statement"><strong>Main</strong> er den branch, workflowet lytter efter. Et push starter derfor deployment.</p>
-            </div>
-            <div>
-              <p class="statement"><strong>I et team:</strong> feature branch → pull request → review → merge til main.</p>
-            </div>
-          </div>
-          <div class="callout"><p>Det direkte flow er valgt til dagens individuelle øvelse — ikke som en generel samarbejdsregel.</p></div>
-          <aside class="notes">
-            De arbejder hver især i deres eget repository, så dagens flow går direkte til main. Repetér kort, at
-            samarbejde normalt kræver branches og pull requests.
-            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/collaboration-guide.md [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">7 · GitHub Actions</span>
-          <h2>Et push til main starter en reproducerbar byggeproces</h2>
-          <div class="actions-pipeline">
-            <article><h3>Trigger</h3><p>Push til <code>main</code>.</p></article>
-            <article><h3>Checkout</h3><p>Hent repoets filer.</p></article>
-            <article><h3>Node + npm</h3><p>Opsæt Node og kør <code>npm ci</code>.</p></article>
-            <article><h3>Build</h3><p>Byg Vite-appen med online variabler.</p></article>
-            <article><h3>Artifact</h3><p>Pak indholdet af <code>dist</code>.</p></article>
-            <article><h3>Deploy</h3><p>Publicér artifact til Pages.</p></article>
-          </div>
-          <aside class="notes">
-            Åbn .github/workflows/deploy.yml bagefter. Knyt hver YAML-step til én boks. Fremhæv at GitHub bygger fra
-            repoet i et rent miljø — ikke fra den studerendes computer.
-            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml - https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically
-            [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">Følg kørslen</span>
-          <h2>Grøn eller rød er kun begyndelsen på forklaringen</h2>
-          <div class="screenshot-layout reverse">
-            <figure class="browser-frame">
-              <img src="../assets/product-optimization-01/actions-running.webp" alt="En GitHub Actions deployment der kører" />
-            </figure>
-            <div class="screenshot-copy">
-              <p>Find workflow run → job → step → log.</p>
-              <ul class="micro-list"><li>Hvad blev udløst?</li><li>Hvor stoppede processen?</li><li>Hvad er den første konkrete fejl?</li></ul>
-            </div>
-          </div>
-          <aside class="notes">
-            Åbn en run. Vis hvordan man klikker fra workflow til job og videre til det fejlede step. Brug en AI-agent til at
-            forklare loggen, ikke til at gætte uden loggen.
-            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/docs/images/actions-running.png [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">Fejlsøgning i Actions</span>
-          <h2>Start ved det første fejlede step</h2>
-          <div class="failure-anatomy">
-            <div class="failure-path">
-              <div>Workflow run</div><div>Job: deploy</div><div>Step: Build</div><div>Log: den første konkrete fejl</div>
-            </div>
-            <ul class="failure-questions">
-              <li>Kan fejlen reproduceres med <code>npm run build</code> lokalt?</li>
-              <li>Mangler en variabel, fil eller dependency i GitHub-miljøet?</li>
-              <li>Er rettelsen den mindste ændring, der løser årsagen?</li>
-            </ul>
-          </div>
-          <aside class="notes">
-            Gør forskellen tydelig mellem symptom og årsag. “Deployment failed” er et symptom. En importfejl i build
-            eller manglende variabel er en mere konkret årsag.
-            [Sources] - https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">React Router på GitHub Pages</span>
-          <h2>Tre små detaljer afgør, om routes virker online</h2>
-          <div class="commit-chain">
-            <article><h3>Vite base</h3><p>Buildet skal kende repoets sti på GitHub Pages.</p><span class="command">base: pkg.base</span></article>
-            <article><h3>Router basename</h3><p>BrowserRouter bruger den samme base via Vite.</p><span class="command">import.meta.env.BASE_URL</span></article>
-            <article><h3>SPA fallback</h3><p><code>404.html</code> sender deep links tilbage til appen.</p><span class="command">cp dist/index.html dist/404.html</span></article>
-          </div>
-          <aside class="notes">
-            Test både forsiden og en direkte URL til /posts efter deployment. Forklar hvorfor klient-side routing ellers
-            kan give 404 ved refresh.
-            [Sources] - https://github.com/cederdorff/react-router-supabase/blob/main/vite.config.js - https://github.com/cederdorff/react-router-supabase/blob/main/src/main.jsx - https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml
-            [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide mode-demo">
-          <span class="eyebrow">Live-eksempel · hele flowet</span>
-          <h2>Se ændringen rejse fra VS Code til GitHub Pages</h2>
-          <div class="demo-runbook">
-            <ol>
-              <li>Lav en lille synlig ændring, og kør <code>npm run build</code>.</li>
-              <li>Læs diffet, commit ændringen, og push til <code>main</code>.</li>
-              <li>Åbn Actions → workflow run → job → steps.</li>
-              <li>Åbn deployment-URL’en, og kontrollér ændringen.</li>
-            </ol>
-            <div class="demo-failure">
-              <h3>Hvis run bliver rødt</h3>
-              <p>Find det første fejlede step. Giv kun den relevante fejltekst til en AI-agent, og bed først om en forklaring og næste check — ikke en blind rettelse.</p>
-            </div>
-          </div>
-          <aside class="notes">
-            Dette er dagens centrale live-demo. Gennemfør ændringen i index.html eller HomePage.jsx. Brug VS Code Source
-            Control, push til main, og åbn Actions. Vis både workflow summary, job, step og log. Hvis der er en reel fejl,
-            brug den. Ellers vis en tidligere fejlet run eller forklar fejlgrenen uden at fremprovokere en fejl.
-            [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide mode-shared">
-          <span class="eyebrow">Efter demoen</span>
-          <h2>Den samme ændring eksisterede i fire forskellige former</h2>
-          <div class="closing-loop">
-            <article><h3>Working tree</h3><p>En lokal forskel i en fil.</p></article>
-            <article><h3>Commit</h3><p>Et snapshot i Git-historikken.</p></article>
-            <article><h3>Repository</h3><p>En delt version på GitHub.</p></article>
-            <article><h3>Deployment</h3><p>Et build, brugeren kan åbne.</p></article>
-          </div>
-          <aside class="notes">
-            Brug ordforrådet præcist. Spørg klassen: Hvornår var ændringen sikker? Hvornår var den delt? Hvornår kunne
-            brugeren se den?
-            [Sources] - https://docs.github.com/en/get-started/start-your-journey/deploying-your-website-automatically [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide mode-work">
-          <span class="eyebrow">Opgave 3 · Arbejd individuelt</span>
-          <h2>Send din egen ændring gennem hele flowet</h2>
           <div class="assignment-flow deploy-work-flow">
-            <article><h3>Ændr</h3><p>Ret en synlig tekst eller metadata. Kontrollér ændringen lokalt.</p></article>
-            <article><h3>Gem</h3><p>Kør <code>npm run build</code>, læs diffet, commit, og push til <code>main</code>.</p></article>
-            <article><h3>Følg</h3><p>Åbn Actions. Find workflow run, job, steps og deployment-URL.</p></article>
-            <article><h3>Kontrollér</h3><p>Find ændringen på Pages. Genindlæs også en direkte route.</p></article>
+            <article class="work-local">
+              <small class="work-environment">Lokalt</small>
+              <h3>Ændr og test</h3>
+              <p>Lav en synlig ændring, og kontrollér den med <code>npm run dev</code>.</p>
+            </article>
+            <article class="work-local">
+              <small class="work-environment">Lokalt</small>
+              <h3>Byg og commit</h3>
+              <p>Kør <code>npm run build</code>, læs diffet, og commit ændringen.</p>
+            </article>
+            <article class="work-transfer">
+              <small class="work-environment">Overførsel</small>
+              <h3>Push til main</h3>
+              <p>Push dit commit, og kontrollér, at det kan ses i repositoryet på GitHub.</p>
+            </article>
+            <article class="work-online">
+              <small class="work-environment">Online</small>
+              <h3>Kontrollér Pages</h3>
+              <p>Følg Actions. Test derefter forside, billeder og refresh på <code>/posts</code>.</p>
+            </article>
           </div>
-          <p class="work-if-stuck"><strong>Hvis run fejler:</strong> Find første røde step → læs den konkrete fejl → reproducer lokalt → brug eventuelt en AI-agent til at forklare loggen. Del aldrig værdier fra <code>.env</code>.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Du kan pege på commit, workflow run og den deployede ændring. Der skal ikke afleveres noget.</p>
+          <p class="work-if-stuck">
+            <strong>Hvis run fejler:</strong> Find første røde step → læs den konkrete fejl → reproducer lokalt → brug
+            det næste relevante check. Del aldrig værdier fra <code>.env</code>.
+          </p>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Workflowet er grønt, billederne vises, og <code>/posts</code> åbner efter
+            refresh uden en GitHub 404-side. Der skal ikke afleveres noget.
+          </p>
           <aside class="notes">
-            Lad deployment køre i baggrunden, mens du hjælper rundt. Hvis Pages endnu ikke er aktiveret, skal de vælge
-            Settings → Pages → GitHub Actions. Posts behøver ikke virke online før konfigurationsopgaven.
-            [Sources]
-            - https://github.com/cederdorff/react-router-supabase/blob/main/docs/template-to-github-pages-setup.md
-            - https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows
+            Base path tilpasses og Pages aktiveres først her. Peg på de samme miljøfarver som i oversigtsslidet: blå er
+            lokalt, gul er push, og grøn er GitHub/online. Lad deployment køre i baggrunden, mens du hjælper rundt. Posts
+            behøver ikke hente data endnu, men route-komponenten skal åbne uden en GitHub 404-side. [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/docs/template-to-github-pages-setup.md -
+            https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide branch-why-slide" id="feature-branches">
+          <span class="eyebrow">Feature branches · præcisering</span>
+          <h2>En feature branch holder ufærdigt arbejde væk fra <code>main</code></h2>
+          <div class="branch-why-layout">
+            <div class="branch-definition-visual" aria-label="En feature branch starter fra main og udvikler sig separat">
+              <div class="branch-line branch-line-main">
+                <code>main</code>
+                <span>Den fælles, fungerende version</span>
+              </div>
+              <div class="branch-fork" aria-hidden="true">↳</div>
+              <div class="branch-line branch-line-feature">
+                <code>feature/update-home</code>
+                <span>Dine nye commits lander her</span>
+              </div>
+              <p>Branchen starter fra et bestemt punkt i <code>main</code> og kan ændres uden at ændre <code>main</code>.</p>
+            </div>
+            <div class="branch-collab-reasons">
+              <article>
+                <h3>Arbejd parallelt</h3>
+                <p>Flere kan udvikle forskellige ændringer samtidig.</p>
+              </article>
+              <article>
+                <h3>Gør ændringen tydelig</h3>
+                <p>Commits og diff handler om én afgrænset opgave.</p>
+              </article>
+              <article>
+                <h3>Beskyt <code>main</code></h3>
+                <p>Ufærdig kode bliver først fælles efter review og merge.</p>
+              </article>
+            </div>
+          </div>
+          <p class="reflection">Branches fjerner ikke konflikter — de giver teamet et kontrolleret sted at opdage og løse dem.</p>
+          <aside class="notes">
+            Præcisér, at en branch ikke er en ny kopi af hele repositoryet, men et navn, der peger på en separat række
+            commits. I teams kan hver ændring udvikles isoleret, mens main holdes stabil. Branches forhindrer ikke
+            merge conflicts; de gør ændringerne adskilte og reviewbare, før de rammer main. [Sources] -
+            https://docs.github.com/en/get-started/using-github/github-flow -
+            https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/getting-started/about-branches
             [/Sources]
           </aside>
         </section>
 
-        <section class="chapter po-chapter po-slide">
-          <span class="chapter-index">03</span>
-          <span class="eyebrow">Konfiguration</span>
-          <h2>Samme kode — forskellige miljøer</h2>
-          <p class="kicker">Lokalt og online skal bruge samme variabelnavne, men får værdierne hvert sit sted.</p>
+        <section class="po-slide branch-deployment-flow-slide" id="branch-til-deployment">
+          <span class="eyebrow">Hele flowet · med feature branch</span>
+          <h2>Branchen ændrer vejen til deployment — ikke selve deploymenten</h2>
+          <div class="branch-flow-zones" aria-label="Lokalt arbejde, samarbejde på GitHub og deployment">
+            <span class="branch-zone-local"><strong>Lokalt</strong> · VS Code + Git</span>
+            <span class="branch-zone-github"><strong>GitHub</strong> · samarbejde og kontrol</span>
+            <span class="branch-zone-deploy"><strong>Deployment</strong> · Actions + Pages</span>
+          </div>
+          <div class="branch-deployment-flow" aria-label="Flow fra lokal feature branch til GitHub Pages">
+            <article><b>1</b><h3>Opret branch</h3><code>feature/…</code></article>
+            <article><b>2</b><h3>Ændr + commit</h3><span>Kun på branchen</span></article>
+            <article><b>3</b><h3>Push branch</h3><span>Del arbejdet</span></article>
+            <article><b>4</b><h3>Pull request</h3><span>Diff + checks</span></article>
+            <article><b>5</b><h3>Merge til main</h3><span>Ændringen bliver fælles</span></article>
+            <article><b>6</b><h3>Actions starter</h3><span>Push på main</span></article>
+            <article><b>7</b><h3>Pages opdateres</h3><span>Ny online version</span></article>
+          </div>
+          <div class="branch-trigger-rule">
+            <span><strong>Push til feature branch</strong> → ændringen er på GitHub, men deployes ikke</span>
+            <span><strong>Merge til main</strong> → main ændres → workflowet starter → Pages opdateres</span>
+          </div>
           <aside class="notes">
-            Overgang: GitHub bygger i et andet miljø end din laptop. Derfor skal konfigurationen følge med på en
-            kontrolleret måde.
+            Sammenlign med det direkte flow, de lige har brugt. Lokalt er arbejdet næsten det samme, men committene
+            ligger på en feature branch. På GitHub kommer pull request og merge ind som kontrolpunkter. Workflowet i
+            templaten reagerer på ændringer i main, så et push til feature-branchen deployer ikke; merge til main gør.
+            [Sources] - https://docs.github.com/en/get-started/using-github/github-flow -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mode-demo pr-anatomy-slide" id="pull-request">
+          <span class="eyebrow">Pull request · kontrolpunktet</span>
+          <h2>En PR foreslår at flette én branch ind i en anden</h2>
+          <div class="pr-direction" aria-label="Pull request fra feature branch til main">
+            <span><small>Base · destination</small><code>main</code></span>
+            <strong>← foreslå ændringer fra ←</strong>
+            <span><small>Compare · kilde</small><code>feature/update-home</code></span>
+          </div>
+          <div class="pr-path">
+            <code>Pull requests</code><i>→</i><code>New pull request</code><i>→</i><code>base + compare</code><i>→</i><code>Create pull request</code>
+          </div>
+          <div class="pr-checkpoints">
+            <article><b>1</b><h3>Beskriv</h3><p>Hvad ændres — og hvorfor?</p></article>
+            <article><b>2</b><h3>Files changed</h3><p>Er diffet lille og forventet?</p></article>
+            <article><b>3</b><h3>Checks</h3><p>Er automatiske kontroller grønne?</p></article>
+            <article><b>4</b><h3>Merge</h3><p>Flet først, når ændringen er klar.</p></article>
+          </div>
+          <p class="reflection">I et team reviewer en anden person normalt PR’en. I dag øver du selv kontrolpunkterne.</p>
+          <aside class="notes">
+            Demo GitHub-grænsefladen kort. Forklar base og compare meget konkret: base er den branch, der skal modtage
+            ændringen; compare er branchen med de nye commits. Vis især Files changed. En PR er ikke automatisk en
+            kvalitetsgaranti — sikkerheden kommer af et reelt review og relevante checks før merge. [Sources] -
+            https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request -
+            https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mode-work branch-pr-exercise-slide" id="opgave-branch-og-pr">
+          <span class="eyebrow">Opgave 3 · Simulér teamsamarbejde individuelt</span>
+          <h2>Før én lille ændring gennem branch, PR og deployment</h2>
+          <div class="branch-pr-guided-task">
+            <div>
+              <span class="task-environment">Lokalt · VS Code</span>
+              <ol>
+                <li><strong>Kontrollér:</strong> Du står på <code>main</code>.</li>
+                <li><strong>Opret branch:</strong> <code>feature/update-home</code>.</li>
+                <li><strong>Ret:</strong> Ændr fx én overskrift på forsiden.</li>
+                <li><strong>Commit:</strong> Gem kun denne ændring.</li>
+                <li><strong>Push:</strong> Vælg <em>Publish Branch</em>.</li>
+              </ol>
+            </div>
+            <div>
+              <span class="task-environment task-environment-online">Online · GitHub</span>
+              <ol start="6">
+                <li>Åbn <strong>Pull requests → New pull request</strong>.</li>
+                <li>Vælg <strong>base:</strong> <code>main</code> og <strong>compare:</strong> <code>feature/update-home</code>.</li>
+                <li>Vælg <strong>Create pull request</strong>, og giv den en kort titel.</li>
+                <li>Læs <strong>Files changed</strong>. Er det kun din lille ændring?</li>
+                <li>Vælg <strong>Merge pull request → Confirm merge</strong>, og følg Actions.</li>
+              </ol>
+            </div>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> PR’en er merged til <code>main</code>, Actions er startet, og ændringen kan ses på Pages.
+          </p>
+          <p class="work-if-stuck"><strong>Hvis du ikke ser din branch:</strong> Kontrollér, at du valgte <em>Publish Branch</em> — ikke push til <code>main</code>.</p>
+          <aside class="notes">
+            Hold selve kodeændringen helt lille; læringsmålet er flowet. De studerende arbejder alene, men udfører de
+            samme trin, som et team bruger. Stop kort efter Publish Branch og spørg, om Pages er ændret: nej, fordi
+            main endnu ikke er ændret. Efter merge følger de Actions og kontrollerer Pages. [Sources] -
+            https://docs.github.com/en/get-started/using-github/github-flow -
+            https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide" id="konfiguration-og-environment-variables">
+          <span class="chapter-index">02</span>
+          <span class="eyebrow">Konfiguration</span>
+          <h2>Konfiguration uden hardcoding</h2>
+          <p class="kicker">Environment variables giver den samme kode forskellige værdier i forskellige miljøer.</p>
+          <aside class="notes">
+            Overgang: Pages virker nu, men /posts mangler stadig de værdier, der forbinder appen med Supabase. Før vi
+            indsætter dem, skal de studerende forstå forskellen mellem kode og konfiguration. [Sources] -
+            https://vite.dev/guide/env-and-mode [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide env-definition-slide">
+          <span class="eyebrow">Først begrebet</span>
+          <h2>En environment variable er et navn med en værdi</h2>
+          <div class="env-definition-line" aria-label="Et eksempel på en environment variable">
+            <span><small>Navn</small><code>VITE_SUPABASE_URL</code></span>
+            <strong>=</strong>
+            <span><small>Værdi</small><code>https://…/rest/v1/posts</code></span>
+          </div>
+          <div class="env-term-split">
+            <article>
+              <h3>Environment variable</h3>
+              <p>En navngivet konfigurationsværdi, som det aktuelle miljø gør tilgængelig for appen.</p>
+              <code>import.meta.env.VITE_SUPABASE_URL</code>
+            </article>
+            <article>
+              <h3><code>.env</code>-fil</h3>
+              <p>En lokal tekstfil, som Vite læser, når udviklingsserveren starter.</p>
+              <code>VITE_SUPABASE_URL=…</code>
+            </article>
+          </div>
+          <p class="reflection"><code>.env</code> er filen — environment variables er værdierne.</p>
+          <aside class="notes">
+            Start med terminologien. En environment variable er ikke en fil, men et navn og en værdi i et bestemt
+            miljø. .env er blot en praktisk lokal fil, som Vite bruger til at indlæse værdierne. Peg på den konkrete
+            læsning i PostsPage.jsx bagefter. [Sources] - https://vite.dev/guide/env-and-mode -
+            https://github.com/cederdorff/react-router-supabase/blob/main/src/pages/PostsPage.jsx [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide env-why-slide">
+          <span class="eyebrow">Hvorfor bruger vi det?</span>
+          <h2>Samme kode kan bruge forskellige miljøer</h2>
+          <p class="env-environment-definition">
+            Et <strong>miljø</strong> er de omgivelser, appen kører i — fx lokalt under udvikling eller online i produktion.
+          </p>
+          <div class="env-code-choice">
+            <article class="env-development">
+              <span>Development · lokalt</span>
+              <pre class="po-code"><code>VITE_SUPABASE_URL=
+https://dev-project…/posts</code></pre>
+              <p>Kan pege på en database med testdata, som vi trygt kan udvikle imod.</p>
+            </article>
+            <article class="env-production">
+              <span>Production · online</span>
+              <pre class="po-code"><code>VITE_SUPABASE_URL=
+https://prod-project…/posts</code></pre>
+              <p>Kan pege på den database, som den færdige webapp skal bruge.</p>
+            </article>
+          </div>
+          <div class="env-benefits">
+            <span><strong>Ingen kodeændring</strong> når miljøet skifter</span>
+            <span><strong>Adskilte data</strong> til udvikling og produktion</span>
+            <span><strong>Konfiguration</strong> styres uden for komponenterne</span>
+          </div>
+          <p class="reflection">Variabelnavnet og koden er de samme — miljøet bestemmer værdien.</p>
+          <aside class="notes">
+            Gør først ordet miljø konkret: development er den app, vi kører lokalt, mens production er den version,
+            brugerne møder online. De to miljøer kan fx bruge hvert sit Supabase-projekt og dermed hver sin database.
+            PostsPage læser stadig det samme variabelnavn; værdien leveres af det miljø, hvor appen bygges eller kører.
+            I dagens øvelse bruger vi de udleverede værdier, men princippet gør det senere muligt at holde testdata og
+            produktionsdata adskilt. Environment variables er fleksibel konfiguration — ikke automatisk hemmelighed.
             [Sources] - https://vite.dev/guide/env-and-mode [/Sources]
           </aside>
         </section>
 
-        <section class="po-slide">
-          <span class="eyebrow">Environment variables</span>
-          <h2>Koden læser navne — miljøet leverer værdier</h2>
+        <section class="po-slide env-environments-slide">
+          <span class="eyebrow">Dagens opsætning · Overblik</span>
+          <h2>Samme variabelnavne — to steder at sætte værdierne</h2>
           <div class="env-bridge">
             <article class="env-side">
-              <h3>På din computer</h3>
-              <p>Vite læser lokale værdier, når dev-serveren starter.</p>
+              <span class="env-location">Lokalt · VS Code</span>
+              <h3><code>.env</code></h3>
+              <p>Vite læser filen, når <code>npm run dev</code> starter.</p>
               <code>.env<br />VITE_SUPABASE_URL=…<br />VITE_SUPABASE_APIKEY=…</code>
             </article>
-            <div class="env-arrow" aria-hidden="true">↔</div>
+            <div class="env-code-center">
+              <span>Samme kode</span>
+              <code>import.meta.env<br />.VITE_SUPABASE_URL</code>
+            </div>
             <article class="env-side">
-              <h3>I GitHub Actions</h3>
-              <p>Workflowet leverer repository variables til build-steppet.</p>
+              <span class="env-location">Online · GitHub Environment</span>
+              <h3><code>github-pages-deployment</code></h3>
+              <p>Actions leverer værdierne, når <code>npm run build</code> kører.</p>
               <code>vars.VITE_SUPABASE_URL<br />vars.VITE_SUPABASE_APIKEY</code>
             </article>
           </div>
+          <p class="reflection">Vi sender ikke <code>.env</code> til GitHub — vi konfigurerer online-miljøet separat.</p>
           <aside class="notes">
-            Vis .env.example som dokumentation af de nødvendige navne. Genstart Vite efter ændringer i lokale env-filer.
-            [Sources] - https://vite.dev/guide/env-and-mode - https://github.com/cederdorff/react-router-supabase/blob/main/.env.example - https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml
-            [/Sources]
+            Dette er sektionskortet. Lokalt leverer .env værdierne til Vite. Online henter Actions environment-level
+            configuration variables fra github-pages-deployment, fordi deploy-jobbet erklærer netop det environment.
+            Koden og variabelnavnene er de samme; placeringen og værdierne kan være forskellige. [Sources] -
+            https://vite.dev/guide/env-and-mode - https://docs.github.com/en/actions/reference/contexts -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.env.example -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml [/Sources]
           </aside>
         </section>
 
-        <section class="po-slide">
-          <span class="eyebrow">En vigtig grænse</span>
-          <h2><code>VITE_</code> organiserer værdier — det skjuler dem ikke</h2>
+        <section class="po-slide env-git-slide">
+          <span class="eyebrow">Lokalt · Hvad deler vi?</span>
+          <h2>Del variabelnavnene — aldrig din lokale <code>.env</code></h2>
+          <div class="env-file-rules">
+            <article>
+              <span class="env-file-status status-commit">Commit</span>
+              <h3><code>.env.example</code></h3>
+              <p>Viser hvilke variabelnavne projektet forventer — uden de konkrete værdier.</p>
+            </article>
+            <article>
+              <span class="env-file-status status-local">Kun lokalt</span>
+              <h3><code>.env</code></h3>
+              <p>Indeholder dine konkrete værdier og skal ikke stages, committes eller pushes.</p>
+            </article>
+            <article>
+              <span class="env-file-status status-rule">Beskyttelsen</span>
+              <h3><code>.gitignore</code></h3>
+              <p>Indeholder <code>.env</code>, så Git ikke begynder at tracke filen.</p>
+            </article>
+          </div>
+          <div class="env-source-control-check">
+            <strong>Kontrollér før commit:</strong>
+            <span><code>.env</code> må ikke stå i Source Control-listen.</span>
+            <span>Hvis den vises: Tilføj <code>.env</code> til <code>.gitignore</code>.</span>
+          </div>
+          <aside class="notes">
+            Åbn .gitignore i starteren og find .env-reglen. Åbn derefter Source Control og vis, at .env ikke fremgår,
+            mens .env.example gerne må være i repositoryet. Hvis en rigtig værdi allerede er committed, er det ikke nok
+            bagefter at tilføje filen til .gitignore: værdien skal erstattes, og filen skal fjernes fra tracking. [Sources]
+            - https://git-scm.com/docs/gitignore -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.gitignore -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.env.example [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide github-environment-locate-slide">
+          <span class="eyebrow">Online · Find det rigtige miljø</span>
+          <h2>Workflowet bygger i <code>github-pages-deployment</code></h2>
+          <div class="github-environment-locate">
+            <div class="github-environment-steps">
+              <ol>
+                <li>Åbn repositoryets <strong>Settings</strong></li>
+                <li>Vælg <strong>Environments</strong></li>
+                <li>Åbn <code>github-pages-deployment</code></li>
+              </ol>
+              <p>Navnet matcher <code>environment.name</code> i workflowet.</p>
+            </div>
+            <figure class="github-environment-shot github-environment-overview-shot">
+              <img
+                src="../assets/product-optimization-01/environment-girhub-pages-deployment.png"
+                alt="GitHub Settings med listen over environments, herunder github-pages-deployment"
+              />
+            </figure>
+          </div>
+          <aside class="notes">
+            Vis skærmbilledet før live-navigationen. Der kan stå både github-pages og github-pages-deployment. De skal
+            vælge github-pages-deployment, fordi template-workflowets deploy-job bruger det navn. Environment-level
+            variables bliver tilgængelige i vars-context, når jobmiljøet er erklæret. [Sources] - User-provided
+            screenshot, 18 August 2026 - https://docs.github.com/en/actions/reference/contexts -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide github-environment-vars-slide">
+          <span class="eyebrow">Online · Tilføj værdierne</span>
+          <h2>Opret præcis de to navne, workflowet forventer</h2>
+          <div class="github-environment-variable-names">
+            <code>VITE_SUPABASE_URL</code>
+            <code>VITE_SUPABASE_APIKEY</code>
+            <span>Environment variables — ikke Environment secrets</span>
+          </div>
+          <div class="github-environment-shots">
+            <figure class="github-environment-shot github-environment-add-shot">
+              <img
+                src="../assets/product-optimization-01/environment-variable-add.png"
+                alt="GitHub-dialog til at oprette en environment variable med navn og værdi"
+              />
+              <figcaption><strong>1 · Tilføj</strong><span>Ét navn og én værdi ad gangen.</span></figcaption>
+            </figure>
+            <figure class="github-environment-shot github-environment-finished-shot">
+              <img
+                src="../assets/product-optimization-01/environment-variables.png"
+                alt="GitHub Environment variables med VITE_SUPABASE_URL og VITE_SUPABASE_APIKEY"
+              />
+              <figcaption><strong>2 · Kontrollér</strong><span>Begge navne skal stå på listen.</span></figcaption>
+            </figure>
+          </div>
+          <p class="reflection">Nye værdier bruges først, næste gang workflowet bygger appen.</p>
+          <aside class="notes">
+            Peg på knappen Add environment variable og derefter på de to færdige navne. GitHub kalder disse værdier
+            configuration variables og gør dem tilgængelige gennem vars-context. De er ikke følsomme server-secrets;
+            frontend-buildet modtager dem. Når de ændres, skal workflowet køres igen for at bygge en ny version.
+            [Sources] - User-provided screenshots, 18 August 2026 -
+            https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide env-browser-boundary-slide">
+          <span class="eyebrow">Synlighed · En vigtig grænse</span>
+          <h2>Skjult fra Git er ikke det samme som hemmeligt</h2>
           <p class="statement">
-            Vite erstatter værdierne under build. Derfor kan de læses i den færdige frontend.
+            Værdien står ikke direkte i komponenten eller repositoryet. Men Vite indsætter <code>VITE_</code>-værdier i
+            frontendens build.
           </p>
-          <div class="callout">
-            <p><strong>Frontend:</strong> Supabase publishable key kan bruges sammen med korrekt RLS. <strong>Aldrig:</strong> secret- eller service-role keys i browseren.</p>
+          <div class="env-browser-rule">
+            <article>
+              <h3>Ikke synlig i Git</h3>
+              <p><code>.env</code> ignoreres, så de konkrete værdier ikke bliver committed eller vist i repositoryet.</p>
+            </article>
+            <article>
+              <h3>Kan findes i browseren</h3>
+              <p>En bruger kan finde værdierne i JavaScript-buildet eller i appens netværkskald.</p>
+            </article>
           </div>
+          <p class="future-note">
+            Brug kun Supabase URL og <strong>publishable key</strong> i frontend — aldrig passwords, private tokens eller
+            service-keys.
+          </p>
           <aside class="notes">
-            .env betyder ikke hemmeligt. Det betyder konfiguration uden hardcoding. VITE_-værdier ender i klientens
-            bundle. Skeln mellem Supabase publishable key og en serverhemmelig nøgle.
-            [Sources] - https://vite.dev/guide/env-and-mode - https://supabase.com/docs/guides/getting-started/api-keys [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide">
-          <span class="eyebrow">Sikker adgang fra frontend</span>
-          <h2>Publishable key identificerer — RLS autoriserer</h2>
-          <div class="security-equation">
-            <article><h3>Publishable key</h3><p>Identificerer Supabase-projektet fra en offentlig klient.</p></article>
-            <span>+</span>
-            <article><h3>Brugerens session</h3><p>Fortæller hvem brugeren er, hvis vedkommende er logget ind.</p></article>
-            <span>+</span>
-            <article><h3>RLS policies</h3><p>Bestemmer hvilke rækker rollen må læse eller ændre.</p></article>
-          </div>
-          <p class="reflection">SDK eller REST ændrer ikke databaseniveauets adgangsregler.</p>
-          <aside class="notes">
-            I starterprojektet må posts læses offentligt, fordi en policy giver lov. Uden passende policy er det ikke
-            nok at have URL og key.
-            [Sources] - https://supabase.com/docs/guides/database/secure-data - https://supabase.com/docs/guides/database/postgres/row-level-security
-            [/Sources]
+            Skeln mellem tre ting: Værdien er ikke hardcoded i komponenten, den ligger ikke i Git-repositoryet, men den
+            er stadig tilgængelig for den færdige browserapp. VITE_-prefixet er Vites mekanisme til at eksponere en
+            værdi til klientkoden; det er ikke kryptering. Vis eventuelt DevTools Network og request-headeren apikey.
+            Brug kun de udleverede frontend-værdier i øvelsen. [Sources] - https://vite.dev/guide/env-and-mode -
+            https://supabase.com/docs/guides/getting-started/api-keys [/Sources]
           </aside>
         </section>
 
         <section class="po-slide mode-work">
           <span class="eyebrow">Opgave 4 · Arbejd individuelt</span>
-          <h2>Få Posts til at virke både lokalt og på Pages</h2>
+          <h2>Brug de udleverede værdier lokalt og online</h2>
           <div class="work-columns config-work">
             <div>
-              <h3>På din computer</h3>
+              <h3>1 · Lokalt i VS Code</h3>
               <ul class="checklist">
-                <li><code>.env</code> indeholder de udleverede værdier</li>
-                <li><code>.env</code> er ikke staged i Git</li>
-                <li><code>/posts</code> viser data lokalt</li>
-                <li><code>npm run build</code> gennemføres</li>
+                <li>Kopiér <code>.env.example</code> til en ny fil: <code>.env</code></li>
+                <li>Indsæt de to udleverede værdier</li>
+                <li>
+                  Kontrollér Source Control. Hvis <code>.env</code> vises, så tilføj <code>.env</code> til
+                  <code>.gitignore</code>
+                </li>
+                <li>
+                  Genstart: <code>Ctrl+C</code> stopper processen → kør <code>npm run dev</code> igen → test
+                  <code>/posts</code>
+                </li>
               </ul>
             </div>
             <div>
-              <h3>I dit GitHub-repository</h3>
+              <h3>2 · Online på GitHub Pages</h3>
               <ul class="checklist">
-                <li>Settings → Secrets and variables → Actions</li>
-                <li>Opret <code>VITE_SUPABASE_URL</code> og <code>VITE_SUPABASE_APIKEY</code> under <strong>Variables</strong></li>
-                <li>Kør workflowet igen med et lille push</li>
+                <li>Settings → Environments → <code>github-pages-deployment</code></li>
+                <li>Opret de to <strong>Environment variables</strong> med de udleverede værdier</li>
+                <li>
+                  Actions → Deploy static content to Pages → <strong>Run workflow</strong>
+                  <span class="task-alternative">eller: lav en lille ændring → commit → push til <code>main</code></span>
+                </li>
                 <li>Test <code>/posts</code> på Pages</li>
               </ul>
             </div>
           </div>
-          <p class="done-when"><strong>Du er klar, når:</strong> Posts vises i begge miljøer, og du kan forklare, hvor værdierne kommer fra hvert sted.</p>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> De udleverede posts vises både lokalt og på Pages — og <code>.env</code>
+            stadig ikke står i Source Control.
+          </p>
           <aside class="notes">
-            Skriv variabelnavnene på whiteboardet sammen med de konkrete værdier. De skal oprettes som repository
-            variables, fordi workflowet bruger vars.VITE_SUPABASE_URL og vars.VITE_SUPABASE_APIKEY.
-            [Sources]
-            - https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml
-            - https://github.com/cederdorff/react-router-supabase/blob/main/docs/supabase-setup.md
-            [/Sources]
+            Dette er baseline-opgaven: De bruger underviserens kendte værdier, så fejl primært handler om konfiguration
+            og ikke om deres Supabase-opsætning. Kontrollér først den lokale del og derefter GitHub Environment. De
+            starter et manuelt run eller pusher et nyt commit, fordi en ændring af variables ikke i sig selv bygger
+            appen igen. [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml -
+            https://github.com/cederdorff/react-router-supabase/blob/main/docs/supabase-setup.md [/Sources]
           </aside>
         </section>
 
-        <section class="chapter po-chapter po-slide">
-          <span class="chapter-index">04</span>
-          <span class="eyebrow">Den synlige kvalitet</span>
-          <h2>Fjern template-rester — og få accessibility tilbage</h2>
-          <p class="kicker">Nu retter vi det, brugeren og browseren møder først.</p>
+        <section class="po-slide mode-work own-environment-work">
+          <span class="eyebrow">Opgave 5 · Arbejd individuelt</span>
+          <h2>Skift til din egen Supabase uden at ændre koden</h2>
+          <p class="task-principle">
+            Start først, når Opgave 4 virker lokalt og online. Skift kun konfigurationen — en genkendelig post er dit bevis.
+          </p>
+          <div class="work-columns config-work">
+            <div>
+              <h3>1 · Udskift lokalt</h3>
+              <ul class="checklist">
+                <li>Brug din egen <code>posts</code>-tabel — eller følg <a href="https://github.com/cederdorff/react-router-supabase/blob/main/docs/supabase-setup.md" target="_blank" rel="noreferrer">supabase-setup.md</a></li>
+                <li>Find din REST URL og publishable key</li>
+                <li>Udskift værdierne i din lokale <code>.env</code></li>
+                <li>
+                  Stop med <code>Ctrl+C</code>, kør <code>npm run dev</code> igen, og kontrollér <code>/posts</code>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3>2 · Udskift online</h3>
+              <ul class="checklist">
+                <li>Udskift de to Environment variables i <code>github-pages-deployment</code></li>
+                <li>
+                  Kør igen med <strong>Actions → Run workflow</strong>
+                  <span class="task-alternative">eller: lav en lille ændring → commit → push til <code>main</code></span>
+                </li>
+                <li>Følg buildet, og test derefter Pages</li>
+                <li>Kontrollér, at din genkendelige post vises begge steder</li>
+              </ul>
+            </div>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Den samme React-kode viser data fra din Supabase lokalt og online — og
+            <code>.env</code> stadig ikke fremgår af Source Control.
+          </p>
           <aside class="notes">
-            Accessibility er repetition fra 2. semester. Vi bruger det som et audit-lag i den eksisterende app.
-            [Sources] - User-provided Canvas and Notion course context, 17 August 2026 [/Sources]
+            Pointen er et kontrolleret miljøskift: først virker appen med underviserens kendte værdier, derefter med den
+            studerendes egne. Ingen komponentkode skal ændres. Hvis de mangler tabellen, bruger de templateguiden.
+            Efter ændring af GitHub Environment variables skal appen bygges igen. De kan bruge workflow_dispatch i
+            Actions eller trigge workflowet med et nyt commit til main. Pointen er, at konfigurationen først bliver brugt
+            i et nyt build. [Sources] -
+            https://github.com/cederdorff/react-router-supabase/blob/main/docs/supabase-setup.md -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide" id="metadata-og-identitet">
+          <span class="chapter-index">03</span>
+          <span class="eyebrow">Metadata og identitet</span>
+          <h2>Fjern template-rester — og gør appen til jeres egen</h2>
+          <p class="kicker">Titel, beskrivelse, favicon, sprog og indhold skal passe til løsningen.</p>
+          <aside class="notes">
+            Metadata behandles som sit eget emne: Før accessibility-testen rydder vi op i de rester, der stadig får
+            løsningen til at ligne en starter-template. [Sources] - User-provided teaching direction, 18 August 2026
+            [/Sources]
           </aside>
         </section>
 
@@ -740,36 +1445,57 @@
             <li><strong>Dokumenttitel</strong><span>Fortæller browseren og søgeresultatet, hvad siden er.</span></li>
             <li><strong>Meta description</strong><span>Beskriver løsningens indhold og formål kort.</span></li>
             <li><strong>Favicon og logo</strong><span>Skaber sammenhæng mellem browserfane og interface.</span></li>
-            <li><strong>Sprog</strong><span><code>lang="da"</code> hjælper browser og hjælpemidler.</span></li>
+            <li>
+              <strong>Sprog</strong><span><code>lang="da"</code> hjælper browser og hjælpemidler.</span>
+            </li>
             <li><strong>Indhold</strong><span>Fjern “Vite + React”, lorem ipsum og irrelevante eksempler.</span></li>
           </ul>
           <aside class="notes">
-            Brug gerne den metadataændring, der blev deployet tidligere. Bed de studerende finde mindst én
-            template-rest i starteren.
-            [Sources] - https://github.com/cederdorff/react-router-supabase - https://www.w3.org/WAI/tips/developing/ [/Sources]
+            Brug gerne den metadataændring, der blev deployet tidligere. Bed de studerende finde mindst én template-rest
+            i starteren. [Sources] - https://github.com/cederdorff/react-router-supabase -
+            https://www.w3.org/WAI/tips/developing/ [/Sources]
           </aside>
         </section>
 
-        <section class="po-slide">
+        <section class="po-slide" id="accessibility">
           <span class="eyebrow">Accessibility · repetition</span>
           <h2>Fem hurtige blik afslører mange problemer</h2>
           <div class="a11y-lenses">
-            <article><b>01</b><h3>Struktur</h3><p>Semantiske elementer og logisk heading-hierarki.</p></article>
-            <article><b>02</b><h3>Navne</h3><p>Labels, linktekst og knappers tilgængelige navn.</p></article>
-            <article><b>03</b><h3>Billeder</h3><p>Meningsfuld alt-tekst — eller tom ved dekoration.</p></article>
-            <article><b>04</b><h3>Tastatur</h3><p>Alt kan nås og bruges uden mus.</p></article>
-            <article><b>05</b><h3>Fokus</h3><p>Det er tydeligt, hvor tastaturet befinder sig.</p></article>
+            <article>
+              <b>01</b>
+              <h3>Struktur</h3>
+              <p>Semantiske elementer og logisk heading-hierarki.</p>
+            </article>
+            <article>
+              <b>02</b>
+              <h3>Navne</h3>
+              <p>Labels, linktekst og knappers tilgængelige navn.</p>
+            </article>
+            <article>
+              <b>03</b>
+              <h3>Billeder</h3>
+              <p>Meningsfuld alt-tekst — eller tom ved dekoration.</p>
+            </article>
+            <article>
+              <b>04</b>
+              <h3>Tastatur</h3>
+              <p>Alt kan nås og bruges uden mus.</p>
+            </article>
+            <article>
+              <b>05</b>
+              <h3>Fokus</h3>
+              <p>Det er tydeligt, hvor tastaturet befinder sig.</p>
+            </article>
           </div>
           <aside class="notes">
             Dette er ikke en fuld audit. Det er en hurtig repetition af jeres 2.-semesterarbejde. Test med Tab-tasten
-            før I åbner et audit-værktøj.
-            [Sources] - https://www.w3.org/WAI/tips/developing/ - https://www.w3.org/WAI/fundamentals/accessibility-principles/
-            [/Sources]
+            før I åbner et audit-værktøj. [Sources] - https://www.w3.org/WAI/tips/developing/ -
+            https://www.w3.org/WAI/fundamentals/accessibility-principles/ [/Sources]
           </aside>
         </section>
 
         <section class="po-slide mode-work">
-          <span class="eyebrow">Opgave 5 · Arbejd individuelt</span>
+          <span class="eyebrow">Opgave 6 · Arbejd individuelt</span>
           <h2>Luk musen ude — og test din egen app</h2>
           <div class="demo-layout">
             <div class="demo-copy">
@@ -778,25 +1504,32 @@
               <p>Kan du se fokus? Er rækkefølgen logisk? Kan alle links og kontroller aktiveres?</p>
             </div>
             <div class="demo-screen">
-              <p>1. Genindlæs siden<br />2. Brug kun Tab + Shift/Tab<br />3. Brug Enter/Space<br />4. Notér første barriere<br />5. Ret og test igen</p>
+              <p>
+                1. Genindlæs siden<br />2. Brug kun Tab + Shift/Tab<br />3. Brug Enter/Space<br />4. Notér første
+                barriere<br />5. Ret og test igen
+              </p>
             </div>
           </div>
-          <p class="done-when"><strong>Du er klar, når:</strong> Du har fundet og rettet én barriere — eller kan forklare én vigtig ting, der allerede fungerer.</p>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Du har fundet og rettet én barriere — eller kan forklare én vigtig ting,
+            der allerede fungerer.
+          </p>
           <aside class="notes">
-            De arbejder individuelt i eget repository. Opgaven er repetition, så stop den, når de har gennemført en
-            reel tastaturtest og kan forklare deres observation.
-            [Sources] - https://www.w3.org/WAI/test-evaluate/preliminary/ [/Sources]
+            De arbejder individuelt i eget repository. Opgaven er repetition, så stop den, når de har gennemført en reel
+            tastaturtest og kan forklare deres observation. [Sources] -
+            https://www.w3.org/WAI/test-evaluate/preliminary/ [/Sources]
           </aside>
         </section>
 
-        <section class="chapter po-chapter po-slide">
-          <span class="chapter-index">05</span>
+        <section class="chapter po-chapter po-slide" id="supabase-rest-og-sdk">
+          <span class="chapter-index">04</span>
           <span class="eyebrow">Supabase</span>
           <h2>REST er grænsefladen — SDK’et er et værktøj ovenpå</h2>
           <p class="kicker">De kan nå de samme data, men de giver os forskellige måder at arbejde på.</p>
           <aside class="notes">
-            Formålet er begrebsforståelse, ikke at migrere starterprojektet i dag.
-            [Sources] - https://supabase.com/docs/guides/api - https://supabase.com/docs/reference/javascript/introduction [/Sources]
+            Formålet er begrebsforståelse, ikke at migrere starterprojektet i dag. [Sources] -
+            https://supabase.com/docs/guides/api - https://supabase.com/docs/reference/javascript/introduction
+            [/Sources]
           </aside>
         </section>
 
@@ -816,17 +1549,28 @@
 
 const posts = await response.json();</code></pre>
             <div class="request-parts">
-              <article><h3>URL</h3><p>Projekt + <code>/rest/v1/</code> + tabel.</p></article>
-              <article><h3>HTTP</h3><p>Metode, headers, query-parametre og body.</p></article>
-              <article><h3>Svar</h3><p>Statuskode, headers og JSON-data.</p></article>
-              <article><h3>Din kode</h3><p>Håndterer loading, fejl og tomme resultater.</p></article>
+              <article>
+                <h3>URL</h3>
+                <p>Projekt + <code>/rest/v1/</code> + tabel.</p>
+              </article>
+              <article>
+                <h3>HTTP</h3>
+                <p>Metode, headers, query-parametre og body.</p>
+              </article>
+              <article>
+                <h3>Svar</h3>
+                <p>Statuskode, headers og JSON-data.</p>
+              </article>
+              <article>
+                <h3>Din kode</h3>
+                <p>Håndterer loading, fejl og tomme resultater.</p>
+              </article>
             </div>
           </div>
           <aside class="notes">
-            Supabase auto-genererer Data REST API fra database-schemaet via PostgREST. Sammenlign med den konkrete
-            fetch i PostsPage.jsx.
-            [Sources] - https://supabase.com/docs/guides/api - https://github.com/cederdorff/react-router-supabase/blob/main/src/pages/PostsPage.jsx
-            [/Sources]
+            Supabase auto-genererer Data REST API fra database-schemaet via PostgREST. Sammenlign med den konkrete fetch
+            i PostsPage.jsx. [Sources] - https://supabase.com/docs/guides/api -
+            https://github.com/cederdorff/react-router-supabase/blob/main/src/pages/PostsPage.jsx [/Sources]
           </aside>
         </section>
 
@@ -860,9 +1604,9 @@ if (error) {
           <p class="reflection">SDK’et giver os et mere specialiseret sprog til API’et.</p>
           <aside class="notes">
             Forklar at supabase-js stadig kommunikerer med Supabase-tjenesterne. Query builderen samler URL, headers og
-            parsing i et bibliotek med Supabase-begreber.
-            [Sources] - https://supabase.com/docs/reference/javascript/initializing - https://supabase.com/docs/reference/javascript/select
-            [/Sources]
+            parsing i et bibliotek med Supabase-begreber. [Sources] -
+            https://supabase.com/docs/reference/javascript/initializing -
+            https://supabase.com/docs/reference/javascript/select [/Sources]
           </aside>
         </section>
 
@@ -870,14 +1614,26 @@ if (error) {
           <span class="eyebrow">Hvad får vi med SDK’et?</span>
           <h2>Én klient samler flere Supabase-produkter</h2>
           <div class="sdk-rings">
-            <article><h3>Database</h3><p>Læs, opret, opdatér, slet, filtrér og hent relationer med en query builder.</p></article>
-            <article><h3>Auth</h3><p>Login, sessioner, brugerdata og tokens i samme klient.</p></article>
-            <article><h3>Realtime</h3><p>Lyt til ændringer og byg interfaces, der opdaterer løbende.</p></article>
-            <article><h3>Storage + Functions</h3><p>Arbejd med filer og kald server-side Edge Functions.</p></article>
+            <article>
+              <h3>Database</h3>
+              <p>Læs, opret, opdatér, slet, filtrér og hent relationer med en query builder.</p>
+            </article>
+            <article>
+              <h3>Auth</h3>
+              <p>Login, sessioner, brugerdata og tokens i samme klient.</p>
+            </article>
+            <article>
+              <h3>Realtime</h3>
+              <p>Lyt til ændringer og byg interfaces, der opdaterer løbende.</p>
+            </article>
+            <article>
+              <h3>Storage + Functions</h3>
+              <p>Arbejd med filer og kald server-side Edge Functions.</p>
+            </article>
           </div>
           <aside class="notes">
-            Vi vender tilbage til SDK’et, når auth, relationer og mere avanceret dataarbejde gør abstraktionen værdifuld.
-            [Sources] - https://supabase.com/docs/reference/javascript/introduction [/Sources]
+            Vi vender tilbage til SDK’et, når auth, relationer og mere avanceret dataarbejde gør abstraktionen
+            værdifuld. [Sources] - https://supabase.com/docs/reference/javascript/introduction [/Sources]
           </aside>
         </section>
 
@@ -889,27 +1645,210 @@ if (error) {
               <p class="statement">I dag skal vi kunne se <strong>URL, headers, status og JSON</strong>.</p>
             </div>
             <div>
-              <p class="statement">Senere bruger vi SDK’et, når vi skal bygge <strong>mere</strong> end simple requests.</p>
+              <p class="statement">
+                Senere bruger vi SDK’et, når vi skal bygge <strong>mere</strong> end simple requests.
+              </p>
             </div>
           </div>
           <div class="callout"><p>Valget handler om læringsmål og kompleksitet — ikke om at REST er “forkert”.</p></div>
           <aside class="notes">
             Gør dette eksplicit, så de studerende ikke migrerer starteren som en del af dagens opgave. SDK-introen er en
-            forsmag på senere undervisning.
-            [Sources] - User-provided teaching direction, 17 August 2026 - https://supabase.com/docs/guides/api [/Sources]
+            forsmag på senere undervisning. [Sources] - User-provided teaching direction, 17 August 2026 -
+            https://supabase.com/docs/guides/api [/Sources]
           </aside>
         </section>
 
-        <section class="chapter po-chapter po-slide">
+        <section class="chapter po-chapter po-slide" id="ai-i-udviklingsarbejdet">
+          <span class="chapter-index">05</span>
+          <span class="eyebrow">AI i udviklingsarbejdet</span>
+          <h2>En AI-agent kan arbejde i projektet — men du ejer beslutningen</h2>
+          <p class="kicker">Principperne gælder på tværs af værktøjer. I demoen bruger vi Codex.</p>
+          <aside class="notes">
+            Overgang: Nu har de studerende et projekt, et deployment og konkrete observationer. Derfor kan vi bruge en
+            AI-agent på noget afgrænset og kontrollérbart — og afklare, hvad vores ansvar stadig er.
+            [Sources] - https://learn.chatgpt.com/docs/codex/ide [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Chat eller agent?</span>
+          <h2>Forskellen er handling og adgang til kontekst</h2>
+          <div class="agent-spectrum">
+            <article>
+              <h3>En chat svarer</h3>
+              <ul>
+                <li>forklarer et begreb</li>
+                <li>foreslår kode</li>
+                <li>ser kun det, du deler</li>
+              </ul>
+            </article>
+            <div class="agent-arrow" aria-hidden="true">→</div>
+            <article>
+              <h3>En agent arbejder</h3>
+              <ul>
+                <li>undersøger filer</li>
+                <li>kører kommandoer</li>
+                <li>ændrer kode og tester</li>
+              </ul>
+            </article>
+          </div>
+          <p class="reflection">Mere handlekraft kræver mere afgrænsning, review og test.</p>
+          <aside class="notes">
+            En agent er ikke automatisk mere korrekt. Den kan bare gennemføre flere led i opgaven. Vis gerne forskellen
+            mellem et løst spørgsmål og en konkret opgave i et åbent repo. [Sources] -
+            https://learn.chatgpt.com/docs/codex/ide [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Eksempel · Codex i VS Code</span>
+          <h2>Den bedste kontekst er ofte allerede åben</h2>
+          <div class="demo-layout">
+            <div class="demo-copy">
+              <span class="demo-label">IDE workflow</span>
+              <h3>Åbn det relevante. Markér det vigtige.</h3>
+              <p>Codex kan bruge åbne filer og markeret kode som kontekst og viser ændringer som et reviewbart diff.</p>
+            </div>
+            <div class="demo-screen">
+              <p>
+                Undersøg <strong>PostsPage.jsx</strong> og deployment-workflowet.<br /><br />
+                Forklar først de vigtigste risici. Ændr ikke noget endnu.
+              </p>
+            </div>
+          </div>
+          <aside class="notes">
+            Vis Codex-panelet i VS Code. Åbn PostsPage.jsx og deploy.yml. Fremhæv at åbne filer og markeret kode gør
+            prompten mindre og mere præcis. [Sources] - https://learn.chatgpt.com/docs/codex/ide [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">En brugbar opgavebeskrivelse</span>
+          <h2>Giv AI-agenten mål, kontekst, rammer og kontrol</h2>
+          <dl class="prompt-anatomy">
+            <dt>Mål</dt>
+            <dd>Hvad skal være anderledes, når opgaven er løst?</dd>
+            <dt>Kontekst</dt>
+            <dd>Hvilke filer, fejl, logs eller observationer betyder noget?</dd>
+            <dt>Rammer</dt>
+            <dd>Hvad må ikke ændres, deles eller udvides?</dd>
+            <dt>Kontrol</dt>
+            <dd>Hvordan skal løsningen testes og forklares?</dd>
+          </dl>
+          <aside class="notes">
+            Dette er ikke en obligatorisk promptskabelon. Det er fire ting, der reducerer tvetydighed. Start med
+            resultatet, og tilføj kun kontekst, der kan ændre svaret. [Sources] -
+            https://learn.chatgpt.com/docs/prompting [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Prompt-eksempel · AI-agent</span>
+          <h2>Fra “den virker ikke” til en afgrænset undersøgelse</h2>
+          <div class="prompt-example">
+            Undersøg hvorfor GitHub Actions-runnet fejlede i build-steppet.<br /><br />
+            Brug den konkrete fejltekst, <strong>package.json</strong> og deployment-workflowet.<br />
+            Del aldrig værdier fra .env. Forklar årsagen før du ændrer noget.<br />
+            Foreslå derefter den mindste rettelse og hvordan vi reproducerer testen lokalt.
+          </div>
+          <aside class="notes">
+            Gennemgå prompten som eksempel med en konkret Actions-log fra dagens flow. Hvis alle runs var grønne, kan
+            du bruge en tidligere fejl eller behandle prompten som et læseeksempel. [Sources] -
+            https://learn.chatgpt.com/docs/prompting -
+            https://github.com/cederdorff/react-router-supabase/blob/main/.github/workflows/deploy.yml [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Når agenten arbejder</span>
+          <h2>Et godt forløb går fra undersøgelse til verificering</h2>
+          <div class="commit-chain">
+            <article>
+              <h3>Undersøgte</h3>
+              <p>læste relevant kode og fandt den aktuelle dataflow.</p>
+            </article>
+            <article>
+              <h3>Formulerede</h3>
+              <p>gjorde symptomet til hypoteser, vi kunne vurdere.</p>
+            </article>
+            <article>
+              <h3>Verificerede</h3>
+              <p>foreslog eller kørte konkrete checks frem for at gætte.</p>
+            </article>
+          </div>
+          <p class="reflection">Du skal stadig forstå ændringen godt nok til at forklare og teste den.</p>
+          <aside class="notes">
+            Brug de tre handlinger til at forberede den individuelle kortlægningsopgave. Spørg: Hvad kan agenten se?
+            Hvad må den antage? Hvad skal vi selv kontrollere? [Sources] - https://learn.chatgpt.com/docs/codex/ide -
+            https://learn.chatgpt.com/docs/prompting [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Sikker arbejdsform</span>
+          <h2>Agenten må gerne hjælpe — aldrig overtage ansvaret</h2>
+          <ul class="guardrail-list">
+            <li>
+              <b>01</b
+              ><span
+                >Del kun relevante filer, fejl og logs — aldrig private nøgler, tokens eller hele
+                <code>.env</code>.</span
+              >
+            </li>
+            <li><b>02</b><span>Afgræns ændringen, og bed om forklaring før store eller uklare indgreb.</span></li>
+            <li><b>03</b><span>Læs diffet. Behold kun ændringer, du forstår og kan forsvare.</span></li>
+            <li>
+              <b>04</b><span>Kør appen, lint og relevante tests. Et overbevisende svar er ikke et testresultat.</span>
+            </li>
+          </ul>
+          <aside class="notes">
+            Knyt til professionsansvar og eksamen: De studerende skal kunne forklare deres løsning. En agent kan gøre
+            fejl, ændre for meget eller misforstå konteksten. [Sources] - https://learn.chatgpt.com/docs/prompting -
+            https://vite.dev/guide/env-and-mode [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mode-work">
+          <span class="eyebrow">Opgave 7 · Arbejd individuelt</span>
+          <h2>Brug en AI-agent til at kortlægge projektet</h2>
+          <div class="work-columns">
+            <div>
+              <h3>Giv agenten en afgrænset opgave</h3>
+              <div class="prompt-example compact-prompt">
+                Kortlæg hvordan appen hænger sammen fra <strong>main.jsx</strong> og routes til Supabase og deployment.
+                Peg på de vigtigste filer og forklar deres ansvar. Ændr ikke noget.
+              </div>
+            </div>
+            <div>
+              <h3>Kontrollér svaret i projektet</h3>
+              <ul class="checklist">
+                <li>Find route-konfigurationen</li>
+                <li>Find Supabase-requestet</li>
+                <li>Find base path</li>
+                <li>Find deploy-workflowet</li>
+              </ul>
+            </div>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Du selv kan forklare én forbindelse mellem to af filerne — også uden
+            agentens svar.
+          </p>
+          <aside class="notes">
+            De må bruge det AI-værktøj, de har adgang til. Opgaven handler om kontekst og kontrol, ikke om at generere
+            kode. Hvis en studerende ikke bruger en agent, kan filerne kortlægges manuelt. [Sources] -
+            https://github.com/cederdorff/react-router-supabase - https://learn.chatgpt.com/docs/prompting [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide" id="forbedr-og-saml-op">
           <span class="chapter-index">06</span>
           <span class="eyebrow">Arbejd videre</span>
           <h2>Vælg ét sted i kæden og gør det mere robust</h2>
           <p class="kicker">Ingen aflevering — målet er at få processen og begreberne i fingrene.</p>
           <aside class="notes">
             Definér selv varigheden på whiteboardet. De arbejder videre individuelt i det repository, de har oprettet
-            fra templaten.
-            [Sources] - undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
-            [/Sources]
+            fra templaten. [Sources] -
+            undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md [/Sources]
           </aside>
         </section>
 
@@ -917,10 +1856,22 @@ if (error) {
           <span class="eyebrow">Når alt virker vigtigt</span>
           <h2>Prioritér efter konsekvens — ikke efter hvor let det ser ud</h2>
           <div class="priority-stack">
-            <article><h3>Appen kan ikke bruges</h3><p>Build, deployment, routing, data eller blokerende runtime-fejl.</p></article>
-            <article><h3>Brugere bliver udelukket</h3><p>Tastatur, labels, fokus, kontrast eller utilgængelige handlinger.</p></article>
-            <article><h3>Løsningen er misvisende</h3><p>Forkert identitet, metadata, indhold eller uforståelige fejl-states.</p></article>
-            <article><h3>Koden kan forbedres</h3><p>Oprydning, navngivning og struktur uden akut bruger- eller driftskonsekvens.</p></article>
+            <article>
+              <h3>Appen kan ikke bruges</h3>
+              <p>Build, deployment, routing, data eller blokerende runtime-fejl.</p>
+            </article>
+            <article>
+              <h3>Brugere bliver udelukket</h3>
+              <p>Tastatur, labels, fokus, kontrast eller utilgængelige handlinger.</p>
+            </article>
+            <article>
+              <h3>Løsningen er misvisende</h3>
+              <p>Forkert identitet, metadata, indhold eller uforståelige fejl-states.</p>
+            </article>
+            <article>
+              <h3>Koden kan forbedres</h3>
+              <p>Oprydning, navngivning og struktur uden akut bruger- eller driftskonsekvens.</p>
+            </article>
           </div>
           <aside class="notes">
             Prioriteringen er en tommelfingerregel. Bed de studerende skrive én sætning: “Vi vælger X først, fordi Y”.
@@ -929,19 +1880,34 @@ if (error) {
         </section>
 
         <section class="po-slide mode-work">
-          <span class="eyebrow">Opgave 6 · Arbejd individuelt</span>
+          <span class="eyebrow">Opgave 8 · Arbejd individuelt</span>
           <h2>Vælg én forbedring og før den helt igennem</h2>
           <div class="assignment-flow">
-            <article><h3>Find</h3><p>Vælg et konkret problem i deployment, routing, data, metadata eller accessibility.</p></article>
-            <article><h3>Begrund</h3><p>Forklar for dig selv, hvem problemet påvirker, og hvorfor det er vigtigt.</p></article>
-            <article><h3>Forbedr</h3><p>Lav den mindste relevante ændring. Brug gerne en AI-agent med klare rammer.</p></article>
-            <article><h3>Kontrollér</h3><p>Test lokalt, review diffet, push, og kontrollér resultatet online.</p></article>
+            <article>
+              <h3>Find</h3>
+              <p>Vælg et konkret problem i deployment, routing, data, metadata eller accessibility.</p>
+            </article>
+            <article>
+              <h3>Begrund</h3>
+              <p>Forklar for dig selv, hvem problemet påvirker, og hvorfor det er vigtigt.</p>
+            </article>
+            <article>
+              <h3>Forbedr</h3>
+              <p>Lav den mindste relevante ændring. Brug gerne en AI-agent med klare rammer.</p>
+            </article>
+            <article>
+              <h3>Kontrollér</h3>
+              <p>Test lokalt, review diffet, push, og kontrollér resultatet online.</p>
+            </article>
           </div>
-          <p class="done-when"><strong>Du er klar, når:</strong> Du kan forklare problemet, ændringen og testen. Du skal ikke aflevere noget.</p>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Du kan forklare problemet, ændringen og testen. Du skal ikke aflevere
+            noget.
+          </p>
           <aside class="notes">
             Hjælp de studerende med at holde ændringen lille nok. De skal ikke nå alle områder; én gennemført forbedring
-            er bedre end flere halvfærdige ændringer.
-            [Sources] - https://github.com/cederdorff/react-router-supabase [/Sources]
+            er bedre end flere halvfærdige ændringer. [Sources] - https://github.com/cederdorff/react-router-supabase
+            [/Sources]
           </aside>
         </section>
 
@@ -949,15 +1915,26 @@ if (error) {
           <span class="eyebrow">Dagens tekniske fundament</span>
           <h2>Robusthed er en arbejdsgang, ikke et enkelt fix</h2>
           <div class="closing-loop">
-            <article><h3>Se hele systemet</h3><p>UI, kode, konfiguration, data og deployment hænger sammen.</p></article>
-            <article><h3>Brug agenten kritisk</h3><p>Afgræns, review og verificér frem for at kopiere blindt.</p></article>
-            <article><h3>Følg flowet</h3><p>Lokal ændring → commit → GitHub → Actions → bruger.</p></article>
-            <article><h3>Kontrollér effekten</h3><p>Vis hvad der blev bedre, og hvordan du ved det.</p></article>
+            <article>
+              <h3>Se hele systemet</h3>
+              <p>UI, kode, konfiguration, data og deployment hænger sammen.</p>
+            </article>
+            <article>
+              <h3>Brug agenten kritisk</h3>
+              <p>Afgræns, review og verificér frem for at kopiere blindt.</p>
+            </article>
+            <article>
+              <h3>Følg flowet</h3>
+              <p>Lokal ændring → commit → GitHub → Actions → bruger.</p>
+            </article>
+            <article>
+              <h3>Kontrollér effekten</h3>
+              <p>Vis hvad der blev bedre, og hvordan du ved det.</p>
+            </article>
           </div>
           <aside class="notes">
-            Knyt tilbage til åbningsmodellen og dagens spørgsmål. Hvilke emner føles mere sikre nu?
-            [Sources] - undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
-            [/Sources]
+            Knyt tilbage til åbningsmodellen og dagens spørgsmål. Hvilke emner føles mere sikre nu? [Sources] -
+            undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md [/Sources]
           </aside>
         </section>
 
@@ -969,9 +1946,8 @@ if (error) {
           </p>
           <aside class="notes">
             Saml svar mundtligt, på tavlen eller digitalt. Brug dem som overgang til hjemmearbejde og næste
-            undervisningsgang.
-            [Sources] - undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md
-            [/Sources]
+            undervisningsgang. [Sources] -
+            undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md [/Sources]
           </aside>
         </section>
       </div>
