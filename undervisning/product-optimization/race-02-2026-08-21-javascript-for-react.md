@@ -12,6 +12,7 @@ Derfor træner vi koncepterne i almindelig JavaScript og anvender dem derefter i
 
 ## Forberedelse
 
+- Færdiggør [opgaverne fra sidste undervisning](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/agenda).
 - Genbesøg dine løsninger og projekter fra 2. semester. Find mindst to eksempler på JavaScript- eller React-kode, du har svært ved at forklare eller ikke forstår. Vær klar til at dele ét eksempel med et kort kodeudsnit eller et link til koden.
 - Se: [All The JavaScript You Need BEFORE React](https://www.youtube.com/watch?v=bCkfU_wHPcY)
 - Skim: [Top 12 JavaScript Concepts to Know Before Learning React](https://www.geeksforgeeks.org/reactjs/top-javascript-concepts-to-know-before-learning-react/)
