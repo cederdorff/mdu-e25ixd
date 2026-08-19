@@ -24,7 +24,7 @@
 
         <section class="po-slide">
           <span class="eyebrow">Fokus for de to undervisningsgange</span>
-          <h2>To undervisningsgange — to forskellige lag</h2>
+          <h2>To undervisningsgange — to lag</h2>
           <div class="focus-split">
             <article class="focus-today">
               <time datetime="2026-08-19">I dag · 19. august</time>
@@ -40,7 +40,7 @@
             </article>
           </div>
           <p class="focus-footnote">
-            Vi ser stadig kode i dag — men som del af et <strong>flow</strong>, ikke som syntakstræning.
+            Vi ser stadig kode i dag — men som del af et <strong>flow</strong>, ikke som programmeringstræning.
           </p>
         </section>
 
@@ -54,43 +54,36 @@
                 <li>
                   <a href="#/tilbageblik-og-projektstart">
                     <strong>Tilbageblik og lokal projektstart</strong>
-                    <small>Genaktivér det kendte, opret projektet og få appen til at køre.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#/git-github-deployment">
                     <strong>Git → GitHub → Actions → Pages</strong>
-                    <small>Commit, push, base path, routing, deployment, fejllogs samt branch og pull request.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#/konfiguration-og-environment-variables">
                     <strong>Konfiguration på tværs af miljøer</strong>
-                    <small>Lokale .env-filer, forskellige værdier i dev/prod og GitHub Environment variables.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#/metadata-og-identitet">
                     <strong>Metadata og identitet</strong>
-                    <small>Fjern template-rester, og gør appens titel, beskrivelse og sprog tydelige.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#/accessibility">
                     <strong>Accessibility</strong>
-                    <small>Repetér struktur, navne og billeder — og test tastatur og fokus.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#/supabase-rest-og-sdk">
                     <strong>Supabase: REST API og SDK</strong>
-                    <small>Forskelle, muligheder og hvorfor vi fortsætter med REST.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#/ai-i-udviklingsarbejdet">
                     <strong>AI i udviklingsarbejdet</strong>
-                    <small>Kontekst, prompts, review og ansvar.</small>
                   </a>
                 </li>
               </ol>
@@ -102,55 +95,46 @@
                 <li>
                   <a href="#opgave-1">
                     <strong>Opgave 1 · Kør projektet lokalt</strong>
-                    <small>Få appen til at starte, navigere og vise forsiden.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#opgave-2">
                     <strong>Opgave 2 · Konfigurér, deploy og kontrollér</strong>
-                    <small>Base path, build, GitHub Pages, routing og deployment.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#opgave-3">
                     <strong>Opgave 3 · Simulér teamsamarbejde</strong>
-                    <small>Branche, PR, review, merge og deployment.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#opgave-4">
                     <strong>Opgave 4 · Brug de udleverede værdier</strong>
-                    <small>Konfigurer lokalt og online med de rigtige environment variables.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#opgave-5">
                     <strong>Opgave 5 · Skift til din egen Supabase</strong>
-                    <small>Byt konfigurationen ud uden at ændre appens kode.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#opgave-6">
                     <strong>Opgave 6 · Metadata og identitet</strong>
-                    <small>Fjern template-rester og gør appen til din egen.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#opgave-7">
                     <strong>Opgave 7 · Giv dagens løsning et a11y-løft</strong>
-                    <small>Brug ét konkret accessibility-princip på din løsning.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#opgave-8">
                     <strong>Opgave 8 · Brug AI til en forbedring</strong>
-                    <small>Genbesøg et af dagens emner, og få hjælp til en konkret forbedring.</small>
                   </a>
                 </li>
                 <li>
                   <a href="#opgave-9">
                     <strong>Opgave 9 · Evaluer din egen app</strong>
-                    <small>Find, hvilke af dagens forbedringer din app faktisk har brug for.</small>
                   </a>
                 </li>
               </ol>
@@ -201,7 +185,7 @@
 
         <section class="po-slide" id="tilbageblik-og-projektstart">
           <span class="eyebrow">Tilbageblik · 2. semester · RACE 1–11</span>
-          <h2>I startede med JavaScript — og sluttede med en webapp, der kunne deles</h2>
+          <h2>Fra JavaScript til en webapp, der kunne deles</h2>
           <div class="semester-arc" aria-label="Programmeringsforløbet på 2. semester">
             <article>
               <time datetime="2026-01">Januar</time>
@@ -228,14 +212,11 @@
               <p>Supabase, HTTP, REST, forms, CRUD samt filtrering og sortering.</p>
             </article>
           </div>
-          <p class="reflection semester-thesis">
-            Hvert nyt emne byggede videre på det forrige — frem mod en samlet webapp.
-          </p>
         </section>
 
         <section class="po-slide">
           <span class="eyebrow">Den røde tråd</span>
-          <h2>I byggede videre på den samme idé flere gange</h2>
+          <h2>I byggede videre på den samme idé</h2>
           <div class="project-thread" aria-label="Projektets udvikling gennem semesteret">
             <article>
               <span>01</span>
@@ -302,7 +283,9 @@
               <div class="system-layer">
                 <strong>Konfiguration</strong><span>npm og scripts, base path og miljøvariabler</span>
               </div>
-              <div class="system-layer"><strong>Publicering</strong><span>Git, GitHub, Actions og Pages</span></div>
+              <div class="system-layer">
+                <strong>Samarbejde & Deployment</strong><span>Git, GitHub, Actions og Pages</span>
+              </div>
             </div>
             <div class="system-thesis-wrap">
               <p class="system-thesis">Koden kan være korrekt — og appen kan stadig <strong>fejle</strong>.</p>
@@ -1299,7 +1282,11 @@ https://prod-project…/posts</code></pre>
           <h2>En færdig løsning må ikke ligne en starter-template</h2>
           <ul class="audit-lines">
             <li>
-              <strong>Dokumenttitel</strong><span>Erstat “Vite + React” med noget, der passer til appens formål.</span>
+              <strong>Dokumenttitel</strong
+              ><span
+                >Erstat “Vite + React” eller "React Router SPA Supabase Template" med noget, der passer til appens
+                formål.</span
+              >
             </li>
             <li><strong>Meta description</strong><span>Beskriver kort, hvad appen gør, og hvem den er til.</span></li>
             <li>
@@ -1340,6 +1327,10 @@ https://prod-project…/posts</code></pre>
           <p class="done-when">
             <strong>Du er klar, når:</strong> Du har gennemgået alle seks punkter fra forrige slide og kan vise, hvad du
             har ændret, eller hvorfor punktet allerede var på plads.
+          </p>
+          <p class="portfolio-note">
+            <strong>Husk til senere:</strong> Ryd også op i dine egne GitHub-repositories, så projekterne ser
+            professionelle ud, når en praktikvirksomhed eller kommende arbejdsplads besøger din portfolio.
           </p>
         </section>
 
