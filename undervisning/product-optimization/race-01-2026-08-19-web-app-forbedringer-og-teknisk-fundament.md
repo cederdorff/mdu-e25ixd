@@ -113,7 +113,15 @@ Vi veksler mellem korte oplæg og arbejde i den udleverede løsning, så du afpr
   - [Web App-forbedringer og teknisk fundament](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/)
   - [PDF-version: Web App-forbedringer og teknisk fundament](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/?print-pdf)
 - **Opgaver:**
-  - Udleveret React-løsning, forbedringskrav og tjekliste til egen Web App vil blive tilgængelige her
+  - [Opgave 1 · Kør projektet lokalt](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/opgave-1)
+  - [Opgave 2 · Konfigurér, deploy og kontrollér](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/opgave-2)
+  - [Opgave 3 · Simulér teamsamarbejde](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/opgave-3)
+  - [Opgave 4 · Brug de udleverede værdier](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/opgave-4)
+  - [Opgave 5 · Skift til din egen Supabase](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/opgave-5)
+  - [Opgave 6 · Metadata og identitet](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/opgave-6)
+  - [Opgave 7 · Giv dagens løsning et a11y-løft](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/opgave-7)
+  - [Opgave 8 · Brug AI til en forbedring](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/opgave-8)
+  - [Opgave 9 · Evaluer din egen app](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/opgave-9)
 - **React:**
   - [Scrimba: Learn React](https://scrimba.com/learn-react-c0e)
   - [React: Learn](https://react.dev/learn)
