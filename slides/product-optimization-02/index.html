@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="RACE · Product Optimization · JavaScript for React · 21. august 2026." />
+    <title>JavaScript for React · RACE · 21.08.2026</title>
+    <link rel="stylesheet" href="../vendor/reveal/reveal.css" />
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="po-slide po-title">
+          <span class="eyebrow">Product Optimization · 3. semester</span>
+          <h1>Fra JavaScript-koncept <span>til React-mønster</span></h1>
+          <p class="lead">JavaScript for React</p>
+          <p class="date"><span>RACE</span><time datetime="2026-08-21">21. august 2026</time></p>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Fokus for de to undervisningsgange</span>
+          <h2>Fra i tirsdags til i dag</h2>
+          <div class="focus-split">
+            <article class="focus-today">
+              <time datetime="2026-08-19">Tirsdag · 19. august</time>
+              <h3>Rundt om koden</h3>
+              <p>Deployment, Git-flow, konfiguration, metadata og accessibility.</p>
+              <strong>Hvordan hænger løsningen sammen?</strong>
+            </article>
+            <article class="focus-friday">
+              <time datetime="2026-08-21">I dag · 21. august</time>
+              <h3>Inde i koden</h3>
+              <p>JavaScript-koncepter trænet ét ad gangen — og brugt med det samme i React.</p>
+              <strong>Hvordan skriver og læser vi koden?</strong>
+            </article>
+          </div>
+          <p class="focus-footnote">
+            Vi arbejder i <strong>jeres eget <code>web-app-optimization</code>-projekt</strong> hele dagen — først i et
+            lille JavaScript-modul, derefter i en rigtig komponent.
+          </p>
+        </section>
+
+        <section class="po-slide po-agenda" id="agenda">
+          <span class="eyebrow">Agenda og opgaver</span>
+          <h2>Koncept for koncept: forstå → JavaScript → React</h2>
+          <div class="agenda-columns">
+            <div class="agenda-column">
+              <h3>Dagens forløb</h3>
+              <ol class="agenda-track">
+                <li>
+                  <a href="#/eksempler-fra-andet-semester"><strong>Eksempler fra 2. semester</strong></a>
+                </li>
+                <li>
+                  <a href="#/moduler"><strong>Moduler, import og export</strong></a>
+                </li>
+                <li>
+                  <a href="#/variabler-og-datatyper"><strong>Variabler og datatyper</strong></a>
+                </li>
+                <li>
+                  <a href="#/functions"><strong>Functions</strong></a>
+                </li>
+                <li>
+                  <a href="#/objekter-og-arrays"><strong>Objekter og arrays</strong></a>
+                </li>
+                <li>
+                  <a href="#/array-metoder"><strong>Array-metoder og rendering</strong></a>
+                </li>
+                <li>
+                  <a href="#/udtryk-der-styrer-visning"><strong>Udtryk der styrer visning</strong></a>
+                </li>
+                <li>
+                  <a href="#/async"><strong>Async: fetch med await</strong></a>
+                </li>
+                <li>
+                  <a href="#/egen-kode-og-opsamling"><strong>Egen kode og opsamling</strong></a>
+                </li>
+              </ol>
+            </div>
+
+            <div class="agenda-column">
+              <h3>Opgaver i dag</h3>
+              <ol class="agenda-track">
+                <li>
+                  <a href="#opgave-1"><strong>1 · Del et eksempel i Padlet</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-2"><strong>2 · Byg din playground-mappe</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-3"><strong>3 · Find import/export i din app</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-4"><strong>4 · Variabler og datatyper i JS</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-5"><strong>5 · Variabler og state i React</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-6"><strong>6 · Functions i JS</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-7"><strong>7 · Functions i React</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-8"><strong>8 · Objekter og arrays i JS</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-9"><strong>9 · Immutable state i React</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-10"><strong>10 · map, filter, find i JS</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-11"><strong>11 · Rendering af lister i React</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-12"><strong>12 · Udtryk der styrer visning i JS</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-13"><strong>13 · Conditional rendering i React</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-14"><strong>14 · Async i JS</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-15"><strong>15 · Data fetching i React</strong></a>
+                </li>
+                <li>
+                  <a href="#opgave-16"><strong>16 · Din egen kode og Padlet</strong></a>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section class="po-slide mode-shared">
+          <span class="eyebrow">Sådan arbejder vi i dag</span>
+          <h2>Forstå → JavaScript-modul → React-komponent</h2>
+          <div class="code-comparison">
+            <article>
+              <h3>1 · Forstå</h3>
+              <p class="comparison-lead">
+                Vi gennemgår konceptet uden kode først — hvad er det, og hvorfor findes det?
+              </p>
+            </article>
+            <article>
+              <h3>2 · JavaScript</h3>
+              <p class="comparison-lead">
+                Vi løser et lille eksempel i <code>src/playground/</code> i jeres eget projekt.
+              </p>
+              <pre class="po-code"><code class="language-javascript">// src/playground/functions.js
+export const greet = (name = "der") => `Hej, ${name}!`;</code></pre>
+            </article>
+          </div>
+          <div class="code-comparison">
+            <article>
+              <h3>3 · React</h3>
+              <p class="comparison-lead">Samme koncept — nu i en rigtig komponent i samme projekt.</p>
+              <pre class="po-code"><code class="language-javascript">// src/components/Greeting.jsx
+export function Greeting({ name = "der" }) {
+  return &lt;p&gt;Hej, {name}!&lt;/p&gt;;
+}</code></pre>
+            </article>
+            <article>
+              <h3>Ingen ny app</h3>
+              <p class="comparison-lead">
+                <code>src/playground/</code> er kun til øvelse. Den er ikke koblet til appens UI — men den bor i det
+                samme projekt, så I kan importere direkte mellem de to.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="chapter po-chapter po-slide" id="eksempler-fra-andet-semester">
+          <span class="chapter-index">00</span>
+          <span class="eyebrow">Fra jeres egne projekter</span>
+          <h2>Hvilken kode har I svært ved at forklare?</h2>
+          <p class="kicker">Vi starter i jeres egen kode — ikke i et opdigtet eksempel.</p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-1">
+          <span class="eyebrow">Opgave 1 · Arbejd individuelt, del i fællesskab</span>
+          <h2>Del et kodeeksempel fra 2. semester i Padlet</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Find</h3>
+              <p>Find den kode fra dit 2. semester-projekt, du har sværest ved at forklare.</p>
+            </article>
+            <article>
+              <h3>Uddrag</h3>
+              <p>Kopiér et kort kodeudsnit, eller find et direkte link til filen på GitHub.</p>
+            </article>
+            <article>
+              <h3>Beskriv</h3>
+              <p>Skriv kort, hvad du <em>tror</em> koden gør, og hvad du er i tvivl om.</p>
+            </article>
+            <article>
+              <h3>Del</h3>
+              <p>Læg udsnittet i vores fælles Padlet, og se på et par andres eksempler.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Dit eksempel ligger i Padlet med en kort beskrivelse og et konkret
+            tvivlspunkt.
+          </p>
+        </section>
+
+        <!-- 01 · MODULER -->
+        <section class="chapter po-chapter po-slide" id="moduler">
+          <span class="chapter-index">01</span>
+          <span class="eyebrow">Moduler, import og export</span>
+          <h2>Vi deler koden op i filer, før vi deler den op i komponenter</h2>
+          <p class="kicker">Alt i dag bygger videre på den samme mekanik: export ét sted, import et andet.</p>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Forstå · Moduler</span>
+          <h2>Hvorfor dele koden op i filer?</h2>
+          <div class="request-parts">
+            <article>
+              <h3>Genbrug</h3>
+              <p>En funktion skrevet ét sted kan bruges mange steder i projektet.</p>
+            </article>
+            <article>
+              <h3>Overblik</h3>
+              <p>Hver fil får ét ansvar, så koden er lettere at finde og forstå.</p>
+            </article>
+            <article>
+              <h3>Navnerum</h3>
+              <p><code>export</code> og <code>import</code> styrer, hvad der er synligt uden for filen.</p>
+            </article>
+          </div>
+          <div class="callout">
+            <p>
+              <code>export</code> gør noget tilgængeligt uden for filen. <code>import</code> henter det ind i en anden
+              fil. En React-komponent er i bund og grund bare en <strong>exporteret function</strong>.
+            </p>
+          </div>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">JavaScript · i <code>web-app-optimization</code></span>
+          <h2>Opret dit første modul i <code>src/playground/</code></h2>
+          <pre class="po-code"><code class="language-javascript">// src/playground/greetings.js
+export function greet(name = "der") {
+  return `Hej, ${name}!`;
+}</code></pre>
+          <pre class="po-code"><code class="language-javascript">// src/main.jsx (midlertidigt, mens du øver)
+import { greet } from "./playground/greetings.js";
+
+console.log(greet("Mette"));</code></pre>
+          <p class="reflection">Åbn browserens devtools-console for at se resultatet, mens appen kører lokalt.</p>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">React · samme projekt</span>
+          <h2>Komponenter er også bare import og export</h2>
+          <pre class="po-code"><code class="language-javascript">// src/components/Greeting.jsx
+export function Greeting({ name = "der" }) {
+  return &lt;p&gt;Hej, {name}!&lt;/p&gt;;
+}</code></pre>
+          <pre class="po-code"><code class="language-javascript">// src/App.jsx
+import { Greeting } from "./components/Greeting.jsx";</code></pre>
+          <div class="callout">
+            <p>
+              Samme mekanik som i <code>src/playground/</code>: én fil exporterer, én anden importerer. Kun navnet
+              ændrer sig — <strong>function</strong> bliver til <strong>component</strong>.
+            </p>
+          </div>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-2">
+          <span class="eyebrow">Opgave 2 · Arbejd individuelt</span>
+          <h2>Byg din playground-mappe i <code>web-app-optimization</code></h2>
+          <div class="assignment-flow setup-flow">
+            <article>
+              <h3>Opret mappen</h3>
+              <p>Opret <code>src/playground/</code> i dit eksisterende <code>web-app-optimization</code>-projekt.</p>
+            </article>
+            <article>
+              <h3>Lav første modul</h3>
+              <p>Opret <code>greetings.js</code> med en <code>export</code>-funktion.</p>
+            </article>
+            <article>
+              <h3>Importér midlertidigt</h3>
+              <p>Importér funktionen øverst i <code>main.jsx</code>, og log resultatet.</p>
+            </article>
+            <article>
+              <h3>Kør og kontrollér</h3>
+              <p>Kør <code>npm run dev</code>, og se resultatet i browserens console.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Du kan importere og køre en funktion fra <code>src/playground/</code>
+            uden fejl.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-3">
+          <span class="eyebrow">Opgave 3 · Arbejd individuelt</span>
+          <h2>Find import og export i din egen app</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Åbn tre filer</h3>
+              <p>Åbn 2–3 komponentfiler i din <code>web-app-optimization</code>-app.</p>
+            </article>
+            <article>
+              <h3>Find export</h3>
+              <p>Find, hvordan hver komponent bliver exporteret.</p>
+            </article>
+            <article>
+              <h3>Find import</h3>
+              <p>Find mindst ét eksternt bibliotek, der importeres, fx <code>react-router</code>.</p>
+            </article>
+            <article>
+              <h3>Navngiv typen</h3>
+              <p>Afgør, om det er en <strong>named export</strong> eller en <strong>default export</strong>.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Du kan pege på mindst ét eksempel på hver eksporttype i din egen app.
+          </p>
+        </section>
+
+        <!-- 02 · VARIABLER OG DATATYPER -->
+        <section class="chapter po-chapter po-slide" id="variabler-og-datatyper">
+          <span class="chapter-index">02</span>
+          <span class="eyebrow">Variabler og datatyper</span>
+          <h2><code>const</code>, <code>let</code>, <code>var</code> — og hvad de indeholder</h2>
+          <p class="kicker">Det, du gemmer i en variabel, styrer, hvordan resten af koden opfører sig.</p>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Forstå · Variabler og datatyper</span>
+          <h2>Tre måder at deklarere en variabel på</h2>
+          <div class="request-parts">
+            <article>
+              <h3><code>const</code></h3>
+              <p>Kan ikke gentildeles. Brug den som standard for alt, der ikke skal ændre sig.</p>
+            </article>
+            <article>
+              <h3><code>let</code></h3>
+              <p>Kan gentildeles. Brug den kun, når værdien reelt skal ændre sig.</p>
+            </article>
+            <article>
+              <h3><code>var</code> (undgås)</h3>
+              <p>
+                Function scope i stedet for block scope, og kan give overraskende bugs. Brug ikke <code>var</code> i ny
+                kode.
+              </p>
+            </article>
+          </div>
+          <div class="callout">
+            <p>
+              Datatyper: <code>string</code>, <code>number</code>, <code>boolean</code>, <code>object</code>,
+              <code>array</code>, <code>null</code>/<code>undefined</code>. <code>===</code> sammenligner
+              <strong>værdi og type</strong>. <code>==</code> kan konvertere typer og give overraskelser — brug altid
+              <code>===</code>.
+            </p>
+          </div>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">JavaScript · i <code>web-app-optimization</code></span>
+          <h2>Deklarér, beregn og sammenlign i <code>src/playground/variables.js</code></h2>
+          <pre class="po-code"><code class="language-javascript">export const price = 99;
+let quantity = 2;
+quantity = 3;
+
+export const total = price * quantity;
+
+console.log(typeof price, typeof "kop", typeof true);
+console.log(1 === "1", 1 === 1);</code></pre>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">React · samme projekt</span>
+          <h2>State er React’s svar på “en værdi, der må ændre sig”</h2>
+          <pre class="po-code"><code class="language-javascript">function ProductCard({ price, quantity }) {
+  const total = price * quantity; // const – ændrer sig ikke i denne render
+  const [inStock, setInStock] = useState(true); // værdien må ændre sig via setInStock
+
+  return (
+    &lt;p&gt;
+      {total} kr. – {inStock ? "På lager" : "Udsolgt"}
+    &lt;/p&gt;
+  );
+}</code></pre>
+          <p class="reflection">
+            Du opdaterer aldrig <code>inStock</code> direkte, som du ville med <code>let</code> — du kalder altid
+            <code>setInStock(...)</code>.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-4">
+          <span class="eyebrow">Opgave 4 · Arbejd individuelt</span>
+          <h2>Øv variabler og datatyper i <code>variables.js</code></h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>const og let</h3>
+              <p>
+                Deklarér mindst én <code>const</code> og én <code>let</code>, og gentildel <code>let</code>-variablen.
+              </p>
+            </article>
+            <article>
+              <h3>Beregn</h3>
+              <p>Beregn en total ud fra to variabler.</p>
+            </article>
+            <article>
+              <h3>Datatyper</h3>
+              <p>Log <code>typeof</code> for mindst tre forskellige datatyper.</p>
+            </article>
+            <article>
+              <h3>Sammenlign</h3>
+              <p>Log både en <code>===</code>- og en <code>==</code>-sammenligning, og forklar forskellen.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Du kan forklare, hvorfor <code>1 === "1"</code> og <code>1 == "1"</code>
+            giver forskelligt resultat.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-5">
+          <span class="eyebrow">Opgave 5 · Arbejd individuelt</span>
+          <h2>Find variabler og state i din egen app</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Find to <code>useState</code></h3>
+              <p>Find mindst to <code>useState</code>-kald i din app.</p>
+            </article>
+            <article>
+              <h3>Vurdér typen</h3>
+              <p>Afgør datatypen for hver: streng, tal, boolean, objekt eller array?</p>
+            </article>
+            <article>
+              <h3>Kunne det være <code>const</code>?</h3>
+              <p>Find en almindelig <code>const</code> i samme fil, der aldrig skal ændre sig.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Du kan forklare forskellen på en <code>const</code>-værdi og en
+            <code>useState</code>-værdi i din egen kode.
+          </p>
+        </section>
+
+        <!-- 03 · FUNCTIONS -->
+        <section class="chapter po-chapter po-slide" id="functions">
+          <span class="chapter-index">03</span>
+          <span class="eyebrow">Functions og arrow functions</span>
+          <h2>En komponent er bare en funktion, der returnerer markup</h2>
+          <p class="kicker">Parametre er input. Return-værdien er output.</p>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Forstå · Functions</span>
+          <h2>Parametre ind — return-værdi ud</h2>
+          <div class="request-parts">
+            <article>
+              <h3>Function declaration</h3>
+              <p><code>function navn() {}</code> — den klassiske skrivemåde.</p>
+            </article>
+            <article>
+              <h3>Arrow function</h3>
+              <p><code>const navn = () => {}</code> — kortere syntaks, bruges ofte i React.</p>
+            </article>
+            <article>
+              <h3>Parametre og return</h3>
+              <p>
+                Parametre er funktionens input. <code>return</code> er dens output — uden <code>return</code> får du
+                <code>undefined</code>.
+              </p>
+            </article>
+          </div>
+          <div class="callout">
+            <p>
+              <strong>Ekstra:</strong> <em>default parameters</em> giver en parameter en standardværdi.
+              <em>Callback functions</em> er funktioner, der sendes som argument til en anden funktion. En
+              <em>closure</em> er en funktion, der “husker” variabler fra det sted, den blev skabt.
+            </p>
+          </div>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">JavaScript · i <code>web-app-optimization</code></span>
+          <h2>Skriv functions i <code>src/playground/functions.js</code></h2>
+          <pre class="po-code"><code class="language-javascript">export function add(a, b) {
+  return a + b;
+}
+
+export const multiply = (a, b) => a * b;
+
+export function formatPrice(price, currency = "kr.") {
+  return `${price} ${currency}`;
+}</code></pre>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">React · samme projekt</span>
+          <h2>Parametre bliver til props — return bliver til JSX</h2>
+          <pre class="po-code"><code class="language-javascript">function PriceTag({ price, currency = "kr." }) {
+  return (
+    &lt;span&gt;
+      {price} {currency}
+    &lt;/span&gt;
+  );
+}
+
+function BuyButton({ onBuy }) {
+  return &lt;button onClick={() =&gt; onBuy()}&gt;Køb&lt;/button&gt;;
+}</code></pre>
+          <p class="reflection">
+            <code>onBuy</code> er en callback function — helt som når du sender en funktion som argument i almindelig
+            JavaScript.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-6">
+          <span class="eyebrow">Opgave 6 · Arbejd individuelt</span>
+          <h2>Øv functions i <code>functions.js</code></h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Function declaration</h3>
+              <p>Skriv <code>add(a, b)</code> som en almindelig function.</p>
+            </article>
+            <article>
+              <h3>Arrow function</h3>
+              <p>Skriv <code>multiply(a, b)</code> som en arrow function.</p>
+            </article>
+            <article>
+              <h3>Default parameter</h3>
+              <p>Skriv <code>formatPrice(price, currency = "kr.")</code>, og test uden andet argument.</p>
+            </article>
+            <article>
+              <h3>Ekstra: callback og closure</h3>
+              <p>Skriv en function, der modtager en callback. Prøv derefter en function, der returnerer en function.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Alle functions kører, og du kan forklare, hvad default parameter og
+            callback betyder.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-7">
+          <span class="eyebrow">Opgave 7 · Arbejd individuelt</span>
+          <h2>Byg <code>PriceTag</code> og <code>BuyButton</code> i din app</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>PriceTag</h3>
+              <p>Lav en komponent med et default prop, fx <code>currency = "kr."</code>.</p>
+            </article>
+            <article>
+              <h3>BuyButton</h3>
+              <p>Lav en komponent med en <code>onClick</code>-handler, der modtager en callback som prop.</p>
+            </article>
+            <article>
+              <h3>Sammenlign</h3>
+              <p>Sammenlign koden med din JavaScript-version. Hvad er ens, og hvad er nyt?</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Begge komponenter renderer i din app, og du kan pege på default parameter
+            og callback i begge versioner.
+          </p>
+        </section>
+
+        <!-- 04 · OBJEKTER OG ARRAYS -->
+        <section class="chapter po-chapter po-slide" id="objekter-og-arrays">
+          <span class="chapter-index">04</span>
+          <span class="eyebrow">Objekter og arrays</span>
+          <h2>State i React må aldrig ændres direkte</h2>
+          <p class="kicker">Property access, destructuring, rest og spread er værktøjerne, der gør det muligt.</p>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Forstå · Objekter og arrays</span>
+          <h2>Fra property access til immutable opdatering</h2>
+          <div class="request-parts">
+            <article>
+              <h3>Property access</h3>
+              <p>
+                <code>product.price</code> eller <code>product["price"]</code> — og shorthand properties, når
+                variabelnavn og property-navn er ens.
+              </p>
+            </article>
+            <article>
+              <h3>Destructuring</h3>
+              <p>Pak værdier ud af et objekt eller array i én linje — i stedet for at læse dem enkeltvis.</p>
+            </article>
+            <article>
+              <h3>Rest og spread</h3>
+              <p>
+                <code>...rest</code> samler resten op. <code>{ ...product }</code> kopierer ind i et nyt objekt eller
+                array.
+              </p>
+            </article>
+          </div>
+          <div class="callout">
+            <p>
+              <strong>Immutability:</strong> Opdatér altid en <em>kopi</em> — aldrig originalen direkte. Det er sådan,
+              React opdager, at noget har ændret sig.
+            </p>
+          </div>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">JavaScript · i <code>web-app-optimization</code></span>
+          <h2>Destructuring, rest og spread i <code>src/playground/objects.js</code></h2>
+          <pre class="po-code"><code class="language-javascript">const name = "Kop";
+const price = 99;
+const product = { name, price }; // shorthand properties
+
+const { name: productName, ...rest } = product;
+
+const updated = { ...product, price: 79 };
+
+const products = [product];
+const withNew = [...products, { name: "Fad", price: 149 }];</code></pre>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">React · samme projekt</span>
+          <h2>Immutability er reglen bag <code>setState</code></h2>
+          <pre class="po-code"><code class="language-javascript">function updatePrice(products, name, price) {
+  return products.map((p) =>
+    p.name === name ? { ...p, price } : p
+  );
+}
+
+setProducts((prev) => updatePrice(prev, "Kop", 79));</code></pre>
+          <p class="reflection">
+            React sammenligner den <strong>gamle</strong> og den <strong>nye</strong> reference. Ændrer du et objekt
+            direkte, opdager React det ikke.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-8">
+          <span class="eyebrow">Opgave 8 · Arbejd individuelt</span>
+          <h2>Øv immutable opdateringer i <code>objects.js</code></h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Shorthand property</h3>
+              <p>Byg et objekt med shorthand properties ud fra to variabler.</p>
+            </article>
+            <article>
+              <h3>Destructure med rest</h3>
+              <p>Destructure to felter ud af objektet, og saml resten med <code>...rest</code>.</p>
+            </article>
+            <article>
+              <h3>Opdatér objekt</h3>
+              <p>Lav en kopi med spread, og ændr én property i kopien.</p>
+            </article>
+            <article>
+              <h3>Opdatér array</h3>
+              <p>Lav en ny array med et element tilføjet — uden at ændre den oprindelige array.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Du kan vise, at originalen ikke ændres, når du opdaterer kopien.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-9">
+          <span class="eyebrow">Opgave 9 · Arbejd individuelt</span>
+          <h2>Opdatér state immutably i din Web App</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Find en state</h3>
+              <p>Find et sted i din app med state, der er et objekt eller en array, fx en liste af produkter.</p>
+            </article>
+            <article>
+              <h3>Skriv opdateringen</h3>
+              <p>Skriv en opdatering med <code>map</code> og spread — som i JavaScript-øvelsen.</p>
+            </article>
+            <article>
+              <h3>Undgå mutation</h3>
+              <p>
+                Kontrollér, at du ikke skriver direkte til <code>state.property = …</code> eller <code>push()</code>.
+              </p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Opdateringen virker i browseren, og du kan forklare, hvorfor den er
+            immutable.
+          </p>
+        </section>
+
+        <!-- 05 · ARRAY-METODER -->
+        <section class="chapter po-chapter po-slide" id="array-metoder">
+          <span class="chapter-index">05</span>
+          <span class="eyebrow">Array-metoder og rendering</span>
+          <h2>JSX er bare JavaScript-udtryk i markup</h2>
+          <p class="kicker"><code>map</code>, <code>filter</code> og <code>find</code> løser hver deres opgave.</p>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Forstå · Array-metoder</span>
+          <h2>Tre metoder — tre formål</h2>
+          <div class="request-parts">
+            <article>
+              <h3><code>map</code></h3>
+              <p>Transformerer hvert element 1:1 og returnerer en <strong>ny array</strong> af samme længde.</p>
+            </article>
+            <article>
+              <h3><code>filter</code></h3>
+              <p>Vælger en <strong>delmængde</strong> af elementer, der opfylder en betingelse.</p>
+            </article>
+            <article>
+              <h3><code>find</code></h3>
+              <p>Returnerer <strong>ét element</strong> — eller <code>undefined</code>, hvis intet matcher.</p>
+            </article>
+          </div>
+          <div class="callout">
+            <p>
+              <strong>Ekstra:</strong> <code>forEach</code> (ingen returværdi), <code>some</code>/<code>every</code>
+              (boolean-svar), <code>includes</code> (findes værdien?) og <code>reduce</code> (byg én samlet værdi).
+            </p>
+          </div>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">JavaScript · i <code>web-app-optimization</code></span>
+          <h2><code>map</code>, <code>filter</code>, <code>find</code> i <code>src/playground/arrays.js</code></h2>
+          <pre class="po-code"><code class="language-javascript">const cheap = products.filter((p) => p.price < 100);
+const names = products.map((p) => p.name);
+const found = products.find((p) => p.name === "Kop");</code></pre>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">React · samme projekt</span>
+          <h2><code>map</code> bygger både data og JSX-elementer</h2>
+          <pre class="po-code"><code class="language-javascript">function ProductList({ products }) {
+  return (
+    &lt;ul&gt;
+      {products.map((p) => (
+        &lt;li key={p.name}&gt;{p.name}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code></pre>
+          <p class="reflection">
+            <code>key</code> er det eneste, der er nyt — resten er samme <code>map</code>, som du lige har skrevet.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-10">
+          <span class="eyebrow">Opgave 10 · Arbejd individuelt</span>
+          <h2>Øv <code>map</code>, <code>filter</code>, <code>find</code> i <code>arrays.js</code></h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Filter</h3>
+              <p>Filtrér en array af objekter ud fra én betingelse.</p>
+            </article>
+            <article>
+              <h3>Map</h3>
+              <p>Byg en ny array med <code>map</code>.</p>
+            </article>
+            <article>
+              <h3>Find</h3>
+              <p>Find ét element, og log resultatet, når intet matcher.</p>
+            </article>
+            <article>
+              <h3>Ekstra: reduce</h3>
+              <p>
+                Løs samme opgave med <code>reduce</code>, og prøv
+                <code>some</code>/<code>every</code>/<code>includes</code>.
+              </p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Alle metoder kører og giver det resultat, du forventer.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-11">
+          <span class="eyebrow">Opgave 11 · Arbejd individuelt</span>
+          <h2>Render en liste i din Web App</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Render listen</h3>
+              <p>Render en liste af data med <code>map</code> og en unik <code>key</code> pr. element.</p>
+            </article>
+            <article>
+              <h3>Filtrér</h3>
+              <p>Tilføj et filter, fx en søgning eller kategori, med <code>filter</code>.</p>
+            </article>
+          </div>
+          <p class="done-when"><strong>Du er klar, når:</strong> Listen opdateres korrekt uden fejl i console.</p>
+        </section>
+
+        <!-- 06 · UDTRYK DER STYRER VISNING -->
+        <section class="chapter po-chapter po-slide" id="udtryk-der-styrer-visning">
+          <span class="chapter-index">06</span>
+          <span class="eyebrow">Udtryk der styrer visning</span>
+          <h2>De samme udtryk styrer, hvad JSX viser</h2>
+          <p class="kicker">
+            Template literals, ternary, <code>&amp;&amp;</code>/<code>||</code>, <code>?.</code> og <code>??</code>.
+          </p>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Forstå · Udtryk der styrer visning</span>
+          <h2>Fem små byggesten</h2>
+          <div class="request-parts">
+            <article>
+              <h3>Template literals</h3>
+              <p>
+                <code>`${navn}`</code> i stedet for <code>"" + navn + ""</code> — nemmere at læse end konkatenering.
+              </p>
+            </article>
+            <article>
+              <h3>Ternary</h3>
+              <p><code>betingelse ? a : b</code> — vælger mellem to værdier.</p>
+            </article>
+            <article>
+              <h3>Truthy/falsy og <code>&amp;&amp;</code>/<code>||</code></h3>
+              <p>
+                De fleste værdier er “sande” — kun <code>false</code>, <code>0</code>, <code>""</code>,
+                <code>null</code>, <code>undefined</code> og <code>NaN</code> er falske.
+              </p>
+            </article>
+          </div>
+          <div class="callout">
+            <p>
+              <code>?.</code> (optional chaining) stopper roligt, hvis noget mangler undervejs. <code>??</code> (nullish
+              coalescing) bruger kun en fallback ved <code>null</code>/<code>undefined</code> — ikke ved
+              <code>0</code> eller <code>""</code>, som <code>||</code> ville gøre.
+            </p>
+          </div>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">JavaScript · i <code>web-app-optimization</code></span>
+          <h2>Byg udtryk i <code>src/playground/expressions.js</code></h2>
+          <pre class="po-code"><code class="language-javascript">const label = `${product.name} – ${product.price} kr.`;
+const oldLabel = product.name + " – " + product.price + " kr.";
+
+const status = product.inStock ? "På lager" : "Udsolgt";
+const count = product.stock ?? 0;
+const description = product.description?.slice(0, 40);</code></pre>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">React · samme projekt</span>
+          <h2>Samme udtryk styrer, hvad der bliver vist</h2>
+          <pre class="po-code"><code class="language-javascript">function ProductStatus({ product }) {
+  return (
+    &lt;p&gt;
+      {product.inStock ? "På lager" : "Udsolgt"}
+      {product.stock > 0 && &lt;span&gt; ({product.stock} tilbage)&lt;/span&gt;}
+    &lt;/p&gt;
+  );
+}</code></pre>
+          <p class="reflection">
+            <code>&amp;&amp;</code> viser kun højresiden, hvis venstresiden er sand — ellers viser React ingenting.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-12">
+          <span class="eyebrow">Opgave 12 · Arbejd individuelt</span>
+          <h2>Øv udtryk i <code>expressions.js</code></h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Template literal</h3>
+              <p>Byg en streng med et template literal ud fra to variabler.</p>
+            </article>
+            <article>
+              <h3>Ternary</h3>
+              <p>Vælg mellem to værdier med en ternary.</p>
+            </article>
+            <article>
+              <h3>Nullish coalescing</h3>
+              <p>Sæt en fallback-værdi med <code>??</code>, hvor <code>||</code> ville give et forkert resultat.</p>
+            </article>
+            <article>
+              <h3>Optional chaining</h3>
+              <p>Læs en property, der måske ikke findes, med <code>?.</code>.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Alle fire eksempler kører uden fejl, også når data mangler.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-13">
+          <span class="eyebrow">Opgave 13 · Arbejd individuelt</span>
+          <h2>Brug conditional rendering i din Web App</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Ternary i JSX</h3>
+              <p>Vis én af to ting med en ternary, fx en status eller et ikon.</p>
+            </article>
+            <article>
+              <h3><code>&amp;&amp;</code> i JSX</h3>
+              <p>Vis noget kun, når en betingelse er sand, med <code>&amp;&amp;</code>.</p>
+            </article>
+            <article>
+              <h3><code>?.</code>/<code>??</code></h3>
+              <p>Brug dem, når du læser data, der kan mangle, fx fra Supabase.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Appen ikke crasher, selv når data mangler eller er tomme.
+          </p>
+        </section>
+
+        <!-- 07 · ASYNC -->
+        <section class="chapter po-chapter po-slide" id="async">
+          <span class="chapter-index">07</span>
+          <span class="eyebrow">Async: fetch med await</span>
+          <h2>Data kommer ikke med det samme</h2>
+          <p class="kicker"><code>fetch</code> returnerer en promise. <code>await</code> venter på den.</p>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Forstå · Async</span>
+          <h2>En promise er et løfte om en fremtidig værdi</h2>
+          <div class="request-parts">
+            <article>
+              <h3>Promise</h3>
+              <p><code>fetch(...)</code> returnerer med det samme et løfte — ikke selve dataen.</p>
+            </article>
+            <article>
+              <h3><code>async</code></h3>
+              <p>En <code>async function</code> returnerer altid selv en promise.</p>
+            </article>
+            <article>
+              <h3><code>await</code></h3>
+              <p>Venter på, at en promise bliver opfyldt, og giver dig værdien direkte.</p>
+            </article>
+          </div>
+          <div class="callout">
+            <p>
+              <strong>Ekstra:</strong> Før <code>async</code>/<code>await</code> skrev man <code>.then()</code> og
+              <code>.catch()</code>. Det er samme mekanik — bare med kortere syntaks. Callback functions er forfaderen
+              til begge.
+            </p>
+          </div>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">JavaScript · i <code>web-app-optimization</code></span>
+          <h2>Hent data i <code>src/playground/async.js</code></h2>
+          <pre class="po-code"><code class="language-javascript">export async function loadProducts() {
+  const res = await fetch("/api/products");
+  const data = await res.json();
+  return data;
+}
+
+loadProducts().then((products) => console.log(products));</code></pre>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">React · samme projekt</span>
+          <h2>Data fetching hører hjemme i <code>useEffect</code></h2>
+          <pre class="po-code"><code class="language-javascript">useEffect(() => {
+  async function load() {
+    const res = await fetch("/api/products");
+    const data = await res.json();
+    setProducts(data);
+  }
+
+  load();
+}, []);</code></pre>
+          <p class="reflection">
+            <code>load()</code> er den samme <code>async</code>-funktion, du lige har skrevet — den kaldes bare inde fra
+            <code>useEffect</code>.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-14">
+          <span class="eyebrow">Opgave 14 · Arbejd individuelt</span>
+          <h2>Øv <code>async</code>/<code>await</code> i <code>async.js</code></h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>async/await</h3>
+              <p>Skriv <code>loadProducts()</code> med <code>async</code>/<code>await</code>, og log resultatet.</p>
+            </article>
+            <article>
+              <h3>Ekstra: .then/.catch</h3>
+              <p>Skriv samme kald som en promise-kæde med <code>.then()</code>/<code>.catch()</code>, og sammenlign.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Begge versioner giver samme resultat, og du kan forklare forskellen.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-15">
+          <span class="eyebrow">Opgave 15 · Arbejd individuelt</span>
+          <h2>Hent data med <code>async</code>/<code>await</code> i React</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>useEffect</h3>
+              <p>Hent data fra Supabase eller et REST API i en <code>useEffect</code>.</p>
+            </article>
+            <article>
+              <h3>Gem i state</h3>
+              <p>Gem resultatet i state med <code>setProducts(data)</code> eller lignende.</p>
+            </article>
+            <article>
+              <h3>Fejlhåndtering</h3>
+              <p>Tilføj <code>try/catch</code>, og vis en kort fejlbesked ved fejl.</p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Data hentes ved indlæsning, og en fejl viser en besked i stedet for en tom
+            side.
+          </p>
+        </section>
+
+        <!-- AFSLUTNING -->
+        <section class="chapter po-chapter po-slide" id="egen-kode-og-opsamling">
+          <span class="chapter-index">08</span>
+          <span class="eyebrow">Tilbage til jeres egen kode</span>
+          <h2>Genkend koncepterne, hvor de allerede findes</h2>
+          <p class="kicker">De samme mønstre gentager sig i alle React-projekter.</p>
+        </section>
+
+        <section class="po-slide mode-shared">
+          <span class="eyebrow">Før vi slutter</span>
+          <h2>Hvilket koncept sidder stadig løst?</h2>
+          <div class="topic-cloud" aria-label="Dagens koncepter">
+            <span>moduler, import og export</span><span>const, let og var</span
+            ><span>functions og default parameters</span><span>callback functions og closures</span
+            ><span>destructuring, rest og spread</span><span>immutable opdatering af state</span
+            ><span>map, filter og find</span><span>template literals</span><span>ternary, &amp;&amp; og ??</span
+            ><span>optional chaining</span><span>async/await</span>
+          </div>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-16">
+          <span class="eyebrow">Opgave 16 · Arbejd individuelt</span>
+          <h2>Find koncepterne i din egen Web App — og vend tilbage til Padlet</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Find et flow</h3>
+              <p>Find et JavaScript-flow i din egen app, fx en handler, en liste eller et API-kald.</p>
+            </article>
+            <article>
+              <h3>Navngiv koncepterne</h3>
+              <p>Peg på, hvilke af dagens koncepter koden bruger.</p>
+            </article>
+            <article>
+              <h3>Omskriv om nødvendigt</h3>
+              <p>Gør koden tydeligere, hvis den kan skrives mere enkelt med dagens koncepter.</p>
+            </article>
+            <article>
+              <h3>Vend tilbage til Padlet</h3>
+              <p>
+                Genbesøg dit eksempel fra opgave 1. Kan du nu forklare det? Tilføj din forklaring eller et åbent
+                spørgsmål.
+              </p>
+            </article>
+          </div>
+          <p class="done-when">
+            <strong>Du er klar, når:</strong> Du kan forklare dit eget kodeeksempel med dagens begreber — og har
+            opdateret din note i Padlet.
+          </p>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="../shared/deck.js"></script>
+    <script type="module">
+      document
+        .querySelectorAll(".slides > section.po-slide:not(.po-title):not(.po-agenda):not(.chapter)")
+        .forEach((slide) => {
+          const indicator = document.createElement("span");
+          indicator.className = "mode-indicator";
+          indicator.textContent = slide.classList.contains("mode-work")
+            ? "ARBEJD INDIVIDUELT"
+            : slide.classList.contains("mode-demo")
+              ? "DEMO · SE MED"
+              : slide.classList.contains("mode-shared")
+                ? "FÆLLES"
+                : "FORKLARING";
+          slide.append(indicator);
+        });
+    </script>
+  </body>
+</html>
