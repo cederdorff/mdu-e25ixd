@@ -280,6 +280,136 @@ const stageSlides = ({
   });
 };
 
+const selectNarrative = (value, maxBlocks = 2, maxCharacters = 520) => {
+  const selected = [];
+  let characters = 0;
+
+  for (const block of markdownBlocks(value).filter((item) => !item.startsWith("```"))) {
+    if (selected.length >= maxBlocks) break;
+    if (selected.length && characters + block.length > maxCharacters) break;
+    selected.push(block);
+    characters += block.length;
+  }
+
+  return selected.join("\n\n");
+};
+
+const selectCode = (value, maxBlocks = 1, maxLines = 20) => {
+  const selected = [];
+  let lines = 0;
+
+  for (const block of markdownBlocks(value).filter((item) => item.startsWith("```"))) {
+    const blockLines = block.split("\n").length;
+    if (selected.length >= maxBlocks) break;
+    if (selected.length && lines + blockLines > maxLines) break;
+    selected.push(block);
+    lines += blockLines;
+  }
+
+  return selected.join("\n\n");
+};
+
+const primaryTask = (value, title) => {
+  const section = splitSubsections(value).find((item) => item.title === title);
+  if (!section) return "";
+  const blocks = markdownBlocks(section.content).filter((block) => block !== "---");
+  const narrative = blocks.filter((block) => !block.startsWith("```"));
+  const list = narrative.find((block) => /^(?:[-*]|\d+\.)\s/m.test(block));
+  if (list) return list;
+
+  const selected = [];
+  let narrativeBlocks = 0;
+  let narrativeCharacters = 0;
+  let codeBlocks = 0;
+
+  for (const block of blocks) {
+    if (block.startsWith("```")) {
+      if (codeBlocks || block.split("\n").length > 12) continue;
+      selected.push(block);
+      codeBlocks += 1;
+      continue;
+    }
+    if (narrativeBlocks >= 4 || (narrativeBlocks && narrativeCharacters + block.length > 650)) continue;
+    selected.push(block);
+    narrativeBlocks += 1;
+    narrativeCharacters += block.length;
+  }
+
+  return selected.join("\n\n");
+};
+
+const conceptSection = (concept, content, className, id = "", stage = "overview") =>
+  slide(content, className, id).replace(
+    "<section ",
+    `<section data-concept-number="${concept.number}" data-concept-stage="${stage}" `
+  );
+
+const conceptFoundationSlide = (concept) => {
+  const content = [
+    selectNarrative(concept.what, 2, 500),
+    selectNarrative(concept.why, 1, 320),
+    selectCode(concept.what, 2, 18)
+  ]
+    .filter(Boolean)
+    .join("\n\n");
+  return contentSlide({
+    concept,
+    label: "Forstå",
+    content,
+    stage: "what",
+    id: concept.slug
+  });
+};
+
+const conceptComparisonSlide = (concept) => {
+  const javascriptExample = [selectNarrative(concept.how, 2, 300), selectCode(concept.how, 2, 16)]
+    .filter(Boolean)
+    .join("\n\n");
+  const reactExample = [selectNarrative(concept.react, 2, 300), selectCode(concept.react, 2, 16)]
+    .filter(Boolean)
+    .join("\n\n");
+
+  return conceptSection(
+    concept,
+    `${conceptHeading(concept, "JavaScript → React")}<div class="concept-example-pair"><article><span>JavaScript</span>${render(javascriptExample)}</article><article><span>React</span>${render(reactExample)}</article></div>`,
+    "po-slide mode-shared concept-stage concept-stage--react concept-comparison-slide",
+    "",
+    "comparison"
+  );
+};
+
+const conceptExampleSlide = (concept, type) => {
+  const isReact = type === "react";
+  const source = isReact ? concept.react : concept.how;
+  const content = [selectNarrative(source, 3, 540), selectCode(source, 3, 28)]
+    .filter(Boolean)
+    .join("\n\n");
+
+  return contentSlide({
+    concept,
+    label: isReact ? "I React" : "JavaScript-eksempler",
+    content,
+    stage: isReact ? "react" : "how",
+    className: isReact ? "po-slide mode-shared concept-example-detail" : "po-slide concept-example-detail"
+  });
+};
+
+const conceptTaskSlide = (concept) => {
+  const javascriptTask = primaryTask(concept.task, "JavaScript");
+  const reactTask = primaryTask(concept.task, "React");
+  const componentTestNote = /HomePage\.jsx|<main>/.test(reactTask)
+    ? ""
+    : '<p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p>';
+
+  return conceptSection(
+    concept,
+    `${conceptHeading(concept, "Prøv selv")}<div class="concept-task-pair"><article><span>JavaScript</span>${render(javascriptTask)}</article><article><span>React</span>${render(reactTask)}</article></div>${componentTestNote}<p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p>`,
+    "po-slide mode-work concept-stage concept-stage--task concept-task-slide",
+    `opgave-${concept.number}`,
+    "task"
+  );
+};
+
 const introSlides = [
   slide(
     `${eyebrow("Product Optimization · 3. semester")}<h1>JavaScript for <span>React</span></h1><p class="lead">Fra små JavaScript-koncepter til læsbar React-kode</p><p class="date"><span>RACE</span><time datetime="2026-08-21">21. august 2026</time></p><aside class="notes">[Sources] - slides/assets/semesterstart-react.webp · user-provided asset [/Sources]</aside>`,
@@ -291,7 +421,7 @@ const introSlides = [
     "rammen-for-dagen"
   ),
   slide(
-    `${eyebrow("Hvorfor JavaScript for React?")}<h2>Når React føles svært, er det ofte JavaScript-delen</h2><div class="concept-bridge"><article><h3>Functions</h3><span>→</span><p>Komponenter og event handlers</p></article><article><h3>Objects og arrays</h3><span>→</span><p>Props, state og data</p></article><article><h3><code>map</code>, <code>filter</code> og conditionals</h3><span>→</span><p>Lister og conditional rendering</p></article><article><h3>Events, async og <code>fetch</code></h3><span>→</span><p>Interaktion og API-data</p></article></div><p class="learning-goal"><strong>Målet for dagen</strong> Du skal kunne forklare et JavaScript-mønster isoleret — og genkende det, når det optræder i React.</p>`
+    `${eyebrow("Hvorfor JavaScript for React?")}<h2>Når React føles svært, er det ofte JavaScript-delen</h2><p class="react-foundation-lead">React er et <strong>JavaScript-bibliotek</strong>. Det giver os en måde at organisere UI som komponenter og forbinde data med det, brugeren ser.</p><div class="react-equation"><article class="equation-js"><span>Sproget</span><h3>JavaScript</h3><p>Functions · objects · arrays · conditionals · events · async</p></article><b>+</b><article class="equation-react"><span>React tilfører</span><h3>En model for UI</h3><p>Components · props · state · JSX</p></article><b>→</b><article class="equation-ui"><span>Resultatet</span><h3>Et UI, der følger data</h3><p>Når state ændres, renderes komponenten igen.</p></article></div><p class="react-thesis"><strong>Inde i en React-komponent skriver vi stadig JavaScript.</strong> React organiserer koden og holder UI’et synkroniseret med state.</p>`
   ),
   slide(
     `${eyebrow("Eksempler fra 2. semester")}<h2>Kan I forklare koden sammen?</h2><p class="pair-review-lead">Find det kodeeksempel frem, du valgte som forberedelse.</p><div class="pair-review"><article><span>01</span><h3>Præsenter</h3><p>Vis eksemplet, giv kort kontekst, og fortæl, hvad du tror, koden gør.</p></article><article><span>02</span><h3>Peg på tvivlen</h3><p>Markér den linje eller syntaks, du har svært ved at forklare.</p></article><article><span>03</span><h3>Undersøg sammen</h3><p>Lad din sidemakker stille spørgsmål og hjælpe med at forklare koden.</p></article><article><span>04</span><h3>Vurder</h3><p>Kan du nu forklare eksemplet med dine egne ord? Byt derefter roller.</p></article></div><div class="pair-outcomes"><p><strong>Afklaret?</strong> Behold forklaringen i dine egne noter.</p><p><strong>Stadig uklart?</strong> Del kode eller link, din nuværende forklaring og dit konkrete spørgsmål i <a href="https://padlet.com/race_js/js_react_eksempler" target="_blank" rel="noreferrer">Padlet</a>.</p></div>`,
@@ -313,7 +443,6 @@ const introSlides = [
 
 const conceptSlides = concepts.flatMap((concept) => {
   const chapter = chapterFor(concept.number);
-  const taskId = `opgave-${concept.number}`;
   const chapterSlide =
     concept.number === 1 || chapterFor(concept.number - 1) !== chapter
       ? slide(
@@ -323,14 +452,15 @@ const conceptSlides = concepts.flatMap((concept) => {
         )
       : "";
 
-  return [
-    chapterSlide,
-    ...stageSlides({ concept, source: concept.what, stage: "what", label: "Forstå", id: concept.slug, targetHeight: 650, maxCodeBlocks: 3 }),
-    ...stageSlides({ concept, source: concept.why, stage: "why", label: "Hvorfor", targetHeight: 650, maxCodeBlocks: 3 }),
-    ...stageSlides({ concept, source: concept.how, stage: "how", label: "JavaScript", targetHeight: 690 }),
-    ...stageSlides({ concept, source: concept.react, stage: "react", label: "React", className: "po-slide mode-shared", targetHeight: 690 }),
-    ...stageSlides({ concept, source: concept.task, stage: "task", label: "Prøv selv", className: "po-slide mode-work", id: taskId, targetHeight: 620 })
-  ];
+  return concept.extra
+    ? [chapterSlide, conceptFoundationSlide(concept), conceptComparisonSlide(concept), conceptTaskSlide(concept)]
+    : [
+        chapterSlide,
+        conceptFoundationSlide(concept),
+        conceptExampleSlide(concept, "javascript"),
+        conceptExampleSlide(concept, "react"),
+        conceptTaskSlide(concept)
+      ];
 });
 
 const agenda = slide(
@@ -341,12 +471,12 @@ const agenda = slide(
 
 const conceptIndexSlides = [
   slide(
-    `${eyebrow("Indeks · 1/2")}<h2>Find hurtigt et koncept</h2><div class="concept-index">${concepts.slice(0, 21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div>`,
+    `${eyebrow("Indeks · 1/2")}<h2>Find hurtigt et koncept</h2><div class="concept-index">${concepts.slice(0, 21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div><p class="index-material"><a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p>`,
     "po-slide po-concept-index",
     "konceptindeks"
   ),
   slide(
-    `${eyebrow("Indeks · 2/2")}<h2>Strings, events og async</h2><div class="concept-index">${concepts.slice(21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div><p class="index-note">De tonede emner er <strong>Ekstra</strong>: brug dem til fordybelse eller som opslagsværk.</p>`,
+    `${eyebrow("Indeks · 2/2")}<h2>Strings, events og async</h2><div class="concept-index">${concepts.slice(21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div><div class="index-footer"><p class="index-note">De tonede emner er <strong>Ekstra</strong>: brug dem til fordybelse eller som opslagsværk.</p><p class="index-material"><a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p></div>`,
     "po-slide po-concept-index"
   )
 ];

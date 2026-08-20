@@ -240,43 +240,81 @@
   text-underline-offset: 4px;
 }
 
-.reveal .concept-bridge {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 56px;
-  margin-top: 42px;
-  border-top: 3px solid rgb(101 167 255 / 40%);
-}
-
-.reveal .concept-bridge article {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) 34px minmax(0, 1.1fr);
-  align-items: center;
-  min-height: 120px;
-  border-bottom: 1px solid var(--line);
-}
-
-.reveal .concept-bridge h3 {
-  padding-right: 12px;
+.reveal .react-foundation-lead {
+  max-width: 1220px;
+  margin-top: 22px;
+  color: var(--muted);
   font-size: 27px;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 
-.reveal .concept-bridge span {
+.reveal .react-foundation-lead strong {
   color: var(--po-blue);
-  font-size: 24px;
+}
+
+.reveal .react-equation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr) 40px minmax(0, 1.15fr);
+  gap: 16px;
+  align-items: stretch;
+  margin-top: 34px;
+}
+
+.reveal .react-equation article {
+  min-height: 220px;
+  padding: 25px 28px;
+  border-top: 5px solid var(--po-blue);
+  background: linear-gradient(180deg, rgb(101 167 255 / 10%), transparent);
+}
+
+.reveal .react-equation .equation-react {
+  border-color: var(--po-purple);
+  background: linear-gradient(180deg, rgb(183 135 255 / 10%), transparent);
+}
+
+.reveal .react-equation .equation-ui {
+  border-color: var(--green);
+  background: linear-gradient(180deg, rgb(62 207 142 / 10%), transparent);
+}
+
+.reveal .react-equation article > span {
+  color: var(--po-blue);
+  font-size: 15px;
   font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.reveal .react-equation .equation-react > span {
+  color: var(--po-purple);
+}
+
+.reveal .react-equation .equation-ui > span {
+  color: var(--green);
+}
+
+.reveal .react-equation h3 {
+  margin-top: 18px;
+  font-size: 32px;
+  line-height: 1.12;
+}
+
+.reveal .react-equation p {
+  margin-top: 17px;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.reveal .react-equation > b {
+  align-self: center;
+  color: var(--muted);
+  font-size: 36px;
   text-align: center;
 }
 
-.reveal .concept-bridge p {
-  color: var(--muted);
-  font-size: 22px;
-  line-height: 1.3;
-}
-
-.reveal .learning-goal {
-  margin-top: 34px;
+.reveal .react-thesis {
+  margin-top: 30px;
   padding-left: 24px;
   border-left: 5px solid var(--green);
   color: var(--muted);
@@ -284,8 +322,7 @@
   line-height: 1.4;
 }
 
-.reveal .learning-goal strong {
-  margin-right: 10px;
+.reveal .react-thesis strong {
   color: var(--ink);
 }
 
@@ -354,7 +391,7 @@
 
 .reveal .pair-outcomes p {
   color: var(--muted);
-  font-size: 19px;
+  font-size: 21px;
   line-height: 1.35;
 }
 
@@ -805,6 +842,31 @@
   margin-top: 24px;
   color: var(--muted);
   font-size: 21px;
+}
+
+.reveal .index-footer {
+  display: flex;
+  gap: 40px;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.reveal .index-footer .index-note,
+.reveal .index-footer .index-material {
+  margin-top: 0;
+}
+
+.reveal .index-material {
+  margin-top: 24px;
+  font-size: 21px;
+}
+
+.reveal .index-material a {
+  color: var(--green);
+  font-weight: 800;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 .reveal .semester-arc {
@@ -3527,7 +3589,7 @@
 
 .reveal .concept-copy {
   max-width: 1376px;
-  margin-top: 24px;
+  margin-top: 22px;
 }
 
 .reveal .concept-copy--split {
@@ -3666,21 +3728,29 @@
 
 .reveal .concept-code-stack {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   min-width: 0;
+}
+
+.reveal .concept-example-detail .concept-copy {
+  margin-top: 18px;
+}
+
+.reveal .concept-example-detail .concept-code-stack {
+  gap: 5px;
 }
 
 .reveal .concept-copy pre {
   width: 100%;
   margin: 0;
-  padding: 15px 18px;
+  padding: 14px 18px;
   overflow: hidden;
   border: 1px solid rgb(101 167 255 / 24%);
   border-radius: 10px;
   background: #050706;
   color: #d9e2df;
   font-size: 17px;
-  line-height: 1.29;
+  line-height: 1.28;
   white-space: pre-wrap;
 }
 
@@ -3720,6 +3790,157 @@
   padding: 16px 19px;
   border-color: rgb(62 207 142 / 26%);
   font-size: 16px;
+}
+
+.reveal .concept-example-pair,
+.reveal .concept-task-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 54px;
+  margin-top: 34px;
+}
+
+.reveal .concept-example-pair article,
+.reveal .concept-task-pair article {
+  min-width: 0;
+  padding: 23px 27px;
+  border-top: 5px solid var(--po-blue);
+  background: linear-gradient(180deg, rgb(101 167 255 / 8%), transparent);
+}
+
+.reveal .concept-example-pair article:last-child {
+  border-color: var(--po-purple);
+  background: linear-gradient(180deg, rgb(183 135 255 / 8%), transparent);
+}
+
+.reveal .concept-task-pair article {
+  border-color: var(--green);
+  background: linear-gradient(180deg, rgb(62 207 142 / 8%), transparent);
+}
+
+.reveal .concept-example-pair article > span,
+.reveal .concept-task-pair article > span {
+  color: var(--po-blue);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.reveal .concept-example-pair article:last-child > span {
+  color: var(--po-purple);
+}
+
+.reveal .concept-task-pair article > span {
+  color: var(--green);
+}
+
+.reveal .concept-example-pair p {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 23px;
+  line-height: 1.34;
+}
+
+.reveal .concept-example-pair pre {
+  margin: 18px 0 0;
+  padding: 20px 23px;
+  overflow: hidden;
+  border: 1px solid rgb(101 167 255 / 24%);
+  border-radius: 10px;
+  background: #050706;
+  font-size: 21px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.reveal .concept-example-pair article:last-child pre {
+  border-color: rgb(183 135 255 / 26%);
+}
+
+.reveal .concept-task-pair ol,
+.reveal .concept-task-pair ul {
+  margin: 20px 0 0;
+  padding-left: 31px;
+}
+
+.reveal .concept-task-pair li {
+  padding-left: 7px;
+  color: var(--muted);
+  font-size: 25px;
+  line-height: 1.34;
+}
+
+.reveal .concept-task-pair li + li {
+  margin-top: 11px;
+}
+
+.reveal .concept-task-pair li::marker {
+  color: var(--green);
+  font-weight: 900;
+}
+
+.reveal .concept-task-pair p {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1.32;
+}
+
+.reveal .concept-task-pair pre {
+  margin: 15px 0 0;
+  padding: 14px 17px;
+  overflow: hidden;
+  border: 1px solid rgb(62 207 142 / 24%);
+  border-radius: 9px;
+  background: #050706;
+  font-size: 16px;
+  line-height: 1.28;
+  white-space: pre-wrap;
+}
+
+.reveal .concept-material-link {
+  margin-top: 13px;
+  color: var(--muted);
+  font-size: 21px;
+}
+
+.reveal .component-test-note {
+  margin-top: 22px;
+  padding-left: 18px;
+  border-left: 4px solid var(--po-purple);
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.reveal .component-test-note strong {
+  color: var(--ink);
+}
+
+.reveal .concept-material-link a {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.reveal .extra-concept-summary {
+  max-width: 1280px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 25px;
+  line-height: 1.36;
+}
+
+.reveal .concept-example-pair--compact {
+  margin-top: 29px;
+}
+
+.reveal .concept-example-pair--compact article {
+  min-height: 270px;
+}
+
+.reveal .concept-example-pair--compact pre {
+  margin-top: 19px;
 }
 
 .reveal .portfolio-note {

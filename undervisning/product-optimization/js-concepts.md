@@ -104,6 +104,34 @@ Sandbox is running 🚀
 
 > **Sandboxen er til eksperimenter.** Her kan du frit oprette, ændre og slette filer og kode undervejs.
 
+### Vis React-øvelser på en eksisterende side
+
+Når du opretter en komponent i en React-opgave, skal du vise den på en side, der allerede findes i appen.
+
+Brug fx `HomePage.jsx`:
+
+1. Importér komponenten øverst i `HomePage.jsx`.
+2. Find sidens `<main>`-tag.
+3. Tilføj komponenten nederst inden for `<main>`.
+
+```jsx
+// HomePage.jsx
+
+import Teacher from "../sandbox/Teacher";
+
+export default function HomePage() {
+  return (
+    <main>
+      {/* Sidens eksisterende indhold */}
+
+      <Teacher />
+    </main>
+  );
+}
+```
+
+På den måde tester du komponenten i den eksisterende app uden at erstatte siden eller dens nuværende indhold.
+
 ---
 
 # 1 · Modules: `import` & `export`
@@ -266,8 +294,8 @@ Hello, Anna!
 1. Opret `Teacher.jsx` i `sandbox`.
 2. Lav en `Teacher` component, der viser navnet på en underviser.
 3. Exportér komponenten.
-4. Importér `Teacher` i `App.jsx`.
-5. Vis komponenten med `<Teacher />`.
+4. Importér `Teacher` i `HomePage.jsx`.
+5. Vis `<Teacher />` nederst inden for sidens `<main>`-tag.
 
 #### Ekstra
 
@@ -451,8 +479,8 @@ Opret `Welcome.jsx` i `sandbox`.
 1. Opret en `Welcome` component med en function declaration.
 2. Komponenten skal vise en overskrift og en kort tekst.
 3. Exportér `Welcome`.
-4. Importér komponenten i `App.jsx`.
-5. Vis komponenten med `<Welcome />`.
+4. Importér komponenten i `HomePage.jsx`.
+5. Vis `<Welcome />` nederst inden for sidens `<main>`-tag.
 
 #### Ekstra
 
@@ -465,7 +493,7 @@ Contact.jsx
 
 Hver component skal returnere sit eget JSX.
 
-Exportér og importér komponenterne, og brug dem sammen i `App.jsx`:
+Exportér og importér komponenterne, og brug dem sammen nederst i `<main>` i `HomePage.jsx`:
 
 ```jsx
 <Welcome />
@@ -644,8 +672,8 @@ Opret `Greeting.jsx` i `sandbox`.
 1. Opret en `Greeting` component, der modtager `name` som prop.
 2. Vis navnet i en hilsen.
 3. Exportér komponenten.
-4. Importér `Greeting` i `App.jsx`.
-5. Brug komponenten mindst tre gange med forskellige navne.
+4. Importér `Greeting` i `HomePage.jsx`.
+5. Brug komponenten mindst tre gange nederst inden for sidens `<main>`-tag.
 
 ```jsx
 <Greeting name="Anna" />
@@ -841,7 +869,7 @@ Opret `Button.jsx` i `sandbox`.
 2. Opret `handleClick` som en arrow function.
 3. Funktionen skal skrive `"Button clicked!"` i browserens console.
 4. Brug `handleClick` som `onClick` på en button.
-5. Exportér komponenten og importér den i `App.jsx`.
+5. Exportér komponenten, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 ```jsx
 <button onClick={handleClick}>Click me</button>
@@ -1183,7 +1211,7 @@ function ActionButton({ onAction }) {
 }
 ```
 
-Brug komponenten i `App.jsx`:
+Brug komponenten nederst inden for `<main>` i `HomePage.jsx`:
 
 ```jsx
 <ActionButton onAction={() => console.log("Action running!")} />
@@ -1525,7 +1553,7 @@ Vis værdierne fra objectet i JSX.
 
 #### Ekstra
 
-Flyt `course` objectet til `App.jsx` og send det videre som en prop:
+Flyt `course` objectet til `HomePage.jsx` og send det videre som en prop nederst inden for `<main>`:
 
 ```jsx
 <Course course={course} />
@@ -1702,7 +1730,7 @@ function StudentCard({ student }) {
 
 Vis `name`, `email` og `education` med property access.
 
-Brug komponenten fra `App.jsx` med et object, du selv opretter.
+Brug komponenten nederst inden for `<main>` i `HomePage.jsx` med et object, du selv opretter.
 
 #### Ekstra
 
@@ -1864,7 +1892,7 @@ isActive: true;
 
 ### React
 
-Opret nogle lokale variabler i `App.jsx`:
+Opret nogle lokale variabler i `HomePage.jsx`:
 
 ```jsx
 const name = "Anna";
@@ -2206,7 +2234,7 @@ Print både `course` og `updatedCourse` i browserens console.
 
 ### React
 
-Opret et `student` object i `App.jsx`:
+Opret et `student` object i `HomePage.jsx`:
 
 ```jsx
 const student = {
@@ -2602,7 +2630,7 @@ Vis navn og uddannelse på den første og anden studerende i JSX ved hjælp af d
 <p>{students[1].education}</p>
 ```
 
-Exportér komponenten og vis den i `App.jsx`.
+Exportér komponenten, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 #### Ekstra
 
@@ -2787,7 +2815,7 @@ Tilføj en button, der ændrer værdien til `"Peter"`:
 <button onClick={() => setName("Peter")}>Change name</button>
 ```
 
-Exportér komponenten og vis den i `App.jsx`.
+Exportér komponenten, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 Kontrollér, at navnet ændres fra `Anna` til `Peter`, når du klikker på knappen.
 
@@ -3449,7 +3477,7 @@ Brug `map()` til at vise alle produkter:
 }
 ```
 
-Exportér `ProductList` og vis komponenten i `App.jsx`.
+Exportér `ProductList`, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 Tilføj derefter et nyt produkt til `products` og kontrollér, at det automatisk bliver vist.
 
@@ -3689,7 +3717,7 @@ Brug derefter `map()` til at vise `cheapProducts`:
 }
 ```
 
-Exportér komponenten og vis den i `App.jsx`.
+Exportér komponenten, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 Ændr værdien `800` og se, hvordan listen ændrer sig.
 
@@ -3981,7 +4009,7 @@ Vis produktets navn og pris i JSX:
 </article>
 ```
 
-Exportér `ProductDetails` og vis komponenten i `App.jsx`.
+Exportér `ProductDetails`, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 Prøv derefter at ændre:
 
@@ -4007,7 +4035,7 @@ function ProductDetails({ productId }) {
 }
 ```
 
-Brug komponenten fra `App.jsx`:
+Brug komponenten nederst inden for `<main>` i `HomePage.jsx`:
 
 ```jsx
 <ProductDetails productId={2} />
@@ -4908,7 +4936,7 @@ eller:
 Keyboard is out of stock
 ```
 
-Exportér komponenten og vis den i `App.jsx`.
+Exportér komponenten, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 Prøv derefter:
 
@@ -5204,7 +5232,7 @@ Fx:
 <p>{inStock ? "In stock" : "Out of stock"}</p>
 ```
 
-Exportér komponenten og vis den i `App.jsx`.
+Exportér komponenten, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 Prøv komponenten med både:
 
@@ -6503,7 +6531,7 @@ Tilføj en button:
 <button onClick={handleClick}>Select {name}</button>
 ```
 
-Exportér komponenten og vis den i `App.jsx`.
+Exportér komponenten, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 Prøv derefter komponenten flere gange:
 
@@ -6747,7 +6775,7 @@ Opret et input:
 <input type="text" onChange={handleChange} />
 ```
 
-Exportér komponenten og vis den i `App.jsx`.
+Exportér komponenten, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 Skriv noget i input-feltet og kontrollér browserens console.
 
@@ -6967,7 +6995,7 @@ Tilføj en button:
 <button onClick={handleGetProducts}>Get products</button>
 ```
 
-Exportér komponenten og vis den i `App.jsx`.
+Exportér komponenten, importér den i `HomePage.jsx`, og vis den nederst inden for `<main>`.
 
 Klik på knappen og kontrollér browserens console.
 
