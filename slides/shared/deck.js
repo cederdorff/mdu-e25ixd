@@ -2,6 +2,15 @@ import Reveal from "../vendor/reveal/reveal.mjs";
 import RevealHighlight from "reveal.js/plugin/highlight";
 import RevealNotes from "../vendor/reveal/notes.mjs";
 
+const numericHash = window.location.hash.match(/^#\/(\d+)$/);
+if (numericHash) {
+  const conceptNumber = numericHash[1];
+  const conceptSlide = document.querySelector(`[data-concept-number="${conceptNumber}"]`);
+  if (conceptSlide?.id) {
+    window.history.replaceState(null, "", `#/${conceptSlide.id}`);
+  }
+}
+
 const deck = new Reveal({
   width: 1600,
   height: 900,

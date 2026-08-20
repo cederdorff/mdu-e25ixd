@@ -7,7 +7,8 @@
     "canvas:sync": "node scripts/sync-canvas-page.js --push --sync-module",
     "slides:dev": "vite --config slides/vite.config.js",
     "slides:build": "vite build --config slides/vite.config.js",
-    "slides:preview": "vite preview --config slides/vite.config.js"
+    "slides:preview": "vite preview --config slides/vite.config.js",
+    "slides:generate:js-concepts": "node scripts/generate-js-concepts-slides.js"
   },
   "dependencies": {
     "marked": "^16.2.1",

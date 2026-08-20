@@ -46,72 +46,69 @@ Vi går fra egne kodeeksempler til fælles JavaScript-koncepter, træner dem i p
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Sådan arbejder vi: forstå → JavaScript → React</strong></summary>
+<summary><strong>3. Sådan arbejder vi: koncept for koncept, i det små</strong></summary>
 <ul>
-<li>Hvert koncept gennemgås i tre trin: en kort forklaring, et lille eksempel i almindelig JavaScript og derefter det samme koncept i en React-komponent.</li>
+<li>Hvert enkeltkoncept får sin egen firetrins-gennemgang: <strong>forklar + kode</strong>, <strong>flere eksempler på brug</strong>, <strong>eksempel i React</strong> og <strong>én opgave</strong>.</li>
+<li>Vi blander ikke flere koncepter sammen på samme slide — fx får <code>function declaration</code>, <code>arrow function</code>, <code>parametre</code> og <code>return values</code> hver deres egen gennemgang.</li>
 <li>Alt foregår i dit eget <code>web-app-optimization</code>-projekt: JavaScript-øvelserne ligger i <code>src/playground/</code>, og React-delen bruges direkte i dine komponenter.</li>
+<li>Decket er stort (36 små opgaver) — brug det som en modulbank. I når så langt, som tiden rækker.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>4. Moduler, import og export</strong></summary>
+<summary><strong>4. Moduler <span style="font-weight:400">(opgave 1)</span></strong></summary>
 <ul>
-<li>Hvorfor deler vi kode op i filer? Genbrug, overblik og navnerum.</li>
-<li>Opret <code>src/playground/</code>, og øv <code>export</code>/<code>import</code> mellem filer.</li>
-<li>Find import og export i din egen apps komponenter.</li>
+<li>Export og import — ét koncept, én opgave: opret <code>src/playground/</code>, og øv <code>export</code>/<code>import</code> mellem filer.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>5. Variabler og datatyper</strong></summary>
+<summary><strong>5. Variabler og datatyper <span style="font-weight:400">(opgave 2–5)</span></strong></summary>
 <ul>
-<li><code>const</code>, <code>let</code> og <code>var</code> (og hvorfor <code>var</code> undgås), datatyper og <code>===</code> vs. <code>==</code>.</li>
-<li>Øv i JavaScript, og genkend forskellen på en <code>const</code>-værdi og en <code>useState</code>-værdi i React.</li>
+<li><code>const</code> · <code>let</code> og <code>var</code> · datatyper (<code>typeof</code>) · sammenligning <code>===</code> vs. <code>==</code> — hvert sit koncept, hver sin opgave.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>6. Functions og arrow functions</strong></summary>
+<summary><strong>6. Functions <span style="font-weight:400">(opgave 6–12)</span></strong></summary>
 <ul>
-<li>Parametre, return values, default parameters og callback functions. Ekstra: closures.</li>
-<li>Øv i JavaScript, og byg derefter en komponent med et default prop og en <code>onClick</code>-callback.</li>
+<li>Kerne: function declaration · arrow function · parametre · return values — hvert sit koncept, hver sin opgave (6–9).</li>
+<li>Ekstra: default parameters · callback functions · closures — kortere forklar+kode og opgave hver (10–12).</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>7. Objekter, arrays og immutability</strong></summary>
+<summary><strong>7. Objekter og arrays <span style="font-weight:400">(opgave 13–20)</span></strong></summary>
 <ul>
-<li>Property access, shorthand properties, destructuring samt rest og spread.</li>
-<li>Immutable opdatering af objekter og arrays i JavaScript — og af state i React.</li>
+<li>Property access · shorthand properties · destructuring (objects) · destructuring (arrays) · rest · spread · immutable opdatering af objekter · immutable opdatering af arrays — otte separate koncepter og opgaver.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>8. Array-metoder og rendering</strong></summary>
+<summary><strong>8. Array-metoder og rendering <span style="font-weight:400">(opgave 21–27)</span></strong></summary>
 <ul>
-<li>Array-metoderne <code>map</code>, <code>filter</code> og <code>find</code>. Ekstra: <code>forEach</code>, <code>some</code>, <code>every</code>, <code>includes</code> og <code>reduce</code>.</li>
-<li>Øv i JavaScript, og render derefter en filtrerbar liste i React med <code>key</code>.</li>
+<li>Kerne: <code>map</code> · <code>filter</code> · <code>find</code> — hvert sit koncept, hver sin opgave (21–23).</li>
+<li>Ekstra: <code>forEach</code> · <code>some</code>/<code>every</code> · <code>includes</code> · <code>reduce</code> — kortere forklar+kode og opgave hver (24–27).</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>9. Udtryk der styrer visning</strong></summary>
+<summary><strong>9. Udtryk der styrer visning <span style="font-weight:400">(opgave 28–33)</span></strong></summary>
 <ul>
-<li>Template literals, ternary operator, logiske operatorer (<code>&amp;&amp;</code> og <code>||</code>), truthy/falsy, optional chaining (<code>?.</code>) og nullish coalescing (<code>??</code>).</li>
-<li>Øv i JavaScript, og brug dem derefter til conditional rendering i React.</li>
+<li>Template literals · ternary operator · logisk <code>&amp;&amp;</code> (conditional rendering) · logisk <code>||</code> (fallback-værdier) · optional chaining (<code>?.</code>) · nullish coalescing (<code>??</code>) — seks separate koncepter og opgaver.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>10. Async: fetch med await</strong></summary>
+<summary><strong>10. Async: fetch med await <span style="font-weight:400">(opgave 34–35)</span></strong></summary>
 <ul>
-<li>Promises og sammenhængen mellem promises og <code>async</code>/<code>await</code>. Ekstra: <code>.then()</code>/<code>.catch()</code> og callbacks.</li>
-<li>Øv i JavaScript, og hent derefter data i React med <code>useEffect</code>.</li>
+<li>Kerne: <code>async</code>/<code>await</code> med <code>fetch</code> (opgave 34).</li>
+<li>Ekstra: promises med <code>.then()</code>/<code>.catch()</code>, sammenlignet med <code>async</code>/<code>await</code> (opgave 35).</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>11. Egen kode og opsamling</strong></summary>
+<summary><strong>11. Egen kode og opsamling <span style="font-weight:400">(opgave 36)</span></strong></summary>
 <ul>
 <li>Find et JavaScript-flow i din egen Web App, og identificér dagens koncepter i koden.</li>
 <li>Genbesøg det eksempel, du delte i Padlet. Kan du nu forklare, hvad koden gør, og hvilke koncepter den bruger?</li>
@@ -126,23 +123,43 @@ Vi går fra egne kodeeksempler til fælles JavaScript-koncepter, træner dem i p
 - **Slides:**
   - [JavaScript for React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/)
   - [PDF-version: JavaScript for React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/?print-pdf)
-- **Opgaver:**
-  - [Opgave 1 · Del et eksempel i Padlet](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-1)
-  - [Opgave 2 · Byg din playground-mappe](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-2)
-  - [Opgave 3 · Find import/export i din app](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-3)
-  - [Opgave 4 · Variabler og datatyper i JavaScript](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-4)
-  - [Opgave 5 · Variabler og state i React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-5)
-  - [Opgave 6 · Functions i JavaScript](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-6)
-  - [Opgave 7 · Functions i React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-7)
-  - [Opgave 8 · Objekter og arrays i JavaScript](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-8)
-  - [Opgave 9 · Immutable state i React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-9)
-  - [Opgave 10 · map, filter, find i JavaScript](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-10)
-  - [Opgave 11 · Rendering af lister i React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-11)
-  - [Opgave 12 · Udtryk der styrer visning i JavaScript](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-12)
-  - [Opgave 13 · Conditional rendering i React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-13)
-  - [Opgave 14 · Async i JavaScript](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-14)
-  - [Opgave 15 · Data fetching i React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-15)
-  - [Opgave 16 · Din egen kode og Padlet](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-16)
+- **Opgaver (36, koncept for koncept):**
+  - [1 · Export og import](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-1)
+  - [2 · const](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-2)
+  - [3 · let og var](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-3)
+  - [4 · Datatyper](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-4)
+  - [5 · Sammenligning: === vs ==](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-5)
+  - [6 · Function declaration](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-6)
+  - [7 · Arrow function](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-7)
+  - [8 · Parametre](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-8)
+  - [9 · Return values](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-9)
+  - [10 · Ekstra: Default parameters](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-10)
+  - [11 · Ekstra: Callback functions](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-11)
+  - [12 · Ekstra: Closures](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-12)
+  - [13 · Property access](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-13)
+  - [14 · Shorthand properties](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-14)
+  - [15 · Destructuring (objects)](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-15)
+  - [16 · Destructuring (arrays)](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-16)
+  - [17 · Rest operator](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-17)
+  - [18 · Spread operator](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-18)
+  - [19 · Immutable opdatering (objekter)](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-19)
+  - [20 · Immutable opdatering (arrays)](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-20)
+  - [21 · map](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-21)
+  - [22 · filter](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-22)
+  - [23 · find](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-23)
+  - [24 · Ekstra: forEach](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-24)
+  - [25 · Ekstra: some og every](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-25)
+  - [26 · Ekstra: includes](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-26)
+  - [27 · Ekstra: reduce](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-27)
+  - [28 · Template literals](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-28)
+  - [29 · Ternary operator](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-29)
+  - [30 · Logisk && (conditional rendering)](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-30)
+  - [31 · Logisk || (fallback-værdier)](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-31)
+  - [32 · Optional chaining (?.)](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-32)
+  - [33 · Nullish coalescing (??)](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-33)
+  - [34 · async/await](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-34)
+  - [35 · Ekstra: Promises (.then/.catch)](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-35)
+  - [36 · Din egen kode og Padlet](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/opgave-36)
 - **Fælles Padlet:**
   - Link vil blive tilgængeligt her
 - **JavaScript til React:**
