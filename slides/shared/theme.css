@@ -59,7 +59,7 @@ body {
 .reveal .agenda-link {
   position: fixed;
   bottom: 22px;
-  left: 120px;
+  left: 138px;
   z-index: 2;
   display: inline-flex;
   gap: 8px;
@@ -83,6 +83,15 @@ body {
 
 .reveal .agenda-link[hidden] {
   display: none;
+}
+
+.reveal .agenda-link.concept-index-link {
+  left: 236px;
+}
+
+.reveal .slide-number {
+  min-width: 92px;
+  text-align: center;
 }
 
 .reveal .agenda-link:hover,

@@ -2,8 +2,10 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { marked } from "marked";
 
-const sourcePath = resolve("slides/product-optimization-02/js-concepts.md");
+const sourcePath = resolve("undervisning/product-optimization/js-concepts.md");
 const outputPath = resolve("slides/product-optimization-02/index.html");
+const textMaterialUrl =
+  "https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md";
 const source = readFileSync(sourcePath, "utf8");
 
 const escapeHtml = (value) =>
@@ -16,14 +18,24 @@ const slugify = (value) =>
     .replaceAll(/[^a-z0-9æøå]+/g, "-")
     .replaceAll(/^-|-$/g, "");
 
+const compactSimpleObjectsInCode = (value) =>
+  value.replaceAll(/```([^\n]*)\n([\s\S]*?)```/g, (fence, language, code) => {
+    const compacted = code.replaceAll(
+      /\{\n((?:[ \t]+[A-Za-z_$][\w$]*:\s*[^\n]+,?\n){2,})[ \t]*\}/g,
+      (_object, properties) => `{ ${properties.trim().split("\n").map((line) => line.trim()).join(" ")} }`
+    );
+    return `\`\`\`${language}\n${compacted}\`\`\``;
+  });
+
 const render = (value) =>
   marked
-    .parse(value.trim(), { mangle: false, headerIds: false })
+    .parse(compactSimpleObjectsInCode(value.trim()), { mangle: false, headerIds: false })
     .replaceAll(
       /<pre><code class="language-(js|javascript)">/g,
       '<pre class="po-code"><code class="language-javascript">'
     )
     .replaceAll(/<pre><code class="language-jsx">/g, '<pre class="po-code"><code class="language-javascript jsx">')
+    .replaceAll(/<pre><code class="language-json">/g, '<pre class="po-code"><code class="language-json">')
     .replaceAll(/<pre><code class="language-text">/g, '<pre class="po-code"><code class="language-plaintext">');
 const renderInline = (value) => marked.parseInline(value);
 
@@ -47,10 +59,10 @@ const markdownBlocks = (value) => {
 };
 
 const estimateBlockHeight = (block) => {
-  if (block.startsWith("```")) return block.split("\n").length * 22 + 38;
-  if (/^(?:[-*]|\d+\.)\s/m.test(block)) return block.split("\n").length * 29 + 22;
-  const renderedLines = Math.max(1, Math.ceil(block.length / 92));
-  return renderedLines * 29 + 14;
+  if (block.startsWith("```")) return block.split("\n").length * 28 + 48;
+  if (/^(?:[-*]|\d+\.)\s/m.test(block)) return block.split("\n").length * 34 + 24;
+  const renderedLines = Math.max(1, Math.ceil(block.length / 64));
+  return renderedLines * 36 + 16;
 };
 
 const estimateChunkHeight = (blocks) => {
@@ -92,11 +104,9 @@ const markdownChunks = (value, targetHeight = 720, maxCodeBlocks = 4) => {
     if (chunkHeight(currentChunk) >= 230) continue;
 
     const combined = [...previousChunk, ...currentChunk];
-    const allowedCodeBlocks = chunkHeight(currentChunk) < 140 ? maxCodeBlocks + 1 : maxCodeBlocks;
-
     if (
-      chunkHeight(combined) <= targetHeight + 150 &&
-      codeCount(combined) <= allowedCodeBlocks
+      chunkHeight(combined) <= targetHeight + 40 &&
+      codeCount(combined) <= maxCodeBlocks
     ) {
       chunks.splice(index - 1, 2, combined);
       continue;
@@ -122,6 +132,7 @@ const splitSubsections = (value) => {
   const lines = value.trim().split("\n");
   const sections = [];
   let title = "";
+  let parentTitle = "";
   let content = [];
   let inCode = false;
 
@@ -132,10 +143,15 @@ const splitSubsections = (value) => {
 
   for (const line of lines) {
     if (line.startsWith("```")) inCode = !inCode;
-    const heading = !inCode && line.match(/^### (.+)$/);
+    const heading = !inCode && line.match(/^(###|####) (.+)$/);
     if (heading) {
       push();
-      title = heading[1];
+      if (heading[1] === "###") {
+        parentTitle = heading[2];
+        title = parentTitle;
+      } else {
+        title = parentTitle ? `${parentTitle} · ${heading[2]}` : heading[2];
+      }
       content = [];
     } else {
       content.push(line);
@@ -199,6 +215,13 @@ const renderContentLayout = (content) => {
   const blocks = markdownBlocks(content);
   const codeBlocks = blocks.filter((block) => block.startsWith("```"));
   const narrativeBlocks = blocks.filter((block) => !block.startsWith("```"));
+  const narrativeHeight = estimateChunkHeight(narrativeBlocks);
+  const narrativeDensityClass =
+    narrativeHeight <= 190
+      ? "concept-copy--roomy"
+      : narrativeHeight <= 320
+        ? "concept-copy--comfortable"
+        : "concept-copy--dense";
 
   if (!codeBlocks.length) {
     return `<div class="concept-copy concept-copy--prose">${render(content)}</div>`;
@@ -213,7 +236,7 @@ const renderContentLayout = (content) => {
   ) {
     return `<div class="concept-copy concept-copy--focus"><div class="concept-narrative">${render(narrativeBlocks.join("\n\n"))}</div><div class="concept-code-stack">${render(codeBlocks[0])}</div></div>`;
   }
-  return `<div class="concept-copy concept-copy--split"><div class="concept-narrative">${render(narrativeBlocks.join("\n\n"))}</div><div class="concept-code-stack">${render(codeBlocks.join("\n\n"))}</div></div>`;
+  return `<div class="concept-copy concept-copy--split ${narrativeDensityClass}"><div class="concept-narrative">${render(narrativeBlocks.join("\n\n"))}</div><div class="concept-code-stack">${render(codeBlocks.join("\n\n"))}</div></div>`;
 };
 
 const contentSlide = ({ concept, label, subtitle = "", content, stage, className = "po-slide", id = "" }) =>
@@ -240,7 +263,9 @@ const stageSlides = ({
   );
 
   return pieces.map((piece, index) => {
-    const taskContext = stage === "task" && /^(JavaScript|React)$/.test(piece.subtitle) ? ` · ${piece.subtitle}` : "";
+    const taskContext =
+      stage === "task" && /^(JavaScript|React)(?: · Ekstra)?$/.test(piece.subtitle) ? ` · ${piece.subtitle}` : "";
+    const isTaskExtra = stage === "task" && piece.subtitle.endsWith(" · Ekstra");
     const continuation = pieces.length > 1 ? ` · ${index + 1}/${pieces.length}` : "";
     const subtitle = taskContext ? "" : piece.subtitle;
     return contentSlide({
@@ -249,7 +274,7 @@ const stageSlides = ({
       subtitle,
       content: piece.content,
       stage,
-      className,
+      className: `${className}${isTaskExtra ? " concept-stage--task-extra" : ""}`,
       id: index === 0 ? id : ""
     });
   });
@@ -257,16 +282,16 @@ const stageSlides = ({
 
 const introSlides = [
   slide(
-    `${eyebrow("Product Optimization · 3. semester")}<h1>JavaScript for <span>React</span></h1><p class="lead">Fra små JavaScript-koncepter til læsbar React-kode</p><p class="date"><span>RACE</span><time datetime="2026-08-21">21. august 2026</time></p>`,
-    "po-slide po-title"
+    `${eyebrow("Product Optimization · 3. semester")}<h1>JavaScript for <span>React</span></h1><p class="lead">Fra små JavaScript-koncepter til læsbar React-kode</p><p class="date"><span>RACE</span><time datetime="2026-08-21">21. august 2026</time></p><aside class="notes">[Sources] - slides/assets/semesterstart-react.webp · user-provided asset [/Sources]</aside>`,
+    "po-slide po-title po-title-photo"
   ),
   slide(
-    `${eyebrow("Rammen for dagen")}<h2>React er JavaScript med et komponentlag ovenpå</h2><div class="focus-split"><article class="focus-today"><h3>Det vi træner</h3><p>At læse, forklare og ændre den JavaScript-kode, som React bygger på.</p><strong>Gør JavaScript synligt</strong></article><article class="focus-friday"><h3>Det vi ikke gør</h3><p>Vi forsøger ikke at lære 40 koncepter udenad eller nå alle slides i samme tempo.</p><strong>Forstå mønstrene</strong></article></div><p class="focus-footnote">Målet er ikke mere kode. Målet er, at den kode I allerede møder i React, bliver lettere at gennemskue.</p>`,
+    `${eyebrow("Fokus for de to undervisningsgange")}<h2>To undervisningsgange — to lag</h2><div class="focus-split"><article class="focus-today"><time datetime="2026-08-19">Sidste gang · 19. august</time><h3>Rundt om koden</h3><p>Konfiguration, udviklingsflow, deployment, miljøvariabler, metadata og accessibility.</p><strong>Hvordan hænger løsningen sammen?</strong></article><article class="focus-friday"><time datetime="2026-08-21">I dag · 21. august</time><h3>Inde i koden</h3><p>JavaScript-koncepter, syntaks og mønstre — først isoleret og derefter i React.</p><strong>Hvordan skriver og læser vi koden?</strong></article></div><p class="focus-footnote">Sidste gang arbejdede vi med rammerne omkring appen. I dag zoomer vi ind på det sprog, React-koden er skrevet i.</p>`,
     "po-slide",
     "rammen-for-dagen"
   ),
   slide(
-    `${eyebrow("Dagens forløb")}<h2>Vi begynder i jeres kode — og bygger derfra</h2><div class="day-flow"><article><span>01</span><h3>Sæt rammen</h3><p>Hvorfor JavaScript er nøglen til at forstå React.</p></article><article><span>02</span><h3>Se tilbage</h3><p>Korte eksempler fra jeres projekter på 2. semester.</p></article><article><span>03</span><h3>Arbejd fremad</h3><p>Ét koncept ad gangen: JavaScript, React og en lille opgave.</p></article></div>`
+    `${eyebrow("Hvorfor JavaScript for React?")}<h2>Når React føles svært, er det ofte JavaScript-delen</h2><div class="concept-bridge"><article><h3>Functions</h3><span>→</span><p>Komponenter og event handlers</p></article><article><h3>Objects og arrays</h3><span>→</span><p>Props, state og data</p></article><article><h3><code>map</code>, <code>filter</code> og conditionals</h3><span>→</span><p>Lister og conditional rendering</p></article><article><h3>Events, async og <code>fetch</code></h3><span>→</span><p>Interaktion og API-data</p></article></div><p class="learning-goal"><strong>Målet for dagen</strong> Du skal kunne forklare et JavaScript-mønster isoleret — og genkende det, når det optræder i React.</p>`
   ),
   slide(
     `${eyebrow("Eksempler fra 2. semester")}<h2>Kan I forklare koden sammen?</h2><p class="pair-review-lead">Find det kodeeksempel frem, du valgte som forberedelse.</p><div class="pair-review"><article><span>01</span><h3>Præsenter</h3><p>Vis eksemplet, giv kort kontekst, og fortæl, hvad du tror, koden gør.</p></article><article><span>02</span><h3>Peg på tvivlen</h3><p>Markér den linje eller syntaks, du har svært ved at forklare.</p></article><article><span>03</span><h3>Undersøg sammen</h3><p>Lad din sidemakker stille spørgsmål og hjælpe med at forklare koden.</p></article><article><span>04</span><h3>Vurder</h3><p>Kan du nu forklare eksemplet med dine egne ord? Byt derefter roller.</p></article></div><div class="pair-outcomes"><p><strong>Afklaret?</strong> Behold forklaringen i dine egne noter.</p><p><strong>Stadig uklart?</strong> Del kode eller link, din nuværende forklaring og dit konkrete spørgsmål i <a href="https://padlet.com/race_js/js_react_eksempler" target="_blank" rel="noreferrer">Padlet</a>.</p></div>`,
@@ -274,13 +299,15 @@ const introSlides = [
     "eksempler-fra-andet-semester"
   ),
   slide(
-    `${eyebrow("Når vi læser eksemplerne")}<h2>Vi leder efter seks tilbagevendende spørgsmål</h2><div class="reading-lenses"><article><span>01</span><h3>Hvor kommer koden fra?</h3><p>Modules</p></article><article><span>02</span><h3>Hvad bliver kørt?</h3><p>Functions</p></article><article><span>03</span><h3>Hvordan ser data ud?</h3><p>Objects og arrays</p></article><article><span>04</span><h3>Hvordan ændres data?</h3><p>Array methods</p></article><article><span>05</span><h3>Hvad bliver vist?</h3><p>Conditionals og events</p></article><article><span>06</span><h3>Hvornår kommer data?</h3><p>Async og API’er</p></article></div>`
-  ),
-  slide(
     `${eyebrow("Arbejdsmåde")}<h2>Hvert koncept følger den samme rytme</h2><div class="code-comparison concept-rhythm"><article><h3>1 · Forstå</h3><p>Hvad gør konceptet, og hvorfor findes det?</p></article><article><h3>2 · JavaScript</h3><p>Læs og afprøv et lille, isoleret eksempel.</p></article><article><h3>3 · React</h3><p>Genkend den samme idé i en komponent.</p></article><article><h3>4 · Prøv selv</h3><p>Brug konceptet i dit eget projekt.</p></article></div><p class="reflection">Kerne først. Slides markeret <strong>Ekstra</strong> er fordybelse, hvis tiden og behovet er der.</p>`
   ),
   slide(
-    `${eyebrow("Setup · Sandbox")}<h2>Et sikkert sted at eksperimentere</h2><div class="sandbox-layout">${render("```text\nsrc/\n├── App.jsx\n└── sandbox/\n    └── sandbox.js\n```")}<div><p>Importér <code>./sandbox/sandbox.js</code> i <code>App.jsx</code>, så filen bliver kørt.</p><pre class="po-code"><code class="language-javascript jsx">// App.jsx\nimport \"./sandbox/sandbox.js\";</code></pre></div></div><p class="reflection">Sandboxen er til eksperimenter. Opret, ændr og slet frit undervejs.</p>`
+    `${eyebrow("Setup · Sandbox · 1/2")}<h2>Opret en sandbox i <code>web-app-optimization</code></h2><div class="sandbox-setup-grid"><article><h3>Hold øvelserne samlet</h3><p>Vi arbejder videre i React-projektet <strong><code>web-app-optimization</code></strong>.</p><p>Opret en <code>sandbox</code>-mappe, så JavaScript- og React-øvelserne ikke bliver blandet sammen med resten af projektet.</p>${render("```text\nsrc/\n├── App.jsx\n└── sandbox/\n    └── sandbox.js\n```")}</article><article><h3>Opret <code>sandbox.js</code></h3><p><code>sandbox.js</code> bliver vores entry point til JavaScript-øvelser.</p>${render('```js\n// src/sandbox/sandbox.js\n\nconsole.log("Sandbox is running 🚀");\n```')}</article></div>`,
+    "po-slide",
+    "sandbox"
+  ),
+  slide(
+    `${eyebrow("Setup · Sandbox · 2/2")}<h2>Kobl sandboxen til <code>App.jsx</code></h2><div class="sandbox-run-grid"><article><span>01</span><h3>Importér filen</h3><p>Importér <code>sandbox.js</code> i <code>App.jsx</code>, så filen bliver kørt.</p>${render('```jsx\n// src/App.jsx\n\nimport "./sandbox/sandbox.js";\n```')}</article><article><span>02</span><h3>Kør og kontrollér</h3><ol><li>Start projektet.</li><li>Åbn browserens console.</li><li>Kontrollér, at du kan se:</li></ol>${render("```text\nSandbox is running 🚀\n```")}</article></div><p class="sandbox-note"><strong>Sandboxen er til eksperimenter.</strong> Her kan du frit oprette, ændre og slette filer og kode undervejs.</p>`
   )
 ];
 
@@ -307,7 +334,7 @@ const conceptSlides = concepts.flatMap((concept) => {
 });
 
 const agenda = slide(
-  `${eyebrow("Agenda")}<h2>Fra egne eksempler til React-kode, I kan forklare</h2><div class="agenda-columns"><div class="agenda-column"><h3>Fælles start</h3><ol class="agenda-track"><li><a href="#/rammen-for-dagen"><strong>Rammen for dagen</strong><small>Hvorfor vi tager et skridt tilbage til JavaScript</small></a></li><li><a href="#/eksempler-fra-andet-semester"><strong>Eksempler fra 2. semester</strong><small>Hvad virker, men er stadig svært at forklare?</small></a></li><li><a href="#/modules"><strong>Koncept for koncept</strong><small>Forstå → JavaScript → React → prøv selv</small></a></li></ol></div><div class="agenda-column"><h3>Konceptbank</h3><ol class="agenda-track concept-groups"><li><a href="#/modules"><strong>Modules og functions</strong><small>1–7</small></a></li><li><a href="#/objects"><strong>Objects</strong><small>8–13</small></a></li><li><a href="#/arrays"><strong>Arrays</strong><small>14–18</small></a></li><li><a href="#/array-methods"><strong>Array methods</strong><small>19–25</small></a></li><li><a href="#/strings-og-conditionals"><strong>Strings og conditionals</strong><small>26–32</small></a></li><li><a href="#/events"><strong>Events</strong><small>33–34</small></a></li><li><a href="#/${chapterId("Asynkron JavaScript og API'er")}"><strong>Async og API’er</strong><small>35–40</small></a></li></ol></div></div><p class="agenda-note"><strong>40 koncepter er en modulbank.</strong> Vi prioriterer kernekoncepterne og bruger de markerede ekstra-emner efter behov.</p>`,
+  `${eyebrow("Agenda")}<h2>Fra egne eksempler til React-kode, I kan forklare</h2><div class="agenda-columns"><div class="agenda-column"><h3>Fælles start</h3><ol class="agenda-track"><li><a href="#/rammen-for-dagen"><strong>Rammen for dagen</strong><small>Hvorfor vi tager et skridt tilbage til JavaScript</small></a></li><li><a href="#/eksempler-fra-andet-semester"><strong>Eksempler fra 2. semester</strong><small>Hvad virker, men er stadig svært at forklare?</small></a></li><li><a href="#/modules"><strong>Koncept for koncept</strong><small>Forstå → JavaScript → React → prøv selv</small></a></li></ol></div><div class="agenda-column"><h3>Konceptbank</h3><ol class="agenda-track concept-groups"><li><a href="#/modules"><strong>Modules og functions</strong><small>1–7</small></a></li><li><a href="#/objects"><strong>Objects</strong><small>8–13</small></a></li><li><a href="#/arrays"><strong>Arrays</strong><small>14–18</small></a></li><li><a href="#/array-methods"><strong>Array methods</strong><small>19–25</small></a></li><li><a href="#/strings-og-conditionals"><strong>Strings og conditionals</strong><small>26–32</small></a></li><li><a href="#/events"><strong>Events</strong><small>33–34</small></a></li><li><a href="#/${chapterId("Asynkron JavaScript og API'er")}"><strong>Async og API’er</strong><small>35–40</small></a></li></ol></div></div><p class="agenda-note"><strong>40 koncepter er en modulbank.</strong> Vi prioriterer kernekoncepterne og bruger de markerede ekstra-emner efter behov.</p><p class="agenda-material"><strong>Vil du hellere følge dagen som tekst?</strong> <a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Åbn det samlede JavaScript-materiale ↗</a></p>`,
   "po-slide po-agenda",
   "agenda"
 );

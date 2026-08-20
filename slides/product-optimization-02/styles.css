@@ -25,6 +25,39 @@
     radial-gradient(circle at 68% 78%, rgb(62 207 142 / 12%), transparent 24%);
 }
 
+.reveal .po-title.po-title-photo {
+  background:
+    linear-gradient(90deg, rgb(5 7 6 / 98%) 0%, rgb(5 7 6 / 94%) 35%, rgb(5 7 6 / 68%) 60%, rgb(5 7 6 / 24%) 100%),
+    linear-gradient(180deg, rgb(11 15 13 / 20%), rgb(5 7 6 / 70%)),
+    url("../assets/semesterstart-react.webp") center / cover no-repeat;
+}
+
+.reveal .po-title.po-title-photo::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 84% 36%, rgb(101 167 255 / 16%), transparent 25%),
+    linear-gradient(90deg, transparent 56%, rgb(5 7 6 / 6%));
+  content: "";
+  pointer-events: none;
+}
+
+.reveal .po-title.po-title-photo > :not(.notes) {
+  position: relative;
+  z-index: 1;
+}
+
+.reveal .po-title.po-title-photo h1 {
+  max-width: 850px;
+  text-shadow: 0 4px 34px rgb(0 0 0 / 48%);
+}
+
+.reveal .po-title.po-title-photo .lead {
+  max-width: 760px;
+  text-shadow: 0 3px 24px rgb(0 0 0 / 54%);
+}
+
 .reveal .po-title h1 {
   max-width: 1320px;
   font-size: 102px;
@@ -82,7 +115,7 @@
 .reveal .po-agenda .agenda-column h3 {
   margin: 0 0 12px;
   color: var(--ink);
-  font-size: 17px;
+  font-size: 20px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -134,7 +167,7 @@
   align-self: start;
   color: var(--po-blue);
   content: "0" counter(agenda);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 900;
   letter-spacing: 0.08em;
 }
@@ -143,7 +176,7 @@
   display: block;
   margin-bottom: 8px;
   color: var(--green);
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .reveal .agenda-track a {
@@ -166,55 +199,96 @@
 
 .reveal .agenda-track strong {
   color: var(--ink);
-  font-size: clamp(14px, 1.2vw, 18px);
-  line-height: 1.1;
+  font-size: 23px;
+  line-height: 1.18;
 }
 
 .reveal .po-agenda .agenda-column:last-child .agenda-track strong {
   display: block;
-  font-size: clamp(13px, 1vw, 16px);
-  line-height: 1.2;
+  font-size: 21px;
+  line-height: 1.22;
 }
 
 .reveal .agenda-track small {
   color: var(--muted);
-  font-size: clamp(10px, 0.8vw, 13px);
-  line-height: 1.25;
+  font-size: 17px;
+  line-height: 1.3;
 }
 
 .reveal .agenda-note {
   margin-top: 20px;
   color: var(--muted);
-  font-size: 18px;
+  font-size: 21px;
   line-height: 1.35;
 }
 
-.reveal .day-flow {
+.reveal .agenda-material {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.reveal .agenda-material strong {
+  color: var(--ink);
+}
+
+.reveal .agenda-material a {
+  color: var(--green);
+  font-weight: 800;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.reveal .concept-bridge {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 48px;
-  margin-top: 70px;
-  border-top: 3px solid rgb(101 167 255 / 36%);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 56px;
+  margin-top: 42px;
+  border-top: 3px solid rgb(101 167 255 / 40%);
 }
 
-.reveal .day-flow article {
-  position: relative;
-  padding-top: 28px;
+.reveal .concept-bridge article {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) 34px minmax(0, 1.1fr);
+  align-items: center;
+  min-height: 120px;
+  border-bottom: 1px solid var(--line);
 }
 
-.reveal .day-flow article:not(:last-child)::after {
-  position: absolute;
-  top: -9px;
-  right: -8px;
-  width: 15px;
-  height: 15px;
-  border-top: 3px solid var(--po-blue);
-  border-right: 3px solid var(--po-blue);
-  content: "";
-  transform: rotate(45deg);
+.reveal .concept-bridge h3 {
+  padding-right: 12px;
+  font-size: 27px;
+  line-height: 1.2;
 }
 
-.reveal .day-flow span,
+.reveal .concept-bridge span {
+  color: var(--po-blue);
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.reveal .concept-bridge p {
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.reveal .learning-goal {
+  margin-top: 34px;
+  padding-left: 24px;
+  border-left: 5px solid var(--green);
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.reveal .learning-goal strong {
+  margin-right: 10px;
+  color: var(--ink);
+}
+
 .reveal .reading-lenses span,
 .reveal .concept-index .concept-number {
   color: var(--po-blue);
@@ -229,19 +303,6 @@
 
 .reveal .concept-index .concept-label code {
   font-size: 0.92em;
-}
-
-.reveal .day-flow h3 {
-  margin-top: 16px;
-  font-size: 34px;
-}
-
-.reveal .day-flow p {
-  max-width: 360px;
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 23px;
-  line-height: 1.35;
 }
 
 .reveal .pair-review-lead {
@@ -376,23 +437,78 @@
   font-size: 20px;
 }
 
-.reveal .sandbox-layout {
+.reveal .sandbox-setup-grid,
+.reveal .sandbox-run-grid {
   display: grid;
-  grid-template-columns: 0.72fr 1.28fr;
+  grid-template-columns: 1fr 1fr;
   gap: 56px;
   align-items: start;
-  margin-top: 42px;
+  margin-top: 36px;
 }
 
-.reveal .sandbox-layout > pre {
-  margin: 0;
+.reveal .sandbox-setup-grid article,
+.reveal .sandbox-run-grid article {
+  min-width: 0;
+  padding-top: 24px;
+  border-top: 4px solid var(--po-blue);
 }
 
-.reveal .sandbox-layout > div > p {
-  margin-bottom: 24px;
+.reveal .sandbox-setup-grid article:last-child,
+.reveal .sandbox-run-grid article:last-child {
+  border-top-color: var(--green);
+}
+
+.reveal .sandbox-setup-grid h3,
+.reveal .sandbox-run-grid h3 {
+  font-size: 30px;
+}
+
+.reveal .sandbox-setup-grid p,
+.reveal .sandbox-run-grid p,
+.reveal .sandbox-run-grid li {
+  margin-top: 16px;
   color: var(--muted);
   font-size: 25px;
   line-height: 1.35;
+}
+
+.reveal .sandbox-setup-grid pre,
+.reveal .sandbox-run-grid pre {
+  margin-top: 22px;
+}
+
+.reveal .sandbox-run-grid span {
+  color: var(--green);
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.reveal .sandbox-run-grid article:first-child span {
+  color: var(--po-blue);
+}
+
+.reveal .sandbox-run-grid ol {
+  margin: 14px 0 0 30px;
+  padding-left: 20px;
+}
+
+.reveal .sandbox-run-grid li {
+  margin-top: 8px;
+  padding-left: 8px;
+}
+
+.reveal .sandbox-note {
+  margin-top: 34px;
+  padding: 18px 0 18px 24px;
+  border-left: 5px solid var(--green);
+  color: var(--muted);
+  font-size: 25px;
+  line-height: 1.35;
+}
+
+.reveal .sandbox-note strong {
+  color: var(--ink);
 }
 
 @media (max-width: 1100px) {
@@ -411,7 +527,7 @@
 .reveal .agenda-link {
   position: fixed;
   bottom: 22px;
-  left: 120px;
+  left: 138px;
   z-index: 2;
   display: inline-flex;
   gap: 8px;
@@ -441,6 +557,11 @@
 .reveal .slide-number a,
 .reveal .slide-number span {
   text-decoration: none !important;
+}
+
+.reveal .slide-number {
+  min-width: 92px;
+  text-align: center;
 }
 
 .reveal .agenda-link:hover,
@@ -658,8 +779,8 @@
   padding: 8px 0 10px;
   border-bottom: 1px solid var(--line);
   color: var(--ink);
-  font-size: 18px;
-  line-height: 1.15;
+  font-size: 22px;
+  line-height: 1.2;
   text-decoration: none;
 }
 
@@ -676,10 +797,14 @@
   font-size: 58px;
 }
 
+.reveal .po-concept-index .concept-number {
+  font-size: 18px;
+}
+
 .reveal .index-note {
   margin-top: 24px;
   color: var(--muted);
-  font-size: 18px;
+  font-size: 21px;
 }
 
 .reveal .semester-arc {
@@ -3402,7 +3527,7 @@
 
 .reveal .concept-copy {
   max-width: 1376px;
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
 .reveal .concept-copy--split {
@@ -3454,6 +3579,18 @@
   border-top-color: rgb(62 207 142 / 52%);
 }
 
+.reveal .concept-stage--task-extra .eyebrow {
+  color: var(--po-yellow);
+}
+
+.reveal .slides section.concept-stage--task-extra::before {
+  background: linear-gradient(90deg, var(--po-yellow), var(--green), transparent);
+}
+
+.reveal .concept-stage--task-extra .concept-narrative {
+  border-top-color: rgb(244 201 93 / 52%);
+}
+
 .reveal .concept-copy--prose {
   max-width: 1180px;
   padding-top: 24px;
@@ -3477,6 +3614,31 @@
 .reveal .concept-copy li {
   font-size: 23px;
   line-height: 1.34;
+}
+
+.reveal .concept-copy--split.concept-copy--comfortable .concept-narrative p,
+.reveal .concept-copy--split.concept-copy--comfortable .concept-narrative li {
+  font-size: 26px;
+  line-height: 1.36;
+}
+
+.reveal .concept-copy--split.concept-copy--roomy .concept-narrative p,
+.reveal .concept-copy--split.concept-copy--roomy .concept-narrative li {
+  font-size: 29px;
+  line-height: 1.38;
+}
+
+.reveal .concept-narrative li::marker {
+  color: var(--po-blue);
+  font-weight: 900;
+}
+
+.reveal .concept-stage--why .concept-narrative li::marker {
+  color: var(--po-yellow);
+}
+
+.reveal .concept-stage--react .concept-narrative li::marker {
+  color: rgb(185 162 255);
 }
 
 .reveal .concept-copy--prose p,
@@ -3504,21 +3666,21 @@
 
 .reveal .concept-code-stack {
   display: grid;
-  gap: 14px;
+  gap: 10px;
   min-width: 0;
 }
 
 .reveal .concept-copy pre {
   width: 100%;
   margin: 0;
-  padding: 19px 22px;
+  padding: 15px 18px;
   overflow: hidden;
   border: 1px solid rgb(101 167 255 / 24%);
   border-radius: 10px;
   background: #050706;
   color: #d9e2df;
   font-size: 17px;
-  line-height: 1.38;
+  line-height: 1.29;
   white-space: pre-wrap;
 }
 
@@ -3536,8 +3698,22 @@
 
 .reveal .concept-stage--task .concept-copy p,
 .reveal .concept-stage--task .concept-copy li {
-  font-size: 21px;
-  line-height: 1.3;
+  font-size: 23px;
+  line-height: 1.34;
+}
+
+.reveal .concept-stage--task .concept-copy--prose p,
+.reveal .concept-stage--task .concept-copy--prose li {
+  font-size: 27px;
+  line-height: 1.38;
+}
+
+.reveal .concept-stage--task .concept-narrative li::marker {
+  color: var(--green);
+}
+
+.reveal .concept-stage--task-extra .concept-narrative li::marker {
+  color: var(--po-yellow);
 }
 
 .reveal .concept-stage--task .concept-copy pre {
