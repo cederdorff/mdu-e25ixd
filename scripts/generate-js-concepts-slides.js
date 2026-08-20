@@ -25,12 +25,10 @@ const render = (value) =>
     )
     .replaceAll(/<pre><code class="language-jsx">/g, '<pre class="po-code"><code class="language-javascript jsx">')
     .replaceAll(/<pre><code class="language-text">/g, '<pre class="po-code"><code class="language-plaintext">');
+const renderInline = (value) => marked.parseInline(value);
 
-const markdownChunks = (value) => {
-  const lines = value
-    .replaceAll(/^### (JavaScript|React)\s*$/gm, "")
-    .trim()
-    .split("\n");
+const markdownBlocks = (value) => {
+  const lines = value.trim().split("\n");
   const blocks = [];
   let block = [];
   let inCode = false;
@@ -45,32 +43,106 @@ const markdownChunks = (value) => {
     block.push(line);
   }
   if (block.length) blocks.push(block.join("\n"));
+  return blocks;
+};
+
+const estimateBlockHeight = (block) => {
+  if (block.startsWith("```")) return block.split("\n").length * 22 + 38;
+  if (/^(?:[-*]|\d+\.)\s/m.test(block)) return block.split("\n").length * 29 + 22;
+  const renderedLines = Math.max(1, Math.ceil(block.length / 92));
+  return renderedLines * 29 + 14;
+};
+
+const estimateChunkHeight = (blocks) => {
+  const codeHeight = blocks
+    .filter((block) => block.startsWith("```"))
+    .reduce((sum, block) => sum + estimateBlockHeight(block), 0);
+  const narrativeHeight = blocks
+    .filter((block) => !block.startsWith("```"))
+    .reduce((sum, block) => sum + estimateBlockHeight(block), 0);
+  return codeHeight && narrativeHeight ? Math.max(codeHeight, narrativeHeight) : codeHeight + narrativeHeight;
+};
+
+const markdownChunks = (value, targetHeight = 720, maxCodeBlocks = 4) => {
+  const blocks = markdownBlocks(value);
+  const codeCount = (chunk) => chunk.filter((block) => block.startsWith("```")).length;
 
   const chunks = [];
   let current = [];
-  let textLength = 0;
-  let codeBlocks = 0;
 
   for (const currentBlock of blocks) {
-    const isCode = currentBlock.startsWith("```");
-    const tooLong = textLength + currentBlock.length > 1450;
+    const candidate = [...current, currentBlock];
     const wouldOverflow =
-      current.length && ((tooLong && !isCode) || codeBlocks + (isCode ? 1 : 0) > 3);
+      current.length && (estimateChunkHeight(candidate) > targetHeight || codeCount(candidate) > maxCodeBlocks);
 
     if (wouldOverflow) {
-      chunks.push(current.join("\n\n"));
+      chunks.push(current);
       current = [];
-      textLength = 0;
-      codeBlocks = 0;
     }
 
     current.push(currentBlock);
-    textLength += currentBlock.length;
-    codeBlocks += isCode ? 1 : 0;
   }
 
-  if (current.length) chunks.push(current.join("\n\n"));
-  return chunks;
+  if (current.length) chunks.push(current);
+
+  const chunkHeight = (chunk) => estimateChunkHeight(chunk);
+  for (let index = chunks.length - 1; index > 0; index--) {
+    const currentChunk = chunks[index];
+    const previousChunk = chunks[index - 1];
+    if (chunkHeight(currentChunk) >= 230) continue;
+
+    const combined = [...previousChunk, ...currentChunk];
+    const allowedCodeBlocks = chunkHeight(currentChunk) < 140 ? maxCodeBlocks + 1 : maxCodeBlocks;
+
+    if (
+      chunkHeight(combined) <= targetHeight + 150 &&
+      codeCount(combined) <= allowedCodeBlocks
+    ) {
+      chunks.splice(index - 1, 2, combined);
+      continue;
+    }
+
+    const movable = previousChunk.at(-1);
+    const previousWithoutMovable = previousChunk.slice(0, -1);
+    if (
+      previousWithoutMovable.length &&
+      chunkHeight(previousWithoutMovable) >= 230 &&
+      chunkHeight(currentChunk) + estimateBlockHeight(movable) <= targetHeight + 140 &&
+      codeCount([movable, ...currentChunk]) <= maxCodeBlocks
+    ) {
+      chunks[index - 1] = previousWithoutMovable;
+      chunks[index] = [movable, ...currentChunk];
+    }
+  }
+
+  return chunks.map((chunk) => chunk.join("\n\n"));
+};
+
+const splitSubsections = (value) => {
+  const lines = value.trim().split("\n");
+  const sections = [];
+  let title = "";
+  let content = [];
+  let inCode = false;
+
+  const push = () => {
+    const body = content.join("\n").trim();
+    if (body) sections.push({ title, content: body });
+  };
+
+  for (const line of lines) {
+    if (line.startsWith("```")) inCode = !inCode;
+    const heading = !inCode && line.match(/^### (.+)$/);
+    if (heading) {
+      push();
+      title = heading[1];
+      content = [];
+    } else {
+      content.push(line);
+    }
+  }
+  push();
+  return sections.length ? sections : [{ title: "", content: value.trim() }];
 };
 
 const getSection = (lines, heading) => {
@@ -108,7 +180,8 @@ const concepts = source
 const chapterFor = (number) => {
   if (number === 1) return "Modules";
   if (number >= 2 && number <= 7) return "Functions";
-  if (number >= 8 && number <= 18) return "Objects og arrays";
+  if (number >= 8 && number <= 13) return "Objects";
+  if (number >= 14 && number <= 18) return "Arrays";
   if (number >= 19 && number <= 25) return "Array methods";
   if (number >= 26 && number <= 32) return "Strings og conditionals";
   if (number >= 33 && number <= 34) return "Events";
@@ -118,13 +191,69 @@ const chapterFor = (number) => {
 const slide = (content, className = "po-slide", id = "") =>
   `<section class="${className}"${id ? ` id="${id}"` : ""}>${content}</section>`;
 const eyebrow = (text) => `<span class="eyebrow">${text}</span>`;
-const conceptHeading = (concept, label) => `${eyebrow(`${concept.number} · ${label}`)}<h2>${concept.title}</h2>`;
+const conceptHeading = (concept, label, subtitle = "") =>
+  `${eyebrow(`${concept.number} · ${label}`)}<h2>${renderInline(concept.title)}</h2>${subtitle ? `<p class="concept-subtitle">${renderInline(subtitle)}</p>` : ""}`;
 const chapterId = (chapter) => slugify(chapter);
-const contentSlide = (concept, label, content, className = "po-slide", id = "") =>
-  slide(`${conceptHeading(concept, label)}<div class="concept-copy">${render(content)}</div>`, className, id).replace(
+
+const renderContentLayout = (content) => {
+  const blocks = markdownBlocks(content);
+  const codeBlocks = blocks.filter((block) => block.startsWith("```"));
+  const narrativeBlocks = blocks.filter((block) => !block.startsWith("```"));
+
+  if (!codeBlocks.length) {
+    return `<div class="concept-copy concept-copy--prose">${render(content)}</div>`;
+  }
+  if (!narrativeBlocks.length) {
+    return `<div class="concept-copy concept-copy--code-only">${render(content)}</div>`;
+  }
+  if (
+    codeBlocks.length === 1 &&
+    narrativeBlocks.join(" ").length < 160 &&
+    codeBlocks[0].split("\n").length <= 10
+  ) {
+    return `<div class="concept-copy concept-copy--focus"><div class="concept-narrative">${render(narrativeBlocks.join("\n\n"))}</div><div class="concept-code-stack">${render(codeBlocks[0])}</div></div>`;
+  }
+  return `<div class="concept-copy concept-copy--split"><div class="concept-narrative">${render(narrativeBlocks.join("\n\n"))}</div><div class="concept-code-stack">${render(codeBlocks.join("\n\n"))}</div></div>`;
+};
+
+const contentSlide = ({ concept, label, subtitle = "", content, stage, className = "po-slide", id = "" }) =>
+  slide(`${conceptHeading(concept, label, subtitle)}${renderContentLayout(content)}`, `${className} concept-stage concept-stage--${stage}`, id).replace(
     "<section ",
-    `<section data-concept-number="${concept.number}" `
+    `<section data-concept-number="${concept.number}" data-concept-stage="${stage}" `
   );
+
+const stageSlides = ({
+  concept,
+  source,
+  stage,
+  label,
+  className = "po-slide",
+  id = "",
+  targetHeight = 720,
+  maxCodeBlocks = 4
+}) => {
+  const pieces = splitSubsections(source).flatMap((subsection) =>
+    markdownChunks(subsection.content, targetHeight, maxCodeBlocks).map((content) => ({
+      subtitle: subsection.title,
+      content
+    }))
+  );
+
+  return pieces.map((piece, index) => {
+    const taskContext = stage === "task" && /^(JavaScript|React)$/.test(piece.subtitle) ? ` · ${piece.subtitle}` : "";
+    const continuation = pieces.length > 1 ? ` · ${index + 1}/${pieces.length}` : "";
+    const subtitle = taskContext ? "" : piece.subtitle;
+    return contentSlide({
+      concept,
+      label: `${label}${taskContext}${continuation}`,
+      subtitle,
+      content: piece.content,
+      stage,
+      className,
+      id: index === 0 ? id : ""
+    });
+  });
+};
 
 const introSlides = [
   slide(
@@ -132,13 +261,26 @@ const introSlides = [
     "po-slide po-title"
   ),
   slide(
-    `${eyebrow("Dagens fokus")}<h2>React bliver lettere, når JavaScript er synligt</h2><div class="focus-split"><article class="focus-today"><h3>Først</h3><p>Forstå og afprøv ét JavaScript-koncept i en sandbox.</p><strong>Hvad gør koden?</strong></article><article class="focus-friday"><h3>Derefter</h3><p>Se det samme koncept i en React-komponent.</p><strong>Hvor bruger vi det?</strong></article></div>`
+    `${eyebrow("Rammen for dagen")}<h2>React er JavaScript med et komponentlag ovenpå</h2><div class="focus-split"><article class="focus-today"><h3>Det vi træner</h3><p>At læse, forklare og ændre den JavaScript-kode, som React bygger på.</p><strong>Gør JavaScript synligt</strong></article><article class="focus-friday"><h3>Det vi ikke gør</h3><p>Vi forsøger ikke at lære 40 koncepter udenad eller nå alle slides i samme tempo.</p><strong>Forstå mønstrene</strong></article></div><p class="focus-footnote">Målet er ikke mere kode. Målet er, at den kode I allerede møder i React, bliver lettere at gennemskue.</p>`,
+    "po-slide",
+    "rammen-for-dagen"
   ),
   slide(
-    `${eyebrow("Arbejdsmåde")}<h2>Sådan er decket bygget</h2><div class="code-comparison"><article><h3>1 · Forstå</h3><p>Hvad er konceptet, og hvorfor findes det?</p></article><article><h3>2 · JavaScript</h3><p>Se konceptet i små, isolerede kodeeksempler.</p></article><article><h3>3 · React</h3><p>Kobl den samme idé til komponenter og props.</p></article><article><h3>4 · Opgave</h3><p>Brug konceptet i dit eget projekt.</p></article></div><p class="reflection">Kapitlerne går fra Functions til objekter, arrays, rendering, events og async kode. Brug decket som en modulbank: I når så langt, som tiden rækker.</p>`
+    `${eyebrow("Dagens forløb")}<h2>Vi begynder i jeres kode — og bygger derfra</h2><div class="day-flow"><article><span>01</span><h3>Sæt rammen</h3><p>Hvorfor JavaScript er nøglen til at forstå React.</p></article><article><span>02</span><h3>Se tilbage</h3><p>Korte eksempler fra jeres projekter på 2. semester.</p></article><article><span>03</span><h3>Arbejd fremad</h3><p>Ét koncept ad gangen: JavaScript, React og en lille opgave.</p></article></div>`
   ),
   slide(
-    `${eyebrow("Setup · Sandbox")}<h2>Et sikkert sted at eksperimentere</h2>${render("```text\nsrc/\n├── App.jsx\n└── sandbox/\n    └── sandbox.js\n```\n\nImportér `./sandbox/sandbox.js` i `App.jsx`, så filen bliver kørt.")}<p class="reflection">Sandboxen er til eksperimenter. Opret, ændr og slet frit undervejs.</p>`
+    `${eyebrow("Eksempler fra 2. semester")}<h2>Kan I forklare koden sammen?</h2><p class="pair-review-lead">Find det kodeeksempel frem, du valgte som forberedelse.</p><div class="pair-review"><article><span>01</span><h3>Præsenter</h3><p>Vis eksemplet, giv kort kontekst, og fortæl, hvad du tror, koden gør.</p></article><article><span>02</span><h3>Peg på tvivlen</h3><p>Markér den linje eller syntaks, du har svært ved at forklare.</p></article><article><span>03</span><h3>Undersøg sammen</h3><p>Lad din sidemakker stille spørgsmål og hjælpe med at forklare koden.</p></article><article><span>04</span><h3>Vurder</h3><p>Kan du nu forklare eksemplet med dine egne ord? Byt derefter roller.</p></article></div><div class="pair-outcomes"><p><strong>Afklaret?</strong> Behold forklaringen i dine egne noter.</p><p><strong>Stadig uklart?</strong> Del kode eller link, din nuværende forklaring og dit konkrete spørgsmål i <a href="https://padlet.com/race_js/js_react_eksempler" target="_blank" rel="noreferrer">Padlet</a>.</p></div>`,
+    "po-slide mode-work",
+    "eksempler-fra-andet-semester"
+  ),
+  slide(
+    `${eyebrow("Når vi læser eksemplerne")}<h2>Vi leder efter seks tilbagevendende spørgsmål</h2><div class="reading-lenses"><article><span>01</span><h3>Hvor kommer koden fra?</h3><p>Modules</p></article><article><span>02</span><h3>Hvad bliver kørt?</h3><p>Functions</p></article><article><span>03</span><h3>Hvordan ser data ud?</h3><p>Objects og arrays</p></article><article><span>04</span><h3>Hvordan ændres data?</h3><p>Array methods</p></article><article><span>05</span><h3>Hvad bliver vist?</h3><p>Conditionals og events</p></article><article><span>06</span><h3>Hvornår kommer data?</h3><p>Async og API’er</p></article></div>`
+  ),
+  slide(
+    `${eyebrow("Arbejdsmåde")}<h2>Hvert koncept følger den samme rytme</h2><div class="code-comparison concept-rhythm"><article><h3>1 · Forstå</h3><p>Hvad gør konceptet, og hvorfor findes det?</p></article><article><h3>2 · JavaScript</h3><p>Læs og afprøv et lille, isoleret eksempel.</p></article><article><h3>3 · React</h3><p>Genkend den samme idé i en komponent.</p></article><article><h3>4 · Prøv selv</h3><p>Brug konceptet i dit eget projekt.</p></article></div><p class="reflection">Kerne først. Slides markeret <strong>Ekstra</strong> er fordybelse, hvis tiden og behovet er der.</p>`
+  ),
+  slide(
+    `${eyebrow("Setup · Sandbox")}<h2>Et sikkert sted at eksperimentere</h2><div class="sandbox-layout">${render("```text\nsrc/\n├── App.jsx\n└── sandbox/\n    └── sandbox.js\n```")}<div><p>Importér <code>./sandbox/sandbox.js</code> i <code>App.jsx</code>, så filen bliver kørt.</p><pre class="po-code"><code class="language-javascript jsx">// App.jsx\nimport \"./sandbox/sandbox.js\";</code></pre></div></div><p class="reflection">Sandboxen er til eksperimenter. Opret, ændr og slet frit undervejs.</p>`
   )
 ];
 
@@ -154,49 +296,45 @@ const conceptSlides = concepts.flatMap((concept) => {
         )
       : "";
 
-  if (concept.extra) {
-    return [
-      chapterSlide,
-      ...markdownChunks(`${concept.what}\n\n${concept.why}`).map((chunk, index) =>
-        contentSlide(concept, index === 0 ? "Forstå" : "Forklaring", chunk, "po-slide", index === 0 ? concept.slug : "")
-      ),
-      ...markdownChunks(concept.how).map((chunk) => contentSlide(concept, "JavaScript", chunk)),
-      ...markdownChunks(concept.task).map((chunk, index) =>
-        contentSlide(
-          concept,
-          index === 0 ? "Prøv selv" : "Opgave",
-          chunk,
-          "po-slide mode-work",
-          index === 0 ? taskId : ""
-        )
-      )
-    ];
-  }
-
   return [
     chapterSlide,
-    ...markdownChunks(`${concept.what}\n\n${concept.why}`).map((chunk, index) =>
-      contentSlide(concept, index === 0 ? "Forstå" : "Forklaring", chunk, "po-slide", index === 0 ? concept.slug : "")
-    ),
-    ...markdownChunks(concept.how).map((chunk) => contentSlide(concept, "JavaScript", chunk)),
-    ...markdownChunks(concept.react).map((chunk) => contentSlide(concept, "React", chunk)),
-    ...markdownChunks(concept.task).map((chunk, index) =>
-      contentSlide(
-        concept,
-        index === 0 ? "Prøv selv" : "Opgave",
-        chunk,
-        "po-slide mode-work",
-        index === 0 ? taskId : ""
-      )
-    )
+    ...stageSlides({ concept, source: concept.what, stage: "what", label: "Forstå", id: concept.slug, targetHeight: 650, maxCodeBlocks: 3 }),
+    ...stageSlides({ concept, source: concept.why, stage: "why", label: "Hvorfor", targetHeight: 650, maxCodeBlocks: 3 }),
+    ...stageSlides({ concept, source: concept.how, stage: "how", label: "JavaScript", targetHeight: 690 }),
+    ...stageSlides({ concept, source: concept.react, stage: "react", label: "React", className: "po-slide mode-shared", targetHeight: 690 }),
+    ...stageSlides({ concept, source: concept.task, stage: "task", label: "Prøv selv", className: "po-slide mode-work", id: taskId, targetHeight: 620 })
   ];
 });
 
 const agenda = slide(
-  `${eyebrow("Indhold")}<h2>40 koncepter · én oversigt</h2><div class="topic-cloud"><a href="#/modules">Moduler</a><a href="#/functions">Functions · 2–7</a><a href="#/objects-og-arrays">Objects og arrays · 8–18</a><a href="#/array-methods">Array methods · 19–25</a><a href="#/strings-og-conditionals">Strings og conditionals · 26–32</a><a href="#/events">Events · 33–34</a><a href="#/${chapterId("Asynkron JavaScript og API'er")}">Async og API’er · 35–40</a></div><div class="concept-index">${concepts.map((concept) => `<a href="#/${concept.slug}">${concept.number} · ${escapeHtml(concept.title)}</a>`).join("")}</div>`,
-  "po-slide po-agenda"
+  `${eyebrow("Agenda")}<h2>Fra egne eksempler til React-kode, I kan forklare</h2><div class="agenda-columns"><div class="agenda-column"><h3>Fælles start</h3><ol class="agenda-track"><li><a href="#/rammen-for-dagen"><strong>Rammen for dagen</strong><small>Hvorfor vi tager et skridt tilbage til JavaScript</small></a></li><li><a href="#/eksempler-fra-andet-semester"><strong>Eksempler fra 2. semester</strong><small>Hvad virker, men er stadig svært at forklare?</small></a></li><li><a href="#/modules"><strong>Koncept for koncept</strong><small>Forstå → JavaScript → React → prøv selv</small></a></li></ol></div><div class="agenda-column"><h3>Konceptbank</h3><ol class="agenda-track concept-groups"><li><a href="#/modules"><strong>Modules og functions</strong><small>1–7</small></a></li><li><a href="#/objects"><strong>Objects</strong><small>8–13</small></a></li><li><a href="#/arrays"><strong>Arrays</strong><small>14–18</small></a></li><li><a href="#/array-methods"><strong>Array methods</strong><small>19–25</small></a></li><li><a href="#/strings-og-conditionals"><strong>Strings og conditionals</strong><small>26–32</small></a></li><li><a href="#/events"><strong>Events</strong><small>33–34</small></a></li><li><a href="#/${chapterId("Asynkron JavaScript og API'er")}"><strong>Async og API’er</strong><small>35–40</small></a></li></ol></div></div><p class="agenda-note"><strong>40 koncepter er en modulbank.</strong> Vi prioriterer kernekoncepterne og bruger de markerede ekstra-emner efter behov.</p>`,
+  "po-slide po-agenda",
+  "agenda"
 );
-const slides = [...introSlides, agenda, ...conceptSlides].filter(Boolean).join("\n\n");
+
+const conceptIndexSlides = [
+  slide(
+    `${eyebrow("Indeks · 1/2")}<h2>Find hurtigt et koncept</h2><div class="concept-index">${concepts.slice(0, 21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div>`,
+    "po-slide po-concept-index",
+    "konceptindeks"
+  ),
+  slide(
+    `${eyebrow("Indeks · 2/2")}<h2>Strings, events og async</h2><div class="concept-index">${concepts.slice(21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div><p class="index-note">De tonede emner er <strong>Ekstra</strong>: brug dem til fordybelse eller som opslagsværk.</p>`,
+    "po-slide po-concept-index"
+  )
+];
+
+const closingSlides = [
+  slide(
+    `${eyebrow("Opsamling")}<h2>Kan du nu forklare dit eget kodeeksempel?</h2><div class="closing-review"><article><span>01</span><h3>Find mønstrene</h3><p>Markér de JavaScript-koncepter, du kan genkende i koden.</p></article><article><span>02</span><h3>Forklar flowet</h3><p>Fortæl med dine egne ord, hvad der sker – linje for linje.</p></article><article><span>03</span><h3>Vælg næste spørgsmål</h3><p>Notér præcist, hvad du stadig mangler at forstå.</p></article></div><p class="closing-padlet"><strong>Stadig i tvivl?</strong> Opdatér dit opslag eller tilføj spørgsmålet i <a href="https://padlet.com/race_js/js_react_eksempler" target="_blank" rel="noreferrer">Padlet</a>.</p>`,
+    "po-slide mode-work",
+    "opsamling"
+  )
+];
+
+const slides = [introSlides[0], introSlides[1], introSlides[2], agenda, ...introSlides.slice(3), ...conceptIndexSlides, ...conceptSlides, ...closingSlides]
+  .filter(Boolean)
+  .join("\n\n");
 
 const html = `<!doctype html>
 <html lang="da">

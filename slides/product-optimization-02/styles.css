@@ -96,6 +96,10 @@
   column-gap: 18px;
 }
 
+.reveal .po-agenda .agenda-column:last-child .agenda-track.concept-groups {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .reveal .agenda-track {
   display: grid;
   grid-template-columns: 1fr;
@@ -120,6 +124,10 @@
   min-height: 92px;
   padding: 12px 8px 10px;
   border-top-color: rgb(62 207 142 / 20%);
+}
+
+.reveal .po-agenda .agenda-column:last-child .agenda-track.concept-groups li {
+  min-height: 76px;
 }
 
 .reveal .agenda-track li::before {
@@ -172,6 +180,219 @@
   color: var(--muted);
   font-size: clamp(10px, 0.8vw, 13px);
   line-height: 1.25;
+}
+
+.reveal .agenda-note {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.reveal .day-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px;
+  margin-top: 70px;
+  border-top: 3px solid rgb(101 167 255 / 36%);
+}
+
+.reveal .day-flow article {
+  position: relative;
+  padding-top: 28px;
+}
+
+.reveal .day-flow article:not(:last-child)::after {
+  position: absolute;
+  top: -9px;
+  right: -8px;
+  width: 15px;
+  height: 15px;
+  border-top: 3px solid var(--po-blue);
+  border-right: 3px solid var(--po-blue);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.reveal .day-flow span,
+.reveal .reading-lenses span,
+.reveal .concept-index .concept-number {
+  color: var(--po-blue);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.reveal .concept-index .concept-label {
+  min-width: 0;
+}
+
+.reveal .concept-index .concept-label code {
+  font-size: 0.92em;
+}
+
+.reveal .day-flow h3 {
+  margin-top: 16px;
+  font-size: 34px;
+}
+
+.reveal .day-flow p {
+  max-width: 360px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 23px;
+  line-height: 1.35;
+}
+
+.reveal .pair-review-lead {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 25px;
+}
+
+.reveal .pair-review {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 34px;
+  margin-top: 42px;
+  border-top: 3px solid rgb(62 207 142 / 42%);
+}
+
+.reveal .pair-review article {
+  padding-top: 22px;
+}
+
+.reveal .pair-review span {
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.reveal .pair-review h3 {
+  margin-top: 12px;
+  font-size: 28px;
+}
+
+.reveal .pair-review p {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.32;
+}
+
+.reveal .pair-outcomes {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 46px;
+  margin-top: 38px;
+  padding: 20px 24px;
+  border-left: 5px solid var(--green);
+  background: linear-gradient(90deg, rgb(62 207 142 / 12%), transparent 86%);
+}
+
+.reveal .pair-outcomes p {
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.reveal .closing-review {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 48px;
+  margin-top: 68px;
+  border-top: 3px solid rgb(62 207 142 / 44%);
+}
+
+.reveal .closing-review article {
+  padding-top: 24px;
+}
+
+.reveal .closing-review span {
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.reveal .closing-review h3 {
+  margin-top: 14px;
+  font-size: 32px;
+}
+
+.reveal .closing-review p {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.reveal .closing-padlet {
+  margin-top: 54px;
+  padding-left: 24px;
+  border-left: 5px solid var(--green);
+  color: var(--muted);
+  font-size: 26px;
+  line-height: 1.35;
+}
+
+.reveal .reading-lenses {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px 46px;
+  margin-top: 48px;
+}
+
+.reveal .reading-lenses article {
+  padding-top: 18px;
+  border-top: 2px solid rgb(101 167 255 / 34%);
+}
+
+.reveal .reading-lenses h3 {
+  margin-top: 12px;
+  font-size: 28px;
+}
+
+.reveal .reading-lenses p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 20px;
+}
+
+.reveal .concept-rhythm {
+  margin-top: 42px;
+}
+
+.reveal .concept-rhythm article {
+  min-height: 176px;
+}
+
+.reveal .concept-rhythm h3 {
+  font-size: 27px;
+}
+
+.reveal .concept-rhythm p {
+  font-size: 20px;
+}
+
+.reveal .sandbox-layout {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: 56px;
+  align-items: start;
+  margin-top: 42px;
+}
+
+.reveal .sandbox-layout > pre {
+  margin: 0;
+}
+
+.reveal .sandbox-layout > div > p {
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 25px;
+  line-height: 1.35;
 }
 
 @media (max-width: 1100px) {
@@ -424,23 +645,41 @@
 
 .reveal .concept-index {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px 20px;
-  max-height: 380px;
-  margin-top: 24px;
-  overflow: hidden;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 36px;
+  margin-top: 34px;
 }
 
 .reveal .concept-index a {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.2;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  align-items: baseline;
+  padding: 8px 0 10px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.15;
   text-decoration: none;
+}
+
+.reveal .concept-index a.is-extra {
+  color: var(--muted);
 }
 
 .reveal .concept-index a:hover,
 .reveal .concept-index a:focus-visible {
-  color: var(--green);
+  color: var(--po-blue);
+}
+
+.reveal .po-concept-index h2 {
+  font-size: 58px;
+}
+
+.reveal .index-note {
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 18px;
 }
 
 .reveal .semester-arc {
@@ -3138,66 +3377,173 @@
   line-height: 1.3;
 }
 
+.reveal .concept-stage h2 {
+  max-width: 1320px;
+  font-size: clamp(44px, 3.5vw, 60px);
+  line-height: 1.02;
+}
+
+.reveal .concept-stage--why .eyebrow,
+.reveal .concept-stage--why strong {
+  color: var(--po-yellow);
+}
+
+.reveal .slides section.concept-stage--why::before {
+  background: linear-gradient(90deg, var(--po-yellow), transparent);
+}
+
+.reveal .concept-subtitle {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 .reveal .concept-copy {
   max-width: 1376px;
-  margin-top: 22px;
+  margin-top: 28px;
+}
+
+.reveal .concept-copy--split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 54px;
+  align-items: start;
+}
+
+.reveal .concept-copy--focus {
+  display: grid;
+  grid-template-columns: minmax(0, 0.58fr) minmax(0, 1.42fr);
+  gap: 70px;
+  align-items: center;
+  max-width: 1180px;
+  margin-top: 70px;
+}
+
+.reveal .concept-copy--focus .concept-narrative {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.reveal .concept-copy--focus .concept-narrative p {
+  font-size: 30px;
+  line-height: 1.3;
+}
+
+.reveal .concept-copy--focus pre {
+  padding: 26px 30px;
+  font-size: 22px;
+  line-height: 1.45;
+}
+
+.reveal .concept-narrative {
+  padding-top: 20px;
+  border-top: 3px solid rgb(101 167 255 / 44%);
+}
+
+.reveal .concept-stage--why .concept-narrative {
+  border-top-color: rgb(244 201 93 / 50%);
+}
+
+.reveal .concept-stage--react .concept-narrative {
+  border-top-color: rgb(185 162 255 / 52%);
+}
+
+.reveal .concept-stage--task .concept-narrative {
+  border-top-color: rgb(62 207 142 / 52%);
+}
+
+.reveal .concept-copy--prose {
+  max-width: 1180px;
+  padding-top: 24px;
+  border-top: 3px solid rgb(101 167 255 / 40%);
+}
+
+.reveal .concept-stage--why .concept-copy--prose {
+  border-top-color: rgb(244 201 93 / 50%);
+}
+
+.reveal .concept-copy--code-only {
+  max-width: 1180px;
 }
 
 .reveal .concept-copy h3 {
-  margin: 18px 0 8px;
-  font-size: 27px;
+  margin: 20px 0 10px;
+  font-size: 28px;
 }
 
 .reveal .concept-copy p,
 .reveal .concept-copy li {
-  font-size: 21px;
-  line-height: 1.28;
+  font-size: 23px;
+  line-height: 1.34;
+}
+
+.reveal .concept-copy--prose p,
+.reveal .concept-copy--prose li {
+  font-size: 27px;
+  line-height: 1.36;
 }
 
 .reveal .concept-copy p + p,
 .reveal .concept-copy ul + p,
-.reveal .concept-copy ol + p {
-  margin-top: 10px;
+.reveal .concept-copy ol + p,
+.reveal .concept-copy pre + p {
+  margin-top: 14px;
 }
 
 .reveal .concept-copy ul,
 .reveal .concept-copy ol {
-  margin: 8px 0 0 24px;
-  padding-left: 22px;
+  margin: 12px 0 0 24px;
+  padding-left: 24px;
+}
+
+.reveal .concept-copy li + li {
+  margin-top: 8px;
+}
+
+.reveal .concept-code-stack {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
 }
 
 .reveal .concept-copy pre {
-  max-width: 1376px;
-  margin: 14px 0;
-  padding: 16px 20px;
+  width: 100%;
+  margin: 0;
+  padding: 19px 22px;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid rgb(101 167 255 / 24%);
   border-radius: 10px;
   background: #050706;
   color: #d9e2df;
-  font-size: 16px;
-  line-height: 1.35;
+  font-size: 17px;
+  line-height: 1.38;
   white-space: pre-wrap;
 }
 
-.reveal .mode-work .concept-copy {
-  margin-top: 18px;
+.reveal .concept-stage--react .concept-copy pre {
+  border-color: rgb(185 162 255 / 28%);
 }
 
-.reveal .mode-work .concept-copy h3 {
-  font-size: 24px;
+.reveal .concept-stage--task .concept-copy--split {
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
 }
 
-.reveal .mode-work .concept-copy p,
-.reveal .mode-work .concept-copy li {
-  font-size: 18px;
-  line-height: 1.22;
+.reveal .concept-stage--task .concept-copy {
+  margin-top: 24px;
 }
 
-.reveal .mode-work .concept-copy pre {
-  margin: 10px 0;
-  padding: 12px 16px;
-  font-size: 15px;
+.reveal .concept-stage--task .concept-copy p,
+.reveal .concept-stage--task .concept-copy li {
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.reveal .concept-stage--task .concept-copy pre {
+  padding: 16px 19px;
+  border-color: rgb(62 207 142 / 26%);
+  font-size: 16px;
 }
 
 .reveal .portfolio-note {
