@@ -1,5 +1,70 @@
 # JavaScript for React
 
+## Indhold
+
+### Functions
+
+1. Modules: `import` & `export`
+2. Function declarations
+3. Parametre og return values
+4. Arrow functions
+5. **Ekstra:** Default parameters
+6. **Ekstra:** Callback functions
+7. **Ekstra:** Closures
+
+### Objects
+
+8. Objects
+9. Property access
+10. Shorthand properties
+11. Destructuring af objects
+12. **Ekstra:** Spread syntax med objects
+13. **Ekstra:** Immutable opdatering af objects
+
+### Arrays
+
+14. Arrays
+15. Destructuring af arrays
+16. **Ekstra:** Spread syntax med arrays
+17. **Ekstra:** Rest syntax / Rest parameters
+18. **Ekstra:** Immutable opdatering af arrays
+
+### Array methods
+
+19. `map()`
+20. `filter()`
+21. `find()`
+22. **Ekstra:** `forEach()`
+23. **Ekstra:** `some()` og `every()`
+24. **Ekstra:** `includes()`
+25. **Ekstra:** `reduce()`
+
+### Strings og conditionals
+
+26. Template literals
+27. `if` / `else`
+28. Ternary operator `? :`
+29. Logical AND `&&`
+30. Logical OR `||` og fallback-værdier
+31. Nullish coalescing `??`
+32. Optional chaining `?.`
+
+### Events
+
+33. Event handlers
+34. Event object
+
+### Asynkron JavaScript og API’er
+
+35. `async` / `await`
+36. `fetch()`
+37. JSON og `response.json()`
+38. **Ekstra:** Promises med `.then()` / `.catch()`
+39. **Ekstra:** Error handling med `try` / `catch`
+40. **Ekstra:** `JSON.parse()` / `JSON.stringify()`
+
+---
+
 ## Setup · Sandbox
 
 Vi arbejder videre i React-projektet **`web-app-optimization`**.
