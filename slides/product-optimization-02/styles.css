@@ -458,20 +458,119 @@
   font-size: 20px;
 }
 
-.reveal .concept-rhythm {
-  margin-top: 42px;
+.reveal .po-rhythm-slide h2 {
+  max-width: none;
+  font-size: 52px;
 }
 
-.reveal .concept-rhythm article {
-  min-height: 176px;
+.reveal .concept-rhythm-flow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 54px;
+  margin-top: 68px;
 }
 
-.reveal .concept-rhythm h3 {
+.reveal .concept-rhythm-flow::before {
+  position: absolute;
+  z-index: 0;
+  top: 47px;
+  right: 11%;
+  left: 11%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--po-blue), var(--po-blue), var(--po-purple), var(--green));
+  content: "";
+  opacity: 0.42;
+}
+
+.reveal .concept-rhythm-flow article {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.reveal .concept-rhythm-flow article:not(:last-child)::after {
+  position: absolute;
+  top: 25px;
+  right: -40px;
+  color: var(--muted);
+  content: "→";
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.reveal .concept-rhythm-flow .rhythm-node {
+  display: grid;
+  width: 94px;
+  height: 94px;
+  place-items: center;
+  border: 3px solid var(--po-blue);
+  border-radius: 50%;
+  background: #0b1210;
+  box-shadow: 0 0 0 13px rgb(101 167 255 / 7%);
+  color: var(--po-blue);
   font-size: 27px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
 }
 
-.reveal .concept-rhythm p {
-  font-size: 20px;
+.reveal .concept-rhythm-flow article:nth-child(3) .rhythm-node {
+  border-color: var(--po-purple);
+  box-shadow: 0 0 0 13px rgb(183 135 255 / 7%);
+  color: rgb(194 165 255);
+}
+
+.reveal .concept-rhythm-flow article:nth-child(4) .rhythm-node {
+  border-color: var(--green);
+  box-shadow: 0 0 0 13px rgb(62 207 142 / 7%);
+  color: var(--green);
+}
+
+.reveal .concept-rhythm-flow small {
+  display: block;
+  margin-top: 35px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.reveal .concept-rhythm-flow h3 {
+  margin-top: 12px;
+  font-size: 34px;
+}
+
+.reveal .concept-rhythm-flow p {
+  max-width: 290px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1.36;
+}
+
+.reveal .concept-rhythm-foot {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 26px;
+  align-items: center;
+  margin-top: 64px;
+  padding-top: 22px;
+  border-top: 2px solid rgb(62 207 142 / 34%);
+}
+
+.reveal .concept-rhythm-foot strong {
+  color: var(--green);
+  font-size: 28px;
+}
+
+.reveal .concept-rhythm-foot span {
+  color: var(--muted);
+  font-size: 23px;
+}
+
+.reveal .concept-rhythm-foot b {
+  color: var(--ink);
 }
 
 .reveal .sandbox-setup-grid,

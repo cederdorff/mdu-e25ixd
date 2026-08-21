@@ -327,33 +327,9 @@ const selectCode = (value, maxBlocks = 1, maxLines = 20) => {
   return selected.join("\n\n");
 };
 
-const primaryTask = (value, title) => {
+const taskSection = (value, title) => {
   const section = splitSubsections(value).find((item) => item.title === title);
-  if (!section) return "";
-  const blocks = markdownBlocks(section.content).filter((block) => block !== "---");
-  const narrative = blocks.filter((block) => !block.startsWith("```"));
-  const list = narrative.find((block) => /^(?:[-*]|\d+\.)\s/m.test(block));
-  if (list) return list;
-
-  const selected = [];
-  let narrativeBlocks = 0;
-  let narrativeCharacters = 0;
-  let codeBlocks = 0;
-
-  for (const block of blocks) {
-    if (block.startsWith("```")) {
-      if (codeBlocks || block.split("\n").length > 12) continue;
-      selected.push(block);
-      codeBlocks += 1;
-      continue;
-    }
-    if (narrativeBlocks >= 4 || (narrativeBlocks && narrativeCharacters + block.length > 650)) continue;
-    selected.push(block);
-    narrativeBlocks += 1;
-    narrativeCharacters += block.length;
-  }
-
-  return selected.join("\n\n");
+  return section ? section.content.trim().replace(/\n---\s*$/u, "") : "";
 };
 
 const conceptSection = (concept, content, className, id = "", stage = "overview") =>
@@ -412,20 +388,30 @@ const conceptExampleSlide = (concept, type) => {
   });
 };
 
-const conceptTaskSlide = (concept) => {
-  const javascriptTask = primaryTask(concept.task, "JavaScript");
-  const reactTask = primaryTask(concept.task, "React");
-  const componentTestNote = /HomePage\.jsx|<main>/.test(reactTask)
-    ? ""
-    : '<p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p>';
+const conceptTaskSlides = (concept, language) => {
+  const task = taskSection(concept.task, language);
+  const isReact = language === "React";
+  const chunks = markdownChunks(task, 720, 5);
 
-  return conceptSection(
-    concept,
-    `${conceptHeading(concept, "Prøv selv")}<div class="concept-task-pair"><article><span>JavaScript</span>${render(javascriptTask)}</article><article><span>React</span>${render(reactTask)}</article></div>${componentTestNote}<p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p>`,
-    "po-slide mode-work concept-stage concept-stage--task concept-task-slide",
-    `opgave-${concept.number}`,
-    "task"
-  );
+  return chunks.map((chunk, index) => {
+    const isLast = index === chunks.length - 1;
+    const continuation = chunks.length > 1 ? ` · ${index + 1}/${chunks.length}` : "";
+    const componentTestNote =
+      isLast && isReact && !/HomePage\.jsx|<main>/.test(task)
+        ? '<p class="component-test-note"><strong>Test komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p>'
+        : "";
+    const materialLink = isLast
+      ? `<p class="concept-material-link"><a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Se også Ekstra-opgaven i <code>js-concepts.md</code> ↗</a></p>`
+      : "";
+
+    return conceptSection(
+      concept,
+      `${conceptHeading(concept, `Prøv selv · ${language}${continuation}`)}${renderContentLayout(chunk)}${componentTestNote}${materialLink}`,
+      `po-slide mode-work concept-stage concept-stage--task concept-task-slide concept-task-slide--${isReact ? "react" : "javascript"}`,
+      index === 0 ? (isReact ? `opgave-${concept.number}-react` : `opgave-${concept.number}`) : "",
+      "task"
+    );
+  });
 };
 
 const introSlides = [
@@ -447,7 +433,9 @@ const introSlides = [
     "eksempler-fra-andet-semester"
   ),
   slide(
-    `${eyebrow("Arbejdsmåde")}<h2>Hvert koncept følger den samme rytme</h2><div class="code-comparison concept-rhythm"><article><h3>1 · Forstå</h3><p>Hvad gør konceptet, og hvorfor findes det?</p></article><article><h3>2 · JavaScript</h3><p>Læs og afprøv et lille, isoleret eksempel.</p></article><article><h3>3 · React</h3><p>Genkend den samme idé i en komponent.</p></article><article><h3>4 · Prøv selv</h3><p>Brug konceptet i dit eget projekt.</p></article></div><p class="reflection">Kerne først. Slides markeret <strong>Ekstra</strong> er fordybelse, hvis tiden og behovet er der.</p>`
+    `${eyebrow("Arbejdsmåde")}<h2>Hvert koncept følger den samme rytme</h2><div class="concept-rhythm-flow"><article><span class="rhythm-node">01</span><small>Se mønsteret</small><h3>Forstå</h3><p>Hvad gør konceptet — og hvorfor?</p></article><article><span class="rhythm-node">02</span><small>Afprøv isoleret</small><h3>JavaScript</h3><p>Læs koden, kør den og ændr én ting.</p></article><article><span class="rhythm-node">03</span><small>Find det igen</small><h3>React</h3><p>Genkend den samme idé i en komponent.</p></article><article><span class="rhythm-node">04</span><small>Brug det selv</small><h3>Opgave</h3><p>Arbejd først i JavaScript — derefter i React.</p></article></div><div class="concept-rhythm-foot"><strong>Kerne først</strong><span>De tonede <b>Ekstra</b>-koncepter er fordybelse, hvis tiden og behovet er der.</span></div>`,
+    "po-slide po-rhythm-slide",
+    "arbejdsrytme"
   ),
   slide(
     `${eyebrow("Setup · Sandbox · 1/2")}<h2>Opret en sandbox i <code>web-app-optimization</code></h2><div class="sandbox-setup-grid"><article><h3>Hold øvelserne samlet</h3><p>Vi arbejder videre i React-projektet <strong><code>web-app-optimization</code></strong>.</p><p>Opret en <code>sandbox</code>-mappe, så JavaScript- og React-øvelserne ikke bliver blandet sammen med resten af projektet.</p>${render("```text\nsrc/\n├── App.jsx\n└── sandbox/\n    └── sandbox.js\n```")}</article><article><h3>Opret <code>sandbox.js</code></h3><p><code>sandbox.js</code> bliver vores entry point til JavaScript-øvelser.</p>${render('```js\n// src/sandbox/sandbox.js\n\nconsole.log("Sandbox is running 🚀");\n```')}</article></div>`,
@@ -482,13 +470,20 @@ const conceptSlides = concepts.flatMap((concept) => {
       : [conceptExampleSlide(concept, "javascript")];
 
   return concept.extra
-    ? [chapterSlide, conceptFoundationSlide(concept), conceptComparisonSlide(concept), conceptTaskSlide(concept)]
+    ? [
+        chapterSlide,
+        conceptFoundationSlide(concept),
+        conceptComparisonSlide(concept),
+        ...conceptTaskSlides(concept, "JavaScript"),
+        ...conceptTaskSlides(concept, "React")
+      ]
     : [
         chapterSlide,
         conceptFoundationSlide(concept),
         ...javascriptSlides,
         conceptExampleSlide(concept, "react"),
-        conceptTaskSlide(concept)
+        ...conceptTaskSlides(concept, "JavaScript"),
+        ...conceptTaskSlides(concept, "React")
       ];
 });
 
