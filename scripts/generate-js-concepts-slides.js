@@ -433,7 +433,7 @@ const introSlides = [
     "eksempler-fra-andet-semester"
   ),
   slide(
-    `${eyebrow("Arbejdsmåde")}<h2>Hvert koncept følger den samme rytme</h2><div class="concept-rhythm-flow"><article><span class="rhythm-node">01</span><small>Se mønsteret</small><h3>Forstå</h3><p>Hvad gør konceptet — og hvorfor?</p></article><article><span class="rhythm-node">02</span><small>Afprøv isoleret</small><h3>JavaScript</h3><p>Læs koden, kør den og ændr én ting.</p></article><article><span class="rhythm-node">03</span><small>Find det igen</small><h3>React</h3><p>Genkend den samme idé i en komponent.</p></article><article><span class="rhythm-node">04</span><small>Brug det selv</small><h3>Opgave</h3><p>Arbejd først i JavaScript — derefter i React.</p></article></div><div class="concept-rhythm-foot"><strong>Kerne først</strong><span>De tonede <b>Ekstra</b>-koncepter er fordybelse, hvis tiden og behovet er der.</span></div>`,
+    `${eyebrow("Arbejdsmåde")}<h2>Hvert koncept følger den samme rytme</h2><div class="concept-rhythm-flow"><article><span class="rhythm-node">01</span><small>Forstå idéen</small><h3>Forstå</h3><p>Hvad er konceptet — og hvorfor bruger vi det?</p></article><article><span class="rhythm-node">02</span><small>Se det i brug</small><h3>JavaScript</h3><p>Se, hvordan konceptet bruges i almindelig JavaScript.</p></article><article><span class="rhythm-node">03</span><small>Se det igen</small><h3>React</h3><p>Se, hvordan det samme koncept bruges i React.</p></article><article><span class="rhythm-node">04</span><small>Brug det selv</small><h3>Prøv selv</h3><p>Arbejd med konceptet i en JavaScript- og React-opgave.</p></article></div><div class="concept-rhythm-foot"><strong>Kerne først</strong><span>De tonede <b>Ekstra</b>-koncepter er fordybelse, hvis tiden og behovet er der.</span></div>`,
     "po-slide po-rhythm-slide",
     "arbejdsrytme"
   ),
@@ -495,12 +495,12 @@ const agenda = slide(
 
 const conceptIndexSlides = [
   slide(
-    `${eyebrow("Indeks · 1/2")}<h2>Find hurtigt et koncept</h2><div class="concept-index">${concepts.slice(0, 21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div><p class="index-material"><a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p>`,
+    `${eyebrow("Indeks · 1/2")}<h2>JavaScript-koncept</h2><div class="concept-index">${concepts.slice(0, 21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div><p class="index-material"><a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p>`,
     "po-slide po-concept-index",
     "konceptindeks"
   ),
   slide(
-    `${eyebrow("Indeks · 2/2")}<h2>Array methods, strings, events og async</h2><div class="concept-index">${concepts.slice(21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div><div class="index-footer"><p class="index-note">De tonede emner er <strong>Ekstra</strong>: brug dem til fordybelse eller som opslagsværk.</p><p class="index-material"><a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p></div>`,
+    `${eyebrow("Indeks · 2/2")}<h2>JavaScript-koncept</h2><div class="concept-index">${concepts.slice(21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div><div class="index-footer"><p class="index-note">De tonede emner er <strong>Ekstra</strong>: brug dem til fordybelse eller som opslagsværk.</p><p class="index-material"><a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p></div>`,
     "po-slide po-concept-index"
   )
 ];
