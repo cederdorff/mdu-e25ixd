@@ -2,34 +2,72 @@
 
 ## Formål
 
-Start Case 1 ved at undersøge fejlhåndtering og UI-states i en eksisterende React-løsning. Du skal finde konkrete problemer og begynde at gøre løsningen mere robust for både brugeren og udvikleren.
+Vi arbejder med udvalgte JavaScript-koncepter og starter Case 1.
 
-Efter undervisningen skal du have dokumenteret en baseline, oprettet prioriterede issues og implementeret din første forbedring i en feature branch.
+Dagens faglige fokus er fejlhåndtering og robuste UI-states i React.
+
+<hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
-- Sørg for, at Git og Node.js fungerer på din computer. Det forventes, at du kan clone, committe, pushe og arbejde i en branch.
-- Genbesøg principperne fra 19. august og JavaScript-koncepterne fra 21. august.
+- Arbejd dig igennem koncept 1–21 i [JavaScript for React-slidesene](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/konceptindeks). Læs forklaringerne, gennemgå eksemplerne og arbejd med opgaverne.
+- Hvis du har mere tid, kan du fortsætte med de ekstra koncepter og opgaver 22–25.
+
+<hr style="margin: 2rem 0;">
 
 ## Agenda
 
-1. Introduktion til Case 1, krav, rammer og dokumentation.
-2. Kør løsningen lokalt, og etablér en baseline med skærmbilleder og kendte problemer.
-3. Undersøg løsningens asynkrone flows:
-   - Hvad sker der under loading?
-   - Hvad vises ved success, tomme resultater og fejl?
-   - Kan brugeren forstå problemet og prøve igen?
-4. Kort fagligt input:
-   - forskellige fejltyper: validering, netværk, API, manglende data og kodefejl
-   - `try`, `catch` og `finally` omkring asynkrone operationer
-   - kontrol af response og fejl fra fetch eller Supabase
-   - loading-, success-, empty-, error- og retry-states i React
-5. Omsæt fund til prioriterede issues med tydelige acceptkriterier.
-6. Arbejd individuelt: issue → feature branch → implementering → pull request.
-7. Test forbedringen i både kode og UI, og dokumentér den første før/efter-effekt.
+Vi begynder med udvalgte JavaScript-koncepter og går derefter videre til Case 1, fejlhåndtering og robuste UI-states.
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>1. Udvalgte JavaScript-koncepter</strong></summary>
+<ul>
+<li>Fælles opsamling på forberedelsen og spørgsmål fra arbejdet.</li>
+<li>Forklaring og arbejde med udvalgte koncepter.</li>
+<li>Kobling mellem almindelig JavaScript og React.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>2. Kick-off af Case 1</strong></summary>
+<ul>
+<li>Introduktion til casen og dens overordnede ramme.</li>
+<li>Hvad vi skal arbejde med i det kommende forløb.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>3. Fejlhåndtering</strong></summary>
+<ul>
+<li>Hvilke fejl kan opstå i en React-løsning?</li>
+<li>Hvordan opdager, håndterer og kommunikerer vi dem?</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>4. Robuste UI-states</strong></summary>
+<ul>
+<li>Loading, success, empty og error states.</li>
+<li>Hvordan skifter UI'et mellem tilstandene?</li>
+<li>Hvordan hjælper vi brugeren videre, når noget ikke går som forventet?</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>5. Første arbejde med Case 1</strong></summary>
+<ul>
+<li>Undersøg løsningen med fokus på fejlhåndtering og UI-states.</li>
+<li>Begynd arbejdet med casen og saml spørgsmål til det videre forløb.</li>
+</ul>
+</details>
+
+<hr style="margin: 2rem 0;">
 
 ## Materialer
 
-- **Slides:** Vil blive tilgængelige her
-- **Opgaver:** Casebrief, øvelse om fejlhåndtering og UI-states samt [skabelon til teknisk audit](teknisk-audit-skabelon.md)
-- **Links:** Vil blive tilgængelige her
+- **Slides:**
+  - Vil blive tilgængelige her
+- **JavaScript-reference:**
+  - [JavaScript for React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/konceptindeks)
+- **Case 1:**
+  - Casebrief og øvrigt materiale vil blive tilgængeligt her
