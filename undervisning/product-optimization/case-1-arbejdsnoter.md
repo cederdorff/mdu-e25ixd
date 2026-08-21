@@ -4,10 +4,10 @@
 
 ## Fagligt fokus
 
-Case 1 skal omhandle:
+Case 1 omhandler:
 
 - React-optimering
-- robusthed
+- robusthed og UI-states
 - kodekvalitet
 - accessibility
 - data

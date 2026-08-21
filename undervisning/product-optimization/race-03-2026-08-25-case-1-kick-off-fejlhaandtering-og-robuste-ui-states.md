@@ -2,9 +2,9 @@
 
 ## Formål
 
-Vi arbejder med udvalgte JavaScript-koncepter og starter Case 1.
+Vi arbejder med udvalgte JavaScript-koncepter og starter Case 1 med en første undersøgelse af den udleverede løsning.
 
-Dagens faglige fokus er fejlhåndtering og robuste UI-states i React.
+Dagens faglige fokus er fejlhåndtering og robuste UI-states i React. Du begynder samtidig en teknisk audit, som skal danne grundlag for dine prioriteringer i casen.
 
 <hr style="margin: 2rem 0;">
 
@@ -54,10 +54,13 @@ Vi begynder med udvalgte JavaScript-koncepter og går derefter videre til Case 1
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>5. Første arbejde med Case 1</strong></summary>
+<summary><strong>5. Første undersøgelse og audit af Case 1</strong></summary>
 <ul>
-<li>Undersøg løsningen med fokus på fejlhåndtering og UI-states.</li>
-<li>Begynd arbejdet med casen og saml spørgsmål til det videre forløb.</li>
+<li>Kør løsningen, og gennemfør de vigtigste brugerflows, før du ændrer koden.</li>
+<li>Dokumentér udgangspunktet med konkrete observationer, skærmbilleder og relevante fejl fra konsol eller netværk.</li>
+<li>Registrér de første fund inden for komponenter, designkonsistens, accessibility, UI-states, data og deployment.</li>
+<li>Vurdér fundenes konsekvens og forventede indsats, og begynd en prioriteret optimeringsplan.</li>
+<li>Vi har særligt fokus på fejlhåndtering og loading-, empty-, success- og error states i dagens arbejde.</li>
 </ul>
 </details>
 
@@ -69,5 +72,7 @@ Vi begynder med udvalgte JavaScript-koncepter og går derefter videre til Case 1
   - Vil blive tilgængelige her
 - **JavaScript-reference:**
   - [JavaScript for React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/konceptindeks)
+- **Audit:**
+  - [Teknisk audit af en React-løsning](./teknisk-audit-skabelon.md)
 - **Case 1:**
   - Casebrief og øvrigt materiale vil blive tilgængeligt her

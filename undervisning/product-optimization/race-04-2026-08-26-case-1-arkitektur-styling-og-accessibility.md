@@ -8,7 +8,7 @@ Efter undervisningen skal du kunne gennemføre en afgrænset refaktorering uden 
 
 ## Forberedelse
 
-- Medbring din audit og prioriterede optimeringsplan.
+- Færdiggør den tekniske audit og den prioriterede optimeringsplan, som du begyndte ved kick-off af Case 1, og medbring dem til undervisningen.
 - Sørg for, at den oprindelige løsning kan køre lokalt, og at du har oprettet din første feature branch.
 
 ## Agenda
