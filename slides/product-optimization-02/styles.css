@@ -3707,6 +3707,20 @@
   margin-top: 14px;
 }
 
+.reveal .concept-narrative code {
+  padding: 0.08em 0.3em;
+  border: 1px solid rgb(101 167 255 / 38%);
+  border-radius: 0.28em;
+  background: rgb(101 167 255 / 12%);
+  color: #a9cfff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  font-weight: 750;
+  white-space: nowrap;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 .reveal .concept-stage--why .concept-narrative li::marker {
   color: var(--po-yellow);
 }
