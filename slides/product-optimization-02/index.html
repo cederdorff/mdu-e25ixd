@@ -16,7 +16,7 @@
 
 <section class="po-slide"><span class="eyebrow">Hvorfor JavaScript for React?</span><h2>Når React føles svært, er det ofte JavaScript-delen</h2><p class="react-foundation-lead">React er et <strong>JavaScript-bibliotek</strong>. Det giver os en måde at organisere UI som komponenter og forbinde data med det, brugeren ser.</p><div class="react-equation"><article class="equation-js"><span>Sproget</span><h3>JavaScript</h3><p>Functions · objects · arrays · conditionals · events · async</p></article><b>+</b><article class="equation-react"><span>React tilfører</span><h3>En model for UI</h3><p>Components · props · state · JSX</p></article><b>→</b><article class="equation-ui"><span>Resultatet</span><h3>Et UI, der følger data</h3><p>Når state ændres, renderes komponenten igen.</p></article></div><p class="react-thesis"><strong>Inde i en React-komponent skriver vi stadig JavaScript.</strong> React organiserer koden og holder UI’et synkroniseret med state.</p></section>
 
-<section class="po-slide po-agenda" id="agenda"><span class="eyebrow">Agenda</span><h2>Fra egne eksempler til React-kode, I kan forklare</h2><div class="agenda-columns"><div class="agenda-column"><h3>Fælles start</h3><ol class="agenda-track"><li><a href="#/rammen-for-dagen"><strong>Rammen for dagen</strong><small>Hvorfor vi tager et skridt tilbage til JavaScript</small></a></li><li><a href="#/eksempler-fra-andet-semester"><strong>Eksempler fra 2. semester</strong><small>Hvad virker, men er stadig svært at forklare?</small></a></li><li><a href="#/modules"><strong>Koncept for koncept</strong><small>Forstå → JavaScript → React → prøv selv</small></a></li></ol></div><div class="agenda-column"><h3>Konceptbank</h3><ol class="agenda-track concept-groups"><li><a href="#/modules"><strong>Modules og functions</strong><small>1–7</small></a></li><li><a href="#/objects"><strong>Objects</strong><small>8–13</small></a></li><li><a href="#/arrays"><strong>Arrays</strong><small>14–18</small></a></li><li><a href="#/array-methods"><strong>Array methods</strong><small>19–25</small></a></li><li><a href="#/strings-og-conditionals"><strong>Strings og conditionals</strong><small>26–32</small></a></li><li><a href="#/events"><strong>Events</strong><small>33–34</small></a></li><li><a href="#/asynkron-javascript-og-apier"><strong>Async og API’er</strong><small>35–40</small></a></li></ol></div></div><p class="agenda-note"><strong>40 koncepter er en modulbank.</strong> Vi prioriterer kernekoncepterne og bruger de markerede ekstra-emner efter behov.</p><p class="agenda-material"><strong>Vil du hellere følge dagen som tekst?</strong> <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede JavaScript-materiale ↗</a></p></section>
+<section class="po-slide po-agenda" id="agenda"><span class="eyebrow">Agenda</span><h2>Fra egne eksempler til React-kode, I kan forklare</h2><div class="agenda-columns"><div class="agenda-column"><h3>Dagens forløb</h3><ol class="agenda-track"><li><a href="#/rammen-for-dagen"><strong>Rammen for dagen</strong><small>Hvorfor vi tager et skridt tilbage til JavaScript</small></a></li><li><a href="#/eksempler-fra-andet-semester"><strong>Eksempler fra 2. semester</strong><small>Hvad virker, men er stadig svært at forklare?</small></a></li><li><a href="#/modules"><strong>Koncept for koncept</strong><small>Forstå → JavaScript → React → prøv selv</small></a></li><li><a href="#/opsamling"><strong>Opsamling</strong><small>Genbesøg egen kode, og vælg dit næste spørgsmål</small></a></li></ol></div><div class="agenda-column"><h3>Konceptbank</h3><ol class="agenda-track concept-groups"><li><a href="#/modules"><strong>Modules og functions</strong><small>1–7</small></a></li><li><a href="#/objects"><strong>Objects</strong><small>8–13</small></a></li><li><a href="#/arrays"><strong>Arrays</strong><small>14–18</small></a></li><li><a href="#/array-methods"><strong>Array methods</strong><small>19–25</small></a></li><li><a href="#/strings-og-conditionals"><strong>Strings og conditionals</strong><small>26–32</small></a></li><li><a href="#/events"><strong>Events</strong><small>33–34</small></a></li><li><a href="#/asynkron-javascript-og-apier"><strong>Async og API’er</strong><small>35–40</small></a></li></ol></div></div><p class="agenda-note"><strong>40 koncepter er en modulbank.</strong> Vi prioriterer kernekoncepterne og bruger de markerede ekstra-emner efter behov.</p><p class="agenda-material"><strong>Vil du hellere følge dagen som tekst?</strong> <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede JavaScript-materiale ↗</a></p></section>
 
 <section class="po-slide mode-work" id="eksempler-fra-andet-semester"><span class="eyebrow">Eksempler fra 2. semester</span><h2>Kan I forklare koden sammen?</h2><p class="pair-review-lead">Find det kodeeksempel frem, du valgte som forberedelse.</p><div class="pair-review"><article><span>01</span><h3>Præsenter</h3><p>Vis eksemplet, giv kort kontekst, og fortæl, hvad du tror, koden gør.</p></article><article><span>02</span><h3>Peg på tvivlen</h3><p>Markér den linje eller syntaks, du har svært ved at forklare.</p></article><article><span>03</span><h3>Undersøg sammen</h3><p>Lad din sidemakker stille spørgsmål og hjælpe med at forklare koden.</p></article><article><span>04</span><h3>Vurder</h3><p>Kan du nu forklare eksemplet med dine egne ord? Byt derefter roller.</p></article></div><div class="pair-outcomes"><p><strong>Afklaret?</strong> Behold forklaringen i dine egne noter.</p><p><strong>Stadig uklart?</strong> Del kode eller link, din nuværende forklaring og dit konkrete spørgsmål i <a href="https://padlet.com/race_js/js_react_eksempler" target="_blank" rel="noreferrer">Padlet</a>.</p></div></section>
 
@@ -43,14 +43,11 @@ import &quot;./sandbox/sandbox.js&quot;;
 
 <section class="po-slide po-concept-index" id="konceptindeks"><span class="eyebrow">Indeks · 1/2</span><h2>Find hurtigt et koncept</h2><div class="concept-index"><a class="" href="#/1-modules-import-export"><span class="concept-number">01</span><span class="concept-label">Modules: <code>import</code> &amp; <code>export</code></span></a><a class="" href="#/2-function-declarations"><span class="concept-number">02</span><span class="concept-label">Function declarations</span></a><a class="" href="#/3-parametre-og-return-values"><span class="concept-number">03</span><span class="concept-label">Parametre og return values</span></a><a class="" href="#/4-arrow-functions"><span class="concept-number">04</span><span class="concept-label">Arrow functions</span></a><a class="is-extra" href="#/5-ekstra-default-parameters"><span class="concept-number">05</span><span class="concept-label">Ekstra: Default parameters</span></a><a class="is-extra" href="#/6-ekstra-callback-functions"><span class="concept-number">06</span><span class="concept-label">Ekstra: Callback functions</span></a><a class="is-extra" href="#/7-ekstra-closures"><span class="concept-number">07</span><span class="concept-label">Ekstra: Closures</span></a><a class="" href="#/8-objects"><span class="concept-number">08</span><span class="concept-label">Objects</span></a><a class="" href="#/9-property-access"><span class="concept-number">09</span><span class="concept-label">Property access</span></a><a class="" href="#/10-shorthand-properties"><span class="concept-number">10</span><span class="concept-label">Shorthand properties</span></a><a class="" href="#/11-destructuring-af-objects"><span class="concept-number">11</span><span class="concept-label">Destructuring af objects</span></a><a class="is-extra" href="#/12-ekstra-spread-syntax-med-objects"><span class="concept-number">12</span><span class="concept-label">Ekstra: Spread syntax med objects</span></a><a class="is-extra" href="#/13-ekstra-immutable-opdatering-af-objects"><span class="concept-number">13</span><span class="concept-label">Ekstra: Immutable opdatering af objects</span></a><a class="" href="#/14-arrays"><span class="concept-number">14</span><span class="concept-label">Arrays</span></a><a class="" href="#/15-destructuring-af-arrays"><span class="concept-number">15</span><span class="concept-label">Destructuring af arrays</span></a><a class="is-extra" href="#/16-ekstra-spread-syntax-med-arrays"><span class="concept-number">16</span><span class="concept-label">Ekstra: Spread syntax med arrays</span></a><a class="is-extra" href="#/17-ekstra-rest-syntax-rest-parameters"><span class="concept-number">17</span><span class="concept-label">Ekstra: Rest syntax / Rest parameters</span></a><a class="is-extra" href="#/18-ekstra-immutable-opdatering-af-arrays"><span class="concept-number">18</span><span class="concept-label">Ekstra: Immutable opdatering af arrays</span></a><a class="" href="#/19-map"><span class="concept-number">19</span><span class="concept-label"><code>map()</code></span></a><a class="" href="#/20-filter"><span class="concept-number">20</span><span class="concept-label"><code>filter()</code></span></a><a class="" href="#/21-find"><span class="concept-number">21</span><span class="concept-label"><code>find()</code></span></a></div><p class="index-material"><a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p></section>
 
-<section class="po-slide po-concept-index"><span class="eyebrow">Indeks · 2/2</span><h2>Strings, events og async</h2><div class="concept-index"><a class="is-extra" href="#/22-ekstra-foreach"><span class="concept-number">22</span><span class="concept-label">Ekstra: <code>forEach()</code></span></a><a class="is-extra" href="#/23-ekstra-some-og-every"><span class="concept-number">23</span><span class="concept-label">Ekstra: <code>some()</code> og <code>every()</code></span></a><a class="is-extra" href="#/24-ekstra-includes"><span class="concept-number">24</span><span class="concept-label">Ekstra: <code>includes()</code></span></a><a class="is-extra" href="#/25-ekstra-reduce"><span class="concept-number">25</span><span class="concept-label">Ekstra: <code>reduce()</code></span></a><a class="" href="#/26-template-literals"><span class="concept-number">26</span><span class="concept-label">Template literals</span></a><a class="" href="#/27-if-else"><span class="concept-number">27</span><span class="concept-label"><code>if</code> / <code>else</code></span></a><a class="" href="#/28-ternary-operator"><span class="concept-number">28</span><span class="concept-label">Ternary operator <code>? :</code></span></a><a class="" href="#/29-logical-and"><span class="concept-number">29</span><span class="concept-label">Logical AND <code>&amp;&amp;</code></span></a><a class="is-extra" href="#/30-ekstra-logical-or-og-fallback-værdier"><span class="concept-number">30</span><span class="concept-label">Ekstra: Logical OR <code>||</code> og fallback-værdier</span></a><a class="is-extra" href="#/31-ekstra-nullish-coalescing"><span class="concept-number">31</span><span class="concept-label">Ekstra: Nullish coalescing <code>??</code></span></a><a class="" href="#/32-optional-chaining"><span class="concept-number">32</span><span class="concept-label">Optional chaining <code>?.</code></span></a><a class="" href="#/33-event-handlers"><span class="concept-number">33</span><span class="concept-label">Event handlers</span></a><a class="" href="#/34-event-object"><span class="concept-number">34</span><span class="concept-label">Event object</span></a><a class="" href="#/35-async-await"><span class="concept-number">35</span><span class="concept-label"><code>async</code> / <code>await</code></span></a><a class="" href="#/36-fetch"><span class="concept-number">36</span><span class="concept-label"><code>fetch()</code></span></a><a class="" href="#/37-json-og-response-json"><span class="concept-number">37</span><span class="concept-label">JSON og <code>response.json()</code></span></a><a class="is-extra" href="#/38-ekstra-promises-med-then-catch"><span class="concept-number">38</span><span class="concept-label">Ekstra: Promises med <code>.then()</code> / <code>.catch()</code></span></a><a class="is-extra" href="#/39-ekstra-error-handling-med-try-catch"><span class="concept-number">39</span><span class="concept-label">Ekstra: Error handling med <code>try</code> / <code>catch</code></span></a><a class="is-extra" href="#/40-ekstra-json-parse-json-stringify"><span class="concept-number">40</span><span class="concept-label">Ekstra: <code>JSON.parse()</code> / <code>JSON.stringify()</code></span></a></div><div class="index-footer"><p class="index-note">De tonede emner er <strong>Ekstra</strong>: brug dem til fordybelse eller som opslagsværk.</p><p class="index-material"><a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p></div></section>
+<section class="po-slide po-concept-index"><span class="eyebrow">Indeks · 2/2</span><h2>Array methods, strings, events og async</h2><div class="concept-index"><a class="is-extra" href="#/22-ekstra-foreach"><span class="concept-number">22</span><span class="concept-label">Ekstra: <code>forEach()</code></span></a><a class="is-extra" href="#/23-ekstra-some-og-every"><span class="concept-number">23</span><span class="concept-label">Ekstra: <code>some()</code> og <code>every()</code></span></a><a class="is-extra" href="#/24-ekstra-includes"><span class="concept-number">24</span><span class="concept-label">Ekstra: <code>includes()</code></span></a><a class="is-extra" href="#/25-ekstra-reduce"><span class="concept-number">25</span><span class="concept-label">Ekstra: <code>reduce()</code></span></a><a class="" href="#/26-template-literals"><span class="concept-number">26</span><span class="concept-label">Template literals</span></a><a class="" href="#/27-if-else"><span class="concept-number">27</span><span class="concept-label"><code>if</code> / <code>else</code></span></a><a class="" href="#/28-ternary-operator"><span class="concept-number">28</span><span class="concept-label">Ternary operator <code>? :</code></span></a><a class="" href="#/29-logical-and"><span class="concept-number">29</span><span class="concept-label">Logical AND <code>&amp;&amp;</code></span></a><a class="is-extra" href="#/30-ekstra-logical-or-og-fallback-værdier"><span class="concept-number">30</span><span class="concept-label">Ekstra: Logical OR <code>||</code> og fallback-værdier</span></a><a class="is-extra" href="#/31-ekstra-nullish-coalescing"><span class="concept-number">31</span><span class="concept-label">Ekstra: Nullish coalescing <code>??</code></span></a><a class="" href="#/32-optional-chaining"><span class="concept-number">32</span><span class="concept-label">Optional chaining <code>?.</code></span></a><a class="" href="#/33-event-handlers"><span class="concept-number">33</span><span class="concept-label">Event handlers</span></a><a class="" href="#/34-event-object"><span class="concept-number">34</span><span class="concept-label">Event object</span></a><a class="" href="#/35-async-await"><span class="concept-number">35</span><span class="concept-label"><code>async</code> / <code>await</code></span></a><a class="" href="#/36-fetch"><span class="concept-number">36</span><span class="concept-label"><code>fetch()</code></span></a><a class="" href="#/37-json-og-response-json"><span class="concept-number">37</span><span class="concept-label">JSON og <code>response.json()</code></span></a><a class="is-extra" href="#/38-ekstra-promises-med-then-catch"><span class="concept-number">38</span><span class="concept-label">Ekstra: Promises med <code>.then()</code> / <code>.catch()</code></span></a><a class="is-extra" href="#/39-ekstra-error-handling-med-try-catch"><span class="concept-number">39</span><span class="concept-label">Ekstra: Error handling med <code>try</code> / <code>catch</code></span></a><a class="is-extra" href="#/40-ekstra-json-parse-json-stringify"><span class="concept-number">40</span><span class="concept-label">Ekstra: <code>JSON.parse()</code> / <code>JSON.stringify()</code></span></a></div><div class="index-footer"><p class="index-note">De tonede emner er <strong>Ekstra</strong>: brug dem til fordybelse eller som opslagsværk.</p><p class="index-material"><a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p></div></section>
 
 <section class="chapter po-chapter po-slide" id="modules"><span class="chapter-index">01</span><span class="eyebrow">Modules</span><h2>Modules</h2><p class="kicker">Her arbejder vi med ét lille JavaScript-koncept ad gangen og kobler det straks til React.</p></section>
 
-<section data-concept-number="1" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="1-modules-import-export"><span class="eyebrow">1 · Forstå</span><h2>Modules: <code>import</code> &amp; <code>export</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Modules gør det muligt at dele JavaScript-kode op i flere filer.</p>
-<p>En fil kan <strong>exportere</strong> værdier, funktioner eller komponenter, som andre filer derefter kan <strong>importere</strong>.</p>
-<p>Modules hjælper os med at organisere og genbruge kode i stedet for at samle hele applikationen i én stor fil.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">// students.js
+<section data-concept-number="1" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="1-modules-import-export"><span class="eyebrow">1 · Forstå</span><h2>Modules: <code>import</code> &amp; <code>export</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Modules gør det muligt at dele JavaScript-kode op i flere filer.</li><li>En fil kan <strong>exportere</strong> værdier, funktioner eller komponenter, som andre filer derefter kan <strong>importere</strong>.</li><li>Modules hjælper os med at organisere og genbruge kode i stedet for at samle hele applikationen i én stor fil.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">// students.js
 
 export const students = [&quot;Anna&quot;, &quot;Peter&quot;, &quot;Sara&quot;];
 </code></pre>
@@ -62,31 +59,36 @@ console.log(students);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="1" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">1 · JavaScript-eksempler</span><h2>Modules: <code>import</code> &amp; <code>export</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Vi kan exportere en variabel fra en fil:</p>
-<p>og importere den i <code>sandbox.js</code>:</p>
-<p>Vi kan også exportere funktioner:</p>
+<section data-concept-number="1" data-concept-stage="how" class="po-slide concept-stage concept-stage--how"><span class="eyebrow">1 · Named og default export · 1/2</span><h2>Modules: <code>import</code> &amp; <code>export</code></h2><p class="concept-subtitle">Named export</p><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>En fil kan have flere named exports. De importeres med <code>{ }</code>, og navnet skal matche exporten</p>
 </div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">// students.js
 
 export const students = [&quot;Anna&quot;, &quot;Peter&quot;, &quot;Sara&quot;];
-</code></pre>
-<pre class="po-code"><code class="language-javascript">// sandbox.js
+
+// sandbox.js
 
 import { students } from &quot;./students.js&quot;;
 
 console.log(students);
 </code></pre>
-<pre class="po-code"><code class="language-javascript">// greetings.js
+</div></div></section>
 
-export function sayHi(name) {
+<section data-concept-number="1" data-concept-stage="how" class="po-slide concept-stage concept-stage--how"><span class="eyebrow">1 · Named og default export · 2/2</span><h2>Modules: <code>import</code> &amp; <code>export</code></h2><p class="concept-subtitle">Default export</p><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En fil kan have én default export. Den importeres uden <code>{ }</code></li><li>Fordi en default export ikke har <code>{ }</code>, kan vi vælge et andet lokalt navn ved importen</li><li>Det virker, men et navn, der matcher funktionen eller komponenten, gør koden lettere at læse.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">// greetings.js
+
+export default function sayHi(name) {
   return `Hello, ${name}!`;
 }
+
+// sandbox.js
+
+import sayHi from &quot;./greetings.js&quot;;
+
+console.log(sayHi(&quot;Peter&quot;));
+</code></pre>
+<pre class="po-code"><code class="language-javascript">import createGreeting from &quot;./greetings.js&quot;;
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="1" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">1 · I React</span><h2>Modules: <code>import</code> &amp; <code>export</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>React components er også JavaScript modules.</p>
-<p>En component kan exporteres fra sin egen fil:</p>
-<p>og importeres i en anden component:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">// Student.jsx
+<section data-concept-number="1" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">1 · I React</span><h2>Modules: <code>import</code> &amp; <code>export</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>React components er også JavaScript modules. En fil eksporterer ofte sin primære komponent som <code>default</code>, så komponenten importeres uden <code>{ }</code>. Hooks som <code>useState</code> er derimod ofte named exports og importeres med <code>{ }</code>.</li><li>En component kan exporteres fra sin egen fil</li><li>En default export importeres uden <code>{ }</code> i en anden komponent</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">// Student.jsx
 
 export default function Student() {
   return &lt;p&gt;Anna&lt;/p&gt;;
@@ -111,26 +113,23 @@ export default function App() {
 
 <section data-concept-number="1" data-concept-stage="task" class="po-slide mode-work concept-stage concept-stage--task concept-task-slide" id="opgave-1"><span class="eyebrow">1 · Prøv selv</span><h2>Modules: <code>import</code> &amp; <code>export</code></h2><div class="concept-task-pair"><article><span>JavaScript</span><ol>
 <li>Opret <code>teachers.js</code> i <code>sandbox</code>.</li>
-<li>Opret et array med tre undervisere og exportér det.</li>
-<li>Importér <code>teachers</code> i <code>sandbox.js</code>.</li>
+<li>Opret et array med tre undervisere og exportér det som en named export.</li>
+<li>Importér <code>teachers</code> med <code>{ }</code> i <code>sandbox.js</code>.</li>
 <li>Print arrayet med <code>console.log()</code>.</li>
 <li>Kontrollér resultatet i browserens console.</li>
 </ol>
 </article><article><span>React</span><ol>
 <li>Opret <code>Teacher.jsx</code> i <code>sandbox</code>.</li>
 <li>Lav en <code>Teacher</code> component, der viser navnet på en underviser.</li>
-<li>Exportér komponenten.</li>
+<li>Exportér komponenten med <code>export default</code>.</li>
 <li>Importér <code>Teacher</code> i <code>HomePage.jsx</code>.</li>
-<li>Vis <code>&lt;Teacher /&gt;</code> nederst inden for sidens <code>&lt;main&gt;</code>-tag.</li>
+<li>Kontrollér, at importen ikke bruger <code>{ }</code>, og vis <code>&lt;Teacher /&gt;</code> nederst inden for sidens <code>&lt;main&gt;</code>-tag.</li>
 </ol>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
 <section class="chapter po-chapter po-slide" id="functions"><span class="chapter-index">02</span><span class="eyebrow">Functions</span><h2>Functions</h2><p class="kicker">Her arbejder vi med ét lille JavaScript-koncept ad gangen og kobler det straks til React.</p></section>
 
-<section data-concept-number="2" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="2-function-declarations"><span class="eyebrow">2 · Forstå</span><h2>Function declarations</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En function declaration bruges til at oprette en funktion:</p>
-<p>En funktion er en blok kode, som vi kan køre, når vi har brug for den.</p>
-<p>Funktioner gør det muligt at samle og genbruge kode.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function sayHi() {
+<section data-concept-number="2" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="2-function-declarations"><span class="eyebrow">2 · Forstå</span><h2>Function declarations</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En function declaration bruges til at oprette en funktion</li><li>En funktion er en blok kode, som vi kan køre, når vi har brug for den.</li><li>Funktioner gør det muligt at samle og genbruge kode.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function sayHi() {
   console.log(&quot;Hello!&quot;);
 }
 </code></pre>
@@ -138,10 +137,7 @@ export default function App() {
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="2" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">2 · JavaScript-eksempler</span><h2>Function declarations</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En function declaration består af <code>function</code>, et navn, parenteser <code>()</code> og en blok <code>{}</code>:</p>
-<p>Funktionen kaldes ved at skrive dens navn efterfulgt af <code>()</code>:</p>
-<p>En funktion kan indeholde flere statements:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function showMessage() {
+<section data-concept-number="2" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">2 · JavaScript-eksempler</span><h2>Function declarations</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En function declaration består af <code>function</code>, et navn, parenteser <code>()</code> og en blok <code>{}</code></li><li>Funktionen kaldes ved at skrive dens navn efterfulgt af <code>()</code></li><li>En funktion kan indeholde flere statements</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function showMessage() {
   console.log(&quot;Hello!&quot;);
 }
 </code></pre>
@@ -159,10 +155,7 @@ showProfile();
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="2" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">2 · I React</span><h2>Function declarations</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>React components er også funktioner:</p>
-<p>I stedet for selv at kalde funktionen:</p>
-<p>bruger vi komponenten i JSX:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Welcome() {
+<section data-concept-number="2" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">2 · I React</span><h2>Function declarations</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>React components er også funktioner</li><li>I stedet for selv at kalde funktionen</li><li>Bruger vi komponenten i JSX</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Welcome() {
   return &lt;h2&gt;Welcome!&lt;/h2&gt;;
 }
 </code></pre>
@@ -187,10 +180,7 @@ showProfile();
 </ol>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="3" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="3-parametre-og-return-values"><span class="eyebrow">3 · Forstå</span><h2>Parametre og return values</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Parametre gør det muligt at sende værdier ind i en funktion:</p>
-<p>Her er <code>name</code> en parameter, mens <code>&quot;Anna&quot;</code> er den værdi, vi sender med, når funktionen kaldes.</p>
-<p>Parametre gør funktioner fleksible, fordi den samme funktion kan arbejde med forskellige værdier:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function sayHi(name) {
+<section data-concept-number="3" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="3-parametre-og-return-values"><span class="eyebrow">3 · Forstå</span><h2>Parametre og return values</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Parametre gør det muligt at sende værdier ind i en funktion</li><li>Her er <code>name</code> en parameter, mens <code>&quot;Anna&quot;</code> er den værdi, vi sender med, når funktionen kaldes.</li><li>Parametre gør funktioner fleksible, fordi den samme funktion kan arbejde med forskellige værdier</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function sayHi(name) {
   console.log(`Hello, ${name}!`);
 }
 
@@ -205,10 +195,7 @@ console.log(greeting);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="3" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">3 · JavaScript-eksempler</span><h2>Parametre og return values</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En funktion kan have én parameter:</p>
-<p>eller flere parametre:</p>
-<p>Når JavaScript møder <code>return</code>, afsluttes funktionen, og værdien sendes tilbage:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function square(number) {
+<section data-concept-number="3" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">3 · JavaScript-eksempler</span><h2>Parametre og return values</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En funktion kan have én parameter</li><li>Eller flere parametre</li><li>Når JavaScript møder <code>return</code>, afsluttes funktionen, og værdien sendes tilbage</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function square(number) {
   return number * number;
 }
 
@@ -229,10 +216,7 @@ console.log(message);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="3" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">3 · I React</span><h2>Parametre og return values</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>React components kan modtage data gennem props. Props fungerer som input til komponentens funktion:</p>
-<p>Komponenten kan bruges med forskellige værdier:</p>
-<p>React components bruger også <code>return</code> til at sende det JSX tilbage, som skal vises:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Greeting({ name }) {
+<section data-concept-number="3" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">3 · I React</span><h2>Parametre og return values</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>React components kan modtage data gennem props. Props fungerer som input til komponentens funktion</li><li>Komponenten kan bruges med forskellige værdier</li><li>React components bruger også <code>return</code> til at sende det JSX tilbage, som skal vises</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Greeting({ name }) {
   return &lt;h2&gt;Hello, {name}!&lt;/h2&gt;;
 }
 </code></pre>
@@ -265,10 +249,7 @@ console.log(message);
 </ol>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="4" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="4-arrow-functions"><span class="eyebrow">4 · Forstå</span><h2>Arrow functions</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En arrow function er en anden måde at skrive en funktion på i JavaScript.</p>
-<p>En function declaration:</p>
-<p>Arrow functions giver en kortere måde at skrive funktioner på og bruges meget i moderne JavaScript.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function sayHi(name) {
+<section data-concept-number="4" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="4-arrow-functions"><span class="eyebrow">4 · Forstå</span><h2>Arrow functions</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En arrow function er en anden måde at skrive en funktion på i JavaScript.</li><li>En function declaration</li><li>Arrow functions giver en kortere måde at skrive funktioner på og bruges meget i moderne JavaScript.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function sayHi(name) {
   return `Hello, ${name}!`;
 }
 </code></pre>
@@ -278,10 +259,7 @@ console.log(message);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="4" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">4 · JavaScript-eksempler</span><h2>Arrow functions</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>En function declaration:</p>
-<p>kan skrives som:</p>
-<p>Hvis funktionen kun returnerer én værdi, kan den forkortes:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function double(number) {
+<section data-concept-number="4" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">4 · JavaScript-eksempler</span><h2>Arrow functions</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>En function declaration</li><li>Kan skrives som</li><li>Hvis funktionen kun returnerer én værdi, kan den forkortes</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function double(number) {
   return number * 2;
 }
 </code></pre>
@@ -293,10 +271,7 @@ console.log(message);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="4" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">4 · I React</span><h2>Arrow functions</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Arrow functions bruges ofte til event handlers:</p>
-<p>Du har også mødt arrow functions sammen med <code>map()</code>:</p>
-<p>Her er <code>(student) =&gt; ...</code> den funktion, som <code>map()</code> bruger på hvert element i <code>students</code>.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Button() {
+<section data-concept-number="4" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">4 · I React</span><h2>Arrow functions</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Arrow functions bruges ofte til event handlers</li><li>Du har også mødt arrow functions sammen med <code>map()</code></li><li>Her er <code>(student) =&gt; ...</code> den funktion, som <code>map()</code> bruger på hvert element i <code>students</code>.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Button() {
   const handleClick = () =&gt; {
     console.log(&quot;Button clicked!&quot;);
   };
@@ -335,10 +310,7 @@ function StudentList() {
 </ol>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="5" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="5-ekstra-default-parameters"><span class="eyebrow">5 · Forstå</span><h2>Ekstra: Default parameters</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Default parameters gør det muligt at give en parameter en standardværdi:</p>
-<p>Hvis vi kalder funktionen uden at sende en værdi med, bruges standardværdien:</p>
-<p>Default parameters er nyttige, når en funktion skal kunne bruges, selvom en værdi ikke bliver sendt med.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function sayHi(name = &quot;Guest&quot;) {
+<section data-concept-number="5" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="5-ekstra-default-parameters"><span class="eyebrow">5 · Forstå</span><h2>Ekstra: Default parameters</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Default parameters gør det muligt at give en parameter en standardværdi</li><li>Hvis vi kalder funktionen uden at sende en værdi med, bruges standardværdien</li><li>Default parameters er nyttige, når en funktion skal kunne bruges, selvom en værdi ikke bliver sendt med.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function sayHi(name = &quot;Guest&quot;) {
   return `Hello, ${name}!`;
 }
 </code></pre>
@@ -384,10 +356,7 @@ function StudentList() {
 <p>Kontrollér, hvordan resultatet ændrer sig, alt efter hvilke props du sender med.</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="6" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="6-ekstra-callback-functions"><span class="eyebrow">6 · Forstå</span><h2>Ekstra: Callback functions</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En callback function er en funktion, som bliver sendt med til en anden funktion og kørt senere.</p>
-<p>Her sender vi <code>sayHi</code> med som callback.</p>
-<p>Callbacks gør det muligt at lade en funktion bestemme, hvad der skal ske på et bestemt tidspunkt.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function sayHi(name) {
+<section data-concept-number="6" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="6-ekstra-callback-functions"><span class="eyebrow">6 · Forstå</span><h2>Ekstra: Callback functions</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En callback function er en funktion, som bliver sendt med til en anden funktion og kørt senere.</li><li>Her sender vi <code>sayHi</code> med som callback.</li><li>Callbacks gør det muligt at lade en funktion bestemme, hvad der skal ske på et bestemt tidspunkt.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function sayHi(name) {
   console.log(`Hello, ${name}!`);
 }
 
@@ -441,10 +410,7 @@ processUser(showName);
 <p>Kontrollér, at callback-funktionen bliver kørt, når du klikker på knappen.</p>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="7" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="7-ekstra-closures"><span class="eyebrow">7 · Forstå</span><h2>Ekstra: Closures</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En closure opstår, når en funktion husker værdier fra det scope, hvor den blev oprettet.</p>
-<p>Vi kan bruge funktionen sådan:</p>
-<p>Closures gør det muligt for funktioner at huske værdier mellem kald.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function createCounter() {
+<section data-concept-number="7" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="7-ekstra-closures"><span class="eyebrow">7 · Forstå</span><h2>Ekstra: Closures</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En closure opstår, når en funktion husker værdier fra det scope, hvor den blev oprettet.</li><li>Vi kan bruge funktionen sådan</li><li>Closures gør det muligt for funktioner at huske værdier mellem kald.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">function createCounter() {
   let count = 0;
 
   return function () {
@@ -515,17 +481,11 @@ console.log(counter()); // 3
 
 <section class="chapter po-chapter po-slide" id="objects"><span class="chapter-index">08</span><span class="eyebrow">Objects</span><h2>Objects</h2><p class="kicker">Her arbejder vi med ét lille JavaScript-koncept ad gangen og kobler det straks til React.</p></section>
 
-<section data-concept-number="8" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="8-objects"><span class="eyebrow">8 · Forstå</span><h2>Objects</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Et object bruges til at samle relaterede værdier i én struktur.</p>
-<p>Et object består af properties med et navn og en værdi.</p>
-<p>Objects gør det lettere at samle data, der hører sammen.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24, education: &quot;Multimedia Design&quot; };
+<section data-concept-number="8" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="8-objects"><span class="eyebrow">8 · Forstå</span><h2>Objects</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Et object bruges til at samle relaterede værdier i én struktur.</li><li>Et object består af properties med et navn og en værdi.</li><li>Objects gør det lettere at samle data, der hører sammen.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24, education: &quot;Multimedia Design&quot; };
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="8" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">8 · JavaScript-eksempler</span><h2>Objects</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Et object oprettes med <code>{}</code>:</p>
-<p>Properties kan indeholde forskellige datatyper:</p>
-<p>Et object kan også indeholde andre objects:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const product = { name: &quot;Keyboard&quot;, price: 799, inStock: true };
+<section data-concept-number="8" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">8 · JavaScript-eksempler</span><h2>Objects</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Et object oprettes med <code>{}</code></li><li>Properties kan indeholde forskellige datatyper</li><li>Et object kan også indeholde andre objects</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const product = { name: &quot;Keyboard&quot;, price: 799, inStock: true };
 </code></pre>
 <pre class="po-code"><code class="language-javascript">const user = { name: &quot;Peter&quot;, age: 31, isStudent: false, skills: [&quot;JavaScript&quot;, &quot;React&quot;] };
 </code></pre>
@@ -534,10 +494,7 @@ console.log(counter()); // 3
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="8" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">8 · I React</span><h2>Objects</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Objects bruges hele tiden i React til fx data og props.</p>
-<p>Vi sender også ofte et helt object som prop:</p>
-<p>Komponenten kan derefter modtage objectet:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const student = { name: &quot;Anna&quot;, education: &quot;Multimedia Design&quot; };
+<section data-concept-number="8" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">8 · I React</span><h2>Objects</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Objects bruges hele tiden i React til fx data og props.</li><li>Vi sender også ofte et helt object som prop</li><li>Komponenten kan derefter modtage objectet</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const student = { name: &quot;Anna&quot;, education: &quot;Multimedia Design&quot; };
 
 function Student() {
   return (
@@ -569,19 +526,13 @@ function Student() {
 <p>Vis værdierne fra objectet i JSX.</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="9" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="9-property-access"><span class="eyebrow">9 · Forstå</span><h2>Property access</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Property access bruges til at læse værdier fra et object.</p>
-<p>Her bruger vi <code>student.name</code> til at få værdien fra property&#39;en <code>name</code>.</p>
-<p>Når data er samlet i et object, har vi brug for en måde at hente de enkelte værdier på.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24 };
+<section data-concept-number="9" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="9-property-access"><span class="eyebrow">9 · Forstå</span><h2>Property access</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Property access bruges til at læse værdier fra et object.</li><li>Her bruger vi <code>student.name</code> til at få værdien fra property&#39;en <code>name</code>.</li><li>Når data er samlet i et object, har vi brug for en måde at hente de enkelte værdier på.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24 };
 
 console.log(student.name);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="9" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">9 · JavaScript-eksempler</span><h2>Property access</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Den mest almindelige måde er <strong>dot notation</strong>:</p>
-<p>Vi kan også bruge <strong>bracket notation</strong>:</p>
-<p>Bracket notation er især nyttig, hvis property-navnet ligger i en variabel:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const user = { name: &quot;Peter&quot;, email: &quot;peter@example.com&quot; };
+<section data-concept-number="9" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">9 · JavaScript-eksempler</span><h2>Property access</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Den mest almindelige måde er <strong>dot notation</strong></li><li>Vi kan også bruge <strong>bracket notation</strong></li><li>Bracket notation er især nyttig, hvis property-navnet ligger i en variabel</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const user = { name: &quot;Peter&quot;, email: &quot;peter@example.com&quot; };
 
 console.log(user.name);
 console.log(user.email);
@@ -595,9 +546,7 @@ console.log(user[property]);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="9" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">9 · I React</span><h2>Property access</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>I React bruger vi ofte property access til at vise data fra objects:</p>
-<p>Det samme gælder, når et object kommer ind som prop:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const student = { name: &quot;Anna&quot;, education: &quot;Multimedia Design&quot; };
+<section data-concept-number="9" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">9 · I React</span><h2>Property access</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>I React bruger vi ofte property access til at vise data fra objects</li><li>Det samme gælder, når et object kommer ind som prop</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const student = { name: &quot;Anna&quot;, education: &quot;Multimedia Design&quot; };
 
 function Student() {
   return (
@@ -635,10 +584,7 @@ function Student() {
 <p>Brug komponenten nederst inden for <code>&lt;main&gt;</code> i <code>HomePage.jsx</code> med et object, du selv opretter.</p>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="10" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="10-shorthand-properties"><span class="eyebrow">10 · Forstå</span><h2>Shorthand properties</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Shorthand properties er en kortere måde at oprette object properties på, når variabelnavnet og property-navnet er det samme.</p>
-<p>Uden shorthand:</p>
-<p>Shorthand properties gør object-kode kortere og lettere at læse.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const name = &quot;Anna&quot;;
+<section data-concept-number="10" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="10-shorthand-properties"><span class="eyebrow">10 · Forstå</span><h2>Shorthand properties</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Shorthand properties er en kortere måde at oprette object properties på, når variabelnavnet og property-navnet er det samme.</li><li>Uden shorthand</li><li>Shorthand properties gør object-kode kortere og lettere at læse.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const name = &quot;Anna&quot;;
 const age = 24;
 
 const student = { name: name, age: age };
@@ -650,10 +596,7 @@ const student = { name: name, age: age };
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="10" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">10 · JavaScript-eksempler</span><h2>Shorthand properties</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Hvis vi har variabler:</p>
-<p>kan vi oprette et object sådan:</p>
-<p>Det svarer til:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const title = &quot;JavaScript&quot;;
+<section data-concept-number="10" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">10 · JavaScript-eksempler</span><h2>Shorthand properties</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Hvis vi har variabler</li><li>Kan vi oprette et object sådan</li><li>Det svarer til</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const title = &quot;JavaScript&quot;;
 const teacher = &quot;Anna&quot;;
 const duration = 5;
 </code></pre>
@@ -667,9 +610,7 @@ const duration = 5;
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="10" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">10 · I React</span><h2>Shorthand properties</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Shorthand properties bruges ofte, når vi samler værdier i et object.</p>
-<p>Det er især nyttigt, når flere værdier allerede findes som variabler og skal samles i ét object.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function App() {
+<section data-concept-number="10" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">10 · I React</span><h2>Shorthand properties</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Shorthand properties bruges ofte, når vi samler værdier i et object.</li><li>Det er især nyttigt, når flere værdier allerede findes som variabler og skal samles i ét object.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function App() {
   const name = &quot;Anna&quot;;
   const education = &quot;Multimedia Design&quot;;
 
@@ -709,10 +650,7 @@ const email = &quot;anna@example.com&quot;;
 <p>Vis værdierne i komponenten med property access.</p>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="11" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="11-destructuring-af-objects"><span class="eyebrow">11 · Forstå</span><h2>Destructuring af objects</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Destructuring gør det muligt at hente properties fra et object og gemme dem i variabler.</p>
-<p>I stedet for at skrive <code>student.name</code> og <code>student.age</code> flere gange kan vi hente værdierne ud på én gang.</p>
-<p>Destructuring kan gøre koden kortere og lettere at læse.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24 };
+<section data-concept-number="11" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="11-destructuring-af-objects"><span class="eyebrow">11 · Forstå</span><h2>Destructuring af objects</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Destructuring gør det muligt at hente properties fra et object og gemme dem i variabler.</li><li>I stedet for at skrive <code>student.name</code> og <code>student.age</code> flere gange kan vi hente værdierne ud på én gang.</li><li>Destructuring kan gøre koden kortere og lettere at læse.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24 };
 
 const { name, age } = student;
 
@@ -721,10 +659,7 @@ console.log(age);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="11" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">11 · JavaScript-eksempler</span><h2>Destructuring af objects</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Vi skriver de properties, vi vil hente, mellem <code>{}</code>:</p>
-<p>Vi behøver ikke hente alle properties:</p>
-<p>Vi kan også destructure et nested object:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const product = { name: &quot;Keyboard&quot;, price: 799, inStock: true };
+<section data-concept-number="11" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">11 · JavaScript-eksempler</span><h2>Destructuring af objects</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Vi skriver de properties, vi vil hente, mellem <code>{}</code></li><li>Vi behøver ikke hente alle properties</li><li>Vi kan også destructure et nested object</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const product = { name: &quot;Keyboard&quot;, price: 799, inStock: true };
 
 const { name, price } = product;
 
@@ -737,10 +672,7 @@ console.log(inStock);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="11" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">11 · I React</span><h2>Destructuring af objects</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Destructuring bruges meget i React, især med props.</p>
-<p>Uden destructuring:</p>
-<p>Med destructuring:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Student(props) {
+<section data-concept-number="11" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">11 · I React</span><h2>Destructuring af objects</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Destructuring bruges meget i React, især med props.</li><li>Uden destructuring</li><li>Med destructuring</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Student(props) {
   return (
     &lt;article&gt;
       &lt;h2&gt;{props.name}&lt;/h2&gt;
@@ -776,10 +708,7 @@ console.log(inStock);
 <p>Vis alle tre værdier i komponentens JSX.</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="12" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="12-ekstra-spread-syntax-med-objects"><span class="eyebrow">12 · Forstå</span><h2>Ekstra: Spread syntax med objects</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Spread syntax <code>...</code> gør det muligt at kopiere properties fra et object ind i et nyt object.</p>
-<p><code>copy</code> indeholder de samme properties som <code>student</code>.</p>
-<p>Spread syntax er nyttig, når vi vil oprette et nyt object ud fra et eksisterende object.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24 };
+<section data-concept-number="12" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="12-ekstra-spread-syntax-med-objects"><span class="eyebrow">12 · Forstå</span><h2>Ekstra: Spread syntax med objects</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Spread syntax <code>...</code> gør det muligt at kopiere properties fra et object ind i et nyt object.</li><li><code>copy</code> indeholder de samme properties som <code>student</code>.</li><li>Spread syntax er nyttig, når vi vil oprette et nyt object ud fra et eksisterende object.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24 };
 
 const copy = {
   ...student
@@ -826,10 +755,7 @@ const updatedStudent = {
 <p>Lad <code>Student</code> modtage <code>name</code> og <code>education</code> som props og vise dem i JSX.</p>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="13" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="13-ekstra-immutable-opdatering-af-objects"><span class="eyebrow">13 · Forstå</span><h2>Ekstra: Immutable opdatering af objects</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En immutable opdatering betyder, at vi ikke ændrer det eksisterende object direkte.</p>
-<p>I stedet opretter vi et nyt object med de ændringer, vi ønsker.</p>
-<p>Immutable opdateringer gør det tydeligt, hvornår data ændrer sig, fordi vi opretter en ny værdi i stedet for at ændre den eksisterende.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24 };
+<section data-concept-number="13" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="13-ekstra-immutable-opdatering-af-objects"><span class="eyebrow">13 · Forstå</span><h2>Ekstra: Immutable opdatering af objects</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En immutable opdatering betyder, at vi ikke ændrer det eksisterende object direkte.</li><li>I stedet opretter vi et nyt object med de ændringer, vi ønsker.</li><li>Immutable opdateringer gør det tydeligt, hvornår data ændrer sig, fordi vi opretter en ny værdi i stedet for at ændre den eksisterende.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24 };
 
 student.age = 25;
 </code></pre>
@@ -872,20 +798,14 @@ const updatedProduct = {
 
 <section class="chapter po-chapter po-slide" id="arrays"><span class="chapter-index">14</span><span class="eyebrow">Arrays</span><h2>Arrays</h2><p class="kicker">Her arbejder vi med ét lille JavaScript-koncept ad gangen og kobler det straks til React.</p></section>
 
-<section data-concept-number="14" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="14-arrays"><span class="eyebrow">14 · Forstå</span><h2>Arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Et array bruges til at samle flere værdier i én struktur.</p>
-<p>Et array kan fx indeholde en liste af navne, produkter eller andre værdier.</p>
-<p>Arrays er nyttige, når vi har flere værdier, der hører sammen.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;, &quot;Sara&quot;];
+<section data-concept-number="14" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="14-arrays"><span class="eyebrow">14 · Forstå</span><h2>Arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Et array bruges til at samle flere værdier i én struktur.</li><li>Et array kan fx indeholde en liste af navne, produkter eller andre værdier.</li><li>Arrays er nyttige, når vi har flere værdier, der hører sammen.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;, &quot;Sara&quot;];
 </code></pre>
 <pre class="po-code"><code class="language-javascript">console.log(students[0]); // Anna
 console.log(students[1]); // Peter
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="14" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">14 · JavaScript-eksempler</span><h2>Arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Et array oprettes med <code>[]</code>:</p>
-<p>Vi kan hente et element ved hjælp af dets index:</p>
-<p>Vi kan se, hvor mange elementer et array indeholder med <code>length</code>:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;];
+<section data-concept-number="14" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">14 · JavaScript-eksempler</span><h2>Arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Et array oprettes med <code>[]</code></li><li>Vi kan hente et element ved hjælp af dets index</li><li>Vi kan se, hvor mange elementer et array indeholder med <code>length</code></li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;];
 </code></pre>
 <pre class="po-code"><code class="language-javascript">console.log(colors[0]); // red
 console.log(colors[2]); // blue
@@ -894,10 +814,7 @@ console.log(colors[2]); // blue
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="14" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">14 · I React</span><h2>Arrays</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>I React arbejder vi ofte med arrays af data.</p>
-<p>Vi kan fx vise et bestemt element fra arrayet:</p>
-<p>Ofte vil vi dog vise <strong>alle</strong> elementerne i et array.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const students = [
+<section data-concept-number="14" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">14 · I React</span><h2>Arrays</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>I React arbejder vi ofte med arrays af data.</li><li>Vi kan fx vise et bestemt element fra arrayet</li><li>Ofte vil vi dog vise <strong>alle</strong> elementerne i et array.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const students = [
   { id: 1, name: &quot;Anna&quot;, education: &quot;Multimedia Design&quot; },
   { id: 2, name: &quot;Peter&quot;, education: &quot;Web Development&quot; },
   { id: 3, name: &quot;Sara&quot;, education: &quot;Multimedia Design&quot; }
@@ -923,10 +840,7 @@ console.log(colors[2]); // blue
 <p>Exportér komponenten, importér den i <code>HomePage.jsx</code>, og vis den nederst inden for <code>&lt;main&gt;</code>.</p>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="15" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="15-destructuring-af-arrays"><span class="eyebrow">15 · Forstå</span><h2>Destructuring af arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Destructuring gør det muligt at hente værdier fra et array og gemme dem i variabler.</p>
-<p>Ved arrays bestemmer <strong>rækkefølgen</strong>, hvilken værdi variablen får.</p>
-<p>Destructuring kan gøre det kortere og tydeligere at hente værdier fra et array.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;, &quot;Sara&quot;];
+<section data-concept-number="15" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="15-destructuring-af-arrays"><span class="eyebrow">15 · Forstå</span><h2>Destructuring af arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Destructuring gør det muligt at hente værdier fra et array og gemme dem i variabler.</li><li>Ved arrays bestemmer <strong>rækkefølgen</strong>, hvilken værdi variablen får.</li><li>Destructuring kan gøre det kortere og tydeligere at hente værdier fra et array.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;, &quot;Sara&quot;];
 
 const [firstStudent, secondStudent] = students;
 
@@ -935,10 +849,7 @@ console.log(secondStudent); // Peter
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="15" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">15 · JavaScript-eksempler</span><h2>Destructuring af arrays</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Vi skriver variablerne mellem <code>[]</code>:</p>
-<p>Variabelnavnene bestemmer vi selv:</p>
-<p>Det er altså positionen i arrayet, der bestemmer værdien.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;];
+<section data-concept-number="15" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">15 · JavaScript-eksempler</span><h2>Destructuring af arrays</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Vi skriver variablerne mellem <code>[]</code></li><li>Variabelnavnene bestemmer vi selv</li><li>Det er altså positionen i arrayet, der bestemmer værdien.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const colors = [&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;];
 
 const [firstColor, secondColor] = colors;
 
@@ -958,10 +869,7 @@ console.log(thirdStudent); // Sara
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="15" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">15 · I React</span><h2>Destructuring af arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Du har allerede mødt array destructuring, hvis du har arbejdet med <code>useState</code>:</p>
-<p><code>&quot;Anna&quot;</code> er startværdien for vores state.</p>
-<p><code>useState()</code> giver os to værdier:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const [name, setName] = useState(&quot;Anna&quot;);
+<section data-concept-number="15" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">15 · I React</span><h2>Destructuring af arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Du har allerede mødt array destructuring, hvis du har arbejdet med <code>useState</code></li><li><code>&quot;Anna&quot;</code> er startværdien for vores state.</li><li><code>useState()</code> giver os to værdier</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const [name, setName] = useState(&quot;Anna&quot;);
 </code></pre>
 <pre class="po-code"><code class="language-javascript">const result = useState(&quot;Anna&quot;);
 
@@ -986,10 +894,7 @@ const setName = result[1];
 <p>Vis <code>name</code> i JSX:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="16" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="16-ekstra-spread-syntax-med-arrays"><span class="eyebrow">16 · Forstå</span><h2>Ekstra: Spread syntax med arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Spread syntax <code>...</code> <strong>pakker værdierne fra et array ud</strong>, så de fx kan bruges i et nyt array.</p>
-<p><code>copy</code> indeholder de samme værdier som <code>students</code>, men er et nyt array.</p>
-<p>Spread syntax er nyttig, når vi vil oprette et nyt array ud fra et eksisterende array.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;];
+<section data-concept-number="16" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="16-ekstra-spread-syntax-med-arrays"><span class="eyebrow">16 · Forstå</span><h2>Ekstra: Spread syntax med arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Spread syntax <code>...</code> <strong>pakker værdierne fra et array ud</strong>, så de fx kan bruges i et nyt array.</li><li><code>copy</code> indeholder de samme værdier som <code>students</code>, men er et nyt array.</li><li>Spread syntax er nyttig, når vi vil oprette et nyt array ud fra et eksisterende array.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;];
 
 const copy = [...students];
 
@@ -1028,10 +933,7 @@ const newColors = [...colors, &quot;blue&quot;];
 <p>Vis <code>students</code> i komponenten med den <code>map()</code>-syntax, du tidligere har mødt.</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="17" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="17-ekstra-rest-syntax-rest-parameters"><span class="eyebrow">17 · Forstå</span><h2>Ekstra: Rest syntax / Rest parameters</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Rest syntax <code>...</code> <strong>samler flere værdier</strong> i fx et nyt array.</p>
-<p>Spread og rest bruger den samme <code>...</code> syntax, men gør næsten det modsatte:</p>
-<p>Rest er nyttigt, når vi vil arbejde med én eller flere værdier separat og samle resten.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;];
+<section data-concept-number="17" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="17-ekstra-rest-syntax-rest-parameters"><span class="eyebrow">17 · Forstå</span><h2>Ekstra: Rest syntax / Rest parameters</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Rest syntax <code>...</code> <strong>samler flere værdier</strong> i fx et nyt array.</li><li>Spread og rest bruger den samme <code>...</code> syntax, men gør næsten det modsatte</li><li>Rest er nyttigt, når vi vil arbejde med én eller flere værdier separat og samle resten.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;];
 
 const newStudents = [...students, &quot;Sara&quot;];
 </code></pre>
@@ -1086,10 +988,7 @@ showStudents(&quot;Anna&quot;, &quot;Peter&quot;, &quot;Sara&quot;);
 <p>Vis <code>name</code> i JSX og print <code>otherProps</code> i browserens console.</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="18" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="18-ekstra-immutable-opdatering-af-arrays"><span class="eyebrow">18 · Forstå</span><h2>Ekstra: Immutable opdatering af arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En immutable opdatering betyder, at vi ikke ændrer det eksisterende array direkte.</p>
-<p>I stedet opretter vi et nyt array med de ændringer, vi ønsker.</p>
-<p>Immutable opdateringer er især vigtige, når vi arbejder med state i React.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;];
+<section data-concept-number="18" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="18-ekstra-immutable-opdatering-af-arrays"><span class="eyebrow">18 · Forstå</span><h2>Ekstra: Immutable opdatering af arrays</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En immutable opdatering betyder, at vi ikke ændrer det eksisterende array direkte.</li><li>I stedet opretter vi et nyt array med de ændringer, vi ønsker.</li><li>Immutable opdateringer er især vigtige, når vi arbejder med state i React.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;];
 
 students.push(&quot;Sara&quot;);
 </code></pre>
@@ -1131,10 +1030,7 @@ const updatedColors = [...colors, &quot;blue&quot;];
 
 <section class="chapter po-chapter po-slide" id="array-methods"><span class="chapter-index">19</span><span class="eyebrow">Array methods</span><h2>Array methods</h2><p class="kicker">Her arbejder vi med ét lille JavaScript-koncept ad gangen og kobler det straks til React.</p></section>
 
-<section data-concept-number="19" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="19-map"><span class="eyebrow">19 · Forstå</span><h2><code>map()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p><code>map()</code> er en array method, der går igennem hvert element i et array og returnerer et <strong>nyt array</strong>.</p>
-<p><code>map()</code> ændrer ikke det oprindelige array.</p>
-<p>Vi bruger <code>map()</code>, når vi vil gøre noget med <strong>hvert element</strong> i et array og få et nyt array tilbage.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const numbers = [1, 2, 3];
+<section data-concept-number="19" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="19-map"><span class="eyebrow">19 · Forstå</span><h2><code>map()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li><code>map()</code> er en array method, der går igennem hvert element i et array og returnerer et <strong>nyt array</strong>.</li><li><code>map()</code> ændrer ikke det oprindelige array.</li><li>Vi bruger <code>map()</code>, når vi vil gøre noget med <strong>hvert element</strong> i et array og få et nyt array tilbage.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const numbers = [1, 2, 3];
 
 const doubledNumbers = numbers.map((number) =&gt; number * 2);
 
@@ -1143,10 +1039,7 @@ console.log(doubledNumbers);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="19" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">19 · JavaScript-eksempler</span><h2><code>map()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p><code>map()</code> modtager en callback function:</p>
-<p>Callback-funktionen bliver kørt én gang for hvert element i arrayet.</p>
-<p>Her:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">students.map((student) =&gt; {
+<section data-concept-number="19" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">19 · JavaScript-eksempler</span><h2><code>map()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li><code>map()</code> modtager en callback function</li><li>Callback-funktionen bliver kørt én gang for hvert element i arrayet.</li><li>Her</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">students.map((student) =&gt; {
   // gør noget med student
 });
 </code></pre>
@@ -1158,10 +1051,7 @@ Sara   → &quot;Sara&quot;
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="19" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">19 · I React</span><h2><code>map()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>I React bruger vi ofte <code>map()</code> til at vise et array som en liste af JSX-elementer.</p>
-<p>Vi kan bruge <code>map()</code> til at lave hvert student object om til JSX:</p>
-<p>Her kan vi tænke:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const students = [
+<section data-concept-number="19" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">19 · I React</span><h2><code>map()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>I React bruger vi ofte <code>map()</code> til at vise et array som en liste af JSX-elementer.</li><li>Vi kan bruge <code>map()</code> til at lave hvert student object om til JSX</li><li>Her kan vi tænke</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const students = [
   { id: 1, name: &quot;Anna&quot;, education: &quot;Multimedia Design&quot; },
   { id: 2, name: &quot;Peter&quot;, education: &quot;Web Development&quot; },
   { id: 3, name: &quot;Sara&quot;, education: &quot;Multimedia Design&quot; }
@@ -1190,10 +1080,7 @@ Sara   → &quot;Sara&quot;
 <p>Exportér <code>ProductList</code>, importér den i <code>HomePage.jsx</code>, og vis den nederst inden for <code>&lt;main&gt;</code>.</p>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="20" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="20-filter"><span class="eyebrow">20 · Forstå</span><h2><code>filter()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p><code>filter()</code> er en array method, der bruges til at vælge bestemte elementer fra et array.</p>
-<p><code>filter()</code> returnerer et <strong>nyt array</strong> og ændrer ikke det oprindelige array.</p>
-<p>Vi bruger <code>filter()</code>, når kun nogle af elementerne i et array skal med.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const numbers = [1, 2, 3, 4, 5];
+<section data-concept-number="20" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="20-filter"><span class="eyebrow">20 · Forstå</span><h2><code>filter()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li><code>filter()</code> er en array method, der bruges til at vælge bestemte elementer fra et array.</li><li><code>filter()</code> returnerer et <strong>nyt array</strong> og ændrer ikke det oprindelige array.</li><li>Vi bruger <code>filter()</code>, når kun nogle af elementerne i et array skal med.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const numbers = [1, 2, 3, 4, 5];
 
 const largeNumbers = numbers.filter((number) =&gt; number &gt; 3);
 
@@ -1202,10 +1089,7 @@ console.log(largeNumbers);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="20" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">20 · JavaScript-eksempler</span><h2><code>filter()</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p><code>filter()</code> modtager en callback function:</p>
-<p>For hvert element skal resultatet være <code>true</code> eller <code>false</code>.</p>
-<p>Vi kan tænke på det sådan:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">students.filter((student) =&gt; {
+<section data-concept-number="20" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">20 · JavaScript-eksempler</span><h2><code>filter()</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li><code>filter()</code> modtager en callback function</li><li>For hvert element skal resultatet være <code>true</code> eller <code>false</code>.</li><li>Vi kan tænke på det sådan</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">students.filter((student) =&gt; {
   // returnér true eller false
 });
 </code></pre>
@@ -1217,10 +1101,7 @@ Sara  → Multimedia Design → true  → med
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="20" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">20 · I React</span><h2><code>filter()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>I React bruger vi ofte <code>filter()</code> til at bestemme, hvilke data der skal vises.</p>
-<p>Vi kan fx kun vise produkter, der koster under 1000 kr.:</p>
-<p>Derefter kan vi bruge <code>map()</code> til at vise resultatet:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const products = [
+<section data-concept-number="20" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">20 · I React</span><h2><code>filter()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>I React bruger vi ofte <code>filter()</code> til at bestemme, hvilke data der skal vises.</li><li>Vi kan fx kun vise produkter, der koster under 1000 kr.</li><li>Derefter kan vi bruge <code>map()</code> til at vise resultatet</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const products = [
   { id: 1, name: &quot;Keyboard&quot;, price: 799 },
   { id: 2, name: &quot;Mouse&quot;, price: 399 },
   { id: 3, name: &quot;Monitor&quot;, price: 1999 }
@@ -1242,10 +1123,7 @@ Sara  → Multimedia Design → true  → med
 <p>Brug derefter <code>map()</code> til at vise <code>cheapProducts</code>:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="21" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="21-find"><span class="eyebrow">21 · Forstå</span><h2><code>find()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p><code>find()</code> er en array method, der bruges til at finde <strong>ét element</strong> i et array.</p>
-<p><code>find()</code> returnerer det <strong>første element</strong>, der matcher betingelsen.</p>
-<p>Vi bruger <code>find()</code>, når vi skal finde ét bestemt element i et array.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const numbers = [10, 20, 30, 40];
+<section data-concept-number="21" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="21-find"><span class="eyebrow">21 · Forstå</span><h2><code>find()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li><code>find()</code> er en array method, der bruges til at finde <strong>ét element</strong> i et array.</li><li><code>find()</code> returnerer det <strong>første element</strong>, der matcher betingelsen.</li><li>Vi bruger <code>find()</code>, når vi skal finde ét bestemt element i et array.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const numbers = [10, 20, 30, 40];
 
 const number = numbers.find((number) =&gt; number &gt; 20);
 
@@ -1254,10 +1132,7 @@ console.log(number);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="21" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">21 · JavaScript-eksempler</span><h2><code>find()</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p><code>find()</code> modtager en callback function med en betingelse:</p>
-<p>Vi kan tænke på det sådan:</p>
-<p>Når <code>find()</code> finder det første match, returneres elementet.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">students.find((student) =&gt; student.id === 2);
+<section data-concept-number="21" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">21 · JavaScript-eksempler</span><h2><code>find()</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li><code>find()</code> modtager en callback function med en betingelse</li><li>Vi kan tænke på det sådan</li><li>Når <code>find()</code> finder det første match, returneres elementet.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">students.find((student) =&gt; student.id === 2);
 </code></pre>
 <pre class="po-code"><code class="language-plaintext">Anna  → id === 2 → false
 Peter → id === 2 → true  → fundet!
@@ -1266,10 +1141,7 @@ Peter → id === 2 → true  → fundet!
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="21" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">21 · I React</span><h2><code>find()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>I React bruger vi ofte <code>find()</code> til at finde et bestemt object ud fra et <code>id</code>.</p>
-<p>Forestil dig, at vi har produkter:</p>
-<p>Hvis vi kender produktets <code>id</code>, kan vi finde produktet:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const products = [
+<section data-concept-number="21" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">21 · I React</span><h2><code>find()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>I React bruger vi ofte <code>find()</code> til at finde et bestemt object ud fra et <code>id</code>.</li><li>Forestil dig, at vi har produkter</li><li>Hvis vi kender produktets <code>id</code>, kan vi finde produktet</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const products = [
   { id: 1, name: &quot;Keyboard&quot;, price: 799 },
   { id: 2, name: &quot;Mouse&quot;, price: 399 },
   { id: 3, name: &quot;Monitor&quot;, price: 1999 }
@@ -1295,10 +1167,7 @@ const product = products.find((product) =&gt; product.id === productId);
 <p>Brug <code>find()</code> til at finde produktet:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="22" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="22-ekstra-foreach"><span class="eyebrow">22 · Forstå</span><h2>Ekstra: <code>forEach()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p><code>forEach()</code> er en array method, der kører en funktion én gang for hvert element i et array.</p>
-<p>Resultatet bliver:</p>
-<p><code>forEach()</code> er nyttig, når vi vil <strong>gøre noget for hvert element</strong> i et array uden at oprette et nyt array.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;, &quot;Sara&quot;];
+<section data-concept-number="22" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="22-ekstra-foreach"><span class="eyebrow">22 · Forstå</span><h2>Ekstra: <code>forEach()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li><code>forEach()</code> er en array method, der kører en funktion én gang for hvert element i et array.</li><li>Resultatet bliver</li><li><code>forEach()</code> er nyttig, når vi vil <strong>gøre noget for hvert element</strong> i et array uden at oprette et nyt array.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const students = [&quot;Anna&quot;, &quot;Peter&quot;, &quot;Sara&quot;];
 
 students.forEach((student) =&gt; {
   console.log(student);
@@ -1335,10 +1204,7 @@ Sara
 <p>Sammenlign de to metoder:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="23" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="23-ekstra-some-og-every"><span class="eyebrow">23 · Forstå</span><h2>Ekstra: <code>some()</code> og <code>every()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p><code>some()</code> og <code>every()</code> bruges til at undersøge elementerne i et array.</p>
-<p><code>some()</code> undersøger, om <strong>mindst ét element</strong> matcher en betingelse:</p>
-<p>Vi bruger dem, når vi skal svare på spørgsmål om et array:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const prices = [299, 799, 1299];
+<section data-concept-number="23" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="23-ekstra-some-og-every"><span class="eyebrow">23 · Forstå</span><h2>Ekstra: <code>some()</code> og <code>every()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li><code>some()</code> og <code>every()</code> bruges til at undersøge elementerne i et array.</li><li><code>some()</code> undersøger, om <strong>mindst ét element</strong> matcher en betingelse</li><li>Vi bruger dem, når vi skal svare på spørgsmål om et array</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const prices = [299, 799, 1299];
 
 const hasExpensiveProduct = prices.some((price) =&gt; price &gt; 1000);
 
@@ -1387,10 +1253,7 @@ console.log(allUnder2000);
 <p>Vis kun denne tekst, hvis mindst ét produkt er på lager:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="24" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="24-ekstra-includes"><span class="eyebrow">24 · Forstå</span><h2>Ekstra: <code>includes()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p><code>includes()</code> bruges til at undersøge, om et array indeholder en bestemt værdi.</p>
-<p><code>includes()</code> returnerer enten <code>true</code> eller <code>false</code>.</p>
-<p>Vi bruger <code>includes()</code>, når vi vil spørge:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const courses = [&quot;JavaScript&quot;, &quot;React&quot;, &quot;WordPress&quot;];
+<section data-concept-number="24" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="24-ekstra-includes"><span class="eyebrow">24 · Forstå</span><h2>Ekstra: <code>includes()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li><code>includes()</code> bruges til at undersøge, om et array indeholder en bestemt værdi.</li><li><code>includes()</code> returnerer enten <code>true</code> eller <code>false</code>.</li><li>Vi bruger <code>includes()</code>, når vi vil spørge</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const courses = [&quot;JavaScript&quot;, &quot;React&quot;, &quot;WordPress&quot;];
 
 console.log(courses.includes(&quot;React&quot;));
 // true
@@ -1430,10 +1293,7 @@ const isReactSelected = selectedCategories.includes(&quot;React&quot;);
 <p>Hvis den er valgt, skal du vise:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="25" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="25-ekstra-reduce"><span class="eyebrow">25 · Forstå</span><h2>Ekstra: <code>reduce()</code></h2><div class="concept-copy concept-copy--focus"><div class="concept-narrative"><p><code>reduce()</code> bruges til at samle værdierne fra et array til <strong>én samlet værdi</strong>.</p>
-<p>Fx kan vi lægge tal sammen:</p>
-<p><code>reduce()</code> er nyttig til fx at beregne:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const prices = [100, 200, 300];
+<section data-concept-number="25" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="25-ekstra-reduce"><span class="eyebrow">25 · Forstå</span><h2>Ekstra: <code>reduce()</code></h2><div class="concept-copy concept-copy--focus"><div class="concept-narrative"><ul class="concept-points"><li><code>reduce()</code> bruges til at samle værdierne fra et array til <strong>én samlet værdi</strong>.</li><li>Fx kan vi lægge tal sammen</li><li><code>reduce()</code> er nyttig til fx at beregne</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const prices = [100, 200, 300];
 
 const total = prices.reduce((sum, price) =&gt; sum + price, 0);
 
@@ -1474,10 +1334,7 @@ console.log(total);
 
 <section class="chapter po-chapter po-slide" id="strings-og-conditionals"><span class="chapter-index">26</span><span class="eyebrow">Strings og conditionals</span><h2>Strings og conditionals</h2><p class="kicker">Her arbejder vi med ét lille JavaScript-koncept ad gangen og kobler det straks til React.</p></section>
 
-<section data-concept-number="26" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="26-template-literals"><span class="eyebrow">26 · Forstå</span><h2>Template literals</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Template literals er en måde at skrive strings på med backticks <code>`</code> i stedet for almindelige citationstegn.</p>
-<p>Med <code>${...}</code> kan vi indsætte værdier direkte i en string.</p>
-<p>Template literals gør det lettere at kombinere tekst og værdier.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const name = &quot;Anna&quot;;
+<section data-concept-number="26" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="26-template-literals"><span class="eyebrow">26 · Forstå</span><h2>Template literals</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Template literals er en måde at skrive strings på med backticks <code>`</code> i stedet for almindelige citationstegn.</li><li>Med <code>${...}</code> kan vi indsætte værdier direkte i en string.</li><li>Template literals gør det lettere at kombinere tekst og værdier.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const name = &quot;Anna&quot;;
 
 const message = `Hello, ${name}!`;
 
@@ -1486,10 +1343,7 @@ console.log(message);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="26" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">26 · JavaScript-eksempler</span><h2>Template literals</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Template literals skrives med backticks:</p>
-<p>Vi kan indsætte flere værdier:</p>
-<p>Vi kan også bruge udtryk direkte i <code>${...}</code>:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const course = &quot;JavaScript&quot;;
+<section data-concept-number="26" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">26 · JavaScript-eksempler</span><h2>Template literals</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Template literals skrives med backticks</li><li>Vi kan indsætte flere værdier</li><li>Vi kan også bruge udtryk direkte i <code>${...}</code></li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const course = &quot;JavaScript&quot;;
 
 const message = `Welcome to ${course}!`;
 </code></pre>
@@ -1508,10 +1362,7 @@ console.log(message);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="26" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">26 · I React</span><h2>Template literals</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>I React bruger vi ofte template literals, når vi skal bygge tekst ud fra data.</p>
-<p>De bruges også ofte til dynamiske værdier i attributes:</p>
-<p>Du vil derfor ofte møde template literals, når strings skal indeholde værdier fra props, state eller data.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Product({ name, price }) {
+<section data-concept-number="26" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">26 · I React</span><h2>Template literals</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>I React bruger vi ofte template literals, når vi skal bygge tekst ud fra data.</li><li>De bruges også ofte til dynamiske værdier i attributes</li><li>Du vil derfor ofte møde template literals, når strings skal indeholde værdier fra props, state eller data.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Product({ name, price }) {
   const message = `${name} costs ${price} kr.`;
 
   return &lt;p&gt;{message}&lt;/p&gt;;
@@ -1541,10 +1392,7 @@ const semester = 3;
 <p>Vis <code>message</code> i JSX.</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="27" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="27-if-else"><span class="eyebrow">27 · Forstå</span><h2><code>if</code> / <code>else</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p><code>if</code> / <code>else</code> bruges til at lade JavaScript træffe en beslutning baseret på en betingelse.</p>
-<p>Hvis betingelsen er <code>true</code>, køres koden i <code>if</code>.</p>
-<p>Vi bruger <code>if</code> / <code>else</code>, når noget i vores kode skal afhænge af en betingelse.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const age = 20;
+<section data-concept-number="27" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="27-if-else"><span class="eyebrow">27 · Forstå</span><h2><code>if</code> / <code>else</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li><code>if</code> / <code>else</code> bruges til at lade JavaScript træffe en beslutning baseret på en betingelse.</li><li>Hvis betingelsen er <code>true</code>, køres koden i <code>if</code>.</li><li>Vi bruger <code>if</code> / <code>else</code>, når noget i vores kode skal afhænge af en betingelse.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const age = 20;
 
 if (age &gt;= 18) {
   console.log(&quot;You are an adult&quot;);
@@ -1554,10 +1402,7 @@ if (age &gt;= 18) {
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="27" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">27 · JavaScript-eksempler</span><h2><code>if</code> / <code>else</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En <code>if</code> starter med en betingelse:</p>
-<p>Fx:</p>
-<p>Vi kan tilføje <code>else</code>, hvis der skal ske noget andet, når betingelsen er <code>false</code>:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">if (condition) {
+<section data-concept-number="27" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">27 · JavaScript-eksempler</span><h2><code>if</code> / <code>else</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En <code>if</code> starter med en betingelse</li><li>Fx</li><li>Vi kan tilføje <code>else</code>, hvis der skal ske noget andet, når betingelsen er <code>false</code></li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">if (condition) {
   // kør denne kode
 }
 </code></pre>
@@ -1577,10 +1422,7 @@ if (price &lt; 500) {
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="27" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">27 · I React</span><h2><code>if</code> / <code>else</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>I React kan vi bruge <code>if</code> / <code>else</code> til at bestemme, hvad en component skal returnere.</p>
-<p>Komponenten kan bruges sådan:</p>
-<p>eller:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function ProductStatus({ inStock }) {
+<section data-concept-number="27" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">27 · I React</span><h2><code>if</code> / <code>else</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>I React kan vi bruge <code>if</code> / <code>else</code> til at bestemme, hvad en component skal returnere.</li><li>Komponenten kan bruges sådan</li><li>Eller</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function ProductStatus({ inStock }) {
   if (inStock) {
     return &lt;p&gt;In stock&lt;/p&gt;;
   } else {
@@ -1608,10 +1450,7 @@ if (price &lt; 500) {
 <p>eller:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="28" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="28-ternary-operator"><span class="eyebrow">28 · Forstå</span><h2>Ternary operator <code>? :</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Ternary operator <code>? :</code> er en kort måde at vælge mellem <strong>to værdier</strong> baseret på en betingelse.</p>
-<p>Vi kan læse den sådan:</p>
-<p>En ternary operator kan ofte bruges, når en simpel <code>if / else</code> skal vælge mellem to værdier.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const isLoggedIn = true;
+<section data-concept-number="28" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="28-ternary-operator"><span class="eyebrow">28 · Forstå</span><h2>Ternary operator <code>? :</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Ternary operator <code>? :</code> er en kort måde at vælge mellem <strong>to værdier</strong> baseret på en betingelse.</li><li>Vi kan læse den sådan</li><li>En ternary operator kan ofte bruges, når en simpel <code>if / else</code> skal vælge mellem to værdier.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const isLoggedIn = true;
 
 const message = isLoggedIn ? &quot;Welcome!&quot; : &quot;Please log in&quot;;
 
@@ -1622,10 +1461,7 @@ console.log(message);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="28" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">28 · JavaScript-eksempler</span><h2>Ternary operator <code>? :</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>En ternary operator består af tre dele:</p>
-<p>Fx:</p>
-<p>Her er:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">condition ? valueIfTrue : valueIfFalse;
+<section data-concept-number="28" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">28 · JavaScript-eksempler</span><h2>Ternary operator <code>? :</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>En ternary operator består af tre dele</li><li>Fx</li><li>Her er</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">condition ? valueIfTrue : valueIfFalse;
 </code></pre>
 <pre class="po-code"><code class="language-javascript">const age = 20;
 
@@ -1635,10 +1471,7 @@ const message = age &gt;= 18 ? &quot;Adult&quot; : &quot;Under 18&quot;;
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="28" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">28 · I React</span><h2>Ternary operator <code>? :</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Ternary operators er meget almindelige i React, fordi de kan bruges direkte i JSX.</p>
-<p>Her bestemmer <code>inStock</code>, hvilken tekst React viser.</p>
-<p>Vi kan også vælge mellem forskellige JSX-elementer:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function ProductStatus({ inStock }) {
+<section data-concept-number="28" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">28 · I React</span><h2>Ternary operator <code>? :</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Ternary operators er meget almindelige i React, fordi de kan bruges direkte i JSX.</li><li>Her bestemmer <code>inStock</code>, hvilken tekst React viser.</li><li>Vi kan også vælge mellem forskellige JSX-elementer</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function ProductStatus({ inStock }) {
   return &lt;p&gt;{inStock ? &quot;In stock&quot; : &quot;Out of stock&quot;}&lt;/p&gt;;
 }
 </code></pre>
@@ -1664,10 +1497,7 @@ const message = age &gt;= 18 ? &quot;Adult&quot; : &quot;Under 18&quot;;
 <p>Brug derefter en ternary operator direkte i JSX til at vise enten:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="29" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="29-logical-and"><span class="eyebrow">29 · Forstå</span><h2>Logical AND <code>&amp;&amp;</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Logical AND <code>&amp;&amp;</code> er en logical operator.</p>
-<p>Den bruges til at undersøge, om <strong>begge sider er truthy</strong>:</p>
-<p><code>&amp;&amp;</code> er nyttig, når noget kun skal ske, hvis en betingelse er opfyldt.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const isLoggedIn = true;
+<section data-concept-number="29" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="29-logical-and"><span class="eyebrow">29 · Forstå</span><h2>Logical AND <code>&amp;&amp;</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Logical AND <code>&amp;&amp;</code> er en logical operator.</li><li>Den bruges til at undersøge, om <strong>begge sider er truthy</strong></li><li><code>&amp;&amp;</code> er nyttig, når noget kun skal ske, hvis en betingelse er opfyldt.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const isLoggedIn = true;
 const isAdmin = true;
 
 console.log(isLoggedIn &amp;&amp; isAdmin);
@@ -1681,10 +1511,7 @@ console.log(isLoggedIn &amp;&amp; isAdmin);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="29" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">29 · JavaScript-eksempler</span><h2>Logical AND <code>&amp;&amp;</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Vi kan bruge <code>&amp;&amp;</code> mellem flere betingelser:</p>
-<p>Her skal begge betingelser være <code>true</code>:</p>
-<p>Derfor bliver koden i <code>if</code> kørt.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const age = 20;
+<section data-concept-number="29" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">29 · JavaScript-eksempler</span><h2>Logical AND <code>&amp;&amp;</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Vi kan bruge <code>&amp;&amp;</code> mellem flere betingelser</li><li>Her skal begge betingelser være <code>true</code></li><li>Derfor bliver koden i <code>if</code> kørt.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const age = 20;
 const hasTicket = true;
 
 if (age &gt;= 18 &amp;&amp; hasTicket) {
@@ -1700,10 +1527,7 @@ inStock &amp;&amp; console.log(&quot;In stock&quot;);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="29" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">29 · I React</span><h2>Logical AND <code>&amp;&amp;</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>I React bruges <code>&amp;&amp;</code> ofte til <strong>conditional rendering</strong>.</p>
-<p>Forestil dig, at vi kun vil vise en besked, hvis et produkt er på lager:</p>
-<p>Hvis:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Product({ name, inStock }) {
+<section data-concept-number="29" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">29 · I React</span><h2>Logical AND <code>&amp;&amp;</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>I React bruges <code>&amp;&amp;</code> ofte til <strong>conditional rendering</strong>.</li><li>Forestil dig, at vi kun vil vise en besked, hvis et produkt er på lager</li><li>Hvis</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Product({ name, inStock }) {
   return (
     &lt;article&gt;
       &lt;h2&gt;{name}&lt;/h2&gt;
@@ -1733,10 +1557,7 @@ inStock &amp;&amp; console.log(&quot;In stock&quot;);
 <p>Brug derefter <code>&amp;&amp;</code> til kun at vise:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="30" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="30-ekstra-logical-or-og-fallback-værdier"><span class="eyebrow">30 · Forstå</span><h2>Ekstra: Logical OR <code>||</code> og fallback-værdier</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Logical OR <code>||</code> er en logical operator.</p>
-<p>Den kan bruges til at vælge en <strong>fallback-værdi</strong>, hvis den første værdi ikke findes eller er falsy.</p>
-<p><code>||</code> er nyttig, når vi gerne vil have en standardværdi, hvis en anden værdi mangler.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const username = &quot;&quot;;
+<section data-concept-number="30" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="30-ekstra-logical-or-og-fallback-værdier"><span class="eyebrow">30 · Forstå</span><h2>Ekstra: Logical OR <code>||</code> og fallback-værdier</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Logical OR <code>||</code> er en logical operator.</li><li>Den kan bruges til at vælge en <strong>fallback-værdi</strong>, hvis den første værdi ikke findes eller er falsy.</li><li><code>||</code> er nyttig, når vi gerne vil have en standardværdi, hvis en anden værdi mangler.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const username = &quot;&quot;;
 
 const displayName = username || &quot;Guest&quot;;
 
@@ -1784,10 +1605,7 @@ console.log(displayTitle);
 <p>Brug derefter <code>||</code> til at vise <code>nickname</code> med <code>&quot;No nickname&quot;</code> som fallback:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="31" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="31-ekstra-nullish-coalescing"><span class="eyebrow">31 · Forstå</span><h2>Ekstra: Nullish coalescing <code>??</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Nullish coalescing <code>??</code> bruges til at give en <strong>fallback-værdi</strong>, hvis en værdi er <code>null</code> eller <code>undefined</code>.</p>
-<p>Hvis den første værdi findes, bliver den brugt:</p>
-<p>I det forrige koncept så vi, at <code>||</code> også bruger fallback ved værdier som <code>0</code> og en tom string <code>&quot;&quot;</code>.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const username = undefined;
+<section data-concept-number="31" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="31-ekstra-nullish-coalescing"><span class="eyebrow">31 · Forstå</span><h2>Ekstra: Nullish coalescing <code>??</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Nullish coalescing <code>??</code> bruges til at give en <strong>fallback-værdi</strong>, hvis en værdi er <code>null</code> eller <code>undefined</code>.</li><li>Hvis den første værdi findes, bliver den brugt</li><li>I det forrige koncept så vi, at <code>||</code> også bruger fallback ved værdier som <code>0</code> og en tom string <code>&quot;&quot;</code>.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const username = undefined;
 
 const displayName = username ?? &quot;Guest&quot;;
 
@@ -1843,10 +1661,7 @@ console.log(discount);
 <p>Prøv komponenten med:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="32" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="32-optional-chaining"><span class="eyebrow">32 · Forstå</span><h2>Optional chaining <code>?.</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Optional chaining <code>?.</code> bruges til sikkert at tilgå properties, som måske ikke findes.</p>
-<p>Forestil dig dette object:</p>
-<p>Når vi arbejder med data, kan nogle værdier mangle.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, contact: { email: &quot;anna@example.com&quot; }
+<section data-concept-number="32" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="32-optional-chaining"><span class="eyebrow">32 · Forstå</span><h2>Optional chaining <code>?.</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Optional chaining <code>?.</code> bruges til sikkert at tilgå properties, som måske ikke findes.</li><li>Forestil dig dette object</li><li>Når vi arbejder med data, kan nogle værdier mangle.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, contact: { email: &quot;anna@example.com&quot; }
 };
 </code></pre>
 <pre class="po-code"><code class="language-javascript">console.log(student.contact.email);
@@ -1854,10 +1669,7 @@ console.log(discount);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="32" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">32 · JavaScript-eksempler</span><h2>Optional chaining <code>?.</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Optional chaining skrives med <code>?.</code>:</p>
-<p>Fx:</p>
-<p>Hvis <code>contact</code> mangler:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">object.property?.property;
+<section data-concept-number="32" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">32 · JavaScript-eksempler</span><h2>Optional chaining <code>?.</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Optional chaining skrives med <code>?.</code></li><li>Fx</li><li>Hvis <code>contact</code> mangler</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">object.property?.property;
 </code></pre>
 <pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, contact: { email: &quot;anna@example.com&quot; }
 };
@@ -1878,10 +1690,7 @@ console.log(email);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="32" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">32 · I React</span><h2>Optional chaining <code>?.</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Optional chaining er nyttigt i React, når vi viser data, hvor nogle properties måske mangler.</p>
-<p>Hvis <code>contact</code> findes, bliver email vist.</p>
-<p>Hvis <code>contact</code> ikke findes, får komponenten ikke en fejl.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Student({ student }) {
+<section data-concept-number="32" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">32 · I React</span><h2>Optional chaining <code>?.</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Optional chaining er nyttigt i React, når vi viser data, hvor nogle properties måske mangler.</li><li>Hvis <code>contact</code> findes, bliver email vist.</li><li>Hvis <code>contact</code> ikke findes, får komponenten ikke en fejl.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Student({ student }) {
   return (
     &lt;article&gt;
       &lt;h2&gt;{student.name}&lt;/h2&gt;
@@ -1922,10 +1731,7 @@ console.log(email);
 
 <section class="chapter po-chapter po-slide" id="events"><span class="chapter-index">33</span><span class="eyebrow">Events</span><h2>Events</h2><p class="kicker">Her arbejder vi med ét lille JavaScript-koncept ad gangen og kobler det straks til React.</p></section>
 
-<section data-concept-number="33" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="33-event-handlers"><span class="eyebrow">33 · Forstå</span><h2>Event handlers</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En event handler er en funktion, der bliver kørt, når en bestemt hændelse sker.</p>
-<p>Det kan fx være, når en bruger:</p>
-<p>Event handlers gør vores applikationer interaktive.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Button() {
+<section data-concept-number="33" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="33-event-handlers"><span class="eyebrow">33 · Forstå</span><h2>Event handlers</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En event handler er en funktion, der bliver kørt, når en bestemt hændelse sker.</li><li>Det kan fx være, når en bruger</li><li>Event handlers gør vores applikationer interaktive.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function Button() {
   const handleClick = () =&gt; {
     console.log(&quot;Button clicked!&quot;);
   };
@@ -1935,10 +1741,7 @@ console.log(email);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="33" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">33 · JavaScript-eksempler</span><h2>Event handlers</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>En event handler er bare en funktion:</p>
-<p>I React kan vi give funktionen til <code>onClick</code>:</p>
-<p>Bemærk forskellen på:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const handleClick = () =&gt; {
+<section data-concept-number="33" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">33 · JavaScript-eksempler</span><h2>Event handlers</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>En event handler er bare en funktion</li><li>I React kan vi give funktionen til <code>onClick</code></li><li>Bemærk forskellen på</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const handleClick = () =&gt; {
   console.log(&quot;Clicked!&quot;);
 };
 </code></pre>
@@ -1948,10 +1751,7 @@ console.log(email);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="33" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">33 · I React</span><h2>Event handlers</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Event handlers bruges hele tiden i React.</p>
-<p>Komponenten kan fx bruges sådan:</p>
-<p>Når brugeren klikker, bliver dette printet:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function ProductButton({ name }) {
+<section data-concept-number="33" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">33 · I React</span><h2>Event handlers</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Event handlers bruges hele tiden i React.</li><li>Komponenten kan fx bruges sådan</li><li>Når brugeren klikker, bliver dette printet</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function ProductButton({ name }) {
   const handleClick = () =&gt; {
     console.log(`Selected: ${name}`);
   };
@@ -1979,10 +1779,7 @@ console.log(email);
 <p>Tilføj en button:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="34" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="34-event-object"><span class="eyebrow">34 · Forstå</span><h2>Event object</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Når en event handler bliver kørt, får den information om den event, der er sket.</p>
-<p>Denne information ligger i et <strong>event object</strong>.</p>
-<p>Event objectet giver os adgang til information om det element, brugeren interagerer med.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const handleClick = (event) =&gt; {
+<section data-concept-number="34" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="34-event-object"><span class="eyebrow">34 · Forstå</span><h2>Event object</h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Når en event handler bliver kørt, får den information om den event, der er sket.</li><li>Denne information ligger i et <strong>event object</strong>.</li><li>Event objectet giver os adgang til information om det element, brugeren interagerer med.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">const handleClick = (event) =&gt; {
   console.log(event);
 };
 </code></pre>
@@ -1990,10 +1787,7 @@ console.log(email);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="34" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">34 · JavaScript-eksempler</span><h2>Event object</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Event objectet modtages som en parameter:</p>
-<p>Vi kalder ofte parameteren:</p>
-<p>eller kort:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const handleClick = (event) =&gt; {
+<section data-concept-number="34" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">34 · JavaScript-eksempler</span><h2>Event object</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Event objectet modtages som en parameter</li><li>Vi kalder ofte parameteren</li><li>Eller kort</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const handleClick = (event) =&gt; {
   console.log(event);
 };
 </code></pre>
@@ -2003,10 +1797,7 @@ console.log(email);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="34" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">34 · I React</span><h2>Event object</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Event objectet bruges meget sammen med forms og inputs.</p>
-<p>Hver gang brugeren skriver noget, bliver <code>handleChange</code> kørt.</p>
-<p>Hvis brugeren skriver:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function NameInput() {
+<section data-concept-number="34" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">34 · I React</span><h2>Event object</h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Event objectet bruges meget sammen med forms og inputs.</li><li>Hver gang brugeren skriver noget, bliver <code>handleChange</code> kørt.</li><li>Hvis brugeren skriver</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function NameInput() {
   const handleChange = (event) =&gt; {
     console.log(event.target.value);
   };
@@ -2040,10 +1831,7 @@ console.log(email);
 
 <section class="chapter po-chapter po-slide" id="asynkron-javascript-og-apier"><span class="chapter-index">35</span><span class="eyebrow">Asynkron JavaScript og API'er</span><h2>Asynkron JavaScript og API'er</h2><p class="kicker">Her arbejder vi med ét lille JavaScript-koncept ad gangen og kobler det straks til React.</p></section>
 
-<section data-concept-number="35" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="35-async-await"><span class="eyebrow">35 · Forstå</span><h2><code>async</code> / <code>await</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Nogle ting i JavaScript tager tid.</p>
-<p>Det kan fx være at:</p>
-<p>JavaScript skal ofte arbejde med data, som ikke er tilgængelige med det samme.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const getData = async () =&gt; {
+<section data-concept-number="35" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="35-async-await"><span class="eyebrow">35 · Forstå</span><h2><code>async</code> / <code>await</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Nogle ting i JavaScript tager tid.</li><li>Det kan fx være at</li><li>JavaScript skal ofte arbejde med data, som ikke er tilgængelige med det samme.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const getData = async () =&gt; {
   const data = await somethingThatTakesTime();
 
   console.log(data);
@@ -2054,10 +1842,7 @@ await → vent på resultatet
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="35" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">35 · JavaScript-eksempler</span><h2><code>async</code> / <code>await</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>For at bruge <code>await</code> inde i en funktion markerer vi funktionen med <code>async</code>:</p>
-<p>Det samme kan skrives som en arrow function:</p>
-<p>Bemærk placeringen af <code>async</code>:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">async function getData() {
+<section data-concept-number="35" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">35 · JavaScript-eksempler</span><h2><code>async</code> / <code>await</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>For at bruge <code>await</code> inde i en funktion markerer vi funktionen med <code>async</code></li><li>Det samme kan skrives som en arrow function</li><li>Bemærk placeringen af <code>async</code></li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">async function getData() {
   const data = await somethingThatTakesTime();
 
   console.log(data);
@@ -2075,10 +1860,7 @@ await → vent på resultatet
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="35" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">35 · I React</span><h2><code>async</code> / <code>await</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>I React bruger vi ofte <code>async</code> på event handlers, når en handling skal vente på noget.</p>
-<p>Her er <code>handleGetProducts</code> en almindelig event handler, som vi har arbejdet med tidligere.</p>
-<p>Forskellen er, at den nu er markeret med:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function GetProducts() {
+<section data-concept-number="35" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">35 · I React</span><h2><code>async</code> / <code>await</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>I React bruger vi ofte <code>async</code> på event handlers, når en handling skal vente på noget.</li><li>Her er <code>handleGetProducts</code> en almindelig event handler, som vi har arbejdet med tidligere.</li><li>Forskellen er, at den nu er markeret med</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function GetProducts() {
   const handleGetProducts = async () =&gt; {
     console.log(&quot;Getting products...&quot;);
   };
@@ -2108,17 +1890,11 @@ await → vent på resultatet
 <p>Exportér komponenten, importér den i <code>HomePage.jsx</code>, og vis den nederst inden for <code>&lt;main&gt;</code>.</p>
 </article></div><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="36" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="36-fetch"><span class="eyebrow">36 · Forstå</span><h2><code>fetch()</code></h2><div class="concept-copy concept-copy--focus"><div class="concept-narrative"><p><code>fetch()</code> bruges til at hente data fra en URL.</p>
-<p>Det kan fx være data fra et API:</p>
-<p>Mange webapplikationer henter data fra en server eller et API.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const response = await fetch(&quot;https://example.com/products&quot;);
+<section data-concept-number="36" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="36-fetch"><span class="eyebrow">36 · Forstå</span><h2><code>fetch()</code></h2><div class="concept-copy concept-copy--focus"><div class="concept-narrative"><ul class="concept-points"><li><code>fetch()</code> bruges til at hente data fra en URL.</li><li>Det kan fx være data fra et API</li><li>Mange webapplikationer henter data fra en server eller et API.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const response = await fetch(&quot;https://example.com/products&quot;);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="36" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">36 · JavaScript-eksempler</span><h2><code>fetch()</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Vi bruger typisk <code>fetch()</code> inde i en <code>async</code> function:</p>
-<p>Her sker der tre ting:</p>
-<p>URL&#39;en sendes med som argument til <code>fetch()</code>:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const getProducts = async () =&gt; {
+<section data-concept-number="36" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">36 · JavaScript-eksempler</span><h2><code>fetch()</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Vi bruger typisk <code>fetch()</code> inde i en <code>async</code> function</li><li>Her sker der tre ting</li><li>URL&#39;en sendes med som argument til <code>fetch()</code></li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const getProducts = async () =&gt; {
   const response = await fetch(&quot;https://example.com/products&quot;);
 
   console.log(response);
@@ -2132,10 +1908,7 @@ await → vent på resultatet
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="36" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">36 · I React</span><h2><code>fetch()</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><p>Vi kan nu udvide event handleren fra det forrige koncept:</p>
-<p>Når brugeren klikker på knappen:</p>
-<p>Vi har nu fået et response fra serveren.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function GetProducts() {
+<section data-concept-number="36" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">36 · I React</span><h2><code>fetch()</code></h2><div class="concept-copy concept-copy--split concept-copy--roomy"><div class="concept-narrative"><ul class="concept-points"><li>Vi kan nu udvide event handleren fra det forrige koncept</li><li>Når brugeren klikker på knappen</li><li>Vi har nu fået et response fra serveren.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function GetProducts() {
   const handleGetProducts = async () =&gt; {
     const response = await fetch(&quot;https://example.com/products&quot;);
 
@@ -2179,10 +1952,7 @@ response
 <p>Du skal kunne se et <code>Response</code> object.</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="37" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="37-json-og-response-json"><span class="eyebrow">37 · Forstå</span><h2>JSON og <code>response.json()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Når vi henter data fra et API, kommer data ofte i formatet <strong>JSON</strong>.</p>
-<p>JSON kan fx se sådan ud:</p>
-<p>Et response fra <code>fetch()</code> er ikke direkte de data, vi vil arbejde med.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-json">{
+<section data-concept-number="37" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="37-json-og-response-json"><span class="eyebrow">37 · Forstå</span><h2>JSON og <code>response.json()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Når vi henter data fra et API, kommer data ofte i formatet <strong>JSON</strong>.</li><li>JSON kan fx se sådan ud</li><li>Et response fra <code>fetch()</code> er ikke direkte de data, vi vil arbejde med.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-json">{
   &quot;id&quot;: 1,
   &quot;name&quot;: &quot;Keyboard&quot;,
   &quot;price&quot;: 799
@@ -2192,10 +1962,7 @@ response
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="37" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">37 · JavaScript-eksempler</span><h2>JSON og <code>response.json()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Vi bruger <code>response.json()</code> efter <code>fetch()</code>:</p>
-<p>Hvis API&#39;et returnerer et object, kan vi bruge property access:</p>
-<p>Hvis API&#39;et returnerer et array, kan vi bruge de array methods, vi allerede kender:</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const getPost = async () =&gt; {
+<section data-concept-number="37" data-concept-stage="how" class="po-slide concept-example-detail concept-stage concept-stage--how"><span class="eyebrow">37 · JavaScript-eksempler</span><h2>JSON og <code>response.json()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Vi bruger <code>response.json()</code> efter <code>fetch()</code></li><li>Hvis API&#39;et returnerer et object, kan vi bruge property access</li><li>Hvis API&#39;et returnerer et array, kan vi bruge de array methods, vi allerede kender</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const getPost = async () =&gt; {
   const response = await fetch(&quot;https://jsonplaceholder.typicode.com/posts/1&quot;);
 
   const data = await response.json();
@@ -2211,10 +1978,7 @@ data.find(...);
 </code></pre>
 </div></div></section>
 
-<section data-concept-number="37" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">37 · I React</span><h2>JSON og <code>response.json()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>Vi kan nu udvide vores event handler, så den faktisk læser data fra responset:</p>
-<p>Nu er hele flowet samlet:</p>
-<p><code>data</code> er et array, så vi kan arbejde videre med det på samme måde som andre arrays.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function GetPosts() {
+<section data-concept-number="37" data-concept-stage="react" class="po-slide mode-shared concept-example-detail concept-stage concept-stage--react"><span class="eyebrow">37 · I React</span><h2>JSON og <code>response.json()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>Vi kan nu udvide vores event handler, så den faktisk læser data fra responset</li><li>Nu er hele flowet samlet</li><li><code>data</code> er et array, så vi kan arbejde videre med det på samme måde som andre arrays.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript jsx">function GetPosts() {
   const handleGetPosts = async () =&gt; {
     const response = await fetch(&quot;https://jsonplaceholder.typicode.com/posts&quot;);
 
@@ -2264,10 +2028,7 @@ data
 <p>Brug derefter <code>map()</code> til kun at hente titlerne:</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="38" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="38-ekstra-promises-med-then-catch"><span class="eyebrow">38 · Forstå</span><h2>Ekstra: Promises med <code>.then()</code> / <code>.catch()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p>En Promise repræsenterer en værdi, som vi får på et senere tidspunkt.</p>
-<p>Du har allerede arbejdet med Promises:</p>
-<p><code>async</code> / <code>await</code> og <code>.then()</code> er to måder at arbejde med Promises på.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const response = await fetch(&quot;https://jsonplaceholder.typicode.com/posts&quot;);
+<section data-concept-number="38" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="38-ekstra-promises-med-then-catch"><span class="eyebrow">38 · Forstå</span><h2>Ekstra: Promises med <code>.then()</code> / <code>.catch()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li>En Promise repræsenterer en værdi, som vi får på et senere tidspunkt.</li><li>Du har allerede arbejdet med Promises</li><li><code>async</code> / <code>await</code> og <code>.then()</code> er to måder at arbejde med Promises på.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const response = await fetch(&quot;https://jsonplaceholder.typicode.com/posts&quot;);
 </code></pre>
 <pre class="po-code"><code class="language-javascript">fetch(&quot;https://jsonplaceholder.typicode.com/posts&quot;)
   .then((response) =&gt; response.json())
@@ -2321,10 +2082,7 @@ const data = await response.json();
 <p>Klik på knappen og kontrollér, at du får de samme data som tidligere.</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="39" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="39-ekstra-error-handling-med-try-catch"><span class="eyebrow">39 · Forstå</span><h2>Ekstra: Error handling med <code>try</code> / <code>catch</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p><code>try</code> / <code>catch</code> bruges til at håndtere fejl i JavaScript.</p>
-<p>Når vi arbejder med <code>async</code> / <code>await</code>, kan vi fx bruge <code>try</code> / <code>catch</code> omkring vores <code>fetch()</code>-kode:</p>
-<p>Når vi henter data, kan noget gå galt.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">try {
+<section data-concept-number="39" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="39-ekstra-error-handling-med-try-catch"><span class="eyebrow">39 · Forstå</span><h2>Ekstra: Error handling med <code>try</code> / <code>catch</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li><code>try</code> / <code>catch</code> bruges til at håndtere fejl i JavaScript.</li><li>Når vi arbejder med <code>async</code> / <code>await</code>, kan vi fx bruge <code>try</code> / <code>catch</code> omkring vores <code>fetch()</code>-kode</li><li>Når vi henter data, kan noget gå galt.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">try {
   // kode der kan fejle
 } catch (error) {
   // hvad skal der ske, hvis noget fejler?
@@ -2377,10 +2135,7 @@ const data = await response.json();
 <p>Prøv derefter en ugyldig URL og undersøg fejlen i browserens console.</p>
 </article></div><p class="component-test-note"><strong>Test React-komponenten i appen:</strong> Importér den i <code>HomePage.jsx</code>, og tilføj den nederst inden for sidens <code>&lt;main&gt;</code>-tag.</p><p class="concept-material-link">Brug for starterkode eller ekstra udfordringer? <a href="https://github.com/cederdorff/MDU-E25IXD/blob/main/undervisning/product-optimization/js-concepts.md" target="_blank" rel="noopener noreferrer">Åbn det samlede materiale ↗</a></p></section>
 
-<section data-concept-number="40" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="40-ekstra-json-parse-json-stringify"><span class="eyebrow">40 · Forstå</span><h2>Ekstra: <code>JSON.parse()</code> / <code>JSON.stringify()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><p><code>JSON.stringify()</code> bruges til at lave JavaScript-data om til en JSON-string.</p>
-<p>Resultatet bliver en string:</p>
-<p>Når data skal gemmes eller sendes, bliver det ofte repræsenteret som tekst.</p>
-</div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24 };
+<section data-concept-number="40" data-concept-stage="what" class="po-slide concept-stage concept-stage--what" id="40-ekstra-json-parse-json-stringify"><span class="eyebrow">40 · Forstå</span><h2>Ekstra: <code>JSON.parse()</code> / <code>JSON.stringify()</code></h2><div class="concept-copy concept-copy--split concept-copy--comfortable"><div class="concept-narrative"><ul class="concept-points"><li><code>JSON.stringify()</code> bruges til at lave JavaScript-data om til en JSON-string.</li><li>Resultatet bliver en string</li><li>Når data skal gemmes eller sendes, bliver det ofte repræsenteret som tekst.</li></ul></div><div class="concept-code-stack"><pre class="po-code"><code class="language-javascript">const student = { name: &quot;Anna&quot;, age: 24 };
 
 const json = JSON.stringify(student);
 

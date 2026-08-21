@@ -3695,6 +3695,18 @@
   font-weight: 900;
 }
 
+.reveal .concept-narrative .concept-points {
+  margin-top: 0;
+}
+
+.reveal .concept-narrative .concept-points li {
+  padding-left: 8px;
+}
+
+.reveal .concept-narrative .concept-points li + li {
+  margin-top: 14px;
+}
+
 .reveal .concept-stage--why .concept-narrative li::marker {
   color: var(--po-yellow);
 }

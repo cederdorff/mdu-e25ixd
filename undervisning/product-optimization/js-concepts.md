@@ -45,8 +45,8 @@
 27. `if` / `else`
 28. Ternary operator `? :`
 29. Logical AND `&&`
-30. Logical OR `||` og fallback-værdier
-31. Nullish coalescing `??`
+30. **Ekstra:** Logical OR `||` og fallback-værdier
+31. **Ekstra:** Nullish coalescing `??`
 32. Optional chaining `?.`
 
 ### Events
@@ -142,6 +142,11 @@ Modules gør det muligt at dele JavaScript-kode op i flere filer.
 
 En fil kan **exportere** værdier, funktioner eller komponenter, som andre filer derefter kan **importere**.
 
+Der er to former, vi skal kunne kende forskel på:
+
+- **named export** – importeres med `{ }`
+- **default export** – importeres uden `{ }`
+
 ```js
 // students.js
 
@@ -180,17 +185,15 @@ I React bruger vi modules hele tiden til fx komponenter, funktioner og data.
 
 ## Hvordan bruges det?
 
-Vi kan exportere en variabel fra en fil:
+### Named export
+
+En fil kan have flere named exports. De importeres med `{ }`, og navnet skal matche exporten:
 
 ```js
 // students.js
 
 export const students = ["Anna", "Peter", "Sara"];
-```
 
-og importere den i `sandbox.js`:
-
-```js
 // sandbox.js
 
 import { students } from "./students.js";
@@ -198,29 +201,35 @@ import { students } from "./students.js";
 console.log(students);
 ```
 
-Vi kan også exportere funktioner:
+### Default export
+
+En fil kan have én default export. Den importeres uden `{ }`:
 
 ```js
 // greetings.js
 
-export function sayHi(name) {
+export default function sayHi(name) {
   return `Hello, ${name}!`;
 }
-```
 
-og importere dem:
-
-```js
 // sandbox.js
 
-import { sayHi } from "./greetings.js";
+import sayHi from "./greetings.js";
 
 console.log(sayHi("Peter"));
 ```
 
+Fordi en default export ikke har `{ }`, kan vi vælge et andet lokalt navn ved importen:
+
+```js
+import createGreeting from "./greetings.js";
+```
+
+Det virker, men et navn, der matcher funktionen eller komponenten, gør koden lettere at læse.
+
 ## I React
 
-React components er også JavaScript modules.
+React components er også JavaScript modules. En fil eksporterer ofte sin primære komponent som `default`, så komponenten importeres uden `{ }`. Hooks som `useState` er derimod ofte named exports og importeres med `{ }`.
 
 En component kan exporteres fra sin egen fil:
 
@@ -232,7 +241,7 @@ export default function Student() {
 }
 ```
 
-og importeres i en anden component:
+En default export importeres uden `{ }` i en anden komponent:
 
 ```jsx
 // App.jsx
@@ -249,21 +258,26 @@ export default function App() {
 }
 ```
 
-Du vil også ofte møde imports fra packages:
+Du vil også ofte møde named imports fra packages:
 
 ```js
 import { useState } from "react";
 ```
 
-Princippet er det samme: Vi importerer noget, som er eksporteret fra et andet module.
+Her er `Student` en **default import**, mens `useState` er en **named import**.
+
+```js
+import Student from "./sandbox/Student"; // default: ingen { }
+import { useState } from "react";         // named: bruger { }
+```
 
 ## Prøv selv
 
 ### JavaScript
 
 1. Opret `teachers.js` i `sandbox`.
-2. Opret et array med tre undervisere og exportér det.
-3. Importér `teachers` i `sandbox.js`.
+2. Opret et array med tre undervisere og exportér det som en named export.
+3. Importér `teachers` med `{ }` i `sandbox.js`.
 4. Print arrayet med `console.log()`.
 5. Kontrollér resultatet i browserens console.
 
@@ -293,9 +307,9 @@ Hello, Anna!
 
 1. Opret `Teacher.jsx` i `sandbox`.
 2. Lav en `Teacher` component, der viser navnet på en underviser.
-3. Exportér komponenten.
+3. Exportér komponenten med `export default`.
 4. Importér `Teacher` i `HomePage.jsx`.
-5. Vis `<Teacher />` nederst inden for sidens `<main>`-tag.
+5. Kontrollér, at importen ikke bruger `{ }`, og vis `<Teacher />` nederst inden for sidens `<main>`-tag.
 
 #### Ekstra
 

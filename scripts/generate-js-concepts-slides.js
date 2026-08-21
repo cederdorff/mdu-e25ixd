@@ -39,6 +39,24 @@ const render = (value) =>
     .replaceAll(/<pre><code class="language-text">/g, '<pre class="po-code"><code class="language-plaintext">');
 const renderInline = (value) => marked.parseInline(value);
 
+const cleanNarrativeLead = (value) => {
+  const withoutColon = value.trim().replace(/:\s*$/, "");
+  return withoutColon.replace(/^(kan|eller|og|bruger|vises|vil)\b/u, (word) =>
+    `${word.charAt(0).toUpperCase()}${word.slice(1)}`
+  );
+};
+
+const renderNarrativeBlocks = (blocks) => {
+  const cleaned = blocks.map(cleanNarrativeLead);
+  const simpleProse = cleaned.every((block) => !/^(?:#{1,6}|[-*]|\d+\.|>|```)/m.test(block));
+
+  if (simpleProse && cleaned.length > 1) {
+    return `<ul class="concept-points">${cleaned.map((block) => `<li>${renderInline(block)}</li>`).join("")}</ul>`;
+  }
+
+  return render(cleaned.join("\n\n"));
+};
+
 const markdownBlocks = (value) => {
   const lines = value.trim().split("\n");
   const blocks = [];
@@ -234,9 +252,9 @@ const renderContentLayout = (content) => {
     narrativeBlocks.join(" ").length < 160 &&
     codeBlocks[0].split("\n").length <= 10
   ) {
-    return `<div class="concept-copy concept-copy--focus"><div class="concept-narrative">${render(narrativeBlocks.join("\n\n"))}</div><div class="concept-code-stack">${render(codeBlocks[0])}</div></div>`;
+    return `<div class="concept-copy concept-copy--focus"><div class="concept-narrative">${renderNarrativeBlocks(narrativeBlocks)}</div><div class="concept-code-stack">${render(codeBlocks[0])}</div></div>`;
   }
-  return `<div class="concept-copy concept-copy--split ${narrativeDensityClass}"><div class="concept-narrative">${render(narrativeBlocks.join("\n\n"))}</div><div class="concept-code-stack">${render(codeBlocks.join("\n\n"))}</div></div>`;
+  return `<div class="concept-copy concept-copy--split ${narrativeDensityClass}"><div class="concept-narrative">${renderNarrativeBlocks(narrativeBlocks)}</div><div class="concept-code-stack">${render(codeBlocks.join("\n\n"))}</div></div>`;
 };
 
 const contentSlide = ({ concept, label, subtitle = "", content, stage, className = "po-slide", id = "" }) =>
@@ -387,7 +405,7 @@ const conceptExampleSlide = (concept, type) => {
 
   return contentSlide({
     concept,
-    label: isReact ? "I React" : "JavaScript-eksempler",
+    label: isReact ? "I React" : concept.number === 1 ? "Named og default export" : "JavaScript-eksempler",
     content,
     stage: isReact ? "react" : "how",
     className: isReact ? "po-slide mode-shared concept-example-detail" : "po-slide concept-example-detail"
@@ -451,20 +469,31 @@ const conceptSlides = concepts.flatMap((concept) => {
           chapterId(chapter)
         )
       : "";
+  const javascriptSlides =
+    concept.number === 1
+      ? stageSlides({
+          concept,
+          source: concept.how,
+          stage: "how",
+          label: "Named og default export",
+          targetHeight: 690,
+          maxCodeBlocks: 2
+        })
+      : [conceptExampleSlide(concept, "javascript")];
 
   return concept.extra
     ? [chapterSlide, conceptFoundationSlide(concept), conceptComparisonSlide(concept), conceptTaskSlide(concept)]
     : [
         chapterSlide,
         conceptFoundationSlide(concept),
-        conceptExampleSlide(concept, "javascript"),
+        ...javascriptSlides,
         conceptExampleSlide(concept, "react"),
         conceptTaskSlide(concept)
       ];
 });
 
 const agenda = slide(
-  `${eyebrow("Agenda")}<h2>Fra egne eksempler til React-kode, I kan forklare</h2><div class="agenda-columns"><div class="agenda-column"><h3>Fælles start</h3><ol class="agenda-track"><li><a href="#/rammen-for-dagen"><strong>Rammen for dagen</strong><small>Hvorfor vi tager et skridt tilbage til JavaScript</small></a></li><li><a href="#/eksempler-fra-andet-semester"><strong>Eksempler fra 2. semester</strong><small>Hvad virker, men er stadig svært at forklare?</small></a></li><li><a href="#/modules"><strong>Koncept for koncept</strong><small>Forstå → JavaScript → React → prøv selv</small></a></li></ol></div><div class="agenda-column"><h3>Konceptbank</h3><ol class="agenda-track concept-groups"><li><a href="#/modules"><strong>Modules og functions</strong><small>1–7</small></a></li><li><a href="#/objects"><strong>Objects</strong><small>8–13</small></a></li><li><a href="#/arrays"><strong>Arrays</strong><small>14–18</small></a></li><li><a href="#/array-methods"><strong>Array methods</strong><small>19–25</small></a></li><li><a href="#/strings-og-conditionals"><strong>Strings og conditionals</strong><small>26–32</small></a></li><li><a href="#/events"><strong>Events</strong><small>33–34</small></a></li><li><a href="#/${chapterId("Asynkron JavaScript og API'er")}"><strong>Async og API’er</strong><small>35–40</small></a></li></ol></div></div><p class="agenda-note"><strong>40 koncepter er en modulbank.</strong> Vi prioriterer kernekoncepterne og bruger de markerede ekstra-emner efter behov.</p><p class="agenda-material"><strong>Vil du hellere følge dagen som tekst?</strong> <a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Åbn det samlede JavaScript-materiale ↗</a></p>`,
+  `${eyebrow("Agenda")}<h2>Fra egne eksempler til React-kode, I kan forklare</h2><div class="agenda-columns"><div class="agenda-column"><h3>Dagens forløb</h3><ol class="agenda-track"><li><a href="#/rammen-for-dagen"><strong>Rammen for dagen</strong><small>Hvorfor vi tager et skridt tilbage til JavaScript</small></a></li><li><a href="#/eksempler-fra-andet-semester"><strong>Eksempler fra 2. semester</strong><small>Hvad virker, men er stadig svært at forklare?</small></a></li><li><a href="#/modules"><strong>Koncept for koncept</strong><small>Forstå → JavaScript → React → prøv selv</small></a></li><li><a href="#/opsamling"><strong>Opsamling</strong><small>Genbesøg egen kode, og vælg dit næste spørgsmål</small></a></li></ol></div><div class="agenda-column"><h3>Konceptbank</h3><ol class="agenda-track concept-groups"><li><a href="#/modules"><strong>Modules og functions</strong><small>1–7</small></a></li><li><a href="#/objects"><strong>Objects</strong><small>8–13</small></a></li><li><a href="#/arrays"><strong>Arrays</strong><small>14–18</small></a></li><li><a href="#/array-methods"><strong>Array methods</strong><small>19–25</small></a></li><li><a href="#/strings-og-conditionals"><strong>Strings og conditionals</strong><small>26–32</small></a></li><li><a href="#/events"><strong>Events</strong><small>33–34</small></a></li><li><a href="#/${chapterId("Asynkron JavaScript og API'er")}"><strong>Async og API’er</strong><small>35–40</small></a></li></ol></div></div><p class="agenda-note"><strong>40 koncepter er en modulbank.</strong> Vi prioriterer kernekoncepterne og bruger de markerede ekstra-emner efter behov.</p><p class="agenda-material"><strong>Vil du hellere følge dagen som tekst?</strong> <a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Åbn det samlede JavaScript-materiale ↗</a></p>`,
   "po-slide po-agenda",
   "agenda"
 );
@@ -476,7 +505,7 @@ const conceptIndexSlides = [
     "konceptindeks"
   ),
   slide(
-    `${eyebrow("Indeks · 2/2")}<h2>Strings, events og async</h2><div class="concept-index">${concepts.slice(21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div><div class="index-footer"><p class="index-note">De tonede emner er <strong>Ekstra</strong>: brug dem til fordybelse eller som opslagsværk.</p><p class="index-material"><a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p></div>`,
+    `${eyebrow("Indeks · 2/2")}<h2>Array methods, strings, events og async</h2><div class="concept-index">${concepts.slice(21).map((concept) => `<a class="${concept.extra ? "is-extra" : ""}" href="#/${concept.slug}"><span class="concept-number">${String(concept.number).padStart(2, "0")}</span><span class="concept-label">${renderInline(concept.title)}</span></a>`).join("")}</div><div class="index-footer"><p class="index-note">De tonede emner er <strong>Ekstra</strong>: brug dem til fordybelse eller som opslagsværk.</p><p class="index-material"><a href="${textMaterialUrl}" target="_blank" rel="noopener noreferrer">Følg hele materialet i <code>js-concepts.md</code> ↗</a></p></div>`,
     "po-slide po-concept-index"
   )
 ];

@@ -114,9 +114,15 @@ Vi sætter først rammen for dagen, bruger kort eksempler fra 2. semester som af
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>11. Egen kode og opsamling</strong></summary>
+<summary><strong>11. Egen kode</strong></summary>
 <ul>
 <li>Find et JavaScript-flow i din egen Web App, og identificér dagens koncepter i koden.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>12. Opsamling</strong></summary>
+<ul>
 <li>Genbesøg dit eksempel fra 2. semester: Kan du nu forklare, hvad koden gør, og hvilke koncepter den bruger?</li>
 <li>Notér det næste konkrete spørgsmål, du vil undersøge.</li>
 </ul>
