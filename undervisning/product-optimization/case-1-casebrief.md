@@ -14,13 +14,15 @@ Til den endelige eksamen afleverer du et dokument med links til de tre specifikk
 
 **Mellemrum** er en lokal kultur- og eventplatform, der hjælper brugerne med at finde koncerter, talks, workshops og andre arrangementer.
 
-Virksomheden har fået udviklet en første React-prototype. Den viser arrangementer og gør det muligt at udforske platformens indhold, men løsningen blev udviklet hurtigt for at afprøve idéen. Mellemrum ønsker nu at gøre produktet klar til rigtige brugere og til den videre udvikling af platformen.
+Virksomheden har fået udviklet en første React-prototype. Den viser arrangementer og gør det muligt at udforske platformens indhold og tilmelde sig et event, men løsningen blev udviklet hurtigt for at afprøve idéen. Mellemrum ønsker nu at gøre produktet klar til rigtige brugere og til den videre udvikling af platformen.
 
 ## Situationen
 
 Prototypen fungerer, når alt går som forventet, men kvaliteten er ujævn. Virksomheden oplever blandt andet, at løsningen er vanskelig at videreudvikle, at brugeroplevelsen ikke altid er konsistent, og at den ikke håndterer langsomme svar, manglende data og fejl godt nok.
 
 Data hentes fra Supabase gennem Supabase REST API. Den nuværende datamodel blev oprettet hurtigt og indeholder gentagne oplysninger, som gør data vanskelige at vedligeholde. Nogle oplysninger bør i stedet fordeles på relaterede tabeller.
+
+Når en bruger tilmelder sig et event, skal tilmeldingen registreres i Supabase. Mellemrum ønsker samtidig en intern side, hvor virksomheden kan se et overblik over tilmeldingerne og det event, de hører til.
 
 Mellemrum har derfor brug for, at du undersøger den eksisterende løsning og prioriterer de forbedringer, der har størst betydning for brugerne og for den videre udvikling af produktet.
 
@@ -42,6 +44,8 @@ Det primære fokus er React og kodeforbedringer, der optimerer løsningen. Du m�
 
 Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de nødvendige koncepter og teknikker undervejs i forløbet.
 
+Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md). Du skal derfor også indarbejde og verificere de relevante forbedringer herfra, eksempelvis environment variables, deployment, routing, metadata, oprydning af template-rester og accessibility.
+
 Dit arbejde skal samtidig være let at følge og overtage. Repositoryets feature branches og commits skal derfor vise, hvordan løsningen har udviklet sig fra det oprindelige problem til den færdige forbedring.
 
 ## Faglige fokusområder
@@ -50,7 +54,7 @@ Dit arbejde skal samtidig være let at følge og overtage. Repositoryets feature
 
 Undersøg løsningens state, props og dataflow. Se blandt andet efter oplysninger, der er gemt i flere `useState`-variabler, selvom de beskriver det samme, eller state, der kan beregnes ud fra eksisterende data. Den slags kan skabe unødvendige opdateringer og gøre løsningen vanskeligere at holde konsistent.
 
-Optimering skal tage udgangspunkt i et konkret problem eller en observation. Du forventes ikke at bruge `memo`, `useMemo` eller `useCallback` i denne case.
+Optimering skal tage udgangspunkt i et konkret problem eller en observation.
 
 ### 2. Robusthed og UI-states
 
@@ -73,7 +77,16 @@ Skab konsistens i komponenterne og den måde, UI'et giver feedback på. Du må g
 
 ### 4. Accessibility
 
-Forbedr løsningens accessibility. Centrale brugerflows skal blandt andet kunne forstås og anvendes med semantisk HTML, tastatur og tydeligt fokus. Formularer, billeder og dynamiske statusbeskeder skal være tilgængelige, hvor de indgår i løsningen.
+Forbedr løsningens accessibility med fokus på:
+
+1. **Semantik:** Brug HTML-elementer og et heading-hierarki, der beskriver indholdet.
+2. **ARIA:** Brug ARIA, når HTML ikke er nok – ikke som erstatning for semantik.
+3. **Navne:** Labels, linktekster, knapper og fejlbeskeder skal kunne forstås.
+4. **Tastatur:** Alt skal kunne nås og bruges med tastatur, og fokus skal altid være synligt.
+5. **Indhold:** Billeder skal have passende alt-tekst, og formularer skal have labels og feedback.
+6. **React SPA:** Opdatér `document.title`, og flyt fokus til den nye overskrift med `headingRef.current?.focus()` ved navigation.
+
+Brug listen som udgangspunkt for din undersøgelse – den er ikke udtømmende. Du må gerne identificere og forbedre andre relevante accessibility-problemer med hjælp fra [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c).
 
 ### 5. Data og Supabase
 
@@ -84,12 +97,16 @@ Du skal arbejde med at:
 - finde gentagne eller uhensigtsmæssigt placerede data
 - opdele relevante data i flere tabeller
 - etablere meningsfulde relationer med primær- og fremmednøgler
+- registrere en tilmelding i en `registrations`-tabel gennem Supabase REST API
+- forbinde hver tilmelding med det valgte event gennem `event_id`
 - hente de relaterede data fra Supabase
 - undgå unødvendige eller gentagne requests
 - tilpasse React-løsningen til den forbedrede datamodel
 - organisere dataadgangen, så den ikke er unødigt blandet sammen med præsentationslogikken
 
 Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde.
+
+Du skal desuden udvikle eller forbedre en intern oversigtsside, der eksempelvis viser navn, e-mail, status og det event, tilmeldingen hører til.
 
 Du forventes ikke at kunne arbejde med primærnøgler, fremmednøgler og relationer fra casens første dag. Vi arbejder med begreberne og den praktiske implementering i undervisningen undervejs.
 
@@ -170,6 +187,7 @@ Din casebeskrivelse skal koble de tekniske forbedringer til produktets værdi. O
 - Hvordan kan en mere robust og tilgængelig løsning nå eller fastholde flere brugere?
 - Hvordan kan bedre kodekvalitet og en tydeligere datamodel gøre fremtidig udvikling lettere og billigere?
 - Hvordan kan stabil datahåndtering og deployment mindske risikoen for fejl ved lancering?
+- Hvordan kan et pålideligt tilmeldingsflow og et samlet internt overblik skabe værdi for både brugerne og arrangøren?
 - Hvilke muligheder giver den forbedrede løsning Mellemrum for at videreudvikle produktet?
 
 ## Hvad skal din dokumentation vise?
@@ -202,5 +220,7 @@ Der lægges især vægt på, om du:
 
 - Startprojekt: Tilføjes
 - Teknisk audit-skabelon: [Teknisk audit af en React-løsning](./teknisk-audit-skabelon.md)
+- Tidligere undervisning: [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md)
+- Accessibility: [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
 - Supabase-projekt og data: Tilføjes
 - Dato for afslutning af Case 1: Tilføjes

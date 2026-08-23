@@ -25,12 +25,14 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 
 ### Accessibility
 
-- Er HTML-elementerne semantisk korrekte?
-- Har formularfelter labels, instruktioner og forståelige fejlbeskeder?
-- Kan centrale brugerflows gennemføres med tastatur?
-- Er fokus synligt og logisk, også ved navigation og dynamiske ændringer?
-- Har billeder meningsfuld alternativ tekst, når det er nødvendigt?
-- Bruges ARIA kun dér, hvor semantisk HTML ikke er tilstrækkelig?
+- **Semantik:** Bruges HTML-elementer og et heading-hierarki, der beskriver indholdet?
+- **ARIA:** Bruges ARIA kun, når HTML ikke er nok – og ikke som erstatning for semantik?
+- **Navne:** Kan labels, linktekster, knapper og fejlbeskeder forstås?
+- **Tastatur:** Kan alle centrale brugerflows nås og bruges med tastatur, og er fokus altid synligt og logisk?
+- **Indhold:** Har billeder passende alt-tekst, og har formularer labels, instruktioner og feedback?
+- **React SPA:** Opdateres `document.title`, og flyttes fokus til den nye overskrift med `headingRef.current?.focus()` ved navigation?
+
+Se også [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c).
 
 ### Styling
 
