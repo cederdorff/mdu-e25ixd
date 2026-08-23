@@ -197,7 +197,7 @@ Disse emner bør kun inddrages, hvis de understøtter projektet og der er tid:
 2. **JavaScript for React**
    Basal JavaScript repeteres og trænes med fokus på de koncepter, de studerende møder i React: datatyper, scope, objekter, arrays, funktioner, callbacks, array-metoder, moduler og asynkron kode.
 3. **Case 1: Kick-off, fejlhåndtering og robuste UI-states**
-   En udleveret React-løsning undersøges med fokus på asynkrone flows, fejl og loading-, success-, empty-, error- og retry-states. Hver studerende etablerer en baseline og arbejder individuelt gennem issues, feature branches og pull requests.
+   En udleveret React-løsning undersøges med fokus på asynkrone flows, fejl og loading-, success-, empty-, error- og retry-states. Hver studerende etablerer en baseline og arbejder individuelt i tydeligt navngivne feature branches med forståelige commits.
 4. **Case 1: Arkitektur, styling og accessibility**
    Fokus er på navngivning, struktur, komponentopdeling og placering af styling tættere på komponenterne. Kendte accessibility-principper anvendes og forbedres.
 5. **Case 1: Datamodellering, relationer og Supabase**  
@@ -213,7 +213,7 @@ Disse emner bør kun inddrages, hvis de understøtter projektet og der er tid:
 - Optimering, dokumentation og faglig begrundelse vægtes højere end antallet af nye features.
 - Git/GitHub, deployment, CRUD, filtrering, formularer og grundlæggende accessibility behandles som kendt stof.
 - Kendt stof genbesøges gennem audit, anvendelse og kvalitetssikring frem for grundlæggende gennemgang.
-- Produktet udvikles og afleveres individuelt. Peer review er en læringsaktivitet og ændrer ikke ejerskabet af løsningen.
+- Produktet udvikles og afleveres individuelt.
 - Next.js, TypeScript og større UI-frameworks holdes som udgangspunkt ude af casen.
 - Authentication og authorization placeres senere, medmindre den konkrete case kræver en meget enkel introduktion.
 
