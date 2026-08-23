@@ -12,7 +12,7 @@ Efter undervisningen skal du kunne modellere en enkel relation mellem tabeller, 
 
 - Medbring den seneste version af din løsning.
 - Find de steder, hvor løsningen bruger den CRUD, filtrering eller sortering, I arbejdede med på 2. semester.
-- Notér, om løsningen bruger Supabase SDK, direkte REST-kald eller begge dele.
+- Find de steder, hvor løsningen henter data med Supabase REST API og `fetch`.
 
 <hr style="margin: 2rem 0;">
 
@@ -33,15 +33,15 @@ Efter undervisningen skal du kunne modellere en enkel relation mellem tabeller, 
 <ul>
 <li>Opdel data i <code>users</code> og <code>posts</code>.</li>
 <li>Forbind tabellerne med en fremmednøgle.</li>
-<li>Hent de relaterede data med Supabase SDK.</li>
+<li>Hent de relaterede data gennem Supabase REST API.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Supabase SDK og REST</strong></summary>
+<summary><strong>3. Relationer gennem Supabase REST API</strong></summary>
 <ul>
-<li>Sammenlign Supabase SDK med den kendte REST- og <code>fetch</code>-tilgang.</li>
-<li>Undersøg, hvordan de to tilgange beskriver den samme forespørgsel.</li>
+<li>Byg en forespørgsel, der henter posts sammen med de relaterede brugerdata.</li>
+<li>Undersøg request og response i browserens Network-panel.</li>
 </ul>
 </details>
 
@@ -56,7 +56,8 @@ Efter undervisningen skal du kunne modellere en enkel relation mellem tabeller, 
 <details style="margin-left: 1.5rem;">
 <summary><strong>5. Overfør princippet til Case 1</strong></summary>
 <ul>
-<li>Arbejd med relationen i den eksisterende case-løsning.</li>
+<li>Oversæt princippet fra <code>users</code> og <code>posts</code> til <code>events</code>, <code>venues</code> og <code>registrations</code>.</li>
+<li>Arbejd med relevante primær- og fremmednøgler i den eksisterende case-løsning.</li>
 <li>Vurdér, om datamodellen og koden er blevet lettere at forstå og videreudvikle.</li>
 </ul>
 </details>

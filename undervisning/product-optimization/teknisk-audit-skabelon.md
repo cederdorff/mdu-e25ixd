@@ -64,6 +64,7 @@ Se også [React og Accessibility (a11y)](https://race.notion.site/React-og-Acces
 - Er der større side- eller route-komponenter, som med fordel kan indlæses efter behov med `React.lazy` og `Suspense`?
 - Hentes kun de data og assets, som siden har brug for?
 - Viser Network-panelet unødvendige eller gentagne requests, beregninger eller renderinger med mærkbar betydning?
+- Er gentagne requests i development også kontrolleret i en production build, så React Strict Mode ikke fejltolkes som et produktionsproblem?
 - Kan en valgt forbedring dokumenteres med en sammenlignelig før- og eftermåling?
 
 En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til at finde konkrete problemer, som har betydning for brugeren.

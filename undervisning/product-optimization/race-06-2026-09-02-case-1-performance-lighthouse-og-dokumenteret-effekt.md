@@ -32,6 +32,7 @@ Vi arbejder med billeder og assets, requests og Supabase-data, React-renderinger
 <ul>
 <li>Kør Lighthouse i Chrome, og brug rapporten til at finde områder, der skal undersøges nærmere.</li>
 <li>Gentag målinger under de samme forhold, og sammenlign ikke localhost direkte med deployment.</li>
+<li>Brug <code>npm run build</code> og <code>npm run preview</code>, når du vil undersøge løsningen uden development-adfærd.</li>
 <li>Undersøg også Network-panelet, konsollen og den faktiske brugeroplevelse.</li>
 <li>Brug scoren som et pejlemærke – ikke som målet for arbejdet.</li>
 </ul>
@@ -54,6 +55,7 @@ Vi arbejder med billeder og assets, requests og Supabase-data, React-renderinger
 <ul>
 <li>Hent kun de kolonner og rækker, som brugergrænsefladen har brug for.</li>
 <li>Brug Network-panelet til at se, hvad der hentes fra Supabase, hvornår det hentes, og hvor mange gange det hentes.</li>
+<li>Vær opmærksom på, at React Strict Mode kan genkøre effects i development. Kontrollér derfor også en production build, før du vurderer et gentaget request.</li>
 <li>Find requests, der er unødvendige, gentagne eller sender mere data end nødvendigt.</li>
 <li>Vurdér, om søgning og filtrering skal ske lokalt eller gennem Supabase.</li>
 <li>Overvej datamængde, antal requests og brugeroplevelse i dit valg.</li>
@@ -69,6 +71,7 @@ Vi arbejder med billeder og assets, requests og Supabase-data, React-renderinger
 <li>Afprøv <code>React.lazy</code> og <code>Suspense</code> til større side- eller route-komponenter, hvis det reducerer den første indlæsning.</li>
 <li>Bevar relevant indhold på skærmen, og giv tydelig feedback under ventetid.</li>
 <li>Optimér kun renderinger, når du kan beskrive og dokumentere problemet.</li>
+<li>Behold <code>StrictMode</code>; det skal ikke fjernes for at skjule development-adfærd.</li>
 </ul>
 </details>
 
