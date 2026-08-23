@@ -27,7 +27,7 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 - [RACE - Product optimization: Case 1 · Kick-off, fejlhåndtering og robuste UI-states - 25-08-2026](undervisning/product-optimization/race-03-2026-08-25-case-1-kick-off-fejlhaandtering-og-robuste-ui-states.md)
 - [RACE - Product optimization: Case 1 · Arkitektur, styling og accessibility - 26-08-2026](undervisning/product-optimization/race-04-2026-08-26-case-1-arkitektur-styling-og-accessibility.md)
 - [RACE - Product optimization: Case 1 · Datamodellering, relationer og Supabase - 01-09-2026](undervisning/product-optimization/race-05-2026-09-01-case-1-datamodellering-relationer-og-supabase.md)
-- [RACE - Product optimization: Case 1 · PR-review, deployment og dokumenteret effekt - 02-09-2026](undervisning/product-optimization/race-06-2026-09-02-case-1-pr-review-deployment-og-dokumenteret-effekt.md)
+- [RACE - Product optimization: Case 1 · Performance, Lighthouse og dokumenteret effekt - 02-09-2026](undervisning/product-optimization/race-06-2026-09-02-case-1-performance-lighthouse-og-dokumenteret-effekt.md)
 - [RACE - Product optimization: Portfolio og faglig dokumentation - 12-10-2026](undervisning/product-optimization/race-07-2026-10-12-portfolio-og-faglig-dokumentation.md)
 
 ### Dynamic User Interface

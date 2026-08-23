@@ -56,17 +56,25 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>2. Robusthed, datahentning og UI-states</strong></summary>
+<summary><strong>2. Robusthed, fejlhåndtering og UI-states</strong></summary>
+
+**Datahentning og side effects**
 
 - Er *side effects* som datahentning placeret tydeligt og holdt adskilt fra renderingen?
-- Har asynkrone handlinger tydelige `loading`, `success`, `empty` og `error` states?
+
+**Fejlhåndtering**
+
 - Håndteres forventede fejl med eksempelvis `try`, `catch` og `finally`?
 - Kontrolleres fejl fra fetch, Supabase eller andre API-kald eksplicit?
+- Logges tekniske detaljer uden at vise dem direkte til brugeren?
+
+**UI-states og feedback**
+
+- Har asynkrone handlinger tydelige `loading`, `success`, `empty` og `error` states?
 - Får brugeren en forståelig besked og et relevant næste skridt?
 - Kan brugeren prøve igen efter en midlertidig fejl?
 - Forhindres gentagne submits eller handlinger, mens en request kører?
 - Valideres input både før og efter en request, hvor det er relevant?
-- Logges tekniske detaljer uden at vise dem direkte til brugeren?
 
 </details>
 

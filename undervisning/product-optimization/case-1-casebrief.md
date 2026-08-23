@@ -50,48 +50,53 @@ Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de 
 
 ## Faglige fokusområder
 
-Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026). Brug det som løsningens baseline, og indarbejd og verificér de relevante forbedringer herfra.
+Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026), som fungerer som løsningens baseline. Relevante forbedringer herfra indgår og verificeres i den samlede løsning.
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>1. React-arkitektur og kodekvalitet</strong></summary>
 
 **Struktur og navngivning**
 
-- Gennemgå navngivning, mappestruktur og løsningens overordnede arkitektur.
-- Organisér løsningen, så andre udviklere kan forstå og videreudvikle den.
+- Tydelig og konsekvent navngivning af mapper, filer, komponenter, funktioner, props og variabler.
+- En gennemskuelig mappestruktur og arkitektur, som andre udviklere kan forstå og videreudvikle.
 
 **Komponenter og ansvar**
 
-- Brug *separation of concerns*: Fordel ansvar tydeligt mellem pages, komponenter, funktioner og dataadgang.
-- Lad hver komponent have ét forståeligt hovedansvar (*single responsibility*), og byg større interfaces ved at kombinere mindre komponenter (*component composition*).
+- En tydelig ansvarsfordeling mellem pages, komponenter, funktioner og dataadgang (*separation of concerns*).
+- Komponenter med ét forståeligt hovedansvar (*single responsibility*) og større interfaces sammensat af mindre komponenter (*component composition*).
+- Gentaget logik samlet i funktioner eller hooks, når det gør koden tydeligere og lettere at vedligeholde.
 
 **State og dataflow**
 
-- Skab et tydeligt, ensrettet flow mellem data, props og state.
-- Brug én tydelig kilde til data (*single source of truth*), og beregn *derived state* ud fra eksisterende data frem for at gemme den igen.
+- Et tydeligt, ensrettet flow mellem data, props og state.
+- Én tydelig kilde til data (*single source of truth*) og *derived state*, som beregnes ud fra eksisterende data.
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>2. Robusthed, datahentning og UI-states</strong></summary>
+<summary><strong>2. Robusthed, fejlhåndtering og UI-states</strong></summary>
 
-**Datahentning og fejl**
+**Datahentning og side effects**
 
-- Hold *side effects* som datahentning adskilt fra selve renderingen.
-- Håndtér fejl fra API-kald og andre asynkrone handlinger eksplicit.
+- *Side effects* som datahentning placeret tydeligt og adskilt fra selve renderingen.
 
-**Brugerens oplevelse**
+**Fejlhåndtering**
 
-- Håndtér relevante `loading`, `success`, `empty` og `error` states.
-- Validér relevante input, og giv brugeren forståelig feedback og et relevant næste skridt.
-- Lad ikke fejl ende som en tom brugerflade eller kun som en besked i konsollen.
+- Eksplicit håndtering af fejl fra API-kald og andre asynkrone handlinger.
+- En tydelig forskel mellem tekniske fejloplysninger og forståelige fejlbeskeder til brugeren.
+
+**UI-states og feedback**
+
+- Relevante `loading`, `success`, `empty` og `error` states.
+- Validering, forståelig feedback og et relevant næste skridt for brugeren.
+- En brugerflade, der også giver mening ved langsomme svar, manglende data og fejl.
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>3. Accessibility og konsistent UI</strong></summary>
 
-Skab en konsistent og tilgængelig brugeroplevelse. Undersøg blandt andet:
+Området handler om en konsistent og tilgængelig brugeroplevelse og omfatter blandt andet:
 
 - visuel konsistens i komponenter, formularer, feedback og interaktioner
 - semantisk HTML og et logisk heading-hierarki
@@ -101,57 +106,57 @@ Skab en konsistent og tilgængelig brugeroplevelse. Undersøg blandt andet:
 - passende alt-tekster samt labels og feedback i formularer
 - `document.title` og fokus på den nye overskrift ved navigation i React SPA'en
 
-Listen er et udgangspunkt. Brug også [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c) til at undersøge andre relevante problemer.
+Listen er et udgangspunkt. [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c) fungerer som en supplerende oversigt over andre relevante problemer.
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>4. Data og Supabase</strong></summary>
 
-- Find gentagne eller uhensigtsmæssigt placerede data, og opdel dem i relaterede tabeller med primær- og fremmednøgler.
-- Hent og anvend de relaterede data gennem Supabase REST API.
-- Hold klient–server-grænsen tydelig: React håndterer brugerfladen, mens Supabase leverer og gemmer data.
-- Vurdér, om søgning og filtrering skal ske lokalt i React eller gennem en forespørgsel til Supabase. Begrund valget ud fra eksempelvis datamængde, antal requests og brugeroplevelse.
-- Registrér eventtilmeldinger i en `registrations`-tabel, der forbindes med det valgte event gennem `eventId`.
-- Tilpas React-løsningen til den forbedrede datamodel, og hold så vidt muligt dataadgang adskilt fra præsentationslogik.
-- Udvikl eller forbedr en intern side, der viser relevante oplysninger om tilmeldinger og deres events.
+- Relaterede tabeller med primær- og fremmednøgler frem for gentagne eller uhensigtsmæssigt placerede data.
+- Hentning og anvendelse af relaterede data gennem Supabase REST API.
+- En tydelig klient–server-grænse, hvor React håndterer brugerfladen, mens Supabase leverer og gemmer data.
+- Et begrundet valg mellem lokal søgning og filtrering i React eller forespørgsler til Supabase ud fra blandt andet datamængde, antal requests og brugeroplevelse.
+- Eventtilmeldinger i en `registrations`-tabel, der forbindes med det valgte event gennem `eventId`.
+- En React-løsning tilpasset den forbedrede datamodel med dataadgang adskilt fra præsentationslogik, hvor det giver mening.
+- En intern side med relevante oplysninger om tilmeldinger og deres events.
 
 Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde.
 
-**Frivillig udvidelse:** Hvis du har tid efter casens centrale forbedringer, kan du udvide den interne del af løsningen med CRUD-funktionalitet til events. Det vil sige, at events kan oprettes, vises, redigeres og slettes gennem React-løsningen og Supabase REST API. Husk validering, forståelige UI-states og tydelig bekræftelse ved eksempelvis sletning.
+**Frivillig udvidelse:** CRUD-funktionalitet til events kan indgå efter casens centrale forbedringer. Udvidelsen omfatter oprettelse, visning, redigering og sletning gennem React-løsningen og Supabase REST API samt validering, forståelige UI-states og tydelig bekræftelse ved eksempelvis sletning.
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>5. Performance</strong></summary>
 
-**Find og dokumentér problemerne**
+**Måling og dokumentation**
 
-- Brug Lighthouse og browserens udviklerværktøjer til at finde konkrete problemer.
-- Tag udgangspunkt i konkrete problemer, og dokumentér effekten af relevante forbedringer.
+- Lighthouse og browserens udviklerværktøjer som hjælp til at finde konkrete problemer.
+- Sammenlignelig før- og efterdokumentation af relevante forbedringer.
 
 **Data og requests**
 
-- Undersøg, hvad der hentes fra Supabase, hvornår det hentes, og om de samme data hentes unødvendigt flere gange.
+- Omfanget og tidspunktet for Supabase-requests samt unødvendige eller gentagne datahentninger.
 
 **Assets og indlæsning**
 
-- Optimér relevante billeder med passende størrelse og format, og brug lazy loading, hvor det forbedrer indlæsningen.
-- Fjern kode, assets og dependencies, som løsningen ikke bruger.
-- Overvej lazy loading af større side- eller route-komponenter med `React.lazy` og `Suspense`, når det kan forbedre den første indlæsning.
+- Billeder med passende størrelse og format samt lazy loading, hvor det forbedrer indlæsningen.
+- Oprydning i kode, assets og dependencies, som løsningen ikke bruger.
+- Lazy loading af større side- eller route-komponenter med `React.lazy` og `Suspense`, når det kan forbedre den første indlæsning.
 
 **Rendering**
 
-- Undersøg unødvendige beregninger eller renderinger, når de har mærkbar betydning for løsningen.
+- Unødvendige beregninger eller renderinger, når de har mærkbar betydning for løsningen.
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>6. Deployment</strong></summary>
 
-- Kontrollér build, konfiguration, environment variables og routing.
-- Afprøv direkte links og genindlæsning af sider i den deployede løsning.
-- Sørg for, at den publicerede løsning svarer til versionen på `main`.
+- Et stabilt build samt korrekt konfiguration af environment variables og routing.
+- Direkte links og genindlæsning af sider i den deployede løsning.
+- Sammenhæng mellem den publicerede løsning og den seneste version på `main`.
 
 </details>
 

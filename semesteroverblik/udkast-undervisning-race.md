@@ -202,8 +202,8 @@ Disse emner bør kun inddrages, hvis de understøtter projektet og der er tid:
    Fokus er på navngivning, struktur, komponentopdeling og placering af styling tættere på komponenterne. Kendte accessibility-principper anvendes og forbedres.
 5. **Case 1: Datamodellering, relationer og Supabase**  
    Der bygges videre på kendt CRUD, filtrering og sortering. Nyt fokus er relationer mellem tabeller, relaterede forespørgsler og et tydeligere datalag. Post App kan bruges som fælles eksempel.
-6. **Case 1: PR-review, deployment og dokumenteret effekt**
-   De studerende reviewer hinandens pull requests, bearbejder feedback, fletter til `main`, deployer via GitHub Actions og dokumenterer før/efter-effekt.
+6. **Case 1: Performance, Lighthouse og dokumenteret effekt**
+   De studerende bruger Lighthouse og browserens udviklerværktøjer til at undersøge billeder og assets, requests og Supabase-data, React-renderinger og oplevet performance. En relevant forbedring udvælges og dokumenteres med sammenlignelig før- og efterevidens.
 7. **Portfolio og faglig dokumentation**  
    De tre cases omsættes til portfolioindhold og faglige refleksioner frem mod den skriftlige prøve.
 
@@ -342,11 +342,11 @@ Post App kan bruges til at synliggøre forskellen mellem duplikerede brugerfelte
 
 [Studenterrettet side](../undervisning/product-optimization/race-05-2026-09-01-case-1-datamodellering-relationer-og-supabase.md)
 
-### RACE - Product optimization: Case 1 · PR-review, deployment og dokumenteret effekt - 02-09-2026
+### RACE - Product optimization: Case 1 · Performance, Lighthouse og dokumenteret effekt - 02-09-2026
 
-Fokus på peer review af individuelle pull requests, bearbejdning af feedback, deployment via GitHub Actions og dokumenteret før/efter-effekt.
+Fokus på Lighthouse og browserens udviklerværktøjer som afsæt for at undersøge billeder og assets, requests og Supabase-data, React-renderinger og oplevet performance. Målet er en relevant forbedring med dokumenteret effekt frem for en bestemt Lighthouse-score.
 
-[Studenterrettet side](../undervisning/product-optimization/race-06-2026-09-02-case-1-pr-review-deployment-og-dokumenteret-effekt.md)
+[Studenterrettet side](../undervisning/product-optimization/race-06-2026-09-02-case-1-performance-lighthouse-og-dokumenteret-effekt.md)
 
 ### RACE - Product optimization: Portfolio og faglig dokumentation - 12-10-2026
 
