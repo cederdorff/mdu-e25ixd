@@ -2,9 +2,9 @@
 
 ## Case 1 som del af eksamen
 
-Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grundlag for den individuelle skriftlige eksamen.
+Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grundlag for den individuelle skriftlige eksamen. Under casen samler du dokumentation og råmateriale – du skal ikke lave den endelige portfolioside endnu.
 
-Du skal ikke lave den endelige portfolioside under denne case. Efter den tredje case får du en uge til at bearbejde dit materiale og opdatere dit eksisterende portfolio website med én case-/produktside for hver case.
+Efter den tredje case får du en uge til at bearbejde materialet og opdatere dit eksisterende portfolio website med én caseside for hver case.
 
 Til eksamen afleverer du et dokument med links til de tre casesider. Det samlede skriftlige materiale på de tre sider må maksimalt fylde fem normalsider.
 
@@ -16,17 +16,9 @@ Virksomheden har fået udviklet en React-prototype. Den grundlæggende funktiona
 
 Data hentes fra Supabase gennem Supabase REST API. Datamodellen indeholder gentagne oplysninger, som bør fordeles på relaterede tabeller. Når en bruger tilmelder sig et event, skal tilmeldingen registreres i Supabase. Mellemrum har også brug for en intern side med et overblik over tilmeldinger og de tilhørende events.
 
-Din opgave er at undersøge prototypen, prioritere de vigtigste problemer og gøre løsningen mere robust, tilgængelig, vedligeholdelsesvenlig og klar til deployment.
-
 ## Din opgave
 
-Du arbejder individuelt med den eksisterende React-løsning. Du skal:
-
-1. gennemføre en teknisk audit og dokumentere løsningens udgangspunkt
-2. identificere og prioritere problemer med betydning for brugerne og produktet
-3. gennemføre relevante forbedringer
-4. verificere effekten af de vigtigste ændringer
-5. dokumentere dine valg, fravalg og resultater
+Du arbejder individuelt og overtager den eksisterende React-løsning. Undersøg prototypen, prioritér de vigtigste problemer, gennemfør relevante forbedringer, og verificér deres effekt. Målet er en mere robust, tilgængelig og vedligeholdelsesvenlig løsning, der er klar til deployment.
 
 Det er ikke målet at ændre mest muligt. Det er vigtigere, at du finder betydningsfulde problemer, prioriterer dem fagligt og kan forklare værdien af dine forbedringer.
 
@@ -36,7 +28,7 @@ Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de 
 
 ## Faglige fokusområder
 
-Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md). Indarbejd og verificér de relevante forbedringer herfra, eksempelvis environment variables, deployment, routing, metadata, oprydning af template-rester og accessibility.
+Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md). Brug det som løsningens baseline, og indarbejd og verificér de relevante forbedringer herfra.
 
 ### 1. React-optimering
 
@@ -71,14 +63,13 @@ Listen er et udgangspunkt. Brug også [React og Accessibility (a11y)](https://ra
 
 ### 5. Data og Supabase
 
-- Find gentagne eller uhensigtsmæssigt placerede data.
-- Opdel relevante data i tabeller med meningsfulde primær- og fremmednøgler.
-- Hent og anvend relaterede data gennem Supabase REST API.
+- Find gentagne eller uhensigtsmæssigt placerede data, og opdel dem i relaterede tabeller med primær- og fremmednøgler.
+- Hent og anvend de relaterede data gennem Supabase REST API.
 - Registrér eventtilmeldinger i en `registrations`-tabel, der forbindes med det valgte event gennem `event_id`.
 - Tilpas React-løsningen til den forbedrede datamodel, og hold så vidt muligt dataadgang adskilt fra præsentationslogik.
 - Udvikl eller forbedr en intern side, der viser relevante oplysninger om tilmeldinger og deres events.
 
-Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde. Vi arbejder med relationer og den praktiske implementering undervejs i undervisningen.
+Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde.
 
 ### 6. Deployment
 
@@ -106,7 +97,7 @@ Merge færdige og verificerede forbedringer til `main`, og deploy den samlede l�
 
 ## Det skal du have klar efter Case 1
 
-Når casen slutter, skal du have dokumentation og råmateriale, som senere kan bearbejdes til en kort case-/produktside på din portfolio:
+Når casen slutter, skal du have dokumentation og råmateriale, som senere kan bearbejdes til en kort caseside på din portfolio:
 
 - link til det opdaterede GitHub-repository
 - en tydelig historik med feature branches og forståelige commits
@@ -115,9 +106,9 @@ Når casen slutter, skal du have dokumentation og råmateriale, som senere kan b
 - en kort beskrivelse af den forbedrede datamodel og dens relationer
 - før- og efterevidens for udvalgte forbedringer
 - en kort refleksion over væsentlige valg, fravalg og resterende udfordringer
-- noter om produktets forretningspotentiale og værdien af dine forbedringer
+- noter om produktets forretningspotentiale: hvilken værdi dine forbedringer kan skabe for Mellemrum og platformens brugere
 
-For hver forbedring skal du kunne forklare problemet, konsekvensen, din løsning og den måde, du verificerede resultatet på. Kobl også arbejdet til produktets værdi: eksempelvis en bedre brugeroplevelse, færre fejl, lettere videreudvikling eller et mere pålideligt tilmeldingsflow.
+For hver udvalgt forbedring skal du kunne forklare problemet, konsekvensen, løsningen og din verifikation. Beskriv også kort, hvilken værdi forbedringen kan skabe. Det kan eksempelvis være flere gennemførte tilmeldinger, færre fejl, en bredere brugergruppe eller en løsning, der er lettere at videreudvikle.
 
 Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdokument. Det er ikke den endelige eksamensaflevering, og du skal udvælge og bearbejde det vigtigste, når du senere bygger portfoliosiden.
 
