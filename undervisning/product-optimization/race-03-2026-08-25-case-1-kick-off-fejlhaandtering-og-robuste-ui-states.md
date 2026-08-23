@@ -2,9 +2,9 @@
 
 ## Formål
 
-Vi arbejder med udvalgte JavaScript-koncepter og starter Case 1 med en første undersøgelse af den udleverede løsning.
+Vi arbejder med udvalgte JavaScript-koncepter og starter Case 1 med en fælles gennemgang og opsætning af den udleverede løsning.
 
-Dagens faglige fokus er fejlhåndtering og robuste UI-states i React. Du begynder samtidig en teknisk audit, som skal danne grundlag for dine prioriteringer i casen.
+Dagens faglige fokus er fejlhåndtering og robuste UI-states i React. Til sidst gennemgår vi casebeskrivelsen og får startprojektet og Supabase til at køre. Den systematiske tekniske audit begynder vi på den 26/08.
 
 <hr style="margin: 2rem 0;">
 
@@ -49,19 +49,20 @@ Vi begynder med udvalgte JavaScript-koncepter og arbejder derefter med fejlhånd
 <details style="margin-left: 1.5rem;">
 <summary><strong>4. Kick-off af Case 1</strong></summary>
 <ul>
-<li>Introduktion til casen og dens overordnede ramme.</li>
-<li>Hvad vi skal arbejde med i det kommende forløb.</li>
+<li>Fælles gennemgang af kunden, opgaven og de faglige fokusområder.</li>
+<li>Case 1 som den første af tre cases i den individuelle skriftlige eksamen.</li>
+<li>Afklaring af spørgsmål til forløb, arbejdsform og dokumentation.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>5. Første undersøgelse og audit af Case 1</strong></summary>
+<summary><strong>5. Få startprojektet til at køre</strong></summary>
 <ul>
-<li>Kør løsningen, og gennemfør de vigtigste brugerflows, før du ændrer koden.</li>
-<li>Dokumentér udgangspunktet med konkrete observationer, skærmbilleder og relevante fejl fra konsol eller netværk.</li>
-<li>Registrér de første fund inden for komponenter, designkonsistens, accessibility, UI-states, data og deployment.</li>
-<li>Vurdér fundenes konsekvens og forventede indsats, og begynd en prioriteret optimeringsplan.</li>
-<li>Vi har særligt fokus på fejlhåndtering og loading-, empty-, success- og error states i dagens arbejde.</li>
+<li>Hent projektet, installér dependencies, og følg opsætningen i README.</li>
+<li>Opret tabeller og startdata i Supabase med den medfølgende SQL-fil.</li>
+<li>Tilføj environment variables, og start løsningen lokalt.</li>
+<li>Kontrollér, at events, eventsider og tilmeldingsoversigten kan åbnes.</li>
+<li>Vi ændrer ikke løsningen endnu. Den systematiske audit og prioritering begynder den 26/08.</li>
 </ul>
 </details>
 

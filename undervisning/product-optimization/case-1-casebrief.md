@@ -1,10 +1,11 @@
 # Case 1 – Fra prototype til produktionsklar React-løsning
 
-<img src="https://images.unsplash.com/photo-1595146463222-19603449c6af?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Byrum og arkitektur i Aarhus" style="display: block; width: 100%; max-height: 340px; object-fit: cover; object-position: center;">
-
-<div style="background: #173f35; border-bottom: 6px solid #d8ff62; color: #ffffff; margin: 0 0 2rem; padding: 1.5rem 2rem;">
-<p style="font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin: 0 0 0.75rem;">mellemrum<span style="color: #d8ff62;">.</span></p>
+<div role="img" aria-label="Byrum og arkitektur i Aarhus" style="align-items: flex-end; background: linear-gradient(90deg, rgba(12, 42, 34, 0.94) 0%, rgba(12, 42, 34, 0.72) 50%, rgba(12, 42, 34, 0.22) 100%), url('https://images.unsplash.com/photo-1595146463222-19603449c6af?q=80&amp;w=1800&amp;auto=format&amp;fit=crop') center / cover; border-bottom: 6px solid #d8ff62; color: #ffffff; display: flex; margin: 0 0 2.5rem; min-height: 360px; padding: 2rem;">
+<div style="max-width: 760px;">
+<p style="color: #d8ff62; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.14em; margin: 0 0 0.85rem; text-transform: uppercase;">Case 1 · React-optimering</p>
+<p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1; margin: 0 0 0.85rem;">mellemrum<span style="color: #d8ff62;">.</span></p>
 <p style="font-size: 1.1rem; line-height: 1.5; margin: 0;">Du overtager en eksisterende React-prototype og udvikler den til en mere robust, tilgængelig og vedligeholdelsesvenlig løsning.</p>
+</div>
 </div>
 
 <div style="margin: 0 auto; max-width: 1000px;">
@@ -21,6 +22,8 @@ Til eksamen afleverer du et dokument med links til de tre casesider. Det samlede
 
 </div>
 
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
+
 ## Kunden og udfordringen
 
 **Mellemrum** er en lokal kultur- og eventplatform, hvor brugerne kan finde og tilmelde sig koncerter, talks, workshops og andre arrangementer.
@@ -28,6 +31,8 @@ Til eksamen afleverer du et dokument med links til de tre casesider. Det samlede
 Virksomheden har fået udviklet en React-prototype. Den grundlæggende funktionalitet findes, men løsningen blev bygget hurtigt for at afprøve idéen. Koden er vanskelig at videreudvikle, brugeroplevelsen er ikke altid konsistent, og løsningen håndterer ikke langsomme svar, manglende data og fejl godt nok.
 
 Data hentes fra Supabase gennem Supabase REST API. Datamodellen indeholder gentagne oplysninger, som bør fordeles på relaterede tabeller. Tilmeldingsflowet er kun påbegyndt: En tilmelding skal registreres i Supabase og forbindes med det valgte event. Den eksisterende interne side skal tilpasses, så den kan vise tilmeldinger sammen med deres relaterede eventdata.
+
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
 ## Din opgave
 
@@ -38,6 +43,8 @@ Det er ikke målet at ændre mest muligt. Det er vigtigere, at du finder betydni
 Det primære fokus er React og kodeforbedringer. Du må gerne forbedre identiteten og det visuelle lag, hvis du har tid, men det er ikke casens hovedopgave. Visuelle ændringer er relevante, når de eksempelvis styrker konsistens, accessibility, feedback eller robuste UI-states.
 
 Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de nødvendige koncepter og teknikker undervejs.
+
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
 ## Faglige fokusområder
 
@@ -111,6 +118,8 @@ Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og v
 
 </details>
 
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
+
 ## Sådan arbejder du
 
 ### 1. Undersøg og prioritér
@@ -129,6 +138,8 @@ Vis, at dine vigtigste forbedringer virker. Brug relevant evidens, eksempelvis f
 
 Merge færdige og verificerede forbedringer til `main`, og deploy den samlede løsning. Kontrollér til sidst de centrale brugerflows i den publicerede version.
 
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
+
 ## Det skal du have klar efter Case 1
 
 Når casen slutter, skal du have dokumentation og råmateriale, som senere kan bearbejdes til en kort caseside på din portfolio:
@@ -145,6 +156,8 @@ Når casen slutter, skal du have dokumentation og råmateriale, som senere kan b
 For hver udvalgt forbedring skal du kunne forklare problemet, konsekvensen, løsningen og din verifikation. Beskriv også kort, hvilken værdi forbedringen kan skabe. Det kan eksempelvis være flere gennemførte tilmeldinger, færre fejl, en bredere brugergruppe eller en løsning, der er lettere at videreudvikle.
 
 Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdokument. Det er ikke den endelige eksamensaflevering, og du skal udvælge og bearbejde det vigtigste, når du senere bygger portfoliosiden.
+
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
 ## Materialer
 

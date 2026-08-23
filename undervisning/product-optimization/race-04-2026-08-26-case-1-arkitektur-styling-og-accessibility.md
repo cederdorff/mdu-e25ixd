@@ -2,32 +2,27 @@
 
 ## Formål
 
-At forbedre løsningens vedligeholdbarhed og accessibility gennem målrettet refaktorering af arkitektur, komponenter og styling.
+Vi gennemfører en systematisk teknisk audit af Case 1-løsningen og omsætter de vigtigste fund til en prioriteret optimeringsplan.
 
-Efter undervisningen skal du kunne gennemføre en afgrænset refaktorering uden at ændre den forventede funktionalitet og begrunde de valgte ændringer.
+Med auditten som grundlag begynder vi at forbedre løsningens arkitektur, komponenter, styling og accessibility gennem små, afgrænsede ændringer.
 
 ## Forberedelse
 
-- Færdiggør den tekniske audit og den prioriterede optimeringsplan, som du begyndte ved kick-off af Case 1, og medbring dem til undervisningen.
-- Sørg for, at den oprindelige løsning kan køre lokalt, og at du har oprettet din første feature branch.
+- Sørg for, at startprojektet og forbindelsen til Supabase fungerer lokalt.
+- Læs casebeskrivelsen igen, og medbring eventuelle spørgsmål eller observationer fra opsætningen.
 
 ## Agenda
 
-1. Fælles review af audits og prioriteringer
-2. Refaktorering uden funktionsændringer: små, kontrollerbare skridt
-3. Navngivning, mappestruktur, komponentansvar, props, state og dataflow
-4. Opdel store komponenter og udtræk genbrugelig logik
-5. Flyt styling tættere på komponenterne, hvor det giver tydeligt ansvar
-   - behold globale styles til reset, design tokens og reelt globale regler
-   - brug eksempelvis CSS Modules eller anden konsekvent komponentbaseret tilgang
-   - fjern dubletter og begræns utilsigtede globale afhængigheder
-6. Forbedr kendte accessibility-elementer: semantik, labels, tastatur, fokus og nødvendig ARIA
-7. Praktisk refaktorering i små, afgrænsede branches og commits
-8. Åbn en pull request med beskrivelse og før/efter-evidens
-9. Dokumentér næste tekniske risiko
+1. Introduktion til teknisk audit, baseline og evidens
+2. Undersøg de vigtigste brugerflows og tekniske områder med audit-skabelonen
+3. Registrér konkrete fund, konsekvenser og mulige løsninger
+4. Prioritér et realistisk antal forbedringer, og lav en optimeringsplan
+5. Vælg et afgrænset fund inden for arkitektur, komponenter, styling eller accessibility
+6. Implementér forbedringen i en feature branch gennem små, kontrollerbare skridt
+7. Verificér og dokumentér effekten samt det næste prioriterede fund
 
 ## Materialer
 
 - **Slides:** Vil blive tilgængelige her
-- **Opgaver:** Refaktoreringsøvelse og code-review-tjekliste vil blive tilgængelige her
-- **Links:** Vil blive tilgængelige her
+- [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
+- [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
