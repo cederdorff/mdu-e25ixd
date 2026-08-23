@@ -2,6 +2,14 @@
 
 > Status: Første udkast til studenterrettet casebrief.
 
+## Case 1 som del af eksamen
+
+Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grundlag for den individuelle skriftlige eksamen.
+
+Du skal ikke have en færdig og publiceret portfolioside klar, når Case 1 afsluttes. Efter den tredje case får du en uge til at bearbejde de tre cases og opdatere dit eksisterende portfolio website med én case-/produktside for hver case.
+
+Til den endelige eksamen afleverer du et dokument med links til de tre specifikke casesider på dit portfolio website. Det samlede skriftlige materiale for de tre cases må maksimalt fylde fem normalsider.
+
 ## Kunden
 
 **Mellemrum** er en lokal kultur- og eventplatform, der hjælper brugerne med at finde koncerter, talks, workshops og andre arrangementer.
@@ -125,19 +133,44 @@ Når en forbedring er færdig og verificeret, skal du merge din feature branch t
 
 Arbejd ikke direkte på `main`. Målet er, at en anden udvikler kan følge ændringerne og arbejde videre på løsningen uden først at skulle rekonstruere din proces.
 
-## Det skal du aflevere
+## Det skal du have klar efter Case 1
 
-Den foreløbige aflevering består af:
+Når Case 1 slutter, skal du have følgende materiale klar, så du senere kan bearbejde det til din case-/produktside på portfolioen:
 
 - link til det opdaterede GitHub-repository
-- en tydelig historik med feature branches og forståelige commits
+- en tydelig udviklingshistorik med feature branches og forståelige commits
 - link til den deployede løsning
 - din tekniske audit og prioriterede optimeringsplan
 - en kort beskrivelse af den forbedrede datamodel og dens relationer
 - før- og efterdokumentation for udvalgte forbedringer
 - en kort refleksion over væsentlige valg, fravalg og resterende udfordringer
+- noter om løsningens forretningspotentiale og værdien af de gennemførte forbedringer
 
-Dokumentationen kan samles i repositoryets `README.md` eller i et særskilt dokument, hvis andet ikke aftales.
+Materialet kan under casearbejdet samles i repositoryets `README.md` eller i et særskilt arbejdsdokument. Det er dokumentation og råmateriale til den senere portfolioside – ikke den endelige eksamensaflevering.
+
+## Fra casearbejde til portfolioside
+
+Din endelige case-/produktside skal kort og fagligt formidle:
+
+- produktet, kunden og den udfordring, du overtog
+- de vigtigste fund fra din audit og din prioritering
+- udvalgte React- og kodeforbedringer
+- arbejdet med robusthed, accessibility, data og deployment, hvor det er relevant
+- før- og efterevidens, der viser effekten af udvalgte ændringer
+- de vigtigste faglige valg, fravalg og erfaringer
+- løsningens forretningspotentiale
+- links til repository og den deployede løsning
+
+Du skal udvælge det vigtigste. Den tekniske audit, alle commits og samtlige fund skal ikke gengives på portfoliosiden. Brug dem som grundlag for en kort og velbegrundet casebeskrivelse.
+
+### Forretningspotentiale
+
+Din casebeskrivelse skal koble de tekniske forbedringer til produktets værdi. Overvej eksempelvis:
+
+- Hvordan kan en mere robust og tilgængelig løsning nå eller fastholde flere brugere?
+- Hvordan kan bedre kodekvalitet og en tydeligere datamodel gøre fremtidig udvikling lettere og billigere?
+- Hvordan kan stabil datahåndtering og deployment mindske risikoen for fejl ved lancering?
+- Hvilke muligheder giver den forbedrede løsning Mellemrum for at videreudvikle produktet?
 
 ## Hvad skal din dokumentation vise?
 
@@ -149,7 +182,7 @@ For hver udvalgt forbedring skal du så vidt muligt kunne svare på:
 4. Hvordan har du verificeret forbedringen?
 5. Hvad er endnu ikke løst?
 
-## Vurdering af arbejdet
+## Det skal dit casearbejde vise
 
 Der lægges især vægt på, om du:
 
@@ -162,10 +195,12 @@ Der lægges især vægt på, om du:
 - kan strukturere feature branches og commits, så udviklingen er tydelig og kan overtages af andre
 - kan deploye og kvalitetssikre den samlede løsning
 - kan dokumentere og forklare dine beslutninger og deres effekt
+- kan forbinde de tekniske forbedringer med produktets forretningspotentiale
+- kan udvælge og formidle det vigtigste som grundlag for en kort casebeskrivelse på din portfolio
 
 ## Materialer
 
 - Startprojekt: Tilføjes
 - Teknisk audit-skabelon: [Teknisk audit af en React-løsning](./teknisk-audit-skabelon.md)
 - Supabase-projekt og data: Tilføjes
-- Afleveringssted og deadline: Tilføjes
+- Dato for afslutning af Case 1: Tilføjes

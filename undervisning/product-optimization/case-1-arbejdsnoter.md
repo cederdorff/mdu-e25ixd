@@ -180,19 +180,34 @@ Mulige indbyggede problemer:
 
 Nogle problemer skal være forholdsvis tydelige. Andre skal de studerende selv opdage gennem test, React DevTools, Lighthouse og gennemlæsning af koden.
 
-## Mulige afleveringsprodukter
+## Case 1 i den samlede eksamen
 
-Afleveringen kan holdes enkel og bestå af:
+Case 1 er den første af tre optimeringscases, som tilsammen udgør den individuelle skriftlige eksamen. Den er derfor ikke en selvstændig eksamen eller en endelig eksamensaflevering.
+
+Efter den tredje case får de studerende en uge til at udarbejde én case-/produktside for hver case på deres personlige portfolio website. De tre sider skal indeholde casebeskrivelser, faglige refleksioner og overvejelser om forretningspotentiale og må samlet maksimalt fylde fem normalsider. Den endelige eksamensaflevering er ét dokument med links til de tre specifikke casesider.
+
+Den præcise beskrivelse af kravene til casebeskrivelserne skal fremgå af Canvas.
+
+Case 1 skal derfor skabe dokumentation og råmateriale til den senere portfolioside. Den færdige og publicerede portfolioside er ikke et krav ved afslutningen af selve Case 1.
+
+## Output efter Case 1
+
+Efter Case 1 skal den studerende have følgende klar:
 
 - link til den deployede løsning
 - link til repository
 - en tydelig historik med afgrænsede feature branches og forståelige commits
-- en kort kvalitetsrapport eller dokumentation i `README.md`
-- dokumentation af de vigtigste fund og prioriteringer
+- en teknisk audit og prioriteret optimeringsplan
+- en kort beskrivelse af den forbedrede datamodel og dens relationer
 - før- og eftereksempler på udvalgte forbedringer
 - en kort refleksion over fravalg og resterende udfordringer
+- noter om løsningens forretningspotentiale og værdien af forbedringerne
 
-De studerende skal ikke bedømmes på antallet af ændringer, men på deres evne til at finde, prioritere, implementere og forklare relevante forbedringer.
+Materialet kan samles i `README.md` eller et særskilt arbejdsdokument. Den studerende skal senere udvælge og bearbejde det vigtigste til portfoliosiden; hele auditten og alle fund skal ikke gengives dér.
+
+Den endelige case-/produktside skal kunne formidle produkt og kontekst, prioriterede fund, udvalgte forbedringer, før/efter-evidens, faglige refleksioner, forretningspotentiale samt links til repository og deployment.
+
+De studerende skal ikke vurderes på antallet af ændringer, men på deres evne til at finde, prioritere, implementere og forklare relevante forbedringer og koble dem til produktets værdi.
 
 ## Mulig arbejdsproces
 
@@ -217,6 +232,8 @@ De studerende skal ikke bedømmes på antallet af ændringer, men på deres evne
 - Tilgængelighed, robusthed og datahåndtering skal være en del af produktets kvalitet, ikke løsrevne ekstraopgaver.
 - Dokumentation skal vise sammenhængen mellem problem, beslutning, ændring og effekt.
 - Feature branches og commits skal gøre udviklingen let at følge og overtage for andre udviklere.
+- Casearbejdet skal producere velvalgt dokumentation, som senere kan bearbejdes til en kort case-/produktside på portfolioen.
+- De tekniske forbedringer skal kobles til løsningens forretningspotentiale.
 
 ## Åbne beslutninger
 
@@ -229,7 +246,7 @@ De studerende skal ikke bedømmes på antallet af ændringer, men på deres evne
 - Hvilke Supabase REST-forespørgsler og relationer forventes de at kunne arbejde med?
 - Hvor lang tid får de studerende til casen?
 - Hvilke krav er obligatoriske, og hvilke er mulige udvidelser?
-- Hvordan skal casen indgå i det samlede eksamensforløb og vurderingsgrundlag?
+- Hvordan fordeles det begrænsede skriftlige omfang bedst mellem de tre cases?
 - Hvilke værktøjer og målinger forventes de at anvende?
 - Hvor stor en del af problemerne skal være bevidst indbygget og dokumenteret for underviseren?
 
@@ -241,4 +258,4 @@ De studerende skal ikke bedømmes på antallet af ændringer, men på deres evne
 - Formulér læringsmål og obligatoriske krav.
 - Videreudvikl og færdiggør den studenterrettede casebrief.
 - Planlæg startprojektets indbyggede problemer og underviserens facit-/observationsliste.
-- Fastlæg afleveringsform og kriterier for feedback eller bedømmelse.
+- Fastlæg formatet for Case 1-materialet og kriterierne for feedback, før det senere bearbejdes til portfolioen.
