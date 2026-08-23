@@ -171,6 +171,7 @@ Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdo
 ## Materialer
 
 - [Startprojekt: Mellemrum](https://github.com/cederdorff/mellemrum)
+- [Se den udleverede Mellemrum-løsning](https://cederdorff.com/mellemrum/)
 - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
 - [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026)
 - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)

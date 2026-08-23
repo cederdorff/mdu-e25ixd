@@ -78,3 +78,4 @@ Vi begynder med udvalgte JavaScript-koncepter og arbejder derefter med fejlhånd
   - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
 - **Case 1:**
   - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
+  - [Se den udleverede Mellemrum-løsning](https://cederdorff.com/mellemrum/)
