@@ -91,10 +91,14 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 - Er mapper, filer, komponenter, funktioner og variabler navngivet tydeligt og konsekvent?
 - Har hver komponent et forståeligt ansvar?
 - Er store komponenter kandidater til opdeling?
+- Er større interfaces bygget ved at kombinere mindre komponenter med tydelige grænser?
 - Er props, state og dataflow lette at følge?
-- Er afledte værdier beregnet frem for gemt som unødvendig state?
+- Har data én tydelig kilde (`single source of truth`)?
+- Er afledte værdier (`derived state`) beregnet frem for gemt som unødvendig state?
 - Er gentaget logik samlet i funktioner eller hooks, når det forbedrer koden?
 - Er dataadgang adskilt fra præsentationslogik, hvor det giver mening?
+- Er side effects som datahentning placeret tydeligt og holdt adskilt fra renderingen?
+- Er ansvaret mellem React-klienten, Supabase REST API og databasen tydeligt?
 
 </details>
 

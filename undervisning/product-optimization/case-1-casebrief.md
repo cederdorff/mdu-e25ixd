@@ -56,7 +56,8 @@ Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaa
 <summary><strong>1. React-optimering</strong></summary>
 
 - Skab et tydeligt flow mellem data, props og state.
-- Undgå state, der gentager andre værdier eller kan beregnes ud fra eksisterende data.
+- Brug én tydelig kilde til data (`single source of truth`), og beregn `derived state` ud fra eksisterende data frem for at gemme den igen.
+- Hold side effects som datahentning adskilt fra selve renderingen.
 - Brug Lighthouse og browserens udviklerværktøjer til at finde konkrete performanceproblemer.
 - Optimér relevante billeder med passende størrelse og format, og brug lazy loading, hvor det forbedrer indlæsningen.
 - Fjern kode og dependencies, som løsningen ikke bruger.
@@ -80,7 +81,8 @@ Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaa
 <summary><strong>3. Kodekvalitet</strong></summary>
 
 - Gennemgå og forbedr navngivning, mappestruktur og løsningens overordnede arkitektur.
-- Fordel ansvar tydeligt mellem komponenter, funktioner og dataadgang.
+- Brug `separation of concerns`: Fordel ansvar tydeligt mellem pages, komponenter, funktioner og dataadgang.
+- Lad komponenter have ét forståeligt hovedansvar, og byg større interfaces ved at kombinere mindre komponenter.
 - Reducér uhensigtsmæssige gentagelser, og skab konsistens i kode og UI.
 - Organisér løsningen, så andre udviklere kan forstå og videreudvikle den.
 
@@ -107,6 +109,7 @@ Listen er et udgangspunkt. Brug også [React og Accessibility (a11y)](https://ra
 
 - Find gentagne eller uhensigtsmæssigt placerede data, og opdel dem i relaterede tabeller med primær- og fremmednøgler.
 - Hent og anvend de relaterede data gennem Supabase REST API.
+- Hold grænsen mellem klient og server tydelig: React håndterer brugerfladen, mens Supabase leverer og gemmer data.
 - Vurdér, om søgning og filtrering skal ske lokalt i React eller gennem en forespørgsel til Supabase. Begrund valget ud fra eksempelvis datamængde, antal requests og brugeroplevelse.
 - Registrér eventtilmeldinger i en `registrations`-tabel, der forbindes med det valgte event gennem `eventId`.
 - Tilpas React-løsningen til den forbedrede datamodel, og hold så vidt muligt dataadgang adskilt fra præsentationslogik.

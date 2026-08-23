@@ -36,7 +36,12 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 <li>Brug tydelige og konsekvente navne til filer, komponenter, funktioner, props og variabler.</li>
 <li>Organisér mapper og filer, så projektets sider, komponenter, data og styling er lette at finde.</li>
 <li>Se filer som moduler med et afgrænset ansvar, der forbindes med <code>import</code> og <code>export</code>.</li>
-<li>Undersøg ansvaret mellem pages, components og services samt placeringen af props, state og dataflow.</li>
+<li>Brug <em>separation of concerns</em> og <em>single responsibility</em> til at undersøge ansvaret mellem pages, components og services.</li>
+<li>Brug <em>component composition</em> til at bygge større interfaces af mindre komponenter med tydelige grænser.</li>
+<li>Følg props og state som et ensrettet dataflow, og brug én tydelig kilde til data (<em>single source of truth</em>).</li>
+<li>Beregn <em>derived state</em> ud fra eksisterende data frem for at gemme den samme information igen.</li>
+<li>Hold <em>side effects</em> som datahentning adskilt fra selve renderingen.</li>
+<li>Undersøg klient–server-grænsen: React håndterer brugerfladen, mens Supabase REST API leverer og gemmer data.</li>
 <li>Følg et request fra React i browseren gennem Supabase REST API til databasen og tilbage som data eller fejl.</li>
 <li>Vurdér placering, ansvar og konsistens i styling.</li>
 <li>Undersøg relevante problemer med semantik, labels, tastatur og fokus.</li>
