@@ -73,7 +73,8 @@ Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaa
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>3. Kodekvalitet</strong></summary>
 
-- Forbedr komponenternes opdeling, ansvar og navngivning.
+- Gennemgå og forbedr navngivning, mappestruktur og løsningens overordnede arkitektur.
+- Fordel ansvar tydeligt mellem komponenter, funktioner og dataadgang.
 - Reducér uhensigtsmæssige gentagelser, og skab konsistens i kode og UI.
 - Organisér løsningen, så andre udviklere kan forstå og videreudvikle den.
 

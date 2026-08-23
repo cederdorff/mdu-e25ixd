@@ -4,7 +4,7 @@
 
 Vi gennemfører en systematisk teknisk audit af Case 1-løsningen og omsætter de vigtigste fund til en prioriteret optimeringsplan.
 
-Med auditten som grundlag begynder vi at forbedre løsningens arkitektur, komponenter, styling og accessibility gennem små, afgrænsede ændringer.
+Med auditten som grundlag begynder vi at forbedre løsningens navngivning, mappestruktur, arkitektur, komponenter, styling og accessibility gennem små, afgrænsede ændringer.
 
 ## Forberedelse
 
@@ -17,9 +17,10 @@ Med auditten som grundlag begynder vi at forbedre løsningens arkitektur, kompon
 2. Undersøg de vigtigste brugerflows og tekniske områder med audit-skabelonen
 3. Registrér konkrete fund, konsekvenser og mulige løsninger
 4. Prioritér et realistisk antal forbedringer, og lav en optimeringsplan
-5. Vælg et afgrænset fund inden for arkitektur, komponenter, styling eller accessibility
-6. Implementér forbedringen i en feature branch gennem små, kontrollerbare skridt
-7. Verificér og dokumentér effekten samt det næste prioriterede fund
+5. Fagligt fokus: navngivning, mappestruktur, komponentansvar, props, state og dataflow
+6. Vælg et afgrænset fund inden for arkitektur, komponenter, styling eller accessibility
+7. Implementér forbedringen i en feature branch gennem små, kontrollerbare skridt
+8. Verificér og dokumentér effekten samt det næste prioriterede fund
 
 ## Materialer
 
