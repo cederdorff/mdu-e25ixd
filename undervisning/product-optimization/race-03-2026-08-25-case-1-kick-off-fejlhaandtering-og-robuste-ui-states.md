@@ -12,12 +12,13 @@ Dagens faglige fokus er fejlhåndtering og robuste UI-states i React. Du begynde
 
 - Arbejd dig igennem koncept 1–21 i [JavaScript for React-slidesene](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/konceptindeks). Læs forklaringerne, gennemgå eksemplerne og arbejd med opgaverne.
 - Hvis du har mere tid, kan du fortsætte med de ekstra koncepter og opgaver 22–25.
+- Læs [casebeskrivelsen til Case 1](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning), så du kender kunden, opgaven og de faglige fokusområder inden kick-off.
 
 <hr style="margin: 2rem 0;">
 
 ## Agenda
 
-Vi begynder med udvalgte JavaScript-koncepter og går derefter videre til Case 1, fejlhåndtering og robuste UI-states.
+Vi begynder med udvalgte JavaScript-koncepter og arbejder derefter med fejlhåndtering og robuste UI-states, inden vi starter Case 1.
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Udvalgte JavaScript-koncepter</strong></summary>
@@ -29,15 +30,7 @@ Vi begynder med udvalgte JavaScript-koncepter og går derefter videre til Case 1
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>2. Kick-off af Case 1</strong></summary>
-<ul>
-<li>Introduktion til casen og dens overordnede ramme.</li>
-<li>Hvad vi skal arbejde med i det kommende forløb.</li>
-</ul>
-</details>
-
-<details style="margin-left: 1.5rem;">
-<summary><strong>3. Fejlhåndtering</strong></summary>
+<summary><strong>2. Fejlhåndtering</strong></summary>
 <ul>
 <li>Hvilke fejl kan opstå i en React-løsning?</li>
 <li>Hvordan opdager, håndterer og kommunikerer vi dem?</li>
@@ -45,11 +38,19 @@ Vi begynder med udvalgte JavaScript-koncepter og går derefter videre til Case 1
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>4. Robuste UI-states</strong></summary>
+<summary><strong>3. Robuste UI-states</strong></summary>
 <ul>
 <li>Loading, success, empty og error states.</li>
 <li>Hvordan skifter UI'et mellem tilstandene?</li>
 <li>Hvordan hjælper vi brugeren videre, når noget ikke går som forventet?</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>4. Kick-off af Case 1</strong></summary>
+<ul>
+<li>Introduktion til casen og dens overordnede ramme.</li>
+<li>Hvad vi skal arbejde med i det kommende forløb.</li>
 </ul>
 </details>
 
@@ -73,6 +74,6 @@ Vi begynder med udvalgte JavaScript-koncepter og går derefter videre til Case 1
 - **JavaScript-reference:**
   - [JavaScript for React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/konceptindeks)
 - **Audit:**
-  - [Teknisk audit af en React-løsning](./teknisk-audit-skabelon.md)
+  - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
 - **Case 1:**
-  - Casebrief og øvrigt materiale vil blive tilgængeligt her
+  - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)

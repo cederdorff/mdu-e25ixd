@@ -35,7 +35,7 @@ Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de 
 
 ## Faglige fokusområder
 
-Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md). Brug det som løsningens baseline, og indarbejd og verificér de relevante forbedringer herfra.
+Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026). Brug det som løsningens baseline, og indarbejd og verificér de relevante forbedringer herfra.
 
 ### 1. React-optimering
 
@@ -125,8 +125,8 @@ Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdo
 ## Materialer
 
 - [Startprojekt: Mellemrum](https://github.com/cederdorff/mellemrum)
-- [Teknisk audit af en React-løsning](./teknisk-audit-skabelon.md)
-- [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md)
+- [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
+- [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026)
 - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
 - Supabase-startdata: SQL-filen følger med startprojektet
 - Dato for afslutning af Case 1: Tilføjes
