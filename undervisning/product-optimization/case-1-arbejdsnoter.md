@@ -10,7 +10,7 @@ Case 1 omhandler:
 
 - React-optimering
 - Robusthed og UI-states
-- Kodekvalitet og designkonsistens
+- Kodekvalitet
 - Accessibility
 - Data og Supabase
 - Deployment
@@ -67,11 +67,13 @@ Undersøg state, rendering og dataflow. Foretag relevante optimeringer dér, hvo
 Mulige fokuspunkter:
 
 - placering og håndtering af state
-- afledt state
-- unødvendige renderinger
+- oplysninger gemt i flere state-variabler, selvom de beskriver det samme
+- afledt state, der kan beregnes ud fra eksisterende data
+- unødvendige opdateringer som følge af uhensigtsmæssig state
 - gentagne beregninger under rendering
 - props og dataflow
-- relevante målinger før en optimering
+- konkrete observationer før en optimering
+- `memo`, `useMemo` og `useCallback` er ikke en del af casens forventede niveau
 
 ### 2. Robusthed og UI-states
 
@@ -88,7 +90,7 @@ Mulige fokuspunkter:
 - uventede brugerhandlinger
 - tydelig feedback og mulige næste handlinger
 
-### 3. Kodekvalitet og designkonsistens
+### 3. Kodekvalitet
 
 Koden skal være lettere at forstå, vedligeholde og videreudvikle.
 
@@ -101,8 +103,9 @@ Mulige fokuspunkter:
 - overskuelig filstruktur
 - oprydning i debugging-kode og gamle filer
 - konsistent kode og ansvar
-- ensartede visuelle komponenter og interaktionsmønstre
-- konsekvent styling, afstande og brugerfeedback
+- ensartet komponentbrug og brugerfeedback
+- visuelle rettelser, når de understøtter konsistens, accessibility eller robuste UI-states
+- redesign og større arbejde med identitet er sekundært og kun relevant, hvis den studerende har tid
 
 ### 4. Accessibility
 
@@ -183,7 +186,7 @@ Afleveringen kan holdes enkel og bestå af:
 
 - link til den deployede løsning
 - link til repository
-- en tydelig historik med afgrænsede feature branches, forståelige commits og pull requests
+- en tydelig historik med afgrænsede feature branches og forståelige commits
 - en kort kvalitetsrapport eller dokumentation i `README.md`
 - dokumentation af de vigtigste fund og prioriteringer
 - før- og eftereksempler på udvalgte forbedringer
@@ -198,19 +201,22 @@ De studerende skal ikke bedømmes på antallet af ændringer, men på deres evne
 3. Prioritér arbejdet ud fra effekt, risiko og den tilgængelige tid.
 4. Dokumentér løsningens udgangspunkt.
 5. Implementér hver sammenhængende forbedring i en afgrænset feature branch med forståelige commits.
-6. Åbn en pull request, gennemfør review, og merge derefter til `main`.
+6. Merge færdige og verificerede branches til `main`.
 7. Deploy løsningen.
 8. Dokumentér effekten og begrund de vigtigste valg og fravalg.
 
 ## Principper for casen
 
 - Casen skal have et troværdigt produkt- og kundeperspektiv.
+- Det primære fokus skal være React og kodeforbedringer, der optimerer løsningen.
+- Identitet og større visuelle forbedringer er sekundære, mens konsistens, accessibility og tydelig brugerfeedback fortsat er en del af kerneopgaven.
 - Der skal være plads til forskellige fagligt forsvarlige løsninger.
 - De studerende skal undersøge og prioritere – ikke blot følge en facitliste.
+- De studerende forventes ikke at kunne løse alle dele ved casens start; de nødvendige koncepter og teknikker introduceres undervejs.
 - React-optimering skal tage udgangspunkt i observerede problemer frem for tilfældig brug af optimeringsteknikker.
 - Tilgængelighed, robusthed og datahåndtering skal være en del af produktets kvalitet, ikke løsrevne ekstraopgaver.
 - Dokumentation skal vise sammenhængen mellem problem, beslutning, ændring og effekt.
-- Branches, commits og pull requests skal gøre udviklingen let at følge, gennemgå og overtage for andre udviklere.
+- Feature branches og commits skal gøre udviklingen let at følge og overtage for andre udviklere.
 
 ## Åbne beslutninger
 

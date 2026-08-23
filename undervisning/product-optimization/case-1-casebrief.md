@@ -30,15 +30,19 @@ Du skal:
 
 Det er ikke målet at ændre mest muligt. Det er vigtigere, at du finder betydningsfulde problemer, prioriterer dem fagligt og kan forklare, hvordan dit arbejde forbedrer produktet.
 
-Dit arbejde skal samtidig være let at følge og overtage. Repositoryets branches, commits og pull requests skal derfor vise, hvordan løsningen har udviklet sig fra det oprindelige problem til den færdige forbedring.
+Det primære fokus er React og kodeforbedringer, der optimerer løsningen. Du må gerne forbedre identiteten og det visuelle lag, hvis du har tid, men det er ikke casens hovedopgave. Visuelle ændringer er især relevante, når de understøtter konsistens, accessibility, feedback eller robuste UI-states.
+
+Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de nødvendige koncepter og teknikker undervejs i forløbet.
+
+Dit arbejde skal samtidig være let at følge og overtage. Repositoryets feature branches og commits skal derfor vise, hvordan løsningen har udviklet sig fra det oprindelige problem til den færdige forbedring.
 
 ## Faglige fokusområder
 
 ### 1. React-optimering
 
-Undersøg løsningens state, props, rendering og dataflow. Foretag relevante optimeringer, når du eksempelvis finder unødvendig state, gentagne beregninger eller renderinger.
+Undersøg løsningens state, props og dataflow. Se blandt andet efter oplysninger, der er gemt i flere `useState`-variabler, selvom de beskriver det samme, eller state, der kan beregnes ud fra eksisterende data. Den slags kan skabe unødvendige opdateringer og gøre løsningen vanskeligere at holde konsistent.
 
-Optimering skal tage udgangspunkt i et konkret problem eller en observation. Du skal ikke anvende optimeringsteknikker alene for at kunne sige, at de er brugt.
+Optimering skal tage udgangspunkt i et konkret problem eller en observation. Du forventes ikke at bruge `memo`, `useMemo` eller `useCallback` i denne case.
 
 ### 2. Robusthed og UI-states
 
@@ -53,11 +57,11 @@ Arbejd med relevante tilstande som:
 
 Brugeren skal have forståelig feedback og et relevant næste skridt. Tekniske fejl må ikke blot ende i konsollen eller efterlade en tom brugerflade.
 
-### 3. Kodekvalitet og designkonsistens
+### 3. Kodekvalitet
 
 Undersøg komponentstruktur, ansvar, navngivning og gentagelser. Refaktorér dér, hvor det giver en kodebase, der er lettere at forstå, vedligeholde og videreudvikle.
 
-Gennemgå også løsningens visuelle og interaktive mønstre. Skab større konsistens i eksempelvis komponenter, afstande, knapper, kort og feedback.
+Skab konsistens i komponenterne og den måde, UI'et giver feedback på. Du må gerne rette visuelle forskelle, der udspringer af inkonsistent kode eller komponentbrug, men du forventes ikke at redesigne hele produktet.
 
 ### 4. Accessibility
 
@@ -78,6 +82,8 @@ Du skal arbejde med at:
 - organisere dataadgangen, så den ikke er unødigt blandet sammen med præsentationslogikken
 
 Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde.
+
+Du forventes ikke at kunne arbejde med primærnøgler, fremmednøgler og relationer fra casens første dag. Vi arbejder med begreberne og den praktiske implementering i undervisningen undervejs.
 
 ### 6. Deployment
 
@@ -109,20 +115,22 @@ Udvælg derefter et realistisk antal forbedringer.
 
 ### 4. Implementér og verificér
 
-Arbejd med én sammenhængende forbedring ad gangen i en tydeligt navngivet feature branch. Opdel arbejdet i forståelige commits, og kontrollér løbende, at den eksisterende funktionalitet stadig virker. Dokumentér, hvordan du har testet og verificeret de vigtigste forbedringer.
+Arbejd med én sammenhængende forbedring ad gangen i en tydeligt navngivet feature branch. Opdel arbejdet i forståelige commits, og kontrollér løbende, at den eksisterende funktionalitet stadig virker.
 
-### 5. Review og deployment
+Verificér de vigtigste forbedringer med relevant evidens. Det kan eksempelvis være et keyboard-flow, et kontrolleret netværkskald, en gennemført build, en genindlæst route, et før/efter-skærmbillede eller en afprøvning af loading-, empty- og error states.
 
-Åbn en pull request for den færdige feature branch. Beskriv problemet, din løsning, de vigtigste ændringer og den måde, du har verificeret resultatet på. Gennemfør review, bearbejd relevant feedback, og merge først derefter ændringen til `main`.
+### 5. Saml arbejdet og deploy
 
-Arbejd ikke direkte på `main`. Målet er, at en anden udvikler kan følge beslutningerne, gennemgå ændringerne og arbejde videre på løsningen uden først at skulle rekonstruere din proces.
+Når en forbedring er færdig og verificeret, skal du merge din feature branch til `main`.
+
+Arbejd ikke direkte på `main`. Målet er, at en anden udvikler kan følge ændringerne og arbejde videre på løsningen uden først at skulle rekonstruere din proces.
 
 ## Det skal du aflevere
 
 Den foreløbige aflevering består af:
 
 - link til det opdaterede GitHub-repository
-- en tydelig historik med feature branches, forståelige commits og pull requests
+- en tydelig historik med feature branches og forståelige commits
 - link til den deployede løsning
 - din tekniske audit og prioriterede optimeringsplan
 - en kort beskrivelse af den forbedrede datamodel og dens relationer
@@ -151,7 +159,7 @@ Der lægges især vægt på, om du:
 - kan skabe robuste og tilgængelige brugeroplevelser
 - kan forbedre en datamodel og arbejde med relationer
 - kan skrive kode, som andre kan forstå og arbejde videre med
-- kan strukturere branches, commits og pull requests, så udviklingen er tydelig og kan overtages af andre
+- kan strukturere feature branches og commits, så udviklingen er tydelig og kan overtages af andre
 - kan deploye og kvalitetssikre den samlede løsning
 - kan dokumentere og forklare dine beslutninger og deres effekt
 
