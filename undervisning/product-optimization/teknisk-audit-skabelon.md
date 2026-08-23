@@ -80,7 +80,7 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 ### Git, deployment og teknisk kvalitet
 
 - Er ændringer opdelt i forståelige issues, feature branches og commits?
-- Kan en reviewer forstå formålet med pull requesten?
+- Gør feature branches og commits det tydeligt, hvad der er ændret og hvorfor?
 - Bygger projektet uden fejl?
 - Er konsollen fri for relevante fejl og advarsler?
 - Fungerer miljøvariabler i deployment-miljøet?
@@ -105,7 +105,7 @@ Prioritér ikke alene efter, hvad der er nemmest eller mest interessant at kode.
 - om fundet blokerer andre forbedringer
 - forventet effekt i forhold til indsatsen
 
-Vælg derefter et realistisk antal forbedringer og opret et issue med acceptkriterier for hver.
+Vælg derefter et realistisk antal forbedringer, og beskriv kort, hvornår hver forbedring kan betragtes som færdig.
 
 ## 6. Dokumentér effekten
 

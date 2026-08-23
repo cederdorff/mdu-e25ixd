@@ -1,226 +1,131 @@
 # Case 1 – Fra prototype til produktionsklar React-løsning
 
-> Status: Første udkast til studenterrettet casebrief.
-
 ## Case 1 som del af eksamen
 
 Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grundlag for den individuelle skriftlige eksamen.
 
-Du skal ikke have en færdig og publiceret portfolioside klar, når Case 1 afsluttes. Efter den tredje case får du en uge til at bearbejde de tre cases og opdatere dit eksisterende portfolio website med én case-/produktside for hver case.
+Du skal ikke lave den endelige portfolioside under denne case. Efter den tredje case får du en uge til at bearbejde dit materiale og opdatere dit eksisterende portfolio website med én case-/produktside for hver case.
 
-Til den endelige eksamen afleverer du et dokument med links til de tre specifikke casesider på dit portfolio website. Det samlede skriftlige materiale for de tre cases må maksimalt fylde fem normalsider.
+Til eksamen afleverer du et dokument med links til de tre casesider. Det samlede skriftlige materiale på de tre sider må maksimalt fylde fem normalsider.
 
-## Kunden
+## Kunden og udfordringen
 
-**Mellemrum** er en lokal kultur- og eventplatform, der hjælper brugerne med at finde koncerter, talks, workshops og andre arrangementer.
+**Mellemrum** er en lokal kultur- og eventplatform, hvor brugerne kan finde og tilmelde sig koncerter, talks, workshops og andre arrangementer.
 
-Virksomheden har fået udviklet en første React-prototype. Den viser arrangementer og gør det muligt at udforske platformens indhold og tilmelde sig et event, men løsningen blev udviklet hurtigt for at afprøve idéen. Mellemrum ønsker nu at gøre produktet klar til rigtige brugere og til den videre udvikling af platformen.
+Virksomheden har fået udviklet en React-prototype. Den grundlæggende funktionalitet findes, men løsningen blev bygget hurtigt for at afprøve idéen. Koden er vanskelig at videreudvikle, brugeroplevelsen er ikke altid konsistent, og løsningen håndterer ikke langsomme svar, manglende data og fejl godt nok.
 
-## Situationen
+Data hentes fra Supabase gennem Supabase REST API. Datamodellen indeholder gentagne oplysninger, som bør fordeles på relaterede tabeller. Når en bruger tilmelder sig et event, skal tilmeldingen registreres i Supabase. Mellemrum har også brug for en intern side med et overblik over tilmeldinger og de tilhørende events.
 
-Prototypen fungerer, når alt går som forventet, men kvaliteten er ujævn. Virksomheden oplever blandt andet, at løsningen er vanskelig at videreudvikle, at brugeroplevelsen ikke altid er konsistent, og at den ikke håndterer langsomme svar, manglende data og fejl godt nok.
-
-Data hentes fra Supabase gennem Supabase REST API. Den nuværende datamodel blev oprettet hurtigt og indeholder gentagne oplysninger, som gør data vanskelige at vedligeholde. Nogle oplysninger bør i stedet fordeles på relaterede tabeller.
-
-Når en bruger tilmelder sig et event, skal tilmeldingen registreres i Supabase. Mellemrum ønsker samtidig en intern side, hvor virksomheden kan se et overblik over tilmeldingerne og det event, de hører til.
-
-Mellemrum har derfor brug for, at du undersøger den eksisterende løsning og prioriterer de forbedringer, der har størst betydning for brugerne og for den videre udvikling af produktet.
+Din opgave er at undersøge prototypen, prioritere de vigtigste problemer og gøre løsningen mere robust, tilgængelig, vedligeholdelsesvenlig og klar til deployment.
 
 ## Din opgave
 
-Du arbejder individuelt og overtager den eksisterende React-løsning. Din opgave er at gøre løsningen mere robust, tilgængelig, vedligeholdelsesvenlig og klar til deployment.
+Du arbejder individuelt med den eksisterende React-løsning. Du skal:
 
-Du skal:
-
-1. undersøge og dokumentere løsningens nuværende tilstand
-2. identificere og prioritere væsentlige problemer
+1. gennemføre en teknisk audit og dokumentere løsningens udgangspunkt
+2. identificere og prioritere problemer med betydning for brugerne og produktet
 3. gennemføre relevante forbedringer
-4. verificere effekten af dine ændringer
-5. dokumentere de vigtigste valg, fravalg og resultater
+4. verificere effekten af de vigtigste ændringer
+5. dokumentere dine valg, fravalg og resultater
 
-Det er ikke målet at ændre mest muligt. Det er vigtigere, at du finder betydningsfulde problemer, prioriterer dem fagligt og kan forklare, hvordan dit arbejde forbedrer produktet.
+Det er ikke målet at ændre mest muligt. Det er vigtigere, at du finder betydningsfulde problemer, prioriterer dem fagligt og kan forklare værdien af dine forbedringer.
 
-Det primære fokus er React og kodeforbedringer, der optimerer løsningen. Du må gerne forbedre identiteten og det visuelle lag, hvis du har tid, men det er ikke casens hovedopgave. Visuelle ændringer er især relevante, når de understøtter konsistens, accessibility, feedback eller robuste UI-states.
+Det primære fokus er React og kodeforbedringer. Du må gerne forbedre identiteten og det visuelle lag, hvis du har tid, men det er ikke casens hovedopgave. Visuelle ændringer er relevante, når de eksempelvis styrker konsistens, accessibility, feedback eller robuste UI-states.
 
-Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de nødvendige koncepter og teknikker undervejs i forløbet.
-
-Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md). Du skal derfor også indarbejde og verificere de relevante forbedringer herfra, eksempelvis environment variables, deployment, routing, metadata, oprydning af template-rester og accessibility.
-
-Dit arbejde skal samtidig være let at følge og overtage. Repositoryets feature branches og commits skal derfor vise, hvordan løsningen har udviklet sig fra det oprindelige problem til den færdige forbedring.
+Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de nødvendige koncepter og teknikker undervejs.
 
 ## Faglige fokusområder
 
+Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md). Indarbejd og verificér de relevante forbedringer herfra, eksempelvis environment variables, deployment, routing, metadata, oprydning af template-rester og accessibility.
+
 ### 1. React-optimering
 
-Undersøg løsningens state, props og dataflow. Se blandt andet efter oplysninger, der er gemt i flere `useState`-variabler, selvom de beskriver det samme, eller state, der kan beregnes ud fra eksisterende data. Den slags kan skabe unødvendige opdateringer og gøre løsningen vanskeligere at holde konsistent.
-
-Optimering skal tage udgangspunkt i et konkret problem eller en observation.
+- Skab et tydeligt flow mellem data, props og state.
+- Undgå state, der gentager andre værdier eller kan beregnes ud fra eksisterende data.
+- Tag udgangspunkt i konkrete problemer frem for at optimere for optimeringens skyld.
 
 ### 2. Robusthed og UI-states
 
-Løsningen skal også fungere, når data er forsinkede, mangler eller ikke kan hentes.
-
-Arbejd med relevante tilstande som:
-
-- loading
-- success
-- empty
-- error
-
-Brugeren skal have forståelig feedback og et relevant næste skridt. Tekniske fejl må ikke blot ende i konsollen eller efterlade en tom brugerflade.
+- Håndtér relevante `loading`, `success`, `empty` og `error` states.
+- Giv brugeren forståelig feedback og et relevant næste skridt.
+- Lad ikke fejl ende som en tom brugerflade eller kun som en besked i konsollen.
 
 ### 3. Kodekvalitet
 
-Undersøg komponentstruktur, ansvar, navngivning og gentagelser. Refaktorér dér, hvor det giver en kodebase, der er lettere at forstå, vedligeholde og videreudvikle.
-
-Skab konsistens i komponenterne og den måde, UI'et giver feedback på. Du må gerne rette visuelle forskelle, der udspringer af inkonsistent kode eller komponentbrug, men du forventes ikke at redesigne hele produktet.
+- Forbedr komponenternes opdeling, ansvar og navngivning.
+- Reducér uhensigtsmæssige gentagelser, og skab konsistens i kode og UI.
+- Organisér løsningen, så andre udviklere kan forstå og videreudvikle den.
 
 ### 4. Accessibility
 
-Forbedr løsningens accessibility med fokus på:
+Undersøg blandt andet:
 
-1. **Semantik:** Brug HTML-elementer og et heading-hierarki, der beskriver indholdet.
-2. **ARIA:** Brug ARIA, når HTML ikke er nok – ikke som erstatning for semantik.
-3. **Navne:** Labels, linktekster, knapper og fejlbeskeder skal kunne forstås.
-4. **Tastatur:** Alt skal kunne nås og bruges med tastatur, og fokus skal altid være synligt.
-5. **Indhold:** Billeder skal have passende alt-tekst, og formularer skal have labels og feedback.
-6. **React SPA:** Opdatér `document.title`, og flyt fokus til den nye overskrift med `headingRef.current?.focus()` ved navigation.
+- semantisk HTML og et logisk heading-hierarki
+- ARIA, når HTML ikke er tilstrækkeligt
+- forståelige labels, linktekster, knapper og fejlbeskeder
+- tastaturbetjening og synligt fokus
+- passende alt-tekster samt labels og feedback i formularer
+- `document.title` og fokus på den nye overskrift ved navigation i React SPA'en
 
-Brug listen som udgangspunkt for din undersøgelse – den er ikke udtømmende. Du må gerne identificere og forbedre andre relevante accessibility-problemer med hjælp fra [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c).
+Listen er et udgangspunkt. Brug også [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c) til at undersøge andre relevante problemer.
 
 ### 5. Data og Supabase
 
-Undersøg den eksisterende datamodel og de steder, hvor React-løsningen henter og anvender data.
+- Find gentagne eller uhensigtsmæssigt placerede data.
+- Opdel relevante data i tabeller med meningsfulde primær- og fremmednøgler.
+- Hent og anvend relaterede data gennem Supabase REST API.
+- Registrér eventtilmeldinger i en `registrations`-tabel, der forbindes med det valgte event gennem `event_id`.
+- Tilpas React-løsningen til den forbedrede datamodel, og hold så vidt muligt dataadgang adskilt fra præsentationslogik.
+- Udvikl eller forbedr en intern side, der viser relevante oplysninger om tilmeldinger og deres events.
 
-Du skal arbejde med at:
-
-- finde gentagne eller uhensigtsmæssigt placerede data
-- opdele relevante data i flere tabeller
-- etablere meningsfulde relationer med primær- og fremmednøgler
-- registrere en tilmelding i en `registrations`-tabel gennem Supabase REST API
-- forbinde hver tilmelding med det valgte event gennem `event_id`
-- hente de relaterede data fra Supabase
-- undgå unødvendige eller gentagne requests
-- tilpasse React-løsningen til den forbedrede datamodel
-- organisere dataadgangen, så den ikke er unødigt blandet sammen med præsentationslogikken
-
-Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde.
-
-Du skal desuden udvikle eller forbedre en intern oversigtsside, der eksempelvis viser navn, e-mail, status og det event, tilmeldingen hører til.
-
-Du forventes ikke at kunne arbejde med primærnøgler, fremmednøgler og relationer fra casens første dag. Vi arbejder med begreberne og den praktiske implementering i undervisningen undervejs.
+Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde. Vi arbejder med relationer og den praktiske implementering undervejs i undervisningen.
 
 ### 6. Deployment
 
-Den færdige løsning skal kunne bygges og deployes stabilt. Kontrollér blandt andet konfiguration, environment variables, routing, direkte links og genindlæsning af sider.
+- Kontrollér build, konfiguration, environment variables og routing.
+- Afprøv direkte links og genindlæsning af sider i den deployede løsning.
+- Sørg for, at den publicerede løsning svarer til versionen på `main`.
 
-Den publicerede løsning skal svare til den version, der findes på `main`.
+## Sådan arbejder du
 
-## Arbejdsproces
+### 1. Undersøg og prioritér
 
-### 1. Skab en baseline
+Kør først løsningen lokalt og gennemfør de vigtigste brugerflows. Brug [audit-skabelonen](./teknisk-audit-skabelon.md) til at dokumentere problemer, konsekvenser og mulige løsninger. Prioritér derefter et realistisk antal forbedringer ud fra effekt, risiko, vedligeholdelse og den tid, du har.
 
-Kør løsningen lokalt og gennemfør de vigtigste brugerflows, før du ændrer koden. Dokumentér relevante observationer med eksempelvis skærmbilleder, konkrete komponenter, konsolfejl, netværkskald og accessibility-tests.
+### 2. Implementér
 
-### 2. Gennemfør en teknisk audit
+Arbejd med én sammenhængende forbedring ad gangen i en tydeligt navngivet feature branch. Brug forståelige commits, og arbejd ikke direkte på `main`. Historikken skal gøre det let for en anden udvikler at følge og overtage arbejdet.
 
-Undersøg løsningen inden for casens faglige områder. Beskriv de problemer, du finder, deres konsekvens og et muligt løsningsforslag.
+### 3. Verificér
 
-### 3. Prioritér
+Vis, at dine vigtigste forbedringer virker. Brug relevant evidens, eksempelvis før/efter-skærmbilleder, et keyboard-flow, kontrollerede netværkskald, afprøvning af UI-states, en gennemført build eller en genindlæst route.
 
-Vurdér fundene ud fra:
+### 4. Saml og deploy
 
-- betydningen for brugeren
-- risikoen for fejl eller dårlige brugeroplevelser
-- betydningen for vedligeholdelse og videreudvikling
-- forventet effekt i forhold til indsatsen
-- den tid, du har til rådighed
-
-Udvælg derefter et realistisk antal forbedringer.
-
-### 4. Implementér og verificér
-
-Arbejd med én sammenhængende forbedring ad gangen i en tydeligt navngivet feature branch. Opdel arbejdet i forståelige commits, og kontrollér løbende, at den eksisterende funktionalitet stadig virker.
-
-Verificér de vigtigste forbedringer med relevant evidens. Det kan eksempelvis være et keyboard-flow, et kontrolleret netværkskald, en gennemført build, en genindlæst route, et før/efter-skærmbillede eller en afprøvning af loading-, empty- og error states.
-
-### 5. Saml arbejdet og deploy
-
-Når en forbedring er færdig og verificeret, skal du merge din feature branch til `main`.
-
-Arbejd ikke direkte på `main`. Målet er, at en anden udvikler kan følge ændringerne og arbejde videre på løsningen uden først at skulle rekonstruere din proces.
+Merge færdige og verificerede forbedringer til `main`, og deploy den samlede løsning. Kontrollér til sidst de centrale brugerflows i den publicerede version.
 
 ## Det skal du have klar efter Case 1
 
-Når Case 1 slutter, skal du have følgende materiale klar, så du senere kan bearbejde det til din case-/produktside på portfolioen:
+Når casen slutter, skal du have dokumentation og råmateriale, som senere kan bearbejdes til en kort case-/produktside på din portfolio:
 
 - link til det opdaterede GitHub-repository
-- en tydelig udviklingshistorik med feature branches og forståelige commits
+- en tydelig historik med feature branches og forståelige commits
 - link til den deployede løsning
 - din tekniske audit og prioriterede optimeringsplan
 - en kort beskrivelse af den forbedrede datamodel og dens relationer
-- før- og efterdokumentation for udvalgte forbedringer
+- før- og efterevidens for udvalgte forbedringer
 - en kort refleksion over væsentlige valg, fravalg og resterende udfordringer
-- noter om løsningens forretningspotentiale og værdien af de gennemførte forbedringer
+- noter om produktets forretningspotentiale og værdien af dine forbedringer
 
-Materialet kan under casearbejdet samles i repositoryets `README.md` eller i et særskilt arbejdsdokument. Det er dokumentation og råmateriale til den senere portfolioside – ikke den endelige eksamensaflevering.
+For hver forbedring skal du kunne forklare problemet, konsekvensen, din løsning og den måde, du verificerede resultatet på. Kobl også arbejdet til produktets værdi: eksempelvis en bedre brugeroplevelse, færre fejl, lettere videreudvikling eller et mere pålideligt tilmeldingsflow.
 
-## Fra casearbejde til portfolioside
-
-Din endelige case-/produktside skal kort og fagligt formidle:
-
-- produktet, kunden og den udfordring, du overtog
-- de vigtigste fund fra din audit og din prioritering
-- udvalgte React- og kodeforbedringer
-- arbejdet med robusthed, accessibility, data og deployment, hvor det er relevant
-- før- og efterevidens, der viser effekten af udvalgte ændringer
-- de vigtigste faglige valg, fravalg og erfaringer
-- løsningens forretningspotentiale
-- links til repository og den deployede løsning
-
-Du skal udvælge det vigtigste. Den tekniske audit, alle commits og samtlige fund skal ikke gengives på portfoliosiden. Brug dem som grundlag for en kort og velbegrundet casebeskrivelse.
-
-### Forretningspotentiale
-
-Din casebeskrivelse skal koble de tekniske forbedringer til produktets værdi. Overvej eksempelvis:
-
-- Hvordan kan en mere robust og tilgængelig løsning nå eller fastholde flere brugere?
-- Hvordan kan bedre kodekvalitet og en tydeligere datamodel gøre fremtidig udvikling lettere og billigere?
-- Hvordan kan stabil datahåndtering og deployment mindske risikoen for fejl ved lancering?
-- Hvordan kan et pålideligt tilmeldingsflow og et samlet internt overblik skabe værdi for både brugerne og arrangøren?
-- Hvilke muligheder giver den forbedrede løsning Mellemrum for at videreudvikle produktet?
-
-## Hvad skal din dokumentation vise?
-
-For hver udvalgt forbedring skal du så vidt muligt kunne svare på:
-
-1. Hvordan fungerede løsningen før?
-2. Hvilket problem fandt du, og hvilken konsekvens havde det?
-3. Hvad ændrede du – og hvorfor?
-4. Hvordan har du verificeret forbedringen?
-5. Hvad er endnu ikke løst?
-
-## Det skal dit casearbejde vise
-
-Der lægges især vægt på, om du:
-
-- kan undersøge en eksisterende løsning systematisk
-- kan prioritere ud fra effekt frem for personlige præferencer
-- kan anvende React og JavaScript på en fagligt begrundet måde
-- kan skabe robuste og tilgængelige brugeroplevelser
-- kan forbedre en datamodel og arbejde med relationer
-- kan skrive kode, som andre kan forstå og arbejde videre med
-- kan strukturere feature branches og commits, så udviklingen er tydelig og kan overtages af andre
-- kan deploye og kvalitetssikre den samlede løsning
-- kan dokumentere og forklare dine beslutninger og deres effekt
-- kan forbinde de tekniske forbedringer med produktets forretningspotentiale
-- kan udvælge og formidle det vigtigste som grundlag for en kort casebeskrivelse på din portfolio
+Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdokument. Det er ikke den endelige eksamensaflevering, og du skal udvælge og bearbejde det vigtigste, når du senere bygger portfoliosiden.
 
 ## Materialer
 
 - Startprojekt: Tilføjes
-- Teknisk audit-skabelon: [Teknisk audit af en React-løsning](./teknisk-audit-skabelon.md)
-- Tidligere undervisning: [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md)
-- Accessibility: [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
+- [Teknisk audit af en React-løsning](./teknisk-audit-skabelon.md)
+- [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md)
+- [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
 - Supabase-projekt og data: Tilføjes
 - Dato for afslutning af Case 1: Tilføjes
