@@ -9,43 +9,28 @@ Studenterrettet udkast: [Case 1 – Fra prototype til produktionsklar React-løs
 Case 1 omhandler:
 
 - React-optimering
-- robusthed og UI-states
-- kodekvalitet
-- accessibility
-- data
-- deployment
+- Robusthed og UI-states
+- Kodekvalitet og designkonsistens
+- Accessibility
+- Data og Supabase
+- Deployment
 
-De studerende får udleveret en eksisterende React-løsning med problemer og forbedringsmuligheder. Deres opgave er at undersøge, prioritere, optimere og videreudvikle løsningen.
-
-Løsningen skal være funktionel nok til at opleves som et rigtigt produkt, men bære præg af at være udviklet hurtigt som en MVP. Problemerne skal derfor hænge naturligt sammen frem for at ligne isolerede øvelser.
+De studerende arbejder individuelt med en eksisterende React-løsning. Deres opgave er at undersøge, prioritere, optimere og videreudvikle løsningen.
 
 ## Grundidé
 
-En mindre virksomhed har fået udviklet en React-løsning, som fungerer som prototype, men endnu ikke er klar til lancering.
-
-Løsningen fungerer, når alt går godt, men:
-
-- Koden er vanskelig at forstå og videreudvikle.
-- Nogle komponenter renderer unødvendigt eller håndterer state uhensigtsmæssigt.
-- Brugerfladen håndterer ikke langsomme svar, manglende data eller fejl.
-- Centrale funktioner er vanskelige at bruge med tastatur og skærmlæser.
-- Data behandles inkonsistent og med for mange antagelser.
-- Løsningen er ikke gjort ordentligt klar til deployment.
-
-De studerende skal overtage løsningen og gøre den mere robust, tilgængelig, vedligeholdelsesvenlig og produktionsklar.
-
-## Mere konkret retning for startprojektet
-
-De studerende får en eksisterende React-løsning, hvor den centrale brugerrejse fungerer, men kvaliteten er ujævn:
+En mindre virksomhed har fået udviklet en React-prototype, som endnu ikke er klar til lancering. Den centrale brugerrejse fungerer, men løsningen bærer præg af at være udviklet hurtigt som en MVP:
 
 - Komponenterne er ikke opdelt hensigtsmæssigt, og enkelte komponenter har for mange ansvarsområder.
-- Der er manglende konsistens i design, komponenter og brugerfeedback.
+- State og rendering håndteres nogle steder uhensigtsmæssigt.
+- Design, komponenter og brugerfeedback er ikke konsekvente.
 - Løsningen er ikke tilstrækkeligt optimeret for accessibility.
 - Fejlhåndtering, loading states og empty states mangler eller er kun løst overfladisk.
 - Data hentes fra Supabase gennem Supabase REST API.
 - Datamodellen er ikke struktureret hensigtsmæssigt og indeholder data, som burde være fordelt på flere relaterede tabeller.
+- Løsningen er ikke gjort ordentligt klar til deployment.
 
-Casen bliver dermed en samlet modernisering af produktet: De studerende arbejder både med den synlige brugeroplevelse, React-koden, håndteringen af asynkrone tilstande og strukturen bag de data, løsningen bygger på.
+Problemerne skal hænge naturligt sammen frem for at ligne isolerede øvelser. De studerende skal overtage løsningen og gøre den mere robust, tilgængelig, vedligeholdelsesvenlig og produktionsklar.
 
 ## Kunde og kontekst
 
@@ -77,11 +62,10 @@ De studerende skal ikke blot rette en række på forhånd udpegede fejl. De skal
 
 ### 1. React-optimering
 
-Undersøg komponentstruktur, state, rendering og dataflow. Foretag relevante optimeringer dér, hvor de skaber en reel forbedring.
+Undersøg state, rendering og dataflow. Foretag relevante optimeringer dér, hvor de skaber en reel forbedring.
 
 Mulige fokuspunkter:
 
-- komponentstruktur og ansvarsfordeling
 - placering og håndtering af state
 - afledt state
 - unødvendige renderinger
@@ -104,7 +88,7 @@ Mulige fokuspunkter:
 - uventede brugerhandlinger
 - tydelig feedback og mulige næste handlinger
 
-### 3. Kodekvalitet
+### 3. Kodekvalitet og designkonsistens
 
 Koden skal være lettere at forstå, vedligeholde og videreudvikle.
 
@@ -117,6 +101,8 @@ Mulige fokuspunkter:
 - overskuelig filstruktur
 - oprydning i debugging-kode og gamle filer
 - konsistent kode og ansvar
+- ensartede visuelle komponenter og interaktionsmønstre
+- konsekvent styling, afstande og brugerfeedback
 
 ### 4. Accessibility
 
@@ -133,7 +119,7 @@ Mulige fokuspunkter:
 - overskriftsstruktur
 - kontrast og læsbarhed
 
-### 5. Data
+### 5. Data og Supabase
 
 Løsningen skal have en tydelig og stabil håndtering af data.
 
@@ -141,6 +127,7 @@ Mulige fokuspunkter:
 
 - data hentet gennem Supabase REST API
 - API-kald og datahåndtering
+- unødvendige eller gentagne requests
 - validering og normalisering af data
 - håndtering af manglende værdier
 - analyse af en uhensigtsmæssig, flad datamodel
@@ -196,6 +183,7 @@ Afleveringen kan holdes enkel og bestå af:
 
 - link til den deployede løsning
 - link til repository
+- en tydelig historik med afgrænsede feature branches, forståelige commits og pull requests
 - en kort kvalitetsrapport eller dokumentation i `README.md`
 - dokumentation af de vigtigste fund og prioriteringer
 - før- og eftereksempler på udvalgte forbedringer
@@ -209,9 +197,10 @@ De studerende skal ikke bedømmes på antallet af ændringer, men på deres evne
 2. Identificér problemer og forbedringsmuligheder.
 3. Prioritér arbejdet ud fra effekt, risiko og den tilgængelige tid.
 4. Dokumentér løsningens udgangspunkt.
-5. Implementér og test udvalgte forbedringer.
-6. Deploy løsningen.
-7. Dokumentér effekten og begrund de vigtigste valg og fravalg.
+5. Implementér hver sammenhængende forbedring i en afgrænset feature branch med forståelige commits.
+6. Åbn en pull request, gennemfør review, og merge derefter til `main`.
+7. Deploy løsningen.
+8. Dokumentér effekten og begrund de vigtigste valg og fravalg.
 
 ## Principper for casen
 
@@ -221,6 +210,7 @@ De studerende skal ikke bedømmes på antallet af ændringer, men på deres evne
 - React-optimering skal tage udgangspunkt i observerede problemer frem for tilfældig brug af optimeringsteknikker.
 - Tilgængelighed, robusthed og datahåndtering skal være en del af produktets kvalitet, ikke løsrevne ekstraopgaver.
 - Dokumentation skal vise sammenhængen mellem problem, beslutning, ændring og effekt.
+- Branches, commits og pull requests skal gøre udviklingen let at følge, gennemgå og overtage for andre udviklere.
 
 ## Åbne beslutninger
 
@@ -232,7 +222,6 @@ De studerende skal ikke bedømmes på antallet af ændringer, men på deres evne
 - Hvor meget af arbejdet med tabeller, relationer og migrering af eksisterende data skal de studerende selv udføre?
 - Hvilke Supabase REST-forespørgsler og relationer forventes de at kunne arbejde med?
 - Hvor lang tid får de studerende til casen?
-- Arbejder de individuelt eller i grupper?
 - Hvilke krav er obligatoriske, og hvilke er mulige udvidelser?
 - Hvordan skal casen indgå i det samlede eksamensforløb og vurderingsgrundlag?
 - Hvilke værktøjer og målinger forventes de at anvende?

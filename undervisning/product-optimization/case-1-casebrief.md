@@ -18,7 +18,7 @@ Mellemrum har derfor brug for, at du undersøger den eksisterende løsning og pr
 
 ## Din opgave
 
-Du arbejder individuelt og overtager den eksisterende React-løsning. Din opgave er at gøre kodebasen mere robust, tilgængelig, vedligeholdelsesvenlig og klar til deployment.
+Du arbejder individuelt og overtager den eksisterende React-løsning. Din opgave er at gøre løsningen mere robust, tilgængelig, vedligeholdelsesvenlig og klar til deployment.
 
 Du skal:
 
@@ -30,11 +30,13 @@ Du skal:
 
 Det er ikke målet at ændre mest muligt. Det er vigtigere, at du finder betydningsfulde problemer, prioriterer dem fagligt og kan forklare, hvordan dit arbejde forbedrer produktet.
 
+Dit arbejde skal samtidig være let at følge og overtage. Repositoryets branches, commits og pull requests skal derfor vise, hvordan løsningen har udviklet sig fra det oprindelige problem til den færdige forbedring.
+
 ## Faglige fokusområder
 
 ### 1. React-optimering
 
-Undersøg løsningens state, props, rendering og dataflow. Foretag relevante optimeringer, når du eksempelvis finder unødvendig state, gentagne beregninger, renderinger eller requests.
+Undersøg løsningens state, props, rendering og dataflow. Foretag relevante optimeringer, når du eksempelvis finder unødvendig state, gentagne beregninger eller renderinger.
 
 Optimering skal tage udgangspunkt i et konkret problem eller en observation. Du skal ikke anvende optimeringsteknikker alene for at kunne sige, at de er brugt.
 
@@ -71,12 +73,13 @@ Du skal arbejde med at:
 - opdele relevante data i flere tabeller
 - etablere meningsfulde relationer med primær- og fremmednøgler
 - hente de relaterede data fra Supabase
+- undgå unødvendige eller gentagne requests
 - tilpasse React-løsningen til den forbedrede datamodel
 - organisere dataadgangen, så den ikke er unødigt blandet sammen med præsentationslogikken
 
 Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde.
 
-### 6. Deployment og produktionskvalitet
+### 6. Deployment
 
 Den færdige løsning skal kunne bygges og deployes stabilt. Kontrollér blandt andet konfiguration, environment variables, routing, direkte links og genindlæsning af sider.
 
@@ -106,17 +109,20 @@ Udvælg derefter et realistisk antal forbedringer.
 
 ### 4. Implementér og verificér
 
-Arbejd i afgrænsede ændringer, og kontrollér løbende, at den eksisterende funktionalitet stadig virker. Dokumentér, hvordan du har testet og verificeret de vigtigste forbedringer.
+Arbejd med én sammenhængende forbedring ad gangen i en tydeligt navngivet feature branch. Opdel arbejdet i forståelige commits, og kontrollér løbende, at den eksisterende funktionalitet stadig virker. Dokumentér, hvordan du har testet og verificeret de vigtigste forbedringer.
 
 ### 5. Review og deployment
 
-Brug branches, commits og pull requests, så ændringerne kan forstås og gennemgås. Gennemfør review, bearbejd relevant feedback, og verificér den publicerede løsning efter deployment.
+Åbn en pull request for den færdige feature branch. Beskriv problemet, din løsning, de vigtigste ændringer og den måde, du har verificeret resultatet på. Gennemfør review, bearbejd relevant feedback, og merge først derefter ændringen til `main`.
+
+Arbejd ikke direkte på `main`. Målet er, at en anden udvikler kan følge beslutningerne, gennemgå ændringerne og arbejde videre på løsningen uden først at skulle rekonstruere din proces.
 
 ## Det skal du aflevere
 
 Den foreløbige aflevering består af:
 
 - link til det opdaterede GitHub-repository
+- en tydelig historik med feature branches, forståelige commits og pull requests
 - link til den deployede løsning
 - din tekniske audit og prioriterede optimeringsplan
 - en kort beskrivelse af den forbedrede datamodel og dens relationer
@@ -145,6 +151,7 @@ Der lægges især vægt på, om du:
 - kan skabe robuste og tilgængelige brugeroplevelser
 - kan forbedre en datamodel og arbejde med relationer
 - kan skrive kode, som andre kan forstå og arbejde videre med
+- kan strukturere branches, commits og pull requests, så udviklingen er tydelig og kan overtages af andre
 - kan deploye og kvalitetssikre den samlede løsning
 - kan dokumentere og forklare dine beslutninger og deres effekt
 
