@@ -14,6 +14,8 @@
 
 ## Case 1 som del af eksamen
 
+**Periode:** Case 1 løber fra 24/08/2026 til 04/09/2026.
+
 Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grundlag for den individuelle skriftlige eksamen. Under casen samler du dokumentation og råmateriale – du skal ikke lave den endelige caseside endnu.
 
 Efter den tredje case får du en uge til at bearbejde materialet og opdatere dit eksisterende portfolio website med én caseside for hver case.
@@ -165,7 +167,5 @@ Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdo
 - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
 - [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026)
 - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
-- Supabase-startdata: SQL-filen følger med startprojektet
-- Dato for afslutning af Case 1: Tilføjes
 
 </div>

@@ -1,8 +1,16 @@
 # Teknisk audit af en React-løsning
 
+<div style="margin: 0 auto; max-width: 1000px;">
+
+<div style="background: #f5f2ea; border-left: 6px solid #ff785a; margin: 0 0 2rem; padding: 1rem 1.5rem;">
+
 En teknisk audit er en systematisk undersøgelse af en eksisterende løsning. Formålet er at finde, dokumentere og prioritere forbedringer — ikke blot at samle personlige præferencer om kode.
 
 Brug skabelonen som støtte til din undersøgelse. Du forventes ikke at finde eller løse problemer under alle punkter. Udvælg de spørgsmål, der er relevante for løsningen, og prioritér de vigtigste fund.
+
+</div>
+
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
 ## 1. Afgræns løsningen
 
@@ -10,6 +18,8 @@ Brug skabelonen som støtte til din undersøgelse. Du forventes ikke at finde el
 - Hvilke dele af produktet og kodebasen undersøger du?
 - Hvilke dele ligger uden for din audit?
 - Kan løsningen køre lokalt og online, før du ændrer den?
+
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
 ## 2. Etablér en baseline
 
@@ -23,9 +33,14 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 - eksisterende deployment og Git-historik
 - relevante målinger, når de faktisk siger noget om problemet
 
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
+
 ## 3. Undersøg løsningen
 
-### Accessibility
+Åbn de områder, der er relevante for din undersøgelse. Du behøver ikke arbejde med alle spørgsmål.
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>Accessibility</strong></summary>
 
 - **Semantik:** Bruges HTML-elementer og et heading-hierarki, der beskriver indholdet?
 - **ARIA:** Bruges ARIA kun, når HTML ikke er nok – og ikke som erstatning for semantik?
@@ -36,7 +51,10 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 
 Se også [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c).
 
-### Styling
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>Styling</strong></summary>
 
 - Er det tydeligt, hvilke styles der hører til hvilke komponenter?
 - Ligger komponentrelateret styling tæt på komponenten?
@@ -47,7 +65,10 @@ Se også [React og Accessibility (a11y)](https://race.notion.site/React-og-Acces
 
 Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar og lettere vedligeholdelse.
 
-### Navngivning, struktur og arkitektur
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>Navngivning, struktur og arkitektur</strong></summary>
 
 - Er mapper, filer, komponenter, funktioner og variabler navngivet tydeligt og konsekvent?
 - Har hver komponent et forståeligt ansvar?
@@ -57,7 +78,10 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 - Er gentaget logik samlet i funktioner eller hooks, når det forbedrer koden?
 - Er dataadgang adskilt fra præsentationslogik, hvor det giver mening?
 
-### Fejlhåndtering og robuste UI-states
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>Fejlhåndtering og robuste UI-states</strong></summary>
 
 - Har asynkrone handlinger tydelige `loading`, `success`, `empty` og `error` states?
 - Håndteres forventede fejl med eksempelvis `try`, `catch` og `finally`?
@@ -68,7 +92,10 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 - Valideres input både før og efter en request, hvor det er relevant?
 - Logges tekniske detaljer uden at vise dem direkte til brugeren?
 
-### Supabase og datamodel
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>Supabase og datamodel</strong></summary>
 
 - Har tabeller, kolonner og datatyper tydelige og konsekvente navne?
 - Findes relevante primærnøgler og fremmednøgler?
@@ -79,7 +106,10 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 - Er kald, der henter, opretter eller ændrer data, organiseret konsistent?
 - Er environment variables og API-nøgler håndteret korrekt?
 
-### Git, deployment og teknisk kvalitet
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>Git, deployment og teknisk kvalitet</strong></summary>
 
 - Er ændringer opdelt i forståelige feature branches og commits?
 - Gør feature branches og commits det tydeligt, hvad der er ændret og hvorfor?
@@ -89,13 +119,23 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 - Gennemføres deployment korrekt via GitHub Actions?
 - Matcher den publicerede løsning den seneste version på `main`?
 
+</details>
+
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
+
 ## 4. Registrér dine fund
 
 Brug én række pr. fund:
 
+<div style="overflow-x: auto;">
+
 | ID | Område | Fund og evidens | Konsekvens | Forslag | Effekt | Indsats | Verifikation |
 |---|---|---|---|---|---|---|---|
 | A-01 | Accessibility | E-mailfeltet i tilmeldingsformularen mangler en label | Feltets formål er ikke tydeligt for alle brugere | Tilføj synlig label og korrekt kobling | Høj | Lav | Gennemfør formularen med tastatur og skærmlæser |
+
+</div>
+
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
 ## 5. Prioritér
 
@@ -109,6 +149,8 @@ Prioritér ikke alene efter, hvad der er nemmest eller mest interessant at kode.
 
 Vælg derefter et realistisk antal forbedringer, og beskriv kort, hvornår hver forbedring kan betragtes som færdig.
 
+<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
+
 ## 6. Dokumentér effekten
 
 For hver gennemført forbedring skal du kunne vise:
@@ -120,3 +162,5 @@ For hver gennemført forbedring skal du kunne vise:
 5. Hvad er stadig ikke løst?
 
 Brug eksempelvis før/efter-skærmbilleder, kode-diffs, testresultater, et keyboard-flow, en forbedret fejltilstand eller en stabil deployment som evidens.
+
+</div>
