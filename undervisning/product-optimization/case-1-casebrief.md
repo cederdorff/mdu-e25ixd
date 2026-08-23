@@ -1,5 +1,12 @@
 # Case 1 – Fra prototype til produktionsklar React-løsning
 
+<img src="https://images.unsplash.com/photo-1595146463222-19603449c6af?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Byrum og arkitektur i Aarhus" style="display: block; width: 100%; max-height: 420px; object-fit: cover; object-position: center;">
+
+<div style="background: #173f35; border-bottom: 6px solid #d8ff62; color: #ffffff; margin: 0 0 2rem; padding: 1.5rem 2rem;">
+<p style="font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin: 0 0 0.75rem;">mellemrum<span style="color: #d8ff62;">.</span></p>
+<p style="font-size: 1.1rem; line-height: 1.5; margin: 0;">Du overtager en eksisterende React-prototype og udvikler den til en mere robust, tilgængelig og vedligeholdelsesvenlig løsning.</p>
+</div>
+
 ## Case 1 som del af eksamen
 
 Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grundlag for den individuelle skriftlige eksamen. Under casen samler du dokumentation og råmateriale – du skal ikke lave den endelige caseside endnu.
@@ -117,9 +124,9 @@ Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdo
 
 ## Materialer
 
-- Startprojekt: Tilføjes
+- [Startprojekt: Mellemrum](https://github.com/cederdorff/mellemrum)
 - [Teknisk audit af en React-løsning](./teknisk-audit-skabelon.md)
 - [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md)
 - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
-- Supabase-projekt og seed-data: Udleveres sammen med startprojektet
+- Supabase-startdata: SQL-filen følger med startprojektet
 - Dato for afslutning af Case 1: Tilføjes
