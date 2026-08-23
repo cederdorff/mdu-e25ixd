@@ -89,16 +89,15 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 <summary><strong>Navngivning, struktur og arkitektur</strong></summary>
 
 - Er mapper, filer, komponenter, funktioner og variabler navngivet tydeligt og konsekvent?
-- Har hver komponent et forståeligt ansvar?
+- Har hver komponent ét forståeligt hovedansvar (*single responsibility*)?
 - Er store komponenter kandidater til opdeling?
-- Er større interfaces bygget ved at kombinere mindre komponenter med tydelige grænser?
-- Er props, state og dataflow lette at følge?
-- Har data én tydelig kilde (`single source of truth`)?
-- Er afledte værdier (`derived state`) beregnet frem for gemt som unødvendig state?
+- Er større interfaces bygget ved at kombinere mindre komponenter med tydelige grænser (*component composition*)?
+- Er det ensrettede dataflow gennem props og state let at følge?
+- Har data én tydelig kilde (*single source of truth*)?
+- Er afledte værdier (*derived state*) beregnet frem for gemt som unødvendig state?
 - Er gentaget logik samlet i funktioner eller hooks, når det forbedrer koden?
-- Er dataadgang adskilt fra præsentationslogik, hvor det giver mening?
-- Er side effects som datahentning placeret tydeligt og holdt adskilt fra renderingen?
-- Er ansvaret mellem React-klienten, Supabase REST API og databasen tydeligt?
+- Er dataadgang adskilt fra præsentationslogik, hvor det giver mening (*separation of concerns*)?
+- Er *side effects* som datahentning placeret tydeligt og holdt adskilt fra renderingen?
 
 </details>
 
@@ -119,6 +118,7 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>Supabase og datamodel</strong></summary>
 
+- Er klient–server-grænsen tydelig mellem React, Supabase REST API og databasen?
 - Har tabeller, kolonner og datatyper tydelige og konsekvente navne?
 - Findes relevante primærnøgler og fremmednøgler?
 - Er relaterede data modelleret som relationer frem for duplikerede felter?
