@@ -53,46 +53,47 @@ Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de 
 Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026). Brug det som løsningens baseline, og indarbejd og verificér de relevante forbedringer herfra.
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>1. React-optimering</strong></summary>
+<summary><strong>1. React-arkitektur og kodekvalitet</strong></summary>
 
-- Skab et tydeligt flow mellem data, props og state.
+**Struktur og navngivning**
+
+- Gennemgå navngivning, mappestruktur og løsningens overordnede arkitektur.
+- Organisér løsningen, så andre udviklere kan forstå og videreudvikle den.
+
+**Komponenter og ansvar**
+
+- Brug *separation of concerns*: Fordel ansvar tydeligt mellem pages, komponenter, funktioner og dataadgang.
+- Lad hver komponent have ét forståeligt hovedansvar (*single responsibility*), og byg større interfaces ved at kombinere mindre komponenter (*component composition*).
+
+**State og dataflow**
+
+- Skab et tydeligt, ensrettet flow mellem data, props og state.
 - Brug én tydelig kilde til data (*single source of truth*), og beregn *derived state* ud fra eksisterende data frem for at gemme den igen.
-- Hold *side effects* som datahentning adskilt fra selve renderingen.
-- Brug Lighthouse og browserens udviklerværktøjer til at finde konkrete performanceproblemer.
-- Optimér relevante billeder med passende størrelse og format, og brug lazy loading, hvor det forbedrer indlæsningen.
-- Fjern kode og dependencies, som løsningen ikke bruger.
-- Undersøg, hvad der hentes fra Supabase, hvornår det hentes, og om de samme data hentes unødvendigt flere gange.
-- Overvej lazy loading af større side- eller route-komponenter med `React.lazy` og `Suspense`, når det kan forbedre den første indlæsning.
-- Undersøg unødvendige beregninger eller renderinger, når de har mærkbar betydning for løsningen.
-- Tag udgangspunkt i konkrete problemer frem for at optimere for optimeringens skyld.
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>2. Robusthed og UI-states</strong></summary>
+<summary><strong>2. Robusthed, datahentning og UI-states</strong></summary>
+
+**Datahentning og fejl**
+
+- Hold *side effects* som datahentning adskilt fra selve renderingen.
+- Håndtér fejl fra API-kald og andre asynkrone handlinger eksplicit.
+
+**Brugerens oplevelse**
 
 - Håndtér relevante `loading`, `success`, `empty` og `error` states.
-- Giv brugeren forståelig feedback og et relevant næste skridt.
+- Validér relevante input, og giv brugeren forståelig feedback og et relevant næste skridt.
 - Lad ikke fejl ende som en tom brugerflade eller kun som en besked i konsollen.
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>3. Kodekvalitet</strong></summary>
+<summary><strong>3. Accessibility og konsistent UI</strong></summary>
 
-- Gennemgå og forbedr navngivning, mappestruktur og løsningens overordnede arkitektur.
-- Brug *separation of concerns*: Fordel ansvar tydeligt mellem pages, komponenter, funktioner og dataadgang.
-- Lad hver komponent have ét forståeligt hovedansvar (*single responsibility*), og byg større interfaces ved at kombinere mindre komponenter (*component composition*).
-- Reducér uhensigtsmæssige gentagelser, og skab konsistens i kode og UI.
-- Organisér løsningen, så andre udviklere kan forstå og videreudvikle den.
+Skab en konsistent og tilgængelig brugeroplevelse. Undersøg blandt andet:
 
-</details>
-
-<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>4. Accessibility</strong></summary>
-
-Undersøg blandt andet:
-
+- visuel konsistens i komponenter, formularer, feedback og interaktioner
 - semantisk HTML og et logisk heading-hierarki
 - ARIA, når HTML ikke er tilstrækkeligt
 - forståelige labels, linktekster, knapper og fejlbeskeder
@@ -105,7 +106,7 @@ Listen er et udgangspunkt. Brug også [React og Accessibility (a11y)](https://ra
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>5. Data og Supabase</strong></summary>
+<summary><strong>4. Data og Supabase</strong></summary>
 
 - Find gentagne eller uhensigtsmæssigt placerede data, og opdel dem i relaterede tabeller med primær- og fremmednøgler.
 - Hent og anvend de relaterede data gennem Supabase REST API.
@@ -118,6 +119,30 @@ Listen er et udgangspunkt. Brug også [React og Accessibility (a11y)](https://ra
 Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde.
 
 **Frivillig udvidelse:** Hvis du har tid efter casens centrale forbedringer, kan du udvide den interne del af løsningen med CRUD-funktionalitet til events. Det vil sige, at events kan oprettes, vises, redigeres og slettes gennem React-løsningen og Supabase REST API. Husk validering, forståelige UI-states og tydelig bekræftelse ved eksempelvis sletning.
+
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>5. Performance</strong></summary>
+
+**Find og dokumentér problemerne**
+
+- Brug Lighthouse og browserens udviklerværktøjer til at finde konkrete problemer.
+- Tag udgangspunkt i konkrete problemer, og dokumentér effekten af relevante forbedringer.
+
+**Data og requests**
+
+- Undersøg, hvad der hentes fra Supabase, hvornår det hentes, og om de samme data hentes unødvendigt flere gange.
+
+**Assets og indlæsning**
+
+- Optimér relevante billeder med passende størrelse og format, og brug lazy loading, hvor det forbedrer indlæsningen.
+- Fjern kode, assets og dependencies, som løsningen ikke bruger.
+- Overvej lazy loading af større side- eller route-komponenter med `React.lazy` og `Suspense`, når det kan forbedre den første indlæsning.
+
+**Rendering**
+
+- Undersøg unødvendige beregninger eller renderinger, når de har mærkbar betydning for løsningen.
 
 </details>
 

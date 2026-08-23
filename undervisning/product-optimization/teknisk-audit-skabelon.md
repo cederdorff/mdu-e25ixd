@@ -41,7 +41,48 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 Åbn de områder, der er relevante for din undersøgelse. Du behøver ikke arbejde med alle spørgsmål.
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>Accessibility</strong></summary>
+<summary><strong>1. React-arkitektur og kodekvalitet</strong></summary>
+
+- Er mapper, filer, komponenter, funktioner og variabler navngivet tydeligt og konsekvent?
+- Har hver komponent ét forståeligt hovedansvar (*single responsibility*)?
+- Er store komponenter kandidater til opdeling?
+- Er større interfaces bygget ved at kombinere mindre komponenter med tydelige grænser (*component composition*)?
+- Er det ensrettede dataflow gennem props og state let at følge?
+- Har data én tydelig kilde (*single source of truth*)?
+- Er afledte værdier (*derived state*) beregnet frem for gemt som unødvendig state?
+- Er gentaget logik samlet i funktioner eller hooks, når det forbedrer koden?
+- Er dataadgang adskilt fra præsentationslogik, hvor det giver mening (*separation of concerns*)?
+
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>2. Robusthed, datahentning og UI-states</strong></summary>
+
+- Er *side effects* som datahentning placeret tydeligt og holdt adskilt fra renderingen?
+- Har asynkrone handlinger tydelige `loading`, `success`, `empty` og `error` states?
+- Håndteres forventede fejl med eksempelvis `try`, `catch` og `finally`?
+- Kontrolleres fejl fra fetch, Supabase eller andre API-kald eksplicit?
+- Får brugeren en forståelig besked og et relevant næste skridt?
+- Kan brugeren prøve igen efter en midlertidig fejl?
+- Forhindres gentagne submits eller handlinger, mens en request kører?
+- Valideres input både før og efter en request, hvor det er relevant?
+- Logges tekniske detaljer uden at vise dem direkte til brugeren?
+
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>3. Accessibility og konsistent UI</strong></summary>
+
+**Konsistens og styling**
+
+- Er det tydeligt, hvilke styles der hører til hvilke komponenter?
+- Ligger komponentrelateret styling tæt på komponenten?
+- Er globale styles begrænset til eksempelvis reset, design tokens og reelt globale regler?
+- Er der gentagelser, konflikter mellem CSS-regler og problemer med specificity?
+- Er navngivning og stylingtilgang konsekvent?
+- Fungerer layoutet på relevante skærmstørrelser?
+
+**Accessibility**
 
 - **Semantik:** Bruges HTML-elementer og et heading-hierarki, der beskriver indholdet?
 - **ARIA:** Bruges ARIA kun, når HTML ikke er nok – og ikke som erstatning for semantik?
@@ -50,12 +91,28 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 - **Indhold:** Har billeder passende alt-tekst, og har formularer labels, instruktioner og feedback?
 - **React SPA:** Opdateres `document.title`, og flyttes fokus til den nye overskrift med `headingRef.current?.focus()` ved navigation?
 
-Se også [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c).
+Målet er tydeligt ansvar, konsistens og en løsning, flere kan bruge. Se også [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c).
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>Performance</strong></summary>
+<summary><strong>4. Data og Supabase</strong></summary>
+
+- Er klient–server-grænsen tydelig mellem React, Supabase REST API og databasen?
+- Har tabeller, kolonner og datatyper tydelige og konsekvente navne?
+- Findes relevante primærnøgler og fremmednøgler?
+- Er relaterede data modelleret som relationer frem for duplikerede felter?
+- Understøtter datamodellen de vigtigste brugerflows?
+- Hentes kun de data, brugergrænsefladen har brug for?
+- Hvad hentes fra Supabase, hvornår hentes det, og hvor mange gange sker det i et brugerflow?
+- Bør søgning og filtrering ske lokalt i React eller gennem Supabase?
+- Er kald, der henter, opretter eller ændrer data, organiseret konsistent?
+- Er environment variables og API-nøgler håndteret korrekt?
+
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>5. Performance</strong></summary>
 
 - Hvad peger en Lighthouse-test i Chrome på, og kan fundene genfindes i løsningen?
 - Har billeder en passende størrelse, moderne filformat og tydelige dimensioner?
@@ -72,67 +129,7 @@ En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>Styling</strong></summary>
-
-- Er det tydeligt, hvilke styles der hører til hvilke komponenter?
-- Ligger komponentrelateret styling tæt på komponenten?
-- Er globale styles begrænset til eksempelvis reset, design tokens og reelt globale regler?
-- Er der gentagelser, konflikter mellem CSS-regler og problemer med specificity?
-- Er navngivning og stylingtilgang konsekvent?
-- Fungerer layoutet på relevante skærmstørrelser?
-
-Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar og lettere vedligeholdelse.
-
-</details>
-
-<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>Navngivning, struktur og arkitektur</strong></summary>
-
-- Er mapper, filer, komponenter, funktioner og variabler navngivet tydeligt og konsekvent?
-- Har hver komponent ét forståeligt hovedansvar (*single responsibility*)?
-- Er store komponenter kandidater til opdeling?
-- Er større interfaces bygget ved at kombinere mindre komponenter med tydelige grænser (*component composition*)?
-- Er det ensrettede dataflow gennem props og state let at følge?
-- Har data én tydelig kilde (*single source of truth*)?
-- Er afledte værdier (*derived state*) beregnet frem for gemt som unødvendig state?
-- Er gentaget logik samlet i funktioner eller hooks, når det forbedrer koden?
-- Er dataadgang adskilt fra præsentationslogik, hvor det giver mening (*separation of concerns*)?
-- Er *side effects* som datahentning placeret tydeligt og holdt adskilt fra renderingen?
-
-</details>
-
-<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>Fejlhåndtering og robuste UI-states</strong></summary>
-
-- Har asynkrone handlinger tydelige `loading`, `success`, `empty` og `error` states?
-- Håndteres forventede fejl med eksempelvis `try`, `catch` og `finally`?
-- Kontrolleres fejl fra fetch, Supabase eller andre API-kald eksplicit?
-- Får brugeren en forståelig besked og et relevant næste skridt?
-- Kan brugeren prøve igen efter en midlertidig fejl?
-- Forhindres gentagne submits eller handlinger, mens en request kører?
-- Valideres input både før og efter en request, hvor det er relevant?
-- Logges tekniske detaljer uden at vise dem direkte til brugeren?
-
-</details>
-
-<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>Supabase og datamodel</strong></summary>
-
-- Er klient–server-grænsen tydelig mellem React, Supabase REST API og databasen?
-- Har tabeller, kolonner og datatyper tydelige og konsekvente navne?
-- Findes relevante primærnøgler og fremmednøgler?
-- Er relaterede data modelleret som relationer frem for duplikerede felter?
-- Understøtter datamodellen de vigtigste brugerflows?
-- Hentes kun de data, brugergrænsefladen har brug for?
-- Hvad hentes fra Supabase, hvornår hentes det, og hvor mange gange sker det i et brugerflow?
-- Bør søgning og filtrering ske lokalt i React eller gennem Supabase?
-- Er kald, der henter, opretter eller ændrer data, organiseret konsistent?
-- Er environment variables og API-nøgler håndteret korrekt?
-
-</details>
-
-<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>Git, deployment og teknisk kvalitet</strong></summary>
+<summary><strong>6. Git, deployment og teknisk kvalitet</strong></summary>
 
 - Er ændringer opdelt i forståelige feature branches og commits?
 - Gør feature branches og commits det tydeligt, hvad der er ændret og hvorfor?
