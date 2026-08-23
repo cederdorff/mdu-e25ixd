@@ -50,7 +50,7 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 - Er det ensrettede dataflow gennem props og state let at følge?
 - Har data én tydelig kilde (*single source of truth*)?
 - Er afledte værdier (*derived state*) beregnet frem for gemt som unødvendig state?
-- Er gentaget logik samlet i funktioner eller hooks, når det forbedrer koden?
+- Er gentaget logik, eksempelvis formatering af datoer og tidspunkter, samlet i funktioner eller hooks, når det forbedrer koden?
 - Er dataadgang adskilt fra præsentationslogik, hvor det giver mening (*separation of concerns*)?
 
 </details>
@@ -88,6 +88,7 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 - Er globale styles begrænset til eksempelvis reset, design tokens og reelt globale regler?
 - Er der gentagelser, konflikter mellem CSS-regler og problemer med specificity?
 - Er navngivning og stylingtilgang konsekvent?
+- Vises datoer, tidspunkter, eventtyper, venues og adresser i et ensartet format på tværs af sider og komponenter?
 - Fungerer layoutet på relevante skærmstørrelser?
 
 **Accessibility**

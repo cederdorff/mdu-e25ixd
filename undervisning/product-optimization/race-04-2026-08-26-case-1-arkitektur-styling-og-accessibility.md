@@ -41,6 +41,7 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 <li><strong>Kontakt med omverdenen:</strong> Hold <em>side effects</em> adskilt fra renderingen, og undersøg klient–server-grænsen mellem React, Supabase REST API og databasen.</li>
 <li>Følg et request fra React i browseren gennem Supabase REST API til databasen og tilbage som data eller fejl.</li>
 <li>Vurdér placering, ansvar og konsistens i styling.</li>
+<li>Undersøg, om datoer, tidspunkter, eventtyper, venues og adresser vises ensartet, og om gentagen formateringslogik har en tydelig placering.</li>
 <li>Undersøg relevante problemer med semantik, labels, tastatur og fokus.</li>
 <li>Du skal ikke forbedre alt på én gang. Vælg det vigtigste fund.</li>
 </ul>

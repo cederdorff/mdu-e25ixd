@@ -64,7 +64,7 @@ Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaa
 
 - En tydelig ansvarsfordeling mellem pages, komponenter, funktioner og dataadgang (*separation of concerns*).
 - Komponenter med ét forståeligt hovedansvar (*single responsibility*) og større interfaces sammensat af mindre komponenter (*component composition*).
-- Gentaget logik samlet i funktioner eller hooks, når det gør koden tydeligere og lettere at vedligeholde.
+- Gentaget logik, eksempelvis formatering af datoer og tidspunkter, samlet i funktioner eller hooks, når det gør koden tydeligere og lettere at vedligeholde.
 
 **State og dataflow**
 
@@ -99,6 +99,7 @@ Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaa
 Området handler om en konsistent og tilgængelig brugeroplevelse og omfatter blandt andet:
 
 - visuel konsistens i komponenter, formularer, feedback og interaktioner
+- ensartet visning af datoer, tidspunkter, eventtyper, venues og adresser på tværs af løsningen
 - semantisk HTML og et logisk heading-hierarki
 - ARIA, når HTML ikke er tilstrækkeligt
 - forståelige labels, linktekster, knapper og fejlbeskeder
