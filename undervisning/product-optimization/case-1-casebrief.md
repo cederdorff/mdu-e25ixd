@@ -2,7 +2,7 @@
 
 ## Case 1 som del af eksamen
 
-Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grundlag for den individuelle skriftlige eksamen. Under casen samler du dokumentation og råmateriale – du skal ikke lave den endelige portfolioside endnu.
+Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grundlag for den individuelle skriftlige eksamen. Under casen samler du dokumentation og råmateriale – du skal ikke lave den endelige caseside endnu.
 
 Efter den tredje case får du en uge til at bearbejde materialet og opdatere dit eksisterende portfolio website med én caseside for hver case.
 
@@ -14,7 +14,7 @@ Til eksamen afleverer du et dokument med links til de tre casesider. Det samlede
 
 Virksomheden har fået udviklet en React-prototype. Den grundlæggende funktionalitet findes, men løsningen blev bygget hurtigt for at afprøve idéen. Koden er vanskelig at videreudvikle, brugeroplevelsen er ikke altid konsistent, og løsningen håndterer ikke langsomme svar, manglende data og fejl godt nok.
 
-Data hentes fra Supabase gennem Supabase REST API. Datamodellen indeholder gentagne oplysninger, som bør fordeles på relaterede tabeller. Når en bruger tilmelder sig et event, skal tilmeldingen registreres i Supabase. Mellemrum har også brug for en intern side med et overblik over tilmeldinger og de tilhørende events.
+Data hentes fra Supabase gennem Supabase REST API. Datamodellen indeholder gentagne oplysninger, som bør fordeles på relaterede tabeller. Tilmeldingsflowet er kun påbegyndt: En tilmelding skal registreres i Supabase og forbindes med det valgte event. Den eksisterende interne side skal tilpasses, så den kan vise tilmeldinger sammen med deres relaterede eventdata.
 
 ## Din opgave
 
@@ -65,11 +65,14 @@ Listen er et udgangspunkt. Brug også [React og Accessibility (a11y)](https://ra
 
 - Find gentagne eller uhensigtsmæssigt placerede data, og opdel dem i relaterede tabeller med primær- og fremmednøgler.
 - Hent og anvend de relaterede data gennem Supabase REST API.
-- Registrér eventtilmeldinger i en `registrations`-tabel, der forbindes med det valgte event gennem `event_id`.
+- Vurdér, om søgning og filtrering skal ske lokalt i React eller gennem en forespørgsel til Supabase. Begrund valget ud fra eksempelvis datamængde, antal requests og brugeroplevelse.
+- Registrér eventtilmeldinger i en `registrations`-tabel, der forbindes med det valgte event gennem `eventId`.
 - Tilpas React-løsningen til den forbedrede datamodel, og hold så vidt muligt dataadgang adskilt fra præsentationslogik.
 - Udvikl eller forbedr en intern side, der viser relevante oplysninger om tilmeldinger og deres events.
 
 Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde.
+
+**Frivillig udvidelse:** Hvis du har tid efter casens centrale forbedringer, kan du udvide den interne del af løsningen med CRUD-funktionalitet til events. Det vil sige, at events kan oprettes, vises, redigeres og slettes gennem React-løsningen og Supabase REST API. Husk validering, forståelige UI-states og tydelig bekræftelse ved eksempelvis sletning.
 
 ### 6. Deployment
 
@@ -118,5 +121,5 @@ Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdo
 - [Teknisk audit af en React-løsning](./teknisk-audit-skabelon.md)
 - [Web App-forbedringer og teknisk fundament](./race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md)
 - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
-- Supabase-projekt og data: Tilføjes
+- Supabase-projekt og seed-data: Udleveres sammen med startprojektet
 - Dato for afslutning af Case 1: Tilføjes

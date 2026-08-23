@@ -2,6 +2,8 @@
 
 En teknisk audit er en systematisk undersøgelse af en eksisterende løsning. Formålet er at finde, dokumentere og prioritere forbedringer — ikke blot at samle personlige præferencer om kode.
 
+Brug skabelonen som støtte til din undersøgelse. Du forventes ikke at finde eller løse problemer under alle punkter. Udvælg de spørgsmål, der er relevante for løsningen, og prioritér de vigtigste fund.
+
 ## 1. Afgræns løsningen
 
 - Hvad er løsningens formål og vigtigste brugerflows?
@@ -39,7 +41,7 @@ Se også [React og Accessibility (a11y)](https://race.notion.site/React-og-Acces
 - Er det tydeligt, hvilke styles der hører til hvilke komponenter?
 - Ligger komponentrelateret styling tæt på komponenten?
 - Er globale styles begrænset til eksempelvis reset, design tokens og reelt globale regler?
-- Er der gentagelser, specificity-problemer eller utilsigtede afhængigheder?
+- Er der gentagelser, konflikter mellem CSS-regler og problemer med specificity?
 - Er navngivning og stylingtilgang konsekvent?
 - Fungerer layoutet på relevante skærmstørrelser?
 
@@ -64,7 +66,6 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 - Kan brugeren prøve igen efter en midlertidig fejl?
 - Forhindres gentagne submits eller handlinger, mens en request kører?
 - Valideres input både før og efter en request, hvor det er relevant?
-- Skal en error boundary beskytte dele af UI'et mod uventede render-fejl?
 - Logges tekniske detaljer uden at vise dem direkte til brugeren?
 
 ### Supabase og datamodel
@@ -74,12 +75,13 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 - Er relaterede data modelleret som relationer frem for duplikerede felter?
 - Understøtter datamodellen de vigtigste brugerflows?
 - Hentes kun de data, brugergrænsefladen har brug for?
-- Er forespørgsler og mutationer organiseret konsistent?
-- Er secrets og environment variables håndteret korrekt?
+- Bør søgning og filtrering ske lokalt i React eller gennem Supabase?
+- Er kald, der henter, opretter eller ændrer data, organiseret konsistent?
+- Er environment variables og API-nøgler håndteret korrekt?
 
 ### Git, deployment og teknisk kvalitet
 
-- Er ændringer opdelt i forståelige issues, feature branches og commits?
+- Er ændringer opdelt i forståelige feature branches og commits?
 - Gør feature branches og commits det tydeligt, hvad der er ændret og hvorfor?
 - Bygger projektet uden fejl?
 - Er konsollen fri for relevante fejl og advarsler?
@@ -93,7 +95,7 @@ Brug én række pr. fund:
 
 | ID | Område | Fund og evidens | Konsekvens | Forslag | Effekt | Indsats | Verifikation |
 |---|---|---|---|---|---|---|---|
-| A-01 | Accessibility | Formularfelt mangler label i `PostForm` | Skærmlæserbrugere får ikke feltets formål | Tilføj synlig label og korrekt kobling | Høj | Lav | Gennemfør formularen med tastatur og skærmlæser |
+| A-01 | Accessibility | E-mailfeltet i tilmeldingsformularen mangler en label | Feltets formål er ikke tydeligt for alle brugere | Tilføj synlig label og korrekt kobling | Høj | Lav | Gennemfør formularen med tastatur og skærmlæser |
 
 ## 5. Prioritér
 
