@@ -30,6 +30,7 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 - kodeudsnit eller links til linjer i repositoryet
 - fejl fra konsol, netværk eller build
 - keyboard-flow og andre accessibility-observationer
+- en Lighthouse-test i Chrome under ensartede forhold
 - eksisterende deployment og Git-historik
 - relevante målinger, når de faktisk siger noget om problemet
 
@@ -50,6 +51,22 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 - **React SPA:** Opdateres `document.title`, og flyttes fokus til den nye overskrift med `headingRef.current?.focus()` ved navigation?
 
 Se også [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c).
+
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>Performance</strong></summary>
+
+- Hvad peger en Lighthouse-test i Chrome på, og kan fundene genfindes i løsningen?
+- Har billeder en passende størrelse, moderne filformat og tydelige dimensioner?
+- Bruges `loading="lazy"` til billeder længere nede på siden – uden at forsinke sidens vigtigste billede?
+- Indeholder projektet dependencies, kode eller assets, som ikke længere bruges?
+- Er der større side- eller route-komponenter, som med fordel kan indlæses efter behov med `React.lazy` og `Suspense`?
+- Hentes kun de data og assets, som siden har brug for?
+- Viser Network-panelet unødvendige eller gentagne requests, beregninger eller renderinger med mærkbar betydning?
+- Kan en valgt forbedring dokumenteres med en sammenlignelig før- og eftermåling?
+
+En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til at finde konkrete problemer, som har betydning for brugeren.
 
 </details>
 
@@ -102,6 +119,7 @@ Målet er ikke nødvendigvis at fjerne al global CSS. Målet er tydeligt ansvar 
 - Er relaterede data modelleret som relationer frem for duplikerede felter?
 - Understøtter datamodellen de vigtigste brugerflows?
 - Hentes kun de data, brugergrænsefladen har brug for?
+- Hvad hentes fra Supabase, hvornår hentes det, og hvor mange gange sker det i et brugerflow?
 - Bør søgning og filtrering ske lokalt i React eller gennem Supabase?
 - Er kald, der henter, opretter eller ændrer data, organiseret konsistent?
 - Er environment variables og API-nøgler håndteret korrekt?

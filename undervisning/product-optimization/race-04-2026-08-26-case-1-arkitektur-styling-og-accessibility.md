@@ -1,14 +1,12 @@
 # RACE - Product optimization: Case 1 · Arkitektur, styling og accessibility - 26-08-2026
 
-<div style="margin: 0 auto; max-width: 1000px;">
-
 ## Formål
 
 I dag ser vi på, hvordan du kan lave en teknisk audit af en React-løsning. Audit betyder, at du undersøger løsningen systematisk, dokumenterer det, du finder, og vurderer, hvilke forbedringer der er vigtigst.
 
 Undervejs får du faglige indspark om arkitektur, styling og accessibility. Vi ser også på best practice for navngivning samt mappe- og projektstruktur. Til sidst prioriterer du dine fund og begynder på én afgrænset forbedring.
 
-<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 2.5rem 0;">
+<hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
@@ -16,13 +14,13 @@ Undervejs får du faglige indspark om arkitektur, styling og accessibility. Vi s
 - Læs [casebeskrivelsen](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning) igen, og medbring eventuelle spørgsmål eller observationer fra opsætningen.
 - Du behøver ikke have gennemført auditten eller ændret løsningen på forhånd.
 
-<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 2.5rem 0;">
+<hr style="margin: 2rem 0;">
 
 ## Agenda
 
 Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem i arbejdet med Case 1.
 
-<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<details style="margin-left: 1.5rem;">
 <summary><strong>1. Introduktion til teknisk audit</strong></summary>
 <ul>
 <li>Hvad er en teknisk audit, og hvordan adskiller den sig fra personlige kodepræferencer?</li>
@@ -32,7 +30,7 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 </ul>
 </details>
 
-<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<details style="margin-left: 1.5rem;">
 <summary><strong>2. Faglige indspark: arkitektur, styling og accessibility</strong></summary>
 <ul>
 <li>Brug tydelige og konsekvente navne til filer, komponenter, funktioner, props og variabler.</li>
@@ -46,7 +44,7 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 </ul>
 </details>
 
-<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<details style="margin-left: 1.5rem;">
 <summary><strong>3. Arbejd med auditten</strong></summary>
 <ul>
 <li>Gennemfør de vigtigste brugerflows, og undersøg relevante filer og komponenter.</li>
@@ -56,7 +54,7 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 </ul>
 </details>
 
-<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<details style="margin-left: 1.5rem;">
 <summary><strong>4. Begynd på en afgrænset forbedring</strong></summary>
 <ul>
 <li>Opret en tydeligt navngivet feature branch til den valgte forbedring.</li>
@@ -66,13 +64,15 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 </ul>
 </details>
 
-<hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 2.5rem 0;">
+<hr style="margin: 2rem 0;">
 
 ## Materialer
 
-- [Startprojekt: Mellemrum](https://github.com/cederdorff/mellemrum)
-- [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
-- [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
-- [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
-
-</div>
+- **Startprojekt:**
+  - [Mellemrum](https://github.com/cederdorff/mellemrum)
+- **Case 1:**
+  - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
+- **Audit:**
+  - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
+- **Accessibility:**
+  - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)

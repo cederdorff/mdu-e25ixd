@@ -57,6 +57,12 @@ Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaa
 
 - Skab et tydeligt flow mellem data, props og state.
 - Undgå state, der gentager andre værdier eller kan beregnes ud fra eksisterende data.
+- Brug Lighthouse og browserens udviklerværktøjer til at finde konkrete performanceproblemer.
+- Optimér relevante billeder med passende størrelse og format, og brug lazy loading, hvor det forbedrer indlæsningen.
+- Fjern kode og dependencies, som løsningen ikke bruger.
+- Undersøg, hvad der hentes fra Supabase, hvornår det hentes, og om de samme data hentes unødvendigt flere gange.
+- Overvej lazy loading af større side- eller route-komponenter med `React.lazy` og `Suspense`, når det kan forbedre den første indlæsning.
+- Undersøg unødvendige beregninger eller renderinger, når de har mærkbar betydning for løsningen.
 - Tag udgangspunkt i konkrete problemer frem for at optimere for optimeringens skyld.
 
 </details>
