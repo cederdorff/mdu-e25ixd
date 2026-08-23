@@ -1,11 +1,15 @@
 # Case 1 – Fra prototype til produktionsklar React-løsning
 
-<img src="https://images.unsplash.com/photo-1595146463222-19603449c6af?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Byrum og arkitektur i Aarhus" style="display: block; width: 100%; max-height: 420px; object-fit: cover; object-position: center;">
+<img src="https://images.unsplash.com/photo-1595146463222-19603449c6af?q=80&amp;w=1800&amp;auto=format&amp;fit=crop" alt="Byrum og arkitektur i Aarhus" style="display: block; width: 100%; max-height: 340px; object-fit: cover; object-position: center;">
 
 <div style="background: #173f35; border-bottom: 6px solid #d8ff62; color: #ffffff; margin: 0 0 2rem; padding: 1.5rem 2rem;">
 <p style="font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; margin: 0 0 0.75rem;">mellemrum<span style="color: #d8ff62;">.</span></p>
 <p style="font-size: 1.1rem; line-height: 1.5; margin: 0;">Du overtager en eksisterende React-prototype og udvikler den til en mere robust, tilgængelig og vedligeholdelsesvenlig løsning.</p>
 </div>
+
+<div style="margin: 0 auto; max-width: 1000px;">
+
+<div style="background: #f5f2ea; border-left: 6px solid #ff785a; margin: 0 0 2rem; padding: 1rem 1.5rem;">
 
 ## Case 1 som del af eksamen
 
@@ -14,6 +18,8 @@ Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grund
 Efter den tredje case får du en uge til at bearbejde materialet og opdatere dit eksisterende portfolio website med én caseside for hver case.
 
 Til eksamen afleverer du et dokument med links til de tre casesider. Det samlede skriftlige materiale på de tre sider må maksimalt fylde fem normalsider.
+
+</div>
 
 ## Kunden og udfordringen
 
@@ -37,25 +43,35 @@ Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de 
 
 Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026). Brug det som løsningens baseline, og indarbejd og verificér de relevante forbedringer herfra.
 
-### 1. React-optimering
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>1. React-optimering</strong></summary>
 
 - Skab et tydeligt flow mellem data, props og state.
 - Undgå state, der gentager andre værdier eller kan beregnes ud fra eksisterende data.
 - Tag udgangspunkt i konkrete problemer frem for at optimere for optimeringens skyld.
 
-### 2. Robusthed og UI-states
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>2. Robusthed og UI-states</strong></summary>
 
 - Håndtér relevante `loading`, `success`, `empty` og `error` states.
 - Giv brugeren forståelig feedback og et relevant næste skridt.
 - Lad ikke fejl ende som en tom brugerflade eller kun som en besked i konsollen.
 
-### 3. Kodekvalitet
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>3. Kodekvalitet</strong></summary>
 
 - Forbedr komponenternes opdeling, ansvar og navngivning.
 - Reducér uhensigtsmæssige gentagelser, og skab konsistens i kode og UI.
 - Organisér løsningen, så andre udviklere kan forstå og videreudvikle den.
 
-### 4. Accessibility
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>4. Accessibility</strong></summary>
 
 Undersøg blandt andet:
 
@@ -68,7 +84,10 @@ Undersøg blandt andet:
 
 Listen er et udgangspunkt. Brug også [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c) til at undersøge andre relevante problemer.
 
-### 5. Data og Supabase
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>5. Data og Supabase</strong></summary>
 
 - Find gentagne eller uhensigtsmæssigt placerede data, og opdel dem i relaterede tabeller med primær- og fremmednøgler.
 - Hent og anvend de relaterede data gennem Supabase REST API.
@@ -81,17 +100,22 @@ Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og v
 
 **Frivillig udvidelse:** Hvis du har tid efter casens centrale forbedringer, kan du udvide den interne del af løsningen med CRUD-funktionalitet til events. Det vil sige, at events kan oprettes, vises, redigeres og slettes gennem React-løsningen og Supabase REST API. Husk validering, forståelige UI-states og tydelig bekræftelse ved eksempelvis sletning.
 
-### 6. Deployment
+</details>
+
+<details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
+<summary><strong>6. Deployment</strong></summary>
 
 - Kontrollér build, konfiguration, environment variables og routing.
 - Afprøv direkte links og genindlæsning af sider i den deployede løsning.
 - Sørg for, at den publicerede løsning svarer til versionen på `main`.
 
+</details>
+
 ## Sådan arbejder du
 
 ### 1. Undersøg og prioritér
 
-Kør først løsningen lokalt og gennemfør de vigtigste brugerflows. Brug [audit-skabelonen](./teknisk-audit-skabelon.md) til at dokumentere problemer, konsekvenser og mulige løsninger. Prioritér derefter et realistisk antal forbedringer ud fra effekt, risiko, vedligeholdelse og den tid, du har.
+Kør først løsningen lokalt og gennemfør de vigtigste brugerflows. Brug [audit-skabelonen](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning) til at dokumentere problemer, konsekvenser og mulige løsninger. Prioritér derefter et realistisk antal forbedringer ud fra effekt, risiko, vedligeholdelse og den tid, du har.
 
 ### 2. Implementér
 
@@ -130,3 +154,5 @@ Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdo
 - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
 - Supabase-startdata: SQL-filen følger med startprojektet
 - Dato for afslutning af Case 1: Tilføjes
+
+</div>
