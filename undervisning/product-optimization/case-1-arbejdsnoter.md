@@ -2,6 +2,8 @@
 
 > Status: Udkast til videre udvikling. Dokumentet samler idéer og beslutninger til den første af eksamensforløbets tre cases.
 
+Studenterrettet udkast: [Case 1 – Fra prototype til produktionsklar React-løsning](./case-1-casebrief.md)
+
 ## Fagligt fokus
 
 Case 1 omhandler:
@@ -131,9 +133,9 @@ Mulige fokuspunkter:
 - overskriftsstruktur
 - kontrast og læsbarhed
 
-### 5. Data og deployment
+### 5. Data
 
-Løsningen skal have en tydelig og stabil håndtering af data og kunne fungere i et produktionsmiljø.
+Løsningen skal have en tydelig og stabil håndtering af data.
 
 Mulige fokuspunkter:
 
@@ -145,6 +147,13 @@ Mulige fokuspunkter:
 - opdeling af data i relevante tabeller
 - relationer mellem eksempelvis arrangementer, kategorier, venues og arrangører
 - tilpasning af forespørgsler og React-kode til den forbedrede datamodel
+
+### 6. Deployment
+
+Løsningen skal kunne bygges, konfigureres og fungere stabilt i et produktionsmiljø.
+
+Mulige fokuspunkter:
+
 - miljøvariabler
 - konfiguration uden hardcodede adresser
 - produktionsbuild
@@ -235,6 +244,6 @@ De studerende skal ikke bedømmes på antallet af ændringer, men på deres evne
 - Afgræns startprojektets funktionalitet.
 - Beslut caseperiodens længde og arbejdsform.
 - Formulér læringsmål og obligatoriske krav.
-- Udarbejd den studenterrettede casebrief.
+- Videreudvikl og færdiggør den studenterrettede casebrief.
 - Planlæg startprojektets indbyggede problemer og underviserens facit-/observationsliste.
 - Fastlæg afleveringsform og kriterier for feedback eller bedømmelse.
