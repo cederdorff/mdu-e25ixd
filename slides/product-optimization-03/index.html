@@ -382,7 +382,7 @@ console.log(post.caption);</code></pre>
               <p>Nu har koden defineret, at en manglende caption er en fejl.</p>
             </article>
           </div>
-          <p class="definition"><strong>Fejlhåndtering</strong> er måden, programmet reagerer på, når noget går galt eller ikke er som forventet.</p>
+          <p class="definition slide-point"><strong>Fejlhåndtering</strong> er måden, programmet reagerer på, når noget går galt eller ikke er som forventet.</p>
           <aside class="notes">
             Begynd helt simpelt: undefined er en værdi, ikke automatisk en kastet fejl. Vi beslutter selv, at caption
             er påkrævet. [Sources] - MDN: Error ·
@@ -409,7 +409,7 @@ console.log(post.caption);</code></pre>
             </article>
             <article><span>Netværk</span><p>Browseren kan ikke nå serveren.</p></article>
           </div>
-          <p class="definition">
+          <p class="definition slide-point">
             <strong>Vi kan ikke forhindre alle fejl.</strong> Men vi kan kontrollere, hvordan programmet reagerer.
           </p>
           <aside class="notes">
@@ -431,7 +431,7 @@ console.log(error.message);</code></pre>
             <div class="output-panel error-output">
               <span><code>error.message</code></span>
               <code>Post caption is required</code>
-              <p>Fejlen har nu en besked, som udvikleren kan undersøge.</p>
+              <p><strong>Pointe:</strong> <code>Error</code> beskriver, hvad der gik galt.</p>
             </div>
           </div>
           <aside class="notes">
@@ -457,6 +457,7 @@ console.log("Done");</code></pre>
               <span>Caption mangler</span><b>↓</b><strong>throw</strong><b>↓</b><span>Error sendes videre</span><b>↓</b><em>“Done” køres ikke</em>
             </div>
           </div>
+          <p class="definition slide-point"><code>throw</code> stopper det normale programflow og sender fejlen videre.</p>
           <aside class="notes">
             [Sources] - MDN: throw statement ·
             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw [/Sources]
@@ -484,6 +485,7 @@ console.log("Done");</code></pre>
               <span>try</span><b>↓</b><strong>Noget fejler</strong><b>↓</b><span>catch håndterer</span><b>↓</b><em>“Done” bliver kørt</em>
             </div>
           </div>
+          <p class="definition slide-point"><code>catch</code> håndterer fejlen, så programmet kan fortsætte.</p>
           <aside class="notes">
             Catch betyder ikke, at problemet er løst; det betyder, at vi kan vælge, hvordan koden reagerer, og om
             programmet skal fortsætte. [Sources] - MDN: try...catch ·
@@ -525,7 +527,7 @@ function getPost(id) {
             <div class="output-panel">
               <span>Output</span>
               <code>Post not found</code>
-              <p>Funktionen thrower. Koden, der kalder funktionen, håndterer fejlen.</p>
+              <p><strong>Pointe:</strong> En funktion kan <code>throw</code>, og kaldet kan vælge at håndtere fejlen.</p>
             </div>
           </div>
           <aside class="notes">
@@ -544,7 +546,7 @@ function getPost(id) {
             <span><code>catch (error)</code></span><b>↓</b>
             <em>Fejlen håndteres</em>
           </div>
-          <p class="definition"><strong>Errors bevæger sig op gennem kaldene, indtil de bliver håndteret.</strong></p>
+          <p class="definition slide-point"><strong>Errors bevæger sig op gennem kaldene, indtil de bliver håndteret.</strong></p>
           <aside class="notes">
             Nævn propagation kort og gå videre. [Sources] - MDN: Control flow and error handling ·
             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling [/Sources]
@@ -574,7 +576,7 @@ console.log(post);</code></pre>
           </div>
           <pre class="po-code code-short"><code class="language-javascript">console.log(response.status); // 404
 console.log(response.ok);     // false</code></pre>
-          <p class="definition"><strong>Netværksfejl kan rejecte.</strong> HTTP 404 og 500 skal vi selv kontrollere.</p>
+          <p class="definition slide-point"><code>fetch()</code> thrower ikke automatisk, bare fordi serveren svarer med 404 eller 500.</p>
           <aside class="notes">
             Dette er den centrale fetch-misforståelse. [Sources] - MDN: Using the Fetch API ·
             https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - MDN: Response.ok ·
@@ -594,7 +596,7 @@ if (!response.ok) {
 }
 
 const post = await response.json();</code></pre>
-          <p class="definition">Her bruger vi præcis det samme <code>throw</code>, som i det simple eksempel.</p>
+          <p class="definition slide-point">Vi kontrollerer <code>response.ok</code> og thrower selv ved HTTP-fejl.</p>
           <aside class="notes">
             [Sources] - MDN: Using the Fetch API ·
             https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
@@ -616,6 +618,7 @@ const post = await response.json();</code></pre>
 } catch (error) {
   console.error(error.message);
 }</code></pre>
+          <p class="definition slide-point"><code>try/catch</code> samler kontrollen af responsen og håndteringen af fejlen.</p>
           <aside class="notes">
             Dette er den vigtigste pattern-slide i del 1. [Sources] - MDN: Using the Fetch API ·
             https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
@@ -669,28 +672,87 @@ const post = await response.json();</code></pre>
         </section>
 
         <section class="po-slide accent-state">
-          <span class="eyebrow">Hvad · hvorfor · hvordan</span>
-          <h2>En UI-state beskriver situationen nu</h2>
-          <div class="why-grid">
-            <article>
-              <span>Hvad?</span>
-              <p>En tydelig visning af systemets aktuelle tilstand.</p>
-            </article>
-            <article>
-              <span>Hvorfor?</span>
-              <p>Brugeren forstår, om systemet arbejder eller kræver handling.</p>
-            </article>
-            <article>
-              <span>Hvordan?</span>
-              <p>Modellér states, og render det rigtige UI for hver state.</p>
-            </article>
+          <span class="eyebrow">Loading state</span>
+          <h2>Brugeren skal vide, at der sker noget</h2>
+          <div class="code-layout">
+            <pre class="po-code"><code class="language-javascript">const [loading, setLoading] = useState(false);
+
+async function getPosts() {
+  setLoading(true);
+  const response = await fetch(URL, { headers });
+  const data = await response.json();
+  setPosts(data);
+  setLoading(false);
+}</code></pre>
+            <pre class="po-code"><code class="language-javascript jsx">if (loading) {
+  return &lt;p&gt;Henter opslag…&lt;/p&gt;;
+}</code></pre>
           </div>
-          <p class="definition">
-            <strong>Robust betyder ikke fejlfri.</strong> Det betyder forståelig og brugbar — også når noget går galt.
-          </p>
+          <p class="definition slide-point">Brugeren skal vide, at der sker noget.</p>
           <aside class="notes">
-            [Sources] - React: Reacting to Input with State · https://react.dev/learn/reacting-to-input-with-state -
-            React: Conditional Rendering · https://react.dev/learn/conditional-rendering [/Sources]
+            [Sources] - React: useState · https://react.dev/reference/react/useState - React: Conditional Rendering ·
+            https://react.dev/learn/conditional-rendering [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state cliffhanger-slide">
+          <span class="eyebrow">Et problem</span>
+          <h2>Hvad hvis requestet fejler?</h2>
+          <pre class="po-code code-short"><code class="language-javascript">const response = await fetch(URL, { headers });</code></pre>
+          <div class="cliffhanger-flow"><span>Requestet fejler</span><b>↓</b><strong><code>setLoading(false)</code></strong><b>?</b></div>
+          <p class="definition slide-point">Hvis koden stopper her, bliver loading måske aldrig afsluttet.</p>
+          <aside class="notes">
+            Brug dette som en lille cliffhanger til error-state og finally. [Sources] - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state">
+          <span class="eyebrow">Error state i React</span>
+          <h2>Genbrug fejlhåndteringen i komponenten</h2>
+          <pre class="po-code code-main"><code class="language-javascript">const [error, setError] = useState(null);
+
+try {
+  const response = await fetch(URL, { headers });
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status}`);
+  }
+  const data = await response.json();
+  setPosts(data);
+} catch (error) {
+  console.error(error);
+  setError("Vi kunne ikke hente opslag");
+}</code></pre>
+          <p class="definition slide-point">Fejlhåndteringen gemmer en brugerbesked i React-state.</p>
+          <aside class="notes">
+            [Sources] - React: useState · https://react.dev/reference/react/useState - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state">
+          <span class="eyebrow">Vis fejlen i UI’et</span>
+          <h2>Det er ikke nok at logge fejlen</h2>
+          <pre class="po-code code-short"><code class="language-javascript jsx">if (error) {
+  return &lt;p&gt;{error}&lt;/p&gt;;
+}</code></pre>
+          <p class="prompt-card slide-point">Det er ikke nok at logge fejlen. UI’et skal også kunne reagere.</p>
+          <aside class="notes">
+            [Sources] - React: Conditional Rendering · https://react.dev/learn/conditional-rendering [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state">
+          <span class="eyebrow">Developer error vs. user error</span>
+          <h2>Tekniske detaljer er til udvikleren</h2>
+          <div class="message-split">
+            <article><span>Developer</span><pre class="mini-code"><code>TypeError: Failed to fetch</code></pre><p><code>console.error(error)</code></p></article>
+            <article><span>Bruger</span><div class="ui-message"><b>Vi kunne ikke hente opslag</b><small>Prøv igen om et øjeblik.</small></div><p>Hjælpsom feedback uden interne detaljer.</p></article>
+          </div>
+          <p class="definition slide-point">Tekniske fejl er til udvikleren. Hjælpsom feedback er til brugeren.</p>
+          <aside class="notes">
+            Technical errors are for developers. Helpful feedback is for users. [Sources] - Case 1-casebeskrivelsen ·
+            lokalt kursusmateriale [/Sources]
           </aside>
         </section>
 
@@ -710,7 +772,7 @@ const post = await response.json();</code></pre>
 }</code></pre>
             <div class="finally-flow" aria-label="Finally kører ved både succes og fejl">
               <span class="success-path">Success</span><b>↘</b><strong>finally</strong><b>↗</b><span class="error-path">Error</span>
-              <p>Loading bliver afsluttet uanset udfaldet.</p>
+              <p><strong>Pointe:</strong> Loading bliver afsluttet uanset udfaldet.</p>
             </div>
           </div>
           <aside class="notes">
@@ -718,6 +780,23 @@ const post = await response.json();</code></pre>
             src/pages/HomePage.jsx · lokalt semester 2-projekt - MDN:
             try...catch · https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch
             [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state empty-state-slide">
+          <span class="eyebrow">Empty state</span>
+          <h2>Tomt er ikke det samme som fejl</h2>
+          <div class="empty-state-layout">
+            <div><span>API’et virker</span><b>✓</b></div>
+            <div><span>Ingen fejl</span><b>✓</b></div>
+            <div><span>Resultat</span><strong><code>[]</code></strong></div>
+          </div>
+          <pre class="po-code code-short"><code class="language-javascript jsx">if (posts.length === 0) {
+  return &lt;p&gt;Der er ingen opslag endnu.&lt;/p&gt;;
+}</code></pre>
+          <p class="definition slide-point"><strong>Empty er ikke en fejl.</strong> Det er en legitim UI-state.</p>
+          <aside class="notes">
+            [Sources] - React: Conditional Rendering · https://react.dev/learn/conditional-rendering [/Sources]
           </aside>
         </section>
 
@@ -752,55 +831,32 @@ const post = await response.json();</code></pre>
           </aside>
         </section>
 
-        <section class="po-slide accent-state">
-          <span class="eyebrow">Modellér tilstandene</span>
-          <h2>Én status begrænser konflikter</h2>
-          <div class="status-compare">
-            <article>
-              <span>Flere booleans</span>
-              <pre class="po-code"><code class="language-javascript">isLoading = true
-hasError = true
-isEmpty = true</code></pre>
-              <p>Kan UI’et være alle tre?</p>
-            </article>
-            <article class="preferred">
-              <span>Én status</span>
-              <pre class="po-code"><code class="language-javascript">const [status, setStatus] =
-  useState("loading");</code></pre>
-              <p>Kun én aktiv tilstand ad gangen.</p>
-            </article>
-          </div>
-          <aside class="notes">
-            En status-string er en enkel model til casen; komplekse flows kan kræve mere. [Sources] - React: Choosing
-            the State Structure · https://react.dev/learn/choosing-the-state-structure [/Sources]
-          </aside>
-        </section>
-
         <section class="po-slide accent-state status-pattern-slide">
           <span class="eyebrow">Det komplette React-pattern</span>
-          <h2>Requestets udfald vælger næste UI-state</h2>
+          <h2>Saml loading, error og data</h2>
           <pre
             class="po-code code-main"
           ><code class="language-javascript">async function getPosts() {
-  setStatus("loading");
   try {
+    setLoading(true);
+    setError(null);
     const response = await fetch(URL, { headers });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
     const data = await response.json();
     setPosts(data);
-    setStatus(data.length === 0 ? "empty" : "success");
   } catch (error) {
-    console.error("Could not load posts", error);
-    setStatus("error");
+    console.error(error);
+    setError("Vi kunne ikke hente opslag");
+  } finally {
+    setLoading(false);
   }
 }</code></pre>
-          <p class="definition"><strong>Fejlhåndteringen afgør udfaldet.</strong> React-state gør udfaldet tilgængeligt for UI’et.</p>
+          <p class="definition slide-point">Samme funktion håndterer loading, error og data.</p>
           <aside class="notes">
-            Nu kobles de to faglige dele eksplicit sammen. Status sættes til loading før requestet og får derefter
-            præcis ét af tre udfald. [Sources] - Post App · src/pages/HomePage.jsx · lokalt semester 2-projekt - MDN:
-            Using the Fetch API · https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - React:
-            useState · https://react.dev/reference/react/useState [/Sources]
+            Dette er den vigtigste pattern-slide i del 2. [Sources] - Post App · src/pages/HomePage.jsx · lokalt
+            semester 2-projekt - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - React: useState ·
+            https://react.dev/reference/react/useState [/Sources]
           </aside>
         </section>
 
@@ -809,17 +865,18 @@ isEmpty = true</code></pre>
           <h2>State skal kunne ses i UI’et</h2>
           <pre
             class="po-code code-main"
-          ><code class="language-javascript jsx">if (status === "loading") {
+          ><code class="language-javascript jsx">if (loading) {
   return &lt;p&gt;Henter opslag…&lt;/p&gt;;
 }
-if (status === "error") {
-  return &lt;ErrorMessage onRetry={getPosts} /&gt;;
+if (error) {
+  return &lt;p&gt;{error}&lt;/p&gt;;
 }
-if (status === "empty") {
+if (posts.length === 0) {
   return &lt;p&gt;Der er ingen opslag endnu.&lt;/p&gt;;
 }
 
 return &lt;PostGrid posts={posts} /&gt;;</code></pre>
+          <p class="definition slide-point">UI’et renderer én tydelig oplevelse for den aktuelle state.</p>
           <aside class="notes">
             Early returns holder hver state adskilt og let at læse. [Sources] - React: Conditional Rendering ·
             https://react.dev/learn/conditional-rendering [/Sources]
@@ -827,48 +884,16 @@ return &lt;PostGrid posts={posts} /&gt;;</code></pre>
         </section>
 
         <section class="po-slide accent-state">
-          <span class="eyebrow">Sammenhængen</span>
-          <h2>Dataflowet styrer oplevelsen</h2>
-          <div class="request-map">
-            <article><span>Request starter</span><b>loading</b><small>“Henter opslag…”</small></article>
-            <article><span>Data.length &gt; 0</span><b>success</b><small>Vis opslag</small></article>
-            <article><span>Data.length === 0</span><b>empty</b><small>Forklar det tomme resultat</small></article>
-            <article><span>Request fejler</span><b>error</b><small>Forklar + “Prøv igen”</small></article>
+          <span class="eyebrow">Robust UI er mere end happy path</span>
+          <h2>Brugeren oplever hele requestet</h2>
+          <div class="contrast robust-contrast">
+            <article><span>Happy path</span><h3>Request → Data</h3><p>Viser kun det udfald, vi håber på.</p></article>
+            <article class="risk"><span>Robust UI</span><h3>Request → Loading</h3><p>Error · Empty · Success</p></article>
           </div>
-          <p class="callout">Fejlhåndtering vælger udfaldet. <strong>UI-states kommunikerer udfaldet.</strong></p>
+          <p class="callout slide-point"><strong>Et robust UI håndterer mere end happy path.</strong></p>
           <aside class="notes">
-            Det er koblingen mellem punkt 4 og 5. [Sources] - React: Reacting to Input with State ·
-            https://react.dev/learn/reacting-to-input-with-state - MDN: Using the Fetch API ·
-            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide mode-work accent-state">
-          <span class="eyebrow">Afprøv robustheden</span>
-          <h2>Test mere end success</h2>
-          <div class="test-grid">
-            <article>
-              <b>Langsomt netværk</b>
-              <p>Kan loading nå at ses?</p>
-            </article>
-            <article>
-              <b>Forkert endpoint</b>
-              <p>Vises error og retry?</p>
-            </article>
-            <article>
-              <b>Tomt resultat</b>
-              <p>Adskilles empty fra error?</p>
-            </article>
-            <article>
-              <b>Normal respons</b>
-              <p>Forsvinder feedback korrekt?</p>
-            </article>
-          </div>
-          <p class="muted">Brug DevTools → Network. Gentag relevante tests på den deployede løsning.</p>
-          <aside class="notes">
-            [Sources] - Chrome DevTools: Network features reference ·
-            https://developer.chrome.com/docs/devtools/network/reference/ - Case 1-casebeskrivelsen · lokalt
-            kursusmateriale [/Sources]
+            [Sources] - React: Reacting to Input with State · https://react.dev/learn/reacting-to-input-with-state
+            [/Sources]
           </aside>
         </section>
 
@@ -887,43 +912,11 @@ return &lt;PostGrid posts={posts} /&gt;;</code></pre>
               <div><em>Success</em><em>Error</em></div>
             </div>
           </div>
-          <p class="definition">Brugeren skal kunne se, at handlingen er i gang — og ikke kunne oprette det samme opslag igen.</p>
+          <p class="definition slide-point">Den samme tankegang gælder brugerhandlinger: idle → submitting → success eller error.</p>
           <aside class="notes">
             Dette bygger direkte videre på CreatePage. Bed bagefter de studerende overføre samme tankegang til
             Mellemrums tilmeldingsflow. [Sources] - Post App · src/pages/CreatePage.jsx · lokalt semester 2-projekt -
             React: Responding to Events · https://react.dev/learn/responding-to-events [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide final-model-slide">
-          <span class="eyebrow">Dagens model</span>
-          <h2>Hvad skal køre hvornår — og hvorfor?</h2>
-          <div class="final-model">
-            <article>
-              <span>1</span>
-              <h3>Start</h3>
-              <p>Sæt loading, så ventetiden er synlig.</p>
-            </article>
-            <article>
-              <span>2</span>
-              <h3>Request</h3>
-              <p>Hent data, og kontrollér responsen.</p>
-            </article>
-            <article>
-              <span>3</span>
-              <h3>Udfald</h3>
-              <p>Vælg success, empty eller error.</p>
-            </article>
-            <article>
-              <span>4</span>
-              <h3>Render</h3>
-              <p>Vis besked og næste skridt.</p>
-            </article>
-          </div>
-          <aside class="notes">
-            [Sources] - MDN: Using the Fetch API ·
-            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - React: Conditional Rendering ·
-            https://react.dev/learn/conditional-rendering [/Sources]
           </aside>
         </section>
 
