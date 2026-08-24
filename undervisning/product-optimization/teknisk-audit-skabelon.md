@@ -6,7 +6,7 @@
 
 En teknisk audit er en systematisk undersøgelse af en eksisterende løsning. Formålet er at finde, dokumentere og prioritere forbedringer — ikke blot at samle personlige præferencer om kode.
 
-Trin 1–5 gennemføres, før du ændrer løsningen: Beskriv, hvordan den fungerer nu, find problemer, og planlæg relevante forbedringer. Du behøver ikke finde problemer inden for alle seks fokusområder. Tilmeldingsflowet og den deployede løsning er centrale krav i Case 1, så deres nuværende tilstand skal altid indgå i auditten. Efter implementeringen vender du tilbage til trin 6 og dokumenterer effekten.
+Brug trin 1–5 til at undersøge løsningen og planlægge forbedringer, før du ændrer den. Du behøver ikke finde problemer inden for alle seks fokusområder. I Case 1 skal tilmeldingsflowet og den deployede løsning altid indgå. Efter implementeringen dokumenterer du effekten i trin 6.
 
 </div>
 
