@@ -263,31 +263,6 @@
           <aside class="notes">I dag etablerer de studerende den uændrede løsning som lokal og deployet baseline og begynder så småt at undersøge de centrale brugerflows. Den systematiske tekniske audit begynder i morgen, hvor fund dokumenteres og prioriteres, og den første afgrænsede forbedring kan påbegyndes. Derefter fortsætter forbedring og verificering gennem resten af caseperioden. Arbejdet er individuelt. [Sources] - Undervisningsagendaen 25.08.2026 · lokalt kursusmateriale - Undervisningsagendaen 26.08.2026 · lokalt kursusmateriale - Case 1-casebeskrivelsen · lokalt kursusmateriale [/Sources]</aside>
         </section>
 
-        <section class="po-slide mellemrum-case mellemrum-brief">
-          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
-          <span class="eyebrow">Det skal du have klar efter Case 1</span>
-          <h2>Når Case 1 slutter, skal du have:</h2>
-          <div class="ready-list">
-            <span><b>01</b>Link til dit opdaterede GitHub-repository</span>
-            <span><b>02</b>Link til den deployede løsning</span>
-            <span><b>03</b>Feature branches og forståelige commits</span>
-            <span><b>04</b>Teknisk audit og prioriteret liste over forbedringer</span>
-            <span><b>05</b>Kort beskrivelse af datamodel og relationer</span>
-            <span><b>06</b>Før- og efterevidens for udvalgte forbedringer</span>
-            <span><b>07</b>Refleksion over valg, fravalg og resterende udfordringer</span>
-            <span><b>08</b>Noter om produktets forretningspotentiale</span>
-          </div>
-          <div class="ready-explanation">
-            <strong>For hver udvalgt forbedring</strong>
-            <span>Problem</span><b>→</b><span>Konsekvens</span><b>→</b><span>Løsning</span><b>→</b><span>Verifikation</span><b>→</b><span>Værdi</span>
-          </div>
-          <div class="ready-footer">
-            <p><b>Ikke den endelige caseside.</b> Saml materialet i README eller et arbejdsdokument.</p>
-            <a href="https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning" target="_blank" rel="noopener noreferrer">Åbn hele casebeskrivelsen →</a>
-          </div>
-          <aside class="notes">Gennemgå punkterne som konkret råmateriale, de studerende skal gemme undervejs. For hver udvalgt forbedring skal de kunne forklare problemet, konsekvensen, løsningen, verifikationen og den mulige værdi. Materialet kan samles i repositoryets README eller et særskilt arbejdsdokument. Det er ikke den endelige caseside eller eksamensaflevering. [Sources] - Case 1-casebeskrivelsen · https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning [/Sources]</aside>
-        </section>
-
         <section class="chapter po-chapter po-slide mellemrum-case baseline-hero" id="starter">
           <div class="mellemrum-hero-nav">
             <div class="mellemrum-wordmark" aria-label="Mellemrum">mellemrum<span>.</span></div>
@@ -317,39 +292,11 @@
           <div class="setup-deploy-note">
             <strong>Husk før push</strong>
             <span><code>base</code> matcher repoets navn</span>
-            <span>Environment: <code>github-pages-deployment</code></span>
-            <span><code>npm run lint</code> + <code>npm run build</code></span>
+            <span>Tilføj environment variables i <code>github-pages-deployment</code></span>
           </div>
           <aside class="notes">
             Åbn README og følg den konkrete opsætningsguide. Deployment er integreret i baseline-arbejdet og ikke et særskilt agendapunkt. Før push skal base i package.json svare til repositoryets navn. Opret GitHub Environment github-pages-deployment, tilføj de to VITE-variabler, og kontrollér både build og den deployede løsning. [Sources] - Mellemrum README · https://github.com/cederdorff/mellemrum [/Sources]
           </aside>
-        </section>
-
-        <section class="po-slide mellemrum-case mellemrum-dark supabase-setup">
-          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
-          <span class="eyebrow">Supabase + environment variables</span>
-          <h2>Samme forbindelse — to miljøer</h2>
-          <div class="supabase-start">
-            <article><span>01</span><div><strong>Kør startdata</strong><p>Kopiér <code>supabase/starter.sql</code> til SQL Editor, og kør filen.</p></div></article>
-            <article><span>02</span><div><strong>Kontrollér resultatet</strong><p><code>events</code>: 9 rækker · <code>registrations</code>: 2 rækker.</p></div></article>
-          </div>
-          <div class="environment-compare">
-            <article>
-              <small>Lokalt på din computer</small>
-              <strong><code>.env</code></strong>
-              <p><code>VITE_SUPABASE_URL</code><br><code>VITE_SUPABASE_APIKEY</code></p>
-              <span>Filen er gitignored og pushes ikke.</span>
-            </article>
-            <div class="environment-arrow" aria-hidden="true">→</div>
-            <article class="is-github">
-              <small>På GitHub til deployment</small>
-              <strong><code>github-pages-deployment</code></strong>
-              <p>Tilføj de samme to navne som<br><b>Environment variables</b>.</p>
-              <span>Ellers kan det deployede build ikke hente data.</span>
-            </article>
-          </div>
-          <p class="supabase-key-note"><b>Brug projektets publishable key</b> — aldrig en secret key.</p>
-          <aside class="notes">Supabase skal sættes op, før appen startes. Hvis Supabase advarer om manglende RLS i denne udleverede starter, følges README og Run without RLS vælges. Vis forskellen på den lokale .env-fil og GitHub Environment variables: værdierne er de samme, men de skal konfigureres begge steder. [Sources] - Mellemrum README · https://github.com/cederdorff/mellemrum [/Sources]</aside>
         </section>
 
         <section class="po-slide mode-work">
@@ -447,7 +394,9 @@
             </article>
           </div>
           <pre class="po-code code-short"><code class="language-javascript">if (!response.ok) {
-  throw new Error("Kunne ikke hente events: " + response.status);
+  throw new Error(
+    "Kunne ikke hente events: " + response.status
+  );
 }</code></pre>
           <aside class="notes">
             Dette er den centrale fetch-misforståelse. [Sources] - MDN: Using the Fetch API ·
