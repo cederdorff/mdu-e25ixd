@@ -43,14 +43,14 @@ Dokumentér udgangspunktet, før du ændrer løsningen. Vælg kun evidens, der h
 
 **Komponenter og ansvar**
 
-- Har komponenterne forståelige hovedansvar, og bør store komponenter opdeles eller sammensættes af mindre dele (*single responsibility* og *component composition*)?
-- Er dataadgang og præsentationslogik adskilt, hvor det forbedrer overblikket (*separation of concerns*)?
+- Har komponenterne forståelige hovedansvar, og bør store komponenter opdeles eller sammensættes af mindre dele (_single responsibility_ og _component composition_)?
+- Er dataadgang og præsentationslogik adskilt, hvor det forbedrer overblikket (_separation of concerns_)?
 - Er gentaget logik samlet i funktioner eller hooks, når det gør koden lettere at vedligeholde?
 
 **State og dataflow**
 
 - Er dataflowet gennem props og state let at følge?
-- Har data én tydelig kilde, og beregnes afledte værdier frem for at blive gemt som unødvendig state (*single source of truth* og *derived state*)?
+- Har data én tydelig kilde, og beregnes afledte værdier frem for at blive gemt som unødvendig state (_single source of truth_ og _derived state_)?
 
 </details>
 
@@ -59,7 +59,7 @@ Dokumentér udgangspunktet, før du ændrer løsningen. Vælg kun evidens, der h
 
 **Datahentning og side effects**
 
-- Er *side effects* som datahentning placeret tydeligt og holdt adskilt fra renderingen?
+- Er _side effects_ som datahentning placeret tydeligt og holdt adskilt fra renderingen?
 
 **Fejlhåndtering**
 
@@ -133,7 +133,7 @@ En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>6. Git, deployment og teknisk kvalitet</strong></summary>
 
-- Hvordan skal ændringerne organiseres i feature branches og commits, så historikken bliver tydelig?
+- Gør feature branches og commits det tydeligt, hvad der er ændret og hvorfor?
 - Gennemføres production build og deployment uden fejl?
 - Fungerer environment variables, routing og base URL på hostingens adresse og eventuelle undermapper?
 - Matcher den publicerede løsning den seneste version på `main`?
@@ -152,9 +152,9 @@ Registrér kun konkrete fund, som kan få betydning for din prioritering. Beskri
 
 <div style="overflow-x: auto;">
 
-| Område | Fund og evidens | Konsekvens | Forslag til løsning | Prioritet | Planlagt verifikation |
-|---|---|---|---|---|---|
-| Accessibility | E-mailfeltet mangler en label | Feltets formål er ikke tydeligt for alle brugere | Tilføj en synlig label | Høj | Gennemfør formularen med tastatur og skærmlæser |
+| Område        | Fund og evidens               | Konsekvens                                       | Forslag til løsning    | Prioritet | Planlagt verifikation                           |
+| ------------- | ----------------------------- | ------------------------------------------------ | ---------------------- | --------- | ----------------------------------------------- |
+| Accessibility | E-mailfeltet mangler en label | Feltets formål er ikke tydeligt for alle brugere | Tilføj en synlig label | Høj       | Gennemfør formularen med tastatur og skærmlæser |
 
 </div>
 
