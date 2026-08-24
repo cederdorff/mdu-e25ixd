@@ -52,6 +52,8 @@ Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de 
 
 Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026). Relevante forbedringer herfra indgår og verificeres i den samlede løsning.
 
+Fokusområderne er en ramme for din undersøgelse – ikke en tjekliste, hvor alle punkter skal implementeres. Du skal forholde dig til områderne, men prioritere de forbedringer, der har størst betydning for den konkrete løsning. Det beskrevne tilmeldingsflow og en fungerende deployment er centrale krav; de øvrige punkter hjælper dig med at finde, begrunde og verificere relevante forbedringer.
+
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>1. React-arkitektur og kodekvalitet</strong></summary>
 
@@ -219,8 +221,8 @@ Merge færdige og verificerede forbedringer til `main`, og deploy den samlede l�
 Når casen slutter, skal du have dokumentation og råmateriale, som senere kan bearbejdes til en kort caseside på din portfolio:
 
 - link til det opdaterede GitHub-repository
-- en tydelig historik med feature branches og forståelige commits
 - link til den deployede løsning
+- historik med feature branches og forståelige commits
 - din tekniske audit og prioriterede optimeringsplan
 - en kort beskrivelse af den forbedrede datamodel og dens relationer
 - før- og efterevidens for udvalgte forbedringer
@@ -229,14 +231,14 @@ Når casen slutter, skal du have dokumentation og råmateriale, som senere kan b
 
 For hver udvalgt forbedring skal du kunne forklare problemet, konsekvensen, løsningen og din verifikation. Beskriv også kort, hvilken værdi forbedringen kan skabe. Det kan eksempelvis være flere gennemførte tilmeldinger, færre fejl, en bredere brugergruppe eller en løsning, der er lettere at videreudvikle.
 
-Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdokument. Det er ikke den endelige eksamensaflevering, og du skal udvælge og bearbejde det vigtigste, når du senere bygger portfoliosiden.
+Materialet kan samles i repositoryets `README.md` eller i et særskilt arbejdsdokument. Det er ikke den endelige eksamensaflevering. Du skal udvælge og bearbejde det vigtigste, når du senere bygger casesiden på din portfolio.
 
 <hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
 ## Materialer
 
-- [Startprojekt: Mellemrum](https://github.com/cederdorff/mellemrum)
-- [Se den udleverede Mellemrum-løsning](https://cederdorff.com/mellemrum/)
+- [GitHub Repo - Startprojekt: Mellemrum](https://github.com/cederdorff/mellemrum)
+- [Deployet nuværende løsning - Startprojekt: Mellemrum](https://cederdorff.com/mellemrum/)
 - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
 - [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026)
 - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)

@@ -79,9 +79,9 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>3. Accessibility og konsistent UI</strong></summary>
+<summary><strong>3. UI-konsistens og accessibility</strong></summary>
 
-**Konsistens og styling**
+**UI-konsistens**
 
 - Er det tydeligt, hvilke styles der hører til hvilke komponenter?
 - Ligger komponentrelateret styling tæt på komponenten?
@@ -98,24 +98,26 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 - **Navne:** Kan labels, linktekster, knapper og fejlbeskeder forstås?
 - **Tastatur:** Kan alle centrale brugerflows nås og bruges med tastatur, og er fokus altid synligt og logisk?
 - **Indhold:** Har billeder passende alt-tekst, og har formularer labels, instruktioner og feedback?
-- **React SPA:** Opdateres `document.title`, og flyttes fokus til den nye overskrift med `headingRef.current?.focus()` ved navigation?
+- **React SPA:** Opdateres `document.title`, og flyttes fokus til den nye overskrift, eksempelvis med `myRef.current?.focus()`, ved navigation?
 
 Målet er tydeligt ansvar, konsistens og en løsning, flere kan bruge. Se også [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c).
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>4. Data og Supabase</strong></summary>
+<summary><strong>4. Datamodel, relationer og Supabase</strong></summary>
 
 - Er klient–server-grænsen tydelig mellem React, Supabase REST API og databasen?
 - Har tabeller, kolonner og datatyper tydelige og konsekvente navne?
 - Findes relevante primærnøgler og fremmednøgler?
 - Er relaterede data modelleret som relationer frem for duplikerede felter?
+- Hentes og vises relaterede data korrekt gennem Supabase REST API?
 - Understøtter datamodellen de vigtigste brugerflows?
 - Hentes kun de data, brugergrænsefladen har brug for?
 - Hvad hentes fra Supabase, hvornår hentes det, og hvor mange gange sker det i et brugerflow?
 - Bør søgning og filtrering ske lokalt i React eller gennem Supabase?
 - Er kald, der henter, opretter eller ændrer data, organiseret konsistent?
+- Kan ændringer af data verificeres både i Supabase og i brugergrænsefladen?
 - Er environment variables og API-nøgler håndteret korrekt?
 
 </details>
@@ -131,7 +133,8 @@ Målet er tydeligt ansvar, konsistens og en løsning, flere kan bruge. Se også 
 - Hentes kun de data og assets, som siden har brug for?
 - Viser Network-panelet unødvendige eller gentagne requests, beregninger eller renderinger med mærkbar betydning?
 - Er gentagne requests i development også kontrolleret i en production build, så React Strict Mode ikke fejltolkes som et produktionsproblem?
-- Kan en valgt forbedring dokumenteres med en sammenlignelig før- og eftermåling?
+- Er før- og eftermålinger foretaget på deployede produktionsversioner under sammenlignelige forhold frem for at sammenligne localhost direkte med deployment?
+- Er målingerne gentaget, og er de vigtigste testforhold dokumenteret?
 
 En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til at finde konkrete problemer, som har betydning for brugeren.
 
@@ -143,9 +146,14 @@ En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til 
 - Er ændringer opdelt i forståelige feature branches og commits?
 - Gør feature branches og commits det tydeligt, hvad der er ændret og hvorfor?
 - Bygger projektet uden fejl?
-- Er konsollen fri for relevante fejl og advarsler?
 - Fungerer miljøvariabler i deployment-miljøet?
+- Stemmer projektets base URL overens med hostingens adresse og eventuelle undermapper?
 - Gennemføres deployment korrekt via GitHub Actions?
+- Fungerer centrale brugerflows i den publicerede løsning?
+- Kan centrale routes åbnes via direkte links og genindlæses uden fejl?
+- Indlæses billeder, fonte, stylesheets, scripts og andre assets fra korrekte stier?
+- Fungerer interne og eksterne links, herunder navigation på tværs af routes?
+- Er konsollen og Network-panelet fri for relevante fejl, fejlede requests og `404`-svar?
 - Matcher den publicerede løsning den seneste version på `main`?
 
 </details>
