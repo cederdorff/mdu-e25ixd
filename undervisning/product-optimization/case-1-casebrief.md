@@ -30,7 +30,7 @@ Til eksamen afleverer du et dokument med links til de tre casesider. Det samlede
 
 **Mellemrum** er en lokal kultur- og eventplatform, hvor brugerne kan finde og tilmelde sig koncerter, talks, workshops og andre arrangementer.
 
-Virksomheden har fået udviklet en React-prototype. Den grundlæggende funktionalitet findes, men løsningen blev bygget hurtigt for at afprøve idéen. Koden er vanskelig at videreudvikle, brugeroplevelsen er ikke altid konsistent, og løsningen håndterer ikke langsomme svar, manglende data og fejl godt nok.
+Virksomheden har fået udviklet en React-prototype. Den grundlæggende funktionalitet findes, men løsningen blev bygget hurtigt for at afprøve idéen. Koden er vanskelig at videreudvikle, brugeroplevelsen er ikke altid konsistent, og løsningen håndterer ikke langsomme svar, manglende data og fejl godt nok. Kunden nævner også, at der er udfordringer med performance.
 
 Data hentes fra Supabase gennem Supabase REST API. Datamodellen indeholder gentagne oplysninger, som bør fordeles på relaterede tabeller. Tilmeldingsflowet er kun påbegyndt: En tilmelding skal registreres i Supabase og forbindes med det valgte event. Den eksisterende interne side skal tilpasses, så den kan vise tilmeldinger sammen med deres relaterede eventdata.
 
@@ -42,15 +42,15 @@ Du arbejder individuelt og overtager den eksisterende React-løsning. Undersøg 
 
 Det er ikke målet at ændre mest muligt. Det er vigtigere, at du finder betydningsfulde problemer, prioriterer dem fagligt og kan forklare værdien af dine forbedringer.
 
-Det primære fokus er React og kodeforbedringer. Du må gerne forbedre identiteten og det visuelle lag, hvis du har tid, men det er ikke casens hovedopgave. Visuelle ændringer er relevante, når de eksempelvis styrker konsistens, accessibility, feedback eller robuste UI-states.
+Det primære fokus er React og kodeforbedringer. Du må gerne forbedre identiteten og det visuelle lag, men det er ikke casens hovedopgave. Visuelle ændringer er relevante, når de eksempelvis styrker konsistens, accessibility, feedback, robuste UI-states eller fjerner "template-kode".
 
-Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de nødvendige koncepter og teknikker undervejs.
+Du forventes ikke at kunne løse alle dele ved casens start. Vi arbejder med de nødvendige koncepter og teknikker undervejs i undervisningen. Men det forventes at du arbejder udover den skemalagte undervisning i perioden.
 
 <hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
 ## Faglige fokusområder
 
-Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026), som fungerer som løsningens baseline. Relevante forbedringer herfra indgår og verificeres i den samlede løsning.
+Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaaa.instructure.com/courses/30922/pages/race-product-optimization-web-app-forbedringer-og-teknisk-fundament-19-08-2026). Relevante forbedringer herfra indgår og verificeres i den samlede løsning.
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>1. React-arkitektur og kodekvalitet</strong></summary>
@@ -62,14 +62,14 @@ Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaa
 
 **Komponenter og ansvar**
 
-- En tydelig ansvarsfordeling mellem pages, komponenter, funktioner og dataadgang (*separation of concerns*).
-- Komponenter med ét forståeligt hovedansvar (*single responsibility*) og større interfaces sammensat af mindre komponenter (*component composition*).
+- En tydelig ansvarsfordeling mellem pages, komponenter, funktioner og dataadgang (_separation of concerns_).
+- Komponenter med ét forståeligt hovedansvar (_single responsibility_) og større interfaces sammensat af mindre komponenter (_component composition_).
 - Gentaget logik, eksempelvis formatering af datoer og tidspunkter, samlet i funktioner eller hooks, når det gør koden tydeligere og lettere at vedligeholde.
 
 **State og dataflow**
 
 - Et tydeligt, ensrettet flow mellem data, props og state.
-- Én tydelig kilde til data (*single source of truth*) og *derived state*, som beregnes ud fra eksisterende data.
+- Én tydelig kilde til data (_single source of truth_) og _derived state_, som beregnes ud fra eksisterende data.
 
 </details>
 
@@ -78,7 +78,7 @@ Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaa
 
 **Datahentning og side effects**
 
-- *Side effects* som datahentning placeret tydeligt og adskilt fra selve renderingen.
+- _Side effects_ som datahentning placeret tydeligt og adskilt fra selve renderingen.
 
 **Fejlhåndtering**
 
@@ -89,40 +89,57 @@ Case 1 bygger videre på [Web App-forbedringer og teknisk fundament](https://eaa
 
 - Relevante `loading`, `success`, `empty` og `error` states.
 - Validering, forståelig feedback og et relevant næste skridt for brugeren.
-- En brugerflade, der også giver mening ved langsomme svar, manglende data og fejl.
+- En UI, der også giver mening ved langsomme svar, manglende data og fejl.
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>3. Accessibility og konsistent UI</strong></summary>
+<summary><strong>3. UI-konsistens og accessibility</strong></summary>
 
-Området handler om en konsistent og tilgængelig brugeroplevelse og omfatter blandt andet:
+Områderne understøtter begge en bedre brugeroplevelse, men vurderes som to forskellige kvaliteter.
 
-- visuel konsistens i komponenter, formularer, feedback og interaktioner
-- ensartet visning af datoer, tidspunkter, eventtyper, venues og adresser på tværs af løsningen
-- semantisk HTML og et logisk heading-hierarki
-- ARIA, når HTML ikke er tilstrækkeligt
-- forståelige labels, linktekster, knapper og fejlbeskeder
-- tastaturbetjening og synligt fokus
-- passende alt-tekster samt labels og feedback i formularer
-- `document.title` og fokus på den nye overskrift ved navigation i React SPA'en
+**UI-konsistens**
 
-Listen er et udgangspunkt. [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c) fungerer som en supplerende oversigt over andre relevante problemer.
+- Konsistente komponenter, formularer, feedbackmønstre og interaktioner.
+- Ensartet visning af datoer, tidspunkter, eventtyper, venues og adresser på tværs af løsningen.
+- Genbrug af fælles UI-komponenter og formateringslogik, hvor det giver mening.
+
+**Accessibility**
+
+- Semantisk HTML og et logisk heading-hierarki.
+- ARIA, når semantisk HTML ikke er tilstrækkeligt.
+- Forståelige labels, linktekster, knapper og fejlbeskeder.
+- Tastaturbetjening og synligt fokus.
+- Passende alt-tekster samt tilgængelige formularer og feedback.
+- Opdatering af `document.title` og fokus på den nye overskrift ved navigation i React SPA'en (`myRef.current?.focus()`).
+
+Listen er eksempler. Der findes flere detaljerede informationer her: [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
-<summary><strong>4. Data og Supabase</strong></summary>
+<summary><strong>4. Datamodel, relationer og Supabase</strong></summary>
 
-- Relaterede tabeller med primær- og fremmednøgler frem for gentagne eller uhensigtsmæssigt placerede data.
-- Hentning og anvendelse af relaterede data gennem Supabase REST API.
-- En tydelig klient–server-grænse, hvor React håndterer brugerfladen, mens Supabase leverer og gemmer data.
-- Et begrundet valg mellem lokal søgning og filtrering i React eller forespørgsler til Supabase ud fra blandt andet datamængde, antal requests og brugeroplevelse.
-- Eventtilmeldinger i en `registrations`-tabel, der forbindes med det valgte event gennem `eventId`.
-- En React-løsning tilpasset den forbedrede datamodel med dataadgang adskilt fra præsentationslogik, hvor det giver mening.
-- En intern side med relevante oplysninger om tilmeldinger og deres events.
+Målet er en datamodel, der understøtter produktets vigtigste brugerflows uden unødig duplikering, samt en tydelig dataadgang mellem React og Supabase.
 
-Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og være lettere at vedligeholde.
+**Datamodel og relationer**
+
+- Modellér `events`, `venues` og `registrations` som relaterede data frem for at gentage de samme oplysninger flere steder.
+- Brug tydelige og konsekvente navne, relevante datatyper samt primær- og fremmednøgler.
+- Begrund de valgte relationer, og forklar, hvordan de gør data lettere at vedligeholde.
+
+**Tilmeldingsflow**
+
+- Gem en gennemført eventtilmelding i `registrations`, og forbind den med det valgte event gennem en fremmednøgle.
+- Tilpas den interne side, så den henter og viser tilmeldinger sammen med relevante data om deres events.
+- Kontrollér, at en ny tilmelding både gemmes korrekt i Supabase og vises korrekt i løsningen.
+
+**Dataadgang i React**
+
+- Organisér forespørgsler og mutationer konsistent, og adskil dataadgang fra præsentationslogik, hvor det forbedrer overblikket.
+- Hent og anvend relaterede data gennem Supabase REST API, og hent kun de felter, brugergrænsefladen har brug for.
+- Undgå unødvendige eller gentagne requests.
+- Begrund, om søgning og filtrering skal ske lokalt i React eller gennem Supabase ud fra blandt andet datamængde, antal requests og brugeroplevelse.
 
 **Frivillig udvidelse:** CRUD-funktionalitet til events kan indgå efter casens centrale forbedringer. Udvidelsen omfatter oprettelse, visning, redigering og sletning gennem React-løsningen og Supabase REST API samt validering, forståelige UI-states og tydelig bekræftelse ved eksempelvis sletning.
 
@@ -134,11 +151,14 @@ Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og v
 **Måling og dokumentation**
 
 - Lighthouse og browserens udviklerværktøjer som hjælp til at finde konkrete problemer.
-- Sammenlignelig før- og efterdokumentation af relevante forbedringer.
+- En baseline før forbedringen og en ny måling efter forbedringen.
+- Før- og eftermålinger på deployede produktionsversioner under sammenlignelige forhold. En lokal development-version må ikke sammenlignes direkte med den deployede løsning.
+- Gentagne målinger og dokumentation af de vigtigste testforhold, så konklusionen ikke bygger på en enkelt Lighthouse-score.
 
 **Data og requests**
 
 - Omfanget og tidspunktet for Supabase-requests samt unødvendige eller gentagne datahentninger.
+- Kontrol i en production build eller den deployede løsning, så React Strict Mode i development ikke fejltolkes som et produktionsproblem.
 
 **Assets og indlæsning**
 
@@ -155,9 +175,20 @@ Den forbedrede datamodel skal understøtte produktets vigtigste brugerflows og v
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>6. Deployment</strong></summary>
 
-- Et stabilt build samt korrekt konfiguration af environment variables og routing.
-- Direkte links og genindlæsning af sider i den deployede løsning.
-- Sammenhæng mellem den publicerede løsning og den seneste version på `main`.
+**Build og konfiguration**
+
+- Et stabilt production build uden fejl.
+- Korrekt konfiguration af environment variables, routing og projektets base URL.
+- Sammenhæng mellem base URL'en, hostingens adresse og eventuelle undermapper, så routes og filer får korrekte stier.
+
+**Kontrol af den publicerede løsning**
+
+- Gennemfør de centrale brugerflows på den deployede version – ikke kun lokalt.
+- Åbn centrale routes via direkte links, og kontrollér, at de også virker efter genindlæsning.
+- Kontrollér, at billeder, fonte, stylesheets, scripts og andre assets indlæses fra korrekte stier.
+- Afprøv interne og eksterne links, herunder navigation på tværs af routes.
+- Undersøg browserens konsol og Network-panel for blandt andet JavaScript-fejl, fejlede requests og `404`-svar.
+- Kontrollér, at den publicerede løsning svarer til den seneste version på `main`.
 
 </details>
 
