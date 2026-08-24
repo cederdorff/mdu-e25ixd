@@ -6,7 +6,7 @@
 
 En teknisk audit er en systematisk undersøgelse af en eksisterende løsning. Formålet er at finde, dokumentere og prioritere forbedringer — ikke blot at samle personlige præferencer om kode.
 
-Brug skabelonen som støtte til din undersøgelse. Du forventes ikke at finde eller løse problemer under alle punkter. Udvælg de spørgsmål, der er relevante for løsningen, og prioritér de vigtigste fund.
+Brug de seks fokusområder til at undersøge løsningen. Du behøver ikke finde eller løse problemer inden for dem alle. Tilmeldingsflowet og den deployede løsning skal dog fungere ved casens afslutning. Derudover vælger og prioriterer du de fund, der har størst betydning.
 
 </div>
 
@@ -14,25 +14,19 @@ Brug skabelonen som støtte til din undersøgelse. Du forventes ikke at finde el
 
 ## 1. Afgræns løsningen
 
-- Hvad er løsningens formål og vigtigste brugerflows?
-- Hvilke dele af produktet og kodebasen undersøger du?
-- Hvilke dele ligger uden for din audit?
-- Kan løsningen køre lokalt og online, før du ændrer den?
+- Beskriv kort løsningens formål og vigtigste brugerflows.
+- Afgræns, hvilke dele du undersøger – og hvad du ikke undersøger.
+- Kontrollér, at løsningen fungerer lokalt og online, før du ændrer den.
 
 <hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
 ## 2. Etablér en baseline
 
-Dokumentér løsningens udgangspunkt med relevante former for evidens:
+Dokumentér udgangspunktet, før du ændrer løsningen. Vælg kun evidens, der hjælper med at vise et konkret problem, eksempelvis:
 
-- skærmbilleder eller korte skærmoptagelser
-- konkrete fil- og komponentnavne
-- kodeudsnit eller links til linjer i repositoryet
-- fejl fra konsol, netværk eller build
-- keyboard-flow og andre accessibility-observationer
-- en Lighthouse-test i Chrome under ensartede forhold
-- eksisterende deployment og Git-historik
-- relevante målinger, når de faktisk siger noget om problemet
+- skærmbilleder, skærmoptagelser eller keyboard-flow
+- kodeudsnit samt fejl fra konsol, Network-panel eller build
+- Lighthouse-målinger, deployment og relevant Git-historik
 
 <hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
@@ -43,15 +37,20 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>1. React-arkitektur og kodekvalitet</strong></summary>
 
-- Er mapper, filer, komponenter, funktioner og variabler navngivet tydeligt og konsekvent?
-- Har hver komponent ét forståeligt hovedansvar (*single responsibility*)?
-- Er store komponenter kandidater til opdeling?
-- Er større interfaces bygget ved at kombinere mindre komponenter med tydelige grænser (*component composition*)?
-- Er det ensrettede dataflow gennem props og state let at følge?
-- Har data én tydelig kilde (*single source of truth*)?
-- Er afledte værdier (*derived state*) beregnet frem for gemt som unødvendig state?
-- Er gentaget logik, eksempelvis formatering af datoer og tidspunkter, samlet i funktioner eller hooks, når det forbedrer koden?
-- Er dataadgang adskilt fra præsentationslogik, hvor det giver mening (*separation of concerns*)?
+**Struktur og navngivning**
+
+- Er projektets struktur og navngivning tydelig og konsekvent, så andre kan finde rundt og videreudvikle løsningen?
+
+**Komponenter og ansvar**
+
+- Har komponenterne forståelige hovedansvar, og bør store komponenter opdeles eller sammensættes af mindre dele (*single responsibility* og *component composition*)?
+- Er dataadgang og præsentationslogik adskilt, hvor det forbedrer overblikket (*separation of concerns*)?
+- Er gentaget logik samlet i funktioner eller hooks, når det gør koden lettere at vedligeholde?
+
+**State og dataflow**
+
+- Er dataflowet gennem props og state let at følge?
+- Har data én tydelig kilde, og beregnes afledte værdier frem for at blive gemt som unødvendig state (*single source of truth* og *derived state*)?
 
 </details>
 
@@ -64,17 +63,14 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 
 **Fejlhåndtering**
 
-- Håndteres forventede fejl med eksempelvis `try`, `catch` og `finally`?
-- Kontrolleres fejl fra fetch, Supabase eller andre API-kald eksplicit?
-- Logges tekniske detaljer uden at vise dem direkte til brugeren?
+- Håndteres forventede fejl fra fetch, Supabase og andre asynkrone handlinger eksplicit?
+- Holdes tekniske fejloplysninger adskilt fra de beskeder, brugeren ser?
 
 **UI-states og feedback**
 
 - Har asynkrone handlinger tydelige `loading`, `success`, `empty` og `error` states?
-- Får brugeren en forståelig besked og et relevant næste skridt?
-- Kan brugeren prøve igen efter en midlertidig fejl?
-- Forhindres gentagne submits eller handlinger, mens en request kører?
-- Valideres input både før og efter en request, hvor det er relevant?
+- Får brugeren forståelig feedback og et relevant næste skridt, eksempelvis mulighed for at prøve igen?
+- Valideres input, og forhindres gentagne handlinger, mens en request kører?
 
 </details>
 
@@ -83,21 +79,15 @@ Dokumentér løsningens udgangspunkt med relevante former for evidens:
 
 **UI-konsistens**
 
-- Er det tydeligt, hvilke styles der hører til hvilke komponenter?
-- Ligger komponentrelateret styling tæt på komponenten?
-- Er globale styles begrænset til eksempelvis reset, design tokens og reelt globale regler?
-- Er der gentagelser, konflikter mellem CSS-regler og problemer med specificity?
-- Er navngivning og stylingtilgang konsekvent?
+- Er komponenter, formularer, feedbackmønstre og interaktioner konsistente på tværs af løsningen?
 - Vises datoer, tidspunkter, eventtyper, venues og adresser i et ensartet format på tværs af sider og komponenter?
-- Fungerer layoutet på relevante skærmstørrelser?
+- Er styling organiseret tydeligt uden unødvendige gentagelser eller konflikter, og fungerer layoutet på relevante skærmstørrelser?
 
 **Accessibility**
 
-- **Semantik:** Bruges HTML-elementer og et heading-hierarki, der beskriver indholdet?
-- **ARIA:** Bruges ARIA kun, når HTML ikke er nok – og ikke som erstatning for semantik?
-- **Navne:** Kan labels, linktekster, knapper og fejlbeskeder forstås?
+- **Semantik:** Bruges semantisk HTML og et logisk heading-hierarki, og anvendes ARIA kun, når HTML ikke er tilstrækkeligt?
+- **Indhold og navne:** Er linktekster, knapper og fejlbeskeder forståelige, har billeder passende alt-tekst, og har formularer labels og feedback?
 - **Tastatur:** Kan alle centrale brugerflows nås og bruges med tastatur, og er fokus altid synligt og logisk?
-- **Indhold:** Har billeder passende alt-tekst, og har formularer labels, instruktioner og feedback?
 - **React SPA:** Opdateres `document.title`, og flyttes fokus til den nye overskrift, eksempelvis med `myRef.current?.focus()`, ved navigation?
 
 Målet er tydeligt ansvar, konsistens og en løsning, flere kan bruge. Se også [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c).
@@ -107,34 +97,34 @@ Målet er tydeligt ansvar, konsistens og en løsning, flere kan bruge. Se også 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>4. Datamodel, relationer og Supabase</strong></summary>
 
-- Er klient–server-grænsen tydelig mellem React, Supabase REST API og databasen?
-- Har tabeller, kolonner og datatyper tydelige og konsekvente navne?
-- Findes relevante primærnøgler og fremmednøgler?
-- Er relaterede data modelleret som relationer frem for duplikerede felter?
-- Hentes og vises relaterede data korrekt gennem Supabase REST API?
-- Understøtter datamodellen de vigtigste brugerflows?
-- Hentes kun de data, brugergrænsefladen har brug for?
-- Hvad hentes fra Supabase, hvornår hentes det, og hvor mange gange sker det i et brugerflow?
-- Bør søgning og filtrering ske lokalt i React eller gennem Supabase?
-- Er kald, der henter, opretter eller ændrer data, organiseret konsistent?
-- Kan ændringer af data verificeres både i Supabase og i brugergrænsefladen?
-- Er environment variables og API-nøgler håndteret korrekt?
+**Datamodel og relationer**
+
+- Har tabeller, kolonner, datatyper samt primær- og fremmednøgler tydelige og konsekvente navne?
+- Understøtter relationerne de vigtigste brugerflows uden unødvendigt duplikerede data?
+
+**Tilmeldingsflow i Case 1**
+
+- Gemmes en tilmelding i `registrations` og forbindes den korrekt med det valgte event?
+- Henter og viser den interne side tilmeldinger sammen med relevante eventdata?
+- Kan en ny tilmelding verificeres både i Supabase og i brugergrænsefladen?
+
+**Dataadgang i React**
+
+- Er grænsen mellem React, Supabase REST API og databasen tydelig, og er forespørgsler og mutationer organiseret konsistent?
+- Hentes kun de nødvendige data, uden unødvendige eller gentagne requests?
+- Er valget mellem lokal søgning og filtrering i React eller forespørgsler til Supabase begrundet?
 
 </details>
 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>5. Performance</strong></summary>
 
-- Hvad peger en Lighthouse-test i Chrome på, og kan fundene genfindes i løsningen?
-- Har billeder en passende størrelse, moderne filformat og tydelige dimensioner?
-- Bruges `loading="lazy"` til billeder længere nede på siden – uden at forsinke sidens vigtigste billede?
-- Indeholder projektet dependencies, kode eller assets, som ikke længere bruges?
-- Er der større side- eller route-komponenter, som med fordel kan indlæses efter behov med `React.lazy` og `Suspense`?
-- Hentes kun de data og assets, som siden har brug for?
-- Viser Network-panelet unødvendige eller gentagne requests, beregninger eller renderinger med mærkbar betydning?
-- Er gentagne requests i development også kontrolleret i en production build, så React Strict Mode ikke fejltolkes som et produktionsproblem?
-- Er før- og eftermålinger foretaget på deployede produktionsversioner under sammenlignelige forhold frem for at sammenligne localhost direkte med deployment?
-- Er målingerne gentaget, og er de vigtigste testforhold dokumenteret?
+- Peger Lighthouse og browserens udviklerværktøjer på konkrete problemer med betydning for brugeren?
+- Har billeder passende størrelse, format, dimensioner og loading-strategi?
+- Indeholder projektet kode, assets eller dependencies, som ikke bruges?
+- Er lazy loading af større routes eller komponenter relevant for den første indlæsning?
+- Viser Network-panelet unødvendige requests eller renderinger, og er fund fra development kontrolleret i en production build?
+- Er før- og eftermålinger foretaget flere gange på deployede produktionsversioner under sammenlignelige og dokumenterede forhold?
 
 En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til at finde konkrete problemer, som har betydning for brugeren.
 
@@ -143,18 +133,14 @@ En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>6. Git, deployment og teknisk kvalitet</strong></summary>
 
-- Er ændringer opdelt i forståelige feature branches og commits?
 - Gør feature branches og commits det tydeligt, hvad der er ændret og hvorfor?
-- Bygger projektet uden fejl?
-- Fungerer miljøvariabler i deployment-miljøet?
-- Stemmer projektets base URL overens med hostingens adresse og eventuelle undermapper?
-- Gennemføres deployment korrekt via GitHub Actions?
+- Gennemføres production build og deployment uden fejl?
+- Fungerer environment variables, routing og base URL på hostingens adresse og eventuelle undermapper?
+- Matcher den publicerede løsning den seneste version på `main`?
 - Fungerer centrale brugerflows i den publicerede løsning?
 - Kan centrale routes åbnes via direkte links og genindlæses uden fejl?
-- Indlæses billeder, fonte, stylesheets, scripts og andre assets fra korrekte stier?
-- Fungerer interne og eksterne links, herunder navigation på tværs af routes?
+- Indlæses assets og virker interne og eksterne links fra de korrekte stier?
 - Er konsollen og Network-panelet fri for relevante fejl, fejlede requests og `404`-svar?
-- Matcher den publicerede løsning den seneste version på `main`?
 
 </details>
 
@@ -162,13 +148,13 @@ En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til 
 
 ## 4. Registrér dine fund
 
-Brug én række pr. fund:
+Registrér kun konkrete fund, som kan få betydning for din prioritering. Brug én række pr. fund:
 
 <div style="overflow-x: auto;">
 
-| ID | Område | Fund og evidens | Konsekvens | Forslag | Effekt | Indsats | Verifikation |
-|---|---|---|---|---|---|---|---|
-| A-01 | Accessibility | E-mailfeltet i tilmeldingsformularen mangler en label | Feltets formål er ikke tydeligt for alle brugere | Tilføj synlig label og korrekt kobling | Høj | Lav | Gennemfør formularen med tastatur og skærmlæser |
+| Område | Fund og evidens | Konsekvens | Forslag | Prioritet | Verifikation |
+|---|---|---|---|---|---|
+| Accessibility | E-mailfeltet mangler en label | Feltets formål er ikke tydeligt for alle brugere | Tilføj en synlig label | Høj | Gennemfør formularen med tastatur og skærmlæser |
 
 </div>
 
@@ -176,12 +162,10 @@ Brug én række pr. fund:
 
 ## 5. Prioritér
 
-Prioritér ikke alene efter, hvad der er nemmest eller mest interessant at kode. Vurder:
+Prioritér fundene ud fra:
 
-- konsekvensen for brugeren
-- risikoen for fejl eller tab af data
-- betydningen for vedligeholdelse og videreudvikling
-- om fundet blokerer andre forbedringer
+- konsekvensen for brugeren og risikoen for fejl
+- betydningen for vedligeholdelse eller andre forbedringer
 - forventet effekt i forhold til indsatsen
 
 Vælg derefter et realistisk antal forbedringer, og beskriv kort, hvornår hver forbedring kan betragtes som færdig.
@@ -190,13 +174,12 @@ Vælg derefter et realistisk antal forbedringer, og beskriv kort, hvornår hver 
 
 ## 6. Dokumentér effekten
 
-For hver gennemført forbedring skal du kunne vise:
+For hver gennemført forbedring skal du kort dokumentere:
 
-1. Hvordan fungerede løsningen før?
-2. Hvilket problem dokumenterede din audit?
-3. Hvad ændrede du — og hvorfor?
-4. Hvordan har du verificeret forbedringen?
-5. Hvad er stadig ikke løst?
+1. **Problem:** Hvad viste din audit, og hvilken konsekvens havde det?
+2. **Løsning:** Hvad ændrede du – og hvorfor?
+3. **Verifikation:** Hvordan viste du, at forbedringen virker?
+4. **Værdi og refleksion:** Hvilken værdi skaber den, og hvad er eventuelt stadig ikke løst?
 
 Brug eksempelvis før/efter-skærmbilleder, kode-diffs, testresultater, et keyboard-flow, en forbedret fejltilstand eller en stabil deployment som evidens.
 
