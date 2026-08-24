@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RACE · Product Optimization · Case 1, fejlhåndtering og robuste UI-states · 25. august 2026."
+    />
+    <title>Case 1 · Fejlhåndtering og robuste UI-states · 25.08.2026</title>
+    <link rel="stylesheet" href="../vendor/reveal/reveal.css" />
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="po-slide po-title">
+          <span class="eyebrow">Product Optimization · Case 1</span>
+          <h1>Fra happy path til <span>robust UI</span></h1>
+          <p class="lead">Kick-off, fejlhåndtering og UI-states i Mellemrum</p>
+          <p class="date"><span>RACE</span><time datetime="2026-08-25">25. august 2026</time></p>
+          <aside class="notes">
+            [Sources] - Undervisningsagendaen for 25.08.2026 · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide po-agenda" id="agenda">
+          <span class="eyebrow">Agenda</span>
+          <h2>Dagen har to separate dele</h2>
+          <ol class="agenda-list">
+            <li>
+              <a href="#/javascript"
+                ><b>Udvalgte JavaScript-koncepter</b><small>Selvstændig opsamling, som fortsætter næste gang</small></a
+              >
+            </li>
+            <li>
+              <a href="#/case-1"><b>Kick-off af Case 1</b><small>Kunde, opgave, krav og dokumentation</small></a>
+            </li>
+            <li>
+              <a href="#/starter"><b>Få starter-løsningen til at køre</b><small>Lokal og deployet baseline</small></a>
+            </li>
+            <li>
+              <a href="#/fejlhaandtering"
+                ><b>Fejlhåndtering</b><small>Opdag, forstå og håndtér fejl eksplicit</small></a
+              >
+            </li>
+            <li>
+              <a href="#/ui-states"
+                ><b>Robuste UI-states</b><small>Vis, hvad der sker, og hvad brugeren kan gøre</small></a
+              >
+            </li>
+          </ol>
+          <aside class="notes">
+            Punkt 1 er en selvstændig opsamling fra JavaScript-forløbet og har ikke direkte faglig sammenhæng med Case
+            1. Derefter begynder dagens sammenhængende Case 1-forløb ved punkt 2. [Sources] - Undervisningsagendaen for
+            25.08.2026 · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide concept-return" id="javascript">
+          <span class="eyebrow">01 · JavaScript-koncepter</span>
+          <h2>Hvad skal vi genbesøge?</h2>
+          <div class="recap-layout">
+            <article>
+              <span>Mit forslag</span>
+              <h3>Destructuring</h3>
+              <p>Objects og arrays</p>
+              <h3>Array methods</h3>
+              <p><code>map()</code>, <code>filter()</code> og <code>find()</code></p>
+            </article>
+            <article class="class-voice">
+              <span>Men hvad tænker I?</span>
+              <h3>Hvad vil I gerne have genbesøgt?</h3>
+              <p>Vi vælger de koncepter, der giver mest mening for holdet i dag.</p>
+            </article>
+          </div>
+          <a
+            class="concept-index-button"
+            href="../product-optimization-02/#/konceptindeks"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Åbn JavaScript-konceptindekset →</a
+          >
+          <aside class="notes">
+            Spørg først holdet, hvad de vil have genbesøgt. Forslag til dagens opsamling: object destructuring, array
+            destructuring, map, filter og find. [Sources] - JavaScript for React-slides ·
+            ../product-optimization-02/#/konceptindeks [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide concept-next">
+          <span class="eyebrow">JavaScript-forløbet fortsætter</span>
+          <h2>Vi vender tilbage til koncepterne</h2>
+          <div class="next-concepts-layout">
+            <div>
+              <p class="lead">Næste gang vælger vi nye emner fra konceptindeksets side 2.</p>
+              <p class="muted">
+                Her finder vi blandt andet conditionals, event handlers, async/await, <code>fetch()</code> og
+                <code>try/catch</code>.
+              </p>
+            </div>
+            <div class="index-range">
+              <span>Indeks · 2/2</span><strong>22–40</strong><small>Vælg efter holdets spørgsmål og behov</small>
+            </div>
+          </div>
+          <a
+            class="concept-index-button secondary"
+            href="../product-optimization-02/#/9"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Se konceptindeksets side 2 →</a
+          >
+          <aside class="notes">
+            Dette slide afslutter den selvstændige JavaScript-opsamling. Fortæl, at I vender tilbage til konceptbanken
+            næste gang og vælger relevante emner fra side 2. Derefter skifter undervisningen spor til Case 1. [Sources]
+            - JavaScript for React-slides · ../product-optimization-02/#/9 [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mellemrum-hero" id="case-1">
+          <div class="mellemrum-hero-nav">
+            <div class="mellemrum-wordmark" aria-label="Mellemrum">mellemrum<span>.</span></div>
+            <span>Nu går vi i gang · Case 1</span>
+          </div>
+          <span class="eyebrow">Kultur i Aarhus · React-optimering</span>
+          <h2>Find plads til noget nyt.</h2>
+          <p class="lead">En lokal kultur- og eventplatform for koncerter, talks, workshops og fællesskaber i Aarhus.</p>
+          <div class="mellemrum-actions">
+            <a href="https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning" target="_blank" rel="noopener noreferrer">Åbn casebeskrivelsen ↗</a>
+            <a href="https://cederdorff.com/mellemrum/" target="_blank" rel="noopener noreferrer">Se starterløsningen ↗</a>
+          </div>
+          <aside class="notes">Præsenter først Mellemrum som kunde og produkt — før de tekniske problemer introduceres. [Sources] - Mellemrum starterprojekt · https://github.com/cederdorff/mellemrum - Hero-foto · https://images.unsplash.com/photo-1595146463222-19603449c6af [/Sources]</aside>
+        </section>
+
+        <section class="po-slide mellemrum-case mellemrum-light case-exam">
+          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
+          <span class="eyebrow">Case 1 som del af eksamen</span>
+          <h2>Nu går vi i gang med Case 1</h2>
+          <p class="case-exam-intro">Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grundlag for den individuelle skriftlige eksamen.</p>
+          <div class="exam-case-path" aria-label="Tre cases fører gennem portfolioarbejde til den skriftlige aflevering">
+            <article class="is-current"><span>Vi er her</span><small>Uge 35–36</small><strong>Case 1</strong><p>24.08–04.09 · React</p></article>
+            <article><small>Uge 37–38</small><strong>Case 2</strong><p>UX Audit</p></article>
+            <article><small>Uge 40–41</small><strong>Case 3</strong><p>Branding</p></article>
+            <article class="is-portfolio"><small>Uge 42</small><strong>Bearbejdning</strong><p>Én portfolioside pr. case</p></article>
+            <article class="is-exam"><small>16. oktober · Skriftlig aflevering</small><strong>Aflevering</strong><p>Dokument med tre links</p></article>
+          </div>
+          <div class="exam-delivery">
+            <p><b>Efter Case 3</b>I får en uge til at bearbejde materialet og opdatere jeres portfolio med én caseside for hver case.</p>
+            <p><b>Skriftlig aflevering</b>I afleverer ét dokument med links til de tre casesider. De tre sider må samlet fylde maks. fem normalsider.</p>
+          </div>
+          <aside class="notes">Case 1 er den første af tre mindre optimeringscases. De studerende skal samle materiale nu — ikke færdiggøre deres endelige portfolioside. Visualiseringen genbruger forløbsmodellen fra semesteroversigten og semesterstart. [Sources] - Case 1-casebeskrivelsen · lokalt kursusmateriale - semesteroverblik/semesteroversigt.html - slides/semesterstart/index.html [/Sources]</aside>
+        </section>
+
+        <section class="po-slide mellemrum-case mellemrum-light mellemrum-customer">
+          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
+          <div class="case-copy">
+            <span class="eyebrow">Kunden · Om Mellemrum</span>
+            <h2>Vi skaber mellemrum i kalenderen.</h2>
+            <p class="lead">Mellemrum samler udvalgte kulturoplevelser i Aarhus og gør det lettere at opdage noget, du ikke allerede kendte.</p>
+            <div class="about-flow" aria-label="Arrangører deler events, brugere opdager oplevelser og tilmelder sig">
+              <span class="flow-start"><small>01 · Arrangører</small>Deler events</span><b>→</b>
+              <span><small>02 · Brugere</small>Opdager oplevelser</span><b>→</b>
+              <span class="flow-finish"><small>03 · Brugere</small>Tilmelder sig</span>
+            </div>
+            <a class="about-link" href="https://cederdorff.com/mellemrum/om" target="_blank" rel="noopener noreferrer">Åbn Om Mellemrum ↗</a>
+          </div>
+          <div class="case-photo" role="img" aria-label="Aarhus byrum og arkitektur"></div>
+          <aside class="notes">Åbn eventuelt Om-siden og brug den til at præsentere kunden med løsningens egne ord. Produktets centrale relation er: arrangører deler events, og brugere finder og tilmelder sig oplevelser. [Sources] - /Users/race/Developer/mellemrum/src/pages/AboutPage.jsx - /Users/race/Developer/mellemrum/src/styles.css - https://cederdorff.com/mellemrum/om - Foto · https://images.unsplash.com/photo-1553376482-e96b68bd1e11 [/Sources]</aside>
+        </section>
+
+        <section class="po-slide mellemrum-case mellemrum-dark case-challenge">
+          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
+          <span class="eyebrow">Kunden og udfordringen</span>
+          <h2>Prototypen viser idéen — udfordringerne ligger under overfladen</h2>
+          <div class="challenge-cutaway">
+            <article class="challenge-surface">
+              <small>På overfladen</small>
+              <strong>Grundfunktionaliteten findes.</strong>
+              <p>Bygget hurtigt for at afprøve idéen.</p>
+              <span>Tilmeldingsflowet er kun påbegyndt</span>
+              <div class="challenge-wordmark">mellemrum<b>.</b></div>
+            </article>
+            <div class="challenge-layers">
+              <p class="challenge-layers-label">Når vi kigger under overfladen</p>
+              <article><span>01</span><div><strong>Brugeroplevelsen</strong><p>Inkonsistent UI · svage UI-states · performance</p></div></article>
+              <article><span>02</span><div><strong>React-koden</strong><p>Svær at forstå · vedligeholde · videreudvikle</p></div></article>
+              <article><span>03</span><div><strong>Datamodellen</strong><p>Gentagelser · manglende relationer · ufuldstændigt overblik</p></div></article>
+            </div>
+          </div>
+          <div class="challenge-bottom">
+            <p><b>Teknisk udgangspunkt</b>Supabase REST API</p>
+            <p><b>Næste skridt</b>Undersøg og prioritér</p>
+          </div>
+          <aside class="notes">Grundfunktionaliteten findes, men tilmeldingsflowet er kun påbegyndt. En tilmelding skal registreres og forbindes med det valgte event, og den interne side skal vise tilmeldingen sammen med relaterede eventdata. Kunden nævner også performance. Udfordringerne undersøges systematisk i auditten — de er ikke en facitliste over løsninger. [Sources] - Case 1-casebeskrivelsen · lokalt kursusmateriale [/Sources]</aside>
+        </section>
+
+        <section class="po-slide mellemrum-case mellemrum-dark case-assignment">
+          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
+          <span class="eyebrow">Din opgave</span>
+          <h2>Fra prototype til produktionsklar React-løsning</h2>
+          <div class="assignment-transformation">
+            <div class="assignment-start">
+              <small>Du overtager</small>
+              <strong>Den eksisterende<br>React-prototype</strong>
+              <span>mellemrum<b>.</b></span>
+            </div>
+            <div class="assignment-arrow" aria-hidden="true">→</div>
+            <div class="assignment-result">
+              <small>Målet er en løsning, der er</small>
+              <strong>Robust</strong>
+              <strong>Tilgængelig</strong>
+              <strong>Vedligeholdelsesvenlig</strong>
+              <strong>Klar til deployment</strong>
+            </div>
+          </div>
+          <div class="assignment-actions" aria-label="Undersøg, prioritér, forbedr og verificér">
+            <span>Undersøg</span><b>→</b><span>Prioritér</span><b>→</b><span>Forbedr</span><b>→</b><span>Verificér</span>
+          </div>
+          <p class="assignment-principle"><b>React og kodeforbedringer er i centrum.</b> Vælg betydningsfulde problemer — ikke flest mulige ændringer.</p>
+          <aside class="notes">Arbejdet er individuelt. Målet er ikke at ændre mest muligt, men at finde betydningsfulde problemer, prioritere dem fagligt og verificere værdien af forbedringerne. Det primære fokus er React og kodeforbedringer. Visuelle ændringer er relevante, når de styrker eksempelvis konsistens, accessibility, feedback eller robuste UI-states. [Sources] - Case 1-casebeskrivelsen · lokalt kursusmateriale [/Sources]</aside>
+        </section>
+
+        <section class="po-slide mellemrum-case mellemrum-dark case-focus">
+          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
+          <span class="eyebrow">Faglige fokusområder</span>
+          <h2>Seks perspektiver på den samme løsning</h2>
+          <div class="focus-frame-intro">
+            <strong>Ikke en rækkefølge. Ikke en tjekliste.</strong>
+            <span>Brug alle områder som faglige linser, når du undersøger og prioriterer løsningen.</span>
+          </div>
+          <div class="focus-map">
+            <article><span>01</span><strong>React-arkitektur</strong><small>Kodekvalitet</small></article>
+            <article><span>02</span><strong>Robusthed</strong><small>Fejlhåndtering og UI-states</small></article>
+            <article><span>03</span><strong>UI-konsistens</strong><small>Accessibility</small></article>
+            <article><span>04</span><strong>Datamodel og relationer</strong><small>Supabase</small></article>
+            <article><span>05</span><strong>Performance</strong><small>Mål og verificér i praksis</small></article>
+            <article><span>06</span><strong>Deployment</strong><small>Kontrollér den publicerede løsning</small></article>
+          </div>
+          <div class="focus-notes">
+            <p><b>Ramme for undersøgelsen</b>Forhold dig til alle seks områder, men implementér de forbedringer, der har størst betydning.</p>
+            <p><b>Konkrete krav til resultatet</b>Tilmeldingsflowet og den deployede løsning skal fungere.</p>
+          </div>
+          <aside class="notes">De seks områder er ligeværdige perspektiver på den samme løsning — ikke trin i en proces og ikke en tjekliste, hvor alt skal implementeres. De studerende skal forholde sig til alle områder og prioritere relevante forbedringer. Tilmeldingsflowet og en fungerende deployment er konkrete krav til resultatet, men ikke vigtigere fagområder end de øvrige. [Sources] - Case 1-casebeskrivelsen · lokalt kursusmateriale [/Sources]</aside>
+        </section>
+
+        <section class="po-slide mellemrum-case mellemrum-light case-task">
+          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
+          <span class="eyebrow">Sådan arbejder du</span>
+          <h2>Undersøg først. Forbedr derefter.</h2>
+          <div class="case-process">
+            <article><span>01</span><strong>Undersøg og prioritér</strong><small>Dokumentér fund, og vælg det vigtigste</small></article>
+            <article><span>02</span><strong>Implementér</strong><small>Arbejd med én sammenhængende forbedring</small></article>
+            <article><span>03</span><strong>Verificér</strong><small>Vis, at forbedringen virker</small></article>
+            <article><span>04</span><strong>Saml og deploy</strong><small>Kontrollér den publicerede løsning</small></article>
+          </div>
+          <div class="case-calendar" aria-label="Arbejdsprocessen fordelt over undervisningsdagene og resten af Case 1">
+            <article class="is-today"><strong>I dag · 25.08</strong><span>Undersøg</span><p>Sæt projektet op lokalt og online. Kontrollér centrale flows, og gem baseline.</p></article>
+            <article class="is-tomorrow"><strong>I morgen · 26.08</strong><span>Undersøg + prioritér</span><p>Arbejd systematisk med auditten, dokumentér fund, og vælg den første forbedring.</p></article>
+            <article class="is-next"><strong>Resten af Case 1</strong><span>Implementér + verificér</span><p>Gennemfør prioriterede forbedringer i små skridt, og kontrollér den deployede løsning.</p></article>
+          </div>
+          <p class="case-principle">Arbejd med én sammenhængende forbedring ad gangen i en <b>navngivet feature branch</b>.</p>
+          <aside class="notes">I dag etablerer de studerende den uændrede løsning som lokal og deployet baseline og begynder så småt at undersøge de centrale brugerflows. Den systematiske tekniske audit begynder i morgen, hvor fund dokumenteres og prioriteres, og den første afgrænsede forbedring kan påbegyndes. Derefter fortsætter forbedring og verificering gennem resten af caseperioden. Arbejdet er individuelt. [Sources] - Undervisningsagendaen 25.08.2026 · lokalt kursusmateriale - Undervisningsagendaen 26.08.2026 · lokalt kursusmateriale - Case 1-casebeskrivelsen · lokalt kursusmateriale [/Sources]</aside>
+        </section>
+
+        <section class="po-slide mellemrum-case mellemrum-brief">
+          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
+          <span class="eyebrow">Det skal du have klar efter Case 1</span>
+          <h2>Når Case 1 slutter, skal du have:</h2>
+          <div class="ready-list">
+            <span><b>01</b>Link til dit opdaterede GitHub-repository</span>
+            <span><b>02</b>Link til den deployede løsning</span>
+            <span><b>03</b>Feature branches og forståelige commits</span>
+            <span><b>04</b>Teknisk audit og prioriteret liste over forbedringer</span>
+            <span><b>05</b>Kort beskrivelse af datamodel og relationer</span>
+            <span><b>06</b>Før- og efterevidens for udvalgte forbedringer</span>
+            <span><b>07</b>Refleksion over valg, fravalg og resterende udfordringer</span>
+            <span><b>08</b>Noter om produktets forretningspotentiale</span>
+          </div>
+          <div class="ready-explanation">
+            <strong>For hver udvalgt forbedring</strong>
+            <span>Problem</span><b>→</b><span>Konsekvens</span><b>→</b><span>Løsning</span><b>→</b><span>Verifikation</span><b>→</b><span>Værdi</span>
+          </div>
+          <div class="ready-footer">
+            <p><b>Ikke den endelige caseside.</b> Saml materialet i README eller et arbejdsdokument.</p>
+            <a href="https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning" target="_blank" rel="noopener noreferrer">Åbn hele casebeskrivelsen →</a>
+          </div>
+          <aside class="notes">Gennemgå punkterne som konkret råmateriale, de studerende skal gemme undervejs. For hver udvalgt forbedring skal de kunne forklare problemet, konsekvensen, løsningen, verifikationen og den mulige værdi. Materialet kan samles i repositoryets README eller et særskilt arbejdsdokument. Det er ikke den endelige caseside eller eksamensaflevering. [Sources] - Case 1-casebeskrivelsen · https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning [/Sources]</aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide mellemrum-case baseline-hero" id="starter">
+          <div class="mellemrum-hero-nav">
+            <div class="mellemrum-wordmark" aria-label="Mellemrum">mellemrum<span>.</span></div>
+            <span>Case 1 · fælles udgangspunkt</span>
+          </div>
+          <span class="eyebrow">03 · Fælles baseline</span>
+          <h2>Få Mellemrum<br>op at køre</h2>
+          <p class="kicker">Før vi optimerer, skal vi kende og kunne genskabe det udgangspunkt, vi arbejder fra.</p>
+          <a class="baseline-repo-link" href="https://github.com/cederdorff/mellemrum" target="_blank" rel="noopener noreferrer">Åbn repository og README ↗</a>
+          <aside class="notes">[Sources] - Mellemrum README · https://github.com/cederdorff/mellemrum [/Sources]</aside>
+        </section>
+
+        <section class="po-slide mellemrum-case mellemrum-light setup-overview">
+          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
+          <span class="eyebrow">Opsætning · Overblik</span>
+          <div class="setup-heading">
+            <h2>Følg README fra repo til deployment</h2>
+            <a href="https://github.com/cederdorff/mellemrum" target="_blank" rel="noopener noreferrer"><span>Repository + guide</span>github.com/cederdorff/mellemrum ↗</a>
+          </div>
+          <div class="setup-path">
+            <article><span>01</span><b>Hent</b><small>Clone repoet<br><code>npm install</code></small></article>
+            <article><span>02</span><b>Forbind</b><small>Supabase-data<br>og lokal <code>.env</code></small></article>
+            <article><span>03</span><b>Kør lokalt</b><small><code>npm run dev</code><br>kontrollér flows</small></article>
+            <article><span>04</span><b>Deploy</b><small><code>base</code> + GitHub<br>environment variables</small></article>
+            <article><span>05</span><b>Kontrollér igen</b><small>Samme flows<br>direkte links + reload</small></article>
+          </div>
+          <div class="setup-deploy-note">
+            <strong>Husk før push</strong>
+            <span><code>base</code> matcher repoets navn</span>
+            <span>Environment: <code>github-pages-deployment</code></span>
+            <span><code>npm run lint</code> + <code>npm run build</code></span>
+          </div>
+          <aside class="notes">
+            Åbn README og følg den konkrete opsætningsguide. Deployment er integreret i baseline-arbejdet og ikke et særskilt agendapunkt. Før push skal base i package.json svare til repositoryets navn. Opret GitHub Environment github-pages-deployment, tilføj de to VITE-variabler, og kontrollér både build og den deployede løsning. [Sources] - Mellemrum README · https://github.com/cederdorff/mellemrum [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mellemrum-case mellemrum-dark supabase-setup">
+          <div class="mellemrum-slide-brand" aria-label="Mellemrum">mellemrum<span>.</span></div>
+          <span class="eyebrow">Supabase + environment variables</span>
+          <h2>Samme forbindelse — to miljøer</h2>
+          <div class="supabase-start">
+            <article><span>01</span><div><strong>Kør startdata</strong><p>Kopiér <code>supabase/starter.sql</code> til SQL Editor, og kør filen.</p></div></article>
+            <article><span>02</span><div><strong>Kontrollér resultatet</strong><p><code>events</code>: 9 rækker · <code>registrations</code>: 2 rækker.</p></div></article>
+          </div>
+          <div class="environment-compare">
+            <article>
+              <small>Lokalt på din computer</small>
+              <strong><code>.env</code></strong>
+              <p><code>VITE_SUPABASE_URL</code><br><code>VITE_SUPABASE_APIKEY</code></p>
+              <span>Filen er gitignored og pushes ikke.</span>
+            </article>
+            <div class="environment-arrow" aria-hidden="true">→</div>
+            <article class="is-github">
+              <small>På GitHub til deployment</small>
+              <strong><code>github-pages-deployment</code></strong>
+              <p>Tilføj de samme to navne som<br><b>Environment variables</b>.</p>
+              <span>Ellers kan det deployede build ikke hente data.</span>
+            </article>
+          </div>
+          <p class="supabase-key-note"><b>Brug projektets publishable key</b> — aldrig en secret key.</p>
+          <aside class="notes">Supabase skal sættes op, før appen startes. Hvis Supabase advarer om manglende RLS i denne udleverede starter, følges README og Run without RLS vælges. Vis forskellen på den lokale .env-fil og GitHub Environment variables: værdierne er de samme, men de skal konfigureres begge steder. [Sources] - Mellemrum README · https://github.com/cederdorff/mellemrum [/Sources]</aside>
+        </section>
+
+        <section class="po-slide mode-work">
+          <span class="eyebrow">Baseline-check</span>
+          <h2>Kontrollér det samme lokalt og online</h2>
+          <div class="check-grid">
+            <p>□ Forsiden viser events</p>
+            <p>□ Søgning og filter virker</p>
+            <p>□ Eventdetaljer kan åbnes</p>
+            <p>□ Tilmeldingssiden kan åbnes</p>
+            <p>□ Assets indlæses</p>
+            <p>□ Direkte links virker</p>
+          </div>
+          <p class="callout">Gem URL og screenshots. <strong>Auditten starter i morgen.</strong></p>
+          <aside class="notes">
+            [Sources] - Undervisningsagendaen for 25.08.2026 · lokalt kursusmateriale - Case 1-casebeskrivelsen · lokalt
+            kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide chapter-error" id="fejlhaandtering">
+          <span class="chapter-index">04</span><span class="eyebrow">Fagligt fokus</span>
+          <h2>Fejlhåndtering</h2>
+          <p class="kicker">Gør forventelige fejl til en kontrolleret del af løsningen.</p>
+          <aside class="notes">
+            [Sources] - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">Hvad · hvorfor · hvordan</span>
+          <h2>Fejlhåndtering er en strategi</h2>
+          <div class="why-grid">
+            <article>
+              <span>Hvad?</span>
+              <p>Opdag og håndtér fejl, vi ved kan opstå.</p>
+            </article>
+            <article>
+              <span>Hvorfor?</span>
+              <p>Undgå tavse fejl og fastlåste brugere.</p>
+            </article>
+            <article>
+              <span>Hvordan?</span>
+              <p>Validér responsen, fang fejlen og vælg næste state.</p>
+            </article>
+          </div>
+          <p class="definition">
+            <strong>En fejl er ikke kun et teknisk problem.</strong> Den ændrer, hvad brugeren kan se og gøre.
+          </p>
+          <aside class="notes">
+            [Sources] - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">Starterkoden</span>
+          <h2>Hvad sker der, hvis requestet fejler?</h2>
+          <div class="code-layout">
+            <pre
+              class="po-code"
+            ><code class="language-javascript" data-line-numbers="1-7|2-3|4|5">async function getEvents() {
+  const response = await fetch(
+    SUPABASE_URL + "/events?order=date.asc", { headers }
+  );
+  const data = await response.json();
+  setEvents(data);
+}</code></pre>
+            <div class="question-stack">
+              <p>Hvem opdager en <b>404</b>?</p>
+              <p>Hvem opdager ugyldig <b>JSON</b>?</p>
+              <p>Hvad ser <b>brugeren</b>?</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Lad de studerende finde de manglende håndteringer. [Sources] - Mellemrum starterprojekt ·
+            src/pages/HomePage.jsx [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">En vigtig fetch-detalje</span>
+          <h2><code>fetch()</code> afviser ikke en 404</h2>
+          <div class="fetch-rule">
+            <article>
+              <span>Netværksfejl</span>
+              <h3>Promise rejects</h3>
+              <p><code>catch</code> kan fange fejlen.</p>
+            </article>
+            <article>
+              <span>HTTP 404 / 500</span>
+              <h3>Promise resolves</h3>
+              <p>Kontrollér selv <code>response.ok</code>.</p>
+            </article>
+          </div>
+          <pre class="po-code code-short"><code class="language-javascript">if (!response.ok) {
+  throw new Error("Kunne ikke hente events: " + response.status);
+}</code></pre>
+          <aside class="notes">
+            Dette er den centrale fetch-misforståelse. [Sources] - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">Hvordan?</span>
+          <h2>Gør alle udfald eksplicitte</h2>
+          <pre
+            class="po-code code-main"
+          ><code class="language-javascript" data-line-numbers="1-15|2|4-6|8-9|10|11-14">async function getEvents() {
+  setStatus("loading");
+  try {
+    const response = await fetch(url, { headers });
+    if (!response.ok) throw new Error("HTTP " + response.status);
+
+    const data = await response.json();
+    setEvents(data);
+    setStatus(data.length === 0 ? "empty" : "success");
+  } catch (error) {
+    console.error("Kunne ikke hente events", error);
+    setStatus("error");
+  }
+}</code></pre>
+          <aside class="notes">
+            Status bruges nu, men renderingen kommer i næste kapitel. [Sources] - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - React: useState ·
+            https://react.dev/reference/react/useState [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">Hvad kører hvornår?</span>
+          <h2>Requestets forløb</h2>
+          <div class="timeline">
+            <article>
+              <b>1</b><span><code>getEvents()</code> starter</span><small>Status → loading</small>
+            </article>
+            <article>
+              <b>2</b><span><code>await fetch()</code></span
+              ><small>Funktionen venter; browseren arbejder videre</small>
+            </article>
+            <article>
+              <b>3</b><span>Responsen kommer</span><small><code>response.ok</code> kontrolleres</small>
+            </article>
+            <article><b>4</b><span>Én gren vælges</span><small>success, empty eller catch → error</small></article>
+            <article><b>5</b><span>State ændres</span><small>React renderer UI’et igen</small></article>
+          </div>
+          <aside class="notes">
+            Await pauser den async funktion, ikke hele browseren. [Sources] - MDN: async function ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function - React: State
+            as a Snapshot · https://react.dev/learn/state-as-a-snapshot [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">To målgrupper</span>
+          <h2>Teknisk detalje ≠ brugerbesked</h2>
+          <div class="message-split">
+            <article>
+              <span>Til udvikleren</span>
+              <pre class="mini-code"><code>GET /events → 401 · Invalid API key</code></pre>
+              <p>Statuskode og kontekst til fejlsøgning.</p>
+            </article>
+            <article>
+              <span>Til brugeren</span>
+              <div class="ui-message">
+                <b>Vi kunne ikke hente events</b><small>Prøv igen om et øjeblik.</small><button>Prøv igen</button>
+              </div>
+              <p>Klar besked og et næste skridt.</p>
+            </article>
+          </div>
+          <aside class="notes">
+            Vis ikke API-nøgler, stack traces eller interne detaljer i UI’et. [Sources] - Case 1-casebeskrivelsen ·
+            lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide chapter-state" id="ui-states">
+          <span class="chapter-index">05</span><span class="eyebrow">Fagligt fokus</span>
+          <h2>Robuste UI-states</h2>
+          <p class="kicker">UI’et skal give mening under hele processen — ikke kun efter succes.</p>
+          <aside class="notes">
+            [Sources] - React: Reacting to Input with State · https://react.dev/learn/reacting-to-input-with-state
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state">
+          <span class="eyebrow">Hvad · hvorfor · hvordan</span>
+          <h2>En UI-state beskriver situationen nu</h2>
+          <div class="why-grid">
+            <article>
+              <span>Hvad?</span>
+              <p>En tydelig visning af systemets aktuelle tilstand.</p>
+            </article>
+            <article>
+              <span>Hvorfor?</span>
+              <p>Brugeren forstår, om systemet arbejder eller kræver handling.</p>
+            </article>
+            <article>
+              <span>Hvordan?</span>
+              <p>Modellér states, og render det rigtige UI for hver state.</p>
+            </article>
+          </div>
+          <p class="definition">
+            <strong>Robust betyder ikke fejlfri.</strong> Det betyder forståelig og brugbar — også når noget går galt.
+          </p>
+          <aside class="notes">
+            [Sources] - React: Reacting to Input with State · https://react.dev/learn/reacting-to-input-with-state -
+            React: Conditional Rendering · https://react.dev/learn/conditional-rendering [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state">
+          <span class="eyebrow">Fire grundtilstande</span>
+          <h2>Ét dataflow — fire oplevelser</h2>
+          <div class="state-grid">
+            <article class="loading">
+              <span>Loading</span>
+              <h3>Vent</h3>
+              <p>Requestet er i gang. Vis fremdrift.</p>
+            </article>
+            <article class="success">
+              <span>Success</span>
+              <h3>Brug</h3>
+              <p>Data er klar. Vis indholdet.</p>
+            </article>
+            <article class="empty">
+              <span>Empty</span>
+              <h3>Forstå</h3>
+              <p>Requestet lykkedes, men data er tom.</p>
+            </article>
+            <article class="error">
+              <span>Error</span>
+              <h3>Kom videre</h3>
+              <p>Noget fejlede. Forklar og hjælp.</p>
+            </article>
+          </div>
+          <aside class="notes">
+            Empty er ikke en fejl: serveren kan have svaret korrekt med et tomt array. [Sources] - React: Reacting to
+            Input with State · https://react.dev/learn/reacting-to-input-with-state [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state">
+          <span class="eyebrow">Modellér tilstandene</span>
+          <h2>Én status begrænser konflikter</h2>
+          <div class="status-compare">
+            <article>
+              <span>Flere booleans</span>
+              <pre class="po-code"><code class="language-javascript">isLoading = true
+hasError = true
+isEmpty = true</code></pre>
+              <p>Kan UI’et være alle tre?</p>
+            </article>
+            <article class="preferred">
+              <span>Én status</span>
+              <pre class="po-code"><code class="language-javascript">const [status, setStatus] =
+  useState("loading");</code></pre>
+              <p>Kun én aktiv tilstand ad gangen.</p>
+            </article>
+          </div>
+          <aside class="notes">
+            En status-string er en enkel model til casen; komplekse flows kan kræve mere. [Sources] - React: Choosing
+            the State Structure · https://react.dev/learn/choosing-the-state-structure [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state">
+          <span class="eyebrow">Render den aktuelle state</span>
+          <h2>State skal kunne ses i UI’et</h2>
+          <pre
+            class="po-code code-main"
+          ><code class="language-javascript jsx" data-line-numbers="1-11|1-3|4-6|7-9|11">if (status === "loading") {
+  return &lt;p&gt;Henter events…&lt;/p&gt;;
+}
+if (status === "error") {
+  return &lt;ErrorMessage onRetry={getEvents} /&gt;;
+}
+if (status === "empty") {
+  return &lt;p&gt;Der er ingen kommende events endnu.&lt;/p&gt;;
+}
+
+return &lt;EventGrid events={events} /&gt;;</code></pre>
+          <aside class="notes">
+            Early returns holder hver state adskilt og let at læse. [Sources] - React: Conditional Rendering ·
+            https://react.dev/learn/conditional-rendering [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state">
+          <span class="eyebrow">Sammenhængen</span>
+          <h2>Dataflowet styrer oplevelsen</h2>
+          <div class="request-map">
+            <article><span>Request starter</span><b>loading</b><small>“Henter events…”</small></article>
+            <article><span>Data.length &gt; 0</span><b>success</b><small>Vis eventkort</small></article>
+            <article><span>Data.length === 0</span><b>empty</b><small>Forklar det tomme resultat</small></article>
+            <article><span>Request fejler</span><b>error</b><small>Forklar + “Prøv igen”</small></article>
+          </div>
+          <p class="callout">Fejlhåndtering vælger udfaldet. <strong>UI-states kommunikerer udfaldet.</strong></p>
+          <aside class="notes">
+            Det er koblingen mellem punkt 4 og 5. [Sources] - React: Reacting to Input with State ·
+            https://react.dev/learn/reacting-to-input-with-state - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mode-work accent-state">
+          <span class="eyebrow">Afprøv robustheden</span>
+          <h2>Test mere end success</h2>
+          <div class="test-grid">
+            <article>
+              <b>Langsomt netværk</b>
+              <p>Kan loading nå at ses?</p>
+            </article>
+            <article>
+              <b>Forkert endpoint</b>
+              <p>Vises error og retry?</p>
+            </article>
+            <article>
+              <b>Tomt resultat</b>
+              <p>Adskilles empty fra error?</p>
+            </article>
+            <article>
+              <b>Normal respons</b>
+              <p>Forsvinder feedback korrekt?</p>
+            </article>
+          </div>
+          <p class="muted">Brug DevTools → Network. Gentag relevante tests på den deployede løsning.</p>
+          <aside class="notes">
+            [Sources] - Chrome DevTools: Network features reference ·
+            https://developer.chrome.com/docs/devtools/network/reference/ - Case 1-casebeskrivelsen · lokalt
+            kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide">
+          <span class="eyebrow">Dagens model</span>
+          <h2>Hvad skal køre hvornår — og hvorfor?</h2>
+          <div class="final-model">
+            <article>
+              <span>1</span>
+              <h3>Start</h3>
+              <p>Sæt loading, så ventetiden er synlig.</p>
+            </article>
+            <article>
+              <span>2</span>
+              <h3>Request</h3>
+              <p>Hent data, og kontrollér responsen.</p>
+            </article>
+            <article>
+              <span>3</span>
+              <h3>Udfald</h3>
+              <p>Vælg success, empty eller error.</p>
+            </article>
+            <article>
+              <span>4</span>
+              <h3>Render</h3>
+              <p>Vis besked og næste skridt.</p>
+            </article>
+          </div>
+          <aside class="notes">
+            [Sources] - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - React: Conditional Rendering ·
+            https://react.dev/learn/conditional-rendering [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide po-closing">
+          <span class="eyebrow">Næste gang</span>
+          <h2>Fra baseline til systematisk audit</h2>
+          <p class="lead">
+            I morgen undersøger og prioriterer vi løsningen — med arkitektur, styling og accessibility som fagligt
+            fokus.
+          </p>
+          <div class="closing-links">
+            <a href="https://github.com/cederdorff/mellemrum" target="_blank" rel="noreferrer">Starterprojekt ↗</a
+            ><a href="#/agenda">Tilbage til agenda</a>
+          </div>
+          <aside class="notes">
+            [Sources] - Undervisningsagendaen for 26.08.2026 · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="../shared/deck.js"></script>
+  </body>
+</html>

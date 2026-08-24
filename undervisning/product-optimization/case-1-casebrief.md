@@ -20,7 +20,7 @@ Case 1 er den første af tre mindre optimeringscases, som tilsammen danner grund
 
 Efter den tredje case får du en uge til at bearbejde materialet og opdatere dit eksisterende portfolio website med én caseside for hver case.
 
-Til eksamen afleverer du et dokument med links til de tre casesider. Det samlede skriftlige materiale på de tre sider må maksimalt fylde fem normalsider.
+Den skriftlige aflevering er et dokument med links til de tre casesider. Det samlede skriftlige materiale på de tre sider må maksimalt fylde fem normalsider.
 
 </div>
 
@@ -225,7 +225,7 @@ Når casen slutter, skal du have dokumentation og råmateriale, som senere kan b
 - link til det opdaterede GitHub-repository
 - link til den deployede løsning
 - historik med feature branches og forståelige commits
-- din tekniske audit og prioriterede optimeringsplan
+- din tekniske audit og prioriterede liste over forbedringer
 - en kort beskrivelse af den forbedrede datamodel og dens relationer
 - før- og efterevidens for udvalgte forbedringer
 - en kort refleksion over væsentlige valg, fravalg og resterende udfordringer

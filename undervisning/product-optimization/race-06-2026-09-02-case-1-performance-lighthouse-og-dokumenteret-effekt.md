@@ -11,7 +11,7 @@ Vi arbejder med billeder og assets, requests og Supabase-data, React-renderinger
 ## Forberedelse
 
 - Sørg for, at din løsning fungerer lokalt, og at din seneste stabile version er deployet.
-- Medbring din tekniske audit og din prioriterede optimeringsplan.
+- Medbring din tekniske audit og din prioriterede liste over forbedringer.
 - Du behøver ikke have gennemført en Lighthouse-test på forhånd.
 
 <hr style="margin: 2rem 0;">

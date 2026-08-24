@@ -53,7 +53,7 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 <li>Gennemfør de vigtigste brugerflows, og undersøg relevante filer og komponenter.</li>
 <li>Brug audit-skabelonen til at dokumentere fund og evidens.</li>
 <li>Beskriv konsekvensen for brugeren, produktet eller den videre udvikling.</li>
-<li>Lav en realistisk, prioriteret optimeringsplan.</li>
+<li>Lav en realistisk, prioriteret liste over forbedringer.</li>
 </ul>
 </details>
 

@@ -71,7 +71,7 @@ Vi begynder med udvalgte JavaScript-koncepter. Derefter introducerer vi Case 1 o
 ## Materialer
 
 - **Slides:**
-  - Vil blive tilgængelige her
+  - [Case 1 · Kick-off, fejlhåndtering og robuste UI-states](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-03/)
 - **JavaScript-reference:**
   - [JavaScript for React](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/#/konceptindeks)
 - **Audit:**
