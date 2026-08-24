@@ -27,6 +27,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run slides:build
+      - name: Copy semester overview
+        run: |
+          mkdir -p dist/semesteroverblik
+          cp semesteroverblik/semesteroversigt.html dist/semesteroverblik/
       - name: Copy Markdown files
         run: |
           while IFS= read -r -d '' file; do
