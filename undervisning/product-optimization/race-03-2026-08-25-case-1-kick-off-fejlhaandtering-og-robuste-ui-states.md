@@ -32,7 +32,7 @@ Vi begynder med udvalgte JavaScript-koncepter. Derefter introducerer vi Case 1 o
 <details style="margin-left: 1.5rem;">
 <summary><strong>2. Kick-off af Case 1</strong></summary>
 <ul>
-<li>Fælles gennemgang af kunden, opgaven og de faglige fokusområder.</li>
+<li>Fælles gennemgang af kunden, målgrupperne, opgaven og de faglige fokusområder.</li>
 <li>Case 1 som den første af tre cases i den individuelle skriftlige eksamen.</li>
 <li>Afklaring af spørgsmål til forløb, arbejdsform og dokumentation.</li>
 </ul>

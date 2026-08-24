@@ -14,7 +14,7 @@ Brug trin 1–5 til at undersøge løsningen og planlægge forbedringer, før du
 
 ## 1. Afgræns løsningen
 
-- Beskriv kort løsningens formål og vigtigste brugerflows.
+- Beskriv kort løsningens formål, primære og sekundære målgrupper samt vigtigste brugerflows.
 - Afgræns, hvilke dele du undersøger – og hvad du ikke undersøger.
 - Kontrollér, at løsningen fungerer lokalt og online, før du ændrer den.
 

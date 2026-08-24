@@ -24,7 +24,7 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 <summary><strong>1. Introduktion til teknisk audit</strong></summary>
 <ul>
 <li>Hvad er en teknisk audit, og hvordan adskiller den sig fra personlige kodepræferencer?</li>
-<li>Afgræns løsningens vigtigste brugerflows og tekniske områder.</li>
+<li>Afgræns løsningens primære og sekundære målgrupper, vigtigste brugerflows og tekniske områder.</li>
 <li>Dokumentér udgangspunktet, før du ændrer koden.</li>
 <li>Registrér konkrete fund, beskriv deres betydning, og prioritér dem efter effekt og indsats.</li>
 </ul>

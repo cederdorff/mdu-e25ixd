@@ -30,6 +30,8 @@ Den skriftlige aflevering er et dokument med links til de tre casesider. Det sam
 
 **Mellemrum** er en lokal kultur- og eventplatform, hvor brugerne kan finde og tilmelde sig koncerter, talks, workshops og andre arrangementer.
 
+Mellemrums primære målgruppe er personer, der ønsker en enkel vej til at opdage og tilmelde sig lokale kulturoplevelser i Aarhus. Arrangører er en sekundær målgruppe, som bruger platformen til at dele events og få overblik over tilmeldinger.
+
 Virksomheden har fået udviklet en React-prototype. Den grundlæggende funktionalitet findes, men løsningen blev bygget hurtigt for at afprøve idéen. Koden er vanskelig at videreudvikle, brugeroplevelsen er ikke altid konsistent, og løsningen håndterer ikke langsomme svar, manglende data og fejl godt nok. Kunden nævner også, at der er udfordringer med performance.
 
 Data hentes fra Supabase gennem Supabase REST API. Datamodellen indeholder gentagne oplysninger, som bør fordeles på relaterede tabeller. Tilmeldingsflowet er kun påbegyndt: En tilmelding skal registreres i Supabase og forbindes med det valgte event. Den eksisterende interne side skal tilpasses, så den kan vise tilmeldinger sammen med deres relaterede eventdata.
