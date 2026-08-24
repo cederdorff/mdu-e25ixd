@@ -325,6 +325,32 @@
           </aside>
         </section>
 
+        <section class="po-slide handling-state-contrast">
+          <span class="eyebrow">To lag i den samme oplevelse</span>
+          <h2>Fejlhåndtering og robuste UI-states er ikke det samme</h2>
+          <div class="handling-state-split">
+            <article class="handling-side">
+              <span>01 · I koden</span>
+              <h3>Fejlhåndtering</h3>
+              <p>Hvad sker der i koden, når noget går galt?</p>
+              <div class="concept-flow"><code>Error</code><b>→</b><code>throw</code><b>→</b><code>catch</code></div>
+            </article>
+            <article class="state-side">
+              <span>02 · I brugergrænsefladen</span>
+              <h3>Robuste UI-states</h3>
+              <p>Hvad skal brugeren se, når noget loader, fejler, er tomt eller lykkes?</p>
+              <div class="state-words"><b>Loading</b><b>Error</b><b>Empty</b><b>Success</b></div>
+            </article>
+          </div>
+          <p class="contrast-bridge"><strong>Koden håndterer udfaldet.</strong> UI’et gør udfaldet forståeligt.</p>
+          <aside class="notes">
+            Brug sondringen som ramme for resten af forløbet: Først undersøger vi, hvordan koden reagerer. Derefter
+            omsætter vi udfaldene til brugerens oplevelse. [Sources] - MDN: Control flow and error handling ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling - React:
+            Reacting to Input with State · https://react.dev/learn/reacting-to-input-with-state [/Sources]
+          </aside>
+        </section>
+
         <section class="chapter po-chapter po-slide chapter-error" id="fejlhaandtering">
           <span class="chapter-index">04</span><span class="eyebrow">Fagligt fokus</span>
           <h2>Fejlhåndtering</h2>
@@ -335,26 +361,240 @@
           </aside>
         </section>
 
-        <section class="po-slide accent-error">
-          <span class="eyebrow">Hvad · hvorfor · hvordan</span>
-          <h2>Fejlhåndtering er en strategi</h2>
-          <div class="why-grid">
+        <section class="po-slide accent-error concept-example-slide">
+          <span class="eyebrow">Hvad er fejlhåndtering?</span>
+          <h2>Data kan være forkerte, uden at JavaScript stopper</h2>
+          <div class="simple-error-progression">
             <article>
-              <span>Hvad?</span>
-              <p>Opdag og håndtér fejl, vi ved kan opstå.</p>
+              <span>01 · Problemet er usynligt</span>
+              <pre class="po-code"><code class="language-javascript">const post = {};
+
+console.log(post.caption);</code></pre>
+              <p><strong>Output:</strong> <code>undefined</code> — programmet fortsætter.</p>
             </article>
             <article>
-              <span>Hvorfor?</span>
-              <p>Undgå tavse fejl og fastlåste brugere.</p>
-            </article>
-            <article>
-              <span>Hvordan?</span>
-              <p>Validér responsen, fang fejlen og vælg næste state.</p>
+              <span>02 · Vi gør problemet eksplicit</span>
+              <pre class="po-code"><code class="language-javascript">if (!post.caption) {
+  throw new Error(
+    "Post caption is required"
+  );
+}</code></pre>
+              <p>Nu har koden defineret, at en manglende caption er en fejl.</p>
             </article>
           </div>
+          <p class="definition"><strong>Fejlhåndtering</strong> er måden, programmet reagerer på, når noget går galt eller ikke er som forventet.</p>
+          <aside class="notes">
+            Begynd helt simpelt: undefined er en værdi, ikke automatisk en kastet fejl. Vi beslutter selv, at caption
+            er påkrævet. [Sources] - MDN: Error ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error - MDN: throw ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">Hvorfor har vi brug for fejlhåndtering?</span>
+          <h2>Flere ting kan bryde den forventede vej</h2>
+          <div class="failure-examples">
+            <article>
+              <span>Data</span>
+              <p>Caption mangler, eller formatet er forkert.</p>
+            </article>
+            <article>
+              <span>Operation</span>
+              <p>Et opslag bliver ikke oprettet eller slettet.</p>
+            </article>
+            <article>
+              <span>HTTP</span>
+              <p>Supabase svarer med 400, 404 eller 500.</p>
+            </article>
+            <article><span>Netværk</span><p>Browseren kan ikke nå serveren.</p></article>
+          </div>
           <p class="definition">
-            <strong>En fejl er ikke kun et teknisk problem.</strong> Den ændrer, hvad brugeren kan se og gøre.
+            <strong>Vi kan ikke forhindre alle fejl.</strong> Men vi kan kontrollere, hvordan programmet reagerer.
           </p>
+          <aside class="notes">
+            De næste slides zoomer ind på Error, throw og try/catch. [Sources] - Post App · lokalt semester 2-projekt
+            - MDN: Control flow and error handling ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error concept-example-slide">
+          <span class="eyebrow">Error</span>
+          <h2>Et <code>Error</code>-objekt beskriver problemet</h2>
+          <div class="code-layout concept-code-layout">
+            <pre class="po-code"><code class="language-javascript">const error = new Error(
+  "Post caption is required"
+);
+
+console.log(error.message);</code></pre>
+            <div class="output-panel error-output">
+              <span><code>error.message</code></span>
+              <code>Post caption is required</code>
+              <p>Fejlen har nu en besked, som udvikleren kan undersøge.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Et Error-objekt beskriver fejlen, men ændrer ikke programflowet, før det bliver kastet. [Sources] - MDN:
+            Error · https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error concept-example-slide">
+          <span class="eyebrow">throw</span>
+          <h2><code>throw</code> stopper det normale programflow</h2>
+          <div class="code-layout concept-code-layout">
+            <pre class="po-code"><code class="language-javascript">const post = {};
+
+if (!post.caption) {
+  throw new Error(
+    "Post caption is required"
+  );
+}
+
+console.log("Done");</code></pre>
+            <div class="vertical-concept-flow" aria-label="Programflow ved throw">
+              <span>Caption mangler</span><b>↓</b><strong>throw</strong><b>↓</b><span>Error sendes videre</span><b>↓</b><em>“Done” køres ikke</em>
+            </div>
+          </div>
+          <aside class="notes">
+            [Sources] - MDN: throw statement ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error concept-example-slide">
+          <span class="eyebrow">try / catch</span>
+          <h2><code>catch</code> giver os kontrollen tilbage</h2>
+          <div class="code-layout concept-code-layout">
+            <pre class="po-code"><code class="language-javascript">const post = {};
+
+try {
+  if (!post.caption) {
+    throw new Error(
+      "Post caption is required"
+    );
+  }
+  console.log(post.caption);
+} catch (error) {
+  console.error(error.message);
+}
+console.log("Done");</code></pre>
+            <div class="vertical-concept-flow compact-flow" aria-label="Programflow ved try og catch">
+              <span>try</span><b>↓</b><strong>Noget fejler</strong><b>↓</b><span>catch håndterer</span><b>↓</b><em>“Done” bliver kørt</em>
+            </div>
+          </div>
+          <aside class="notes">
+            Catch betyder ikke, at problemet er løst; det betyder, at vi kan vælge, hvordan koden reagerer, og om
+            programmet skal fortsætte. [Sources] - MDN: try...catch ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error concept-example-slide">
+          <span class="eyebrow">Et mere realistisk eksempel</span>
+          <h2>Funktionen forventer at finde en post</h2>
+          <pre class="po-code code-main"><code class="language-javascript">const posts = [
+  { id: 1, caption: "Aarhus by night" },
+  { id: 2, caption: "Morning coffee" },
+];
+
+function getPost(id) {
+  const post = posts.find(post => post.id === id);
+  if (!post) {
+    throw new Error("Post not found");
+  }
+  return post;
+}</code></pre>
+          <aside class="notes">
+            Knyt tilbage til Array.find fra JavaScript-opsamlingen. [Sources] - MDN: Array.prototype.find ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error concept-example-slide">
+          <span class="eyebrow">Håndtér fejlen</span>
+          <h2>Kaldet vælger, hvordan fejlen håndteres</h2>
+          <div class="code-layout concept-code-layout">
+            <pre class="po-code"><code class="language-javascript">try {
+  const post = getPost(3);
+  console.log(post);
+} catch (error) {
+  console.error(error.message);
+}</code></pre>
+            <div class="output-panel">
+              <span>Output</span>
+              <code>Post not found</code>
+              <p>Funktionen thrower. Koden, der kalder funktionen, håndterer fejlen.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            [Sources] - MDN: try...catch ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">Error flow</span>
+          <h2>Fejlen bevæger sig, indtil den håndteres</h2>
+          <div class="vertical-error-flow" aria-label="Fejlens vej gennem programmet">
+            <span><code>getPost(3)</code></span><b>↓</b>
+            <span>Post findes ikke</span><b>↓</b>
+            <strong><code>throw new Error(...)</code></strong><b>↓</b>
+            <span><code>catch (error)</code></span><b>↓</b>
+            <em>Fejlen håndteres</em>
+          </div>
+          <p class="definition"><strong>Errors bevæger sig op gennem kaldene, indtil de bliver håndteret.</strong></p>
+          <aside class="notes">
+            Nævn propagation kort og gå videre. [Sources] - MDN: Control flow and error handling ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">Fejlhåndtering med fetch()</span>
+          <h2>Hvad hvis posten ikke findes?</h2>
+          <pre class="po-code code-main"><code class="language-javascript">const response = await fetch("/api/posts/3");
+const post = await response.json();
+
+console.log(post);</code></pre>
+          <p class="prompt-card">Hvad forventer vi, at <code>fetch()</code> gør ved et svar med status <strong>404</strong>?</p>
+          <aside class="notes">
+            Lad de studerende gætte før næste slide. [Sources] - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error response-data-slide">
+          <span class="eyebrow">fetch() og HTTP-fejl</span>
+          <h2><code>fetch()</code> thrower ikke automatisk ved 404</h2>
+          <div class="fetch-rule">
+            <article><span>Responsen</span><h3><code>status === 404</code></h3><p>Serveren har svaret.</p></article>
+            <article><span>Promise</span><h3>Resolves</h3><p>Koden fortsætter, indtil vi selv reagerer.</p></article>
+          </div>
+          <pre class="po-code code-short"><code class="language-javascript">console.log(response.status); // 404
+console.log(response.ok);     // false</code></pre>
+          <p class="definition"><strong>Netværksfejl kan rejecte.</strong> HTTP 404 og 500 skal vi selv kontrollere.</p>
+          <aside class="notes">
+            Dette er den centrale fetch-misforståelse. [Sources] - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - MDN: Response.ok ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Response/ok [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">Vi thrower selv</span>
+          <h2>Gør HTTP-fejlen til en JavaScript-fejl</h2>
+          <pre class="po-code code-main"><code class="language-javascript">const response = await fetch("/api/posts/3");
+
+if (!response.ok) {
+  throw new Error(
+    `HTTP error: ${response.status}`
+  );
+}
+
+const post = await response.json();</code></pre>
+          <p class="definition">Her bruger vi præcis det samme <code>throw</code>, som i det simple eksempel.</p>
           <aside class="notes">
             [Sources] - MDN: Using the Fetch API ·
             https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
@@ -362,126 +602,38 @@
         </section>
 
         <section class="po-slide accent-error">
-          <span class="eyebrow">Starterkoden</span>
-          <h2>Hvad sker der, hvis requestet fejler?</h2>
-          <div class="code-layout">
-            <pre
-              class="po-code"
-            ><code class="language-javascript" data-line-numbers="1-7|2-3|4|5">async function getEvents() {
-  const response = await fetch(
-    SUPABASE_URL + "/events?order=date.asc", { headers }
-  );
-  const data = await response.json();
-  setEvents(data);
-}</code></pre>
-            <div class="question-stack">
-              <p>Hvem opdager en <b>404</b>?</p>
-              <p>Hvem opdager ugyldig <b>JSON</b>?</p>
-              <p>Hvad ser <b>brugeren</b>?</p>
-            </div>
-          </div>
-          <aside class="notes">
-            Lad de studerende finde de manglende håndteringer. [Sources] - Mellemrum starterprojekt ·
-            src/pages/HomePage.jsx [/Sources]
-          </aside>
-        </section>
+          <span class="eyebrow">Det komplette fetch-pattern</span>
+          <h2><code>try/catch</code> samler hele forløbet</h2>
+          <pre class="po-code code-main"><code class="language-javascript">try {
+  const response = await fetch("/api/posts/3");
 
-        <section class="po-slide accent-error">
-          <span class="eyebrow">En vigtig fetch-detalje</span>
-          <h2><code>fetch()</code> afviser ikke en 404</h2>
-          <div class="fetch-rule">
-            <article>
-              <span>Netværksfejl</span>
-              <h3>Promise rejects</h3>
-              <p><code>catch</code> kan fange fejlen.</p>
-            </article>
-            <article>
-              <span>HTTP 404 / 500</span>
-              <h3>Promise resolves</h3>
-              <p>Kontrollér selv <code>response.ok</code>.</p>
-            </article>
-          </div>
-          <pre class="po-code code-short"><code class="language-javascript">if (!response.ok) {
-  throw new Error(
-    "Kunne ikke hente events: " + response.status
-  );
+  if (!response.ok) {
+    throw new Error(`HTTP error: ${response.status}`);
+  }
+
+  const post = await response.json();
+  console.log(post);
+} catch (error) {
+  console.error(error.message);
 }</code></pre>
           <aside class="notes">
-            Dette er den centrale fetch-misforståelse. [Sources] - MDN: Using the Fetch API ·
+            Dette er den vigtigste pattern-slide i del 1. [Sources] - MDN: Using the Fetch API ·
             https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
           </aside>
         </section>
 
         <section class="po-slide accent-error">
-          <span class="eyebrow">Hvordan?</span>
-          <h2>Gør alle udfald eksplicitte</h2>
-          <pre
-            class="po-code code-main"
-          ><code class="language-javascript" data-line-numbers="1-15|2|4-6|8-9|10|11-14">async function getEvents() {
-  setStatus("loading");
-  try {
-    const response = await fetch(url, { headers });
-    if (!response.ok) throw new Error("HTTP " + response.status);
-
-    const data = await response.json();
-    setEvents(data);
-    setStatus(data.length === 0 ? "empty" : "success");
-  } catch (error) {
-    console.error("Kunne ikke hente events", error);
-    setStatus("error");
-  }
-}</code></pre>
-          <aside class="notes">
-            Status bruges nu, men renderingen kommer i næste kapitel. [Sources] - MDN: Using the Fetch API ·
-            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - React: useState ·
-            https://react.dev/reference/react/useState [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide accent-error">
-          <span class="eyebrow">Hvad kører hvornår?</span>
-          <h2>Requestets forløb</h2>
-          <div class="timeline">
-            <article>
-              <b>1</b><span><code>getEvents()</code> starter</span><small>Status → loading</small>
-            </article>
-            <article>
-              <b>2</b><span><code>await fetch()</code></span
-              ><small>Funktionen venter; browseren arbejder videre</small>
-            </article>
-            <article>
-              <b>3</b><span>Responsen kommer</span><small><code>response.ok</code> kontrolleres</small>
-            </article>
-            <article><b>4</b><span>Én gren vælges</span><small>success, empty eller catch → error</small></article>
-            <article><b>5</b><span>State ændres</span><small>React renderer UI’et igen</small></article>
+          <span class="eyebrow">Opsummering · fejlhåndtering</span>
+          <h2>Fra noget går galt til fejlen håndteres</h2>
+          <div class="summary-flows">
+            <article><span>JavaScript</span><p>Noget går galt → Error → throw → try/catch → håndtering</p></article>
+            <article><span>fetch()</span><p>Request → response.ok? → false → throw → catch</p></article>
           </div>
+          <p class="contrast-bridge">Vi kan nu håndtere fejl i koden. <strong>Men hvad oplever brugeren?</strong></p>
           <aside class="notes">
-            Await pauser den async funktion, ikke hele browseren. [Sources] - MDN: async function ·
-            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function - React: State
-            as a Snapshot · https://react.dev/learn/state-as-a-snapshot [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide accent-error">
-          <span class="eyebrow">To målgrupper</span>
-          <h2>Teknisk detalje ≠ brugerbesked</h2>
-          <div class="message-split">
-            <article>
-              <span>Til udvikleren</span>
-              <pre class="mini-code"><code>GET /events → 401 · Invalid API key</code></pre>
-              <p>Statuskode og kontekst til fejlsøgning.</p>
-            </article>
-            <article>
-              <span>Til brugeren</span>
-              <div class="ui-message">
-                <b>Vi kunne ikke hente events</b><small>Prøv igen om et øjeblik.</small><button>Prøv igen</button>
-              </div>
-              <p>Klar besked og et næste skridt.</p>
-            </article>
-          </div>
-          <aside class="notes">
-            Vis ikke API-nøgler, stack traces eller interne detaljer i UI’et. [Sources] - Case 1-casebeskrivelsen ·
-            lokalt kursusmateriale [/Sources]
+            [Sources] - MDN: Control flow and error handling ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling - MDN:
+            Using the Fetch API · https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
           </aside>
         </section>
 
@@ -492,6 +644,27 @@
           <aside class="notes">
             [Sources] - React: Reacting to Input with State · https://react.dev/learn/reacting-to-input-with-state
             [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state happy-path-slide">
+          <span class="eyebrow">Post App · HomePage</span>
+          <h2>Data kommer — men hvad sker der imens?</h2>
+          <div class="code-layout">
+            <pre class="po-code"><code class="language-javascript">async function getPosts() {
+  const response = await fetch(URL, { headers });
+  const data = await response.json();
+  setPosts(data);
+}</code></pre>
+            <div class="question-stack">
+              <p>Hvad ser brugeren, <b>mens vi venter</b>?</p>
+              <p>Hvad ser brugeren, <b>hvis det fejler</b>?</p>
+              <p>Hvad ser brugeren, hvis svaret er <b>[]</b>?</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Happy path-koden viser kun succes. Brug spørgsmålene til at etablere behovet for loading, error og empty.
+            [Sources] - Post App · src/pages/HomePage.jsx · lokalt semester 2-projekt [/Sources]
           </aside>
         </section>
 
@@ -518,6 +691,33 @@
           <aside class="notes">
             [Sources] - React: Reacting to Input with State · https://react.dev/learn/reacting-to-input-with-state -
             React: Conditional Rendering · https://react.dev/learn/conditional-rendering [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state finally-slide">
+          <span class="eyebrow">Loading skal altid afsluttes</span>
+          <h2><code>finally</code> kører efter både succes og fejl</h2>
+          <div class="code-layout">
+            <pre class="po-code"><code class="language-javascript">try {
+  setLoading(true);
+  const response = await fetch(URL, { headers });
+  if (!response.ok) throw new Error("HTTP error");
+  setPosts(await response.json());
+} catch (error) {
+  setError("Vi kunne ikke hente opslag");
+} finally {
+  setLoading(false);
+}</code></pre>
+            <div class="finally-flow" aria-label="Finally kører ved både succes og fejl">
+              <span class="success-path">Success</span><b>↘</b><strong>finally</strong><b>↗</b><span class="error-path">Error</span>
+              <p>Loading bliver afsluttet uanset udfaldet.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Hvis setLoading(false) kun står efter fetch, kan en fejl efterlade UI’et i loading. [Sources] - Post App ·
+            src/pages/HomePage.jsx · lokalt semester 2-projekt - MDN:
+            try...catch · https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch
+            [/Sources]
           </aside>
         </section>
 
@@ -576,22 +776,50 @@ isEmpty = true</code></pre>
           </aside>
         </section>
 
+        <section class="po-slide accent-state status-pattern-slide">
+          <span class="eyebrow">Det komplette React-pattern</span>
+          <h2>Requestets udfald vælger næste UI-state</h2>
+          <pre
+            class="po-code code-main"
+          ><code class="language-javascript">async function getPosts() {
+  setStatus("loading");
+  try {
+    const response = await fetch(URL, { headers });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const data = await response.json();
+    setPosts(data);
+    setStatus(data.length === 0 ? "empty" : "success");
+  } catch (error) {
+    console.error("Could not load posts", error);
+    setStatus("error");
+  }
+}</code></pre>
+          <p class="definition"><strong>Fejlhåndteringen afgør udfaldet.</strong> React-state gør udfaldet tilgængeligt for UI’et.</p>
+          <aside class="notes">
+            Nu kobles de to faglige dele eksplicit sammen. Status sættes til loading før requestet og får derefter
+            præcis ét af tre udfald. [Sources] - Post App · src/pages/HomePage.jsx · lokalt semester 2-projekt - MDN:
+            Using the Fetch API · https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - React:
+            useState · https://react.dev/reference/react/useState [/Sources]
+          </aside>
+        </section>
+
         <section class="po-slide accent-state">
           <span class="eyebrow">Render den aktuelle state</span>
           <h2>State skal kunne ses i UI’et</h2>
           <pre
             class="po-code code-main"
-          ><code class="language-javascript jsx" data-line-numbers="1-11|1-3|4-6|7-9|11">if (status === "loading") {
-  return &lt;p&gt;Henter events…&lt;/p&gt;;
+          ><code class="language-javascript jsx">if (status === "loading") {
+  return &lt;p&gt;Henter opslag…&lt;/p&gt;;
 }
 if (status === "error") {
-  return &lt;ErrorMessage onRetry={getEvents} /&gt;;
+  return &lt;ErrorMessage onRetry={getPosts} /&gt;;
 }
 if (status === "empty") {
-  return &lt;p&gt;Der er ingen kommende events endnu.&lt;/p&gt;;
+  return &lt;p&gt;Der er ingen opslag endnu.&lt;/p&gt;;
 }
 
-return &lt;EventGrid events={events} /&gt;;</code></pre>
+return &lt;PostGrid posts={posts} /&gt;;</code></pre>
           <aside class="notes">
             Early returns holder hver state adskilt og let at læse. [Sources] - React: Conditional Rendering ·
             https://react.dev/learn/conditional-rendering [/Sources]
@@ -602,8 +830,8 @@ return &lt;EventGrid events={events} /&gt;;</code></pre>
           <span class="eyebrow">Sammenhængen</span>
           <h2>Dataflowet styrer oplevelsen</h2>
           <div class="request-map">
-            <article><span>Request starter</span><b>loading</b><small>“Henter events…”</small></article>
-            <article><span>Data.length &gt; 0</span><b>success</b><small>Vis eventkort</small></article>
+            <article><span>Request starter</span><b>loading</b><small>“Henter opslag…”</small></article>
+            <article><span>Data.length &gt; 0</span><b>success</b><small>Vis opslag</small></article>
             <article><span>Data.length === 0</span><b>empty</b><small>Forklar det tomme resultat</small></article>
             <article><span>Request fejler</span><b>error</b><small>Forklar + “Prøv igen”</small></article>
           </div>
@@ -641,6 +869,29 @@ return &lt;EventGrid events={events} /&gt;;</code></pre>
             [Sources] - Chrome DevTools: Network features reference ·
             https://developer.chrome.com/docs/devtools/network/reference/ - Case 1-casebeskrivelsen · lokalt
             kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state submitting-slide">
+          <span class="eyebrow">Samme tankegang · en brugerhandling</span>
+          <h2>Robuste UI-states gælder også formularen</h2>
+          <div class="code-layout">
+            <pre class="po-code"><code class="language-javascript jsx">const [isSubmitting, setIsSubmitting] =
+  useState(false);
+
+&lt;button disabled={isSubmitting}&gt;
+  {isSubmitting ? "Gemmer…" : "Gem opslag"}
+&lt;/button&gt;</code></pre>
+            <div class="submit-flow" aria-label="States når et opslag bliver gemt">
+              <span>Idle</span><b>→</b><strong>Submitting</strong><b>→</b>
+              <div><em>Success</em><em>Error</em></div>
+            </div>
+          </div>
+          <p class="definition">Brugeren skal kunne se, at handlingen er i gang — og ikke kunne oprette det samme opslag igen.</p>
+          <aside class="notes">
+            Dette bygger direkte videre på CreatePage. Bed bagefter de studerende overføre samme tankegang til
+            Mellemrums tilmeldingsflow. [Sources] - Post App · src/pages/CreatePage.jsx · lokalt semester 2-projekt -
+            React: Responding to Events · https://react.dev/learn/responding-to-events [/Sources]
           </aside>
         </section>
 
