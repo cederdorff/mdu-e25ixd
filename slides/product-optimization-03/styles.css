@@ -1396,6 +1396,12 @@
   text-decoration: none !important;
 }
 
+.reveal .slides section.setup-overview {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 100%;
+}
+
 .setup-overview h2 {
   max-width: 810px;
   font-size: 58px;
@@ -1431,7 +1437,7 @@
 }
 
 .setup-overview .setup-path {
-  margin-top: 46px;
+  margin-top: 72px;
 }
 
 .setup-overview .setup-path::before {
@@ -1440,6 +1446,7 @@
 }
 
 .setup-overview .setup-path article {
+  gap: 16px;
   align-content: start;
 }
 
@@ -1462,7 +1469,7 @@
 .setup-overview .setup-path small {
   color: #53605b;
   font-size: 16px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .setup-overview code {
@@ -1478,8 +1485,9 @@
   grid-template-columns: auto 0.8fr 1.4fr;
   gap: 26px;
   align-items: center;
-  margin-top: 34px;
-  padding: 18px 22px;
+  margin-top: auto;
+  margin-bottom: 30px;
+  padding: 25px 28px;
   border-left: 7px solid #d8ff62;
   border-radius: 0 14px 14px 0;
   background: #173f35;
@@ -1553,6 +1561,108 @@
   border: 1px solid var(--line);
   background: var(--surface);
   font-size: 26px;
+}
+
+/* Baseline-check · samme Mellemrum-identitet som case-slidesene */
+.reveal .slides section.baseline-check-slide {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.baseline-check-slide h2 {
+  max-width: 1040px;
+  color: #fff;
+  font-size: 67px;
+}
+
+.baseline-check-slide > .eyebrow {
+  color: #d8ff62;
+}
+
+.baseline-check-board {
+  display: grid;
+  grid-template-columns: 0.62fr 1.38fr;
+  min-height: 365px;
+  margin-top: 42px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #f5f2ea;
+}
+
+.baseline-environments {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 38px 42px;
+  background: #d8ff62;
+  color: #173f35;
+}
+
+.baseline-environments span {
+  display: grid;
+  gap: 7px;
+}
+
+.baseline-environments small {
+  color: #a5412c;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.baseline-environments strong {
+  color: #173f35 !important;
+  font-size: 43px;
+  line-height: 1;
+}
+
+.baseline-environments b {
+  padding: 14px 0;
+  border-top: 1px solid rgb(23 63 53 / 28%);
+  border-bottom: 1px solid rgb(23 63 53 / 28%);
+  color: #173f35;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.baseline-check-slide .check-grid {
+  align-content: center;
+  gap: 0 32px;
+  margin: 0;
+  padding: 30px 38px;
+  background: #f5f2ea;
+}
+
+.baseline-check-slide .check-grid p {
+  margin: 0;
+  padding: 22px 0;
+  border: 0;
+  border-bottom: 1px solid rgb(23 63 53 / 17%);
+  background: transparent;
+  color: #173f35;
+  font-size: 22px;
+  font-weight: 750;
+}
+
+.baseline-check-slide .callout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: 30px;
+  padding: 20px 0 0;
+  border: 0;
+  border-top: 1px solid rgb(216 255 98 / 34%);
+  border-radius: 0;
+  background: transparent;
+  color: rgb(255 255 255 / 76%);
+  font-size: 21px;
+}
+
+.baseline-check-slide .callout strong {
+  color: #d8ff62;
 }
 
 .chapter-error::before,
@@ -1824,6 +1934,116 @@
   font-size: 22px;
   font-weight: 700;
   text-decoration: none;
+}
+
+/* Helhøjde-kompositioner · brug hele 16:9-lærredet bevidst */
+.reveal .slides section.po-title,
+.reveal .slides section.po-agenda,
+.reveal .slides section.concept-return,
+.reveal .slides section.concept-next,
+.reveal .slides section.accent-error,
+.reveal .slides section.accent-state,
+.reveal .slides section.final-model-slide,
+.reveal .slides section.po-closing,
+.reveal .slides section.case-exam {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.po-title,
+.po-closing {
+  justify-content: center;
+}
+
+.po-title .date {
+  margin-top: 34px;
+}
+
+.po-agenda .agenda-list {
+  flex: 1;
+  grid-template-rows: repeat(5, 1fr);
+  margin-bottom: 32px;
+}
+
+.po-agenda .agenda-list a {
+  display: grid;
+  height: 100%;
+  align-content: center;
+}
+
+.concept-return .recap-layout,
+.concept-next .next-concepts-layout {
+  flex: 1;
+}
+
+.concept-return .recap-layout article {
+  min-height: 0;
+}
+
+.concept-return .concept-index-button,
+.concept-next .concept-index-button {
+  align-self: flex-start;
+  margin-bottom: 30px;
+}
+
+.case-exam .exam-delivery {
+  margin-top: auto;
+  margin-bottom: 25px;
+}
+
+.accent-error .why-grid,
+.accent-state .why-grid,
+.accent-error .message-split,
+.accent-state .state-grid,
+.accent-state .status-compare,
+.accent-state.mode-work .test-grid,
+.final-model-slide .final-model {
+  flex: 1;
+  margin-bottom: 30px;
+}
+
+.accent-error .why-grid article,
+.accent-state .why-grid article,
+.accent-error .message-split > article,
+.accent-state .state-grid article,
+.accent-state .status-compare > article,
+.accent-state.mode-work .test-grid article,
+.final-model-slide .final-model article {
+  align-content: center;
+}
+
+.accent-error .definition,
+.accent-state .definition,
+.accent-state .request-map + .callout {
+  margin-bottom: 30px !important;
+}
+
+.accent-error .code-layout,
+.accent-state > .code-main {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+.accent-error .timeline {
+  flex: 1;
+  grid-template-rows: repeat(5, 1fr);
+  margin-bottom: 30px;
+}
+
+.accent-state .request-map {
+  flex: 1;
+}
+
+.accent-state.mode-work > .muted {
+  margin-bottom: 34px;
+}
+
+.final-model-slide .final-model article {
+  min-height: 0;
+}
+
+.po-closing .closing-links {
+  margin-bottom: 28px;
 }
 
 @media (max-width: 900px) {
