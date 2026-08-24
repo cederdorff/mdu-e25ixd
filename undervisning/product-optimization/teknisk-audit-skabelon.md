@@ -6,7 +6,7 @@
 
 En teknisk audit er en systematisk undersøgelse af en eksisterende løsning. Formålet er at finde, dokumentere og prioritere forbedringer — ikke blot at samle personlige præferencer om kode.
 
-Brug de seks fokusområder til at undersøge løsningen. Du behøver ikke finde eller løse problemer inden for dem alle. Tilmeldingsflowet og den deployede løsning skal dog fungere ved casens afslutning. Derudover vælger og prioriterer du de fund, der har størst betydning.
+Trin 1–5 gennemføres, før du ændrer løsningen: Beskriv, hvordan den fungerer nu, find problemer, og planlæg relevante forbedringer. Du behøver ikke finde problemer inden for alle seks fokusområder. Tilmeldingsflowet og den deployede løsning er centrale krav i Case 1, så deres nuværende tilstand skal altid indgå i auditten. Efter implementeringen vender du tilbage til trin 6 og dokumenterer effekten.
 
 </div>
 
@@ -104,9 +104,9 @@ Målet er tydeligt ansvar, konsistens og en løsning, flere kan bruge. Se også 
 
 **Tilmeldingsflow i Case 1**
 
-- Gemmes en tilmelding i `registrations` og forbindes den korrekt med det valgte event?
-- Henter og viser den interne side tilmeldinger sammen med relevante eventdata?
-- Kan en ny tilmelding verificeres både i Supabase og i brugergrænsefladen?
+- Hvordan fungerer det eksisterende tilmeldingsflow, og hvad mangler eller fejler?
+- Hvad skal ændres, for at en tilmelding kan gemmes i `registrations` og forbindes med det valgte event?
+- Hvad skal ændres, for at den interne side kan hente og vise tilmeldinger sammen med relevante eventdata?
 
 **Dataadgang i React**
 
@@ -124,7 +124,7 @@ Målet er tydeligt ansvar, konsistens og en løsning, flere kan bruge. Se også 
 - Indeholder projektet kode, assets eller dependencies, som ikke bruges?
 - Er lazy loading af større routes eller komponenter relevant for den første indlæsning?
 - Viser Network-panelet unødvendige requests eller renderinger, og er fund fra development kontrolleret i en production build?
-- Er før- og eftermålinger foretaget flere gange på deployede produktionsversioner under sammenlignelige og dokumenterede forhold?
+- Er der etableret en gentaget baseline på den deployede produktionsversion under dokumenterede forhold, som en senere måling kan sammenlignes med?
 
 En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til at finde konkrete problemer, som har betydning for brugeren.
 
@@ -133,7 +133,7 @@ En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>6. Git, deployment og teknisk kvalitet</strong></summary>
 
-- Gør feature branches og commits det tydeligt, hvad der er ændret og hvorfor?
+- Hvordan skal ændringerne organiseres i feature branches og commits, så historikken bliver tydelig?
 - Gennemføres production build og deployment uden fejl?
 - Fungerer environment variables, routing og base URL på hostingens adresse og eventuelle undermapper?
 - Matcher den publicerede løsning den seneste version på `main`?
@@ -148,11 +148,11 @@ En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til 
 
 ## 4. Registrér dine fund
 
-Registrér kun konkrete fund, som kan få betydning for din prioritering. Brug én række pr. fund:
+Registrér kun konkrete fund, som kan få betydning for din prioritering. Beskriv, hvad du foreslår at ændre, og hvordan du senere vil verificere det. Brug én række pr. fund:
 
 <div style="overflow-x: auto;">
 
-| Område | Fund og evidens | Konsekvens | Forslag | Prioritet | Verifikation |
+| Område | Fund og evidens | Konsekvens | Forslag til løsning | Prioritet | Planlagt verifikation |
 |---|---|---|---|---|---|
 | Accessibility | E-mailfeltet mangler en label | Feltets formål er ikke tydeligt for alle brugere | Tilføj en synlig label | Høj | Gennemfør formularen med tastatur og skærmlæser |
 
@@ -172,7 +172,7 @@ Vælg derefter et realistisk antal forbedringer, og beskriv kort, hvornår hver 
 
 <hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
-## 6. Dokumentér effekten
+## 6. Efter implementeringen: Dokumentér effekten
 
 For hver gennemført forbedring skal du kort dokumentere:
 
