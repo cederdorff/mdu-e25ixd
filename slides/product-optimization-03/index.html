@@ -554,15 +554,20 @@ function getPost(id) {
         </section>
 
         <section class="po-slide accent-error">
-          <span class="eyebrow">Fejlhåndtering med fetch()</span>
-          <h2>Hvad hvis posten ikke findes?</h2>
-          <pre class="po-code code-main"><code class="language-javascript">const response = await fetch("/api/posts/3");
-const post = await response.json();
+          <span class="eyebrow">Post App · Supabase GET</span>
+          <h2>Hvad hvis Supabase ikke finder posten?</h2>
+          <pre class="po-code code-main"><code class="language-javascript">const response = await fetch(
+  `${URL}?id=eq.${id}`,
+  { headers }
+);
+const data = await response.json();
+const post = data[0];
 
 console.log(post);</code></pre>
-          <p class="prompt-card">Hvad forventer vi, at <code>fetch()</code> gør ved et svar med status <strong>404</strong>?</p>
+          <p class="prompt-card">Hvad sker der, hvis svaret er <code>[]</code> — eller status er <strong>404</strong>?</p>
           <aside class="notes">
-            Lad de studerende gætte før næste slide. [Sources] - MDN: Using the Fetch API ·
+            Lad de studerende skelne mellem HTTP-fejl og et tomt, men teknisk gyldigt svar. [Sources] - Post App ·
+            src/pages/PostDetailPage.jsx · lokalt semester 2-projekt - MDN: Using the Fetch API ·
             https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
           </aside>
         </section>
@@ -585,42 +590,59 @@ console.log(response.ok);     // false</code></pre>
         </section>
 
         <section class="po-slide accent-error">
-          <span class="eyebrow">Vi thrower selv</span>
-          <h2>Gør HTTP-fejlen til en JavaScript-fejl</h2>
-          <pre class="po-code code-main"><code class="language-javascript">const response = await fetch("/api/posts/3");
+          <span class="eyebrow">Post App · to kontroller</span>
+          <h2>HTTP-succes er ikke altid brugbare data</h2>
+          <div class="code-layout supabase-empty-slide">
+            <pre class="po-code"><code class="language-javascript">const response = await fetch(
+  `${URL}?id=eq.${id}`,
+  { headers }
+);
 
 if (!response.ok) {
-  throw new Error(
-    `HTTP error: ${response.status}`
-  );
+  throw new Error(`HTTP ${response.status}`);
 }
 
-const post = await response.json();</code></pre>
-          <p class="definition slide-point">Vi kontrollerer <code>response.ok</code> og thrower selv ved HTTP-fejl.</p>
+const [post] = await response.json();
+if (!post) {
+  throw new Error("Post not found");
+}
+
+return post;</code></pre>
+            <div class="supabase-empty-chain" aria-label="Supabase returnerer 200 OK og et tomt array">
+              <article><span>HTTP</span><strong>200 OK</strong><small><code>response.ok === true</code></small></article>
+              <b>↓</b>
+              <article><span>Response body</span><strong><code>[]</code></strong><small>Filteret matchede ingen rækker</small></article>
+              <b>↓</b>
+              <article><span>Destructuring</span><strong><code>post</code></strong><small><code>undefined</code></small></article>
+            </div>
+          </div>
+          <p class="definition slide-point">Supabase kan returnere <code>200 OK</code> med <code>[]</code>. Derfor skal vi kontrollere både HTTP-svaret og de data, vi forventer.</p>
           <aside class="notes">
-            [Sources] - MDN: Using the Fetch API ·
-            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+            Supabase/PostgREST kan returnere 200 OK med et tomt array, når filteret ikke matcher. [Sources] - Post App ·
+            src/pages/PostDetailPage.jsx · lokalt semester 2-projekt - MDN: Response.ok ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Response/ok - Supabase: JavaScript select data ·
+            https://supabase.com/docs/reference/javascript/select [/Sources]
           </aside>
         </section>
 
         <section class="po-slide accent-error">
-          <span class="eyebrow">Det komplette fetch-pattern</span>
-          <h2><code>try/catch</code> samler hele forløbet</h2>
+          <span class="eyebrow">Post App · Supabase POST</span>
+          <h2>Navigér kun efter et godkendt svar</h2>
           <pre class="po-code code-main"><code class="language-javascript">try {
-  const response = await fetch("/api/posts/3");
-
-  if (!response.ok) {
-    throw new Error(`HTTP error: ${response.status}`);
-  }
-
-  const post = await response.json();
-  console.log(post);
+  const response = await fetch(URL, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ image, caption }),
+  });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  navigate("/");
 } catch (error) {
-  console.error(error.message);
+  console.error("Could not create post", error);
 }</code></pre>
-          <p class="definition slide-point"><code>try/catch</code> samler kontrollen af responsen og håndteringen af fejlen.</p>
+          <p class="definition slide-point">Uden kontrollen kan React navigere væk, selv om opslaget ikke blev gemt.</p>
           <aside class="notes">
-            Dette er den vigtigste pattern-slide i del 1. [Sources] - MDN: Using the Fetch API ·
+            Dette er den eksisterende CreatePage-happy path gjort robust. [Sources] - Post App ·
+            src/pages/CreatePage.jsx · lokalt semester 2-projekt - MDN: Using the Fetch API ·
             https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
           </aside>
         </section>
