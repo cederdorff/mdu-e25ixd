@@ -133,7 +133,7 @@ En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>6. Git, deployment og teknisk kvalitet</strong></summary>
 
-- Gør feature branches og commits det tydeligt, hvad der er ændret og hvorfor?
+- Hvordan vil du organisere ændringerne i feature branches og commits, så historikken bliver tydelig?
 - Gennemføres production build og deployment uden fejl?
 - Fungerer environment variables, routing og base URL på hostingens adresse og eventuelle undermapper?
 - Matcher den publicerede løsning den seneste version på `main`?
