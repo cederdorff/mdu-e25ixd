@@ -136,6 +136,8 @@ Målet er en datamodel, der understøtter produktets vigtigste brugerflows uden 
 - Tilpas den interne side, så den henter og viser tilmeldinger sammen med relevante data om deres events.
 - Kontrollér, at en ny tilmelding både gemmes korrekt i Supabase og vises korrekt i løsningen.
 
+**Afgrænsning:** Authentication og authorization er ikke en del af Case 1. Den interne side skal derfor ikke adgangsbeskyttes, og der benyttes fiktive testdata.
+
 **Dataadgang i React**
 
 - Organisér forespørgsler og mutationer konsistent, og adskil dataadgang fra præsentationslogik, hvor det forbedrer overblikket.
