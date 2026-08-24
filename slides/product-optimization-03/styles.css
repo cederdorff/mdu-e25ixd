@@ -115,6 +115,14 @@
 
 /* Case 1 · Mellemrums visuelle univers */
 
+.reveal .slides section.mellemrum-case,
+.reveal .slides section.mellemrum-hero {
+  width: 1600px !important;
+  height: 900px !important;
+  margin: 0 !important;
+  background-clip: border-box;
+}
+
 .reveal .slides section.mellemrum-hero {
   position: relative;
   overflow: hidden;
@@ -1375,6 +1383,10 @@
   color: #fff;
   font-size: 91px;
   letter-spacing: -0.055em;
+}
+
+.baseline-hero h2 span {
+  color: #d8ff62;
 }
 
 .baseline-hero .kicker {
