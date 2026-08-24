@@ -2,9 +2,9 @@
 
 ## Formål
 
-Vi arbejder med udvalgte JavaScript-koncepter og starter Case 1 med en fælles gennemgang og opsætning af den udleverede løsning.
+Vi samler op på udvalgte JavaScript-koncepter og starter derefter Case 1 med en fælles gennemgang og opsætning af den udleverede løsning.
 
-Dagens faglige fokus er fejlhåndtering og robuste UI-states i React. Til sidst gennemgår vi casebeskrivelsen og får startprojektet og Supabase til at køre. Den systematiske tekniske audit begynder vi på den 26/08.
+Vi får den uændrede starter-løsning til at køre lokalt og online som fælles baseline. Derefter bruger vi den som kontekst for dagens faglige fokus: fejlhåndtering og robuste UI-states i React. Den systematiske tekniske audit begynder vi på den 26/08.
 
 <hr style="margin: 2rem 0;">
 
@@ -18,7 +18,7 @@ Dagens faglige fokus er fejlhåndtering og robuste UI-states i React. Til sidst 
 
 ## Agenda
 
-Vi begynder med udvalgte JavaScript-koncepter og arbejder derefter med fejlhåndtering og robuste UI-states, inden vi starter Case 1.
+Vi begynder med udvalgte JavaScript-koncepter. Derefter introducerer vi Case 1 og får starter-løsningen til at køre, før vi arbejder med fejlhåndtering og robuste UI-states i den konkrete kontekst.
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Udvalgte JavaScript-koncepter</strong></summary>
@@ -30,24 +30,7 @@ Vi begynder med udvalgte JavaScript-koncepter og arbejder derefter med fejlhånd
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>2. Fejlhåndtering</strong></summary>
-<ul>
-<li>Hvilke fejl kan opstå i en React-løsning?</li>
-<li>Hvordan opdager, håndterer og kommunikerer vi dem?</li>
-</ul>
-</details>
-
-<details style="margin-left: 1.5rem;">
-<summary><strong>3. Robuste UI-states</strong></summary>
-<ul>
-<li>Loading, success, empty og error states.</li>
-<li>Hvordan skifter UI'et mellem tilstandene?</li>
-<li>Hvordan hjælper vi brugeren videre, når noget ikke går som forventet?</li>
-</ul>
-</details>
-
-<details style="margin-left: 1.5rem;">
-<summary><strong>4. Kick-off af Case 1</strong></summary>
+<summary><strong>2. Kick-off af Case 1</strong></summary>
 <ul>
 <li>Fælles gennemgang af kunden, opgaven og de faglige fokusområder.</li>
 <li>Case 1 som den første af tre cases i den individuelle skriftlige eksamen.</li>
@@ -56,14 +39,30 @@ Vi begynder med udvalgte JavaScript-koncepter og arbejder derefter med fejlhånd
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>5. Få startprojektet til at køre</strong></summary>
+<summary><strong>3. Få starter-løsningen til at køre</strong></summary>
 <ul>
 <li>Hent projektet, installér dependencies, og følg opsætningen i README.</li>
-<li>Opret tabeller og startdata i Supabase med den medfølgende SQL-fil.</li>
-<li>Tilføj environment variables, og start løsningen lokalt.</li>
-<li>Kontrollér, at events, eventsider og tilmeldingsoversigten kan åbnes.</li>
-<li>Deploy derefter løsningen til GitHub Pages, og kontrollér de samme brugerflows i den publicerede version. Følg projektets README og processen fra undervisningen den 19/08.</li>
-<li>Vi ændrer ikke løsningen endnu. Den systematiske audit og prioritering begynder den 26/08.</li>
+<li>Opret tabeller og startdata i Supabase, tilføj environment variables, og start løsningen lokalt.</li>
+<li>Kontrollér de centrale brugerflows lokalt, deploy derefter den uændrede løsning til GitHub Pages, og gentag kontrollen online.</li>
+<li>Gem den uændrede løsning som baseline. Den systematiske audit og prioritering begynder den 26/08.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>4. Fejlhåndtering</strong></summary>
+<ul>
+<li>Hvor kan der opstå fejl i datahentning og andre asynkrone handlinger?</li>
+<li>Hvordan håndterer vi fejl fra API-kald eksplicit?</li>
+<li>Hvordan adskiller vi tekniske fejloplysninger fra forståelige beskeder til brugeren?</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>5. Robuste UI-states</strong></summary>
+<ul>
+<li>Hvordan skifter UI'et mellem loading, success, empty og error states?</li>
+<li>Hvordan bruger vi validering, tydelig feedback og et relevant næste skridt?</li>
+<li>Hvordan skaber vi en UI, der også giver mening ved langsomme svar, manglende data og fejl?</li>
 </ul>
 </details>
 

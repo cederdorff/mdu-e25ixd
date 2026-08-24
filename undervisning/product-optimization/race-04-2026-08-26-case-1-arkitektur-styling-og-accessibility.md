@@ -10,7 +10,7 @@ Undervejs får du faglige indspark om arkitektur, styling og accessibility. Vi s
 
 ## Forberedelse
 
-- Sørg for, at startprojektet og forbindelsen til Supabase fungerer lokalt.
+- Sørg for, at starter-løsningen og forbindelsen til Supabase fungerer lokalt og online.
 - Læs [casebeskrivelsen](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning) igen, og medbring eventuelle spørgsmål eller observationer fra opsætningen.
 - Du behøver ikke have gennemført auditten eller ændret løsningen på forhånd.
 
