@@ -1285,6 +1285,49 @@
   color: var(--po-blue);
 }
 
+.reveal .array-methods-chapter {
+  display: grid !important;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 58px;
+  align-items: center;
+}
+
+.reveal .array-methods-chapter-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.reveal .array-methods-chapter h2 {
+  max-width: 560px;
+  font-size: 94px;
+}
+
+.reveal .array-methods-chapter .kicker {
+  max-width: 540px;
+  font-size: 28px;
+  line-height: 1.35;
+}
+
+.reveal .array-methods-chapter .chapter-index {
+  display: none;
+}
+
+.reveal .array-methods-overview {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 14px;
+  border-top: 5px solid var(--po-blue);
+  background: rgb(101 167 255 / 8%);
+}
+
+.reveal .array-methods-overview img {
+  display: block;
+  width: 100%;
+  max-height: 650px;
+  object-fit: contain;
+}
+
 .reveal .agent-spectrum {
   display: grid;
   grid-template-columns: 1fr 120px 1fr;
