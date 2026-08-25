@@ -52,7 +52,9 @@ Dokumentér udgangspunktet, før du ændrer løsningen. Vælg kun evidens, der h
 **State og dataflow**
 
 - Er dataflowet gennem props og state let at følge?
+- Kan du pege på den komponent, der ejer hver vigtig state, de props der sender værdien ned, og den callback der sender brugerens ændring tilbage?
 - Har data én tydelig kilde, og beregnes afledte værdier frem for at blive gemt som unødvendig state (_single source of truth_ og _derived state_)?
+- Gemmes eksempelvis et antal separat, selvom det kan beregnes med `items.length`?
 
 </details>
 
@@ -61,7 +63,7 @@ Dokumentér udgangspunktet, før du ændrer løsningen. Vælg kun evidens, der h
 
 **Datahentning og side effects**
 
-- Er _side effects_ som datahentning placeret tydeligt og holdt adskilt fra renderingen?
+- Er _side effects_ som datahentning placeret tydeligt og holdt adskilt fra renderingen? Hvis synkroniseringen skyldes rendering, er den da placeret i en React _Effect_ med relevante dependencies?
 
 **Fejlhåndtering**
 

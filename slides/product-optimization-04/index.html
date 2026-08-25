@@ -465,6 +465,44 @@
           </aside>
         </section>
 
+        <section class="po-slide homepage-refactor-slide">
+          <span class="eyebrow">Mulig forbedring · HomePage</span>
+          <h2>Udtræk kun det, der får et tydeligere ansvar</h2>
+          <div class="homepage-refactor-layout">
+            <article class="refactor-before">
+              <span>I filen nu</span>
+              <pre class="file-tree"><code>HomePage
+├── URL, headers og fetch
+├── loading, error og empty
+├── sidens intro
+└── liste med PostCard</code></pre>
+            </article>
+            <article class="refactor-after">
+              <span>En mulig opdeling</span>
+              <pre class="file-tree"><code>HomePage · koordinerer
+├── postService.getAll()
+├── loading, error og empty
+├── sidens intro
+└── &lt;PostList posts={posts} /&gt;
+    └── PostCard × antal posts</code></pre>
+            </article>
+          </div>
+          <div class="refactor-decisions">
+            <p><strong>Udtræk nu</strong><span>URL, headers og request-logik gentages på flere pages → <code>postService</code>.</span></p>
+            <p><strong>Overvej senere</strong><span><code>PostList</code> giver mening, hvis listen genbruges eller får mere adfærd.</span></p>
+            <p><strong>Behold her</strong><span>HomePage vælger fortsat sidens loading-, error-, empty- og success-UI.</span></p>
+          </div>
+          <p class="architecture-rule"><b>Ikke målet:</b> flest mulige komponenter. Målet er grænser, som gør en ændring lettere at placere.</p>
+          <aside class="notes">
+            Dette er en mulig forbedring, ikke en facitliste. Den gentagne Supabase-kode er det stærkeste signal om
+            udtrækning nu. PostList er mere betinget: hvis listen kun består af få linjer og kun bruges ét sted, kan den
+            fint blive i HomePage. Hvis den senere får sortering, flere visninger eller genbruges, får den et tydeligere
+            selvstændigt ansvar. Introen er sidespecifik og behøver ikke blive en komponent alene for at forkorte filen.
+            [Sources] - React: Thinking in React · https://react.dev/learn/thinking-in-react - Post App med Supabase ·
+            lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src/pages/HomePage.jsx [/Sources]
+          </aside>
+        </section>
+
         <section class="po-slide separation-slide">
           <span class="eyebrow">Separation of concerns</span>
           <h2>Adskil forskellige slags arbejde, så de kan ændres hver for sig</h2>
@@ -492,7 +530,7 @@
             <pre class="po-code"><code class="language-javascript jsx">function HomePage() {
   return (
     &lt;main&gt;
-      &lt;FeedIntro /&gt;
+      &lt;section className="feed-intro"&gt;…&lt;/section&gt;
       &lt;section className="post-grid"&gt;
         {posts.map(post =&gt; (
           &lt;PostCard key={post.id} post={post} /&gt;
@@ -510,13 +548,72 @@
           <p class="architecture-rule"><b>Hvorfor:</b> Hver komponent skjuler sine detaljer og kan sammensættes flere steder gennem props og children.</p>
           <aside class="notes">
             Delkomponenter skal ikke opstå kun for at gøre filen kortere. De skal have et navn, et ansvar og en
-            forståelig kontrakt via props/events. FeedIntro er vist som et muligt udtræk for at gøre compositionen
-            tydelig; den er ikke en eksisterende fil i Post App. App + Header + page og HomePage + mange PostCard er
-            eksisterende eksempler. [Sources] - React: Thinking in React · https://react.dev/learn/thinking-in-react -
+            forståelig kontrakt via props/events. App + Header + page og HomePage + mange PostCard er eksisterende
+            eksempler på composition. HTML-elementer indgår selvfølgelig også i det UI, komponenten sammensætter.
+            [Sources] - React: Thinking in React · https://react.dev/learn/thinking-in-react -
             Post App med Supabase · lokalt referenceprojekt ·
             /Users/race/Developer/post-app-supabase/src/App.jsx -
             /Users/race/Developer/post-app-supabase/src/pages/HomePage.jsx -
             /Users/race/Developer/post-app-supabase/src/components/PostCard.jsx [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide shared-form-slide">
+          <span class="eyebrow">Mulig forbedring · Create + Update</span>
+          <h2>Del formularen — ikke hele page-flowet</h2>
+          <div class="shared-form-layout">
+            <article class="shared-form-code">
+              <span>PostForm.jsx · kontrolleret component</span>
+              <pre class="po-code"><code class="language-javascript jsx">function PostForm({
+  image, caption, submitLabel,
+  onImageChange, onCaptionChange, onSubmit
+}) {
+  return (
+    &lt;form onSubmit={onSubmit}&gt;
+      &lt;input value={image}
+        onChange={e =&gt; onImageChange(e.target.value)} /&gt;
+      &lt;textarea value={caption}
+        onChange={e =&gt; onCaptionChange(e.target.value)} /&gt;
+      &lt;button&gt;{submitLabel}&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+            </article>
+            <div class="shared-form-pages">
+              <article>
+                <span>CreatePage</span>
+                <pre class="po-code"><code class="language-javascript jsx">&lt;PostForm
+  image={image} caption={caption}
+  submitLabel="Create"
+  onImageChange={setImage}
+  onCaptionChange={setCaption}
+  onSubmit={handleCreate}
+/&gt;</code></pre>
+                <small>kalder <code>create()</code> og navigerer efter oprettelse</small>
+              </article>
+              <article>
+                <span>UpdatePage</span>
+                <pre class="po-code"><code class="language-javascript jsx">&lt;PostForm
+  image={image} caption={caption}
+  submitLabel="Save changes"
+  onImageChange={setImage}
+  onCaptionChange={setCaption}
+  onSubmit={handleUpdate}
+/&gt;</code></pre>
+                <small>henter først posten, kalder <code>update()</code> og navigerer tilbage</small>
+              </article>
+            </div>
+          </div>
+          <p class="architecture-rule"><b>Grænsen:</b> <code>PostForm</code> genbruger markup. Hver page ejer fortsat sin state, sit request og sin navigation.</p>
+          <aside class="notes">
+            CreatePage og UpdatePage har næsten den samme formular, men forskellige brugerforløb. En kontrolleret
+            PostForm deler felter, labels og knap uden at skjule, at den ene page opretter, mens den anden først henter
+            og derefter opdaterer. State har stadig én tydelig ejer i den aktuelle page; værdier går ned som props, og
+            ændringer kommer tilbage gennem callbacks. En lille normalizePost-util kan senere samle trimning af image
+            og caption, hvis den samme transformation gentages. [Sources] - React: Sharing State Between Components ·
+            https://react.dev/learn/sharing-state-between-components - Post App med Supabase · lokalt referenceprojekt ·
+            /Users/race/Developer/post-app-supabase/src/pages/CreatePage.jsx -
+            /Users/race/Developer/post-app-supabase/src/pages/UpdatePage.jsx [/Sources]
           </aside>
         </section>
 
@@ -654,7 +751,9 @@ export function update(id, post) {
           <div class="service-reuse-code">
             <article>
               <span>PostDetailPage.jsx</span>
-              <pre class="po-code"><code class="language-javascript">useEffect(() =&gt; {
+              <pre class="po-code"><code class="language-javascript">import { getById } from "../services/postService";
+
+useEffect(() =&gt; {
   async function loadPost() {
     const post = await getById(id);
     setPost(post);
@@ -664,7 +763,9 @@ export function update(id, post) {
             </article>
             <article>
               <span>UpdatePage.jsx</span>
-              <pre class="po-code"><code class="language-javascript">useEffect(() =&gt; {
+              <pre class="po-code"><code class="language-javascript">import { getById } from "../services/postService";
+
+useEffect(() =&gt; {
   async function loadPost() {
     const post = await getById(id);
     setImage(post.image);
@@ -704,22 +805,28 @@ export function update(id, post) {
 │   │   ├── Header.jsx
 │   │   ├── Footer.jsx
 │   │   └── Sidebar.jsx
-│   └── PostCard.jsx
+│   ├── PostCard.jsx
+│   └── PostForm.jsx
 ├── services/
 │   └── postService.js
+├── utils/
+│   └── normalizePost.js
 └── main.css</code></pre>
             <div class="improved-structure-reading">
               <p><code>pages/</code><span>én page pr. route og det arbejde, siden samler</span></p>
-              <p><code>components/</code><span>genbrugeligt UI — især dele på tværs af pages</span></p>
+              <p><code>components/</code><span>genbrugeligt UI — fx PostForm på Create og Update</span></p>
               <p><code>components/layout/</code><span>fx Header, Footer og Sidebar, når appen faktisk har dem</span></p>
               <p><code>services/</code><span>fælles HTTP- og Supabase-detaljer, der ellers gentages</span></p>
+              <p><code>utils/</code><span>rene transformationer — fx trim image og caption i <code>normalizePost()</code></span></p>
             </div>
           </div>
-          <p class="architecture-rule"><b>Vigtigt:</b> Det er en mulig forbedring — ikke et mappetræ, alle projekter skal starte med.</p>
+          <p class="architecture-rule"><b>Vigtigt:</b> Det er en mulighed — opret kun <code>components/</code>, <code>services/</code> og <code>utils/</code>, når projektets faktiske ansvar kalder på dem.</p>
           <aside class="notes">
             Saml op på den tidligere struktur her. Før refaktoreringen var den enkle struktur passende. Hvis auditten
             viser gentaget Supabase-kode eller flere layout-komponenter, kan nye mapper gøre de reelle grænser synlige.
-            Footer og Sidebar er eksempler; de skal ikke oprettes, hvis appen ikke bruger dem. [Sources] - Post App med
+            PostForm er den mulige delte formular fra Create og Update. normalizePost er en mulig ren funktion, fordi
+            begge pages trimmer de samme felter før requestet. Footer og Sidebar er eksempler; de skal ikke oprettes,
+            hvis appen ikke bruger dem. Ingen af mapperne er obligatoriske. [Sources] - Post App med
             Supabase · lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src - React: Thinking in React ·
             https://react.dev/learn/thinking-in-react [/Sources]
           </aside>

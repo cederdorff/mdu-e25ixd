@@ -988,6 +988,78 @@
   font-size: 20px !important;
 }
 
+.homepage-refactor-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.homepage-refactor-layout article {
+  padding: 20px 22px;
+  border-top: 5px solid var(--coral);
+  background: var(--surface);
+}
+
+.homepage-refactor-layout .refactor-after {
+  border-color: var(--green);
+}
+
+.homepage-refactor-layout article > span {
+  color: var(--coral);
+  font-size: 17px;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.homepage-refactor-layout .refactor-after > span {
+  color: var(--green);
+}
+
+.homepage-refactor-layout .file-tree {
+  margin-top: 12px !important;
+  padding: 15px 18px !important;
+}
+
+.homepage-refactor-layout .file-tree code,
+.homepage-refactor-layout .file-tree code.hljs {
+  font-size: 16px !important;
+  line-height: 1.28 !important;
+}
+
+.refactor-decisions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.refactor-decisions p {
+  display: grid;
+  gap: 7px;
+  padding: 13px 15px;
+  border-left: 4px solid var(--m-lime);
+  background: rgb(216 255 98 / 8%);
+}
+
+.refactor-decisions strong {
+  color: var(--m-lime);
+  font-size: 16px;
+}
+
+.refactor-decisions span {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.homepage-refactor-slide .architecture-rule {
+  margin-top: 15px !important;
+  padding: 12px 18px;
+  font-size: 18px !important;
+}
+
 .concern-rows {
   display: grid;
   gap: 4px;
@@ -1067,6 +1139,77 @@
 
 .composition-contracts code {
   color: var(--violet);
+}
+
+.shared-form-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 28px;
+  margin-top: 16px;
+}
+
+.shared-form-slide h2 {
+  font-size: 54px;
+}
+
+.shared-form-code,
+.shared-form-pages article {
+  padding: 15px 18px;
+  border-top: 5px solid var(--violet);
+  background: var(--surface);
+}
+
+.shared-form-code > span,
+.shared-form-pages article > span {
+  color: var(--violet);
+  font-size: 16px;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.shared-form-code .po-code,
+.shared-form-pages .po-code {
+  margin-top: 12px !important;
+}
+
+.shared-form-code .po-code code,
+.shared-form-code .po-code code.hljs {
+  font-size: 14px !important;
+  line-height: 1.27 !important;
+}
+
+.shared-form-pages {
+  display: grid;
+  gap: 12px;
+}
+
+.shared-form-pages article {
+  border-color: var(--green);
+}
+
+.shared-form-pages article > span {
+  color: var(--green);
+}
+
+.shared-form-pages .po-code code,
+.shared-form-pages .po-code code.hljs {
+  font-size: 12px !important;
+  line-height: 1.18 !important;
+}
+
+.shared-form-pages small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.shared-form-slide .architecture-rule {
+  margin-top: 15px !important;
+  padding: 12px 18px;
+  font-size: 18px !important;
 }
 
 .state-owner {
