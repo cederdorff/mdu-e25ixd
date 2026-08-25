@@ -2087,9 +2087,9 @@
 
 .react-error-bridge-slide .po-code code,
 .react-error-bridge-slide .po-code code.hljs {
-  padding: 20px 24px;
-  font-size: 19px;
-  line-height: 1.28;
+  padding: 18px 22px;
+  font-size: 17px;
+  line-height: 1.2;
 }
 
 .react-error-steps {

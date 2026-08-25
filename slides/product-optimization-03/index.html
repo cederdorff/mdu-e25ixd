@@ -743,39 +743,49 @@ return post;</code></pre>
         </section>
 
         <section class="po-slide accent-error react-error-bridge-slide">
-          <span class="eyebrow">Bro til robuste UI-states</span>
-          <h2>React viser fejlbeskeden fra state</h2>
+          <span class="eyebrow">Post App · PostDetailPage</span>
+          <h2>PostDetailPage viser fejlen i UI’et</h2>
           <div class="code-layout">
-            <pre class="po-code"><code class="language-javascript jsx">function PostsPage() {
+            <pre class="po-code"><code class="language-javascript jsx">export default function PostDetailPage() {
+  const { id } = useParams();
+  const [post, setPost] = useState({});
   const [error, setError] = useState(null);
 
-  async function handleLoad() {
-    try {
-      await getPosts();
-    } catch (error) {
-      console.error(error);
-      setError("Vi kunne ikke hente opslag");
-    }
-  }
+  useEffect(() =&gt; {
+    async function getPost() {
+      try {
+        const response = await fetch(
+          `${URL}?id=eq.${id}`, { headers }
+        );
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-  return (
-    &lt;&gt;
-      &lt;button onClick={handleLoad}&gt;Hent opslag&lt;/button&gt;
-      {error &amp;&amp; &lt;p&gt;{error}&lt;/p&gt;}
-    &lt;/&gt;
-  );
+        const [post] = await response.json();
+        if (!post) throw new Error("Post not found");
+        setPost(post);
+      } catch (error) {
+        console.error(error);
+        setError("Vi kunne ikke hente opslaget");
+      }
+    }
+
+    getPost();
+  }, [id]);
+
+  if (error) return &lt;p&gt;{error}&lt;/p&gt;;
+  // resten af komponentens UI …
 }</code></pre>
             <div class="react-error-steps">
-              <article><span>1</span><p><code>getPosts()</code> kaster en fejl.</p></article>
-              <article><span>2</span><p><code>catch</code> kalder <code>setError()</code>.</p></article>
-              <article><span>3</span><p>State ændres, og React viser beskeden.</p></article>
+              <article><span>1</span><p>HTTP-svaret eller de forventede data udløser <code>throw</code>.</p></article>
+              <article><span>2</span><p><code>catch</code> gemmer en brugerbesked med <code>setError()</code>.</p></article>
+              <article><span>3</span><p>React renderer igen og viser beskeden.</p></article>
             </div>
           </div>
           <aside class="notes">
-            getPosts er den funktion, vi allerede har gjort ansvarlig for at throwe ved et ugyldigt udfald. Nu ser vi
-            kun komponentens ansvar: kald funktionen, fang fejlen, gem en brugerbesked og lad React rendere igen.
+            Dette er et fokuseret udsnit af den eksisterende PostDetailPage. Imports, navigation, delete-flow og den
+            øvrige markup er udeladt. Følg kæden fra de to kontroller til throw, catch, setError og den tidlige return.
             Hvis der ikke opstår en fejl, forbliver error null, og p-elementet vises ikke. Dette ene error-state bliver
-            udvidet med loading, empty og success i næste afsnit. [Sources] - React: useState ·
+            udvidet med loading, empty og success i næste afsnit. [Sources] - Post App ·
+            src/pages/PostDetailPage.jsx · lokalt semester 2-projekt - React: useState ·
             https://react.dev/reference/react/useState - React: Conditional Rendering ·
             https://react.dev/learn/conditional-rendering - MDN: try...catch ·
             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch [/Sources]
