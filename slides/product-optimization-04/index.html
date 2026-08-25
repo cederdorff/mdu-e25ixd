@@ -70,7 +70,8 @@
           <div class="audit-definition-layout">
             <div class="audit-definition">
               <strong>Audit</strong>
-              <p>En afgrænset undersøgelse af en eksisterende løsning, hvor fund dokumenteres med evidens og vurderes efter konsekvens.</p>
+              <p>En afgrænset undersøgelse af en eksisterende løsning. Fund dokumenteres og vurderes efter konsekvens.</p>
+              <p class="evidence-definition"><b>Evidens</b> er noget, andre kan efterprøve: fx kodehenvisning, skærmbillede, konsol/Network eller keyboard-flow.</p>
               <div class="audit-loop" aria-label="Auditforløb">
                 <span>Afgræns</span><b>→</b><span>Baseline</span><b>→</b><span>Undersøg</span><b>→</b><span>Prioritér</span><b>→</b><span>Verificér</span>
               </div>
@@ -88,7 +89,8 @@
           <aside class="notes">
             Hold definitionen kort og brug den som ramme for resten af dagen. Audit betyder ikke, at alt skal vurderes
             eller laves om; undersøgelsen skal være afgrænset og føre til begrundede valg. Målet er ikke at finde flest
-            fejl, men at træffe bedre tekniske beslutninger om Mellemrum. [Sources] - Teknisk audit af
+            fejl, men at træffe bedre tekniske beslutninger om Mellemrum. Evidens er dokumentation, som en anden kan
+            efterprøve og bruge til at forstå fundet. [Sources] - Teknisk audit af
             en React-løsning · lokalt kursusmateriale · undervisning/product-optimization/teknisk-audit-skabelon.md
             [/Sources]
           </aside>
@@ -97,7 +99,7 @@
         <section class="po-slide audit-vs-opinion">
           <span class="eyebrow">Audit ≠ personlig kodepræference</span>
           <h2>Et fund skal kunne forklares med mere end “jeg ville…”</h2>
-          <div class="contrast-pair">
+          <div class="contrast-pair audit-examples">
             <article class="weak">
               <small>Præference</small>
               <blockquote>“Jeg ville flytte filen.”</blockquote>
@@ -105,24 +107,36 @@
             </article>
             <article class="strong">
               <small>Auditfund</small>
-              <blockquote>“Formateringen er gentaget fire steder.”</blockquote>
-              <p>Det øger risikoen for inkonsistent visning og gør ændringer dyrere.</p>
+              <blockquote>“Datoformatet er gentaget fire steder.”</blockquote>
+              <p>Kodehenvisninger viser gentagelsen; samme ændring skal vedligeholdes flere steder.</p>
+            </article>
+            <article class="weak">
+              <small>Præference</small>
+              <blockquote>“Jeg ville bruge CSS Modules.”</blockquote>
+              <p>En mulig tilgang — men endnu ikke et dokumenteret problem.</p>
+            </article>
+            <article class="strong">
+              <small>Auditfund</small>
+              <blockquote>“Den globale <code>.button</code>-regel rammer både kort og formular.”</blockquote>
+              <p>DevTools viser samme selector; en ændring ét sted giver en utilsigtet ændring et andet.</p>
             </article>
           </div>
           <aside class="notes">
-            Bed holdet formulere forskellen. Et auditfund forbinder observation, evidens og konsekvens; løsningen kan
-            stadig diskuteres. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
+            Bed holdet formulere forskellen i begge eksempler. CSS Modules kan være en god løsning, men auditfundet er
+            den observerede kobling mellem selectors og konsekvensen — ikke præferencen for et bestemt værktøj. Et
+            auditfund forbinder observation, evidens og konsekvens; løsningen kan stadig diskuteres. [Sources] -
+            Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
           </aside>
         </section>
 
         <section class="po-slide baseline-slide">
-          <span class="eyebrow">Mellemrum · første arbejdspas</span>
-          <h2>Skab en baseline for Mellemrum, som I kan vende tilbage til</h2>
+          <span class="eyebrow">Kom i gang · første arbejdspas · 20–25 min.</span>
+          <h2>Start auditten af Mellemrum i denne rækkefølge</h2>
           <div class="baseline-path">
-            <article><span>01</span><strong>Afgræns</strong><small>Vælg centrale brugerflows og relevante områder</small></article>
-            <article><span>02</span><strong>Gennemfør</strong><small>Test samme flow lokalt og online</small></article>
-            <article><span>03</span><strong>Gem evidens</strong><small>Skærmbillede, kode, konsol eller Network</small></article>
-            <article><span>04</span><strong>Registrér</strong><small>Skriv observation og mulig konsekvens</small></article>
+            <article><span>01</span><strong>Åbn</strong><small>Audit-skabelonen samt Mellemrum lokalt og online</small></article>
+            <article><span>02</span><strong>Kontrollér</strong><small>Begge versioner skal virke, før I ændrer noget</small></article>
+            <article><span>03</span><strong>Vælg flows</strong><small>Tilmelding plus mindst ét andet centralt flow</small></article>
+            <article><span>04</span><strong>Gem baseline</strong><small>Skærmbillede, kode, konsol, Network eller keyboard-flow</small></article>
           </div>
           <div class="baseline-links">
             <a
@@ -135,54 +149,62 @@
             >
           </div>
           <aside class="notes">
-            Sæt dem i gang her. Forslag: 20–25 minutter. De skal ikke løse noget endnu. De skal kunne vise, hvad de
-            observerede, og hvor de så det. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale -
+            Sæt dem i gang her. De skal åbne audit-skabelonen og begge versioner af Mellemrum, kontrollere at løsningen
+            virker, vælge flows og gemme udgangspunktet. De skal ikke løse noget endnu. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale -
             Mellemrum · https://cederdorff.com/mellemrum/ [/Sources]
           </aside>
         </section>
 
         <section class="po-slide finding-anatomy-slide">
-          <span class="eyebrow">Anatomi af et brugbart fund</span>
-          <h2>En anden skal kunne forstå fundet uden at have stået ved siden af</h2>
-          <div class="finding-anatomy">
-            <article><span>Observation</span><p>Hvad sker der konkret?</p></article>
-            <article><span>Evidens</span><p>Hvor kan det ses eller reproduceres?</p></article>
+          <span class="eyebrow">Én række pr. fund</span>
+          <h2>Udfyld de samme seks felter i audit-skabelonen</h2>
+          <div class="finding-anatomy six-fields">
+            <article><span>Område</span><p>Hvor hører fundet til?</p></article>
+            <article><span>Fund og evidens</span><p>Hvad sker der — og hvor kan det ses?</p></article>
             <article><span>Konsekvens</span><p>Hvem eller hvad bliver påvirket?</p></article>
-            <article><span>Prioritet</span><p>Hvorfor nu — og hvor stor er indsatsen?</p></article>
+            <article><span>Forslag</span><p>Hvad forventer I bør ændres?</p></article>
+            <article><span>Prioritet</span><p>Hvorfor nu — set mod effekt og indsats?</p></article>
+            <article><span>Verifikation</span><p>Hvordan vil I vise, at det virker?</p></article>
           </div>
           <p class="finding-example">
-            <b>Eksempel:</b> Efter navigation til eventdetaljen bliver tastaturfokus i navigationen. Brugeren får ikke
-            et tydeligt signal om, at siden er skiftet.
+            <b>Fund + evidens:</b> Efter navigation til eventdetaljen bliver tastaturfokus i navigationen. Keyboard-flowet viser, at den nye side ikke får et tydeligt startpunkt.
           </p>
           <aside class="notes">
-            Gem løsningsforslaget til sidst. Et fund må gerne begynde som en hypotese, men det skal undersøges og have
-            evidens. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
+            Vis tabellen i audit-skabelonen. Et fund må gerne begynde som en hypotese, men hver række skal ende med
+            konkret evidens, en mulig konsekvens, et foreløbigt løsningsforslag og en plan for verifikation. [Sources] -
+            Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
           </aside>
         </section>
 
         <section class="po-slide audit-start-slide">
-          <span class="eyebrow">Arbejd nu i Mellemrum</span>
-          <h2>Find tre mulige forbedringer — uden at rette dem endnu</h2>
+          <span class="eyebrow">Arbejd nu i Mellemrum · leverance</span>
+          <h2>Registrér tre fund eller hypoteser — uden at rette koden</h2>
           <div class="audit-start-layout">
             <div>
-              <h3>Gennemfør mindst to flows</h3>
+              <h3>Obligatorisk scope</h3>
               <ul>
-                <li>Find et event → åbn detaljen</li>
-                <li>Gennemfør tilmeldingsflowet</li>
-                <li>Åbn den interne side</li>
-                <li>Genindlæs en direkte route online</li>
+                <li>Gennemfør tilmeldingsflowet lokalt og online</li>
+                <li>Undersøg den deployede version og en direkte route</li>
+                <li>Vælg mindst ét ekstra flow, fx eventdetaljen eller den interne side</li>
               </ul>
             </div>
-            <div class="audit-stop-rule">
-              <span>Stop-regel</span>
-              <strong>Ingen ændringer endnu</strong>
-              <p>Dokumentér udgangspunktet, mens det stadig findes.</p>
+            <div class="audit-stop-rule audit-done-rule">
+              <span>Når I er færdige</span>
+              <strong>En synlig første leverance</strong>
+              <ul>
+                <li>mindst to gennemførte flows</li>
+                <li>tre rækker i audit-skabelonen</li>
+                <li>evidens og konsekvens i hver række</li>
+                <li>ingen kodeændringer endnu</li>
+              </ul>
             </div>
           </div>
+          <p class="work-prompt"><b>Hvorfor vente med at rette?</b> I bevarer jeres baseline, adskiller observation fra løsning og kan prioritere fundene, før I bruger tid på implementering.</p>
           <aside class="notes">
-            Lad de studerende arbejde. Når I samler op, skal de vise ét fund og den evidens, der gør det til mere end
-            en mavefornemmelse. [Sources] - Case 1-casebeskrivelsen og audit-skabelonen · lokalt kursusmateriale
-            [/Sources]
+            Lad de studerende arbejde. Når I samler op, skal de vise audit-skabelonen og forklare ét fund med evidens
+            og konsekvens. Hvis de retter straks, mister de ofte før-billedet og vælger den første idé, før fundene er
+            sammenlignet. De behøver ikke dække alle seks fokusområder. Tre fund er en første leverance, ikke et krav om tre færdige løsninger. [Sources] - Case
+            1-casebeskrivelsen og audit-skabelonen · lokalt kursusmateriale [/Sources]
           </aside>
         </section>
 
@@ -206,11 +228,11 @@
             <article><span>01</span><strong>Routes og pages</strong><small>Hvor begynder en brugeropgave?</small></article>
             <article><span>02</span><strong>Komponenter</strong><small>Hvilket UI-ansvar har hver del?</small></article>
             <article><span>03</span><strong>State og dataflow</strong><small>Hvem ejer informationen?</small></article>
-            <article><span>04</span><strong>Effects og data</strong><small>Hvor møder React omverdenen?</small></article>
+            <article><span>04</span><strong>Side effects og useEffect</strong><small>Hvor møder React omverdenen?</small></article>
             <article><span>05</span><strong>Adskillelse og genbrug</strong><small>Hvad bør kun ændres ét sted?</small></article>
             <article><span>06</span><strong>Navne og struktur</strong><small>Kan en anden finde og følge ansvaret?</small></article>
           </div>
-          <p class="architecture-rule">Best practice på jeres niveau: vælg den mindste struktur, som gør ansvar og ændringer tydelige.</p>
+          <p class="architecture-rule"><b>Praktisk tommelfingerregel:</b> Vælg den mindste struktur, som gør ansvar og ændringer tydelige.</p>
           <aside class="notes">
             Brug oversigten som kort over afsnittet. De seks emner er ikke seks lag, der altid skal oprettes; de er seks
             beslutninger, de studerende skal kunne forklare og undersøge. [Sources] - React: Thinking in React ·
@@ -257,21 +279,23 @@
               <p><code>main.jsx</code><span>starter React</span></p>
               <p><code>App.jsx</code><span>forbinder routes og pages</span></p>
               <p><code>pages/</code><span>koordinerer hver brugeropgave</span></p>
-              <p><code>components/</code><span>viser genbrugelige UI-dele</span></p>
+              <p><code>components/</code><span>samler UI-dele, der kan bruges flere steder</span></p>
               <p><code>main.css</code><span>samler den globale styling</span></p>
             </div>
           </div>
-          <p class="architecture-rule"><b>Hvorfor:</b> En ny udvikler kan begynde ved routen og følge ansvaret ind i den relevante page.</p>
+          <p class="architecture-rule"><b>På tværs af pages:</b> Genbrugelige dele som Header, Footer og Sidebar hører naturligt hjemme i <code>components/</code>, så de ikke kopieres.</p>
           <aside class="notes">
             Vis projektet i editoren. Peg på, at strukturen er enkel og passende til en lille CRUD-app. Der mangler ikke
-            automatisk services, hooks eller utils; nye grænser skal løse et observeret problem. [Sources] - Post App
+            automatisk services, hooks eller utils; nye grænser skal løse et observeret problem. Header er allerede et
+            konkret eksempel på UI, der bruges på tværs af pages. Footer og Sidebar er eksempler, ikke krav til denne app.
+            [Sources] - Post App
             med Supabase · lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src [/Sources]
           </aside>
         </section>
 
         <section class="po-slide route-page-slide">
           <span class="eyebrow">Routes og pages</span>
-          <h2>En route afgrænser en brugeropgave — en page koordinerer den</h2>
+          <h2>Routen vælger siden — page-komponenten samler arbejdet</h2>
           <div class="code-layout route-page-layout">
             <pre class="po-code"><code class="language-javascript jsx">&lt;Routes&gt;
   &lt;Route path="/" element={&lt;HomePage /&gt;} /&gt;
@@ -283,15 +307,16 @@
   /&gt;
 &lt;/Routes&gt;</code></pre>
             <div class="code-reading">
-              <p><b><code>App.jsx</code></b><span>er kortet over appens page-grænser</span></p>
-              <p><b><code>HomePage</code></b><span>koordinerer flowet “se alle posts”</span></p>
-              <p><b><code>PostDetailPage</code></b><span>koordinerer ét post via route-parameteren <code>:id</code></span></p>
+              <p><b><code>App.jsx</code></b><span>kobler hver URL til en page-komponent</span></p>
+              <p><b><code>HomePage</code></b><span>henter og viser alle posts</span></p>
+              <p><b><code>PostDetailPage</code></b><span>bruger <code>:id</code> til at hente og vise ét post</span></p>
             </div>
           </div>
-          <p class="architecture-rule"><b>Hvorfor:</b> URL, brugeropgave og page-komponent peger på det samme ansvar.</p>
+          <p class="architecture-rule"><b>Hvorfor:</b> Når URL’en ændres, er det tydeligt, hvilken page der overtager arbejdet.</p>
           <aside class="notes">
-            App.jsx skal ikke kende detaljerne i siderne; den forbinder URL'er med page-komponenter. En page må gerne
-            samle datahentning, UI-states og komponenter for sin brugeropgave. [Sources] - Post App med Supabase ·
+            Gør ordene konkrete: En route er reglen, der matcher en URL. En page er React-komponenten, der samler det,
+            brugeren skal se og gøre på den URL. App.jsx skal ikke kende detaljerne; den forbinder kun URL'er med
+            page-komponenter. [Sources] - Post App med Supabase ·
             lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src/App.jsx - React Router: Routing ·
             https://reactrouter.com/start/declarative/routing [/Sources]
           </aside>
@@ -301,16 +326,45 @@
           <span class="eyebrow">Navngivning er en del af arkitekturen</span>
           <h2>Gode navne reducerer gætteri</h2>
           <div class="naming-examples">
-            <article><span>Kræver kontekst</span><code>URL</code><code>headers</code><code>data</code><code>handleSubmit()</code></article>
+            <article><span>Kræver kontekst</span><code>URL</code><code>data</code><code>loading</code><code>selected</code><code>getData()</code><code>handleClick()</code></article>
             <b>→</b>
-            <article><span>Beskriver domænet</span><code>POSTS_URL</code><code>supabaseHeaders</code><code>posts</code><code>handlePostSubmit()</code></article>
+            <article><span>Fortæller formålet</span><code>POSTS_URL</code><code>posts</code><code>isLoadingPosts</code><code>selectedEventId</code><code>fetchPosts()</code><code>handleDeletePost()</code></article>
           </div>
           <p class="naming-test">Kan navnet stadig forstås i en import, en stack trace og en pull request?</p>
           <aside class="notes">
-            Post App har allerede tydelige filnavne som PostDetailPage og PostCard. Brug URL, headers og handleSubmit
-            til at vise, at et navn kan være forståeligt lokalt, men blive uklart, når koden flyttes eller genbruges.
+            Post App har allerede tydelige filnavne som PostDetailPage og PostCard. Brug eksemplerne til at vise, at et
+            navn kan være forståeligt lokalt, men blive uklart, når koden flyttes eller genbruges.
             Lange navne er ikke automatisk bedre; målet er mindre mental oversættelse. [Sources] - Post App med
             Supabase · lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide naming-rules-slide">
+          <span class="eyebrow">Navne viser også typen af kode</span>
+          <h2>Komponenter starter med stort — state og events fortæller deres rolle</h2>
+          <div class="naming-rules-layout">
+            <div class="component-name-rule">
+              <span>React-komponent</span>
+              <pre class="po-code"><code class="language-javascript jsx">function PostCard() { … }
+
+&lt;PostCard /&gt;   // React-komponent
+&lt;article /&gt;    // HTML-element</code></pre>
+              <p><code>PostCard</code> bruger <b>PascalCase</b>. Et navn med lille begyndelsesbogstav læses som et HTML-tag i JSX.</p>
+            </div>
+            <div class="code-naming-rules">
+              <p><strong><code>posts</code>, <code>selectedEventId</code></strong><span>værdier · camelCase</span></p>
+              <p><strong><code>isLoading</code>, <code>hasError</code>, <code>canSubmit</code></strong><span>booleans · kan læses som spørgsmål</span></p>
+              <p><strong><code>handleSubmit</code>, <code>handleDeletePost</code></strong><span>handlers inde i komponenten</span></p>
+              <p><strong><code>onSubmit</code>, <code>onDelete</code></strong><span>event-props, som komponenten modtager</span></p>
+              <p><strong><code>setPosts</code>, <code>setIsLoading</code></strong><span>setter matcher navnet på state</span></p>
+            </div>
+          </div>
+          <aside class="notes">
+            React bruger stort begyndelsesbogstav til at skelne egne komponenter fra indbyggede HTML-tags. PascalCase
+            er derfor ikke kun stil; det er en del af JSX-fortolkningen. handle... er en praktisk konvention for den
+            lokale funktion, mens on... beskriver den callback-prop, et component tilbyder eller modtager. [Sources] -
+            React: Your First Component · https://react.dev/learn/your-first-component - React: createElement ·
+            https://react.dev/reference/react/createElement [/Sources]
           </aside>
         </section>
 
@@ -336,33 +390,44 @@
         </section>
 
         <section class="po-slide render-effect-slide">
-          <span class="eyebrow">Separation of concerns</span>
-          <h2>Render beregner UI — Effects synkroniserer med omverdenen</h2>
-          <div class="code-layout architecture-code-layout">
-            <pre class="po-code"><code class="language-javascript jsx">const [posts, setPosts] = useState([]);
-
-useEffect(() =&gt; {
+          <span class="eyebrow">Side effect og Effect</span>
+          <h2>Render beregner UI — useEffect kører efter render</h2>
+          <div class="effect-code-zones">
+            <article class="state-zone">
+              <span>01 · State</span>
+              <pre class="po-code"><code class="language-javascript">const [posts, setPosts] =
+  useState([]);</code></pre>
+              <small>React husker posts mellem renders.</small>
+            </article>
+            <article class="effect-zone">
+              <span>02 · Effect med side effect</span>
+              <pre class="po-code"><code class="language-javascript">useEffect(() =&gt; {
   async function getPosts() {
     const response = await fetch(URL, { headers });
     setPosts(await response.json());
   }
   getPosts();
-}, []);
-
-return posts.map(post =&gt;
-  &lt;PostCard key={post.id} post={post} /&gt;
+}, []);</code></pre>
+              <small><code>fetch</code> kontakter et system uden for React.</small>
+            </article>
+            <article class="render-zone">
+              <span>03 · Render</span>
+              <pre class="po-code"><code class="language-javascript jsx">return posts.map(post =&gt;
+  &lt;PostCard
+    key={post.id}
+    post={post}
+  /&gt;
 );</code></pre>
-            <div class="code-reading">
-              <p><b>Effect</b><span>GET synkroniserer med Supabase</span></p>
-              <p><b>State</b><span>Svaret gemmes som sidens data</span></p>
-              <p><b>Render</b><span>UI beregnes fra den aktuelle state</span></p>
-            </div>
+              <small>JSX beregnes fra den aktuelle state.</small>
+            </article>
           </div>
-          <p class="architecture-rule"><b>Hvorfor:</b> Render kan gentages sikkert, mens kontakt til omverdenen har en tydelig placering.</p>
+          <p class="effect-terminology"><b>Side effect</b> er handlingen uden for render. <b>Effect</b> er Reacts navn for synkroniseringen, som deklareres med <code>useEffect</code>.</p>
           <aside class="notes">
-            Render-kode skal være pure. Effects bruges til synkronisering med eksterne systemer; en beregning baseret
-            på eksisterende props/state behøver normalt ikke et Effect. Kodeudsnittet er forkortet; den faktiske fil
-            indeholder også loading og error. [Sources] - React: Synchronizing with Effects ·
+            “Side effect” er det generelle begreb for arbejde, der påvirker eller bruger noget uden for den rene
+            renderberegning. React-dokumentationen kalder en synkronisering, som skyldes rendering og deklareres med
+            useEffect, en Effect. Ikke alle side effects skal i useEffect: handlinger, der skyldes et konkret klik eller
+            submit, hører normalt i event handleren. En beregning baseret på eksisterende props/state behøver normalt
+            slet ikke et Effect. Kodeudsnittet er forkortet. [Sources] - React: Synchronizing with Effects ·
             https://react.dev/learn/synchronizing-with-effects - Post App med Supabase · lokalt referenceprojekt ·
             /Users/race/Developer/post-app-supabase/src/pages/HomePage.jsx [/Sources]
           </aside>
@@ -370,52 +435,86 @@ return posts.map(post =&gt;
 
         <section class="po-slide responsibility-signals-slide">
           <span class="eyebrow">Single responsibility</span>
-          <h2>HomePage må gerne koordinere meget — hvis hovedansvaret stadig er tydeligt</h2>
-          <div class="signal-layout">
-            <div>
-              <h3>HomePage koordinerer lige nu</h3>
+          <h2>Ét hovedansvar kan godt rumme flere relaterede opgaver</h2>
+          <div class="responsibility-layout">
+            <div class="homepage-responsibility">
+              <h3><code>HomePage</code>: koordinér forsiden</h3>
               <ul>
                 <li>hentning af posts</li>
                 <li>loading, error og empty state</li>
                 <li>listen af <code>PostCard</code></li>
                 <li>sidens overskrift og intro</li>
               </ul>
+              <p>Opgaverne hænger sammen med den samme page.</p>
             </div>
-            <blockquote>Refaktorér, når ansvar bliver uklart eller samme ændring skal laves flere steder.</blockquote>
+            <div class="responsibility-examples">
+              <p><code>Header</code><span>viser appens navigation</span><small>ændres, når navigationen ændres</small></p>
+              <p><code>PostCard</code><span>viser og linker til ét post</span><small>ændres, når kortets UI ændres</small></p>
+              <p><code>formatEventDate()</code><span>formaterer én dato</span><small>ændres, når datoformatet ændres</small></p>
+            </div>
           </div>
+          <p class="architecture-rule"><b>Test:</b> Kan hovedansvaret siges i én kort sætning — og ændres delen af én tydelig grund?</p>
           <aside class="notes">
-            HomePages hovedansvar kan stadig beskrives som at koordinere forsiden. Undgå en mekanisk linjegrænse. Spørg
-            i stedet, om en udtrækning giver en reel grænse og gør en forventet ændring enklere. [Sources] - React:
+            Single responsibility betyder ikke én funktion eller få linjer. HomePages hovedansvar kan stadig beskrives
+            som at koordinere forsiden, selvom det kræver flere relaterede opgaver. Header, PostCard og en formatteringsfunktion
+            viser mindre ansvar med hver sin grund til at ændre sig. Spørg, om en udtrækning skaber en reel grænse. [Sources] - React:
             Thinking in React · https://react.dev/learn/thinking-in-react - Post App med Supabase · lokalt
-            referenceprojekt · /Users/race/Developer/post-app-supabase/src/pages/HomePage.jsx [/Sources]
+            referenceprojekt · /Users/race/Developer/post-app-supabase/src/pages/HomePage.jsx -
+            /Users/race/Developer/post-app-supabase/src/components/Header.jsx -
+            /Users/race/Developer/post-app-supabase/src/components/PostCard.jsx [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide separation-slide">
+          <span class="eyebrow">Separation of concerns</span>
+          <h2>Adskil forskellige slags arbejde, så de kan ændres hver for sig</h2>
+          <div class="concern-rows">
+            <p><strong>Page</strong><code>HomePage.jsx</code><span>vælger loading, error, empty eller liste</span><small>UI-flowet ændres</small></p>
+            <p><strong>Service</strong><code>postService.js</code><span>kender URL, headers og HTTP-metoder</span><small>API’et ændres</small></p>
+            <p><strong>Component</strong><code>PostCard.jsx</code><span>viser link, billede og caption</span><small>kortets UI ændres</small></p>
+            <p><strong>Util</strong><code>formatEventDate.js</code><span>formaterer en eventdato konsekvent</span><small>datoformatet ændres</small></p>
+          </div>
+          <p class="architecture-rule"><b>Hvorfor:</b> En ændring i API’et skal ikke kræve, at du samtidig omskriver markup og datoformat.</p>
+          <aside class="notes">
+            Separation of concerns ser på forskellige typer arbejde på tværs af løsningen. Single responsibility ser på,
+            om én konkret del har et tydeligt hovedansvar. De to principper hænger sammen, men er ikke det samme. Page,
+            service, component og util er mulige grænser, når projektet faktisk har behovet. formatEventDate er et
+            overførbart eksempel fra Mellemrum, ikke en eksisterende fil i Post App. [Sources] - React: Thinking in React ·
+            https://react.dev/learn/thinking-in-react - Post App med Supabase · lokalt referenceprojekt ·
+            /Users/race/Developer/post-app-supabase/src [/Sources]
           </aside>
         </section>
 
         <section class="po-slide composition-slide">
           <span class="eyebrow">Component composition</span>
-          <h2>HomePage koordinerer listen — PostCard viser ét post</h2>
+          <h2>Større UI bygges ved at sætte mindre komponenter sammen</h2>
           <div class="composition-layout">
             <pre class="po-code"><code class="language-javascript jsx">function HomePage() {
   return (
-    &lt;section className="post-grid"&gt;
-      {posts.map(post =&gt; (
-        &lt;PostCard key={post.id} post={post} /&gt;
-      ))}
-    &lt;/section&gt;
+    &lt;main&gt;
+      &lt;FeedIntro /&gt;
+      &lt;section className="post-grid"&gt;
+        {posts.map(post =&gt; (
+          &lt;PostCard key={post.id} post={post} /&gt;
+        ))}
+      &lt;/section&gt;
+    &lt;/main&gt;
   );
 }</code></pre>
             <div class="composition-contracts">
-              <p><code>HomePage</code><span>ejer posts og beslutter, hvad siden viser</span></p>
-              <p><code>PostCard</code><span>modtager ét post gennem props</span></p>
-              <p><code>key={post.id}</code><span>giver listeelementet stabil identitet</span></p>
+              <p><code>App</code><span>sætter <code>Header</code> sammen med den page, routen vælger</span></p>
+              <p><code>HomePage</code><span>sætter intro og en liste af <code>PostCard</code> sammen</span></p>
+              <p><code>PostCard</code><span>sætter link, billede og caption sammen for ét post</span></p>
             </div>
           </div>
-          <p class="architecture-rule"><b>Hvorfor:</b> Listen kan ændres uden at blande detaljerne for ét kort ind i siden.</p>
+          <p class="architecture-rule"><b>Hvorfor:</b> Hver komponent skjuler sine detaljer og kan sammensættes flere steder gennem props og children.</p>
           <aside class="notes">
             Delkomponenter skal ikke opstå kun for at gøre filen kortere. De skal have et navn, et ansvar og en
-            forståelig kontrakt via props/events. PostCard er et godt eksempel: komponenten modtager post og viser
-            link, billede og caption. [Sources] - React: Thinking in React · https://react.dev/learn/thinking-in-react -
+            forståelig kontrakt via props/events. FeedIntro er vist som et muligt udtræk for at gøre compositionen
+            tydelig; den er ikke en eksisterende fil i Post App. App + Header + page og HomePage + mange PostCard er
+            eksisterende eksempler. [Sources] - React: Thinking in React · https://react.dev/learn/thinking-in-react -
             Post App med Supabase · lokalt referenceprojekt ·
+            /Users/race/Developer/post-app-supabase/src/App.jsx -
             /Users/race/Developer/post-app-supabase/src/pages/HomePage.jsx -
             /Users/race/Developer/post-app-supabase/src/components/PostCard.jsx [/Sources]
           </aside>
@@ -423,20 +522,46 @@ return posts.map(post =&gt;
 
         <section class="po-slide state-flow-slide">
           <span class="eyebrow">Ensrettet dataflow</span>
-          <h2>State har én ejer — data går ned, handlinger går op</h2>
-          <div class="state-owner">
-            <div class="state-parent"><small>CreatePage</small><strong>ejer <code>image</code> og <code>caption</code></strong></div>
-            <div class="state-arrows"><span>value ↓</span><span>↑ onChange</span></div>
-            <div class="state-children">
-              <article><strong>input</strong><small>viser image-værdien</small></article>
-              <article><strong>textarea</strong><small>opdaterer caption</small></article>
+          <h2>CreatePage ejer værdien — ImageField viser og ændrer den</h2>
+          <div class="state-flow-code">
+            <article class="state-parent-code">
+              <span>Parent · ejer state</span>
+              <pre class="po-code"><code class="language-javascript jsx">function CreatePage() {
+  const [image, setImage] = useState("");
+
+  return (
+    &lt;ImageField
+      value={image}
+      onChange={setImage}
+    /&gt;
+  );
+}</code></pre>
+            </article>
+            <div class="state-flow-arrows">
+              <p><strong>værdi ↓</strong><small><code>value={image}</code></small></p>
+              <p><strong>ændring ↑</strong><small><code>onChange={setImage}</code></small></p>
             </div>
+            <article class="state-child-code">
+              <span>Child · modtager props</span>
+              <pre class="po-code"><code class="language-javascript jsx">function ImageField({ value, onChange }) {
+  return (
+    &lt;input
+      value={value}
+      onChange={event =&gt;
+        onChange(event.target.value)
+      }
+    /&gt;
+  );
+}</code></pre>
+            </article>
           </div>
-          <p class="muted">Single source of truth betyder én ejer pr. information — ikke én global state til alt.</p>
+          <p class="state-owner-rule"><b>Én ejer:</b> Kun <code>CreatePage</code> har <code>useState</code>. <code>ImageField</code> får værdien som prop og melder brugerens ændring tilbage.</p>
           <aside class="notes">
-            CreatePage viser princippet i en controlled form: React-state er kilden, value sender data til feltet, og
-            onChange sender brugerens handling tilbage. Hvis to komponenter skal være enige om samme information,
-            flyttes state ofte til deres nærmeste fælles parent. [Sources] - React: Sharing State Between Components ·
+            ImageField er et hypotetisk udtræk af det eksisterende input i CreatePage. “Data går ned” betyder helt
+            konkret, at image sendes fra CreatePage til child gennem value-proppen. “Handlinger går op” betyder, at
+            child kalder onChange-proppen, så ejeren kan kalde setImage. ImageField må ikke samtidig have sin egen kopi
+            af image-state. Hvis to komponenter skal bruge samme information, placeres den hos deres nærmeste fælles
+            parent. [Sources] - React: Sharing State Between Components ·
             https://react.dev/learn/sharing-state-between-components - Post App med Supabase · lokalt referenceprojekt ·
             /Users/race/Developer/post-app-supabase/src/pages/CreatePage.jsx [/Sources]
           </aside>
@@ -447,20 +572,28 @@ return posts.map(post =&gt;
           <h2>Kan værdien beregnes, skal den normalt ikke gemmes igen</h2>
           <div class="derived-compare">
             <article class="avoid">
-              <span>Undgå dobbelt sandhed</span>
+              <span>Undgå at gemme antal separat</span>
               <pre class="po-code"><code class="language-javascript">const [posts, setPosts] = useState([]);
-const [hasPosts, setHasPosts] = useState(false);</code></pre>
+const [postCount, setPostCount] = useState(0);
+
+setPosts(data);
+setPostCount(data.length);</code></pre>
             </article>
             <article class="prefer">
-              <span>Beregn ud fra kilden</span>
+              <span>Beregn antal ud fra posts</span>
               <pre class="po-code"><code class="language-javascript">const [posts, setPosts] = useState([]);
-const hasPosts = posts.length &gt; 0;</code></pre>
+const postCount = posts.length;
+const hasPosts = postCount &gt; 0;
+
+return &lt;p&gt;{postCount} posts&lt;/p&gt;;</code></pre>
             </article>
           </div>
-          <p class="derived-test"><b>Hvorfor:</b> Én kilde kan ikke komme ud af sync med en kopi. Spørg: Kan værdien beregnes under render?</p>
+          <p class="derived-test"><b>Derived state:</b> <code>postCount</code> og <code>hasPosts</code> afledes af <code>posts</code>. Når posts ændres, beregnes de automatisk igen under render.</p>
           <aside class="notes">
-            HomePage bruger allerede posts.length direkte i sine UI-betingelser. Eksemplet navngiver beregningen for at
-            gøre princippet synligt. Redundant state kan komme ud af sync; gem den minimale, komplette state og beregn resten.
+            HomePage bruger allerede posts.length direkte i sine UI-betingelser. Antal er et konkret eksempel på
+            derived state: det er en værdi, der kan beregnes ud fra eksisterende state. Hvis både posts og postCount
+            gemmes, kan en kodevej glemme setPostCount, og værdierne kommer ud af sync. Gem den minimale, komplette
+            state og beregn resten under render.
             [Sources] - React: Thinking in React · https://react.dev/learn/thinking-in-react - React: Choosing the State
             Structure · https://react.dev/learn/choosing-the-state-structure - Post App med Supabase · lokalt
             referenceprojekt · /Users/race/Developer/post-app-supabase/src/pages/HomePage.jsx [/Sources]
@@ -469,26 +602,32 @@ const hasPosts = posts.length &gt; 0;</code></pre>
 
         <section class="po-slide service-boundary-slide">
           <span class="eyebrow">Separation of concerns og genbrug</span>
-          <h2>Gentagne Supabase-detaljer kan få deres egen grænse</h2>
+          <h2>postService.js samler de fælles Supabase-detaljer</h2>
           <div class="service-boundary-layout">
             <article>
-              <span>I Post App’en nu</span>
-              <pre class="po-code"><code class="language-javascript">const URL = import.meta.env.VITE_SUPABASE_URL;
+              <span>01 · Fælles request</span>
+              <pre class="po-code"><code class="language-javascript">// services/postService.js
+const URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = { apikey: API_KEY, ... };
 
-await fetch(`${URL}?id=eq.${id}`, {
-  method: "PATCH",
-  headers,
-  body: JSON.stringify(post)
-});</code></pre>
-            </article>
-            <b>→</b>
-            <article>
-              <span>Mulig næste grænse</span>
-              <pre class="po-code"><code class="language-javascript">// pages/UpdatePage.jsx
-await postService.update(id, post);
+async function request(path = "", options = {}) {
+  const response = await fetch(`${URL}${path}`, {
+    ...options,
+    headers
+  });
 
-// services/postService.js
+  if (!response.ok) throw new Error(response.status);
+  return response.json();
+}</code></pre>
+            </article>
+            <b>+</b>
+            <article>
+              <span>02 · Domænenære funktioner</span>
+              <pre class="po-code"><code class="language-javascript">export async function getById(id) {
+  const posts = await request(`?id=eq.${id}`);
+  return posts[0];
+}
+
 export function update(id, post) {
   return request(`?id=eq.${id}`, {
     method: "PATCH",
@@ -497,24 +636,103 @@ export function update(id, post) {
 }</code></pre>
             </article>
           </div>
-          <p class="architecture-rule"><b>Hvorfor:</b> Pages beskriver brugerflowet; ét service-modul beskriver HTTP-detaljerne konsekvent.</p>
+          <p class="architecture-rule"><b>Samme mønster:</b> Tilføj <code>getAll()</code>, <code>create()</code> og <code>remove()</code>; pages behøver derefter ikke kende URL og headers.</p>
           <aside class="notes">
             CreatePage, HomePage, PostDetailPage og UpdatePage gentager URL, headers og fetch-mønstre. Det er et reelt
-            signal om en mulig service-grænse, men ikke et krav om at bygge mange lag. Et custom hook er først relevant,
-            når både data, loading/error-state og effect-adfærd skal genbruges som én enhed. [Sources] - Post App med
-            Supabase · lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src/pages - React: Reusing
-            Logic with Custom Hooks · https://react.dev/learn/reusing-logic-with-custom-hooks [/Sources]
+            signal om en mulig service-grænse. request samler den mekaniske HTTP-del. De eksporterede funktioner bruger
+            domænets ord og skjuler query-string og metode. Eksemplet er forkortet; en robust request-funktion skal også
+            håndtere tomme responses og eventuelt kombinere ekstra headers. Et custom hook er først relevant, når både
+            data, loading/error-state og effect-adfærd skal genbruges som én enhed. [Sources] - Post App med Supabase ·
+            lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src/pages - React: Reusing Logic with
+            Custom Hooks · https://react.dev/learn/reusing-logic-with-custom-hooks [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide service-reuse-slide">
+          <span class="eyebrow">Pages genbruger service-funktionerne</span>
+          <h2>Detail og update kan kalde den samme getById</h2>
+          <div class="service-reuse-code">
+            <article>
+              <span>PostDetailPage.jsx</span>
+              <pre class="po-code"><code class="language-javascript">useEffect(() =&gt; {
+  async function loadPost() {
+    const post = await getById(id);
+    setPost(post);
+  }
+  loadPost();
+}, [id]);</code></pre>
+            </article>
+            <article>
+              <span>UpdatePage.jsx</span>
+              <pre class="po-code"><code class="language-javascript">useEffect(() =&gt; {
+  async function loadPost() {
+    const post = await getById(id);
+    setImage(post.image);
+    setCaption(post.caption);
+  }
+  loadPost();
+}, [id]);</code></pre>
+            </article>
+          </div>
+          <div class="service-consumers">
+            <p><code>HomePage</code><span><code>getAll()</code></span></p>
+            <p><code>PostDetailPage</code><span><code>getById()</code> + <code>remove()</code></span></p>
+            <p><code>CreatePage</code><span><code>create()</code></span></p>
+            <p><code>UpdatePage</code><span><code>getById()</code> + <code>update()</code></span></p>
+          </div>
+          <aside class="notes">
+            Begge pages skal hente det samme post via id, men de bruger svaret forskelligt. Detail gemmer hele objektet;
+            Update fordeler værdierne i formularens state. De deler dataadgangen uden at tvinges til at dele UI-state.
+            Importen kan være navngivet, fx import { getById, update } from "../services/postService". Page-komponenten
+            ejer fortsat loading, error, navigation og det UI, der hører til brugeropgaven. [Sources] - Post App med
+            Supabase · lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src/pages/PostDetailPage.jsx -
+            /Users/race/Developer/post-app-supabase/src/pages/UpdatePage.jsx [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide improved-structure-slide">
+          <span class="eyebrow">Mulig opsamling efter refaktorering</span>
+          <h2>Ny struktur gør ansvaret synligt</h2>
+          <div class="improved-structure-layout">
+            <pre class="file-tree"><code>src/
+├── pages/
+│   ├── HomePage.jsx
+│   ├── CreatePage.jsx
+│   └── …
+├── components/
+│   ├── layout/
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   └── Sidebar.jsx
+│   └── PostCard.jsx
+├── services/
+│   └── postService.js
+└── main.css</code></pre>
+            <div class="improved-structure-reading">
+              <p><code>pages/</code><span>én page pr. route og det arbejde, siden samler</span></p>
+              <p><code>components/</code><span>genbrugeligt UI — især dele på tværs af pages</span></p>
+              <p><code>components/layout/</code><span>fx Header, Footer og Sidebar, når appen faktisk har dem</span></p>
+              <p><code>services/</code><span>fælles HTTP- og Supabase-detaljer, der ellers gentages</span></p>
+            </div>
+          </div>
+          <p class="architecture-rule"><b>Vigtigt:</b> Det er en mulig forbedring — ikke et mappetræ, alle projekter skal starte med.</p>
+          <aside class="notes">
+            Saml op på den tidligere struktur her. Før refaktoreringen var den enkle struktur passende. Hvis auditten
+            viser gentaget Supabase-kode eller flere layout-komponenter, kan nye mapper gøre de reelle grænser synlige.
+            Footer og Sidebar er eksempler; de skal ikke oprettes, hvis appen ikke bruger dem. [Sources] - Post App med
+            Supabase · lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src - React: Thinking in React ·
+            https://react.dev/learn/thinking-in-react [/Sources]
           </aside>
         </section>
 
         <section class="po-slide architecture-best-practice-slide">
-          <span class="eyebrow">Best practice på vores niveau</span>
+          <span class="eyebrow">Praktisk beslutningsregel</span>
           <h2>Start enkelt — og skab en grænse, når den løser et konkret problem</h2>
           <div class="best-practice-list">
             <p><span>01</span><strong>Page</strong><small>koordinerer routens data, states og UI</small></p>
             <p><span>02</span><strong>Komponent</strong><small>har ét tydeligt UI-ansvar og en enkel prop-kontrakt</small></p>
             <p><span>03</span><strong>State</strong><small>bor hos den nærmeste ejer; afledte værdier beregnes</small></p>
-            <p><span>04</span><strong>Effect</strong><small>synkroniserer med noget uden for React</small></p>
+            <p><span>04</span><strong>Side effect / Effect</strong><small><code>useEffect</code> synkroniserer med noget uden for React efter render</small></p>
             <p><span>05</span><strong>Service, util eller hook</strong><small>udtrækkes, når logik reelt gentages eller skjuler hensigten</small></p>
           </div>
           <p class="architecture-rule"><b>Undgå:</b> mapper, globale stores og abstraheringer alene fordi et “stort” projekt måske får brug for dem senere.</p>
@@ -956,18 +1174,65 @@ export function EventCard() {
           </aside>
         </section>
 
-        <section class="po-slide resource-slide">
-          <span class="eyebrow">Ressourcer til arbejdet</span>
+        <section class="po-slide branch-workflow-slide">
+          <span class="eyebrow">Git-workflow til Case 1</span>
+          <h2>Én forbedring pr. branch — merge først, når den er verificeret</h2>
+          <div class="branch-workflow" aria-label="Branch-workflow fra main og tilbage til main">
+            <article><span>01</span><strong>Opdatér <code>main</code></strong><small>Start fra den seneste fælles version</small></article>
+            <b>→</b>
+            <article><span>02</span><strong>Opret en branch</strong><small><code>fix/registration-focus</code></small></article>
+            <b>→</b>
+            <article><span>03</span><strong>Forbedr + commit</strong><small>Kun den valgte, sammenhængende ændring</small></article>
+            <b>→</b>
+            <article><span>04</span><strong>Verificér</strong><small>Sammenlign med baseline og test relevante flows</small></article>
+            <b>→</b>
+            <article><span>05</span><strong>Merge til <code>main</code></strong><small>Når forbedringen virker og er dokumenteret</small></article>
+          </div>
+          <p class="branch-rule">Næste forbedring starter i en ny branch fra den opdaterede <code>main</code>.</p>
+          <aside class="notes">
+            Gør arbejdsgangen til et krav: én sammenhængende forbedring pr. branch. Branchen kan merges lokalt eller via
+            en pull request, men den færdige og verificerede forbedring skal tilbage i main. Eksempler:
+            fix/registration-focus, refactor/event-date-formatting og refactor/supabase-event-service. [Sources] - Git:
+            Branch documentation · https://git-scm.com/docs/git-branch - Git: Merge documentation ·
+            https://git-scm.com/docs/git-merge - Case 1-casebeskrivelsen og audit-skabelonen · lokalt kursusmateriale
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide resource-slide work-resource-slide">
+          <span class="eyebrow">Materialer til dagens arbejde</span>
+          <h2>Auditten, casen og referenceprojektet har hver sin rolle</h2>
+          <div class="resource-links six-resources">
+            <a href="https://github.com/cederdorff/mellemrum" target="_blank" rel="noopener noreferrer"><strong>Mellemrum · kode</strong><small>Repository til Case 1 ↗</small></a>
+            <a href="https://cederdorff.com/mellemrum/" target="_blank" rel="noopener noreferrer"><strong>Mellemrum · online</strong><small>Deployet løsning til baseline og test ↗</small></a>
+            <a href="https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning" target="_blank" rel="noopener noreferrer"><strong>Audit-skabelon</strong><small>Fund, evidens, prioritet og verifikation ↗</small></a>
+            <a href="https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning" target="_blank" rel="noopener noreferrer"><strong>Case 1</strong><small>Opgave, krav og forventet resultat ↗</small></a>
+            <a href="https://github.com/cederdorff/post-app-supabase" target="_blank" rel="noopener noreferrer"><strong>Post App + Supabase</strong><small>Fælles eksempel på React-arkitektur ↗</small></a>
+            <a href="https://cederdorff.com/mdu-e25ixd/slides/product-optimization-04/" target="_blank" rel="noopener noreferrer"><strong>Dagens slides</strong><small>Audit, arkitektur, styling og a11y ↗</small></a>
+          </div>
+          <aside class="notes">
+            Gør rollerne tydelige: Mellemrum er auditobjektet, audit-skabelonen er arbejdsdokumentet, casebeskrivelsen
+            er opgavegrundlaget, og Post App er kun det fælles arkitektureksempel. [Sources] - Mellemrum ·
+            https://github.com/cederdorff/mellemrum - Mellemrum online · https://cederdorff.com/mellemrum/ - Case 1 ·
+            https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning - Post
+            App med Supabase · https://github.com/cederdorff/post-app-supabase - Teknisk audit ·
+            https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide resource-slide reference-resource-slide">
+          <span class="eyebrow">Faglige referencer</span>
           <h2>Brug repetitionen som reference — ikke som en ny tjekliste</h2>
           <div class="resource-links">
             <a href="https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc" target="_blank" rel="noopener noreferrer"><strong>Styling i React</strong><small>Klassisk CSS, Modules og inline styles ↗</small></a>
             <a href="https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c" target="_blank" rel="noopener noreferrer"><strong>React og Accessibility</strong><small>Samlet a11y-reference ↗</small></a>
             <a href="https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf" target="_blank" rel="noopener noreferrer"><strong>Product Grid · del 3</strong><small>Styling og a11y i et React-eksempel ↗</small></a>
-            <a href="https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning" target="_blank" rel="noopener noreferrer"><strong>Teknisk audit</strong><small>Skabelon til fund, evidens og prioritering ↗</small></a>
+            <a href="https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026?module_item_id=947733" target="_blank" rel="noopener noreferrer"><strong>React styling + a11y</strong><small>Tidligere samlet undervisningsside ↗</small></a>
           </div>
           <aside class="notes">
-            De tidligere undervisningsressourcer genbruges som reference sammen med dagens auditmateriale og de
-            officielle React-, MDN- og W3C-kilder i noterne. [Sources] - Styling i React ·
+            De tidligere undervisningsressourcer genbruges som reference sammen med de officielle React-, MDN- og
+            W3C-kilder i noterne. [Sources] - React styling approaches and a11y ·
+            https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026?module_item_id=947733 - Styling i React ·
             https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc - React og Accessibility ·
             https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c - Product Grid with
             React · Del 3 · https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf

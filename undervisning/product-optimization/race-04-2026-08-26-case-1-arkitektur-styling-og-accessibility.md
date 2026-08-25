@@ -25,9 +25,11 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <ul>
 <li>Hvad er en teknisk audit, og hvordan adskiller den sig fra personlige kodepræferencer?</li>
 <li><strong>Auditobjekt:</strong> Undersøg Mellemrum lokalt og online; tilmeldingsflowet og den deployede løsning skal altid indgå.</li>
-<li>Afgræns løsningens primære og sekundære målgrupper, vigtigste brugerflows og tekniske områder.</li>
-<li>Dokumentér udgangspunktet, før du ændrer koden.</li>
-<li>Registrér konkrete fund, beskriv deres betydning, og prioritér dem efter effekt og indsats.</li>
+<li><strong>Kom i gang:</strong> Åbn audit-skabelonen og Mellemrum lokalt og online, kontrollér at begge versioner virker, og vælg tilmeldingsflowet samt mindst ét ekstra flow.</li>
+<li>Dokumentér udgangspunktet med relevant evidens, før du ændrer koden. Evidens er noget, andre kan efterprøve, fx en kodehenvisning, et skærmbillede, konsol/Network eller et keyboard-flow.</li>
+<li>Registrér ét fund pr. række med område, fund og evidens, konsekvens, løsningsforslag, prioritet og planlagt verifikation.</li>
+<li><strong>Første leverance:</strong> Gennemfør mindst to flows, og registrér tre fund eller hypoteser med evidens og konsekvens. Du behøver ikke dække alle seks fokusområder.</li>
+<li>Foretag ingen kodeændringer i det første arbejdspas. Det bevarer din baseline, adskiller observation fra løsning og gør det muligt at prioritere fundene, før du implementerer.</li>
 </ul>
 </details>
 
@@ -37,12 +39,13 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <li>Definér arkitektur som de valg, der placerer ansvar og forbinder delene – ikke blot som et bestemt mappetræ.</li>
 <li>Start med et overblik over seks beslutninger: routes/pages, komponenter, state/dataflow, effects/data, adskillelse/genbrug samt navne/struktur.</li>
 <li>Brug <strong>Post App med Supabase</strong> som fælles reference, og overfør derefter principperne til din egen audit af Mellemrum.</li>
-<li><strong>Routes og pages:</strong> Brug routes som grænser for brugeropgaver, og lad pages koordinere sidens data, UI-states og komponenter.</li>
-<li><strong>Komponenter og ansvar:</strong> Brug <em>single responsibility</em> og <em>component composition</em> til at skabe forståelige UI-dele med tydelige prop-kontrakter.</li>
+<li><strong>Routes og pages:</strong> En route kobler en URL til en page-komponent. Page-komponenten samler det, brugeren skal se og gøre på den URL.</li>
+<li><strong>Komponenter og ansvar:</strong> Brug <em>single responsibility</em> og <em>component composition</em> til at skabe forståelige UI-dele med tydelige prop-kontrakter. Genbrugelige dele på tværs af pages – fx Header, Footer og Sidebar – hører naturligt hjemme i <code>components/</code>.</li>
 <li><strong>State og dataflow:</strong> Placér state hos den nærmeste ejer, følg det ensrettede dataflow, og beregn <em>derived state</em> frem for at gemme kopier.</li>
 <li><strong>Effects og data:</strong> Hold renderingen pure, brug Effects til synkronisering med omverdenen, og følg et request gennem Supabase REST API og tilbage til UI'et.</li>
 <li><strong>Adskillelse og genbrug:</strong> Udtræk services, utils eller hooks, når gentagelse eller kompleksitet skaber et konkret behov – ikke på forhånd.</li>
-<li><strong>Navne og struktur:</strong> Brug domænenære navne og den mindste mappestruktur, der gør ansvar og ændringer tydelige.</li>
+<li><strong>Struktur før og efter:</strong> Sammenlign Post Apps nuværende struktur med en mulig forbedret struktur, hvor genbrugelige UI-dele og gentaget dataadgang har fået tydelige placeringer.</li>
+<li><strong>Navne og struktur:</strong> Brug domænenære navne og den mindste mappestruktur, der gør ansvar og ændringer tydelige. Navngiv komponenter med PascalCase, værdier og funktioner med camelCase, booleans som spørgsmål og event handlers efter den handling, de udfører.</li>
 <li>Forklar løbende, hvorfor en grænse hjælper, og dokumentér derefter ét konkret arkitekturfund i Mellemrum.</li>
 </ul>
 </details>
@@ -85,10 +88,11 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <details style="margin-left: 1.5rem;">
 <summary><strong>6. Begynd på en afgrænset forbedring</strong></summary>
 <ul>
-<li>Opret en tydeligt navngivet feature branch til den valgte forbedring.</li>
+<li>Opret en tydeligt navngivet branch til hver afgrænset forbedring. Start branchen fra en opdateret <code>main</code>.</li>
 <li>Arbejd i små, kontrollerbare skridt uden at ændre anden funktionalitet.</li>
 <li>Verificér forbedringen med relevant evidens.</li>
-<li>Dokumentér resultatet og det næste prioriterede fund.</li>
+<li>Merge den færdige og verificerede branch tilbage i <code>main</code>.</li>
+<li>Dokumentér resultatet, og start den næste forbedring i en ny branch fra den opdaterede <code>main</code>.</li>
 </ul>
 </details>
 
@@ -98,16 +102,15 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 
 - **Slides:**
   - [Case 1 · Teknisk audit, arkitektur, styling og accessibility](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-04/)
-- **Startprojekt:**
-  - [Mellemrum](https://github.com/cederdorff/mellemrum)
-- **Fælles arkitektur-reference:**
-  - [Post App med Supabase](https://github.com/cederdorff/post-app-supabase)
-- **Case 1:**
-  - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
-- **Audit:**
+- **Materialer til dagens arbejde:**
+  - [Mellemrum · repository](https://github.com/cederdorff/mellemrum)
+  - [Mellemrum · deployet løsning](https://cederdorff.com/mellemrum/)
   - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
-- **Accessibility:**
-  - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
-- **Styling og tidligere React-eksempel:**
+  - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
+- **Fælles arkitektureksempel:**
+  - [Post App med Supabase](https://github.com/cederdorff/post-app-supabase)
+- **Faglige referencer til styling og accessibility:**
+  - [React styling approaches og a11y · tidligere undervisningsside](https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026?module_item_id=947733)
   - [Styling i React](https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc)
+  - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
   - [Product Grid with React · Del 3: Styling og a11y](https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf)

@@ -8,6 +8,8 @@ En teknisk audit er en systematisk undersøgelse af en eksisterende løsning. Fo
 
 Brug trin 1–5 til at undersøge løsningen og planlægge forbedringer, før du ændrer den. Du behøver ikke finde problemer inden for alle seks fokusområder. I Case 1 skal tilmeldingsflowet og den deployede løsning altid indgå. Efter implementeringen dokumenterer du effekten i trin 6.
 
+**Evidens** er noget, andre kan efterprøve, fx en kodehenvisning, et skærmbillede, en konsolfejl, en Network-response, et keyboard-flow eller et testresultat. Vent med at rette koden, til du har dokumenteret og prioriteret dine fund. Så bevarer du din baseline og undgår at vælge den første løsning, før du har sammenlignet problemerne.
+
 </div>
 
 <hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
@@ -133,7 +135,7 @@ En Lighthouse-score er et pejlemærke, ikke et mål i sig selv. Brug testen til 
 <details style="background: #f5f2ea; border: 1px solid #e9e3d6; margin: 0 0 0.75rem; padding: 0.85rem 1rem;">
 <summary><strong>6. Deployment</strong></summary>
 
-- Hvordan vil du organisere ændringerne i feature branches og commits, så historikken bliver tydelig?
+- Hvordan vil du organisere én afgrænset ændring pr. branch og bruge tydelige commits, så historikken bliver forståelig?
 - Gennemføres production build og deployment uden fejl?
 - Fungerer environment variables, routing og base URL på hostingens adresse og eventuelle undermapper?
 - Matcher den publicerede løsning den seneste version på `main`?
@@ -154,7 +156,7 @@ Registrér kun konkrete fund, som kan få betydning for din prioritering. Beskri
 
 | Område        | Fund og evidens               | Konsekvens                                       | Forslag til løsning    | Prioritet | Planlagt verifikation                           |
 | ------------- | ----------------------------- | ------------------------------------------------ | ---------------------- | --------- | ----------------------------------------------- |
-| Accessibility | E-mailfeltet mangler en label | Feltets formål er ikke tydeligt for alle brugere | Tilføj en synlig label | Høj       | Gennemfør formularen med tastatur og skærmlæser |
+| Accessibility | DOM-inspektion og keyboard-test viser, at e-mailfeltet mangler en label | Feltets formål er ikke tydeligt for alle brugere | Tilføj en synlig label | Høj       | Gennemfør formularen med tastatur og skærmlæser |
 
 </div>
 
@@ -169,6 +171,13 @@ Prioritér fundene ud fra:
 - forventet effekt i forhold til indsatsen
 
 Vælg derefter et realistisk antal forbedringer, og beskriv kort, hvornår hver forbedring kan betragtes som færdig.
+
+Implementér derefter én afgrænset forbedring ad gangen:
+
+1. Opdatér `main`, og opret en tydeligt navngivet branch til forbedringen.
+2. Implementér, commit og verificér kun den sammenhængende ændring, branchen handler om.
+3. Merge branchen tilbage i `main`, når forbedringen virker og er dokumenteret.
+4. Start den næste forbedring i en ny branch fra den opdaterede `main`.
 
 <hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
