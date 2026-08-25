@@ -2170,6 +2170,49 @@
   font-size: 22px;
 }
 
+.ui-state-observation {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.65fr);
+  gap: 38px;
+  flex: 1;
+  align-items: stretch;
+  min-height: 0;
+  margin: 22px 0 28px;
+}
+
+.post-app-loading-video {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: 0;
+  margin: 0;
+  padding: 14px;
+  border-top: 5px solid var(--violet);
+  background: var(--surface);
+}
+
+.post-app-loading-video video {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  background: #050807;
+}
+
+.post-app-loading-video figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.post-app-loading-video figcaption strong {
+  color: var(--violet);
+}
+
+.ui-state-observation .question-stack {
+  align-self: center;
+}
+
 .state-render-flow {
   display: grid;
   place-items: center;

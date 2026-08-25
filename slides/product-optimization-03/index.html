@@ -910,7 +910,7 @@ return post;</code></pre>
           <div class="code-layout">
             <div class="postdetail-error-code">
               <span>1 · I getPost()</span>
-              <pre class="po-code"><code class="language-javascript">const [error, setError] = useState(null);
+              <pre class="po-code"><code class="language-javascript">const [error, setError] = useState("");
 
 try {
   const response = await fetch(
@@ -955,7 +955,7 @@ try {
         <section class="chapter po-chapter po-slide chapter-state" id="ui-states">
           <span class="chapter-index">05</span><span class="eyebrow">Fagligt fokus</span>
           <h2>Robuste UI-states</h2>
-          <p class="kicker">UI’et skal give mening under hele processen — ikke kun efter succes.</p>
+          <p class="kicker">Koden kan nu håndtere fejlen. React skal også vise brugeren, hvad der sker.</p>
           <aside class="notes">
             [Sources] - React: Reacting to Input with State · https://react.dev/learn/reacting-to-input-with-state
             [/Sources]
@@ -965,12 +965,22 @@ try {
         <section class="po-slide accent-state happy-path-slide">
           <span class="eyebrow">Post App · HomePage</span>
           <h2>Data kommer — men hvad sker der imens?</h2>
-          <div class="code-layout">
-            <pre class="po-code"><code class="language-javascript">async function getPosts() {
-  const response = await fetch(URL, { headers });
-  const data = await response.json();
-  setPosts(data);
-}</code></pre>
+          <div class="ui-state-observation">
+            <figure class="post-app-loading-video">
+              <video
+                data-autoplay
+                autoplay
+                muted
+                loop
+                playsinline
+                controls
+                preload="auto"
+                poster="../assets/load-of-post-app-poster.png"
+              >
+                <source src="../assets/load-of-post-app.mp4" type="video/mp4" />
+              </video>
+              <figcaption><strong>Nuværende oplevelse:</strong> UI’et er tomt, indtil posts dukker op.</figcaption>
+            </figure>
             <div class="question-stack">
               <p>Hvad ser brugeren, <b>mens vi venter</b>?</p>
               <p>Hvad ser brugeren, <b>hvis det fejler</b>?</p>
@@ -978,8 +988,9 @@ try {
             </div>
           </div>
           <aside class="notes">
-            Happy path-koden viser kun succes. Brug spørgsmålene til at etablere behovet for loading, error og empty.
-            [Sources] - Post App · src/pages/HomePage.jsx · lokalt semester 2-projekt [/Sources]
+            Afspil videoen og læg mærke til det tomme UI før posts dukker op. Brug spørgsmålene til at etablere behovet
+            for loading, error og empty. [Sources] - Post App · src/pages/HomePage.jsx og
+            slides/assets/load-of-post-app.mov · lokalt semester 2-projekt [/Sources]
           </aside>
         </section>
 
@@ -987,7 +998,7 @@ try {
           <span class="eyebrow">Loading state</span>
           <h2>Brugeren skal vide, at der sker noget</h2>
           <div class="code-layout">
-            <pre class="po-code"><code class="language-javascript">const [loading, setLoading] = useState(false);
+            <pre class="po-code"><code class="language-javascript">const [loading, setLoading] = useState(true);
 
 async function getPosts() {
   setLoading(true);
@@ -1019,65 +1030,8 @@ async function getPosts() {
           </div>
           <p class="definition slide-point">Hvis koden stopper her, bliver loading måske aldrig afsluttet.</p>
           <aside class="notes">
-            Brug dette som en lille cliffhanger til error-state og finally. [Sources] - MDN: Using the Fetch API ·
+            Brug dette som en lille cliffhanger til finally på næste slide. [Sources] - MDN: Using the Fetch API ·
             https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide accent-state">
-          <span class="eyebrow">Error state i React</span>
-          <h2>Genbrug fejlhåndteringen i komponenten</h2>
-          <pre class="po-code code-main"><code class="language-javascript">const [error, setError] = useState(null);
-
-try {
-  const response = await fetch(URL, { headers });
-  if (!response.ok) {
-    throw new Error(`HTTP error: ${response.status}`);
-  }
-  const data = await response.json();
-  setPosts(data);
-} catch (error) {
-  console.error(error);
-  setError("Vi kunne ikke hente opslag");
-}</code></pre>
-          <p class="definition slide-point">Fejlhåndteringen gemmer en brugerbesked i React-state.</p>
-          <aside class="notes">
-            [Sources] - React: useState · https://react.dev/reference/react/useState - MDN: Using the Fetch API ·
-            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide accent-state">
-          <span class="eyebrow">Vis fejlen i UI’et</span>
-          <h2>Det er ikke nok at logge fejlen</h2>
-          <pre class="po-code code-short"><code class="language-javascript jsx">if (error) {
-  return &lt;p&gt;{error}&lt;/p&gt;;
-}</code></pre>
-          <p class="prompt-card slide-point">Det er ikke nok at logge fejlen. UI’et skal også kunne reagere.</p>
-          <aside class="notes">
-            [Sources] - React: Conditional Rendering · https://react.dev/learn/conditional-rendering [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide accent-state">
-          <span class="eyebrow">Developer error vs. user error</span>
-          <h2>Tekniske detaljer er til udvikleren</h2>
-          <div class="message-split">
-            <article>
-              <span>Developer</span>
-              <pre class="mini-code"><code>TypeError: Failed to fetch</code></pre>
-              <p><code>console.error(error)</code></p>
-            </article>
-            <article>
-              <span>Bruger</span>
-              <div class="ui-message"><b>Vi kunne ikke hente opslag</b><small>Prøv igen om et øjeblik.</small></div>
-              <p>Hjælpsom feedback uden interne detaljer.</p>
-            </article>
-          </div>
-          <p class="definition slide-point">Tekniske fejl er til udvikleren. Hjælpsom feedback er til brugeren.</p>
-          <aside class="notes">
-            Technical errors are for developers. Helpful feedback is for users. [Sources] - Case 1-casebeskrivelsen ·
-            lokalt kursusmateriale [/Sources]
           </aside>
         </section>
 
@@ -1090,7 +1044,8 @@ try {
   const response = await fetch(URL, { headers });
   if (!response.ok) throw new Error("HTTP error");
   setPosts(await response.json());
-} catch (error) {
+} catch (caughtError) {
+  console.error(caughtError);
   setError("Vi kunne ikke hente opslag");
 } finally {
   setLoading(false);
@@ -1105,6 +1060,28 @@ try {
             Hvis setLoading(false) kun står efter fetch, kan en fejl efterlade UI’et i loading. [Sources] - Post App ·
             src/pages/HomePage.jsx · lokalt semester 2-projekt - MDN: try...catch ·
             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state">
+          <span class="eyebrow">Developer error vs. user error</span>
+          <h2>Tekniske detaljer er til udvikleren</h2>
+          <div class="message-split">
+            <article>
+              <span>Developer</span>
+              <pre class="mini-code"><code>TypeError: Failed to fetch</code></pre>
+              <p><code>console.error(caughtError)</code></p>
+            </article>
+            <article>
+              <span>Bruger</span>
+              <div class="ui-message"><b>Vi kunne ikke hente opslag</b><small>Prøv igen om et øjeblik.</small></div>
+              <p>Hjælpsom feedback uden interne detaljer.</p>
+            </article>
+          </div>
+          <p class="definition slide-point">Tekniske fejl er til udvikleren. Hjælpsom feedback er til brugeren.</p>
+          <aside class="notes">
+            Technical errors are for developers. Helpful feedback is for users. [Sources] - Case 1-casebeskrivelsen ·
+            lokalt kursusmateriale [/Sources]
           </aside>
         </section>
 
@@ -1136,20 +1113,20 @@ try {
               <h3>Vent</h3>
               <p>Requestet er i gang. Vis fremdrift.</p>
             </article>
-            <article class="success">
-              <span>Success</span>
-              <h3>Brug</h3>
-              <p>Data er klar. Vis indholdet.</p>
+            <article class="error">
+              <span>Error</span>
+              <h3>Kom videre</h3>
+              <p>Noget fejlede. Forklar og hjælp.</p>
             </article>
             <article class="empty">
               <span>Empty</span>
               <h3>Forstå</h3>
               <p>Requestet lykkedes, men data er tom.</p>
             </article>
-            <article class="error">
-              <span>Error</span>
-              <h3>Kom videre</h3>
-              <p>Noget fejlede. Forklar og hjælp.</p>
+            <article class="success">
+              <span>Success</span>
+              <h3>Brug</h3>
+              <p>Data er klar. Vis indholdet.</p>
             </article>
           </div>
           <aside class="notes">
@@ -1164,13 +1141,13 @@ try {
           <pre class="po-code code-main"><code class="language-javascript">async function getPosts() {
   try {
     setLoading(true);
-    setError(null);
+    setError("");
     const response = await fetch(URL, { headers });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     setPosts(data);
-  } catch (error) {
-    console.error(error);
+  } catch (caughtError) {
+    console.error(caughtError);
     setError("Vi kunne ikke hente opslag");
   } finally {
     setLoading(false);
