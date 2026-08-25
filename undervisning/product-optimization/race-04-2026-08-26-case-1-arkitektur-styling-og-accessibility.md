@@ -2,9 +2,9 @@
 
 ## Formål
 
-I dag ser vi på, hvordan du kan lave en teknisk audit af en React-løsning. Audit betyder, at du undersøger løsningen systematisk, dokumenterer det, du finder, og vurderer, hvilke forbedringer der er vigtigst.
+I dag begynder du på en teknisk audit af React-løsningen. Du afgrænser undersøgelsen, etablerer en baseline og dokumenterer konkrete fund, før du ændrer koden.
 
-Undervejs får du faglige indspark om arkitektur, styling og accessibility. Vi ser også på best practice for navngivning samt mappe- og projektstruktur. Til sidst prioriterer du dine fund og begynder på én afgrænset forbedring.
+Undervejs får du faglige indspark med hovedvægt på React-arkitektur. Vi repeterer også styling i React og centrale accessibility-principper, herunder de særlige udfordringer med routing, sidetitler og fokus i en SPA. Du bruger indsparkene som nye faglige linser på løsningen, prioriterer dine fund og begynder til sidst på én afgrænset forbedring.
 
 <hr style="margin: 2rem 0;">
 
@@ -31,7 +31,7 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>2. Faglige indspark: arkitektur, styling og accessibility</strong></summary>
+<summary><strong>2. Fagligt indspark: React-arkitektur</strong></summary>
 <ul>
 <li>Brug tydelige og konsekvente navne til filer, komponenter, funktioner, props og variabler.</li>
 <li>Organisér mapper og filer, så projektets sider, komponenter, data og styling er lette at finde.</li>
@@ -40,15 +40,38 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 <li><strong>State og dataflow:</strong> Følg det ensrettede dataflow, brug én <em>single source of truth</em>, og beregn <em>derived state</em> frem for at gemme den samme information igen.</li>
 <li><strong>Kontakt med omverdenen:</strong> Hold <em>side effects</em> adskilt fra renderingen, og undersøg klient–server-grænsen mellem React, Supabase REST API og databasen.</li>
 <li>Følg et request fra React i browseren gennem Supabase REST API til databasen og tilbage som data eller fejl.</li>
-<li>Vurdér placering, ansvar og konsistens i styling.</li>
 <li>Undersøg, om datoer, tidspunkter, eventtyper, venues og adresser vises ensartet, og om gentagen formateringslogik har en tydelig placering.</li>
-<li>Undersøg relevante problemer med semantik, labels, tastatur og fokus.</li>
 <li>Du skal ikke forbedre alt på én gang. Vælg det vigtigste fund.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Arbejd med auditten</strong></summary>
+<summary><strong>3. Repetition: styling i React</strong></summary>
+<ul>
+<li>Sammenlign klassisk CSS, CSS Modules og inline styles ud fra rækkevidde og ansvar.</li>
+<li>Brug klassisk CSS til relevante globale regler og fælles mønstre.</li>
+<li>Brug CSS Modules, når komponentnære styles skal have lokal scope.</li>
+<li>Brug primært inline styles til værdier, der faktisk beregnes i JavaScript.</li>
+<li>Definér genbrugelige farver, spacing og andre designvalg som CSS custom properties i <code>:root</code>.</li>
+<li>Vurdér placering, gentagelser, konflikter og konsistens i løsningens styling.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>4. Repetition: accessibility i React</strong></summary>
+<ul>
+<li>Brug semantisk HTML og et logisk heading-hierarki; brug ARIA, når HTML ikke er tilstrækkeligt.</li>
+<li>Kontrollér keyboard navigation, logisk rækkefølge og synligt fokus.</li>
+<li><strong>Fokus-styring i React:</strong> Undersøg SPA-problemet, hvor fokus kan blive i navigationen efter et sideskift.</li>
+<li><strong>Routing og sideskift:</strong> Opdatér <code>document.title</code>, og flyt fokus meningsfuldt til den nye sides indhold.</li>
+<li>Vurdér billeder, ikoner, medier og alt-tekster ud fra deres formål.</li>
+<li>Kontrollér farver, kontrast og states, så information ikke kommunikeres med farve alene.</li>
+<li>Undersøg formularernes labels, inputtyper, krav, validering, fejlbeskeder og feedback.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>5. Arbejd videre med auditten</strong></summary>
 <ul>
 <li>Gennemfør de vigtigste brugerflows, og undersøg relevante filer og komponenter.</li>
 <li>Brug audit-skabelonen til at dokumentere fund og evidens.</li>
@@ -58,7 +81,7 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>4. Begynd på en afgrænset forbedring</strong></summary>
+<summary><strong>6. Begynd på en afgrænset forbedring</strong></summary>
 <ul>
 <li>Opret en tydeligt navngivet feature branch til den valgte forbedring.</li>
 <li>Arbejd i små, kontrollerbare skridt uden at ændre anden funktionalitet.</li>
@@ -71,6 +94,8 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 
 ## Materialer
 
+- **Slides:**
+  - [Case 1 · Teknisk audit, arkitektur, styling og accessibility](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-04/)
 - **Startprojekt:**
   - [Mellemrum](https://github.com/cederdorff/mellemrum)
 - **Case 1:**
@@ -79,3 +104,6 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
   - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
 - **Accessibility:**
   - [React og Accessibility (a11y)](https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c)
+- **Styling og tidligere React-eksempel:**
+  - [Styling i React](https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc)
+  - [Product Grid with React · Del 3: Styling og a11y](https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf)

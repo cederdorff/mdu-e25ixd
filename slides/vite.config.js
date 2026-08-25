@@ -13,7 +13,8 @@ export default defineConfig({
         semesterstart: resolve("slides/semesterstart/index.html"),
         productOptimization01: resolve("slides/product-optimization-01/index.html"),
         productOptimization02: resolve("slides/product-optimization-02/index.html"),
-        productOptimization03: resolve("slides/product-optimization-03/index.html")
+        productOptimization03: resolve("slides/product-optimization-03/index.html"),
+        productOptimization04: resolve("slides/product-optimization-04/index.html")
       }
     }
   }

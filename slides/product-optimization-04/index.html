@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RACE · Product Optimization · Case 1, teknisk audit, React-arkitektur, styling og accessibility · 26. august 2026."
+    />
+    <title>Case 1 · Arkitektur, styling og accessibility · 26.08.2026</title>
+    <link rel="stylesheet" href="../vendor/reveal/reveal.css" />
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="../product-optimization-03/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="po-slide po-title audit-title">
+          <span class="eyebrow">Product Optimization · Case 1</span>
+          <h1>Se strukturen, <span>før du ændrer den</span></h1>
+          <p class="lead">Teknisk audit · React-arkitektur · styling · accessibility</p>
+          <p class="date"><span>RACE</span><time datetime="2026-08-26">26. august 2026</time></p>
+          <aside class="notes">
+            [Sources] - Undervisningsagendaen for 26.08.2026 · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide po-agenda" id="agenda">
+          <span class="eyebrow">Agenda</span>
+          <h2>Vi undersøger først — og bruger teorien undervejs</h2>
+          <ol class="agenda-list">
+            <li>
+              <a href="#/audit"><b>Teknisk audit</b><small>Afgræns, etablér baseline og registrér de første fund</small></a>
+            </li>
+            <li>
+              <a href="#/arkitektur"><b>React-arkitektur</b><small>Ansvar, komponenter, dataflow og side effects</small></a>
+            </li>
+            <li>
+              <a href="#/styling"><b>Styling i React</b><small>Klassisk CSS, CSS Modules, inline styles og root-variabler</small></a>
+            </li>
+            <li>
+              <a href="#/accessibility"><b>Accessibility i React</b><small>Semantik, tastatur, SPA-navigation, medier, kontrast og formularer</small></a>
+            </li>
+            <li>
+              <a href="#/arbejd-videre"><b>Prioritér og forbedr</b><small>Vælg ét fund, arbejd afgrænset og verificér effekten</small></a>
+            </li>
+          </ol>
+          <aside class="notes">
+            Dagens rytme er audit → fagligt indspark → audit igen. De faglige dele er repetition og nye linser til den
+            undersøgelse, de studerende allerede er i gang med. [Sources] - Undervisningsagendaen for 26.08.2026 ·
+            lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide audit-chapter" id="audit">
+          <span class="chapter-index">01</span>
+          <span class="eyebrow">Teknisk audit</span>
+          <h2>Dokumentér før<br />du ændrer</h2>
+          <p class="kicker">En audit gør problemer, konsekvenser og prioriteringer synlige.</p>
+          <aside class="notes">
+            [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale ·
+            undervisning/product-optimization/teknisk-audit-skabelon.md [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide audit-vs-opinion">
+          <span class="eyebrow">Audit ≠ personlig kodepræference</span>
+          <h2>Et fund skal kunne forklares med mere end “jeg ville…”</h2>
+          <div class="contrast-pair">
+            <article class="weak">
+              <small>Præference</small>
+              <blockquote>“Jeg ville flytte filen.”</blockquote>
+              <p>Ingen tydelig evidens eller konsekvens.</p>
+            </article>
+            <article class="strong">
+              <small>Auditfund</small>
+              <blockquote>“Formateringen er gentaget fire steder.”</blockquote>
+              <p>Det øger risikoen for inkonsistent visning og gør ændringer dyrere.</p>
+            </article>
+          </div>
+          <aside class="notes">
+            Bed holdet formulere forskellen. Et auditfund forbinder observation, evidens og konsekvens; løsningen kan
+            stadig diskuteres. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide baseline-slide">
+          <span class="eyebrow">Første arbejdspas</span>
+          <h2>Skab en baseline, som I kan vende tilbage til</h2>
+          <div class="baseline-path">
+            <article><span>01</span><strong>Afgræns</strong><small>Vælg centrale brugerflows og relevante områder</small></article>
+            <article><span>02</span><strong>Gennemfør</strong><small>Test samme flow lokalt og online</small></article>
+            <article><span>03</span><strong>Gem evidens</strong><small>Skærmbillede, kode, konsol eller Network</small></article>
+            <article><span>04</span><strong>Registrér</strong><small>Skriv observation og mulig konsekvens</small></article>
+          </div>
+          <div class="baseline-links">
+            <a
+              href="https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Åbn audit-skabelonen ↗</a
+            ><a href="https://cederdorff.com/mellemrum/" target="_blank" rel="noopener noreferrer"
+              >Åbn Mellemrum ↗</a
+            >
+          </div>
+          <aside class="notes">
+            Sæt dem i gang her. Forslag: 20–25 minutter. De skal ikke løse noget endnu. De skal kunne vise, hvad de
+            observerede, og hvor de så det. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale -
+            Mellemrum · https://cederdorff.com/mellemrum/ [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide finding-anatomy-slide">
+          <span class="eyebrow">Anatomi af et brugbart fund</span>
+          <h2>En anden skal kunne forstå fundet uden at have stået ved siden af</h2>
+          <div class="finding-anatomy">
+            <article><span>Observation</span><p>Hvad sker der konkret?</p></article>
+            <article><span>Evidens</span><p>Hvor kan det ses eller reproduceres?</p></article>
+            <article><span>Konsekvens</span><p>Hvem eller hvad bliver påvirket?</p></article>
+            <article><span>Prioritet</span><p>Hvorfor nu — og hvor stor er indsatsen?</p></article>
+          </div>
+          <p class="finding-example">
+            <b>Eksempel:</b> Efter navigation til eventdetaljen bliver tastaturfokus i navigationen. Brugeren får ikke
+            et tydeligt signal om, at siden er skiftet.
+          </p>
+          <aside class="notes">
+            Gem løsningsforslaget til sidst. Et fund må gerne begynde som en hypotese, men det skal undersøges og have
+            evidens. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide audit-start-slide">
+          <span class="eyebrow">Arbejd nu</span>
+          <h2>Find tre mulige forbedringer — uden at rette dem endnu</h2>
+          <div class="audit-start-layout">
+            <div>
+              <h3>Gennemfør mindst to flows</h3>
+              <ul>
+                <li>Find et event → åbn detaljen</li>
+                <li>Gennemfør tilmeldingsflowet</li>
+                <li>Åbn den interne side</li>
+                <li>Genindlæs en direkte route online</li>
+              </ul>
+            </div>
+            <div class="audit-stop-rule">
+              <span>Stop-regel</span>
+              <strong>Ingen ændringer endnu</strong>
+              <p>Dokumentér udgangspunktet, mens det stadig findes.</p>
+            </div>
+          </div>
+          <aside class="notes">
+            Lad de studerende arbejde. Når I samler op, skal de vise ét fund og den evidens, der gør det til mere end
+            en mavefornemmelse. [Sources] - Case 1-casebeskrivelsen og audit-skabelonen · lokalt kursusmateriale
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide architecture-chapter" id="arkitektur">
+          <span class="chapter-index">02</span>
+          <span class="eyebrow">Fagligt indspark</span>
+          <h2>React-arkitektur</h2>
+          <p class="kicker">Hvor bor ansvaret — og hvor bevæger data sig?</p>
+          <aside class="notes">
+            Arkitektur er dagens største faglige indspark. Knyt alle principper til konkrete steder i Mellemrum og til
+            deres auditfund. [Sources] - React: Thinking in React · https://react.dev/learn/thinking-in-react [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide architecture-definition-slide">
+          <span class="eyebrow">Et praktisk blik på arkitektur</span>
+          <h2>Arkitektur er placeringen af ansvar</h2>
+          <div class="architecture-question">
+            <p>Hvem <b>koordinerer siden</b>?</p>
+            <p>Hvem <b>viser UI</b>?</p>
+            <p>Hvem <b>henter og gemmer data</b>?</p>
+            <p>Hvem <b>formaterer og genbruger logik</b>?</p>
+          </div>
+          <p class="architecture-rule">God struktur reducerer antallet af steder, du skal forstå og ændre samtidig.</p>
+          <aside class="notes">
+            Arkitektur er ikke primært et bestemt mappetræ. Det er, om ansvaret er tydeligt nok til, at udviklere kan
+            følge en ændring gennem løsningen. [Sources] - React: Thinking in React ·
+            https://react.dev/learn/thinking-in-react [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide responsibility-map-slide">
+          <span class="eyebrow">En mulig ansvarsfordeling</span>
+          <h2>Fire steder har fire forskellige hovedopgaver</h2>
+          <div class="responsibility-map">
+            <article><code>pages/</code><strong>Koordinerer en route</strong><small>Data, page state og sammensætning</small></article>
+            <article><code>components/</code><strong>Viser genbrugelig UI</strong><small>Props ind · events ud</small></article>
+            <article><code>services/</code><strong>Taler med omverdenen</strong><small>Supabase-requests og mutationer</small></article>
+            <article><code>utils/</code><strong>Transformerer data</strong><small>Datoer, tider og andre pure funktioner</small></article>
+          </div>
+          <p class="muted">Det er en arbejdshypotese — ikke et universelt facit.</p>
+          <aside class="notes">
+            Brug modellen som en linse, ikke som en obligatorisk mappestruktur. Et lille projekt kan have færre lag;
+            spørg om placeringen gør ansvaret tydeligt. [Sources] - Case 1-casebeskrivelsen · lokalt kursusmateriale -
+            React: Thinking in React · https://react.dev/learn/thinking-in-react [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide naming-slide">
+          <span class="eyebrow">Navngivning er en del af arkitekturen</span>
+          <h2>Gode navne reducerer gætteri</h2>
+          <div class="naming-examples">
+            <article><span>Utydeligt</span><code>data</code><code>handleClick</code><code>Card.jsx</code><code>getStuff()</code></article>
+            <b>→</b>
+            <article><span>Tydeligt i konteksten</span><code>events</code><code>handleRegistrationSubmit</code><code>EventCard.jsx</code><code>fetchRegistrations()</code></article>
+          </div>
+          <p class="naming-test">Kan navnet stadig forstås i en import, en stack trace og en pull request?</p>
+          <aside class="notes">
+            Navne skal beskrive domænet og ansvaret. Lange navne er ikke automatisk bedre; målet er mindre mental
+            oversættelse. [Sources] - Case 1-casebeskrivelsen og audit-skabelonen · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide request-trace-slide">
+          <span class="eyebrow">Klient–server-grænsen</span>
+          <h2>Følg ét request hele vejen — begge retninger</h2>
+          <div class="request-trace" aria-label="Request fra React gennem Supabase REST API til databasen og retur">
+            <article><small>Browser</small><strong>React-page</strong><span>starter handlingen</span></article>
+            <b>→</b>
+            <article><small>Klientkode</small><strong>Service / fetch</strong><span>bygger requestet</span></article>
+            <b>→</b>
+            <article><small>Servergrænse</small><strong>Supabase REST API</strong><span>validerer og svarer</span></article>
+            <b>→</b>
+            <article><small>Data</small><strong>PostgreSQL</strong><span>læser eller gemmer</span></article>
+          </div>
+          <div class="response-return">← data eller fejl tilbage til UI-state ←</div>
+          <aside class="notes">
+            Brug Network-panelet og koden samtidigt. Bed dem identificere URL, metode, payload, status, response og den
+            state, som svaret ender i. [Sources] - Supabase REST API · https://supabase.com/docs/guides/api - Case
+            1-casebeskrivelsen · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide render-effect-slide">
+          <span class="eyebrow">Separation of concerns</span>
+          <h2>Render beregner UI — Effects synkroniserer med omverdenen</h2>
+          <div class="code-layout architecture-code-layout">
+            <pre class="po-code"><code class="language-javascript jsx">function EventsPage() {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() =&gt; {
+    fetchEvents().then(setEvents);
+  }, []);
+
+  const upcomingEvents = events.filter(isUpcoming);
+
+  return &lt;EventList events={upcomingEvents} /&gt;;
+}</code></pre>
+            <div class="code-reading">
+              <p><b>Effect</b><span>Kontakt til et eksternt system</span></p>
+              <p><b>Beregning</b><span>Derived data under render</span></p>
+              <p><b>Komposition</b><span>UI sammensættes af komponenter</span></p>
+            </div>
+          </div>
+          <aside class="notes">
+            Render-kode skal være pure. Effects bruges til synkronisering med eksterne systemer; en beregning baseret
+            på eksisterende props/state behøver normalt ikke et Effect. [Sources] - React: Synchronizing with Effects ·
+            https://react.dev/learn/synchronizing-with-effects [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide responsibility-signals-slide">
+          <span class="eyebrow">Single responsibility</span>
+          <h2>En komponent skal have ét forståeligt hovedansvar</h2>
+          <div class="signal-layout">
+            <div>
+              <h3>Undersøg komponenten, når…</h3>
+              <ul>
+                <li>navnet ikke længere beskriver hele filen</li>
+                <li>dataadgang, formatering og meget UI er blandet</li>
+                <li>ændringer ét sted ofte påvirker noget andet</li>
+                <li>samme del gentages eller er svær at teste alene</li>
+              </ul>
+            </div>
+            <blockquote>Stor er et signal — ikke i sig selv et problem.</blockquote>
+          </div>
+          <aside class="notes">
+            Undgå en mekanisk linjegrænse. Spørg i stedet, om komponentens ansvar kan beskrives klart i én sætning, og
+            om en udtrækning giver en reel grænse. [Sources] - React: Thinking in React ·
+            https://react.dev/learn/thinking-in-react [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide composition-slide">
+          <span class="eyebrow">Component composition</span>
+          <h2>Sammensæt siden af dele med tydelige kontrakter</h2>
+          <div class="composition-layout">
+            <pre class="po-code"><code class="language-javascript jsx">function EventDetailsPage() {
+  return (
+    &lt;main&gt;
+      &lt;EventHeader event={event} /&gt;
+      &lt;EventFacts event={event} /&gt;
+      &lt;RegistrationForm eventId={event.id} /&gt;
+    &lt;/main&gt;
+  );
+}</code></pre>
+            <div class="composition-contracts">
+              <p><code>EventHeader</code><span>præsenterer identitet</span></p>
+              <p><code>EventFacts</code><span>viser formatterede eventdata</span></p>
+              <p><code>RegistrationForm</code><span>ejer tilmeldingsinteraktionen</span></p>
+            </div>
+          </div>
+          <aside class="notes">
+            Delkomponenter skal ikke opstå kun for at gøre filen kortere. De skal have et navn, et ansvar og en
+            forståelig kontrakt via props/events. [Sources] - React: Thinking in React ·
+            https://react.dev/learn/thinking-in-react [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide state-flow-slide">
+          <span class="eyebrow">Ensrettet dataflow</span>
+          <h2>State har én ejer — data går ned, handlinger går op</h2>
+          <div class="state-owner">
+            <div class="state-parent"><small>EventDetailsPage</small><strong>ejer <code>event</code></strong></div>
+            <div class="state-arrows"><span>props ↓</span><span>↑ callbacks</span></div>
+            <div class="state-children">
+              <article><strong>EventHeader</strong><small>læser event</small></article>
+              <article><strong>RegistrationForm</strong><small>sender handling op</small></article>
+            </div>
+          </div>
+          <p class="muted">Single source of truth betyder én ejer pr. information — ikke én global state til alt.</p>
+          <aside class="notes">
+            Hvis to komponenter skal være enige om samme information, flyttes state ofte til deres nærmeste fælles
+            parent. [Sources] - React: Sharing State Between Components ·
+            https://react.dev/learn/sharing-state-between-components [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide derived-state-slide">
+          <span class="eyebrow">Derived state</span>
+          <h2>Kan værdien beregnes, skal den normalt ikke gemmes igen</h2>
+          <div class="derived-compare">
+            <article class="avoid">
+              <span>Undgå dobbelt sandhed</span>
+              <pre class="po-code"><code class="language-javascript">const [events, setEvents] = useState([]);
+const [eventCount, setEventCount] = useState(0);</code></pre>
+            </article>
+            <article class="prefer">
+              <span>Beregn ud fra kilden</span>
+              <pre class="po-code"><code class="language-javascript">const [events, setEvents] = useState([]);
+const eventCount = events.length;</code></pre>
+            </article>
+          </div>
+          <p class="derived-test">Spørg: Kan denne værdi beregnes fra eksisterende props eller state under render?</p>
+          <aside class="notes">
+            Redundant og duplikeret state kan komme ud af sync. Gem den minimale, komplette state og beregn resten.
+            [Sources] - React: Thinking in React · https://react.dev/learn/thinking-in-react - React: Choosing the State
+            Structure · https://react.dev/learn/choosing-the-state-structure [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide architecture-audit-slide">
+          <span class="eyebrow">Tilbage til auditten</span>
+          <h2>Brug arkitekturen som fem nye undersøgelsesspørgsmål</h2>
+          <ol class="audit-question-list">
+            <li>Kan jeg forklare hver vigtig fils hovedansvar?</li>
+            <li>Er dataadgang og præsentation blandet på en måde, der gør ændringer svære?</li>
+            <li>Har hver information én tydelig ejer?</li>
+            <li>Er noget gemt som state, selvom det kan beregnes?</li>
+            <li>Er gentaget formatering placeret ét forståeligt sted?</li>
+          </ol>
+          <p class="work-prompt">Vælg ét spørgsmål, og dokumentér ét konkret fund i Mellemrum.</p>
+          <aside class="notes">
+            Kort arbejdspas: 10–15 minutter. De skal koble princippet til en konkret fil og undgå at refaktorere endnu.
+            [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide styling-chapter" id="styling">
+          <span class="chapter-index">03</span>
+          <span class="eyebrow">Repetition</span>
+          <h2>Styling i React</h2>
+          <p class="kicker">Tre tilgange — og ét fælles behov for konsistens.</p>
+          <aside class="notes">
+            Dette er en repetition. Fokusér på struktur og valg, ikke på at lære ny CSS. [Sources] - React: Common
+            components · https://react.dev/reference/react-dom/components/common - Vite: Features ·
+            https://vite.dev/guide/features [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide styling-overview-slide">
+          <span class="eyebrow">Tre gyldige tilgange</span>
+          <h2>Vælg ud fra rækkevidde og ansvar</h2>
+          <div class="styling-spectrum">
+            <article><span>Globalt</span><strong>Klassisk CSS</strong><p>Fælles stylesheet og globale class names.</p><small>Godt til reset, tokens, layout og fælles mønstre.</small></article>
+            <article><span>Lokalt</span><strong>CSS Modules</strong><p>Styles importeres som et modul.</p><small>Godt til komponentnære styles uden navnekollisioner.</small></article>
+            <article><span>Dynamisk</span><strong>Inline styles</strong><p>Et JavaScript-objekt på elementet.</p><small>Godt når værdien faktisk kommer fra data.</small></article>
+          </div>
+          <aside class="notes">
+            React foreskriver ikke én CSS-metode. Vite understøtter almindelige CSS-importer og behandler .module.css
+            som CSS Modules. [Sources] - React: Common components ·
+            https://react.dev/reference/react-dom/components/common - Vite: Features · https://vite.dev/guide/features
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide styling-method-slide classic-css-slide">
+          <span class="eyebrow">01 · Klassisk CSS</span>
+          <h2>Globale class names gør fælles styling enkel</h2>
+          <div class="method-code-layout">
+            <pre class="po-code"><code class="language-javascript jsx">import "./styles.css";
+
+export function EventCard() {
+  return &lt;article className="event-card"&gt;…&lt;/article&gt;;
+}</code></pre>
+            <pre class="po-code"><code class="language-css">.event-card {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}</code></pre>
+          </div>
+          <div class="method-rule"><b>Styrke:</b> let at dele på tværs <span>·</span> <b>Pas på:</b> kaskade, specificitet og navnekollisioner</div>
+          <aside class="notes">
+            Klassisk CSS er ikke en “forkert” eller gammel løsning. Auditspørgsmålet er, om globale regler og navne er
+            organiseret og forudsigelige. [Sources] - React: Common components ·
+            https://react.dev/reference/react-dom/components/common [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide styling-method-slide css-modules-slide">
+          <span class="eyebrow">02 · CSS Modules</span>
+          <h2>Lokale class names gør komponentens styling tydelig</h2>
+          <div class="method-code-layout">
+            <pre class="po-code"><code class="language-javascript jsx">import styles from "./EventCard.module.css";
+
+export function EventCard() {
+  return &lt;article className={styles.card}&gt;…&lt;/article&gt;;
+}</code></pre>
+            <pre class="po-code"><code class="language-css">.card {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}</code></pre>
+          </div>
+          <div class="method-rule"><b>Styrke:</b> lokal scope og tydelig relation <span>·</span> <b>Pas på:</b> fælles mønstre må ikke kopieres overalt</div>
+          <aside class="notes">
+            I Vite bliver filer, der slutter på .module.css, behandlet som CSS Modules og importen returnerer et module
+            object. [Sources] - Vite: Features · https://vite.dev/guide/features [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide styling-method-slide inline-style-slide">
+          <span class="eyebrow">03 · Inline styles</span>
+          <h2>Brug inline styles, når værdien kommer fra JavaScript</h2>
+          <div class="inline-style-layout">
+            <pre class="po-code"><code class="language-javascript jsx">&lt;div
+  className="progress"
+  style={{ "--progress": `${percent}%` }}
+&gt;
+  {percent}%
+&lt;/div&gt;</code></pre>
+            <div>
+              <p><b>Godt match</b><span>størrelse, position eller custom property fra data</span></p>
+              <p><b>Svagt match</b><span>hele komponentens statiske styling som store objekter</span></p>
+              <p><b>Husk</b><span>CSS-properties skrives normalt i camelCase</span></p>
+            </div>
+          </div>
+          <aside class="notes">
+            React anbefaler style-proppen til dynamiske værdier, som ikke kendes på forhånd; ellers er className og CSS
+            mere effektivt. Custom properties kan bruges som en smal bro mellem data og CSS. [Sources] - React: Common
+            components · https://react.dev/reference/react-dom/components/common [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide root-variables-slide">
+          <span class="eyebrow">Fælles fundament</span>
+          <h2><code>:root</code>-variabler gør designvalg genbrugelige</h2>
+          <div class="root-variable-layout">
+            <pre class="po-code"><code class="language-css">:root {
+  --color-brand: #173f35;
+  --color-accent: #d8ff62;
+  --space-sm: 0.75rem;
+  --space-md: 1.5rem;
+  --radius-md: 0.75rem;
+}
+
+.event-card {
+  padding: var(--space-md);
+}</code></pre>
+            <div class="variable-benefits">
+              <p><strong>Én definition</strong><span>færre magic values</span></p>
+              <p><strong>Semantiske navne</strong><span>intention frem for tilfældig hex</span></p>
+              <p><strong>Kan bruges overalt</strong><span>klassisk CSS, Modules og inline</span></p>
+            </div>
+          </div>
+          <aside class="notes">
+            CSS custom properties definerer genbrugelige værdier og læses med var(). Semantiske tokens gør ændringer
+            og audit lettere. [Sources] - MDN: Using CSS custom properties ·
+            https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide styling-audit-slide">
+          <span class="eyebrow">Tilbage til auditten</span>
+          <h2>Undersøg om stylingens struktur matcher dens rækkevidde</h2>
+          <div class="styling-audit-questions">
+            <p><b>Globalt:</b> Hvilke regler og variabler skal gælde hele appen?</p>
+            <p><b>Lokalt:</b> Hvilke styles hører tydeligt til én komponent?</p>
+            <p><b>Dynamisk:</b> Hvilke værdier afhænger faktisk af JavaScript?</p>
+            <p><b>Konsistens:</b> Gentages farver, spacing, datoformater eller states?</p>
+          </div>
+          <p class="work-prompt">Find én gentagelse eller konflikt — og dokumentér dens konsekvens.</p>
+          <aside class="notes">
+            Bed dem undgå et “rewrite al CSS”-fund. De skal finde en afgrænset gentagelse, konflikt eller utydelig
+            placering og forklare effekten. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide accessibility-chapter" id="accessibility">
+          <span class="chapter-index">04</span>
+          <span class="eyebrow">Repetition</span>
+          <h2>Accessibility<br />i React</h2>
+          <p class="kicker">React ændrer ikke HTML-reglerne — men SPA-adfærd kræver ekstra omtanke.</p>
+          <aside class="notes">
+            [Sources] - W3C WAI: Accessibility Principles ·
+            https://www.w3.org/WAI/fundamentals/accessibility-principles/ - React: DOM components ·
+            https://react.dev/reference/react-dom/components [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide a11y-overview-slide">
+          <span class="eyebrow">Syv linser på samme brugerflow</span>
+          <h2>Accessibility skal virke hele vejen gennem opgaven</h2>
+          <div class="a11y-lenses">
+            <span>Semantisk HTML</span><span>ARIA</span><span>Tastatur og fokus</span><span>SPA-routing</span
+            ><span>Billeder og medier</span><span>Farver og kontrast</span><span>Formularer</span>
+          </div>
+          <p class="a11y-throughline">Test et faktisk flow — ikke kun enkelte elementer.</p>
+          <aside class="notes">
+            Overblikket bliver foldet ud på de næste slides. Knyt hvert punkt til event → detalje → tilmelding →
+            feedback. [Sources] - W3C WAI tutorials · https://www.w3.org/WAI/tutorials/ [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide semantics-slide">
+          <span class="eyebrow">Semantik og ARIA</span>
+          <h2>Brug browserens indbyggede betydning først</h2>
+          <div class="semantic-compare">
+            <article class="avoid">
+              <span>Mere arbejde — mindre adfærd</span>
+              <pre class="po-code"><code class="language-html">&lt;div role="button" tabindex="0"&gt;
+  Tilmeld
+&lt;/div&gt;</code></pre>
+            </article>
+            <article class="prefer">
+              <span>Semantik og tastatur følger med</span>
+              <pre class="po-code"><code class="language-html">&lt;button type="submit"&gt;
+  Tilmeld
+&lt;/button&gt;</code></pre>
+            </article>
+          </div>
+          <div class="semantic-landmarks"><code>header</code><code>nav</code><code>main</code><code>article</code><code>footer</code></div>
+          <p class="muted">ARIA supplerer semantik; det erstatter ikke manglende HTML-adfærd.</p>
+          <aside class="notes">
+            Første regel for ARIA: brug et passende native HTML-element, når det findes. Native button giver blandt
+            andet keyboard-adfærd og rolle. [Sources] - W3C: Using ARIA · https://www.w3.org/TR/using-aria/ - W3C WAI:
+            Page Structure Tutorial · https://www.w3.org/WAI/tutorials/page-structure/ [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide keyboard-slide">
+          <span class="eyebrow">Keyboard navigation</span>
+          <h2>Tastaturet afslører den faktiske interaktionsrækkefølge</h2>
+          <div class="keyboard-checks">
+            <article><kbd>Tab</kbd><p>Kan alle interaktive elementer nås i logisk rækkefølge?</p></article>
+            <article><kbd>Enter</kbd><p>Kan links og knapper aktiveres?</p></article>
+            <article><kbd>Space</kbd><p>Virker knapper, checkboxes og relevante controls?</p></article>
+            <article><kbd>Shift</kbd> + <kbd>Tab</kbd><p>Kan flowet også bruges baglæns?</p></article>
+          </div>
+          <pre class="po-code focus-code"><code class="language-css">:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}</code></pre>
+          <aside class="notes">
+            Fokus skal være synligt. Test også, at klikbare elementer ikke kun er divs med onClick. [Sources] - W3C:
+            Understanding Focus Visible · https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide spa-problem-slide">
+          <span class="eyebrow">SPA-problemet</span>
+          <h2>UI’et skifter side — men browseren genstarter ikke oplevelsen</h2>
+          <div class="navigation-compare">
+            <article>
+              <span>Traditionel navigation</span>
+              <strong>Nyt dokument</strong>
+              <p>Browseren indlæser siden og starter en ny læsekontekst.</p>
+            </article>
+            <article class="spa-route">
+              <span>Client-side routing</span>
+              <strong>Samme dokument</strong>
+              <p>URL og indhold skifter, men fokus kan blive i navigationen og titlen kan være uændret.</p>
+            </article>
+          </div>
+          <p class="spa-consequence">Resultat: Nogle brugere får ikke et tydeligt signal om, hvor de er landet.</p>
+          <aside class="notes">
+            Client-side route changes giver ikke automatisk den samme oplevelse som en fuld page load. Fokus kan blive
+            ved det aktiverede link, og screen reader-brugere kan mangle kontekst. [Sources] - Gatsby: User testing of
+            accessible client-side routing · https://www.gatsbyjs.com/blog/2019-07-11-user-testing-accessible-client-routing/
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide page-change-slide">
+          <span class="eyebrow">Routing og sideskift</span>
+          <h2>Et sideskift skal give både identitet og et nyt startpunkt</h2>
+          <div class="page-change-pair">
+            <article><span>01</span><strong>Opdatér sidens titel</strong><p><code>document.title</code> beskriver den aktuelle route i fanen og dokumentet.</p></article>
+            <article><span>02</span><strong>Flyt fokus meningsfuldt</strong><p>Fokusér fx den nye <code>h1</code>, så keyboard- og screen reader-brugere lander i indholdet.</p></article>
+          </div>
+          <p class="muted">Titel alene annonceres ikke nødvendigvis dynamisk — derfor skal hele navigationsoplevelsen testes.</p>
+          <aside class="notes">
+            En præcis titel beskriver sidens formål. MDN bemærker også, at dynamiske titelændringer ikke automatisk
+            annonceres af alle screen readers. Fokus eller live announcements kan derfor stadig være nødvendige.
+            [Sources] - MDN: title element · https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/title -
+            MDN: Document.title · https://developer.mozilla.org/en-US/docs/Web/API/Document/title [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide focus-management-slide">
+          <span class="eyebrow">Fokus-styring i React</span>
+          <h2>Route-komponenten kan etablere den nye kontekst</h2>
+          <div class="code-layout focus-management-layout">
+            <pre class="po-code"><code class="language-javascript jsx">function EventPage({ event }) {
+  const headingRef = useRef(null);
+
+  useEffect(() =&gt; {
+    document.title = `${event.title} · Mellemrum`;
+    headingRef.current?.focus();
+  }, [event.title]);
+
+  return (
+    &lt;main&gt;
+      &lt;h1 ref={headingRef} tabIndex={-1}&gt;
+        {event.title}
+      &lt;/h1&gt;
+    &lt;/main&gt;
+  );
+}</code></pre>
+            <div class="focus-pattern-steps">
+              <p><b><code>useRef</code></b><span>peger på den nye overskrift</span></p>
+              <p><b><code>tabIndex={-1}</code></b><span>gør den programmatisk fokusérbar</span></p>
+              <p><b><code>useEffect</code></b><span>kører efter den nye UI er rendret</span></p>
+              <p><b>Test</b><span>fokus skal være synligt og opleves logisk</span></p>
+            </div>
+          </div>
+          <aside class="notes">
+            Patternet er bevidst enkelt til Mellemrum. I React 19 kan title også renderes fra en page-komponent, men
+            projektets version og routing skal kontrolleres. [Sources] - React: Common components, manipulating a DOM
+            node with a ref · https://react.dev/reference/react-dom/components/common - React: title ·
+            https://react.dev/reference/react-dom/components/title - Gatsby: Accessible client routing research ·
+            https://www.gatsbyjs.com/blog/2019-07-11-user-testing-accessible-client-routing/ [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide media-slide">
+          <span class="eyebrow">Billeder, ikoner og medier</span>
+          <h2>Alternativet skal beskrive formålet — ikke bare motivet</h2>
+          <div class="media-rules">
+            <article><strong>Informativt billede</strong><code>alt="Koncert i Godsbanens rå hal"</code><p>Beskriv den information, billedet bidrager med.</p></article>
+            <article><strong>Dekorativt billede</strong><code>alt=""</code><p>Tom alt-tekst gør, at billedet kan ignoreres.</p></article>
+            <article><strong>Ikonknap</strong><code>aria-label="Luk dialog"</code><p>Navngiv funktionen — ikke ikonets form.</p></article>
+            <article><strong>Video eller lyd</strong><code>&lt;track kind="captions" …&gt;</code><p>Tilbyd captions og relevante tekstalternativer.</p></article>
+          </div>
+          <aside class="notes">
+            Alt-tekst afhænger af billedets formål i konteksten. Funktionelle billeder beskriver handlingen; dekorative
+            billeder får alt="". [Sources] - W3C WAI: Images Tutorial · https://www.w3.org/WAI/tutorials/images/ - W3C
+            WAI: Captions/Subtitles · https://www.w3.org/WAI/media/av/captions/ [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide contrast-slide">
+          <span class="eyebrow">Farver og kontrast</span>
+          <h2>Farve må ikke være det eneste signal</h2>
+          <div class="contrast-metrics">
+            <article><span>4.5:1</span><strong>Almindelig tekst</strong></article>
+            <article><span>3:1</span><strong>Stor tekst</strong></article>
+            <article><span>3:1</span><strong>Controls og grafiske objekter</strong></article>
+          </div>
+          <div class="color-state-example">
+            <p class="color-only"><i></i> Fejl</p>
+            <b>+</b>
+            <p class="color-and-text"><i aria-hidden="true">!</i> E-mailadressen mangler</p>
+          </div>
+          <aside class="notes">
+            Tallene er WCAG AA-minimum: 4.5:1 for almindelig tekst, 3:1 for stor tekst og 3:1 for nødvendige visuelle
+            indikatorer i UI-komponenter. Brug ikke farve alene til at formidle fejl eller state. [Sources] - WCAG 2.2 ·
+            https://www.w3.org/TR/wcag/ - MDN: Color contrast ·
+            https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Perceivable/Color_contrast
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accessible-form-slide">
+          <span class="eyebrow">Tilgængelige inputs</span>
+          <h2>Formularen skal forklare feltet, kravet og fejlen</h2>
+          <div class="code-layout accessible-form-layout">
+            <pre class="po-code"><code class="language-javascript jsx">&lt;label htmlFor="email"&gt;
+  E-mail (påkrævet)
+&lt;/label&gt;
+&lt;input
+  id="email"
+  name="email"
+  type="email"
+  required
+  aria-describedby={error ? "email-error" : undefined}
+/&gt;
+{error &amp;&amp; (
+  &lt;p id="email-error"&gt;
+    Skriv en gyldig e-mailadresse.
+  &lt;/p&gt;
+)}</code></pre>
+            <div class="form-checklist">
+              <p><strong>Label</strong><span>synlig og koblet med <code>htmlFor</code> + <code>id</code></span></p>
+              <p><strong>Input-type</strong><span>matcher data og keyboard</span></p>
+              <p><strong>Krav</strong><span>vises i tekst — ikke kun med farve eller *</span></p>
+              <p><strong>Fejl</strong><span>konkret, forståelig og programmatisk forbundet</span></p>
+            </div>
+          </div>
+          <aside class="notes">
+            Placeholder er ikke en erstatning for label. Fejlbeskeden skal hjælpe brugeren videre og forbindes til
+            feltet, fx med aria-describedby. [Sources] - W3C WAI: Labeling Controls ·
+            https://www.w3.org/WAI/tutorials/forms/labels/ - W3C WAI: User Notification ·
+            https://www.w3.org/WAI/tutorials/forms/notifications/ [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide a11y-audit-slide">
+          <span class="eyebrow">Tilbage til auditten</span>
+          <h2>Gennemfør tilmeldingsflowet uden mus</h2>
+          <div class="a11y-test-flow">
+            <article><span>01</span><strong>Find eventet</strong><small>Semantik, linktekst og synligt fokus</small></article>
+            <article><span>02</span><strong>Skift route</strong><small>Titel, overskrift og fokusplacering</small></article>
+            <article><span>03</span><strong>Udfyld formularen</strong><small>Labels, krav, validering og fejl</small></article>
+            <article><span>04</span><strong>Forstå resultatet</strong><small>Success/error feedback og næste skridt</small></article>
+          </div>
+          <p class="work-prompt">Gem et kort keyboard-flow som evidens, og registrér de vigtigste barrierer.</p>
+          <aside class="notes">
+            Bed dem teste både lokalt og på den deployede version. Et kort skærm- eller keyboard-flow kan være stærkere
+            evidens end en automatisk score. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale -
+            W3C WAI tutorials · https://www.w3.org/WAI/tutorials/ [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide audit-synthesis-slide">
+          <span class="eyebrow">Saml dagens audit</span>
+          <h2>De faglige linser skal ende som konkrete fund</h2>
+          <div class="audit-synthesis">
+            <article><strong>Arkitektur</strong><p>Hvor er ansvaret eller dataflowet uklart?</p><small>Vis relevante filer og afhængigheder.</small></article>
+            <article><strong>Styling</strong><p>Hvor skaber struktur eller gentagelse inkonsistens?</p><small>Vis selectors, værdier og det synlige resultat.</small></article>
+            <article><strong>Accessibility</strong><p>Hvor møder en bruger en barriere?</p><small>Vis flowet med tastatur, fokus og feedback.</small></article>
+          </div>
+          <aside class="notes">
+            Lad hver studerende vælge deres stærkeste fund og formulere observation, evidens, konsekvens og foreløbig
+            prioritet. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide improvement-slide" id="arbejd-videre">
+          <span class="eyebrow">Fra audit til forbedring</span>
+          <h2>Vælg ét fund, som kan forbedres og verificeres afgrænset</h2>
+          <div class="improvement-path">
+            <article><span>01</span><strong>Prioritér</strong><small>Effekt, risiko, vedligeholdelse og indsats</small></article>
+            <b>→</b>
+            <article><span>02</span><strong>Branch</strong><small>Ét tydeligt navn og ét sammenhængende formål</small></article>
+            <b>→</b>
+            <article><span>03</span><strong>Implementér</strong><small>Små skridt uden utilsigtede ændringer</small></article>
+            <b>→</b>
+            <article><span>04</span><strong>Verificér</strong><small>Sammenlign med den dokumenterede baseline</small></article>
+          </div>
+          <p class="improvement-rule">Målet er ikke flest ændringer — men en forbedring, du kan begrunde og bevise.</p>
+          <aside class="notes">
+            Arbejdet foregår individuelt. Eksempler på branches: fix/registration-focus, refactor/event-date-formatting,
+            refactor/supabase-event-service. [Sources] - Case 1-casebeskrivelsen og audit-skabelonen · lokalt
+            kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide resource-slide">
+          <span class="eyebrow">Ressourcer til arbejdet</span>
+          <h2>Brug repetitionen som reference — ikke som en ny tjekliste</h2>
+          <div class="resource-links">
+            <a href="https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc" target="_blank" rel="noopener noreferrer"><strong>Styling i React</strong><small>Klassisk CSS, Modules og inline styles ↗</small></a>
+            <a href="https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c" target="_blank" rel="noopener noreferrer"><strong>React og Accessibility</strong><small>Samlet a11y-reference ↗</small></a>
+            <a href="https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf" target="_blank" rel="noopener noreferrer"><strong>Product Grid · del 3</strong><small>Styling og a11y i et React-eksempel ↗</small></a>
+            <a href="https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning" target="_blank" rel="noopener noreferrer"><strong>Teknisk audit</strong><small>Skabelon til fund, evidens og prioritering ↗</small></a>
+          </div>
+          <aside class="notes">
+            De tidligere undervisningsressourcer genbruges som reference sammen med dagens auditmateriale og de
+            officielle React-, MDN- og W3C-kilder i noterne. [Sources] - Styling i React ·
+            https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc - React og Accessibility ·
+            https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c - Product Grid with
+            React · Del 3 · https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide po-closing closing-audit-slide">
+          <span class="eyebrow">Dagens resultat</span>
+          <h2>Fra observation til en forbedring, der kan forsvares</h2>
+          <div class="closing-formula">
+            <span>Fund</span><b>+</b><span>Evidens</span><b>+</b><span>Konsekvens</span><b>→</b><span>Prioritet</span><b>→</b><span>Verifikation</span>
+          </div>
+          <p class="lead">Vælg det vigtigste næste skridt — og behold resten som en prioriteret backlog.</p>
+          <div class="closing-links">
+            <a href="https://github.com/cederdorff/mellemrum" target="_blank" rel="noreferrer">Starterprojekt ↗</a
+            ><a href="#/agenda">Tilbage til agenda</a>
+          </div>
+          <aside class="notes">
+            Afslut med en kort runde: Hvad er dit stærkeste fund, hvilken evidens har du, og hvordan vil du verificere
+            forbedringen? [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="../shared/deck.js"></script>
+  </body>
+</html>
