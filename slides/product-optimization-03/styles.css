@@ -2013,12 +2013,38 @@
 }
 
 .error-summary-slide .summary-flows {
-  flex: 0;
+  flex: 1;
   margin-top: 32px;
+  margin-bottom: 24px;
 }
 
 .error-summary-slide .summary-flows article {
   padding: 25px 30px;
+}
+
+.error-summary-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 28px;
+  margin: 4px 0 24px;
+}
+
+.error-summary-footer .contrast-bridge {
+  margin: 0 !important;
+  text-align: left;
+}
+
+.error-solution-link {
+  flex: none;
+  padding: 13px 18px;
+  border: 1px solid rgb(255 111 97 / 35%);
+  border-radius: 999px;
+  background: rgb(255 111 97 / 10%);
+  color: var(--coral) !important;
+  font-size: 17px;
+  font-weight: 850;
+  text-decoration: none !important;
 }
 
 .error-to-ui-bridge {
@@ -2077,6 +2103,28 @@
   color: var(--violet);
 }
 
+.error-example-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.error-example-meta .eyebrow {
+  margin: 0 !important;
+}
+
+.error-example-meta a {
+  padding: 10px 16px;
+  border: 1px solid rgb(255 111 97 / 35%);
+  border-radius: 999px;
+  background: rgb(255 111 97 / 10%);
+  color: var(--coral) !important;
+  font-size: 16px;
+  font-weight: 850;
+  text-decoration: none !important;
+}
+
 .react-error-bridge-slide .code-layout {
   grid-template-columns: minmax(0, 1.6fr) minmax(330px, 0.72fr);
   gap: 34px;
@@ -2087,9 +2135,63 @@
 
 .react-error-bridge-slide .po-code code,
 .react-error-bridge-slide .po-code code.hljs {
-  padding: 18px 22px;
-  font-size: 17px;
-  line-height: 1.2;
+  padding: 20px 24px;
+  font-size: 18px;
+  line-height: 1.22;
+}
+
+.postdetail-error-code,
+.react-error-result {
+  min-width: 0;
+}
+
+.postdetail-error-code > span,
+.react-error-result > span {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--coral);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.react-error-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px;
+  border-top: 5px solid var(--coral);
+  background: var(--surface);
+}
+
+.react-error-result .po-code code,
+.react-error-result .po-code code.hljs {
+  font-size: 22px;
+}
+
+.state-render-flow {
+  display: grid;
+  place-items: center;
+  margin-top: 28px;
+  padding: 22px;
+  background: rgb(240 143 115 / 8%);
+  text-align: center;
+}
+
+.state-render-flow code,
+.state-render-flow span,
+.state-render-flow strong {
+  font-size: 20px;
+}
+
+.state-render-flow b {
+  padding: 7px;
+  color: var(--coral);
+}
+
+.state-render-flow strong {
+  color: var(--coral);
 }
 
 .react-error-steps {
