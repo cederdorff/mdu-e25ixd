@@ -2,7 +2,7 @@
 
 ## Formål
 
-I dag begynder du på en teknisk audit af React-løsningen. Du afgrænser undersøgelsen, etablerer en baseline og dokumenterer konkrete fund, før du ændrer koden.
+I dag begynder du på en teknisk audit af Mellemrum-løsningen. Du afgrænser undersøgelsen, etablerer en baseline og dokumenterer konkrete fund, før du ændrer koden. Tilmeldingsflowet og den deployede version skal altid indgå i auditten.
 
 Undervejs får du faglige indspark med hovedvægt på React-arkitektur. Vi repeterer også styling i React og centrale accessibility-principper, herunder de særlige udfordringer med routing, sidetitler og fokus i en SPA. Du bruger indsparkene som nye faglige linser på løsningen, prioriterer dine fund og begynder til sidst på én afgrænset forbedring.
 
@@ -18,12 +18,13 @@ Undervejs får du faglige indspark med hovedvægt på React-arkitektur. Vi repet
 
 ## Agenda
 
-Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem i arbejdet med Case 1.
+Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen og bruger dem i arbejdet med Case 1.
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Introduktion til teknisk audit</strong></summary>
 <ul>
 <li>Hvad er en teknisk audit, og hvordan adskiller den sig fra personlige kodepræferencer?</li>
+<li><strong>Auditobjekt:</strong> Undersøg Mellemrum lokalt og online; tilmeldingsflowet og den deployede løsning skal altid indgå.</li>
 <li>Afgræns løsningens primære og sekundære målgrupper, vigtigste brugerflows og tekniske områder.</li>
 <li>Dokumentér udgangspunktet, før du ændrer koden.</li>
 <li>Registrér konkrete fund, beskriv deres betydning, og prioritér dem efter effekt og indsats.</li>
@@ -33,15 +34,16 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 <details style="margin-left: 1.5rem;">
 <summary><strong>2. Fagligt indspark: React-arkitektur</strong></summary>
 <ul>
-<li>Brug tydelige og konsekvente navne til filer, komponenter, funktioner, props og variabler.</li>
-<li>Organisér mapper og filer, så projektets sider, komponenter, data og styling er lette at finde.</li>
-<li>Se filer som moduler med et afgrænset ansvar, der forbindes med <code>import</code> og <code>export</code>.</li>
-<li><strong>Komponenter og ansvar:</strong> Brug <em>separation of concerns</em>, <em>single responsibility</em> og <em>component composition</em> til at undersøge ansvaret mellem pages, komponenter og services.</li>
-<li><strong>State og dataflow:</strong> Følg det ensrettede dataflow, brug én <em>single source of truth</em>, og beregn <em>derived state</em> frem for at gemme den samme information igen.</li>
-<li><strong>Kontakt med omverdenen:</strong> Hold <em>side effects</em> adskilt fra renderingen, og undersøg klient–server-grænsen mellem React, Supabase REST API og databasen.</li>
-<li>Følg et request fra React i browseren gennem Supabase REST API til databasen og tilbage som data eller fejl.</li>
-<li>Undersøg, om datoer, tidspunkter, eventtyper, venues og adresser vises ensartet, og om gentagen formateringslogik har en tydelig placering.</li>
-<li>Du skal ikke forbedre alt på én gang. Vælg det vigtigste fund.</li>
+<li>Definér arkitektur som de valg, der placerer ansvar og forbinder delene – ikke blot som et bestemt mappetræ.</li>
+<li>Start med et overblik over seks beslutninger: routes/pages, komponenter, state/dataflow, effects/data, adskillelse/genbrug samt navne/struktur.</li>
+<li>Brug <strong>Post App med Supabase</strong> som fælles reference, og overfør derefter principperne til din egen audit af Mellemrum.</li>
+<li><strong>Routes og pages:</strong> Brug routes som grænser for brugeropgaver, og lad pages koordinere sidens data, UI-states og komponenter.</li>
+<li><strong>Komponenter og ansvar:</strong> Brug <em>single responsibility</em> og <em>component composition</em> til at skabe forståelige UI-dele med tydelige prop-kontrakter.</li>
+<li><strong>State og dataflow:</strong> Placér state hos den nærmeste ejer, følg det ensrettede dataflow, og beregn <em>derived state</em> frem for at gemme kopier.</li>
+<li><strong>Effects og data:</strong> Hold renderingen pure, brug Effects til synkronisering med omverdenen, og følg et request gennem Supabase REST API og tilbage til UI'et.</li>
+<li><strong>Adskillelse og genbrug:</strong> Udtræk services, utils eller hooks, når gentagelse eller kompleksitet skaber et konkret behov – ikke på forhånd.</li>
+<li><strong>Navne og struktur:</strong> Brug domænenære navne og den mindste mappestruktur, der gør ansvar og ændringer tydelige.</li>
+<li>Forklar løbende, hvorfor en grænse hjælper, og dokumentér derefter ét konkret arkitekturfund i Mellemrum.</li>
 </ul>
 </details>
 
@@ -73,7 +75,7 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
 <details style="margin-left: 1.5rem;">
 <summary><strong>5. Arbejd videre med auditten</strong></summary>
 <ul>
-<li>Gennemfør de vigtigste brugerflows, og undersøg relevante filer og komponenter.</li>
+<li>Gennemfør de vigtigste brugerflows i Mellemrum, og undersøg relevante filer og komponenter.</li>
 <li>Brug audit-skabelonen til at dokumentere fund og evidens.</li>
 <li>Beskriv konsekvensen for brugeren, produktet eller den videre udvikling.</li>
 <li>Lav en realistisk, prioriteret liste over forbedringer.</li>
@@ -98,6 +100,8 @@ Vi introducerer auditten, får faglige perspektiver på løsningen og bruger dem
   - [Case 1 · Teknisk audit, arkitektur, styling og accessibility](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-04/)
 - **Startprojekt:**
   - [Mellemrum](https://github.com/cederdorff/mellemrum)
+- **Fælles arkitektur-reference:**
+  - [Post App med Supabase](https://github.com/cederdorff/post-app-supabase)
 - **Case 1:**
   - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
 - **Audit:**
