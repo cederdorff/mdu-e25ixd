@@ -966,6 +966,19 @@ try {
           <span class="eyebrow">Post App · HomePage</span>
           <h2>Data kommer — men hvad sker der imens?</h2>
           <div class="ui-state-observation">
+            <div class="observation-copy">
+              <pre class="po-code observation-code"><code class="language-javascript">async function getPosts() {
+  const response = await fetch(URL, { headers });
+  const data = await response.json();
+  setPosts(data);
+}</code></pre>
+              <div class="question-stack">
+                <span>Tre spørgsmål til UI’et</span>
+                <p><b>Mens vi venter:</b> Hvad ser brugeren?</p>
+                <p><b>Hvis requestet fejler:</b> Hvad ser brugeren?</p>
+                <p><b>Hvis svaret er <code>[]</code>:</b> Hvad ser brugeren?</p>
+              </div>
+            </div>
             <figure class="post-app-loading-video">
               <video
                 data-autoplay
@@ -981,11 +994,6 @@ try {
               </video>
               <figcaption><strong>Nuværende oplevelse:</strong> UI’et er tomt, indtil posts dukker op.</figcaption>
             </figure>
-            <div class="question-stack">
-              <p>Hvad ser brugeren, <b>mens vi venter</b>?</p>
-              <p>Hvad ser brugeren, <b>hvis det fejler</b>?</p>
-              <p>Hvad ser brugeren, hvis svaret er <b>[]</b>?</p>
-            </div>
           </div>
           <aside class="notes">
             Afspil videoen og læg mærke til det tomme UI før posts dukker op. Brug spørgsmålene til at etablere behovet
@@ -1051,7 +1059,7 @@ async function getPosts() {
   setLoading(false);
 }</code></pre>
             <div class="finally-flow" aria-label="Finally kører ved både succes og fejl">
-              <span class="success-path">Success</span><b>↘</b><strong>finally</strong><b>↗</b
+              <span class="success-path">Success</span><b>→</b><strong>finally</strong><b>←</b
               ><span class="error-path">Error</span>
               <p><strong>Pointe:</strong> Loading bliver afsluttet uanset udfaldet.</p>
             </div>
@@ -1064,11 +1072,11 @@ async function getPosts() {
         </section>
 
         <section class="po-slide accent-state">
-          <span class="eyebrow">Developer error vs. user error</span>
+          <span class="eyebrow">Teknisk fejl og brugerbesked</span>
           <h2>Tekniske detaljer er til udvikleren</h2>
           <div class="message-split">
             <article>
-              <span>Developer</span>
+              <span>Udvikler</span>
               <pre class="mini-code"><code>TypeError: Failed to fetch</code></pre>
               <p><code>console.error(caughtError)</code></p>
             </article>
@@ -1209,8 +1217,16 @@ return &lt;PostGrid posts={posts} /&gt;;</code></pre>
           <span class="eyebrow">Samme tankegang · en brugerhandling</span>
           <h2>Robuste UI-states gælder også formularen</h2>
           <div class="code-layout">
-            <pre class="po-code"><code class="language-javascript jsx">const [isSubmitting, setIsSubmitting] =
-  useState(false);
+            <pre class="po-code"><code class="language-javascript jsx">const [isSubmitting, setIsSubmitting] = useState(false);
+
+async function handleSubmit(event) {
+  try {
+    setIsSubmitting(true);
+    // gem opslaget
+  } finally {
+    setIsSubmitting(false);
+  }
+}
 
 &lt;button disabled={isSubmitting}&gt;
   {isSubmitting ? "Gemmer…" : "Gem opslag"}
@@ -1220,13 +1236,19 @@ return &lt;PostGrid posts={posts} /&gt;;</code></pre>
               <div><em>Success</em><em>Error</em></div>
             </div>
           </div>
-          <p class="definition slide-point">
-            Den samme tankegang gælder brugerhandlinger: idle → submitting → success eller error.
-          </p>
+          <a
+            class="ui-states-solution-link"
+            href="https://github.com/cederdorff/post-app-supabase/tree/error-handling-and-ui-states"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Se de foreslåede løsninger i Post App ↗</a
+          >
           <aside class="notes">
             Dette bygger direkte videre på CreatePage. Bed bagefter de studerende overføre samme tankegang til
             Mellemrums tilmeldingsflow. [Sources] - Post App · src/pages/CreatePage.jsx · lokalt semester 2-projekt -
-            React: Responding to Events · https://react.dev/learn/responding-to-events [/Sources]
+            React: Responding to Events · https://react.dev/learn/responding-to-events - Post App ·
+            error-handling-and-ui-states branch ·
+            https://github.com/cederdorff/post-app-supabase/tree/error-handling-and-ui-states [/Sources]
           </aside>
         </section>
 

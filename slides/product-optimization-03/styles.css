@@ -2172,18 +2172,38 @@
 
 .ui-state-observation {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.65fr);
-  gap: 38px;
+  grid-template-columns: minmax(0, 1fr) minmax(270px, 0.34fr);
+  gap: 32px;
   flex: 1;
-  align-items: stretch;
+  align-items: center;
   min-height: 0;
   margin: 22px 0 28px;
+}
+
+.observation-copy {
+  display: grid;
+  gap: 22px;
+  align-content: center;
+  min-width: 0;
+}
+
+.ui-state-observation .observation-code {
+  margin: 0 !important;
+}
+
+.ui-state-observation .observation-code code,
+.ui-state-observation .observation-code code.hljs {
+  padding: 24px;
+  font-size: 18px;
+  line-height: 1.35;
 }
 
 .post-app-loading-video {
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
   min-height: 0;
+  height: 100%;
+  max-height: 450px;
   margin: 0;
   padding: 14px;
   border-top: 5px solid var(--violet);
@@ -2210,7 +2230,34 @@
 }
 
 .ui-state-observation .question-stack {
-  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 17px 22px;
+  border-left: 4px solid var(--green);
+  background: var(--surface);
+}
+
+.ui-state-observation .question-stack > span {
+  margin-bottom: 7px;
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ui-state-observation .question-stack p {
+  display: block;
+  margin: 0;
+  padding: 7px 0;
+  border: 0;
+  background: transparent;
+  font-size: 18px;
+}
+
+.ui-state-observation .question-stack p + p {
+  border-top: 1px solid rgb(238 246 243 / 9%);
 }
 
 .state-render-flow {
@@ -2594,6 +2641,19 @@
 
 .submit-flow em:last-child {
   border-color: var(--coral);
+}
+
+.ui-states-solution-link {
+  align-self: flex-end;
+  margin: -8px 0 24px;
+  padding: 13px 18px;
+  border: 1px solid rgb(185 162 255 / 42%);
+  border-radius: 999px;
+  background: var(--violet-soft);
+  color: var(--violet) !important;
+  font-size: 17px;
+  font-weight: 850;
+  text-decoration: none !important;
 }
 
 .cliffhanger-slide .code-short {
