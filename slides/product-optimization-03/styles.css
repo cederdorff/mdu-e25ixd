@@ -2425,15 +2425,16 @@
 
 .try-catch-model {
   margin: 0;
-  padding: 22px 26px 18px;
-  border-top: 5px solid var(--coral);
-  background: #fffaf6;
+  padding: 0 0 16px;
+  background: transparent;
 }
 
 .try-catch-model img {
   display: block;
-  width: 100%;
-  max-height: 390px;
+  width: auto;
+  max-width: 100%;
+  max-height: 410px;
+  margin: 0 auto;
   object-fit: contain;
 }
 
@@ -2442,8 +2443,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  margin-top: 8px;
-  color: #655c55;
+  width: min(100%, 514px);
+  margin: 8px auto 0;
+  color: var(--muted);
   font-size: 15px;
 }
 
@@ -2452,7 +2454,7 @@
 }
 
 .try-catch-model figcaption a {
-  color: #9b522d;
+  color: var(--coral);
   font-weight: 800;
   text-decoration: underline;
   text-underline-offset: 4px;
