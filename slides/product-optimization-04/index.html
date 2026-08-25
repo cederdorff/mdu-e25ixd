@@ -351,18 +351,26 @@
 &lt;article /&gt;    // HTML-element</code></pre>
               <p><code>PostCard</code> bruger <b>PascalCase</b>. Et navn med lille begyndelsesbogstav læses som et HTML-tag i JSX.</p>
             </div>
-            <div class="code-naming-rules">
-              <p><strong><code>posts</code>, <code>selectedEventId</code></strong><span>værdier · camelCase</span></p>
-              <p><strong><code>isLoading</code>, <code>hasError</code>, <code>canSubmit</code></strong><span>booleans · kan læses som spørgsmål</span></p>
-              <p><strong><code>handleSubmit</code>, <code>handleDeletePost</code></strong><span>handlers inde i komponenten</span></p>
-              <p><strong><code>onSubmit</code>, <code>onDelete</code></strong><span>event-props, som komponenten modtager</span></p>
-              <p><strong><code>setPosts</code>, <code>setIsLoading</code></strong><span>setter matcher navnet på state</span></p>
+            <div class="camelcase-guide">
+              <div class="camelcase-definition">
+                <span>camelCase</span>
+                <code><b>selected</b><i>Event</i><em>Id</em></code>
+                <small>Første ord starter småt. Hvert nyt ord starter stort — uden mellemrum.</small>
+              </div>
+              <div class="code-naming-rules">
+                <p><span>Variabel / værdi</span><strong><code>posts</code> · <code>selectedEventId</code></strong><small>fortæller, hvad værdien indeholder</small></p>
+                <p><span>State + setter</span><strong><code>[posts, setPosts]</code></strong><small><code>set</code> + præcis samme state-navn</small></p>
+                <p><span>Boolean</span><strong><code>isLoading</code> · <code>hasError</code> · <code>canSubmit</code></strong><small>kan læses som et ja/nej-spørgsmål</small></p>
+                <p><span>Event</span><strong><code>handleDeletePost</code> → <code>onDelete</code></strong><small><code>handle…</code> er den lokale funktion; <code>on…</code> er callback-proppen</small></p>
+              </div>
             </div>
           </div>
           <aside class="notes">
             React bruger stort begyndelsesbogstav til at skelne egne komponenter fra indbyggede HTML-tags. PascalCase
-            er derfor ikke kun stil; det er en del af JSX-fortolkningen. handle... er en praktisk konvention for den
-            lokale funktion, mens on... beskriver den callback-prop, et component tilbyder eller modtager. [Sources] -
+            er derfor ikke kun stil; det er en del af JSX-fortolkningen. På højresiden bruges camelCase til almindelige
+            JavaScript-navne: første ord starter med lille, og efterfølgende ord markeres med stort begyndelsesbogstav.
+            State-setteren matcher state-navnet med set foran. handle... er en praktisk konvention for den lokale
+            eventfunktion, mens on... beskriver den callback-prop, et component tilbyder eller modtager. [Sources] -
             React: Your First Component · https://react.dev/learn/your-first-component - React: createElement ·
             https://react.dev/reference/react/createElement [/Sources]
           </aside>
