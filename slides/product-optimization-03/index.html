@@ -653,36 +653,38 @@ console.log("Done");</code></pre>
         <section class="po-slide accent-error try-catch-anatomy-slide">
           <span class="eyebrow">Anatomien i try / catch</span>
           <h2><code>try</code> og <code>catch</code> har hver sin opgave</h2>
-          <div class="try-catch-roles">
-            <article class="try-role">
-              <span>01 · try</span>
+          <div class="try-catch-model-layout">
+            <div class="try-catch-model-copy">
               <pre class="po-code"><code class="language-javascript">try {
   // kode som kan fejle
-}</code></pre>
-              <p>Koden køres normalt. Hvis noget <code>thrower</code>, stopper resten af <code>try</code>-blokken.</p>
-            </article>
-            <article class="catch-role">
-              <span>02 · catch</span>
-              <pre class="po-code"><code class="language-javascript">catch (error) {
+} catch (error) {
   // håndtér fejlen
 }</code></pre>
-              <p><code>catch</code> kører kun ved en kastet fejl. Variablen <code>error</code> modtager fejlen.</p>
-            </article>
-          </div>
-          <div class="try-catch-paths" aria-label="De to mulige veje gennem try og catch">
-            <p>
-              <span>Ingen fejl</span><strong><code>try</code> → spring <code>catch</code> over → fortsæt</strong>
-            </p>
-            <p>
-              <span>Fejl</span><strong><code>try</code> → <code>throw</code> → <code>catch</code> → fortsæt</strong>
-            </p>
+              <p><strong><code>try</code></strong> kører koden normalt.</p>
+              <p><strong><code>catch</code></strong> kører kun, hvis der opstår en fejl.</p>
+            </div>
+            <figure class="try-catch-model">
+              <img
+                src="../assets/try-catch-flow.svg"
+                alt="Flowdiagram: Uden fejl springes catch over. Ved en fejl stoppes resten af try, og catch køres."
+              />
+              <figcaption>
+                <span>To mulige veje gennem den samme kode</span>
+                <a href="https://javascript.info/try-catch" target="_blank" rel="noopener noreferrer"
+                  >Læs mere om try…catch ↗</a
+                >
+              </figcaption>
+            </figure>
           </div>
           <aside class="notes">
             Gå langsomt gennem syntaksen. Try betyder ikke, at JavaScript prøver igen; blokken markerer den kode, hvis
             kastede fejl vi vil kunne fange. Catch kører ikke på happy path. Error-parameteren er det Error-objekt, som
-            blev kastet. Catch løser heller ikke automatisk problemet — vi vælger reaktionen. [Sources] - MDN:
-            try...catch · https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch
-            [/Sources]
+            blev kastet. Catch løser heller ikke automatisk problemet — vi vælger reaktionen. Diagrammet viser først
+            happy path til venstre og derefter fejlvejen til højre. [Sources] - JavaScript.info: Error handling,
+            "try...catch" · https://javascript.info/try-catch - Flowdiagram ·
+            https://javascript.info/article/try-catch/try-catch-flow.svg - CC BY-NC-SA ·
+            https://javascript.info/terms - MDN: try...catch ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch [/Sources]
           </aside>
         </section>
 
