@@ -361,6 +361,58 @@
           </aside>
         </section>
 
+        <section class="po-slide accent-error fetch-motivation-slide">
+          <span class="eyebrow">Happy path</span>
+          <h2>Koden har kun en plan for succes</h2>
+          <div class="code-layout">
+            <pre class="po-code"><code class="language-javascript">async function getPost() {
+  const response = await fetch("/api/posts/999");
+  const post = await response.json();
+
+  showPost(post);
+}</code></pre>
+            <div class="hidden-assumptions">
+              <article><span>1</span><p>Requestet lykkes</p></article>
+              <article><span>2</span><p>Svaret kan parses som JSON</p></article>
+              <article><span>3</span><p>Posten findes og har de forventede data</p></article>
+            </div>
+          </div>
+          <p class="definition slide-point">Fejlhåndtering gør de andre mulige udfald eksplicitte.</p>
+          <aside class="notes">
+            Happy path er den vej gennem koden, hvor alt går som forventet. Begynd med spørgsmålet: Hvad sker der,
+            hvis én af de tre antagelser ikke holder? [Sources] - MDN: Using the Fetch API ·
+            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error">
+          <span class="eyebrow">Hvad kan gå galt?</span>
+          <h2>Fire ting kan bryde happy path</h2>
+          <div class="failure-examples">
+            <article>
+              <span>Data</span>
+              <p>Caption mangler, eller formatet er forkert.</p>
+            </article>
+            <article>
+              <span>Operation</span>
+              <p>Et opslag bliver ikke oprettet eller slettet.</p>
+            </article>
+            <article>
+              <span>HTTP</span>
+              <p>Supabase svarer med 400, 404 eller 500.</p>
+            </article>
+            <article><span>Netværk</span><p>Browseren kan ikke nå serveren.</p></article>
+          </div>
+          <p class="definition slide-point">
+            <strong>Vi kan ikke forhindre alle fejl.</strong> Men vi kan kontrollere, hvordan programmet reagerer.
+          </p>
+          <aside class="notes">
+            Brug de fire eksempler til at gøre behovet konkret, før vi introducerer Error, throw og try/catch.
+            [Sources] - Post App · lokalt semester 2-projekt - MDN: Control flow and error handling ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling [/Sources]
+          </aside>
+        </section>
+
         <section class="po-slide accent-error concept-example-slide">
           <span class="eyebrow">Hvad er fejlhåndtering?</span>
           <h2>Data kan være forkerte, uden at JavaScript stopper</h2>
@@ -388,34 +440,6 @@ console.log(post.caption);</code></pre>
             er påkrævet. [Sources] - MDN: Error ·
             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error - MDN: throw ·
             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide accent-error">
-          <span class="eyebrow">Hvorfor har vi brug for fejlhåndtering?</span>
-          <h2>Flere ting kan bryde den forventede vej</h2>
-          <div class="failure-examples">
-            <article>
-              <span>Data</span>
-              <p>Caption mangler, eller formatet er forkert.</p>
-            </article>
-            <article>
-              <span>Operation</span>
-              <p>Et opslag bliver ikke oprettet eller slettet.</p>
-            </article>
-            <article>
-              <span>HTTP</span>
-              <p>Supabase svarer med 400, 404 eller 500.</p>
-            </article>
-            <article><span>Netværk</span><p>Browseren kan ikke nå serveren.</p></article>
-          </div>
-          <p class="definition slide-point">
-            <strong>Vi kan ikke forhindre alle fejl.</strong> Men vi kan kontrollere, hvordan programmet reagerer.
-          </p>
-          <aside class="notes">
-            De næste slides zoomer ind på Error, throw og try/catch. [Sources] - Post App · lokalt semester 2-projekt
-            - MDN: Control flow and error handling ·
-            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling [/Sources]
           </aside>
         </section>
 
@@ -464,9 +488,41 @@ console.log("Done");</code></pre>
           </aside>
         </section>
 
+        <section class="po-slide accent-error try-catch-anatomy-slide">
+          <span class="eyebrow">Anatomien i try / catch</span>
+          <h2><code>try</code> og <code>catch</code> har hver sin opgave</h2>
+          <div class="try-catch-roles">
+            <article class="try-role">
+              <span>01 · try</span>
+              <pre class="po-code"><code class="language-javascript">try {
+  // kode som kan fejle
+}</code></pre>
+              <p>Koden køres normalt. Hvis noget <code>thrower</code>, stopper resten af <code>try</code>-blokken.</p>
+            </article>
+            <article class="catch-role">
+              <span>02 · catch</span>
+              <pre class="po-code"><code class="language-javascript">catch (error) {
+  // håndtér fejlen
+}</code></pre>
+              <p><code>catch</code> kører kun ved en kastet fejl. Variablen <code>error</code> modtager fejlen.</p>
+            </article>
+          </div>
+          <div class="try-catch-paths" aria-label="De to mulige veje gennem try og catch">
+            <p><span>Ingen fejl</span><strong><code>try</code> → spring <code>catch</code> over → fortsæt</strong></p>
+            <p><span>Fejl</span><strong><code>try</code> → <code>throw</code> → <code>catch</code> → fortsæt</strong></p>
+          </div>
+          <aside class="notes">
+            Gå langsomt gennem syntaksen. Try betyder ikke, at JavaScript prøver igen; blokken markerer den kode,
+            hvis kastede fejl vi vil kunne fange. Catch kører ikke på happy path. Error-parameteren er det
+            Error-objekt, som blev kastet. Catch løser heller ikke automatisk problemet — vi vælger reaktionen.
+            [Sources] - MDN: try...catch ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch [/Sources]
+          </aside>
+        </section>
+
         <section class="po-slide accent-error concept-example-slide">
           <span class="eyebrow">try / catch</span>
-          <h2><code>catch</code> giver os kontrollen tilbage</h2>
+          <h2>Fejlen går fra <code>try</code> til <code>catch</code></h2>
           <div class="code-layout concept-code-layout">
             <pre class="po-code"><code class="language-javascript">const post = {};
 
@@ -482,13 +538,14 @@ try {
 }
 console.log("Done");</code></pre>
             <div class="vertical-concept-flow compact-flow" aria-label="Programflow ved try og catch">
-              <span>try</span><b>↓</b><strong>Noget fejler</strong><b>↓</b><span>catch håndterer</span><b>↓</b><em>“Done” bliver kørt</em>
+              <span><code>try</code> kører</span><b>↓</b><strong><code>throw</code> stopper try</strong><b>↓</b><span><code>catch</code> modtager error</span><b>↓</b><em>“Done” bliver kørt</em>
             </div>
           </div>
-          <p class="definition slide-point"><code>catch</code> håndterer fejlen, så programmet kan fortsætte.</p>
+          <p class="definition slide-point"><code>catch</code> kører kun, hvis en fejl bliver kastet inde i <code>try</code>-blokken.</p>
           <aside class="notes">
-            Catch betyder ikke, at problemet er løst; det betyder, at vi kan vælge, hvordan koden reagerer, og om
-            programmet skal fortsætte. [Sources] - MDN: try...catch ·
+            Sammenlign med forrige slide: Her ser vi fejlvejen i et konkret eksempel. Når throw køres, springer
+            JavaScript direkte til catch, så console.log(post.caption) bliver ikke kørt. Catch betyder ikke, at
+            problemet er løst; vi vælger, hvordan koden reagerer, og om programmet skal fortsætte. [Sources] - MDN: try...catch ·
             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch [/Sources]
           </aside>
         </section>
@@ -555,7 +612,7 @@ function getPost(id) {
 
         <section class="po-slide accent-error">
           <span class="eyebrow">Post App · Supabase GET</span>
-          <h2>Hvad hvis Supabase ikke finder posten?</h2>
+          <h2>Hvad hvis filteret ikke matcher en post?</h2>
           <pre class="po-code code-main"><code class="language-javascript">const response = await fetch(
   `${URL}?id=eq.${id}`,
   { headers }
@@ -564,11 +621,12 @@ const data = await response.json();
 const post = data[0];
 
 console.log(post);</code></pre>
-          <p class="prompt-card">Hvad sker der, hvis svaret er <code>[]</code> — eller status er <strong>404</strong>?</p>
+          <p class="prompt-card">Supabase kan stadig svare <strong>200 OK</strong> med <code>[]</code>. Hvad bliver værdien af <code>post</code>?</p>
           <aside class="notes">
-            Lad de studerende skelne mellem HTTP-fejl og et tomt, men teknisk gyldigt svar. [Sources] - Post App ·
-            src/pages/PostDetailPage.jsx · lokalt semester 2-projekt - MDN: Using the Fetch API ·
-            https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+            Svaret er teknisk vellykket, men data[0] bliver undefined. Hold dette som et rent data-eksempel. Næste
+            slide introducerer den separate HTTP-fejl, og slidet derefter samler de to kontroller. [Sources] - Post App ·
+            src/pages/PostDetailPage.jsx · lokalt semester 2-projekt - Supabase: JavaScript select data ·
+            https://supabase.com/docs/reference/javascript/select [/Sources]
           </aside>
         </section>
 
@@ -647,18 +705,80 @@ return post;</code></pre>
           </aside>
         </section>
 
-        <section class="po-slide accent-error">
+        <section class="po-slide accent-error error-summary-slide">
           <span class="eyebrow">Opsummering · fejlhåndtering</span>
           <h2>Fra noget går galt til fejlen håndteres</h2>
           <div class="summary-flows">
             <article><span>JavaScript</span><p>Noget går galt → Error → throw → try/catch → håndtering</p></article>
             <article><span>fetch()</span><p>Request → response.ok? → false → throw → catch</p></article>
           </div>
-          <p class="contrast-bridge">Vi kan nu håndtere fejl i koden. <strong>Men hvad oplever brugeren?</strong></p>
+          <div class="error-to-ui-bridge" aria-label="Fra catch til brugerens fejlbesked">
+            <article>
+              <span>Fejlhåndtering</span>
+              <code>catch (error)</code>
+              <small>Koden modtager fejlen</small>
+            </article>
+            <b>→</b>
+            <article>
+              <span>React state</span>
+              <code>setError("Vi kunne ikke hente opslag")</code>
+              <small>En brugerrettet besked gemmes</small>
+            </article>
+            <b>→</b>
+            <article class="ui-result">
+              <span>Robust UI</span>
+              <strong>Vi kunne ikke hente opslag</strong>
+              <small>Brugeren får feedback</small>
+            </article>
+          </div>
           <aside class="notes">
+            Dette er kun broen: catch giver komponenten et udfald, som UI’et kan reagere på. Console.error er til
+            udvikleren; setError gemmer en besked, der kan vises til brugeren. Næste afsnit forklarer, hvordan state
+            og conditional rendering omsætter beskeden til et robust UI.
             [Sources] - MDN: Control flow and error handling ·
             https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling - MDN:
-            Using the Fetch API · https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch [/Sources]
+            Using the Fetch API · https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - React:
+            Reacting to Input with State · https://react.dev/learn/reacting-to-input-with-state [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-error react-error-bridge-slide">
+          <span class="eyebrow">Bro til robuste UI-states</span>
+          <h2>React viser fejlbeskeden fra state</h2>
+          <div class="code-layout">
+            <pre class="po-code"><code class="language-javascript jsx">function PostsPage() {
+  const [error, setError] = useState(null);
+
+  async function handleLoad() {
+    try {
+      await getPosts();
+    } catch (error) {
+      console.error(error);
+      setError("Vi kunne ikke hente opslag");
+    }
+  }
+
+  return (
+    &lt;&gt;
+      &lt;button onClick={handleLoad}&gt;Hent opslag&lt;/button&gt;
+      {error &amp;&amp; &lt;p&gt;{error}&lt;/p&gt;}
+    &lt;/&gt;
+  );
+}</code></pre>
+            <div class="react-error-steps">
+              <article><span>1</span><p><code>getPosts()</code> kaster en fejl.</p></article>
+              <article><span>2</span><p><code>catch</code> kalder <code>setError()</code>.</p></article>
+              <article><span>3</span><p>State ændres, og React viser beskeden.</p></article>
+            </div>
+          </div>
+          <aside class="notes">
+            getPosts er den funktion, vi allerede har gjort ansvarlig for at throwe ved et ugyldigt udfald. Nu ser vi
+            kun komponentens ansvar: kald funktionen, fang fejlen, gem en brugerbesked og lad React rendere igen.
+            Hvis der ikke opstår en fejl, forbliver error null, og p-elementet vises ikke. Dette ene error-state bliver
+            udvidet med loading, empty og success i næste afsnit. [Sources] - React: useState ·
+            https://react.dev/reference/react/useState - React: Conditional Rendering ·
+            https://react.dev/learn/conditional-rendering - MDN: try...catch ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch [/Sources]
           </aside>
         </section>
 
