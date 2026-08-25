@@ -1295,7 +1295,8 @@ return &lt;PostGrid posts={posts} /&gt;;</code></pre>
           </div>
           <h2>Robuste UI-states gælder også formularen</h2>
           <div class="code-layout">
-            <pre class="po-code"><code class="language-javascript jsx">const [isSubmitting, setIsSubmitting] = useState(false);
+            <pre class="po-code"><code class="language-javascript jsx">const [isSubmitting, setIsSubmitting] =
+  useState(false);
 
 async function handleSubmit(event) {
   try {
