@@ -18,7 +18,7 @@
         <section class="po-slide po-title">
           <span class="eyebrow">Product Optimization · Case 1</span>
           <h1>Fra happy path til <span>robust UI</span></h1>
-          <p class="lead">Kick-off, fejlhåndtering og UI-states i Mellemrum</p>
+          <p class="lead">Kick-off på Case 1 · fejlhåndtering · robuste UI-states</p>
           <p class="date"><span>RACE</span><time datetime="2026-08-25">25. august 2026</time></p>
           <aside class="notes">
             [Sources] - Undervisningsagendaen for 25.08.2026 · lokalt kursusmateriale [/Sources]
@@ -963,7 +963,15 @@ try {
         </section>
 
         <section class="po-slide accent-state happy-path-slide">
-          <span class="eyebrow">Post App · HomePage</span>
+          <div class="state-resource-meta">
+            <span class="eyebrow">Post App · HomePage</span>
+            <a
+              href="https://github.com/cederdorff/post-app-supabase/tree/error-handling-and-ui-states"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Åbn løsningen med UI-states ↗</a
+            >
+          </div>
           <h2>Data kommer — men hvad sker der imens?</h2>
           <div class="ui-state-observation">
             <div class="observation-copy">
@@ -998,7 +1006,9 @@ try {
           <aside class="notes">
             Afspil videoen og læg mærke til det tomme UI før posts dukker op. Brug spørgsmålene til at etablere behovet
             for loading, error og empty. [Sources] - Post App · src/pages/HomePage.jsx og
-            slides/assets/load-of-post-app.mov · lokalt semester 2-projekt [/Sources]
+            slides/assets/load-of-post-app.mov · lokalt semester 2-projekt - Post App ·
+            error-handling-and-ui-states branch ·
+            https://github.com/cederdorff/post-app-supabase/tree/error-handling-and-ui-states [/Sources]
           </aside>
         </section>
 
@@ -1144,7 +1154,15 @@ async function getPosts() {
         </section>
 
         <section class="po-slide accent-state status-pattern-slide">
-          <span class="eyebrow">Det komplette React-pattern</span>
+          <div class="state-resource-meta">
+            <span class="eyebrow">Det komplette React-pattern</span>
+            <a
+              href="https://github.com/cederdorff/post-app-supabase/tree/error-handling-and-ui-states"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Se patternet i Post App ↗</a
+            >
+          </div>
           <h2>Saml loading, error og data</h2>
           <pre class="po-code code-main"><code class="language-javascript">async function getPosts() {
   try {
@@ -1166,7 +1184,8 @@ async function getPosts() {
             Dette er den vigtigste pattern-slide i del 2. [Sources] - Post App · src/pages/HomePage.jsx · lokalt
             semester 2-projekt - MDN: Using the Fetch API ·
             https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch - React: useState ·
-            https://react.dev/reference/react/useState [/Sources]
+            https://react.dev/reference/react/useState - Post App · error-handling-and-ui-states branch ·
+            https://github.com/cederdorff/post-app-supabase/tree/error-handling-and-ui-states [/Sources]
           </aside>
         </section>
 
@@ -1188,6 +1207,57 @@ return &lt;PostGrid posts={posts} /&gt;;</code></pre>
           <aside class="notes">
             Early returns holder hver state adskilt og let at læse. [Sources] - React: Conditional Rendering ·
             https://react.dev/learn/conditional-rendering [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide accent-state homepage-state-slide">
+          <span class="eyebrow">Post App · HomePage</span>
+          <h2>HomePage vælger mellem fire oplevelser</h2>
+          <div class="code-layout">
+            <pre class="po-code"><code class="language-javascript jsx">export default function HomePage() {
+  return (
+    &lt;main&gt;
+      {loading && &lt;p&gt;Loading posts...&lt;/p&gt;}
+
+      {error && &lt;p&gt;{error}&lt;/p&gt;}
+
+      {!loading && !error && posts.length === 0 && (
+        &lt;p&gt;No posts yet&lt;/p&gt;
+      )}
+
+      {!loading && !error && posts.length &gt; 0 && (
+        posts.map(post =&gt; (
+          &lt;PostCard key={post.id} post={post} /&gt;
+        ))
+      )}
+    &lt;/main&gt;
+  );
+}</code></pre>
+            <div class="homepage-state-side">
+              <div class="homepage-state-key" aria-label="De fire oplevelser i HomePage">
+                <p><span>Loading</span><strong>Vent på data</strong></p>
+                <p><span>Error</span><strong>Vis en fejlbesked</strong></p>
+                <p><span>Empty</span><strong>Forklar det tomme resultat</strong></p>
+                <p><span>Success</span><strong>Vis opslagene</strong></p>
+              </div>
+              <p class="homepage-pattern-note">
+                Samme model som før — her skrevet med betinget rendering.
+              </p>
+              <a
+                class="ui-states-solution-link"
+                href="https://github.com/cederdorff/post-app-supabase/tree/error-handling-and-ui-states"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Se hele løsningen i Post App ↗</a
+              >
+            </div>
+          </div>
+          <aside class="notes">
+            Sammenlign med slidet før: Early returns og betinget rendering er to måder at gøre den samme state-model
+            synlig på. Her ser de studerende det konkrete mønster inde i HomePage-komponentens return. [Sources] - Post App ·
+            src/pages/HomePage.jsx · lokalt semester 2-projekt - Post App · error-handling-and-ui-states branch ·
+            https://github.com/cederdorff/post-app-supabase/tree/error-handling-and-ui-states - React: Conditional
+            Rendering · https://react.dev/learn/conditional-rendering [/Sources]
           </aside>
         </section>
 
@@ -1214,7 +1284,15 @@ return &lt;PostGrid posts={posts} /&gt;;</code></pre>
         </section>
 
         <section class="po-slide accent-state submitting-slide">
-          <span class="eyebrow">Samme tankegang · en brugerhandling</span>
+          <div class="state-resource-meta">
+            <span class="eyebrow">Samme tankegang · en brugerhandling</span>
+            <a
+              href="https://github.com/cederdorff/post-app-supabase/tree/error-handling-and-ui-states"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Se formular-states i Post App ↗</a
+            >
+          </div>
           <h2>Robuste UI-states gælder også formularen</h2>
           <div class="code-layout">
             <pre class="po-code"><code class="language-javascript jsx">const [isSubmitting, setIsSubmitting] = useState(false);
@@ -1231,18 +1309,28 @@ async function handleSubmit(event) {
 &lt;button disabled={isSubmitting}&gt;
   {isSubmitting ? "Gemmer…" : "Gem opslag"}
 &lt;/button&gt;</code></pre>
-            <div class="submit-flow" aria-label="States når et opslag bliver gemt">
-              <span>Idle</span><b>→</b><strong>Submitting</strong><b>→</b>
-              <div><em>Success</em><em>Error</em></div>
+            <div class="submit-flow" aria-label="Brugerens oplevelse når et opslag bliver gemt">
+              <article>
+                <span>Før klik</span>
+                <strong>Klar til at gemme</strong>
+                <small>Knappen er aktiv</small>
+              </article>
+              <b>→</b>
+              <article class="submitting-step">
+                <span>Under requestet</span>
+                <strong>Gemmer…</strong>
+                <small>Knappen er deaktiveret</small>
+              </article>
+              <b>→</b>
+              <article>
+                <span>Efter requestet</span>
+                <div class="submit-outcomes">
+                  <em>Gemt → navigér</em>
+                  <em>Fejl → vis besked</em>
+                </div>
+              </article>
             </div>
           </div>
-          <a
-            class="ui-states-solution-link"
-            href="https://github.com/cederdorff/post-app-supabase/tree/error-handling-and-ui-states"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Se de foreslåede løsninger i Post App ↗</a
-          >
           <aside class="notes">
             Dette bygger direkte videre på CreatePage. Bed bagefter de studerende overføre samme tankegang til
             Mellemrums tilmeldingsflow. [Sources] - Post App · src/pages/CreatePage.jsx · lokalt semester 2-projekt -
