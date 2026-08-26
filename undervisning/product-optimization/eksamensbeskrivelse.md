@@ -4,9 +4,11 @@
 
 Prøven i Product Optimization er en **individuel skriftlig eksamen**.
 
-I undervisningen arbejder du med tre optimeringscases. Til eksamen præsenterer du dem på dit personlige portfolio website og afleverer ét dokument med links til de tre casesider.
+Du præsenterer undervisningens tre optimeringscases på dit personlige portfolio website og afleverer ét dokument med direkte links til de tre casesider.
 
-Du får én samlet individuel karakter på baggrund af en helhedsvurdering af de tre casesider og det afleverede dokument.
+De tre casesider må tilsammen fylde **maksimalt fem normalsider**. Du får én samlet individuel karakter efter 7-trinsskalaen med intern censur.
+
+<hr style="margin: 2rem 0;">
 
 ## De tre cases
 
@@ -16,17 +18,23 @@ Hver case har sit eget faglige fokus og sin egen casebeskrivelse:
 - **Case 2 – titel og link tilføjes**
 - **Case 3 – titel og link tilføjes**
 
-Casebeskrivelserne forklarer den konkrete opgave og de faglige forventninger. Denne side samler det, der gælder for eksamen og aflevering på tværs af alle tre cases.
+Casebeskrivelserne forklarer de konkrete opgaver og faglige forventninger. Denne side samler det, der gælder på tværs af alle tre cases.
 
-## Sådan arbejder du gennem forløbet
+<hr style="margin: 2rem 0;">
 
-Under hver case arbejder du med selve opgaven og samler materiale, som du senere kan bruge på din portfolio. Det kan eksempelvis være analyser, centrale valg, iterationer, feedback, løsninger og dokumentation af resultater.
+## Fra casearbejde til portfolio
 
-Du afleverer **ikke** en færdig eksamenscase efter Case 1, Case 2 eller Cse 3. Brug tiden i caseforløbet på arbejdet og på at skabe et godt fagligt grundlag.
+Under hver case arbejder du med opgaven og samler materiale, som senere kan bruges på dit portfolio. Det kan eksempelvis være analyser, centrale valg, iterationer, feedback, løsninger og dokumentation af resultater.
 
-Efter Case 3 får du tid til at udvælge og bearbejde materialet. Her opbygger du én side på dit portfolio website for hver case.
+Du afleverer **ikke** en færdig eksamenscase efter Case 1 eller Case 2. Efter Case 3 får du tid til at udvælge og bearbejde materialet til én portfolioside for hver case.
 
-## Aflevering
+Casesiderne skal være korte, bearbejdede casefortællinger – ikke projektdagbøger. Vis den vigtigste sammenhæng:
+
+**udfordring → undersøgelse → valg → løsning → resultat → refleksion og værdi**
+
+<hr style="margin: 2rem 0;">
+
+## Aflevering og omfang
 
 Alle tre cases afleveres samlet **16. oktober 2026 før kl. 12.00 via WISEflow**.
 
@@ -36,114 +44,69 @@ Du afleverer ét dokument med:
 2. et direkte link til casesiden for Case 2
 3. et direkte link til casesiden for Case 3
 
-Links skal føre direkte til de konkrete casesider – ikke kun til forsiden af dit portfolio website. Siderne skal være publiceret og tilgængelige for bedømmerne.
+Links skal føre til de konkrete casesider – ikke kun til forsiden af dit portfolio website. Siderne skal være publiceret og tilgængelige for bedømmerne. Eventuelle yderligere krav til linkdokumentet fremgår af Canvas.
 
-Eventuelle yderligere krav til linkdokumentet fremgår af Canvas.
-
-## Omfang
-
-Det skriftlige materiale på de tre casesider må **samlet fylde maksimalt fem normalsider**.
-
-Det er altså ikke fem normalsider pr. case. Du bestemmer selv fordelingen, så længe alle tre cases er tydeligt behandlet.
+Det skriftlige materiale på de tre casesider må **samlet fylde maksimalt fem normalsider** – ikke fem sider pr. case. Du bestemmer selv fordelingen, så længe alle tre cases er tydeligt behandlet.
 
 Billeder, prototyper, kodeeksempler og andre visuelle elementer må gerne understøtte formidlingen. De vigtigste faglige pointer og refleksioner skal stadig kunne forstås på casesiderne.
 
-## Hvad skal en caseside indeholde?
+<hr style="margin: 2rem 0;">
 
-Casesiderne behøver ikke have præcis samme opbygning. Hver side skal dog kort og tydeligt vise:
+## Hvad skal en caseside vise?
 
-### 1. Casen og udfordringen
+Casesiderne behøver ikke have samme layout eller rækkefølge. Hver side skal dog kort vise:
 
-- Hvad handlede casen om?
-- Hvad var den centrale udfordring?
-- Hvad var dit ansvar og dit bidrag?
+1. **Case og udfordring:** Hvad handlede casen om, hvad var udfordringen, og hvad var dit bidrag?
+2. **Undersøgelse og prioritering:** Hvad fandt du frem til, hvad prioriterede du, og hvilket fagligt grundlag brugte du?
+3. **Løsning og faglige valg:** Hvad forbedrede du, og hvordan hænger løsningen sammen med din undersøgelse?
+4. **Resultat og dokumentation:** Hvad blev resultatet, og hvordan undersøgte eller verificerede du forbedringen?
+5. **Faglig refleksion:** Hvilke valg og fravalg traf du, hvad lærte du, og hvad kunne være næste skridt?
+6. **Forretningspotentiale:** Hvem kan arbejdet skabe værdi for – og hvordan?
 
-### 2. Undersøgelse og prioritering
+### Hvad betyder forretningspotentiale her?
 
-- Hvad fandt du frem til?
-- Hvad valgte du at fokusere på – og hvorfor?
-- Hvilket fagligt grundlag eller hvilken evidens brugte du?
+Forretningspotentiale er den mulige værdi, arbejdet kan skabe for brugerne, produktet eller organisationen. Beskriv kort **hvem der får værdi, hvilken værdi det er, og hvad vurderingen bygger på**.
 
-### 3. Løsning og faglige valg
+Værdien kan fx være en bedre brugeroplevelse, flere gennemførte handlinger, færre fejl, adgang for flere eller lettere videreudvikling. Du skal ikke skrive en fuld business case; vær blot tydelig om, hvad du har dokumenteret, og hvad der stadig er et begrundet potentiale.
 
-- Hvad udviklede eller forbedrede du?
-- Hvilke metoder, principper eller teknologier var centrale?
-- Hvordan hænger løsningen sammen med det, du fandt i din undersøgelse?
+### Løsninger og outputs
 
-### 4. Resultat og dokumentation
+Link fra hver caseside til de relevante løsninger og outputs, fx Figma, GitHub og en deployet løsning på GitHub Pages eller en tilsvarende platform. Vælg de links, der passer til casen, og kontrollér, at bedømmerne kan åbne dem. Selve casefortællingen skal stadig kunne forstås på portfoliosiden.
 
-- Hvad blev resultatet?
-- Hvordan undersøgte eller verificerede du forbedringen?
-- Hvilken relevant før- og efterdokumentation kan understøtte din vurdering?
-
-### 5. Faglig refleksion
-
-- Hvilke vigtige valg og fravalg traf du?
-- Hvad lærte du af arbejdet?
-- Hvad ville være et relevant næste skridt?
-
-### 6. Forretningspotentiale
-
-Forretningspotentiale handler her om, **hvilken mulig værdi dit arbejde kan skabe**, hvis løsningen bliver brugt eller videreudviklet.
-
-Beskriv kort:
-
-- hvem forbedringen kan skabe værdi for
-- hvilken værdi den kan skabe
-- hvad din vurdering bygger på
-
-Værdien kan eksempelvis være en bedre brugeroplevelse, flere gennemførte handlinger, færre fejl, adgang for flere brugere, lettere vedligeholdelse eller bedre mulighed for videreudvikling.
-
-Du skal ikke bevise en bestemt økonomisk gevinst eller skrive en fuld business case. Skeln mellem det, du kan dokumentere, og det, der stadig er et begrundet potentiale.
-
-## Skriv en casefortælling – ikke en projektdagbog
-
-Du skal ikke vise alt, du har lavet, i kronologisk rækkefølge. Udvælg det materiale, der bedst viser sammenhængen mellem:
-
-**udfordring → undersøgelse → valg → løsning → resultat → refleksion og værdi**
-
-Du må gerne linke til eksempelvis et repository, en deployet løsning, en prototype eller supplerende dokumentation. Den centrale casefortælling skal kunne forstås på selve portfoliosiden.
+<hr style="margin: 2rem 0;">
 
 ## Formkrav og redelighed
 
-Materialet skal opfylde formkravene, afleveres rettidigt og give et retvisende billede af dit eget arbejde.
+Materialet skal opfylde formkravene, afleveres rettidigt og give et retvisende billede af dit eget arbejde. Gør dit bidrag tydeligt, angiv relevante kilder, og skeln mellem dit arbejde og materiale eller bidrag fra andre.
 
-Gør derfor dit eget bidrag tydeligt, angiv relevante kilder, og skeln mellem dit arbejde og bidrag eller materiale fra andre. Følg også uddannelsens gældende regler for brug og deklaration af digitale værktøjer og generativ AI.
+Følg også uddannelsens gældende regler for brug og deklaration af digitale værktøjer og generativ AI. Du kan kun gå til prøven, hvis forudsætningerne er opfyldt.
 
-Du kan kun gå til prøven, hvis forudsætningerne er opfyldt.
+<hr style="margin: 2rem 0;">
 
 ## Bedømmelse
 
-Prøven bedømmes efter **7-trinsskalaen** med **intern censur**.
+Der gives én samlet individuel karakter – ikke en karakter for hver case. Helhedsvurderingen omfatter de faglige casebeskrivelser og refleksioner, dine begrundelser og dokumenterede resultater, overvejelser om forretningspotentiale samt den samlede formidling på portfolioet.
 
-Der gives én samlet individuel karakter – ikke en karakter for hver case. De tre cases vurderes samlet med blik for:
-
-- de faglige casebeskrivelser og refleksioner
-- dine begrundelser, resultater og dokumentation
-- dine overvejelser om forretningspotentiale
-- den samlede formidling på portfolioet
-
-De caseansvarlige undervisere vurderer hver deres case og foretager derefter den samlede helhedsvurdering sammen.
-
-De konkrete faglige forventninger til hver case fremgår af casebeskrivelserne på Canvas.
-
-## Hvis prøven ikke bestås
+De caseansvarlige undervisere vurderer hver deres case og foretager derefter den samlede helhedsvurdering sammen. De konkrete faglige forventninger fremgår af casebeskrivelserne på Canvas.
 
 Hvis du ikke består prøven, går du til omprøve med udgangspunkt i de samme cases. De nærmere rammer og frister oplyses særskilt.
 
+<hr style="margin: 2rem 0;">
+
 ## Tjek før aflevering
 
-- Alle tre cases er publiceret på dit personlige portfolio website.
-- Linkdokumentet indeholder tre direkte og fungerende links.
-- De tre casesider holder sig samlet inden for fem normalsider.
-- Hver case indeholder faglig refleksion og overvejelser om forretningspotentiale.
-- Dit eget bidrag og dine kilder fremgår tydeligt.
-- Siderne kan tilgås af bedømmerne.
-- Du afleverer i WISEflow senest 16. oktober 2026 før kl. 12.00.
+- Tre publicerede casesider og tre direkte, fungerende links.
+- Fungerende links fra casesiderne til relevante løsninger og outputs, fx Figma, GitHub og en deployet løsning.
+- Maksimalt fem normalsider på tværs af de tre cases.
+- Faglig refleksion og forretningspotentiale i hver case.
+- Et tydeligt og redeligt billede af dit eget arbejde og dine kilder.
+- Aflevering i WISEflow senest 16. oktober 2026 før kl. 12.00.
+
+<hr style="margin: 2rem 0;">
 
 ## Formelt grundlag
 
-Beskrivelsen bygger på studieordningens bestemmelser for prøven i Product Optimization. De konkrete deadlines, afleveringsoplysninger og casekrav offentliggøres på Canvas.
+Beskrivelsen bygger på studieordningens bestemmelser for prøven i Product Optimization. De konkrete casekrav og øvrige afleveringsoplysninger offentliggøres på Canvas.
 
 <!--
 Afklaringspunkter før siden publiceres endeligt på Canvas:
