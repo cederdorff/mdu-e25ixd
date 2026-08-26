@@ -2,11 +2,7 @@
 
 ## Kort fortalt
 
-Prøven i Product Optimization er en **individuel skriftlig eksamen**.
-
-Du præsenterer undervisningens tre optimeringscases på dit personlige portfolio website og afleverer ét dokument med direkte links til de tre casesider.
-
-De tre casesider må tilsammen fylde **maksimalt fem normalsider**. Du får én samlet individuel karakter efter 7-trinsskalaen med intern censur.
+Product Optimization afsluttes med en **individuel skriftlig eksamen**. Du præsenterer tre optimeringscases på dit personlige portfolio website og afleverer ét dokument med direkte links til casesiderne. Siderne må tilsammen fylde **maksimalt fem normalsider**.
 
 <hr style="margin: 2rem 0;">
 
@@ -18,17 +14,15 @@ Hver case har sit eget faglige fokus og sin egen casebeskrivelse:
 - **Case 2 – titel og link tilføjes**
 - **Case 3 – titel og link tilføjes**
 
-Casebeskrivelserne forklarer de konkrete opgaver og faglige forventninger. Denne side samler det, der gælder på tværs af alle tre cases.
+Casebeskrivelserne forklarer de konkrete opgaver og faglige forventninger. Denne side beskriver de fælles krav.
 
 <hr style="margin: 2rem 0;">
 
 ## Fra casearbejde til portfolio
 
-Under hver case arbejder du med opgaven og samler materiale, som senere kan bruges på dit portfolio. Det kan eksempelvis være analyser, centrale valg, iterationer, feedback, løsninger og dokumentation af resultater.
+Under hver case arbejder du med opgaven og samler fx analyser, valg, iterationer, feedback, løsninger og dokumentation. Du afleverer **ikke** en færdig eksamenscase efter Case 1 eller Case 2.
 
-Du afleverer **ikke** en færdig eksamenscase efter Case 1 eller Case 2. Efter Case 3 får du tid til at udvælge og bearbejde materialet til én portfolioside for hver case.
-
-Casesiderne skal være korte, bearbejdede casefortællinger – ikke projektdagbøger. Vis den vigtigste sammenhæng:
+Efter Case 3 udvælger og bearbejder du materialet til tre korte casefortællinger – ikke projektdagbøger. Vis sammenhængen:
 
 **udfordring → undersøgelse → valg → løsning → resultat → refleksion og værdi**
 
@@ -38,17 +32,11 @@ Casesiderne skal være korte, bearbejdede casefortællinger – ikke projektdagb
 
 Alle tre cases afleveres samlet **16. oktober 2026 før kl. 12.00 via WISEflow**.
 
-Du afleverer ét dokument med:
-
-1. et direkte link til casesiden for Case 1
-2. et direkte link til casesiden for Case 2
-3. et direkte link til casesiden for Case 3
-
-Links skal føre til de konkrete casesider – ikke kun til forsiden af dit portfolio website. Siderne skal være publiceret og tilgængelige for bedømmerne. Eventuelle yderligere krav til linkdokumentet fremgår af Canvas.
+Du afleverer ét dokument med et direkte link til hver af de tre casesider. Siderne skal være publiceret og tilgængelige for bedømmerne; et link til portfolioets forside er ikke tilstrækkeligt.
 
 Det skriftlige materiale på de tre casesider må **samlet fylde maksimalt fem normalsider** – ikke fem sider pr. case. Du bestemmer selv fordelingen, så længe alle tre cases er tydeligt behandlet.
 
-Billeder, prototyper, kodeeksempler og andre visuelle elementer må gerne understøtte formidlingen. De vigtigste faglige pointer og refleksioner skal stadig kunne forstås på casesiderne.
+Billeder, prototyper og kodeeksempler må gerne understøtte formidlingen, men de vigtigste faglige pointer skal fremgå af casesiderne.
 
 <hr style="margin: 2rem 0;">
 
@@ -63,40 +51,32 @@ Casesiderne behøver ikke have samme layout eller rækkefølge. Hver side skal d
 5. **Faglig refleksion:** Hvilke valg og fravalg traf du, hvad lærte du, og hvad kunne være næste skridt?
 6. **Forretningspotentiale:** Hvem kan arbejdet skabe værdi for – og hvordan?
 
-#### Hvad betyder forretningspotentiale her?
+**Forretningspotentiale** er den mulige værdi for brugerne, produktet eller organisationen. Beskriv kort **hvem der får værdi, hvilken værdi det er, og hvad vurderingen bygger på**. Det kan fx være en bedre brugeroplevelse, flere gennemførte handlinger, færre fejl, adgang for flere eller lettere videreudvikling. Du skal ikke skrive en fuld business case.
 
-Forretningspotentiale er den mulige værdi, arbejdet kan skabe for brugerne, produktet eller organisationen. Beskriv kort **hvem der får værdi, hvilken værdi det er, og hvad vurderingen bygger på**.
-
-Værdien kan fx være en bedre brugeroplevelse, flere gennemførte handlinger, færre fejl, adgang for flere eller lettere videreudvikling. Du skal ikke skrive en fuld business case; vær blot tydelig om, hvad du har dokumenteret, og hvad der stadig er et begrundet potentiale.
-
-#### Løsninger og outputs
+**Løsninger og outputs**
 
 Hver caseside skal linke til de løsninger og outputs, der er relevante for den konkrete case. Kontrollér, at alle links fungerer.
 
 - **Case 1 – React-optimering:**
   - Link til GitHub-repository
-  - Link til deployede løsning på GitHub Pages eller en tilsvarende platform.
-  - Tilføj gerne anden relevant dokumentation, hvis den styrker forståelsen af arbejdet.
+  - Link til den deployede løsning på GitHub Pages eller en tilsvarende platform
+  - Eventuelt anden relevant dokumentation
 - **Case 2:** Krav til løsninger og outputs tilføjes.
 - **Case 3:** Krav til løsninger og outputs tilføjes.
-
-Selve casefortællingen og de vigtigste faglige pointer skal stadig kunne forstås på portfoliosiden.
 
 <hr style="margin: 2rem 0;">
 
 ## Formkrav og redelighed
 
-Materialet skal opfylde formkravene, afleveres rettidigt og give et retvisende billede af dit eget arbejde. Gør dit bidrag tydeligt, angiv relevante kilder, og skeln mellem dit arbejde og materiale eller bidrag fra andre.
-
-Følg også uddannelsens gældende regler for brug og deklaration af digitale værktøjer og generativ AI. Du kan kun gå til prøven, hvis forudsætningerne er opfyldt.
+Materialet skal opfylde formkravene, afleveres rettidigt og give et retvisende billede af dit arbejde. Gør dit bidrag og dine kilder tydelige, og følg uddannelsens regler for brug og deklaration af digitale værktøjer og generativ AI. Du kan kun gå til prøven, hvis forudsætningerne er opfyldt.
 
 <hr style="margin: 2rem 0;">
 
 ## Bedømmelse
 
-Der gives én samlet individuel karakter – ikke en karakter for hver case. Helhedsvurderingen omfatter de faglige casebeskrivelser og refleksioner, dine begrundelser og dokumenterede resultater, overvejelser om forretningspotentiale samt den samlede formidling på portfolioet.
+Prøven bedømmes efter 7-trinsskalaen med intern censur. Du får én samlet individuel karakter – ikke en karakter for hver case. Vurderingen omfatter casebeskrivelser, refleksioner, begrundelser, dokumenterede resultater, forretningspotentiale og den samlede formidling.
 
-De caseansvarlige undervisere vurderer hver deres case og foretager derefter den samlede helhedsvurdering sammen. De konkrete faglige forventninger fremgår af casebeskrivelserne på Canvas.
+De caseansvarlige undervisere vurderer hver deres case og foretager helhedsvurderingen sammen. De konkrete faglige forventninger fremgår af casebeskrivelserne.
 
 Hvis du ikke består prøven, går du til omprøve med udgangspunkt i de samme cases. De nærmere rammer og frister oplyses særskilt.
 
@@ -104,11 +84,9 @@ Hvis du ikke består prøven, går du til omprøve med udgangspunkt i de samme c
 
 ## Tjek før aflevering
 
-- Tre publicerede casesider og tre direkte, fungerende links.
-- Fungerende links fra casesiderne til de løsninger og outputs, der kræves i den enkelte case.
-- Maksimalt fem normalsider på tværs af de tre cases.
-- Faglig refleksion og forretningspotentiale i hver case.
-- Et tydeligt og redeligt billede af dit eget arbejde og dine kilder.
+- Tre publicerede casesider med fungerende links til de krævede løsninger og outputs.
+- Maksimalt fem normalsider samlet.
+- Faglig refleksion, forretningspotentiale, eget bidrag og kilder fremgår.
 - Aflevering i WISEflow senest 16. oktober 2026 før kl. 12.00.
 
 <hr style="margin: 2rem 0;">
