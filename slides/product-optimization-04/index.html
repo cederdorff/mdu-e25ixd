@@ -1199,91 +1199,11 @@ import "./styles/global.css";</code></pre>
             </article>
           </div>
           <div class="semantic-landmarks"><code>header</code><code>nav</code><code>main</code><code>article</code><code>footer</code></div>
-          <p class="muted">ARIA supplerer semantik; det erstatter ikke manglende HTML-adfærd.</p>
+          <p class="muted">ARIA supplerer semantik; det erstatter ikke manglende HTML-adfærd. Den komplette elementoversigt ligger i appendix.</p>
           <aside class="notes">
             Første regel for ARIA: brug et passende native HTML-element, når det findes. Native button giver blandt
             andet keyboard-adfærd og rolle. [Sources] - W3C: Using ARIA · https://www.w3.org/TR/using-aria/ - W3C WAI:
             Page Structure Tutorial · https://www.w3.org/WAI/tutorials/page-structure/ [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide semantic-reference-slide">
-          <span class="eyebrow">Semantiske HTML-elementer · 1/2</span>
-          <h2>Struktur og tekst får betydning gennem det rigtige element</h2>
-          <div class="semantic-reference-grid semantic-structure-grid">
-            <article>
-              <strong>Dokument</strong>
-              <div><code>html</code><code>head</code><code>title</code><code>body</code></div>
-            </article>
-            <article>
-              <strong>Områder på siden</strong>
-              <div><code>header</code><code>nav</code><code>main</code><code>search</code><code>section</code><code>article</code><code>aside</code><code>footer</code><code>address</code></div>
-            </article>
-            <article>
-              <strong>Overskrifter og tekstblokke</strong>
-              <div><code>h1</code><code>h2</code><code>h3</code><code>h4</code><code>h5</code><code>h6</code><code>hgroup</code><code>p</code><code>hr</code><code>pre</code><code>blockquote</code></div>
-            </article>
-            <article>
-              <strong>Lister</strong>
-              <div><code>ol</code><code>ul</code><code>menu</code><code>li</code><code>dl</code><code>dt</code><code>dd</code></div>
-            </article>
-            <article>
-              <strong>Figurer og ændringer</strong>
-              <div><code>figure</code><code>figcaption</code><code>ins</code><code>del</code></div>
-            </article>
-            <article class="semantic-wide-group">
-              <strong>Betydning inde i teksten</strong>
-              <div><code>a</code><code>abbr</code><code>strong</code><code>em</code><code>small</code><code>s</code><code>cite</code><code>q</code><code>dfn</code><code>data</code><code>time</code><code>code</code><code>var</code><code>samp</code><code>kbd</code><code>sub</code><code>sup</code><code>i</code><code>b</code><code>u</code><code>mark</code><code>bdi</code><code>bdo</code><code>ruby</code><code>rt</code><code>rp</code><code>br</code><code>wbr</code></div>
-            </article>
-          </div>
-          <aside class="notes">
-            Forklar kategorierne frem for at læse hvert element op. Pointen er, at elementnavnet beskriver indholdets
-            rolle. search er et nyere semantisk element til søge- og filtreringsfunktioner. hgroup bruges kun, når en
-            overskrift grupperes med fx en undertitel. [Sources] - MDN: HTML elements reference ·
-            https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements - WHATWG: HTML Standard ·
-            https://html.spec.whatwg.org/multipage/ [/Sources]
-          </aside>
-        </section>
-
-        <section class="po-slide semantic-reference-slide">
-          <span class="eyebrow">Semantiske HTML-elementer · 2/2</span>
-          <h2>Formularer, data og medier har også indbygget betydning</h2>
-          <div class="semantic-reference-grid semantic-controls-grid">
-            <article>
-              <strong>Formularer</strong>
-              <div><code>form</code><code>label</code><code>input</code><code>button</code><code>select</code><code>datalist</code><code>optgroup</code><code>option</code><code>textarea</code><code>output</code><code>progress</code><code>meter</code><code>fieldset</code><code>legend</code></div>
-            </article>
-            <article>
-              <strong>Interaktion</strong>
-              <div><code>details</code><code>summary</code><code>dialog</code></div>
-            </article>
-            <article>
-              <strong>Tabeller</strong>
-              <div><code>table</code><code>caption</code><code>colgroup</code><code>col</code><code>thead</code><code>tbody</code><code>tfoot</code><code>tr</code><code>th</code><code>td</code></div>
-            </article>
-            <article>
-              <strong>Billeder og medier</strong>
-              <div><code>picture</code><code>source</code><code>img</code><code>audio</code><code>video</code><code>track</code><code>map</code><code>area</code></div>
-            </article>
-            <article>
-              <strong>Indlejret indhold</strong>
-              <div><code>iframe</code><code>object</code><code>embed</code><code>canvas</code></div>
-            </article>
-            <article>
-              <strong>Metadata og templates</strong>
-              <div><code>base</code><code>link</code><code>meta</code><code>style</code><code>script</code><code>noscript</code><code>template</code><code>slot</code></div>
-            </article>
-          </div>
-          <p class="semantic-generic-note"><code>div</code> og <code>span</code> er generiske wrappers uden egen betydning — brug dem, når intet mere præcist element passer.</p>
-          <aside class="notes">
-            Understreg, at semantik ikke kun er landmarks. button, label, th, caption og summary giver også browseren og
-            hjælpemidler vigtig information og adfærd. Elementer som img, iframe og canvas kræver fortsat et
-            tilgængeligt navn eller fallback i den konkrete kontekst. HTML har ikke en officiel afgrænset liste kaldet
-            “semantic tags”; næsten alle elementer har en defineret betydning. div og span er de tydelige generiske
-            undtagelser. [Sources] - MDN: HTML elements reference ·
-            https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements - MDN: Semantics ·
-            https://developer.mozilla.org/en-US/docs/Glossary/Semantics - WHATWG: Forms ·
-            https://html.spec.whatwg.org/multipage/forms.html [/Sources]
           </aside>
         </section>
 
@@ -1645,26 +1565,6 @@ useEffect(() =&gt; {
           </aside>
         </section>
 
-        <section class="po-slide resource-slide reference-resource-slide">
-          <span class="eyebrow">Faglige referencer</span>
-          <h2>Brug repetitionen som reference — ikke som en ny tjekliste</h2>
-          <div class="resource-links">
-            <a href="https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc" target="_blank" rel="noopener noreferrer"><strong>Styling i React</strong><small>Klassisk CSS, Modules og inline styles ↗</small></a>
-            <a href="https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c" target="_blank" rel="noopener noreferrer"><strong>React og Accessibility</strong><small>Samlet a11y-reference ↗</small></a>
-            <a href="https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf" target="_blank" rel="noopener noreferrer"><strong>Product Grid · del 3</strong><small>Styling og a11y i et React-eksempel ↗</small></a>
-            <a href="https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026?module_item_id=947733" target="_blank" rel="noopener noreferrer"><strong>React styling + a11y</strong><small>Tidligere samlet undervisningsside ↗</small></a>
-          </div>
-          <aside class="notes">
-            De tidligere undervisningsressourcer genbruges som reference sammen med de officielle React-, MDN- og
-            W3C-kilder i noterne. [Sources] - React styling approaches and a11y ·
-            https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026?module_item_id=947733 - Styling i React ·
-            https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc - React og Accessibility ·
-            https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c - Product Grid with
-            React · Del 3 · https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf
-            [/Sources]
-          </aside>
-        </section>
-
         <section class="po-slide po-closing closing-audit-slide">
           <span class="eyebrow">Dagens resultat</span>
           <h2>Fra observation til en forbedring, der kan forsvares</h2>
@@ -1679,6 +1579,69 @@ useEffect(() =&gt; {
           <aside class="notes">
             Afslut med en kort runde: Hvad er dit stærkeste fund, hvilken evidens har du, og hvordan vil du verificere
             forbedringen? [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide semantic-reference-slide appendix-slide">
+          <span class="eyebrow">Appendix · Semantiske HTML-elementer · 1/2</span>
+          <h2>Struktur og tekst får betydning gennem det rigtige element</h2>
+          <div class="semantic-reference-grid semantic-structure-grid">
+            <article><strong>Dokument</strong><div><code>html</code><code>head</code><code>title</code><code>body</code></div></article>
+            <article><strong>Områder på siden</strong><div><code>header</code><code>nav</code><code>main</code><code>search</code><code>section</code><code>article</code><code>aside</code><code>footer</code><code>address</code></div></article>
+            <article><strong>Overskrifter og tekstblokke</strong><div><code>h1</code><code>h2</code><code>h3</code><code>h4</code><code>h5</code><code>h6</code><code>hgroup</code><code>p</code><code>hr</code><code>pre</code><code>blockquote</code></div></article>
+            <article><strong>Lister</strong><div><code>ol</code><code>ul</code><code>menu</code><code>li</code><code>dl</code><code>dt</code><code>dd</code></div></article>
+            <article><strong>Figurer og ændringer</strong><div><code>figure</code><code>figcaption</code><code>ins</code><code>del</code></div></article>
+            <article class="semantic-wide-group"><strong>Betydning inde i teksten</strong><div><code>a</code><code>abbr</code><code>strong</code><code>em</code><code>small</code><code>s</code><code>cite</code><code>q</code><code>dfn</code><code>data</code><code>time</code><code>code</code><code>var</code><code>samp</code><code>kbd</code><code>sub</code><code>sup</code><code>i</code><code>b</code><code>u</code><code>mark</code><code>bdi</code><code>bdo</code><code>ruby</code><code>rt</code><code>rp</code><code>br</code><code>wbr</code></div></article>
+          </div>
+          <aside class="notes">
+            Appendix til opslag; gennemgå kategorier efter behov frem for at læse hvert element op. Pointen er, at
+            elementnavnet beskriver indholdets rolle. search er et nyere semantisk element til søge- og
+            filtreringsfunktioner. hgroup bruges kun, når en overskrift grupperes med fx en undertitel. [Sources] - MDN:
+            HTML elements reference · https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements - WHATWG:
+            HTML Standard · https://html.spec.whatwg.org/multipage/ [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide semantic-reference-slide appendix-slide">
+          <span class="eyebrow">Appendix · Semantiske HTML-elementer · 2/2</span>
+          <h2>Formularer, data og medier har også indbygget betydning</h2>
+          <div class="semantic-reference-grid semantic-controls-grid">
+            <article><strong>Formularer</strong><div><code>form</code><code>label</code><code>input</code><code>button</code><code>select</code><code>datalist</code><code>optgroup</code><code>option</code><code>textarea</code><code>output</code><code>progress</code><code>meter</code><code>fieldset</code><code>legend</code></div></article>
+            <article><strong>Interaktion</strong><div><code>details</code><code>summary</code><code>dialog</code></div></article>
+            <article><strong>Tabeller</strong><div><code>table</code><code>caption</code><code>colgroup</code><code>col</code><code>thead</code><code>tbody</code><code>tfoot</code><code>tr</code><code>th</code><code>td</code></div></article>
+            <article><strong>Billeder og medier</strong><div><code>picture</code><code>source</code><code>img</code><code>audio</code><code>video</code><code>track</code><code>map</code><code>area</code></div></article>
+            <article><strong>Indlejret indhold</strong><div><code>iframe</code><code>object</code><code>embed</code><code>canvas</code></div></article>
+            <article><strong>Metadata og templates</strong><div><code>base</code><code>link</code><code>meta</code><code>style</code><code>script</code><code>noscript</code><code>template</code><code>slot</code></div></article>
+          </div>
+          <p class="semantic-generic-note"><code>div</code> og <code>span</code> er generiske wrappers uden egen betydning — brug dem, når intet mere præcist element passer.</p>
+          <aside class="notes">
+            Appendix til opslag. Understreg efter behov, at semantik ikke kun er landmarks. button, label, th, caption
+            og summary giver også browseren og hjælpemidler vigtig information og adfærd. HTML har ikke en officiel
+            afgrænset liste kaldet “semantic tags”; næsten alle elementer har en defineret betydning. div og span er de
+            tydelige generiske undtagelser. [Sources] - MDN: HTML elements reference ·
+            https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements - MDN: Semantics ·
+            https://developer.mozilla.org/en-US/docs/Glossary/Semantics - WHATWG: Forms ·
+            https://html.spec.whatwg.org/multipage/forms.html [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide resource-slide reference-resource-slide appendix-slide">
+          <span class="eyebrow">Appendix · Faglige referencer</span>
+          <h2>Brug repetitionen som reference — ikke som en ny tjekliste</h2>
+          <div class="resource-links">
+            <a href="https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc" target="_blank" rel="noopener noreferrer"><strong>Styling i React</strong><small>Klassisk CSS, Modules og inline styles ↗</small></a>
+            <a href="https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c" target="_blank" rel="noopener noreferrer"><strong>React og Accessibility</strong><small>Samlet a11y-reference ↗</small></a>
+            <a href="https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf" target="_blank" rel="noopener noreferrer"><strong>Product Grid · del 3</strong><small>Styling og a11y i et React-eksempel ↗</small></a>
+            <a href="https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026?module_item_id=947733" target="_blank" rel="noopener noreferrer"><strong>React styling + a11y</strong><small>Tidligere samlet undervisningsside ↗</small></a>
+          </div>
+          <aside class="notes">
+            Appendix til opslag. De tidligere undervisningsressourcer genbruges som reference sammen med de officielle
+            React-, MDN- og W3C-kilder i noterne. [Sources] - React styling approaches and a11y ·
+            https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026?module_item_id=947733 - Styling i React ·
+            https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc - React og Accessibility ·
+            https://race.notion.site/React-og-Accessibility-a11y-302bc239db1180bba2b8c5bb9639664c - Product Grid with
+            React · Del 3 · https://race.notion.site/Product-Grid-with-React-Del-3-Styling-a11y-303bc239db11803fb655fa7d1b994daf
+            [/Sources]
           </aside>
         </section>
       </div>

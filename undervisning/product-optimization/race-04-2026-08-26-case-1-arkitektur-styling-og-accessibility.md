@@ -73,6 +73,7 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <summary><strong>4. Repetition: accessibility i React</strong></summary>
 <ul>
 <li>Brug semantisk HTML og et logisk heading-hierarki; brug ARIA, når HTML ikke er tilstrækkeligt.</li>
+<li>Brug de to komplette oversigter over semantiske HTML-elementer som appendix og opslag – ikke som slides, der skal læses element for element i undervisningen.</li>
 <li>Kontrollér keyboard navigation, logisk rækkefølge og synligt fokus.</li>
 <li><strong>Fokus-styring i React:</strong> Undersøg SPA-problemet, hvor fokus kan blive i navigationen efter et sideskift, og vis separat hvordan fokus kan flyttes til den nye sides <code>h1</code>.</li>
 <li><strong>Routing og sideskift:</strong> Vis separat hvordan hver route opdaterer <code>document.title</code>. Saml derefter titel- og fokusløsningen i en <code>PageHeading</code>, hvor én <code>title</code>-prop bruges til både sidens <code>h1</code> og <code>document.title</code>.</li>
@@ -108,6 +109,8 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <hr style="margin: 2rem 0;">
 
 ## Materialer
+
+De komplette oversigter over semantiske HTML-elementer og de faglige reference-links ligger som appendix efter afslutningssliden. De er opslag og behøver ikke gennemgås lineært i undervisningen.
 
 - **Slides:**
   - [Case 1 · Teknisk audit, arkitektur, styling og accessibility](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-04/)
