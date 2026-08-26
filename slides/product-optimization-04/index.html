@@ -176,7 +176,7 @@
             <article><span>Verifikation</span><p>Hvordan vil I vise, at det virker?</p></article>
           </div>
           <p class="finding-example">
-            <b>Fund + evidens:</b> Efter navigation til eventdetaljen bliver tastaturfokus i navigationen. Keyboard-flowet viser, at den nye side ikke får et tydeligt startpunkt.
+            <b>Fund + evidens:</b> E-mailfeltet har kun en placeholder. DOM-inspektion viser, at feltet ikke har en tilknyttet <code>label</code>.
           </p>
           <aside class="notes">
             Vis tabellen i audit-skabelonen. Et fund må gerne begynde som en hypotese, men hver række skal ende med
@@ -1199,7 +1199,7 @@ import "./styles/global.css";</code></pre>
             </article>
           </div>
           <div class="semantic-landmarks"><code>header</code><code>nav</code><code>main</code><code>article</code><code>footer</code></div>
-          <p class="muted">ARIA supplerer semantik; det erstatter ikke manglende HTML-adfærd. Den komplette elementoversigt ligger i appendix.</p>
+          <p class="muted">ARIA supplerer semantik; det erstatter ikke manglende HTML-adfærd. <a href="#/semantic-elements-reference">Se den komplette elementoversigt i appendix →</a></p>
           <aside class="notes">
             Første regel for ARIA: brug et passende native HTML-element, når det findes. Native button giver blandt
             andet keyboard-adfærd og rolle. [Sources] - W3C: Using ARIA · https://www.w3.org/TR/using-aria/ - W3C WAI:
@@ -1574,7 +1574,8 @@ useEffect(() =&gt; {
           <p class="lead">Vælg det vigtigste næste skridt — og behold resten som en prioriteret backlog.</p>
           <div class="closing-links">
             <a href="https://github.com/cederdorff/mellemrum" target="_blank" rel="noreferrer">Starterprojekt ↗</a
-            ><a href="#/agenda">Tilbage til agenda</a>
+            ><a href="#/agenda">Tilbage til agenda</a
+            ><a href="#/semantic-elements-reference">Åbn appendix →</a>
           </div>
           <aside class="notes">
             Afslut med en kort runde: Hvad er dit stærkeste fund, hvilken evidens har du, og hvordan vil du verificere
@@ -1582,7 +1583,7 @@ useEffect(() =&gt; {
           </aside>
         </section>
 
-        <section class="po-slide semantic-reference-slide appendix-slide">
+        <section class="po-slide semantic-reference-slide appendix-slide" id="semantic-elements-reference">
           <span class="eyebrow">Appendix · Semantiske HTML-elementer · 1/2</span>
           <h2>Struktur og tekst får betydning gennem det rigtige element</h2>
           <div class="semantic-reference-grid semantic-structure-grid">
@@ -1625,7 +1626,7 @@ useEffect(() =&gt; {
           </aside>
         </section>
 
-        <section class="po-slide resource-slide reference-resource-slide appendix-slide">
+        <section class="po-slide resource-slide reference-resource-slide appendix-slide" id="faglige-referencer">
           <span class="eyebrow">Appendix · Faglige referencer</span>
           <h2>Brug repetitionen som reference — ikke som en ny tjekliste</h2>
           <div class="resource-links">
