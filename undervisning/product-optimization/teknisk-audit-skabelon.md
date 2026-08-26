@@ -12,6 +12,16 @@ Brug trin 1–5 til at undersøge løsningen og planlægge forbedringer, før du
 
 </div>
 
+## Første arbejdspas i Case 1 (20–25 min.)
+
+1. Åbn Mellemrum både lokalt og online, og kontrollér at begge versioner virker.
+2. Gennemfør tilmeldingsflowet samt mindst ét ekstra centralt flow.
+3. Gem relevant baseline-evidens fra begge versioner.
+4. Registrér tre fund eller hypoteser med evidens og konsekvens i tabellen i trin 4.
+5. Vent med kodeændringer, til fundene er dokumenteret og sammenlignet.
+
+**Første leverance:** mindst to gennemførte flows og tre udfyldte rækker. Du behøver ikke dække alle seks fokusområder i dette arbejdspas.
+
 <hr style="border: 0; border-top: 1px solid #e9e3d6; margin: 3rem 0;">
 
 ## 1. Afgræns løsningen

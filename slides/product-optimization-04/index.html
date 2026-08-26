@@ -47,7 +47,7 @@
             </li>
           </ol>
           <aside class="notes">
-            Dagens rytme er audit → fagligt indspark → audit igen. De faglige dele er repetition og nye linser til den
+            Dagens rytme er audit → fagligt indspark → audit igen. De faglige dele er repetition og giver nye spørgsmål til den
             undersøgelse, de studerende allerede er i gang med. [Sources] - Undervisningsagendaen for 26.08.2026 ·
             lokalt kursusmateriale [/Sources]
           </aside>
@@ -73,7 +73,7 @@
               <p>En afgrænset undersøgelse af en eksisterende løsning. Fund dokumenteres og vurderes efter konsekvens.</p>
               <p class="evidence-definition"><b>Evidens</b> er noget, andre kan efterprøve: fx kodehenvisning, skærmbillede, konsol/Network eller keyboard-flow.</p>
               <div class="audit-loop" aria-label="Auditforløb">
-                <span>Afgræns</span><b>→</b><span>Baseline</span><b>→</b><span>Undersøg</span><b>→</b><span>Prioritér</span><b>→</b><span>Verificér</span>
+                <span>Afgræns</span><b>→</b><span>Baseline</span><b>→</b><span>Undersøg</span><b>→</b><span>Prioritér</span><b>→</b><span>Forbedr</span><b>→</b><span>Verificér</span>
               </div>
             </div>
             <div class="audit-why">
@@ -99,32 +99,48 @@
         <section class="po-slide audit-vs-opinion">
           <span class="eyebrow">Audit ≠ personlig kodepræference</span>
           <h2>Et fund skal kunne forklares med mere end “jeg ville…”</h2>
-          <div class="contrast-pair audit-examples">
+          <div class="audit-example-headings" aria-hidden="true"><span>Personlig præference</span><span>Efterprøvbart auditfund</span></div>
+          <div class="audit-examples">
             <article class="weak">
-              <small>Præference</small>
-              <blockquote>“Jeg ville flytte filen.”</blockquote>
-              <p>Ingen tydelig evidens eller konsekvens.</p>
+              <small>Struktur</small>
+              <blockquote>“Jeg ville flytte datoformatet.”</blockquote>
             </article>
             <article class="strong">
-              <small>Auditfund</small>
-              <blockquote>“Datoformatet er gentaget fire steder.”</blockquote>
-              <p>Kodehenvisninger viser gentagelsen; samme ændring skal vedligeholdes flere steder.</p>
+              <blockquote>“Datoformatet er gentaget flere steder.”</blockquote>
+              <p><b>Evidens:</b> kodehenvisninger · <b>Konsekvens:</b> samme ændring skal vedligeholdes flere steder</p>
             </article>
             <article class="weak">
-              <small>Præference</small>
+              <small>Styling</small>
               <blockquote>“Jeg ville bruge CSS Modules.”</blockquote>
-              <p>En mulig tilgang — men endnu ikke et dokumenteret problem.</p>
             </article>
             <article class="strong">
-              <small>Auditfund</small>
-              <blockquote>“Den globale <code>.button</code>-regel rammer både kort og formular.”</blockquote>
-              <p>DevTools viser samme selector; en ændring ét sted giver en utilsigtet ændring et andet.</p>
+              <blockquote>“En global selector påvirker både eventkort og tilmeldingsformular.”</blockquote>
+              <p><b>Evidens:</b> DevTools + selector · <b>Konsekvens:</b> en ændring giver en utilsigtet effekt et andet sted</p>
+            </article>
+            <article class="weak">
+              <small>Dataadgang</small>
+              <blockquote>“Jeg ville lave en <code>eventService</code>.”</blockquote>
+            </article>
+            <article class="strong">
+              <blockquote>“Samme URL, headers og request-mønster er defineret i flere pages.”</blockquote>
+              <p><b>Evidens:</b> konkrete filer og linjer · <b>Konsekvens:</b> API-ændringer skal udføres flere steder</p>
+            </article>
+            <article class="weak">
+              <small>Tilmeldingsflow</small>
+              <blockquote>“Jeg synes, flowet er uoverskueligt.”</blockquote>
+            </article>
+            <article class="strong">
+              <blockquote>“Efter et route-skift bliver fokus på det aktiverede eventlink.”</blockquote>
+              <p><b>Evidens:</b> keyboard-flow · <b>Konsekvens:</b> brugeren får ikke et tydeligt nyt startpunkt</p>
             </article>
           </div>
+          <p class="audit-example-warning"><b>Vigtigt:</b> Eksemplerne viser formen — de er ikke fund i Mellemrum, før I selv har observeret og dokumenteret dem.</p>
           <aside class="notes">
-            Bed holdet formulere forskellen i begge eksempler. CSS Modules kan være en god løsning, men auditfundet er
-            den observerede kobling mellem selectors og konsekvensen — ikke præferencen for et bestemt værktøj. Et
-            auditfund forbinder observation, evidens og konsekvens; løsningen kan stadig diskuteres. [Sources] -
+            Bed holdet formulere forskellen i eksemplerne. De højre formuleringer er illustrative og skal ikke læses som
+            facit på Mellemrums nuværende problemer. De bliver kun gyldige auditfund, hvis de studerende selv kan
+            reproducere observationen, gemme evidens og forklare konsekvensen. CSS Modules eller en service kan være en
+            mulig løsning, men løsningspræferencen er ikke selve fundet. Et auditfund forbinder observation, evidens og
+            konsekvens; løsningen kan stadig diskuteres. [Sources] -
             Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
           </aside>
         </section>
@@ -226,11 +242,11 @@
           <h2>Seks beslutninger gør React-koden lettere at forstå og ændre</h2>
           <div class="architecture-overview">
             <article><span>01</span><strong>Routes og pages</strong><small>Hvor begynder en brugeropgave?</small></article>
-            <article><span>02</span><strong>Komponenter</strong><small>Hvilket UI-ansvar har hver del?</small></article>
-            <article><span>03</span><strong>State og dataflow</strong><small>Hvem ejer informationen?</small></article>
-            <article><span>04</span><strong>Side effects og useEffect</strong><small>Hvor møder React omverdenen?</small></article>
-            <article><span>05</span><strong>Adskillelse og genbrug</strong><small>Hvad bør kun ændres ét sted?</small></article>
-            <article><span>06</span><strong>Navne og struktur</strong><small>Kan en anden finde og følge ansvaret?</small></article>
+            <article><span>02</span><strong>Navne og struktur</strong><small>Kan en anden finde og følge ansvaret?</small></article>
+            <article><span>03</span><strong>Requests og side effects</strong><small>Hvor møder React omverdenen?</small></article>
+            <article><span>04</span><strong>Ansvar og composition</strong><small>Hvilket UI-ansvar har hver del?</small></article>
+            <article><span>05</span><strong>State og dataflow</strong><small>Hvem ejer informationen?</small></article>
+            <article><span>06</span><strong>Adskillelse og genbrug</strong><small>Hvad bør kun ændres ét sted?</small></article>
           </div>
           <p class="architecture-rule"><b>Praktisk tommelfingerregel:</b> Vælg den mindste struktur, som gør ansvar og ændringer tydelige.</p>
           <aside class="notes">
@@ -341,36 +357,49 @@
 
         <section class="po-slide naming-rules-slide">
           <span class="eyebrow">Navne viser også typen af kode</span>
-          <h2>Komponenter starter med stort — state og events fortæller deres rolle</h2>
-          <div class="naming-rules-layout">
-            <div class="component-name-rule">
-              <span>React-komponent</span>
-              <pre class="po-code"><code class="language-javascript jsx">function PostCard() { … }
+          <h2>Navne i Post Appen viser, hvad koden er og gør</h2>
+          <div class="post-app-naming-layout">
+            <article class="post-app-naming-code">
+              <span>PostDetailPage.jsx · forkortet</span>
+              <pre class="po-code"><code class="language-javascript jsx">export default function PostDetailPage() { // 01
+  const [post, setPost] = useState({});    // 02
 
-&lt;PostCard /&gt;   // React-komponent
-&lt;article /&gt;    // HTML-element</code></pre>
-              <p><code>PostCard</code> bruger <b>PascalCase</b>. Et navn med lille begyndelsesbogstav læses som et HTML-tag i JSX.</p>
+  async function getPost() {               // 03
+    // hent post og kald setPost(...)
+  }
+
+  async function handleDelete() {          // 04
+    // slet post og navigér
+  }
+
+  return (
+    &lt;button onClick={handleDelete}&gt;         {/* 05 */}
+      Delete
+    &lt;/button&gt;
+  );
+}</code></pre>
+            </article>
+            <div class="post-app-naming-roles">
+              <p><span>01</span><strong>Component · PascalCase</strong><code>PostDetailPage</code><small>Også <code>PostCard</code>, <code>HomePage</code> og <code>Header</code>.</small></p>
+              <p><span>02</span><strong>State + setter</strong><code>post → setPost</code><small><code>set</code> + præcis samme state-navn.</small></p>
+              <p><span>03</span><strong>Datafunktion</strong><code>getPost()</code><small><code>get</code> fortæller handlingen; <code>Post</code> fortæller resultatet.</small></p>
+              <p><span>04</span><strong>Event handler</strong><code>handleDelete()</code><small><code>handle</code> + den handling, funktionen udfører.</small></p>
+              <p><span>05</span><strong>React event-prop</strong><code>onClick={handleDelete}</code><small><code>onClick</code> beskriver eventet og peger på handleren.</small></p>
             </div>
-            <div class="camelcase-guide">
-              <div class="camelcase-definition">
-                <span>camelCase</span>
-                <code><b>selected</b><i>Event</i><em>Id</em></code>
-                <small>Første ord starter småt. Hvert nyt ord starter stort — uden mellemrum.</small>
-              </div>
-              <div class="code-naming-rules">
-                <p><span>Variabel / værdi</span><strong><code>posts</code> · <code>selectedEventId</code></strong><small>fortæller, hvad værdien indeholder</small></p>
-                <p><span>State + setter</span><strong><code>[posts, setPosts]</code></strong><small><code>set</code> + præcis samme state-navn</small></p>
-                <p><span>Boolean</span><strong><code>isLoading</code> · <code>hasError</code> · <code>canSubmit</code></strong><small>kan læses som et ja/nej-spørgsmål</small></p>
-                <p><span>Event</span><strong><code>handleDeletePost</code> → <code>onDelete</code></strong><small><code>handle…</code> er den lokale funktion; <code>on…</code> er callback-proppen</small></p>
-              </div>
-            </div>
+          </div>
+          <div class="naming-case-summary">
+            <p><strong>PascalCase</strong><code>PostDetailPage</code><span>alle ord starter stort · React-komponenter</span></p>
+            <p><strong>camelCase</strong><code>handleDelete</code><span>første ord starter småt · værdier og funktioner</span></p>
+            <p><strong>Boolean state</strong><code>isLoading → setIsLoading</code><span>kan læses som et ja/nej-spørgsmål</span></p>
           </div>
           <aside class="notes">
             React bruger stort begyndelsesbogstav til at skelne egne komponenter fra indbyggede HTML-tags. PascalCase
-            er derfor ikke kun stil; det er en del af JSX-fortolkningen. På højresiden bruges camelCase til almindelige
+            er derfor ikke kun stil; det er en del af JSX-fortolkningen. Eksemplet samler faktiske navne fra Post Apps
+            PostDetailPage: post/setPost, getPost, handleDelete og onClick. camelCase bruges til almindelige
             JavaScript-navne: første ord starter med lille, og efterfølgende ord markeres med stort begyndelsesbogstav.
-            State-setteren matcher state-navnet med set foran. handle... er en praktisk konvention for den lokale
-            eventfunktion, mens on... beskriver den callback-prop, et component tilbyder eller modtager. [Sources] -
+            State-setteren matcher state-navnet med set foran. Post App har ikke isLoading-state i denne fil; det sidste
+            eksempel viser den anbefalede navngivning, hvis en boolean state tilføjes. [Sources] - Post App med Supabase ·
+            lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src/pages/PostDetailPage.jsx -
             React: Your First Component · https://react.dev/learn/your-first-component - React: createElement ·
             https://react.dev/reference/react/createElement [/Sources]
           </aside>
@@ -617,8 +646,8 @@
             CreatePage og UpdatePage har næsten den samme formular, men forskellige brugerforløb. En kontrolleret
             PostForm deler felter, labels og knap uden at skjule, at den ene page opretter, mens den anden først henter
             og derefter opdaterer. State har stadig én tydelig ejer i den aktuelle page; værdier går ned som props, og
-            ændringer kommer tilbage gennem callbacks. En lille normalizePost-util kan senere samle trimning af image
-            og caption, hvis den samme transformation gentages. [Sources] - React: Sharing State Between Components ·
+            ændringer kommer tilbage gennem callbacks. En lille formatPostDate-util kan senere samle formateringen af
+            created_at, hvis datoen skal vises flere steder. [Sources] - React: Sharing State Between Components ·
             https://react.dev/learn/sharing-state-between-components - Post App med Supabase · lokalt referenceprojekt ·
             /Users/race/Developer/post-app-supabase/src/pages/CreatePage.jsx -
             /Users/race/Developer/post-app-supabase/src/pages/UpdatePage.jsx [/Sources]
@@ -706,11 +735,17 @@ return &lt;p&gt;{postCount} posts&lt;/p&gt;;</code></pre>
         </section>
 
         <section class="po-slide service-boundary-slide">
-          <span class="eyebrow">Separation of concerns og genbrug</span>
-          <h2>postService.js samler de fælles Supabase-detaljer</h2>
+          <span class="eyebrow">URL · headers · HTTP-metoder</span>
+          <h2>postService definerer det gentagne én gang</h2>
+          <div class="service-repetition-strip">
+            <p><code>HomePage</code><span>URL + headers + GET</span></p>
+            <p><code>CreatePage</code><span>URL + headers + POST</span></p>
+            <p><code>PostDetailPage</code><span>URL + headers + GET/DELETE</span></p>
+            <p><code>UpdatePage</code><span>URL + headers + GET/PATCH</span></p>
+          </div>
           <div class="service-boundary-layout">
             <article>
-              <span>01 · Fælles request</span>
+              <span>Definér én gang · postService.js</span>
               <pre class="po-code"><code class="language-javascript">// services/postService.js
 const URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = { apikey: API_KEY, ... };
@@ -720,32 +755,33 @@ async function request(path = "", options = {}) {
     ...options,
     headers
   });
-
   if (!response.ok) throw new Error(response.status);
   return response.json();
 }</code></pre>
             </article>
-            <b>+</b>
+            <b>→</b>
             <article>
-              <span>02 · Domænenære funktioner</span>
-              <pre class="po-code"><code class="language-javascript">export async function getById(id) {
-  const posts = await request(`?id=eq.${id}`);
-  return posts[0];
+              <span>Brug tydelige service-funktioner</span>
+              <pre class="po-code"><code class="language-javascript">export const getAll = () =&gt; request();
+
+export async function getById(id) {
+  const rows = await request(`?id=eq.${id}`);
+  return rows[0];
 }
 
-export function update(id, post) {
-  return request(`?id=eq.${id}`, {
-    method: "PATCH",
-    body: JSON.stringify(post)
-  });
-}</code></pre>
+export const create = post =&gt;
+  request("", { method: "POST", body: JSON.stringify(post) });
+
+export const update = (id, post) =&gt;
+  request(`?id=eq.${id}`, { method: "PATCH", body: JSON.stringify(post) });</code></pre>
             </article>
           </div>
-          <p class="architecture-rule"><b>Samme mønster:</b> Tilføj <code>getAll()</code>, <code>create()</code> og <code>remove()</code>; pages behøver derefter ikke kende URL og headers.</p>
+          <p class="architecture-rule"><b>Resultat:</b> Pages importerer <code>getAll()</code>, <code>getById()</code>, <code>create()</code> eller <code>update()</code> — de definerer ikke URL, headers og HTTP-metoder igen.</p>
           <aside class="notes">
             CreatePage, HomePage, PostDetailPage og UpdatePage gentager URL, headers og fetch-mønstre. Det er et reelt
             signal om en mulig service-grænse. request samler den mekaniske HTTP-del. De eksporterede funktioner bruger
-            domænets ord og skjuler query-string og metode. Eksemplet er forkortet; en robust request-funktion skal også
+            domænets ord og skjuler URL, headers, query-string og HTTP-metode for komponenterne. Tilføj tilsvarende en
+            remove-funktion med DELETE. Eksemplet er forkortet; en robust request-funktion skal også
             håndtere tomme responses og eventuelt kombinere ekstra headers. Et custom hook er først relevant, når både
             data, loading/error-state og effect-adfærd skal genbruges som én enhed. [Sources] - Post App med Supabase ·
             lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src/pages - React: Reusing Logic with
@@ -799,41 +835,82 @@ useEffect(() =&gt; {
           </aside>
         </section>
 
+        <section class="po-slide util-explainer-slide">
+          <span class="eyebrow">Mulig util · PostCard + PostDetailPage</span>
+          <h2>formatPostDate gør created_at læsbar</h2>
+          <div class="util-explainer-layout">
+            <article class="util-code-example">
+              <span>utils/formatPostDate.js</span>
+              <pre class="po-code"><code class="language-javascript">const postDateFormatter = new Intl.DateTimeFormat("da-DK", {
+  dateStyle: "medium"
+});
+
+export function formatPostDate(dateString) {
+  if (!dateString) return "";
+  return postDateFormatter.format(new Date(dateString));
+}</code></pre>
+              <small>En databaseværdi bliver til en læsbar dansk dato. Ingen React-state, JSX, fetch eller Supabase.</small>
+            </article>
+            <div class="util-flow">
+              <div class="util-callers">
+                <p><code>PostCard</code><small>dato på hvert kort</small></p>
+                <p><code>PostDetailPage</code><small>dato ved hele opslaget</small></p>
+              </div>
+              <b>→</b>
+              <p class="util-function"><code>formatPostDate(post.created_at)</code><small>formaterer samme felt ens</small></p>
+              <b>→</b>
+              <div class="util-services">
+                <p><code>&lt;time dateTime={post.created_at}&gt;</code></p>
+                <p><code>25. aug. 2026</code></p>
+              </div>
+            </div>
+          </div>
+          <div class="util-service-compare">
+            <p><strong>Util</strong><span>modtager værdier → returnerer nye værdier</span></p>
+            <p><strong>Service</strong><span>sender eller henter data hos et system uden for React</span></p>
+          </div>
+          <p class="architecture-rule"><b>Brug en util, når:</b> den samme lille beregning eller transformation gentages og kan forklares uden React eller API’et.</p>
+          <aside class="notes">
+            Supabase returnerer created_at som en datoværdi. Hvis datoen skal vises på både PostCard og
+            PostDetailPage, kan formatPostDate sikre samme danske format begge steder. Funktionen er en util, fordi den
+            kun omdanner input til output; den kender hverken React, komponenternes state eller Supabase-requestet.
+            time-elementets dateTime beholder den oprindelige maskinlæsbare værdi, mens brugeren ser den formaterede
+            dato. Opret ikke en util-fil for enhver enkelt linje; brug grænsen, når transformationen reelt gentages eller
+            får et selvstændigt navn. [Sources] - Post App med Supabase · lokalt referenceprojekt ·
+            /Users/race/Developer/post-app-supabase/src/components/PostCard.jsx -
+            /Users/race/Developer/post-app-supabase/src/pages/PostDetailPage.jsx - MDN: Intl.DateTimeFormat ·
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat [/Sources]
+          </aside>
+        </section>
+
         <section class="po-slide improved-structure-slide">
           <span class="eyebrow">Mulig opsamling efter refaktorering</span>
           <h2>Ny struktur gør ansvaret synligt</h2>
           <div class="improved-structure-layout">
             <pre class="file-tree"><code>src/
-├── pages/
-│   ├── HomePage.jsx
-│   ├── CreatePage.jsx
-│   └── …
+├── pages/          Home · Create · Update · …
 ├── components/
-│   ├── layout/
-│   │   ├── Header.jsx
-│   │   ├── Footer.jsx
-│   │   └── Sidebar.jsx
+│   ├── layout/     Header · Footer · Sidebar
 │   ├── PostCard.jsx
 │   └── PostForm.jsx
-├── services/
-│   └── postService.js
-├── utils/
-│   └── normalizePost.js
+├── services/       postService.js
+├── utils/          formatPostDate.js
 └── main.css</code></pre>
             <div class="improved-structure-reading">
               <p><code>pages/</code><span>én page pr. route og det arbejde, siden samler</span></p>
               <p><code>components/</code><span>genbrugeligt UI — fx PostForm på Create og Update</span></p>
               <p><code>components/layout/</code><span>fx Header, Footer og Sidebar, når appen faktisk har dem</span></p>
-              <p><code>services/</code><span>fælles HTTP- og Supabase-detaljer, der ellers gentages</span></p>
-              <p><code>utils/</code><span>rene transformationer — fx trim image og caption i <code>normalizePost()</code></span></p>
+              <p><code>services/</code><span>kommunikation udad: URL, headers, HTTP og Supabase</span></p>
+              <p class="util-structure-row"><code>utils/</code><span>rene transformationer: input → output</span><small><code>PostCard + Detail → formatPostDate()</code></small></p>
             </div>
           </div>
           <p class="architecture-rule"><b>Vigtigt:</b> Det er en mulighed — opret kun <code>components/</code>, <code>services/</code> og <code>utils/</code>, når projektets faktiske ansvar kalder på dem.</p>
           <aside class="notes">
             Saml op på den tidligere struktur her. Før refaktoreringen var den enkle struktur passende. Hvis auditten
             viser gentaget Supabase-kode eller flere layout-komponenter, kan nye mapper gøre de reelle grænser synlige.
-            PostForm er den mulige delte formular fra Create og Update. normalizePost er en mulig ren funktion, fordi
-            begge pages trimmer de samme felter før requestet. Footer og Sidebar er eksempler; de skal ikke oprettes,
+            PostForm er den mulige delte formular fra Create og Update. Den foregående slide viser formatPostDate som en
+            mulig ren util-funktion, hvis både PostCard og PostDetailPage skal vise created_at. Services kommunikerer med
+            omverdenen; utils transformerer værdier uden side effects. Footer og Sidebar er eksempler; de skal ikke oprettes,
             hvis appen ikke bruger dem. Ingen af mapperne er obligatoriske. [Sources] - Post App med
             Supabase · lokalt referenceprojekt · /Users/race/Developer/post-app-supabase/src - React: Thinking in React ·
             https://react.dev/learn/thinking-in-react [/Sources]
@@ -909,44 +986,73 @@ useEffect(() =&gt; {
 
         <section class="po-slide styling-method-slide classic-css-slide">
           <span class="eyebrow">01 · Klassisk CSS</span>
-          <h2>Globale class names gør fælles styling enkel</h2>
-          <div class="method-code-layout">
-            <pre class="po-code"><code class="language-javascript jsx">import "./styles.css";
+          <h2>Global CSS importeres én gang ved appens start</h2>
+          <div class="classic-css-layout">
+            <article>
+              <span>main.jsx</span>
+              <pre class="po-code"><code class="language-javascript jsx">import "./styles/global.css";
 
-export function EventCard() {
-  return &lt;article className="event-card"&gt;…&lt;/article&gt;;
+createRoot(document.getElementById("root"))
+  .render(&lt;App /&gt;);</code></pre>
+              <small>Importen gør reglerne tilgængelige i hele appen.</small>
+            </article>
+            <div class="classic-css-pair">
+              <article>
+                <span>styles/global.css</span>
+                <pre class="po-code"><code class="language-css">.app {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: var(--space-lg);
 }</code></pre>
-            <pre class="po-code"><code class="language-css">.event-card {
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
+              </article>
+              <article>
+                <span>HomePage.jsx</span>
+                <pre class="po-code"><code class="language-javascript jsx">export function HomePage() {
+  return &lt;main className="app"&gt;…&lt;/main&gt;;
 }</code></pre>
+                <small>Komponenten bruger class-navnet, men importerer ikke global CSS igen.</small>
+              </article>
+            </div>
           </div>
           <div class="method-rule"><b>Styrke:</b> let at dele på tværs <span>·</span> <b>Pas på:</b> kaskade, specificitet og navnekollisioner</div>
           <aside class="notes">
             Klassisk CSS er ikke en “forkert” eller gammel løsning. Auditspørgsmålet er, om globale regler og navne er
-            organiseret og forudsigelige. [Sources] - React: Common components ·
-            https://react.dev/reference/react-dom/components/common [/Sources]
+            organiseret og forudsigelige. I en Vite-app importeres et globalt stylesheet typisk ét sted i main.jsx,
+            så komponenterne ikke hver især skal importere det. [Sources] - React: Common components ·
+            https://react.dev/reference/react-dom/components/common - Vite: Features ·
+            https://vite.dev/guide/features#css [/Sources]
           </aside>
         </section>
 
         <section class="po-slide styling-method-slide css-modules-slide">
           <span class="eyebrow">02 · CSS Modules</span>
-          <h2>Lokale class names gør komponentens styling tydelig</h2>
+          <h2>CSS Modules giver lokale class names uden navnekollisioner</h2>
           <div class="method-code-layout">
-            <pre class="po-code"><code class="language-javascript jsx">import styles from "./EventCard.module.css";
+            <pre class="po-code"><code class="language-javascript jsx">import styles from "./PostCard.module.css";
 
-export function EventCard() {
+export function PostCard({ post }) {
   return &lt;article className={styles.card}&gt;…&lt;/article&gt;;
 }</code></pre>
-            <pre class="po-code"><code class="language-css">.card {
+            <pre class="po-code"><code class="language-css">/* PostCard.module.css */
+.card {
   padding: var(--space-md);
   border-radius: var(--radius-md);
-}</code></pre>
+}
+
+/* browseren får fx */
+._card_a3f9 { … }</code></pre>
           </div>
-          <div class="method-rule"><b>Styrke:</b> lokal scope og tydelig relation <span>·</span> <b>Pas på:</b> fælles mønstre må ikke kopieres overalt</div>
+          <div class="module-benefits">
+            <p><strong>Lokal scope</strong><span><code>.card</code> påvirker kun den importerede module-class.</span></p>
+            <p><strong>Samme navn er okay</strong><span>Andre modules kan også have en <code>.card</code>.</span></p>
+            <p><strong>Tydelig afhængighed</strong><span><code>styles.card</code> viser, hvor stylingen kommer fra.</span></p>
+          </div>
+          <p class="module-caution"><b>Pas på:</b> Globale tokens og fælles mønstre skal stadig deles — ikke kopieres ind i hvert module.</p>
           <aside class="notes">
             I Vite bliver filer, der slutter på .module.css, behandlet som CSS Modules og importen returnerer et module
-            object. [Sources] - Vite: Features · https://vite.dev/guide/features [/Sources]
+            object. Class-navnet transformeres, så det scopes lokalt. Fordelen er især, at et generisk navn som card
+            kan bruges i flere komponenter uden utilsigtede sammenstød. [Sources] - Vite: Features ·
+            https://vite.dev/guide/features#css-modules [/Sources]
           </aside>
         </section>
 
@@ -954,49 +1060,78 @@ export function EventCard() {
           <span class="eyebrow">03 · Inline styles</span>
           <h2>Brug inline styles, når værdien kommer fra JavaScript</h2>
           <div class="inline-style-layout">
-            <pre class="po-code"><code class="language-javascript jsx">&lt;div
-  className="progress"
-  style={{ "--progress": `${percent}%` }}
-&gt;
-  {percent}%
-&lt;/div&gt;</code></pre>
+            <div class="inline-examples">
+              <article>
+                <span>Farve fra React-state</span>
+                <pre class="po-code"><code class="language-javascript jsx">&lt;small style={{
+  color: caption.length &gt;= 150
+    ? "var(--color-danger)"
+    : "var(--color-muted)"
+}}&gt;
+  {caption.length}/180 characters
+&lt;/small&gt;</code></pre>
+              </article>
+              <article>
+                <span>Størrelse fra en prop</span>
+                <pre class="po-code"><code class="language-javascript jsx">&lt;img
+  className="avatar"
+  src={user.avatar}
+  alt=""
+  style={{ width: size, height: size }}
+/&gt;</code></pre>
+              </article>
+            </div>
             <div>
-              <p><b>Godt match</b><span>størrelse, position eller custom property fra data</span></p>
+              <p><b>Godt match</b><span>én konkret værdi beregnet fra state, props eller data</span></p>
               <p><b>Svagt match</b><span>hele komponentens statiske styling som store objekter</span></p>
-              <p><b>Husk</b><span>CSS-properties skrives normalt i camelCase</span></p>
+              <p><b>Behold i CSS</b><span>farver, typografi, hover, focus og media queries</span></p>
+              <p><b>Husk</b><span>CSS-properties skrives normalt i camelCase, fx <code>backgroundColor</code></span></p>
             </div>
           </div>
           <aside class="notes">
             React anbefaler style-proppen til dynamiske værdier, som ikke kendes på forhånd; ellers er className og CSS
-            mere effektivt. Custom properties kan bruges som en smal bro mellem data og CSS. [Sources] - React: Common
+            mere effektivt. I eksemplet ændrer React kun farveværdien, mens tallet fortsat formidler længden uden farve.
+            Post Apps branch refactor/react-styling bruger samme afgrænsede mønster. Custom properties kan også bruges
+            som en smal bro mellem data og CSS. [Sources] - React: Common
             components · https://react.dev/reference/react-dom/components/common [/Sources]
           </aside>
         </section>
 
         <section class="po-slide root-variables-slide">
           <span class="eyebrow">Fælles fundament</span>
-          <h2><code>:root</code>-variabler gør designvalg genbrugelige</h2>
-          <div class="root-variable-layout">
-            <pre class="po-code"><code class="language-css">:root {
+          <h2>Placér fælles tokens ét sted — og importér dem én gang</h2>
+          <div class="root-structure-layout">
+            <pre class="file-tree"><code>src/
+├── styles/
+│   ├── tokens.css      ← :root
+│   └── global.css      ← importerer tokens + globale regler
+├── components/
+│   └── PostCard.module.css
+└── main.jsx            ← importerer global CSS</code></pre>
+            <div class="root-code-stack">
+              <pre class="po-code"><code class="language-css">/* styles/tokens.css */
+:root {
   --color-brand: #173f35;
   --color-accent: #d8ff62;
   --space-sm: 0.75rem;
   --space-md: 1.5rem;
   --radius-md: 0.75rem;
-}
-
-.event-card {
-  padding: var(--space-md);
 }</code></pre>
-            <div class="variable-benefits">
-              <p><strong>Én definition</strong><span>færre magic values</span></p>
-              <p><strong>Semantiske navne</strong><span>intention frem for tilfældig hex</span></p>
-              <p><strong>Kan bruges overalt</strong><span>klassisk CSS, Modules og inline</span></p>
+              <pre class="po-code"><code class="language-javascript jsx">// main.jsx
+import "./styles/global.css";</code></pre>
             </div>
           </div>
+          <div class="root-usage-row">
+            <p><strong>Global CSS</strong><code>color: var(--color-brand)</code></p>
+            <p><strong>CSS Module</strong><code>padding: var(--space-md)</code></p>
+            <p><strong>Inline</strong><code>style={{ "--size": size }}</code></p>
+          </div>
+          <p class="root-structure-note"><b>Mulighed:</b> I et mindre projekt kan tokens bo øverst i <code>global.css</code>. Den vigtige regel er én tydelig definition og én global import.</p>
           <aside class="notes">
             CSS custom properties definerer genbrugelige værdier og læses med var(). Semantiske tokens gør ændringer
-            og audit lettere. [Sources] - MDN: Using CSS custom properties ·
+            og audit lettere. I den viste opdeling importerer global.css tokens.css, mens main.jsx kun importerer
+            global.css. tokens.css er en mulighed, ikke et krav; i en lille app kan :root fint stå øverst i global.css.
+            Post Apps branch refactor/react-styling viser netop denne opdeling sammen med PostCard.module.css. [Sources] - MDN: Using CSS custom properties ·
             https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties
             [/Sources]
           </aside>
@@ -1009,7 +1144,7 @@ export function EventCard() {
             <p><b>Globalt:</b> Hvilke regler og variabler skal gælde hele appen?</p>
             <p><b>Lokalt:</b> Hvilke styles hører tydeligt til én komponent?</p>
             <p><b>Dynamisk:</b> Hvilke værdier afhænger faktisk af JavaScript?</p>
-            <p><b>Konsistens:</b> Gentages farver, spacing, datoformater eller states?</p>
+            <p><b>Konsistens:</b> Gentages farver, spacing, typografi eller komponent-states?</p>
           </div>
           <p class="work-prompt">Find én gentagelse eller konflikt — og dokumentér dens konsekvens.</p>
           <aside class="notes">
@@ -1032,7 +1167,7 @@ export function EventCard() {
         </section>
 
         <section class="po-slide a11y-overview-slide">
-          <span class="eyebrow">Syv linser på samme brugerflow</span>
+          <span class="eyebrow">Syv områder i samme brugerflow</span>
           <h2>Accessibility skal virke hele vejen gennem opgaven</h2>
           <div class="a11y-lenses">
             <span>Semantisk HTML</span><span>ARIA</span><span>Tastatur og fokus</span><span>SPA-routing</span
@@ -1092,39 +1227,70 @@ export function EventCard() {
 
         <section class="po-slide spa-problem-slide">
           <span class="eyebrow">SPA-problemet</span>
-          <h2>UI’et skifter side — men browseren genstarter ikke oplevelsen</h2>
-          <div class="navigation-compare">
-            <article>
-              <span>Traditionel navigation</span>
-              <strong>Nyt dokument</strong>
-              <p>Browseren indlæser siden og starter en ny læsekontekst.</p>
+          <h2>Efter route-skift skal fokus flyttes til det nye indhold</h2>
+          <div class="spa-solution-layout">
+            <article class="spa-problem-example">
+              <span>Problemet</span>
+              <div class="focus-story">
+                <p><strong>1</strong><small>Fokus er på linket<br /><code>Se event</code></small></p>
+                <b>→</b>
+                <p><strong>2</strong><small>URL og UI skifter<br />uden nyt dokument</small></p>
+                <b>→</b>
+                <p class="focus-stuck"><strong>3</strong><small>Fokus bliver i<br />navigationen</small></p>
+              </div>
+              <p>Keyboard- og screen reader-brugeren får ikke automatisk et nyt startpunkt.</p>
             </article>
-            <article class="spa-route">
-              <span>Client-side routing</span>
-              <strong>Samme dokument</strong>
-              <p>URL og indhold skifter, men fokus kan blive i navigationen og titlen kan være uændret.</p>
+            <article class="spa-focus-solution">
+              <span>Løsningen</span>
+              <pre class="po-code"><code class="language-javascript jsx">const headingRef = useRef(null);
+
+useEffect(() =&gt; {
+  headingRef.current?.focus();
+}, [event.id]);
+
+&lt;h1 ref={headingRef} tabIndex={-1}&gt;
+  {event.title}
+&lt;/h1&gt;</code></pre>
+              <p>Efter render flyttes fokus til den nye sides overskrift.</p>
             </article>
           </div>
-          <p class="spa-consequence">Resultat: Nogle brugere får ikke et tydeligt signal om, hvor de er landet.</p>
+          <p class="spa-consequence"><b>Test:</b> Aktivér et link med tastaturet. Efter sideskiftet skal fokus være synligt og lande et meningsfuldt sted.</p>
           <aside class="notes">
             Client-side route changes giver ikke automatisk den samme oplevelse som en fuld page load. Fokus kan blive
-            ved det aktiverede link, og screen reader-brugere kan mangle kontekst. [Sources] - Gatsby: User testing of
-            accessible client-side routing · https://www.gatsbyjs.com/blog/2019-07-11-user-testing-accessible-client-routing/
-            [/Sources]
+            ved det aktiverede link, og screen reader-brugere kan mangle kontekst. tabIndex=-1 gør overskriften
+            programmatisk fokusérbar uden at føje den til den almindelige tab-rækkefølge. [Sources] - React: Manipulating
+            the DOM with Refs · https://react.dev/learn/manipulating-the-dom-with-refs - Gatsby: User testing of
+            accessible client-side routing · https://www.gatsbyjs.com/blog/2019-07-11-user-testing-accessible-client-routing/ [/Sources]
           </aside>
         </section>
 
         <section class="po-slide page-change-slide">
           <span class="eyebrow">Routing og sideskift</span>
-          <h2>Et sideskift skal give både identitet og et nyt startpunkt</h2>
-          <div class="page-change-pair">
-            <article><span>01</span><strong>Opdatér sidens titel</strong><p><code>document.title</code> beskriver den aktuelle route i fanen og dokumentet.</p></article>
-            <article><span>02</span><strong>Flyt fokus meningsfuldt</strong><p>Fokusér fx den nye <code>h1</code>, så keyboard- og screen reader-brugere lander i indholdet.</p></article>
+          <h2>Hver route skal opdatere <code>document.title</code></h2>
+          <div class="title-solution-layout">
+            <article class="title-problem">
+              <span>Problemet</span>
+              <div class="browser-tab-example"><i></i><i></i><i></i><strong>Mellemrum</strong></div>
+              <p>Forside, eventdetalje og tilmelding kan ellers få samme titel i browserfanen og historikken.</p>
+            </article>
+            <article class="title-code-solution">
+              <span>Løsningen</span>
+              <pre class="po-code"><code class="language-javascript jsx">// EventPage.jsx
+useEffect(() =&gt; {
+  document.title =
+    `${event.title} · Mellemrum`;
+}, [event.title]);</code></pre>
+              <div class="route-title-examples">
+                <p><code>/</code><span>Events · Mellemrum</span></p>
+                <p><code>/events/42</code><span>Jazz på Godsbanen · Mellemrum</span></p>
+              </div>
+            </article>
           </div>
-          <p class="muted">Titel alene annonceres ikke nødvendigvis dynamisk — derfor skal hele navigationsoplevelsen testes.</p>
+          <p class="spa-consequence"><b>Test:</b> Navigér mellem routes og kontrollér fanen og browserhistorikken. Titlen skal beskrive den aktuelle side.</p>
           <aside class="notes">
             En præcis titel beskriver sidens formål. MDN bemærker også, at dynamiske titelændringer ikke automatisk
-            annonceres af alle screen readers. Fokus eller live announcements kan derfor stadig være nødvendige.
+            annonceres af alle screen readers. Derfor løser document.title sidens identitet, mens fokusløsningen på den
+            forrige slide skaber et nyt startpunkt i indholdet. Næste slide samler begge dele.
             [Sources] - MDN: title element · https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/title -
             MDN: Document.title · https://developer.mozilla.org/en-US/docs/Web/API/Document/title [/Sources]
           </aside>
@@ -1132,34 +1298,36 @@ export function EventCard() {
 
         <section class="po-slide focus-management-slide">
           <span class="eyebrow">Fokus-styring i React</span>
-          <h2>Route-komponenten kan etablere den nye kontekst</h2>
+          <h2>PageHeading samler titel og fokus</h2>
           <div class="code-layout focus-management-layout">
-            <pre class="po-code"><code class="language-javascript jsx">function EventPage({ event }) {
+            <pre class="po-code"><code class="language-javascript jsx">function PageHeading({ children, documentTitle }) {
   const headingRef = useRef(null);
+  const { pathname } = useLocation();
 
   useEffect(() =&gt; {
-    document.title = `${event.title} · Mellemrum`;
+    document.title = `${documentTitle} · Mellemrum`;
     headingRef.current?.focus();
-  }, [event.title]);
+  }, [documentTitle, pathname]);
 
   return (
-    &lt;main&gt;
-      &lt;h1 ref={headingRef} tabIndex={-1}&gt;
-        {event.title}
-      &lt;/h1&gt;
-    &lt;/main&gt;
+    &lt;h1 ref={headingRef} tabIndex={-1}&gt;
+      {children}
+    &lt;/h1&gt;
   );
 }</code></pre>
             <div class="focus-pattern-steps">
               <p><b><code>useRef</code></b><span>peger på den nye overskrift</span></p>
               <p><b><code>tabIndex={-1}</code></b><span>gør den programmatisk fokusérbar</span></p>
-              <p><b><code>useEffect</code></b><span>kører efter den nye UI er rendret</span></p>
+              <p><b><code>pathname</code></b><span>får Effect til at køre ved route-skift</span></p>
               <p><b>Test</b><span>fokus skal være synligt og opleves logisk</span></p>
             </div>
           </div>
           <aside class="notes">
-            Patternet er bevidst enkelt til Mellemrum. I React 19 kan title også renderes fra en page-komponent, men
-            projektets version og routing skal kontrolleres. [Sources] - React: Common components, manipulating a DOM
+            Patternet samler den adfærd, alle pages skal have, uden at flytte page-indholdet ind i komponenten. Hver
+            page leverer sin synlige overskrift og documentTitle. Post Apps branch refactor/react-a11y bruger samme
+            PageHeading-mønster. I React 19 kan title også renderes fra en page-komponent, men projektets version og
+            routing skal kontrolleres. [Sources] - Post App med Supabase · lokalt referenceprojekt ·
+            /Users/race/Developer/post-app-supabase/src/components/PageHeading.jsx - React: Common components, manipulating a DOM
             node with a ref · https://react.dev/reference/react-dom/components/common - React: title ·
             https://react.dev/reference/react-dom/components/title - Gatsby: Accessible client routing research ·
             https://www.gatsbyjs.com/blog/2019-07-11-user-testing-accessible-client-routing/ [/Sources]
@@ -1168,73 +1336,109 @@ export function EventCard() {
 
         <section class="po-slide media-slide">
           <span class="eyebrow">Billeder, ikoner og medier</span>
-          <h2>Alternativet skal beskrive formålet — ikke bare motivet</h2>
-          <div class="media-rules">
-            <article><strong>Informativt billede</strong><code>alt="Koncert i Godsbanens rå hal"</code><p>Beskriv den information, billedet bidrager med.</p></article>
-            <article><strong>Dekorativt billede</strong><code>alt=""</code><p>Tom alt-tekst gør, at billedet kan ignoreres.</p></article>
-            <article><strong>Ikonknap</strong><code>aria-label="Luk dialog"</code><p>Navngiv funktionen — ikke ikonets form.</p></article>
-            <article><strong>Video eller lyd</strong><code>&lt;track kind="captions" …&gt;</code><p>Tilbyd captions og relevante tekstalternativer.</p></article>
+          <h2>Vælg tekstalternativ ud fra mediets opgave i konteksten</h2>
+          <div class="media-decision-flow">
+            <article>
+              <span>Tilføjer billedet information?</span>
+              <code>alt="Publikum foran scenen i den rå hal"</code>
+              <p>Beskriv kort den betydning, som ikke allerede står i teksten.</p>
+            </article>
+            <article>
+              <span>Er motivet dekorativt eller gentaget?</span>
+              <code>alt=""</code>
+              <p>Lad hjælpemidler springe det over. Undlad ikke selve <code>alt</code>-attributten.</p>
+            </article>
+            <article>
+              <span>Udfører ikonet en handling?</span>
+              <code>&lt;button aria-label="Luk dialog"&gt;×&lt;/button&gt;</code>
+              <p>Navngiv handlingen — ikke formen “kryds” eller filnavnet.</p>
+            </article>
           </div>
+          <div class="media-time-rule"><strong>Video og lyd</strong><span>Captions til tale og vigtige lyde · transskription efter behov · controls, der kan bruges med tastatur</span><code>&lt;track kind="captions" …&gt;</code></div>
           <aside class="notes">
-            Alt-tekst afhænger af billedets formål i konteksten. Funktionelle billeder beskriver handlingen; dekorative
-            billeder får alt="". [Sources] - W3C WAI: Images Tutorial · https://www.w3.org/WAI/tutorials/images/ - W3C
-            WAI: Captions/Subtitles · https://www.w3.org/WAI/media/av/captions/ [/Sources]
+            Alt-tekst afhænger af billedets formål i den konkrete kontekst. Det samme eventfoto kan være informativt i
+            en artikel, men dekorativt på et kort, hvis titel og anden tekst allerede formidler hele betydningen.
+            Funktionelle billeder og ikoner beskriver handlingen. Komplekse diagrammer kræver informationen i tekst
+            uden for en kort alt-tekst. [Sources] - W3C WAI: Alt Decision Tree ·
+            https://www.w3.org/WAI/tutorials/images/decision-tree/ - W3C WAI: Images Tutorial ·
+            https://www.w3.org/WAI/tutorials/images/ - W3C WAI: Captions/Subtitles ·
+            https://www.w3.org/WAI/media/av/captions/ [/Sources]
           </aside>
         </section>
 
         <section class="po-slide contrast-slide">
           <span class="eyebrow">Farver og kontrast</span>
-          <h2>Farve må ikke være det eneste signal</h2>
+          <h2>Mål kontrasten — og brug mere end farve som signal</h2>
           <div class="contrast-metrics">
             <article><span>4.5:1</span><strong>Almindelig tekst</strong></article>
             <article><span>3:1</span><strong>Stor tekst</strong></article>
             <article><span>3:1</span><strong>Controls og grafiske objekter</strong></article>
           </div>
-          <div class="color-state-example">
-            <p class="color-only"><i></i> Fejl</p>
-            <b>+</b>
-            <p class="color-and-text"><i aria-hidden="true">!</i> E-mailadressen mangler</p>
+          <div class="contrast-practice">
+            <div class="tested-contrast">
+              <span>Testet eksempel fra sliden</span>
+              <p><code>#9aa7a1</code> på <code>#121715</code><strong>7.26:1 ✓</strong></p>
+              <small>Består AA for almindelig tekst. Beregn forholdet — bedøm ikke kun med øjet.</small>
+            </div>
+            <div class="color-state-example">
+              <p class="color-only"><span>race@</span></p>
+              <b>→</b>
+              <p class="color-and-text"><i aria-hidden="true">!</i> E-mailadressen mangler</p>
+            </div>
           </div>
           <aside class="notes">
             Tallene er WCAG AA-minimum: 4.5:1 for almindelig tekst, 3:1 for stor tekst og 3:1 for nødvendige visuelle
-            indikatorer i UI-komponenter. Brug ikke farve alene til at formidle fejl eller state. [Sources] - WCAG 2.2 ·
-            https://www.w3.org/TR/wcag/ - MDN: Color contrast ·
-            https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Perceivable/Color_contrast
-            [/Sources]
+            indikatorer i UI-komponenter. Grænseværdier må ikke rundes op. Test tekst mod sin faktiske baggrund og
+            controls/states mod de tilstødende farver. Den viste kombination er beregnet til 7.26:1. Brug ikke farve
+            alene til at formidle fejl eller state. [Sources] - W3C: Understanding Contrast Minimum ·
+            https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html - W3C: Understanding Non-text Contrast ·
+            https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast - W3C: Understanding Use of Color ·
+            https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html [/Sources]
           </aside>
         </section>
 
         <section class="po-slide accessible-form-slide">
           <span class="eyebrow">Tilgængelige inputs</span>
           <h2>Formularen skal forklare feltet, kravet og fejlen</h2>
-          <div class="code-layout accessible-form-layout">
+          <div class="accessible-form-layout">
+            <div class="form-preview" aria-hidden="true">
+              <span>Tilmeld event</span>
+              <label>E-mail <b>(påkrævet)</b></label>
+              <small>Vi sender din bekræftelse hertil.</small>
+              <div class="demo-input">race@</div>
+              <p><i>!</i> Skriv en gyldig e-mailadresse.</p>
+              <button type="button" tabindex="-1">Tilmeld</button>
+            </div>
             <pre class="po-code"><code class="language-javascript jsx">&lt;label htmlFor="email"&gt;
   E-mail (påkrævet)
 &lt;/label&gt;
+&lt;p id="email-help"&gt;
+  Vi sender din bekræftelse hertil.
+&lt;/p&gt;
 &lt;input
   id="email"
   name="email"
   type="email"
   required
-  aria-describedby={error ? "email-error" : undefined}
+  aria-invalid={Boolean(error)}
+  aria-describedby={error ? "email-help email-error" : "email-help"}
 /&gt;
 {error &amp;&amp; (
-  &lt;p id="email-error"&gt;
+  &lt;p id="email-error" role="alert"&gt;
     Skriv en gyldig e-mailadresse.
   &lt;/p&gt;
 )}</code></pre>
-            <div class="form-checklist">
-              <p><strong>Label</strong><span>synlig og koblet med <code>htmlFor</code> + <code>id</code></span></p>
-              <p><strong>Input-type</strong><span>matcher data og keyboard</span></p>
-              <p><strong>Krav</strong><span>vises i tekst — ikke kun med farve eller *</span></p>
-              <p><strong>Fejl</strong><span>konkret, forståelig og programmatisk forbundet</span></p>
-            </div>
           </div>
+          <div class="form-value-chain"><span>Synlig label</span><b>→</b><span>Forståelig hjælp</span><b>→</b><span>Rigtig input-type</span><b>→</b><span>Konkret fejl + forbindelse</span></div>
           <aside class="notes">
             Placeholder er ikke en erstatning for label. Fejlbeskeden skal hjælpe brugeren videre og forbindes til
-            feltet, fx med aria-describedby. [Sources] - W3C WAI: Labeling Controls ·
+            feltet, fx med aria-describedby. aria-invalid markerer den aktuelle state programmatisk. role=alert kan
+            bruges, når en ny fejlbesked skal annonceres, men feedbacken skal testes med den faktiske valideringsadfærd.
+            Den synlige formvisualisering viser, at den samme struktur også hjælper seende brugere med at forstå feltet
+            og rette fejlen. [Sources] - W3C WAI: Labeling Controls ·
             https://www.w3.org/WAI/tutorials/forms/labels/ - W3C WAI: User Notification ·
-            https://www.w3.org/WAI/tutorials/forms/notifications/ [/Sources]
+            https://www.w3.org/WAI/tutorials/forms/notifications/ - W3C WAI: Form Instructions ·
+            https://www.w3.org/WAI/tutorials/forms/instructions/ [/Sources]
           </aside>
         </section>
 
@@ -1256,16 +1460,20 @@ export function EventCard() {
         </section>
 
         <section class="po-slide audit-synthesis-slide">
-          <span class="eyebrow">Saml auditten af Mellemrum</span>
-          <h2>De faglige linser skal ende som konkrete fund</h2>
+          <span class="eyebrow">Saml dagens faglige fund</span>
+          <h2>Dagens fund bliver en del af den prioriterede backlog</h2>
           <div class="audit-synthesis">
             <article><strong>Arkitektur</strong><p>Hvor er ansvaret eller dataflowet uklart?</p><small>Vis relevante filer og afhængigheder.</small></article>
             <article><strong>Styling</strong><p>Hvor skaber struktur eller gentagelse inkonsistens?</p><small>Vis selectors, værdier og det synlige resultat.</small></article>
             <article><strong>Accessibility</strong><p>Hvor møder en bruger en barriere?</p><small>Vis flowet med tastatur, fokus og feedback.</small></article>
           </div>
+          <p class="backlog-formula"><b>Hvert backlog-item:</b> fund + evidens + konsekvens + løsningsforslag + prioritet + verifikation</p>
           <aside class="notes">
             Lad hver studerende vælge deres stærkeste fund og formulere observation, evidens, konsekvens og foreløbig
-            prioritet. [Sources] - Teknisk audit af en React-løsning · lokalt kursusmateriale [/Sources]
+            prioritet. Arkitektur, styling og accessibility er dagens faglige områder; backloggen kan også indeholde
+            relevante fund om robusthed, data/Supabase, performance og deployment fra den samlede audit. Alle fund
+            forsvinder ikke, fordi de kun implementerer ét nu; de udgør en prioriteret teknisk backlog. [Sources] - Teknisk audit af en React-løsning · lokalt
+            kursusmateriale [/Sources]
           </aside>
         </section>
 
@@ -1359,7 +1567,7 @@ export function EventCard() {
           <span class="eyebrow">Dagens resultat</span>
           <h2>Fra observation til en forbedring, der kan forsvares</h2>
           <div class="closing-formula">
-            <span>Fund</span><b>+</b><span>Evidens</span><b>+</b><span>Konsekvens</span><b>→</b><span>Prioritet</span><b>→</b><span>Verifikation</span>
+            <span>Fund</span><b>+</b><span>Evidens</span><b>+</b><span>Konsekvens</span><b>→</b><span>Prioritet</span><b>→</b><span>Forbedring</span><b>→</b><span>Verifikation</span>
           </div>
           <p class="lead">Vælg det vigtigste næste skridt — og behold resten som en prioriteret backlog.</p>
           <div class="closing-links">

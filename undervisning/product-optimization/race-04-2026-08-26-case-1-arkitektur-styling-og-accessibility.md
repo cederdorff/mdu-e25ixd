@@ -4,7 +4,7 @@
 
 I dag begynder du på en teknisk audit af Mellemrum-løsningen. Du afgrænser undersøgelsen, etablerer en baseline og dokumenterer konkrete fund, før du ændrer koden. Tilmeldingsflowet og den deployede version skal altid indgå i auditten.
 
-Undervejs får du faglige indspark med hovedvægt på React-arkitektur. Vi repeterer også styling i React og centrale accessibility-principper, herunder de særlige udfordringer med routing, sidetitler og fokus i en SPA. Du bruger indsparkene som nye faglige linser på løsningen, prioriterer dine fund og begynder til sidst på én afgrænset forbedring.
+Undervejs får du faglige indspark med hovedvægt på React-arkitektur. Vi repeterer også styling i React og centrale accessibility-principper, herunder de særlige udfordringer med routing, sidetitler og fokus i en SPA. Du bruger indsparkene til at undersøge løsningen fra flere faglige perspektiver. Dine dokumenterede fund samles som en prioriteret teknisk backlog, og du begynder til sidst på én afgrænset forbedring.
 
 <hr style="margin: 2rem 0;">
 
@@ -20,6 +20,8 @@ Undervejs får du faglige indspark med hovedvægt på React-arkitektur. Vi repet
 
 Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen og bruger dem i arbejdet med Case 1.
 
+**Dagens arbejdsrytme:** Start auditten → få et fagligt indspark → undersøg Mellemrum igen → saml fundene som en prioriteret backlog → implementér og verificér én afgrænset forbedring.
+
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Introduktion til teknisk audit</strong></summary>
 <ul>
@@ -28,7 +30,7 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <li><strong>Kom i gang:</strong> Åbn audit-skabelonen og Mellemrum lokalt og online, kontrollér at begge versioner virker, og vælg tilmeldingsflowet samt mindst ét ekstra flow.</li>
 <li>Dokumentér udgangspunktet med relevant evidens, før du ændrer koden. Evidens er noget, andre kan efterprøve, fx en kodehenvisning, et skærmbillede, konsol/Network eller et keyboard-flow.</li>
 <li>Registrér ét fund pr. række med område, fund og evidens, konsekvens, løsningsforslag, prioritet og planlagt verifikation.</li>
-<li><strong>Første leverance:</strong> Gennemfør mindst to flows, og registrér tre fund eller hypoteser med evidens og konsekvens. Du behøver ikke dække alle seks fokusområder.</li>
+<li><strong>Første leverance efter 20–25 minutter:</strong> Gennemfør mindst to flows, og registrér tre fund eller hypoteser med evidens og konsekvens. Du behøver ikke dække alle seks fokusområder.</li>
 <li>Foretag ingen kodeændringer i det første arbejdspas. Det bevarer din baseline, adskiller observation fra løsning og gør det muligt at prioritere fundene, før du implementerer.</li>
 </ul>
 </details>
@@ -37,15 +39,16 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <summary><strong>2. Fagligt indspark: React-arkitektur</strong></summary>
 <ul>
 <li>Definér arkitektur som de valg, der placerer ansvar og forbinder delene – ikke blot som et bestemt mappetræ.</li>
-<li>Start med et overblik over seks beslutninger: routes/pages, komponenter, state/dataflow, side effects/<code>useEffect</code>, adskillelse/genbrug samt navne/struktur.</li>
-<li>Brug <strong>Post App med Supabase</strong> som fælles reference, og overfør derefter principperne til din egen audit af Mellemrum.</li>
+<li>Start med et overblik over seks beslutninger i samme rækkefølge som indsparket: routes/pages, navne/struktur, requests/side effects, komponentansvar/composition, state/dataflow samt adskillelse/genbrug.</li>
+<li>Vi bruger <strong>Post App med Supabase</strong> som fælles reference, så du senere kan overføre principperne til din egen audit af Mellemrum.</li>
 <li><strong>Routes og pages:</strong> En route kobler en URL til en page-komponent. Page-komponenten samler det, brugeren skal se og gøre på den URL.</li>
 <li><strong>Komponenter og ansvar:</strong> Brug <em>single responsibility</em> til at formulere ét hovedansvar pr. del og <em>component composition</em> til at bygge større UI af mindre komponenter. Brug HomePage, Header, PostCard og App som konkrete eksempler. Genbrugelige dele på tværs af pages – fx Header, Footer og Sidebar – hører naturligt hjemme i <code>components/</code>.</li>
 <li><strong>Mulig forbedring af HomePage:</strong> Skeln mellem det, der med fordel kan udtrækkes nu, og det der kun skal udtrækkes ved et konkret behov. Gentagne Supabase-detaljer er et stærkt signal til en service; en <code>PostList</code> er først relevant, hvis listen genbruges eller får et tydeligere selvstændigt ansvar. Page-komponenten koordinerer fortsat sidens UI-states.</li>
 <li><strong>State og dataflow:</strong> Placér state hos den nærmeste ejer. Vis konkret, hvordan en parent sender en værdi ned gennem props, og hvordan en child sender ændringen tilbage gennem en callback-prop. Beregn <em>derived state</em> som <code>postCount = posts.length</code> frem for at gemme en ekstra kopi.</li>
 <li><strong>Side effects og Effects:</strong> Skeln mellem <em>side effect</em> som det generelle begreb og <em>Effect</em> som Reacts navn for synkroniseringen, der deklareres med <code>useEffect</code>. Hold renderingen pure, og følg et request gennem Supabase REST API og tilbage til UI'et.</li>
-<li><strong>Adskillelse og genbrug:</strong> Sammenlign page, component, util og service som forskellige slags ansvar. Opbyg et muligt <code>postService.js</code> med en fælles <code>request()</code>-funktion, og vis hvordan PostDetailPage og UpdatePage kan genbruge samme <code>getById()</code>.</li>
-<li><strong>Create og Update:</strong> Vis en mulig kontrolleret <code>PostForm</code>, der genbruger formularens markup, mens hver page fortsat ejer state, request og navigation. En lille <code>normalizePost()</code>-util kan samle den gentagne trimning uden at kende React eller Supabase.</li>
+<li><strong>Adskillelse og genbrug:</strong> Sammenlign page, component, util og service som forskellige slags ansvar. Tydeliggør at et muligt <code>postService.js</code> definerer gentagne Supabase-detaljer som URL, headers, query strings og HTTP-metoder én gang. Pages importerer derefter domænenære funktioner som <code>getAll()</code>, <code>getById()</code>, <code>create()</code> og <code>update()</code> i stedet for at gentage detaljerne.</li>
+<li><strong>Create og Update:</strong> Vis en mulig kontrolleret <code>PostForm</code>, der genbruger formularens markup, mens hver page fortsat ejer state, request og navigation.</li>
+<li><strong>Util-eksempel:</strong> Vis hvordan en ren <code>formatPostDate()</code>-util kan formatere <code>created_at</code> ens i både <code>PostCard</code> og <code>PostDetailPage</code>. Komponenten sender en værdi ind, og utilen returnerer en ny værdi uden React-state, JSX eller API-kald.</li>
 <li><strong>Struktur før og efter:</strong> Sammenlign Post Apps nuværende struktur med en mulig forbedret struktur med <code>components/</code>, <code>services/</code> og <code>utils/</code>. Understreg, at mapperne er muligheder, som skal begrundes i konkrete ansvar eller gentagelser – ikke en obligatorisk startstruktur.</li>
 <li><strong>Navne og struktur:</strong> Brug domænenære navne og den mindste mappestruktur, der gør ansvar og ændringer tydelige. Navngiv komponenter med PascalCase, værdier og funktioner med camelCase, booleans som spørgsmål og event handlers efter den handling, de udfører.</li>
 <li>Forklar løbende, hvorfor en grænse hjælper, og dokumentér derefter ét konkret arkitekturfund i Mellemrum.</li>
@@ -56,10 +59,10 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <summary><strong>3. Repetition: styling i React</strong></summary>
 <ul>
 <li>Sammenlign klassisk CSS, CSS Modules og inline styles ud fra rækkevidde og ansvar.</li>
-<li>Brug klassisk CSS til relevante globale regler og fælles mønstre.</li>
-<li>Brug CSS Modules, når komponentnære styles skal have lokal scope.</li>
-<li>Brug primært inline styles til værdier, der faktisk beregnes i JavaScript.</li>
-<li>Definér genbrugelige farver, spacing og andre designvalg som CSS custom properties i <code>:root</code>.</li>
+<li>Brug klassisk CSS til relevante globale regler og fælles mønstre, og importér det globale stylesheet ét sted, fx i <code>main.jsx</code>.</li>
+<li>Brug CSS Modules, når komponentnære styles skal have lokal scope, navnekollisioner skal undgås, og afhængigheden mellem component og stylesheet skal være tydelig.</li>
+<li>Brug primært inline styles til værdier, der faktisk beregnes i JavaScript, fx fremdrift i procent eller størrelse fra en prop.</li>
+<li>Definér genbrugelige farver, spacing og andre designvalg som CSS custom properties i <code>:root</code>. Placér dem enten øverst i den globale CSS eller i en tydelig <code>tokens.css</code>, som importeres globalt én gang.</li>
 <li>Vurdér placering, gentagelser, konflikter og konsistens i løsningens styling.</li>
 </ul>
 </details>
@@ -69,10 +72,10 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <ul>
 <li>Brug semantisk HTML og et logisk heading-hierarki; brug ARIA, når HTML ikke er tilstrækkeligt.</li>
 <li>Kontrollér keyboard navigation, logisk rækkefølge og synligt fokus.</li>
-<li><strong>Fokus-styring i React:</strong> Undersøg SPA-problemet, hvor fokus kan blive i navigationen efter et sideskift.</li>
-<li><strong>Routing og sideskift:</strong> Opdatér <code>document.title</code>, og flyt fokus meningsfuldt til den nye sides indhold.</li>
-<li>Vurdér billeder, ikoner, medier og alt-tekster ud fra deres formål.</li>
-<li>Kontrollér farver, kontrast og states, så information ikke kommunikeres med farve alene.</li>
+<li><strong>Fokus-styring i React:</strong> Undersøg SPA-problemet, hvor fokus kan blive i navigationen efter et sideskift, og vis separat hvordan fokus kan flyttes til den nye sides <code>h1</code>.</li>
+<li><strong>Routing og sideskift:</strong> Vis separat hvordan hver route opdaterer <code>document.title</code>. Saml derefter titel- og fokusløsningen i ét React-eksempel.</li>
+<li>Vurdér billeder, ikoner, medier og alt-tekster ud fra deres funktion i den konkrete kontekst: informativ, dekorativ, funktionel eller tidsbaseret.</li>
+<li>Kontrollér farver, kontrast og states, så information ikke kommunikeres med farve alene. Mål tekst, controls, fokus og grafiske objekter mod deres faktiske tilstødende farver.</li>
 <li>Undersøg formularernes labels, inputtyper, krav, validering, fejlbeskeder og feedback.</li>
 </ul>
 </details>
@@ -84,6 +87,7 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <li>Brug audit-skabelonen til at dokumentere fund og evidens.</li>
 <li>Beskriv konsekvensen for brugeren, produktet eller den videre udvikling.</li>
 <li>Lav en realistisk, prioriteret liste over forbedringer.</li>
+<li>Behandl de dokumenterede fund som en teknisk backlog: Hvert item skal have evidens, konsekvens, prioritet og planlagt verifikation.</li>
 </ul>
 </details>
 
