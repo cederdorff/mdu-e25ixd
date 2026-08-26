@@ -21,6 +21,7 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 
 ### Product Optimization
 
+- [Eksamensbeskrivelse – Product Optimization](undervisning/product-optimization/eksamensbeskrivelse.md)
 - [RACE - Product optimization: Web App-forbedringer og teknisk fundament - 19-08-2026](undervisning/product-optimization/race-01-2026-08-19-web-app-forbedringer-og-teknisk-fundament.md)
 - [LAES/NKKR/RACE - Portfolio feedback - 19-08-2026](undervisning/semesterstart/race-01-2026-08-19-portfolio-feedback.md)
 - [RACE - Product optimization: JavaScript for React - 21-08-2026](undervisning/product-optimization/race-02-2026-08-21-javascript-for-react.md)
