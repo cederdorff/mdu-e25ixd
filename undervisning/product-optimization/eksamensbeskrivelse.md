@@ -63,15 +63,24 @@ Casesiderne behøver ikke have samme layout eller rækkefølge. Hver side skal d
 5. **Faglig refleksion:** Hvilke valg og fravalg traf du, hvad lærte du, og hvad kunne være næste skridt?
 6. **Forretningspotentiale:** Hvem kan arbejdet skabe værdi for – og hvordan?
 
-### Hvad betyder forretningspotentiale her?
+#### Hvad betyder forretningspotentiale her?
 
 Forretningspotentiale er den mulige værdi, arbejdet kan skabe for brugerne, produktet eller organisationen. Beskriv kort **hvem der får værdi, hvilken værdi det er, og hvad vurderingen bygger på**.
 
 Værdien kan fx være en bedre brugeroplevelse, flere gennemførte handlinger, færre fejl, adgang for flere eller lettere videreudvikling. Du skal ikke skrive en fuld business case; vær blot tydelig om, hvad du har dokumenteret, og hvad der stadig er et begrundet potentiale.
 
-### Løsninger og outputs
+#### Løsninger og outputs
 
-Link fra hver caseside til de relevante løsninger og outputs, fx Figma, GitHub og en deployet løsning på GitHub Pages eller en tilsvarende platform. Vælg de links, der passer til casen, og kontrollér, at bedømmerne kan åbne dem. Selve casefortællingen skal stadig kunne forstås på portfoliosiden.
+Hver caseside skal linke til de løsninger og outputs, der er relevante for den konkrete case. Kontrollér, at alle links fungerer.
+
+- **Case 1 – React-optimering:**
+  - Link til GitHub-repository
+  - Link til deployede løsning på GitHub Pages eller en tilsvarende platform.
+  - Tilføj gerne anden relevant dokumentation, hvis den styrker forståelsen af arbejdet.
+- **Case 2:** Krav til løsninger og outputs tilføjes.
+- **Case 3:** Krav til løsninger og outputs tilføjes.
+
+Selve casefortællingen og de vigtigste faglige pointer skal stadig kunne forstås på portfoliosiden.
 
 <hr style="margin: 2rem 0;">
 
@@ -96,15 +105,13 @@ Hvis du ikke består prøven, går du til omprøve med udgangspunkt i de samme c
 ## Tjek før aflevering
 
 - Tre publicerede casesider og tre direkte, fungerende links.
-- Fungerende links fra casesiderne til relevante løsninger og outputs, fx Figma, GitHub og en deployet løsning.
+- Fungerende links fra casesiderne til de løsninger og outputs, der kræves i den enkelte case.
 - Maksimalt fem normalsider på tværs af de tre cases.
 - Faglig refleksion og forretningspotentiale i hver case.
 - Et tydeligt og redeligt billede af dit eget arbejde og dine kilder.
 - Aflevering i WISEflow senest 16. oktober 2026 før kl. 12.00.
 
 <hr style="margin: 2rem 0;">
-
-## Formelt grundlag
 
 Beskrivelsen bygger på studieordningens bestemmelser for prøven i Product Optimization. De konkrete casekrav og øvrige afleveringsoplysninger offentliggøres på Canvas.
 
