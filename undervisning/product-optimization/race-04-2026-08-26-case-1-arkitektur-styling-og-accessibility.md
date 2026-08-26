@@ -46,12 +46,13 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <li><strong>Mulig forbedring af HomePage:</strong> Skeln mellem det, der med fordel kan udtrækkes nu, og det der kun skal udtrækkes ved et konkret behov. Gentagne Supabase-detaljer er et stærkt signal til en service; en <code>PostList</code> er først relevant, hvis listen genbruges eller får et tydeligere selvstændigt ansvar. Page-komponenten koordinerer fortsat sidens UI-states.</li>
 <li><strong>State og dataflow:</strong> Placér state hos den nærmeste ejer. Vis konkret, hvordan en parent sender en værdi ned gennem props, og hvordan en child sender ændringen tilbage gennem en callback-prop. Beregn <em>derived state</em> som <code>postCount = posts.length</code> frem for at gemme en ekstra kopi.</li>
 <li><strong>Side effects og Effects:</strong> Skeln mellem <em>side effect</em> som det generelle begreb og <em>Effect</em> som Reacts navn for synkroniseringen, der deklareres med <code>useEffect</code>. Hold renderingen pure, og følg et request gennem Supabase REST API og tilbage til UI'et.</li>
-<li><strong>Adskillelse og genbrug:</strong> Sammenlign page, component, util og service som forskellige slags ansvar. Tydeliggør at et muligt <code>postService.js</code> definerer gentagne Supabase-detaljer som URL, headers, query strings og HTTP-metoder én gang. Pages importerer derefter domænenære funktioner som <code>getAll()</code>, <code>getById()</code>, <code>create()</code> og <code>update()</code> i stedet for at gentage detaljerne.</li>
+<li><strong>Adskillelse og genbrug:</strong> Sammenlign page, component, util og service som forskellige slags ansvar. Vis hvordan <code>postService.js</code> definerer URL og headers én gang. Hver domænefunktion – fx <code>getAll()</code>, <code>getById()</code>, <code>create()</code> og <code>update()</code> – har derefter sit eget synlige <code>fetch</code>-kald med endpoint, HTTP-metode, body og behandling af data. Pages importerer funktionerne og behøver ikke kende Supabase-opsætningen. Fejlhåndtering er udeladt i dette eksempel, fordi den gennemgås på en anden branch.</li>
 <li><strong>Create og Update:</strong> Vis en mulig kontrolleret <code>PostForm</code>, der genbruger formularens markup, mens hver page fortsat ejer state, request og navigation.</li>
 <li><strong>Util-eksempel:</strong> Vis hvordan en ren <code>formatPostDate()</code>-util kan formatere <code>created_at</code> ens i både <code>PostCard</code> og <code>PostDetailPage</code>. Komponenten sender en værdi ind, og utilen returnerer en ny værdi uden React-state, JSX eller API-kald.</li>
 <li><strong>Struktur før og efter:</strong> Sammenlign Post Apps nuværende struktur med en mulig forbedret struktur med <code>components/</code>, <code>services/</code> og <code>utils/</code>. Understreg, at mapperne er muligheder, som skal begrundes i konkrete ansvar eller gentagelser – ikke en obligatorisk startstruktur.</li>
 <li><strong>Navne og struktur:</strong> Brug domænenære navne og den mindste mappestruktur, der gør ansvar og ændringer tydelige. Navngiv komponenter med PascalCase, værdier og funktioner med camelCase, booleans som spørgsmål og event handlers efter den handling, de udfører.</li>
 <li>Forklar løbende, hvorfor en grænse hjælper, og dokumentér derefter ét konkret arkitekturfund i Mellemrum.</li>
+<li><strong>Se et implementeret eksempel:</strong> <a href="https://github.com/cederdorff/post-app-supabase/tree/refactor/architecture">Post App · branch: <code>refactor/architecture</code></a>.</li>
 </ul>
 </details>
 
@@ -62,8 +63,9 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <li>Brug klassisk CSS til relevante globale regler og fælles mønstre, og importér det globale stylesheet ét sted, fx i <code>main.jsx</code>.</li>
 <li>Brug CSS Modules, når komponentnære styles skal have lokal scope, navnekollisioner skal undgås, og afhængigheden mellem component og stylesheet skal være tydelig.</li>
 <li>Brug primært inline styles til værdier, der faktisk beregnes i JavaScript, fx fremdrift i procent eller størrelse fra en prop.</li>
-<li>Definér genbrugelige farver, spacing og andre designvalg som CSS custom properties i <code>:root</code>. Placér dem enten øverst i den globale CSS eller i en tydelig <code>tokens.css</code>, som importeres globalt én gang.</li>
+<li>Definér genbrugelige farver, spacing og andre designvalg som CSS custom properties i <code>:root</code>. Placér dem enten øverst i den globale CSS eller i en tydelig <code>variables.css</code>, som importeres globalt én gang.</li>
 <li>Vurdér placering, gentagelser, konflikter og konsistens i løsningens styling.</li>
+<li><strong>Se et implementeret eksempel:</strong> <a href="https://github.com/cederdorff/post-app-supabase/tree/refactor/react-styling">Post App · branch: <code>refactor/react-styling</code></a>.</li>
 </ul>
 </details>
 
@@ -73,10 +75,11 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
 <li>Brug semantisk HTML og et logisk heading-hierarki; brug ARIA, når HTML ikke er tilstrækkeligt.</li>
 <li>Kontrollér keyboard navigation, logisk rækkefølge og synligt fokus.</li>
 <li><strong>Fokus-styring i React:</strong> Undersøg SPA-problemet, hvor fokus kan blive i navigationen efter et sideskift, og vis separat hvordan fokus kan flyttes til den nye sides <code>h1</code>.</li>
-<li><strong>Routing og sideskift:</strong> Vis separat hvordan hver route opdaterer <code>document.title</code>. Saml derefter titel- og fokusløsningen i ét React-eksempel.</li>
+<li><strong>Routing og sideskift:</strong> Vis separat hvordan hver route opdaterer <code>document.title</code>. Saml derefter titel- og fokusløsningen i en <code>PageHeading</code>, hvor én <code>title</code>-prop bruges til både sidens <code>h1</code> og <code>document.title</code>.</li>
 <li>Vurdér billeder, ikoner, medier og alt-tekster ud fra deres funktion i den konkrete kontekst: informativ, dekorativ, funktionel eller tidsbaseret.</li>
 <li>Kontrollér farver, kontrast og states, så information ikke kommunikeres med farve alene. Mål tekst, controls, fokus og grafiske objekter mod deres faktiske tilstødende farver.</li>
 <li>Undersøg formularernes labels, inputtyper, krav, validering, fejlbeskeder og feedback.</li>
+<li><strong>Se et implementeret eksempel:</strong> <a href="https://github.com/cederdorff/post-app-supabase/tree/refactor/react-a11y">Post App · branch: <code>refactor/react-a11y</code></a>.</li>
 </ul>
 </details>
 
@@ -115,6 +118,10 @@ Vi introducerer auditten af Mellemrum, får faglige perspektiver på løsningen 
   - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
 - **Fælles arkitektureksempel:**
   - [Post App med Supabase](https://github.com/cederdorff/post-app-supabase)
+- **Implementerede eksempler i Post App:**
+  - [Arkitektur · `refactor/architecture`](https://github.com/cederdorff/post-app-supabase/tree/refactor/architecture)
+  - [Styling i React · `refactor/react-styling`](https://github.com/cederdorff/post-app-supabase/tree/refactor/react-styling)
+  - [Accessibility i React · `refactor/react-a11y`](https://github.com/cederdorff/post-app-supabase/tree/refactor/react-a11y)
 - **Faglige referencer til styling og accessibility:**
   - [React styling approaches og a11y · tidligere undervisningsside](https://eaaa.instructure.com/courses/30922/pages/race-6-react-styling-approaches-and-a11y-accessibility-11-02-2026?module_item_id=947733)
   - [Styling i React](https://race.notion.site/Styling-i-React-268bc239db11806c82a9f2e25fdc5ccc)
