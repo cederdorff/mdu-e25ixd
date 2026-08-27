@@ -4,8 +4,11 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 
 ## Slides
 
-- [Reveal.js-præsentationer](https://cederdorff.com/mdu-e25ixd/slides/)
 - [Semesterstart · 17. august 2026](https://cederdorff.com/mdu-e25ixd/slides/semesterstart/)
+- [Product Optimization · Web App-forbedringer og teknisk fundament · 19. august 2026](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/)
+- [Product Optimization · JavaScript for React · 21. august 2026](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-02/)
+- [Product Optimization · Case 1, fejlhåndtering og robuste UI-states · 25. august 2026](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-03/)
+- [Product Optimization · Case 1, arkitektur, styling og accessibility · 26. august 2026](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-04/)
 
 ## Semesteroverblik
 
