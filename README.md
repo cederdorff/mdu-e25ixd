@@ -4,12 +4,12 @@ Materialer til 3. semester Interaction Design (IxD), Multimediedesign.
 
 ## Slides
 
-- [Reveal.js-præsentationer og lokal opsætning](slides/README.md)
-- [Semesterstart · 17. august 2026](slides/semesterstart/index.html)
+- [Reveal.js-præsentationer](https://cederdorff.com/mdu-e25ixd/slides/)
+- [Semesterstart · 17. august 2026](https://cederdorff.com/mdu-e25ixd/slides/semesterstart/)
 
 ## Semesteroverblik
 
-- [Grafisk semesteroversigt](semesteroverblik/semesteroversigt.html)
+- [Grafisk semesteroversigt](https://cederdorff.com/mdu-e25ixd/semesteroverblik/semesteroversigt.html)
 - [Modulnavne til Canvas](semesteroverblik/canvas-moduler.md)
 - [Beskrivelser af forløb og eksamener](semesteroverblik/forloeb-og-eksamen.md)
 
