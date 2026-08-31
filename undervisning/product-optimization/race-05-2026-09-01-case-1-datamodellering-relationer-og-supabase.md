@@ -7,7 +7,7 @@ I dag arbejder du med at fordele data på relaterede tabeller og undgå inkonsis
 Efter undervisningen skal du kunne:
 
 - identificere data, der gentages og kan blive inkonsistente
-- modellere en enkel en-til-mange-relation med primær- og fremmednøgler
+- forklare og modellere en enkel en-til-mange-relation med primær- og fremmednøgler
 - hente relaterede data gennem Supabase REST API og anvende dem i React
 - anvende princippet på relationerne mellem `venues`, `events` og `registrations` i Case 1
 
@@ -39,7 +39,9 @@ Efter undervisningen skal du kunne:
 <summary><strong>2. Demonstration: Forbedr Post Appens datamodel</strong></summary>
 <ul>
 <li>Opdel data i <code>users(id, name, mail, title, image)</code> og <code>posts(id, createdAt, caption, image, userId)</code>.</li>
-<li>Brug tabellernes <code>id</code> som primærnøgler og <code>posts.userId</code> som fremmednøgle til <code>users.id</code>.</li>
+<li>Sæt først herefter faglige ord på modellen: normalisering samt primær- og fremmednøgler (<code>posts.userId</code> → <code>users.id</code>).</li>
+<li>Se, hvorfor en genereret <code>id</code> er en mere stabil identitet end fx navn eller mail.</li>
+<li>Se, hvordan fremmednøglen sikrer, at et <code>userId</code> peger på en user, der faktisk findes.</li>
 <li>Læs relationen i begge retninger: En bruger kan oprette mange posts; hvert post tilhører én bruger.</li>
 <li>Opret relationen i Supabase, og kontrollér den i Schema Visualizer.</li>
 <li>Ret én brugers navn, og se hvordan alle brugerens posts nu kan vise den samme opdaterede oplysning uden at ændre flere postrækker.</li>
@@ -63,7 +65,7 @@ Efter undervisningen skal du kunne:
 <ul>
 <li>Undersøg den eksisterende datamodel: <code>events</code> gentager venueoplysninger, mens <code>registrations</code> gentager titel, dato og sted fra events.</li>
 <li>Modellér <code>venues</code>, <code>events</code> og <code>registrations</code>: Ét venue kan have mange events, og ét event kan have mange tilmeldinger.</li>
-<li>Forbind <code>events.venueId</code> med <code>venues.id</code> og <code>registrations.eventId</code> med <code>events.id</code>.</li>
+<li>Skitsér begge relationer, men implementér og verificér én ad gangen: <code>events.venueId</code> → <code>venues.id</code>, derefter <code>registrations.eventId</code> → <code>events.id</code>.</li>
 <li>Hent events med deres venue og tilmeldinger med deres event gennem Supabase REST API.</li>
 <li>Tilpas tilmeldingsflowet, så en ny tilmelding gemmes med det valgte <code>eventId</code>, og tilpas den interne side til det relaterede response.</li>
 <li>Bevar de gamle kolonner, indtil de eksisterende rækker er forbundet, og de nye requests og visninger virker.</li>

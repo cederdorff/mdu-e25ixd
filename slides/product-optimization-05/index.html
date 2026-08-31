@@ -128,11 +128,11 @@
         <section class="chapter po-chapter po-slide relation-chapter" id="relationer">
           <span class="chapter-index">02</span>
           <span class="eyebrow">Et bedre hjem til data</span>
-          <h2>To tabeller —<br />forbundet med ID’er</h2>
-          <p class="kicker">Brugeroplysninger gemmes én gang. Posts peger på brugeren.</p>
+          <h2>To tabeller —<br />men hvordan hænger de sammen?</h2>
+          <p class="kicker">Brugerdata har fået ét hjem. Postet skal stadig kunne finde sin user.</p>
           <aside class="notes">
-            Skift til SQL 03-resultatet i Supabase og vis users og posts i Table Editor. [Sources] -
-            undervisning/product-optimization/post-app-sql/03-posts-and-users.sql [/Sources]
+            Lad spørgsmålet stå et øjeblik, før du viser forbindelsen. Skift derefter til SQL 03-resultatet i Supabase og
+            vis users og posts. [Sources] - undervisning/product-optimization/post-app-sql/03-posts-and-users.sql [/Sources]
           </aside>
         </section>
 
@@ -142,10 +142,11 @@
           <div class="schema-visual schema-visual-related">
             <img src="../assets/posts-and-users.png" alt="Supabase Schema Visualizer med posts og users forbundet fra posts.userId til users.id" />
           </div>
-          <p class="relation-caption"><code>posts.userId</code><span>→</span><code>users.id</code><strong>Postet gemmer brugerens ID — ikke en kopi af brugeren</strong></p>
+          <p class="relation-caption"><code>posts.userId</code><span>→</span><code>users.id</code><strong>Ret Rasmus’ titel én gang i users — alle hans posts får den samme værdi</strong></p>
           <aside class="notes">
             Følg linjen visuelt fra posts.userId til users.id. Læs forbindelsen som almindeligt sprog, og vent med de
-            formelle navne til næste slide. [Sources] - User-provided Supabase Schema Visualizer screenshot ·
+            formelle navne. Ret eventuelt Rasmus’ titel i users og genindlæs appen: Alle hans posts viser nu den nye titel.
+            Det er forløsningen på spørgsmålet om de tre ændringer. [Sources] - User-provided Supabase Schema Visualizer screenshot ·
             slides/assets/posts-and-users.png - SQL 03 · lokalt undervisningsmateriale [/Sources]
           </aside>
         </section>
@@ -154,14 +155,14 @@
           <span class="eyebrow">Tre nøgler i almindeligt sprog</span>
           <h2>ID’er gør rækker unikke — og forbinder dem</h2>
           <div class="key-explanations">
-            <article><code>users.id</code><strong>Brugerens eget unikke nummer</strong><small>Primærnøgle i <code>users</code></small></article>
-            <article><code>posts.id</code><strong>Postets eget unikke nummer</strong><small>Primærnøgle i <code>posts</code></small></article>
-            <article class="foreign-key-card"><code>posts.userId</code><strong>Nummeret på den user, postet tilhører</strong><small>Fremmednøgle til <code>users.id</code></small></article>
+            <article><code>users.id</code><strong>Brugerens eget unikke nummer</strong><small>Identificerer én række i <code>users</code></small></article>
+            <article><code>posts.id</code><strong>Postets eget unikke nummer</strong><small>Identificerer én række i <code>posts</code></small></article>
+            <article class="foreign-key-card"><code>posts.userId</code><strong>Nummeret på den user, postet tilhører</strong><small>Har samme værdi som den relaterede <code>users.id</code></small></article>
           </div>
-          <p class="term-order"><span>Først forståelsen</span><b>→</b><span>derefter ordene</span><b>→</b><strong>primærnøgle + fremmednøgle</strong></p>
+          <p class="term-order"><span>Først forståelsen</span><b>→</b><span>så relationen</span><b>→</b><strong>de faglige ord kommer om lidt</strong></p>
           <aside class="notes">
-            Introducér de formelle begreber nu, hvor de allerede kan se deres funktion. En primærnøgle identificerer en
-            række; en fremmednøgle refererer til en række i en anden tabel. [Sources] - Supabase Tables and Data ·
+            Hold fortsat sproget konkret: eget nummer og nummeret på den relaterede user. Vent med primærnøgle,
+            fremmednøgle og normalisering til Supabase-slidet. [Sources] - Supabase Tables and Data ·
             https://supabase.com/docs/guides/database/tables [/Sources]
           </aside>
         </section>
@@ -187,16 +188,68 @@
 
         <section class="po-slide supabase-interface-slide">
           <span class="eyebrow">Se relationen i Supabase</span>
-          <h2>Interfacet viser de samme valg fra to vinkler</h2>
+          <h2>Nu kan vi sætte faglige ord på modellen</h2>
           <div class="interface-pair">
             <article><span>Table Editor</span><h3>Rækker og værdier</h3><div class="mini-table"><p><b>id</b><b>caption</b><b>userId</b></p><p><span>1</span><span>Aarhus</span><mark>1</mark></p><p><span>2</span><span>Aarhus Ø</span><mark>1</mark></p></div><small>Kontrollér værdien i hver række</small></article>
             <article><span>Schema Visualizer</span><h3>Tabeller og forbindelser</h3><div class="mini-schema"><b>users</b><i>1 ───── ∞</i><strong>posts</strong></div><small>Kontrollér relationens retning</small></article>
           </div>
-          <p class="interface-task">Find <code>posts.userId → users.id</code> i jeres eget Supabase-projekt.</p>
+          <p class="interface-task"><strong>Nu har vi ordene:</strong> <code>users.id</code> er primærnøglen · <code>posts.userId</code> er fremmednøglen · opdelingen kaldes normalisering</p>
           <aside class="notes">
-            Demonstrér relationen i det interface, de kender. Først bagefter kan du kort vise, at SQL 03 har etableret den
-            samme struktur. [Sources] - Supabase Tables and Data · https://supabase.com/docs/guides/database/tables - SQL 03
-            · lokalt undervisningsmateriale [/Sources]
+            Demonstrér relationen i det interface, de kender. Introducér først nu ordene primærnøgle, fremmednøgle og
+            normalisering som navne på det, de allerede har set. Normalisering betyder her, at data er delt, så den samme
+            brugeroplysning ikke skal gemmes flere steder. [Sources] - Supabase Tables and Data ·
+            https://supabase.com/docs/guides/database/tables - SQL 03 · lokalt undervisningsmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide primary-key-slide">
+          <span class="eyebrow">Primærnøglen identificerer én række</span>
+          <h2>Et godt ID ændrer sig ikke, når brugeren gør</h2>
+          <div class="key-choice">
+            <article class="unstable-key">
+              <span>Ikke en sikker identitet</span>
+              <div><code>name</code><b>Rasmus Cederdorff</b><small>To users kan have samme navn</small></div>
+              <div><code>mail</code><b>race@eaaa.dk</b><small>Mailadressen kan ændre sig</small></div>
+            </article>
+            <div class="key-choice-arrow">→</div>
+            <article class="stable-key">
+              <span>Primærnøgle</span>
+              <code>users.id = 1</code>
+              <strong>Unik · altid til stede · stabil</strong>
+              <small>Supabase kan generere nummeret, når rækken oprettes</small>
+            </article>
+          </div>
+          <p class="key-definition"><strong>Primærnøgle:</strong> feltet, der entydigt identificerer én bestemt række i tabellen.</p>
+          <aside class="notes">
+            Brug navn og mail som konkrete modeksempler. Et navn er ikke nødvendigvis unikt, og en mailadresse kan ændres.
+            ID’et har kun én opgave: at fastholde rækkens identitet. I vores tabeller er id genereret automatisk. [Sources]
+            - SQL 03 · lokalt undervisningsmateriale - Supabase Tables and Data ·
+            https://supabase.com/docs/guides/database/tables [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide foreign-key-slide">
+          <span class="eyebrow">Fremmednøglen forbinder tabeller</span>
+          <h2><code>userId</code> er både en værdi og en regel</h2>
+          <div class="foreign-key-example">
+            <article class="valid-users">
+              <span>users</span>
+              <p><b>id</b><strong>name</strong></p>
+              <p><code>1</code><strong>Rasmus</strong></p>
+              <p><code>2</code><strong>Maria</strong></p>
+            </article>
+            <div class="foreign-key-checks">
+              <p class="valid-reference"><code>posts.userId = 1</code><b>✓</b><span>User 1 findes</span></p>
+              <p class="valid-reference"><code>posts.userId = 2</code><b>✓</b><span>User 2 findes</span></p>
+              <p class="invalid-reference"><code>posts.userId = 99</code><b>×</b><span>User 99 findes ikke</span></p>
+            </div>
+          </div>
+          <p class="foreign-definition"><strong>Fremmednøgle:</strong> et felt, hvis værdi skal pege på en eksisterende primærnøgle i en anden tabel.</p>
+          <aside class="notes">
+            Fremmednøglen er mere end vores egen navngivningsaftale. Databasen kontrollerer, at den refererede user findes,
+            og forhindrer dermed et post uden en gyldig ejer. I SQL 03 er userId desuden NOT NULL, så hvert post skal have
+            en user. Undgå at gå videre til cascade-regler på denne slide. [Sources] - SQL 03 · lokalt undervisningsmateriale
+            - PostgreSQL Foreign Keys · https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-FK [/Sources]
           </aside>
         </section>
 
