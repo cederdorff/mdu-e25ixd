@@ -316,8 +316,8 @@
               <p><code>name</code> · <code>mail</code> · <code>title</code> · <code>image</code></p>
               <div class="generated-id-note"><b>Lad <code>id</code> stå tomt</b><small>Supabase genererer nummeret, når du vælger Save.</small></div>
               <figure>
-                <img src="../assets/supabase-user-row.png" alt="Users-tabellen efter Save med én user og det genererede id 1" />
-                <figcaption>Efter Save findes useren som en række med fx <code>id = 1</code>.</figcaption>
+                <img src="../assets/supabase-users-filled.png" alt="Users-tabellen med fem users og genererede id-værdier fra 1 til 5" />
+                <figcaption>Efter Save har hver user sit eget genererede <code>id</code>.</figcaption>
               </figure>
             </div>
           </div>
@@ -327,7 +327,7 @@
             genererer værdien. Hvis tabellen har createdAt, behold default-værdien. Gem gerne Rasmus og Maria, så flere
             relationer kan afprøves bagefter. Det centrale er, at user-rækkerne skal findes, før posts kan få deres userId.
             [Sources] - User-provided Supabase screenshots · slides/assets/supabase-insert-user.png ·
-            slides/assets/supabase-user-row.png - SQL 03 seed data · lokalt undervisningsmateriale - Supabase Tables and Data ·
+            slides/assets/supabase-users-filled.png - SQL 03 seed data · lokalt undervisningsmateriale - Supabase Tables and Data ·
             https://supabase.com/docs/guides/database/tables [/Sources]
           </aside>
         </section>
@@ -364,15 +364,15 @@
               <figcaption><b>1</b> Klik i <code>userId</code> og vælg en række fra <code>users</code></figcaption>
             </figure>
             <figure>
-              <img src="../assets/supabase-post-with-user-id.png" alt="Posts-tabellen hvor et post nu har userId 1 og et relationsikon" />
-              <figcaption><b>2</b> Postet gemmer kun værdien <code>userId = 1</code></figcaption>
+              <img src="../assets/supabase-posts-linked.png" alt="Posts-tabellen hvor alle posts har en userId fra 1 til 5" />
+              <figcaption><b>2</b> Hvert post gemmer kun den relevante <code>userId</code></figcaption>
             </figure>
           </div>
           <p class="ui-rule"><strong>Rækkefølgen betyder noget:</strong> En fremmednøgle kan kun pege på en række, der allerede findes.</p>
           <aside class="notes">
             Lad eventuelt de studerende prøve userId 99 på en test-række og læse fejlbeskeden. Ret derefter værdien til et
             eksisterende id. Det gør fremmednøglens regel konkret uden SQL. [Sources] - User-provided Supabase screenshots ·
-            slides/assets/supabase-select-related-user.png · slides/assets/supabase-post-with-user-id.png - Supabase Tables and Data ·
+            slides/assets/supabase-select-related-user.png · slides/assets/supabase-posts-linked.png - Supabase Tables and Data ·
             https://supabase.com/docs/guides/database/tables - SQL 03 · lokalt undervisningsmateriale [/Sources]
           </aside>
         </section>
@@ -427,24 +427,17 @@
         <section class="po-slide response-slide">
           <span class="eyebrow">Responsen får en ny form</span>
           <h2>Postet indeholder nu et indlejret <code>user</code>-objekt</h2>
-          <div class="response-layout">
-            <pre class="po-code"><code class="language-json">{
-  "id": 1,
-  "caption": "Exploring Aarhus",
-  "image": "...",
-  "userId": 1,
-  "user": {
-    "id": 1,
-    "name": "Rasmus Cederdorff",
-    "title": "Senior Lecturer",
-    "image": "..."
-  }
-}</code></pre>
+          <div class="response-layout response-screenshot-layout">
+            <figure class="response-screenshot">
+              <img src="../assets/supabase-rest-post-with-nested-user.png" alt="REST-response fra Supabase hvor et post med userId 1 indeholder et indlejret user-objekt" />
+              <figcaption><code>select=*,user:users(*)</code> i den faktiske REST-response</figcaption>
+            </figure>
             <div class="response-meaning"><span>Relationen bruges her</span><strong><code>userId: 1</code></strong><b>→</b><strong><code>user: { … }</code></strong><p>Fremmednøglen forbinder rækkerne. Supabase former responsen.</p></div>
           </div>
           <aside class="notes">
             Peg på forskellen mellem det, der er gemt i posts-tabellen, og det Supabase returnerer. user-objektet er ikke
-            kopieret ind i post-rækken. [Sources] - Supabase Querying Joins and Nested Tables ·
+            kopieret ind i post-rækken. [Sources] - User-provided REST screenshot ·
+            slides/assets/supabase-rest-post-with-nested-user.png - Supabase Querying Joins and Nested Tables ·
             https://supabase.com/docs/guides/database/joins-and-nesting [/Sources]
           </aside>
         </section>
