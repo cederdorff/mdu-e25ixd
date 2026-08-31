@@ -1,4 +1,4 @@
-# RACE - Product optimization: Case 1 · Performance, Lighthouse og dokumenteret effekt - 02-09-2026
+# RACE - Product optimization: Case 1 · Performance, Lighthouse og videre arbejde - 02-09-2026
 
 ## Formål
 

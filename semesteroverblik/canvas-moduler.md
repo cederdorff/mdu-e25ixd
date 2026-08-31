@@ -21,7 +21,7 @@ RACE - Product optimization: JavaScript for React - 21-08-2026
 RACE - Product optimization: Case 1 · Kick-off, fejlhåndtering og robuste UI-states - 25-08-2026
 RACE - Product optimization: Case 1 · Arkitektur, styling og accessibility - 26-08-2026
 RACE - Product optimization: Case 1 · Datamodellering, relationer og Supabase - 01-09-2026
-RACE - Product optimization: Case 1 · Performance, Lighthouse og dokumenteret effekt - 02-09-2026
+RACE - Product optimization: Case 1 · Performance, Lighthouse og videre arbejde - 02-09-2026
 
 >>> LAES - Product optimization: Case 2 - 07-09-2026 - 18-09-2026 <<<
 

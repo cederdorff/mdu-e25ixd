@@ -27,7 +27,7 @@ Samlet materialeoversigt til 3. semester Interaction Design (IxD), Multimediedes
 | 25. august | Case 1 · Kick-off, fejlhåndtering og robuste UI-states | [Undervisningsside](undervisning/product-optimization/race-03-2026-08-25-case-1-kick-off-fejlhaandtering-og-robuste-ui-states.md) · [Slides](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-03/) |
 | 26. august | Case 1 · Arkitektur, styling og accessibility | [Undervisningsside](undervisning/product-optimization/race-04-2026-08-26-case-1-arkitektur-styling-og-accessibility.md) · [Slides](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-04/) |
 | 1. september | Case 1 · Datamodellering, relationer og Supabase | [Undervisningsside](undervisning/product-optimization/race-05-2026-09-01-case-1-datamodellering-relationer-og-supabase.md) |
-| 2. september | Case 1 · Performance, Lighthouse og dokumenteret effekt | [Undervisningsside](undervisning/product-optimization/race-06-2026-09-02-case-1-performance-lighthouse-og-dokumenteret-effekt.md) |
+| 2. september | Case 1 · Performance, Lighthouse og videre arbejde | [Undervisningsside](undervisning/product-optimization/race-06-2026-09-02-case-1-performance-lighthouse-og-videre-arbejde.md) |
 | 12. oktober | Portfolio og faglig dokumentation | [Undervisningsside](undervisning/product-optimization/race-07-2026-10-12-portfolio-og-faglig-dokumentation.md) |
 
 ## Dynamic User Interface
