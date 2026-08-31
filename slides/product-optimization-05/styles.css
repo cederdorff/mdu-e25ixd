@@ -892,6 +892,84 @@
 
 .create-table-steps code { color: var(--data-blue); }
 
+.user-data-guide {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 30px;
+  align-items: stretch;
+  margin-top: 30px;
+}
+
+.user-data-fields {
+  display: grid;
+  padding: 26px 28px;
+  border-top: 6px solid var(--green);
+  background: var(--surface);
+}
+
+.user-data-fields > span {
+  margin-bottom: 12px;
+  color: var(--green);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.user-data-fields > p {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-top: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.user-data-fields code {
+  color: var(--data-blue);
+  font-size: 19px;
+}
+
+.user-data-fields strong {
+  color: var(--ink);
+  font-size: 20px;
+}
+
+.generated-user-id {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  padding: 34px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgb(101 167 255 / 13%), rgb(62 207 142 / 8%));
+}
+
+.generated-user-id > span {
+  color: var(--muted);
+  font-size: 20px;
+}
+
+.generated-user-id > strong {
+  margin-top: 20px;
+  color: var(--green);
+  font-size: 46px;
+}
+
+.generated-user-id > p {
+  margin-top: 36px;
+  color: var(--muted);
+  font-size: 19px;
+}
+
+.generated-user-id > code {
+  margin-top: 10px;
+  color: var(--data-blue);
+  font-size: 28px;
+  font-weight: 800;
+}
+
 .ui-path {
   display: grid;
   align-content: center;
