@@ -18,7 +18,7 @@
       <div class="slides">
         <section class="po-slide po-title data-title">
           <span class="eyebrow">Product Optimization · Case 1</span>
-          <h1>Data skal kun have <span>ét hjem</span></h1>
+          <h1>Fra gentagne data til <span>relationer</span></h1>
           <p class="lead">Datamodellering · relationer · Supabase REST API</p>
           <p class="date"><span>RACE</span><time datetime="2026-09-01">1. september 2026</time></p>
           <aside class="notes">
@@ -30,7 +30,7 @@
 
         <section class="po-slide po-agenda" id="agenda">
           <span class="eyebrow">Agenda</span>
-          <h2>Vi ser problemet, før vi giver det faglige navne</h2>
+          <h2>Sådan bygger vi en bedre datamodel</h2>
           <ol class="agenda-list four-items">
             <li><a href="#/gentagelser"><b>Gentagne data</b><small>Fra den kendte Post App til et konkret vedligeholdelsesproblem</small></a></li>
             <li><a href="#/relationer"><b>To tabeller og en relation</b><small>Forstå modellen, og opret relationen i Supabase-interfacet</small></a></li>
@@ -46,8 +46,8 @@
         <section class="chapter po-chapter po-slide problem-chapter app-chapter" id="gentagelser">
           <span class="chapter-index">01</span>
           <span class="eyebrow">Den Post App, I kender</span>
-          <h2>Først har hvert post<br />kun sine egne data</h2>
-          <p class="kicker">Én tabel. En enkel CRUD-app. Ingen relationer endnu.</p>
+          <h2>Vi starter med<br />en enkel posts-tabel</h2>
+          <p class="kicker">Én tabel. Enkel CRUD. Ingen user-data eller relationer endnu.</p>
           <img class="chapter-app-shot" src="../assets/post-app-posts.webp" alt="Post App med en oversigt over posts uden brugeroplysninger" />
           <aside class="notes">
             Start i den kendte Post App og lad dem beskrive, hvilke data de kan se. Brug derefter SQL 01 som
@@ -98,13 +98,13 @@
 
         <section class="po-slide duplicated-table-slide">
           <span class="eyebrow">Trin 2 · <code>postsWithUserData</code></span>
-          <h2>Den hurtige løsning er at lægge brugeren ind i hvert post</h2>
+          <h2>Den hurtige løsning er at gemme user-data på hvert post</h2>
           <div class="schema-visual schema-visual-duplicated">
             <img src="../assets/posts-with-user-data.png" alt="Supabase Schema Visualizer med tabellen postsWithUserData, hvor brugerfelter ligger sammen med postfelterne" />
             <div class="field-groups">
-              <article><span>Postet</span><code>caption</code><code>image</code></article>
-              <article><span>Brugeren</span><code>userName</code><code>userMail</code><code>userTitle</code><code>userImage</code></article>
-              <p>Det virker i UI’et — men brugerens oplysninger bliver kopieret til hvert post.</p>
+              <article><span>Post</span><code>caption</code><code>image</code></article>
+              <article><span>User</span><code>userName</code><code>userMail</code><code>userTitle</code><code>userImage</code></article>
+              <p>Det virker i UI’et — men user-data bliver kopieret til hvert post.</p>
             </div>
           </div>
           <aside class="notes">
