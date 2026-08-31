@@ -521,6 +521,48 @@
 .change-question b { color: var(--ink); font-size: 25px; }
 .change-question strong { color: var(--coral); font-size: 56px; text-align: right; }
 
+.table-screenshot-wrap {
+  position: relative;
+  margin-top: 26px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: #111413;
+}
+
+.table-screenshot-wrap img {
+  display: block;
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+}
+
+.repeat-highlight {
+  position: absolute;
+  top: 8%;
+  left: 42%;
+  width: 36%;
+  height: 29%;
+  border: 4px solid var(--coral);
+  background: rgb(240 143 115 / 10%);
+  box-shadow: 0 0 0 999px rgb(0 0 0 / 9%);
+  pointer-events: none;
+}
+
+.repeat-label {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  padding: 9px 13px;
+  background: var(--coral);
+  color: #17100e;
+  font-size: 16px;
+}
+
+.repetition-slide .change-question {
+  margin-top: 18px;
+}
+
 .ownership-columns,
 .interface-pair,
 .code-before-after,

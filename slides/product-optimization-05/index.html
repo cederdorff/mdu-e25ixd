@@ -118,17 +118,18 @@
         <section class="po-slide repetition-slide">
           <span class="eyebrow">Problemet bliver synligt</span>
           <h2>Den samme bruger er nu gemt tre gange</h2>
-          <div class="repetition-table" role="table" aria-label="Tre posts med gentagne brugerdata">
-            <div class="repeat-row repeat-head"><span>Post</span><span>userName</span><span>userTitle</span><span>userMail</span></div>
-            <div class="repeat-row"><span>#1 · Aarhus</span><mark>Rasmus Cederdorff</mark><mark>Senior Lecturer</mark><mark>race@eaaa.dk</mark></div>
-            <div class="repeat-row"><span>#2 · Aarhus Ø</span><mark>Rasmus Cederdorff</mark><mark>Senior Lecturer</mark><mark>race@eaaa.dk</mark></div>
-            <div class="repeat-row"><span>#3 · Dokk1</span><mark>Rasmus Cederdorff</mark><mark>Senior Lecturer</mark><mark>race@eaaa.dk</mark></div>
+          <div class="table-screenshot-wrap">
+            <img src="../assets/posts-with-user-data-table.png" alt="Supabase Table Editor med ti posts, hvor brugerens navn, mail, titel og billede gentages på flere rækker" />
+            <span class="repeat-highlight" aria-hidden="true"></span>
+            <strong class="repeat-label">Samme user · 3 rækker</strong>
           </div>
           <div class="change-question"><span>Rasmus får en ny titel</span><b>Hvor mange rækker skal ændres?</b><strong>3</strong></div>
           <aside class="notes">
-            Ret eventuelt titlen på kun én af de tre rækker i Table Editor og vis inkonsistensen i appen. Det gør
-            problemet konkret, før ordet normalisering introduceres. [Sources] - SQL 02 og Post App duplicated branch ·
-            lokale undervisningsmaterialer [/Sources]
+            Peg på de første tre rækker i den rigtige Table Editor: postets indhold er forskelligt, men Rasmus’ navn,
+            mail og titel er identiske kopier. Ret eventuelt titlen på kun én række og vis inkonsistensen i appen. Det
+            gør problemet konkret, før ordet normalisering introduceres. [Sources] - User-provided Supabase Table Editor
+            screenshot · slides/assets/posts-with-user-data-table.png - SQL 02 og Post App duplicated branch · lokale
+            undervisningsmaterialer [/Sources]
           </aside>
         </section>
 
