@@ -2,73 +2,104 @@
 
 ## Formål
 
-At bygge videre på de studerendes erfaring med simpel CRUD ved at forbedre løsningens datamodel og gøre kommunikationen mellem React og Supabase mere overskuelig og robust.
+I dag arbejder du med at fordele data på relaterede tabeller og undgå inkonsistente, gentagne oplysninger. Jeg viser princippet med `users` og `posts` i Post App fra 2. semester samt hentning gennem Supabase REST API. Derefter anvender du det på relationerne mellem `venues`, `events` og `registrations` i Mellemrum.
 
-Efter undervisningen skal du kunne modellere en enkel relation mellem tabeller, hente relaterede data med Supabase og adskille dataadgang fra præsentationslogik.
+Efter undervisningen skal du kunne:
+
+- identificere data, der gentages og kan blive inkonsistente
+- modellere en enkel en-til-mange-relation med primær- og fremmednøgler
+- hente relaterede data gennem Supabase REST API og anvende dem i React
+- forbedre og verificere relationerne mellem `venues`, `events` og `registrations` i Case 1
 
 <hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
-- Medbring den seneste version af din løsning.
-- Find de steder, hvor løsningen bruger den CRUD, filtrering eller sortering, I arbejdede med på 2. semester.
-- Find de steder, hvor løsningen henter data med Supabase REST API og `fetch`.
+- Arbejd videre på Case 1, og sørg for, at Mellemrum og forbindelsen til Supabase fungerer lokalt.
+- Medbring din seneste stabile version og din tekniske audit.
+- Tænk tilbage på Web App-projektet på 2. semester: Hvilke udfordringer havde du med at strukturere og modellere data? Hvor blev oplysninger gentaget, vanskelige at opdatere eller svære at forbinde?
 
 <hr style="margin: 2rem 0;">
 
 ## Agenda
 
+**Dagens arbejdsrytme:** Se princippet i Post App → undersøg Mellemrums data → modellér relationerne → implementér → verificér.
+
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Fra gentagne data til relationer</strong></summary>
 <ul>
-<li>Fra flere isolerede tabeller til en sammenhængende datamodel.</li>
-<li>Post App-eksempel: Gem først navn og avatar direkte på hver post.</li>
-<li>Undersøg konsekvenserne af duplikerede og inkonsistente brugerdata.</li>
-<li>Primærnøgler, fremmednøgler og relationen: Én bruger kan have mange posts.</li>
+<li>Tag udgangspunkt i erfaringerne med simple datamodeller og CRUD fra 2. semester.</li>
+<li>Undersøg Post App-eksemplet, hvor brugerens navn og avatar gemmes direkte på hvert post.</li>
+<li>Se, hvordan samme brugerdata bliver gentaget og kan blive inkonsistent, når én bruger opretter flere posts.</li>
+<li>Skeln mellem data, der beskriver et post, og data, der beskriver en bruger.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>2. Opdel og forbind data</strong></summary>
+<summary><strong>2. Demonstration: Forbedr Post Appens datamodel</strong></summary>
 <ul>
-<li>Opdel data i <code>users</code> og <code>posts</code>.</li>
-<li>Forbind tabellerne med en fremmednøgle.</li>
-<li>Hent de relaterede data gennem Supabase REST API.</li>
+<li>Opdel data i <code>users(id, name, avatar)</code> og <code>posts(id, image, caption, user_id)</code>.</li>
+<li>Brug tabellernes <code>id</code> som primærnøgler og <code>posts.user_id</code> som fremmednøgle til <code>users.id</code>.</li>
+<li>Læs relationen i begge retninger: En bruger kan oprette mange posts; hvert post tilhører én bruger.</li>
+<li>Opret relationen i Supabase, og kontrollér den i Schema Visualizer.</li>
+<li>Ret én brugers navn, og se hvordan alle brugerens posts nu kan vise den samme opdaterede oplysning uden at ændre flere postrækker.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Relationer gennem Supabase REST API</strong></summary>
+<summary><strong>3. Hent relaterede data gennem Supabase REST API</strong></summary>
 <ul>
-<li>Byg en forespørgsel, der henter posts sammen med de relaterede brugerdata.</li>
-<li>Undersøg request og response i browserens Network-panel.</li>
+<li>Hent posts sammen med den relaterede bruger, fx med <code>/posts?select=id,image,caption,user:users(id,name,avatar)</code>.</li>
+<li>Gennemgå queryen og det indlejrede response, så forbindelsen mellem fremmednøglen og API-data bliver tydelig.</li>
+<li>Tilpas React til den nye dataform, fx <code>post.user.name</code> og <code>post.user.avatar</code>.</li>
+<li>Undersøg requestets URL, statuskode og response i browserens Network-panel.</li>
+<li>Når et post oprettes, gemmes brugerens <code>id</code> som <code>user_id</code> – ikke en ny kopi af navn og avatar.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>4. Dataadgang og robuste UI-states</strong></summary>
+<summary><strong>4. Overfør princippet til Mellemrum</strong></summary>
 <ul>
-<li>Saml forespørgsler og mutationer i et tydeligt data- eller service-lag.</li>
-<li>Håndtér loading, fejl, tomme resultater og brugerfeedback konsistent.</li>
+<li>Undersøg den eksisterende datamodel: <code>events</code> gentager venueoplysninger, mens <code>registrations</code> gentager titel, dato og sted fra events.</li>
+<li>Modellér <code>venues</code>, <code>events</code> og <code>registrations</code>: Ét venue kan have mange events, og ét event kan have mange tilmeldinger.</li>
+<li>Forbind <code>events.venue_id</code> med <code>venues.id</code> og <code>registrations.event_id</code> med <code>events.id</code>.</li>
+<li>Hent events med deres venue og tilmeldinger med deres event gennem Supabase REST API.</li>
+<li>Tilpas tilmeldingsflowet, så en ny tilmelding gemmes med det valgte <code>event_id</code>, og tilpas den interne side til det relaterede response.</li>
+<li>Bevar de gamle kolonner, indtil de eksisterende rækker er forbundet, og de nye requests og visninger virker.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>5. Overfør princippet til Case 1</strong></summary>
+<summary><strong>5. Verificér og dokumentér forbedringen</strong></summary>
 <ul>
-<li>Oversæt princippet fra <code>users</code> og <code>posts</code> til <code>events</code>, <code>venues</code> og <code>registrations</code>.</li>
-<li>Arbejd med relevante primær- og fremmednøgler i den eksisterende case-løsning.</li>
-<li>Vurdér, om datamodellen og koden er blevet lettere at forstå og videreudvikle.</li>
+<li>Kontrollér relationerne i Schema Visualizer og de konkrete fremmednøgler i Table Editor.</li>
+<li>Gennemfør en tilmelding, og kontrollér at den gemmes med det korrekte <code>event_id</code>.</li>
+<li>Kontrollér i Network-panelet, at de relaterede data hentes som forventet.</li>
+<li>Kontrollér at events fortsat viser korrekt venue, og at den interne side viser tilmeldinger med de korrekte eventdata.</li>
+<li>Dokumentér problemet, den forbedrede model og din verifikation i den tekniske audit.</li>
 </ul>
 </details>
+
+### Dagens leverance
+
+- En datamodel med tabeller, primærnøgler, fremmednøgler og relationer.
+- En fungerende relation mellem `events` og `venues` samt mellem `registrations` og `events`.
+- Et gennemført tilmeldingsflow, der gemmer det korrekte `event_id`.
+- Evidens fra Supabase, Network-panelet og den relevante del af UI'et.
+- En opdateret audit med problem, løsning og verifikation.
 
 <hr style="margin: 2rem 0;">
 
 ## Materialer
 
+- **Case 1 og audit:**
+  - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
+  - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
+- **Fælles eksempel:**
+  - [Post App med Supabase](https://github.com/cederdorff/post-app-supabase)
+- **Supabase:**
+  - [Tables and Data · primærnøgler, fremmednøgler og relationer](https://supabase.com/docs/guides/database/tables)
+  - [Querying Joins and Nested Tables](https://supabase.com/docs/guides/database/joins-and-nesting)
+  - [Data REST API](https://supabase.com/docs/guides/api)
 - **Slides:**
-  - Vil blive tilgængelige her
-- **Opgaver:**
-  - Datamodellerings- og Supabase-øvelse vil blive tilgængelig her
-- **Links:**
   - Vil blive tilgængelige her
