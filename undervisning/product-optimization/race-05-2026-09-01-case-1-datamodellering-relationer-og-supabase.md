@@ -49,8 +49,9 @@ Efter undervisningen skal du kunne:
 <details style="margin-left: 1.5rem;">
 <summary><strong>3. Hent relaterede data gennem Supabase REST API</strong></summary>
 <ul>
-<li>Hent posts sammen med den relaterede bruger, fx med <code>/posts?select=id,createdAt,caption,image,user:users(id,name,mail,title,image)</code>.</li>
-<li>Gennemgå queryen og det indlejrede response, så forbindelsen mellem fremmednøglen og API-data bliver tydelig.</li>
+<li>Start enkelt med <code>/posts?select=*,user:users(*)</code>, og se hvordan Supabase indlejrer den relaterede bruger i hvert post.</li>
+<li>Udvælg derefter kun de nødvendige felter med <code>/posts?select=id,createdAt,caption,image,userId,user:users(id,name,title,image)</code>.</li>
+<li>Sammenlign de to responses, så forbindelsen mellem <code>userId</code>, relationen og det indlejrede brugerobjekt bliver tydelig.</li>
 <li>Tilpas React til den nye dataform, fx <code>post.user.name</code>, <code>post.user.title</code> og <code>post.user.image</code>.</li>
 <li>Undersøg requestets URL, statuskode og response i browserens Network-panel.</li>
 <li>Når et post oprettes, gemmes brugerens <code>id</code> som <code>userId</code> – ikke nye kopier af brugerens oplysninger.</li>
