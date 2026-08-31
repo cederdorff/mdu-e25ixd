@@ -85,20 +85,6 @@ Efter undervisningen skal du kunne:
 
 <hr style="margin: 2rem 0;">
 
-## Supabase uden SQL: Opret en relation i interfacet
-
-Du skal ikke skrive SQL for at følge denne arbejdsgang. Brug denne rækkefølge, når du opretter eller forbedrer en relation:
-
-1. **Opret tabellen, der skal peges på.** Vælg **Table Editor → New table**, opret fx `users`, og behold det genererede `id` som primærnøgle.
-2. **Tilføj tabellens egne felter.** Opret fx `name`, `mail`, `title` og `image` som `text`, og indsæt mindst én user. Supabase genererer brugerens `id`.
-3. **Tilføj fremmednøglen.** Åbn `posts`, opret `userId` med samme datatype som `users.id` (`int8`), og vælg en foreign key relation til `public.users → id`.
-4. **Forbind de eksisterende rækker.** Sæt `userId` på hvert post til id'et på den user, postet tilhører. Den refererede user skal eksistere først.
-5. **Kontrollér resultatet.** Se værdierne i Table Editor, forbindelsen i Schema Visualizer og den relaterede user i appen eller REST-responsen.
-
-Bevar de gamle, gentagne kolonner, indtil relationen og visningen er verificeret. Hvis data findes i Table Editor, men ikke kan hentes i appen, kan årsagen være projektets adgangspolitikker (RLS) og ikke selve relationen.
-
-<hr style="margin: 2rem 0;">
-
 ## Materialer
 
 - **Case 1 og audit:**

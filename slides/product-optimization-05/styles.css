@@ -26,6 +26,19 @@
   grid-template-rows: repeat(4, 1fr);
 }
 
+.po-agenda .agenda-list li:first-child {
+  margin-bottom: 0;
+}
+
+.po-agenda .agenda-list li:first-child a {
+  border-color: var(--line);
+  background: rgb(255 255 255 / 3%);
+}
+
+.po-agenda .agenda-list li:first-child::before {
+  color: var(--green);
+}
+
 .problem-chapter,
 .relation-chapter,
 .api-chapter,
