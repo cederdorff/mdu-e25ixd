@@ -2,9 +2,9 @@
 
 ## Formål
 
-I dag undersøger du performance i en React-løsning. Vi bruger Lighthouse og browserens udviklerværktøjer til at finde konkrete problemer og vurdere deres betydning for brugeren.
+I dag bruger vi performance som det sidste fælles perspektiv på Case 1. Lighthouse hjælper med at finde mulige problemer, mens Network-panelet, Performance-panelet og den faktiske brugeroplevelse bruges til at undersøge årsagen.
 
-Vi arbejder med billeder og assets, requests og Supabase-data, React-renderinger og oplevet performance. Målet er ikke en bestemt Lighthouse-score, men at du kan vælge en relevant forbedring og dokumentere dens effekt.
+Efter det fælles indspark arbejder du videre med din prioriterede audit og får vejledning dér, hvor du har mest brug for det. Du kan arbejde med et relevant performancefund eller en anden central forbedring i Case 1. Målet er ikke en bestemt Lighthouse-score eller en færdig løsning, men at du kan undersøge, prioritere og dokumentere dit arbejde.
 
 <hr style="margin: 2rem 0;">
 
@@ -18,70 +18,57 @@ Vi arbejder med billeder og assets, requests og Supabase-data, React-renderinger
 
 ## Agenda
 
+**Dagens arbejdsrytme:** Fælles performanceindspark → etablér en baseline → vurdér om der er et væsentligt fund → arbejd videre med Case 1 → dokumentér status og næste skridt.
+
 <details style="margin-left: 1.5rem;">
-<summary><strong>1. Hvad betyder performance for brugeren?</strong></summary>
+<summary><strong>1. Performance med udgangspunkt i brugeren</strong></summary>
 <ul>
-<li>Skeln mellem teknisk performance og oplevet performance.</li>
-<li>Se på indlæsning, visuel stabilitet, respons og feedback.</li>
-<li>Tag udgangspunkt i konkrete brugerflows frem for optimering for optimeringens skyld.</li>
+<li>Tag udgangspunkt i konkrete brugerflows og skeln mellem teknisk og oplevet performance.</li>
+<li>Se på indlæsning, visuel stabilitet, respons og feedback – ikke kun en samlet score.</li>
+<li>Vurdér konsekvensen for brugeren, før du beslutter, om et fund skal prioriteres.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>2. Lighthouse og en sammenlignelig baseline</strong></summary>
+<summary><strong>2. Fra Lighthouse til et begrundet fund</strong></summary>
 <ul>
-<li>Kør Lighthouse i Chrome, og brug rapporten til at finde områder, der skal undersøges nærmere.</li>
-<li>Gentag målinger under de samme forhold, og sammenlign ikke localhost direkte med deployment.</li>
-<li>Brug <code>npm run build</code> og <code>npm run preview</code>, når du vil undersøge løsningen uden development-adfærd.</li>
-<li>Undersøg også Network-panelet, konsollen og den faktiske brugeroplevelse.</li>
-<li>Brug scoren som et pejlemærke – ikke som målet for arbejdet.</li>
+<li>Kør Lighthouse som en sammenlignelig baseline på deployment eller en production build.</li>
+<li>Brug rapporten til at formulere mulige problemer, og undersøg dem videre med Network-panelet og det konkrete brugerflow.</li>
+<li>Brug kun Performance-panelet eller React DevTools Profiler, hvis et load eller en interaktion kræver en dybere undersøgelse.</li>
+<li>Gentag målinger under samme forhold, og sammenlign ikke localhost direkte med deployment.</li>
+<li>En høj score og fraværet af et væsentligt problem er også et gyldigt resultat. Opfind ikke en optimering for at ramme 100.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Billeder, assets og dependencies</strong></summary>
+<summary><strong>3. Billeder, assets og indlæsning</strong></summary>
 <ul>
-<li>Brug passende billeddimensioner og moderne filformater.</li>
-<li>Angiv bredde og højde, så layoutet ikke flytter sig under indlæsning.</li>
-<li>Brug <code>loading="lazy"</code> til billeder længere nede på siden.</li>
-<li>Undgå lazy loading af sidens vigtigste billede.</li>
-<li>Undersøg store eller unødvendige fonte og andre assets.</li>
-<li>Find og fjern dependencies, som projektet ikke længere bruger.</li>
+<li>Undersøg billeddimensioner, filstørrelser og moderne formater som <code>WebP</code> og <code>AVIF</code>.</li>
+<li>Angiv <code>width</code> og <code>height</code>, og brug lazy loading til billeder, der ikke er vigtige for den første visning.</li>
+<li>Brug Unsplash-parametrene <code>w</code>, <code>q</code> og <code>auto=format</code>, og kontrollér resultatet i Network-panelet.</li>
+<li>Vurdér om egne logoer og faste produktassets skal ligge i projektet eller egen storage, mens indholdsbilleder leveres gennem en image-CDN.</li>
+<li>Undersøg store eller unødvendige fonte, assets og dependencies.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>4. Requests, søgning og Supabase-data</strong></summary>
+<summary><strong>4. Requests, Supabase og React</strong></summary>
 <ul>
-<li>Hent kun de kolonner og rækker, som brugergrænsefladen har brug for.</li>
-<li>Brug Network-panelet til at se, hvad der hentes fra Supabase, hvornår det hentes, og hvor mange gange det hentes.</li>
-<li>Vær opmærksom på, at React Strict Mode kan genkøre effects i development. Kontrollér derfor også en production build, før du vurderer et gentaget request.</li>
-<li>Find requests, der er unødvendige, gentagne eller sender mere data end nødvendigt.</li>
-<li>Vurdér, om søgning og filtrering skal ske lokalt eller gennem Supabase.</li>
-<li>Overvej datamængde, antal requests og brugeroplevelse i dit valg.</li>
+<li>Brug Network-panelet til at se, hvad der hentes, hvornår det hentes, og hvor meget data der overføres.</li>
+<li>Hent kun de nødvendige kolonner og rækker, og undersøg unødvendige eller gentagne requests.</li>
+<li>Kontrollér mistænkte gentagelser i en production build, så React Strict Mode ikke fejltolkes som et produktionsproblem.</li>
+<li>Undersøg kun renderinger med React DevTools Profiler, hvis et konkret brugerflow virker langsomt.</li>
+<li>Overvej lazy loading af større routes, hvis målingen viser, at den første JavaScript-indlæsning er et relevant problem.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>5. React-renderinger og oplevet performance</strong></summary>
+<summary><strong>5. Arbejd videre med Case 1 og få vejledning</strong></summary>
 <ul>
-<li>Fjern state, der gentager værdier eller kan beregnes ud fra eksisterende data.</li>
-<li>Undersøg effects, der udløser unødvendige requests eller opdateringer.</li>
-<li>Brug stabile og korrekte <code>key</code>-værdier i lister.</li>
-<li>Afprøv <code>React.lazy</code> og <code>Suspense</code> til større side- eller route-komponenter, hvis det reducerer den første indlæsning.</li>
-<li>Bevar relevant indhold på skærmen, og giv tydelig feedback under ventetid.</li>
-<li>Optimér kun renderinger, når du kan beskrive og dokumentere problemet.</li>
-<li>Behold <code>StrictMode</code>; det skal ikke fjernes for at skjule development-adfærd.</li>
-</ul>
-</details>
-
-<details style="margin-left: 1.5rem;">
-<summary><strong>6. Implementér og verificér en forbedring</strong></summary>
-<ul>
-<li>Vælg ét relevant performancefund fra din audit.</li>
-<li>Arbejd med forbedringen i en tydeligt navngivet feature branch.</li>
-<li>Gentag testen under de samme forhold.</li>
-<li>Dokumentér før, ændring, efter og eventuelle begrænsninger.</li>
+<li>Gør status på din audit, og vælg et performancefund eller en anden central forbedring.</li>
+<li>Hvis performance allerede er tilfredsstillende, dokumentér konklusionen kort og prioritér noget vigtigere.</li>
+<li>Dokumentér problemet og en relevant baseline, og arbejd videre i en tydeligt navngivet feature branch.</li>
+<li>Få vejledning dér, hvor du har brug for det, og dokumentér det, du når, samt næste skridt.</li>
 </ul>
 </details>
 
@@ -93,3 +80,10 @@ Vi arbejder med billeder og assets, requests og Supabase-data, React-renderinger
   - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
 - **Audit:**
   - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
+- **Værktøjer:**
+  - [Lighthouse](https://developer.chrome.com/docs/lighthouse)
+  - [Chrome DevTools · Network](https://developer.chrome.com/docs/devtools/network/overview)
+  - [Chrome DevTools · Performance](https://developer.chrome.com/docs/devtools/performance/overview)
+  - [React Developer Tools](https://react.dev/learn/react-developer-tools)
+  - [Image performance](https://web.dev/learn/performance/image-performance)
+  - [Unsplash · dynamiske billedstørrelser og formater](https://unsplash.com/documentation#dynamically-resizable-images)
