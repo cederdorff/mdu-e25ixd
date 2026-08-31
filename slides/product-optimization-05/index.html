@@ -277,26 +277,26 @@
 
         <section class="po-slide ui-guide-slide">
           <span class="eyebrow">Supabase uden SQL · 1</span>
-          <h2>Opret først tabellen, som de andre skal pege på</h2>
-          <div class="ui-setup-layout">
-            <div class="ui-path" aria-label="Vej gennem Supabase-interfacet">
-              <span>Table Editor</span><b>→</b><span>New table</span><b>→</b><strong>users</strong><b>→</b><span>Save</span>
+          <h2>Opret <code>users</code> direkte i Supabase-interfacet</h2>
+          <div class="create-table-visual">
+            <div class="create-table-shot">
+              <img src="../assets/create-user-table.png" alt="Supabase-dialog til oprettelse af users med id, createdAt, name, mail, title og image" />
             </div>
-            <div class="ui-field-list">
-              <p class="field-head"><strong>Kolonne</strong><strong>Type</strong><strong>Indstilling</strong></p>
-              <p><code>id</code><span>int8</span><mark>Primary key · generated</mark></p>
-              <p><code>name</code><span>text</span><small>Required</small></p>
-              <p><code>mail</code><span>text</span><small>Required</small></p>
-              <p><code>title</code><span>text</span><small>Required</small></p>
-              <p><code>image</code><span>text</span><small>Required</small></p>
+            <div class="create-table-steps">
+              <span>Database → Tables → New table</span>
+              <p><b>1</b><strong>Navngiv tabellen <code>users</code></strong></p>
+              <p><b>2</b><strong>Behold <code>id</code> som <code>int8</code> og Primary</strong></p>
+              <p><b>3</b><strong>Tilføj <code>name</code>, <code>mail</code>, <code>title</code> og <code>image</code> som <code>text</code></strong></p>
+              <small><code>createdAt</code> er valgfri på en user og indgår ikke i vores model.</small>
             </div>
           </div>
           <p class="ui-rule"><strong>Behold det genererede <code>id</code>.</strong> Supabase giver hver ny user sit eget unikke nummer.</p>
           <aside class="notes">
-            Demonstrér dette i Table Editor, ikke i SQL Editor. Supabase opretter normalt id-kolonnen som int8 og
-            primærnøgle i dialogen til en ny tabel; kontrollér indstillingerne, før du gemmer. Opret users først, fordi
-            posts om lidt skal pege på users.id. [Sources] - Supabase Tables and Data ·
-            https://supabase.com/docs/guides/database/tables [/Sources]
+            Demonstrér dette i Database → Tables, ikke i SQL Editor. Peg på de samme områder i screenshot’et: tabelnavn,
+            id-kolonnen og userens fire felter. Screenshot’et viser også createdAt; det er valgfrit og er ikke en del af
+            vores users-model. Opret users først, fordi posts om lidt skal pege på users.id. RLS-feltet er adgangskontrol
+            og ikke fokus for denne forklaring. [Sources] - User-provided Supabase screenshot ·
+            slides/assets/create-user-table.png - Supabase Tables and Data · https://supabase.com/docs/guides/database/tables [/Sources]
           </aside>
         </section>
 
