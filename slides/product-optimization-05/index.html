@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RACE · Product Optimization · Case 1, datamodellering, relationer og Supabase · 1. september 2026."
+    />
+    <title>Case 1 · Datamodellering, relationer og Supabase · 01.09.2026</title>
+    <link rel="stylesheet" href="../vendor/reveal/reveal.css" />
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="../product-optimization-03/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="po-slide po-title data-title">
+          <span class="eyebrow">Product Optimization · Case 1</span>
+          <h1>Data skal kun have <span>ét hjem</span></h1>
+          <p class="lead">Datamodellering · relationer · Supabase REST API</p>
+          <p class="date"><span>RACE</span><time datetime="2026-09-01">1. september 2026</time></p>
+          <aside class="notes">
+            Åbn med den praktiske pointe: Vi starter i den Post App og det Supabase-interface, de allerede kender. SQL-filerne
+            etablerer demonstrationens tre tilstande, men de studerende skal ikke lære at skrive SQL i dag. [Sources] -
+            Dagens undervisningsside og lokale Post App-materialer [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide po-agenda" id="agenda">
+          <span class="eyebrow">Agenda</span>
+          <h2>Vi ser problemet, før vi giver det faglige navne</h2>
+          <ol class="agenda-list four-items">
+            <li><a href="#/gentagelser"><b>Gentagne data</b><small>Fra den kendte Post App til et konkret vedligeholdelsesproblem</small></a></li>
+            <li><a href="#/relationer"><b>To tabeller og en relation</b><small>Placér data ét sted, og forbind rækker med ID’er</small></a></li>
+            <li><a href="#/rest-api"><b>Supabase REST API og React</b><small>Hent den relaterede bruger, og brug den nye dataform</small></a></li>
+            <li><a href="#/mellemrum"><b>Overfør til Mellemrum</b><small>Modellér venues, events og registrations</small></a></li>
+          </ol>
+          <aside class="notes">
+            Fortæl eksplicit, at begreber som primærnøgle, fremmednøgle og en-til-mange først kommer, når problemet er
+            synligt. [Sources] - Dagens undervisningsside · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide problem-chapter" id="gentagelser">
+          <span class="chapter-index">01</span>
+          <span class="eyebrow">Den Post App, I kender</span>
+          <h2>Først har hvert post<br />kun sine egne data</h2>
+          <p class="kicker">Én tabel. En enkel CRUD-app. Ingen relationer endnu.</p>
+          <aside class="notes">
+            Start med SQL 01 som bagvedliggende opsætning og åbn tabellen i Supabase Table Editor. [Sources] -
+            undervisning/product-optimization/post-app-sql/01-posts.sql [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide simple-table-slide">
+          <span class="eyebrow">Trin 1 · <code>posts</code></span>
+          <h2>Alle kolonner beskriver selve postet</h2>
+          <div class="supabase-frame">
+            <div class="supabase-bar"><b>Table Editor</b><span>public / posts</span></div>
+            <table class="data-table simple-posts-table">
+              <thead><tr><th><span class="key-mark">PK</span> id</th><th>createdAt</th><th>caption</th><th>image</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>01-09-2026</td><td>Exploring the streets of Aarhus.</td><td>…/aarhus.webp</td></tr>
+                <tr><td>2</td><td>01-09-2026</td><td>Modern architecture at Aarhus Ø.</td><td>…/architecture.webp</td></tr>
+                <tr><td>3</td><td>01-09-2026</td><td>A quiet evening around Dokk1.</td><td>…/dokk1.webp</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="slide-question">Hvilke oplysninger mangler, hvis vi også vil vise, hvem der har lavet postet?</p>
+          <aside class="notes">
+            Lad dem læse tabellen fra Table Editor: én række er ét post, og kolonnerne beskriver postet. PK-markøren kan
+            nævnes som “det unikke nummer” uden at definere primærnøgle endnu. [Sources] -
+            undervisning/product-optimization/post-app-sql/01-posts.sql [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide duplicated-table-slide">
+          <span class="eyebrow">Trin 2 · <code>postsWithUserData</code></span>
+          <h2>Den hurtige løsning er at lægge brugeren ind i hvert post</h2>
+          <div class="field-strip">
+            <span class="post-field">id</span><span class="post-field">caption</span><span class="post-field">image</span>
+            <span class="user-field">userName</span><span class="user-field">userMail</span><span class="user-field">userTitle</span><span class="user-field">userImage</span>
+          </div>
+          <div class="model-legend"><span><i class="post-dot"></i> Data om postet</span><span><i class="user-dot"></i> Data om brugeren</span></div>
+          <div class="post-preview compact-preview">
+            <div class="preview-author"><span class="avatar">RC</span><p><b>Rasmus Cederdorff</b><small>Senior Lecturer</small></p></div>
+            <div class="preview-image">Post image</div>
+            <strong>Exploring the streets of Aarhus.</strong>
+          </div>
+          <aside class="notes">
+            Vis SQL 02-resultatet i Table Editor, ikke SQL-koden. Pointen er, at løsningen virker i UI’et. [Sources] -
+            undervisning/product-optimization/post-app-sql/02-posts-with-duplicated-user-data.sql - Post App branch ·
+            https://github.com/cederdorff/post-app-supabase/tree/posts-with-duplicated-user-data [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide repetition-slide">
+          <span class="eyebrow">Problemet bliver synligt</span>
+          <h2>Den samme bruger er nu gemt tre gange</h2>
+          <div class="repetition-table" role="table" aria-label="Tre posts med gentagne brugerdata">
+            <div class="repeat-row repeat-head"><span>Post</span><span>userName</span><span>userTitle</span><span>userMail</span></div>
+            <div class="repeat-row"><span>#1 · Aarhus</span><mark>Rasmus Cederdorff</mark><mark>Senior Lecturer</mark><mark>race@eaaa.dk</mark></div>
+            <div class="repeat-row"><span>#2 · Aarhus Ø</span><mark>Rasmus Cederdorff</mark><mark>Senior Lecturer</mark><mark>race@eaaa.dk</mark></div>
+            <div class="repeat-row"><span>#3 · Dokk1</span><mark>Rasmus Cederdorff</mark><mark>Senior Lecturer</mark><mark>race@eaaa.dk</mark></div>
+          </div>
+          <div class="change-question"><span>Rasmus får en ny titel</span><b>Hvor mange rækker skal ændres?</b><strong>3</strong></div>
+          <aside class="notes">
+            Ret eventuelt titlen på kun én af de tre rækker i Table Editor og vis inkonsistensen i appen. Det gør
+            problemet konkret, før ordet normalisering introduceres. [Sources] - SQL 02 og Post App duplicated branch ·
+            lokale undervisningsmaterialer [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide ownership-slide">
+          <span class="eyebrow">Sortér før I modellerer</span>
+          <h2>Hvad beskriver et post — og hvad beskriver en user?</h2>
+          <div class="ownership-columns">
+            <article class="post-owner"><span>Post</span><h3>Indholdet</h3><div><code>caption</code><code>image</code><code>createdAt</code></div></article>
+            <article class="user-owner"><span>User</span><h3>Personen</h3><div><code>name</code><code>mail</code><code>title</code><code>image</code></div></article>
+          </div>
+          <p class="ownership-rule">En oplysning bør gemmes dér, hvor den hører hjemme.</p>
+          <aside class="notes">
+            Brug sliden som fælles sorteringsøvelse. Spørg ved hvert felt: Hvilken ting beskriver denne oplysning? [Sources]
+            - SQL 02 og SQL 03 · lokale undervisningsmaterialer [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide relation-chapter" id="relationer">
+          <span class="chapter-index">02</span>
+          <span class="eyebrow">Et bedre hjem til data</span>
+          <h2>To tabeller —<br />forbundet med ID’er</h2>
+          <p class="kicker">Brugeroplysninger gemmes én gang. Posts peger på brugeren.</p>
+          <aside class="notes">
+            Skift til SQL 03-resultatet i Supabase og vis users og posts i Table Editor. [Sources] -
+            undervisning/product-optimization/post-app-sql/03-posts-and-users.sql [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide two-tables-slide">
+          <span class="eyebrow">Trin 3 · <code>users</code> + <code>posts</code></span>
+          <h2>Brugeren gemmes én gang — postet gemmer kun forbindelsen</h2>
+          <div class="schema-pair">
+            <article class="schema-table users-schema">
+              <h3>users</h3>
+              <p><b><span class="key-mark">PK</span> id</b><em>1</em></p>
+              <p><span>name</span><em>Rasmus Cederdorff</em></p>
+              <p><span>mail</span><em>race@eaaa.dk</em></p>
+              <p><span>title</span><em>Senior Lecturer</em></p>
+              <p><span>image</span><em>…/race.webp</em></p>
+            </article>
+            <div class="relation-arrow"><span>samme ID</span><b>1</b><i>←</i><strong>1</strong></div>
+            <article class="schema-table posts-schema">
+              <h3>posts</h3>
+              <p><b><span class="key-mark">PK</span> id</b><em>7</em></p>
+              <p><span>caption</span><em>A view across Aarhus.</em></p>
+              <p><span>image</span><em>…/city.webp</em></p>
+              <p class="foreign-row"><b><span class="foreign-mark">FK</span> userId</b><em>1</em></p>
+            </article>
+          </div>
+          <aside class="notes">
+            Læs først forbindelsen som almindeligt sprog: user 1 og userId 1 er samme bruger. Vent med de formelle navne
+            til næste slide. [Sources] - SQL 03 · lokalt undervisningsmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide keys-slide">
+          <span class="eyebrow">Tre nøgler i almindeligt sprog</span>
+          <h2>ID’er gør rækker unikke — og forbinder dem</h2>
+          <div class="key-explanations">
+            <article><code>users.id</code><strong>Brugerens eget unikke nummer</strong><small>Primærnøgle i <code>users</code></small></article>
+            <article><code>posts.id</code><strong>Postets eget unikke nummer</strong><small>Primærnøgle i <code>posts</code></small></article>
+            <article class="foreign-key-card"><code>posts.userId</code><strong>Nummeret på den user, postet tilhører</strong><small>Fremmednøgle til <code>users.id</code></small></article>
+          </div>
+          <p class="term-order"><span>Først forståelsen</span><b>→</b><span>derefter ordene</span><b>→</b><strong>primærnøgle + fremmednøgle</strong></p>
+          <aside class="notes">
+            Introducér de formelle begreber nu, hvor de allerede kan se deres funktion. En primærnøgle identificerer en
+            række; en fremmednøgle refererer til en række i en anden tabel. [Sources] - Supabase Tables and Data ·
+            https://supabase.com/docs/guides/database/tables [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide one-many-slide">
+          <span class="eyebrow">En-til-mange</span>
+          <h2>Én user kan have mange posts</h2>
+          <div class="one-many-model">
+            <article class="one-user"><span class="avatar large-avatar">RC</span><strong>users.id = 1</strong><small>Rasmus Cederdorff</small></article>
+            <div class="one-many-sign"><b>1</b><span>→</span><strong>mange</strong></div>
+            <div class="many-posts">
+              <article><b>Post #1</b><span>userId = 1</span></article>
+              <article><b>Post #2</b><span>userId = 1</span></article>
+              <article><b>Post #3</b><span>userId = 1</span></article>
+            </div>
+          </div>
+          <p class="one-many-rule">Hvert post tilhører én user. Den samme user kan være forbundet med flere posts.</p>
+          <aside class="notes">
+            Peg begge veje: fra user til mange posts og fra hvert post tilbage til én user. [Sources] - SQL 03 og Supabase
+            joins/nesting documentation · https://supabase.com/docs/guides/database/joins-and-nesting [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide supabase-interface-slide">
+          <span class="eyebrow">Se relationen i Supabase</span>
+          <h2>Interfacet viser de samme valg fra to vinkler</h2>
+          <div class="interface-pair">
+            <article><span>Table Editor</span><h3>Rækker og værdier</h3><div class="mini-table"><p><b>id</b><b>caption</b><b>userId</b></p><p><span>1</span><span>Aarhus</span><mark>1</mark></p><p><span>2</span><span>Aarhus Ø</span><mark>1</mark></p></div><small>Kontrollér værdien i hver række</small></article>
+            <article><span>Schema Visualizer</span><h3>Tabeller og forbindelser</h3><div class="mini-schema"><b>users</b><i>1 ───── ∞</i><strong>posts</strong></div><small>Kontrollér relationens retning</small></article>
+          </div>
+          <p class="interface-task">Find <code>posts.userId → users.id</code> i jeres eget Supabase-projekt.</p>
+          <aside class="notes">
+            Demonstrér relationen i det interface, de kender. Først bagefter kan du kort vise, at SQL 03 har etableret den
+            samme struktur. [Sources] - Supabase Tables and Data · https://supabase.com/docs/guides/database/tables - SQL 03
+            · lokalt undervisningsmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide api-chapter" id="rest-api">
+          <span class="chapter-index">03</span>
+          <span class="eyebrow">Fra relation til React</span>
+          <h2>Supabase samler data<br />i responsen</h2>
+          <p class="kicker">Databasen er delt op. UI’et kan stadig få post og user sammen.</p>
+          <aside class="notes">
+            Overgangen er vigtig: normalisering betyder ikke, at React skal lave to separate requests. Supabase kan bruge
+            fremmednøglen til et indlejret response. [Sources] - Supabase Querying Joins and Nested Tables ·
+            https://supabase.com/docs/guides/database/joins-and-nesting [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide query-slide">
+          <span class="eyebrow">Start enkelt</span>
+          <h2>Bed om posts — og indlejr den relaterede user</h2>
+          <pre class="po-code query-code"><code class="language-text">/posts?select=*,user:users(*)</code></pre>
+          <div class="query-reading">
+            <article><code>*</code><strong>Alle felter fra posts</strong></article>
+            <article><code>user:</code><strong>Kald det indlejrede objekt <em>user</em></strong></article>
+            <article><code>users(*)</code><strong>Alle felter fra den relaterede user</strong></article>
+          </div>
+          <p class="network-prompt">Se URL, statuskode og response i Network-panelet.</p>
+          <aside class="notes">
+            Skriv queryen trinvist i browseren eller koden. Aliaset user bestemmer navnet i JSON-responsen. [Sources] -
+            Supabase Querying Joins and Nested Tables · https://supabase.com/docs/guides/database/joins-and-nesting - Post
+            App branch · https://github.com/cederdorff/post-app-supabase/tree/posts-and-users [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide response-slide">
+          <span class="eyebrow">Responsen får en ny form</span>
+          <h2>Postet indeholder nu et indlejret <code>user</code>-objekt</h2>
+          <div class="response-layout">
+            <pre class="po-code"><code class="language-json">{
+  "id": 1,
+  "caption": "Exploring Aarhus",
+  "image": "...",
+  "userId": 1,
+  "user": {
+    "id": 1,
+    "name": "Rasmus Cederdorff",
+    "title": "Senior Lecturer",
+    "image": "..."
+  }
+}</code></pre>
+            <div class="response-meaning"><span>Relationen bruges her</span><strong><code>userId: 1</code></strong><b>→</b><strong><code>user: { … }</code></strong><p>Fremmednøglen forbinder rækkerne. Supabase former responsen.</p></div>
+          </div>
+          <aside class="notes">
+            Peg på forskellen mellem det, der er gemt i posts-tabellen, og det Supabase returnerer. user-objektet er ikke
+            kopieret ind i post-rækken. [Sources] - Supabase Querying Joins and Nested Tables ·
+            https://supabase.com/docs/guides/database/joins-and-nesting [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide field-selection-slide">
+          <span class="eyebrow">Når relationen virker</span>
+          <h2><code>*</code> kan erstattes med de felter, UI’et faktisk bruger</h2>
+          <div class="query-compare">
+            <article><span>Start her</span><code>/posts?select=*,user:users(*)</code><small>Let at læse og god til at forstå relationen</small></article>
+            <b>→</b>
+            <article class="precise-query"><span>Udvælg derefter</span><code>/posts?select=id,createdAt,caption,image,userId,<br />user:users(id,name,title,image)</code><small>Mindre response og en tydelig kontrakt til UI’et</small></article>
+          </div>
+          <p class="selection-rule">Feltudvælgelse er en forbedring — ikke en forudsætning for at forstå relationen.</p>
+          <aside class="notes">
+            Branchens kode beholder den enkle query. Brug denne slide til at vise, hvordan man kan afgrænse felter, når
+            relationen er forstået. [Sources] - Supabase Data REST API · https://supabase.com/docs/guides/api - Dagens
+            undervisningsside · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide react-shape-slide">
+          <span class="eyebrow">React følger dataformen</span>
+          <h2>Flade kopier bliver til et relateret objekt</h2>
+          <div class="code-before-after">
+            <article class="before-code"><span>Gentagne brugerfelter</span><pre class="po-code"><code class="language-js">post.userName
+post.userTitle
+post.userImage</code></pre></article>
+            <div class="shape-arrow">→</div>
+            <article class="after-code"><span>Relateret user</span><pre class="po-code"><code class="language-js">post.user.name
+post.user.title
+post.user.image</code></pre></article>
+          </div>
+          <p class="react-rule">UI’et ligner sig selv. Det er datastrukturen bag det, der er blevet bedre.</p>
+          <aside class="notes">
+            Sammenlign PostCard på de to branches. Hold fokus på dataformen, ikke styling eller komponentarkitektur.
+            [Sources] - Post App duplicated branch · https://github.com/cederdorff/post-app-supabase/tree/posts-with-duplicated-user-data
+            - Post App normalized branch · https://github.com/cederdorff/post-app-supabase/tree/posts-and-users [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide create-slide">
+          <span class="eyebrow">Når et post oprettes</span>
+          <h2>Gem forbindelsen — ikke en ny kopi af brugeren</h2>
+          <div class="payload-compare">
+            <article class="duplicated-payload"><span>Før</span><pre class="po-code"><code class="language-js">{
+  caption,
+  image,
+  userName: "Rasmus…",
+  userMail: "race@…",
+  userTitle: "Senior Lecturer",
+  userImage: "…"
+}</code></pre></article>
+            <div class="payload-arrow">→</div>
+            <article class="normalized-payload"><span>Efter</span><pre class="po-code"><code class="language-js">const CURRENT_USER_ID = 1;
+
+{
+  caption,
+  image,
+  userId: CURRENT_USER_ID
+}</code></pre><small>Simulerer den indloggede bruger</small></article>
+          </div>
+          <p class="create-rule">Update ændrer postets <code>caption</code> og <code>image</code> — ikke hvem postet tilhører.</p>
+          <aside class="notes">
+            Forklar, at hardcoding kun simulerer en aktuel bruger, fordi auth ikke er dagens emne. Den centrale pointe er,
+            at Create kun gemmer userId. [Sources] - Post App branches · https://github.com/cederdorff/post-app-supabase [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide mellemrum-chapter" id="mellemrum">
+          <span class="chapter-index">04</span>
+          <span class="eyebrow">Overfør princippet</span>
+          <h2>Find dataenes hjem<br />i Mellemrum</h2>
+          <p class="kicker">Start med jeres eksisterende tabeller og de gentagelser, I allerede kan se.</p>
+          <aside class="notes">
+            Skift fra demonstration til de studerendes eget projekt. De skal ikke kopiere Post App-modellen; de skal bruge
+            samme spørgsmål på Mellemrum. [Sources] - Case 1 og dagens undervisningsside · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide mellemrum-model-slide">
+          <span class="eyebrow">Tre ting i domænet</span>
+          <h2>Hvilke oplysninger beskriver hvad?</h2>
+          <div class="domain-columns">
+            <article><span>Venue</span><h3>Stedet</h3><p>navn · adresse · by · billede</p></article>
+            <article><span>Event</span><h3>Arrangementet</h3><p>titel · dato · beskrivelse · venueId</p></article>
+            <article><span>Registration</span><h3>Tilmeldingen</h3><p>navn · mail · eventId</p></article>
+          </div>
+          <div class="domain-relations"><strong>venues.id</strong><b>← events.venueId</b><i>·</i><strong>events.id</strong><b>← registrations.eventId</b></div>
+          <aside class="notes">
+            Felterne er en model til samtalen, ikke en facitliste til alle implementationsdetaljer. Lad holdet sammenligne
+            med deres eksisterende Supabase-tabeller. [Sources] - Dagens undervisningsside og Mellemrum starterprojekt ·
+            lokale kursusmaterialer [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide work-slide">
+          <span class="eyebrow">Arbejd nu i Mellemrum</span>
+          <h2>Modellér én relation, før I ændrer hele løsningen</h2>
+          <div class="work-path">
+            <article><span>01</span><strong>Find gentagelsen</strong><small>Hvilke oplysninger ligger flere steder?</small></article>
+            <article><span>02</span><strong>Placér data</strong><small>Hvilken tabel bør eje hver oplysning?</small></article>
+            <article><span>03</span><strong>Forbind med ID</strong><small>Hvilken fremmednøgle mangler?</small></article>
+            <article><span>04</span><strong>Hent relationen</strong><small>Kan response ses i Network?</small></article>
+          </div>
+          <div class="work-done"><span>Opsummér i auditten</span><p>Problem · model · status · næste skridt · verifikation</p></div>
+          <aside class="notes">
+            Det forventes ikke, at hele datamodellen er migreret i dag. De skal kunne forklare deres model og have begyndt
+            en sikker implementering. Bevar eksisterende kolonner, indtil relationen og UI’et virker. [Sources] - Dagens
+            undervisningsside og audit-skabelonen · lokale kursusmaterialer [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide resource-slide data-resources-slide">
+          <span class="eyebrow">Demonstration og opslag</span>
+          <h2>Tre datamodeller — to branches — ét princip</h2>
+          <div class="resource-links data-links">
+            <a href="https://github.com/cederdorff/post-app-supabase" target="_blank" rel="noopener noreferrer"><strong>Post App · main</strong><small>Den simple posts-model ↗</small></a>
+            <a href="https://github.com/cederdorff/post-app-supabase/tree/posts-with-duplicated-user-data" target="_blank" rel="noopener noreferrer"><strong>Duplicated user data</strong><small><code>posts-with-duplicated-user-data</code> ↗</small></a>
+            <a href="https://github.com/cederdorff/post-app-supabase/tree/posts-and-users" target="_blank" rel="noopener noreferrer"><strong>Posts + users</strong><small><code>posts-and-users</code> ↗</small></a>
+            <a href="https://supabase.com/docs/guides/database/joins-and-nesting" target="_blank" rel="noopener noreferrer"><strong>Supabase relationer</strong><small>Joins and nested tables ↗</small></a>
+          </div>
+          <aside class="notes">
+            SQL 01, 02 og 03 ligger lokalt i undervisningsrepoet. Branchene viser UI og requests for trin 2 og 3. [Sources]
+            - Post App · https://github.com/cederdorff/post-app-supabase - Supabase documentation ·
+            https://supabase.com/docs/guides/database/joins-and-nesting [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide po-closing data-closing-slide">
+          <span class="eyebrow">Dagens centrale pointe</span>
+          <h2>Gem hver oplysning ét sted — og forbind resten med ID’er</h2>
+          <div class="closing-formula data-formula"><span>Gentagelse</span><b>→</b><span>Find ejeren</span><b>→</b><span>Del tabellerne</span><b>→</b><span>Forbind med ID</span><b>→</b><span>Hent relationen</span></div>
+          <p class="lead">Brug nu samme blik på venues, events og registrations i Mellemrum.</p>
+          <div class="closing-links"><a href="https://github.com/cederdorff/mellemrum" target="_blank" rel="noreferrer">Mellemrum ↗</a><a href="#/agenda">Tilbage til agenda</a></div>
+          <aside class="notes">
+            Afslut med at lade et par studerende forklare forskellen på posts.id, users.id og posts.userId med egne ord.
+            [Sources] - Dagens undervisningsside · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="../shared/deck.js"></script>
+  </body>
+</html>

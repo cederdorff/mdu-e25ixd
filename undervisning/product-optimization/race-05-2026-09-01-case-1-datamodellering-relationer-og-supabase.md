@@ -93,4 +93,4 @@ Efter undervisningen skal du kunne:
   - [Querying Joins and Nested Tables](https://supabase.com/docs/guides/database/joins-and-nesting)
   - [Data REST API](https://supabase.com/docs/guides/api)
 - **Slides:**
-  - Vil blive tilgængelige her
+  - [Datamodellering, relationer og Supabase](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-05/)
