@@ -29,7 +29,7 @@ Efter undervisningen skal du kunne:
 <summary><strong>1. Fra gentagne data til relationer</strong></summary>
 <ul>
 <li>Tag udgangspunkt i erfaringerne med simple datamodeller og CRUD fra 2. semester.</li>
-<li>Undersøg Post App-eksemplet, hvor brugerens navn og avatar gemmes direkte på hvert post.</li>
+<li>Undersøg Post App-eksemplet, hvor brugerens navn, mail, titel og billede gemmes direkte på hvert post.</li>
 <li>Se, hvordan samme brugerdata bliver gentaget og kan blive inkonsistent, når én bruger opretter flere posts.</li>
 <li>Skeln mellem data, der beskriver et post, og data, der beskriver en bruger.</li>
 </ul>
@@ -38,8 +38,8 @@ Efter undervisningen skal du kunne:
 <details style="margin-left: 1.5rem;">
 <summary><strong>2. Demonstration: Forbedr Post Appens datamodel</strong></summary>
 <ul>
-<li>Opdel data i <code>users(id, name, avatar)</code> og <code>posts(id, image, caption, user_id)</code>.</li>
-<li>Brug tabellernes <code>id</code> som primærnøgler og <code>posts.user_id</code> som fremmednøgle til <code>users.id</code>.</li>
+<li>Opdel data i <code>users(id, name, mail, title, image)</code> og <code>posts(id, createdAt, caption, image, userId)</code>.</li>
+<li>Brug tabellernes <code>id</code> som primærnøgler og <code>posts.userId</code> som fremmednøgle til <code>users.id</code>.</li>
 <li>Læs relationen i begge retninger: En bruger kan oprette mange posts; hvert post tilhører én bruger.</li>
 <li>Opret relationen i Supabase, og kontrollér den i Schema Visualizer.</li>
 <li>Ret én brugers navn, og se hvordan alle brugerens posts nu kan vise den samme opdaterede oplysning uden at ændre flere postrækker.</li>
@@ -49,11 +49,11 @@ Efter undervisningen skal du kunne:
 <details style="margin-left: 1.5rem;">
 <summary><strong>3. Hent relaterede data gennem Supabase REST API</strong></summary>
 <ul>
-<li>Hent posts sammen med den relaterede bruger, fx med <code>/posts?select=id,image,caption,user:users(id,name,avatar)</code>.</li>
+<li>Hent posts sammen med den relaterede bruger, fx med <code>/posts?select=id,createdAt,caption,image,user:users(id,name,mail,title,image)</code>.</li>
 <li>Gennemgå queryen og det indlejrede response, så forbindelsen mellem fremmednøglen og API-data bliver tydelig.</li>
-<li>Tilpas React til den nye dataform, fx <code>post.user.name</code> og <code>post.user.avatar</code>.</li>
+<li>Tilpas React til den nye dataform, fx <code>post.user.name</code>, <code>post.user.title</code> og <code>post.user.image</code>.</li>
 <li>Undersøg requestets URL, statuskode og response i browserens Network-panel.</li>
-<li>Når et post oprettes, gemmes brugerens <code>id</code> som <code>user_id</code> – ikke en ny kopi af navn og avatar.</li>
+<li>Når et post oprettes, gemmes brugerens <code>id</code> som <code>userId</code> – ikke nye kopier af brugerens oplysninger.</li>
 </ul>
 </details>
 
@@ -62,9 +62,9 @@ Efter undervisningen skal du kunne:
 <ul>
 <li>Undersøg den eksisterende datamodel: <code>events</code> gentager venueoplysninger, mens <code>registrations</code> gentager titel, dato og sted fra events.</li>
 <li>Modellér <code>venues</code>, <code>events</code> og <code>registrations</code>: Ét venue kan have mange events, og ét event kan have mange tilmeldinger.</li>
-<li>Forbind <code>events.venue_id</code> med <code>venues.id</code> og <code>registrations.event_id</code> med <code>events.id</code>.</li>
+<li>Forbind <code>events.venueId</code> med <code>venues.id</code> og <code>registrations.eventId</code> med <code>events.id</code>.</li>
 <li>Hent events med deres venue og tilmeldinger med deres event gennem Supabase REST API.</li>
-<li>Tilpas tilmeldingsflowet, så en ny tilmelding gemmes med det valgte <code>event_id</code>, og tilpas den interne side til det relaterede response.</li>
+<li>Tilpas tilmeldingsflowet, så en ny tilmelding gemmes med det valgte <code>eventId</code>, og tilpas den interne side til det relaterede response.</li>
 <li>Bevar de gamle kolonner, indtil de eksisterende rækker er forbundet, og de nye requests og visninger virker.</li>
 </ul>
 </details>

@@ -127,7 +127,7 @@ Det er uklart, hvor sikkert de studerende selv behersker stoffet, og hvor meget 
 Post App kan skabe en tydelig progression fra kendt CRUD til relationer:
 
 1. Opret og vis posts med kendt CRUD.
-2. Tilføj brugerens navn og avatar direkte som felter på hver post.
+2. Tilføj brugerens navn, mail, titel og billede direkte som felter på hver post.
 3. Undersøg problemerne ved duplikerede brugerdata.
 4. Opret separate `users`- og `posts`-tabeller.
 5. Etablér relationen: Én bruger kan oprette mange posts.
