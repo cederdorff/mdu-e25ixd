@@ -43,56 +43,54 @@
           </aside>
         </section>
 
-        <section class="chapter po-chapter po-slide problem-chapter" id="gentagelser">
+        <section class="chapter po-chapter po-slide problem-chapter app-chapter" id="gentagelser">
           <span class="chapter-index">01</span>
           <span class="eyebrow">Den Post App, I kender</span>
           <h2>Først har hvert post<br />kun sine egne data</h2>
           <p class="kicker">Én tabel. En enkel CRUD-app. Ingen relationer endnu.</p>
+          <img class="chapter-app-shot" src="../assets/post-app-posts.webp" alt="Post App med en oversigt over posts uden brugeroplysninger" />
           <aside class="notes">
-            Start med SQL 01 som bagvedliggende opsætning og åbn tabellen i Supabase Table Editor. [Sources] -
-            undervisning/product-optimization/post-app-sql/01-posts.sql [/Sources]
+            Start i den kendte Post App og lad dem beskrive, hvilke data de kan se. Brug derefter SQL 01 som
+            bagvedliggende opsætning og åbn modellen i Supabase. [Sources] - User-provided Post App screenshot ·
+            slides/assets/post-app-posts.webp - undervisning/product-optimization/post-app-sql/01-posts.sql [/Sources]
           </aside>
         </section>
 
         <section class="po-slide simple-table-slide">
           <span class="eyebrow">Trin 1 · <code>posts</code></span>
           <h2>Alle kolonner beskriver selve postet</h2>
-          <div class="supabase-frame">
-            <div class="supabase-bar"><b>Table Editor</b><span>public / posts</span></div>
-            <table class="data-table simple-posts-table">
-              <thead><tr><th><span class="key-mark">PK</span> id</th><th>createdAt</th><th>caption</th><th>image</th></tr></thead>
-              <tbody>
-                <tr><td>1</td><td>01-09-2026</td><td>Exploring the streets of Aarhus.</td><td>…/aarhus.webp</td></tr>
-                <tr><td>2</td><td>01-09-2026</td><td>Modern architecture at Aarhus Ø.</td><td>…/architecture.webp</td></tr>
-                <tr><td>3</td><td>01-09-2026</td><td>A quiet evening around Dokk1.</td><td>…/dokk1.webp</td></tr>
-              </tbody>
-            </table>
+          <div class="schema-visual schema-visual-simple">
+            <img src="../assets/posts.png" alt="Supabase Schema Visualizer med tabellen posts og felterne id, createdAt, caption og image" />
+            <div class="schema-prompt">
+              <span>Supabase Schema Visualizer</span>
+              <strong>Én række er ét post</strong>
+              <p>Tabellen indeholder endnu kun oplysninger om selve postet.</p>
+            </div>
           </div>
           <p class="slide-question">Hvilke oplysninger mangler, hvis vi også vil vise, hvem der har lavet postet?</p>
           <aside class="notes">
-            Lad dem læse tabellen fra Table Editor: én række er ét post, og kolonnerne beskriver postet. PK-markøren kan
-            nævnes som “det unikke nummer” uden at definere primærnøgle endnu. [Sources] -
-            undervisning/product-optimization/post-app-sql/01-posts.sql [/Sources]
+            Lad dem læse modellen fra Supabase: Kolonnerne beskriver postet. Nøgleikonet kan nævnes som “det unikke
+            nummer” uden at definere primærnøgle endnu. [Sources] - User-provided Supabase Schema Visualizer screenshot ·
+            slides/assets/posts.png - undervisning/product-optimization/post-app-sql/01-posts.sql [/Sources]
           </aside>
         </section>
 
         <section class="po-slide duplicated-table-slide">
           <span class="eyebrow">Trin 2 · <code>postsWithUserData</code></span>
           <h2>Den hurtige løsning er at lægge brugeren ind i hvert post</h2>
-          <div class="field-strip">
-            <span class="post-field">id</span><span class="post-field">caption</span><span class="post-field">image</span>
-            <span class="user-field">userName</span><span class="user-field">userMail</span><span class="user-field">userTitle</span><span class="user-field">userImage</span>
-          </div>
-          <div class="model-legend"><span><i class="post-dot"></i> Data om postet</span><span><i class="user-dot"></i> Data om brugeren</span></div>
-          <div class="post-preview compact-preview">
-            <div class="preview-author"><span class="avatar">RC</span><p><b>Rasmus Cederdorff</b><small>Senior Lecturer</small></p></div>
-            <div class="preview-image">Post image</div>
-            <strong>Exploring the streets of Aarhus.</strong>
+          <div class="schema-visual schema-visual-duplicated">
+            <img src="../assets/posts-with-user-data.png" alt="Supabase Schema Visualizer med tabellen postsWithUserData, hvor brugerfelter ligger sammen med postfelterne" />
+            <div class="field-groups">
+              <article><span>Postet</span><code>caption</code><code>image</code></article>
+              <article><span>Brugeren</span><code>userName</code><code>userMail</code><code>userTitle</code><code>userImage</code></article>
+              <p>Det virker i UI’et — men brugerens oplysninger bliver kopieret til hvert post.</p>
+            </div>
           </div>
           <aside class="notes">
-            Vis SQL 02-resultatet i Table Editor, ikke SQL-koden. Pointen er, at løsningen virker i UI’et. [Sources] -
-            undervisning/product-optimization/post-app-sql/02-posts-with-duplicated-user-data.sql - Post App branch ·
-            https://github.com/cederdorff/post-app-supabase/tree/posts-with-duplicated-user-data [/Sources]
+            Vis SQL 02-resultatet i Supabase, ikke SQL-koden. Lad de studerende selv udpege postfelter og brugerfelter.
+            Pointen er, at løsningen virker i UI’et. [Sources] - User-provided Supabase Schema Visualizer screenshot ·
+            slides/assets/posts-with-user-data.png - undervisning/product-optimization/post-app-sql/02-posts-with-duplicated-user-data.sql
+            - Post App branch · https://github.com/cederdorff/post-app-supabase/tree/posts-with-duplicated-user-data [/Sources]
           </aside>
         </section>
 
@@ -141,27 +139,14 @@
         <section class="po-slide two-tables-slide">
           <span class="eyebrow">Trin 3 · <code>users</code> + <code>posts</code></span>
           <h2>Brugeren gemmes én gang — postet gemmer kun forbindelsen</h2>
-          <div class="schema-pair">
-            <article class="schema-table users-schema">
-              <h3>users</h3>
-              <p><b><span class="key-mark">PK</span> id</b><em>1</em></p>
-              <p><span>name</span><em>Rasmus Cederdorff</em></p>
-              <p><span>mail</span><em>race@eaaa.dk</em></p>
-              <p><span>title</span><em>Senior Lecturer</em></p>
-              <p><span>image</span><em>…/race.webp</em></p>
-            </article>
-            <div class="relation-arrow"><span>samme ID</span><b>1</b><i>←</i><strong>1</strong></div>
-            <article class="schema-table posts-schema">
-              <h3>posts</h3>
-              <p><b><span class="key-mark">PK</span> id</b><em>7</em></p>
-              <p><span>caption</span><em>A view across Aarhus.</em></p>
-              <p><span>image</span><em>…/city.webp</em></p>
-              <p class="foreign-row"><b><span class="foreign-mark">FK</span> userId</b><em>1</em></p>
-            </article>
+          <div class="schema-visual schema-visual-related">
+            <img src="../assets/posts-and-users.png" alt="Supabase Schema Visualizer med posts og users forbundet fra posts.userId til users.id" />
           </div>
+          <p class="relation-caption"><code>posts.userId</code><span>→</span><code>users.id</code><strong>Postet gemmer brugerens ID — ikke en kopi af brugeren</strong></p>
           <aside class="notes">
-            Læs først forbindelsen som almindeligt sprog: user 1 og userId 1 er samme bruger. Vent med de formelle navne
-            til næste slide. [Sources] - SQL 03 · lokalt undervisningsmateriale [/Sources]
+            Følg linjen visuelt fra posts.userId til users.id. Læs forbindelsen som almindeligt sprog, og vent med de
+            formelle navne til næste slide. [Sources] - User-provided Supabase Schema Visualizer screenshot ·
+            slides/assets/posts-and-users.png - SQL 03 · lokalt undervisningsmateriale [/Sources]
           </aside>
         </section>
 
@@ -288,19 +273,22 @@
         <section class="po-slide react-shape-slide">
           <span class="eyebrow">React følger dataformen</span>
           <h2>Flade kopier bliver til et relateret objekt</h2>
-          <div class="code-before-after">
-            <article class="before-code"><span>Gentagne brugerfelter</span><pre class="po-code"><code class="language-js">post.userName
+          <div class="react-visual-layout">
+            <div class="data-shape-change">
+              <article class="before-code"><span>Før</span><pre class="po-code"><code class="language-js">post.userName
 post.userTitle
 post.userImage</code></pre></article>
-            <div class="shape-arrow">→</div>
-            <article class="after-code"><span>Relateret user</span><pre class="po-code"><code class="language-js">post.user.name
+              <b>↓</b>
+              <article class="after-code"><span>Efter</span><pre class="po-code"><code class="language-js">post.user.name
 post.user.title
 post.user.image</code></pre></article>
+            </div>
+            <img src="../assets/post-app-posts-and-users.webp" alt="Post App med relaterede brugeroplysninger vist øverst på hvert post" />
           </div>
           <p class="react-rule">UI’et ligner sig selv. Det er datastrukturen bag det, der er blevet bedre.</p>
           <aside class="notes">
             Sammenlign PostCard på de to branches. Hold fokus på dataformen, ikke styling eller komponentarkitektur.
-            [Sources] - Post App duplicated branch · https://github.com/cederdorff/post-app-supabase/tree/posts-with-duplicated-user-data
+            [Sources] - User-provided normalized Post App screenshot · slides/assets/post-app-posts-and-users.webp - Post App duplicated branch · https://github.com/cederdorff/post-app-supabase/tree/posts-with-duplicated-user-data
             - Post App normalized branch · https://github.com/cederdorff/post-app-supabase/tree/posts-and-users [/Sources]
           </aside>
         </section>
