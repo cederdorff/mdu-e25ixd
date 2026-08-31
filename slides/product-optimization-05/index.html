@@ -33,7 +33,7 @@
           <h2>Vi ser problemet, før vi giver det faglige navne</h2>
           <ol class="agenda-list four-items">
             <li><a href="#/gentagelser"><b>Gentagne data</b><small>Fra den kendte Post App til et konkret vedligeholdelsesproblem</small></a></li>
-            <li><a href="#/relationer"><b>To tabeller og en relation</b><small>Placér data ét sted, og forbind rækker med ID’er</small></a></li>
+            <li><a href="#/relationer"><b>To tabeller og en relation</b><small>Forstå modellen, og opret relationen i Supabase-interfacet</small></a></li>
             <li><a href="#/rest-api"><b>Supabase REST API og React</b><small>Hent den relaterede bruger, og brug den nye dataform</small></a></li>
             <li><a href="#/mellemrum"><b>Overfør til Mellemrum</b><small>Modellér venues, events og registrations</small></a></li>
           </ol>
@@ -250,6 +250,106 @@
             og forhindrer dermed et post uden en gyldig ejer. I SQL 03 er userId desuden NOT NULL, så hvert post skal have
             en user. Undgå at gå videre til cascade-regler på denne slide. [Sources] - SQL 03 · lokalt undervisningsmateriale
             - PostgreSQL Foreign Keys · https://www.postgresql.org/docs/current/ddl-constraints.html#DDL-CONSTRAINTS-FK [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide ui-guide-slide">
+          <span class="eyebrow">Supabase uden SQL · 1</span>
+          <h2>Opret først tabellen, som de andre skal pege på</h2>
+          <div class="ui-setup-layout">
+            <div class="ui-path" aria-label="Vej gennem Supabase-interfacet">
+              <span>Table Editor</span><b>→</b><span>New table</span><b>→</b><strong>users</strong><b>→</b><span>Save</span>
+            </div>
+            <div class="ui-field-list">
+              <p class="field-head"><strong>Kolonne</strong><strong>Type</strong><strong>Indstilling</strong></p>
+              <p><code>id</code><span>int8</span><mark>Primary key · generated</mark></p>
+              <p><code>name</code><span>text</span><small>Required</small></p>
+              <p><code>mail</code><span>text</span><small>Required</small></p>
+              <p><code>title</code><span>text</span><small>Required</small></p>
+              <p><code>image</code><span>text</span><small>Required</small></p>
+            </div>
+          </div>
+          <p class="ui-rule"><strong>Behold det genererede <code>id</code>.</strong> Supabase giver hver ny user sit eget unikke nummer.</p>
+          <aside class="notes">
+            Demonstrér dette i Table Editor, ikke i SQL Editor. Supabase opretter normalt id-kolonnen som int8 og
+            primærnøgle i dialogen til en ny tabel; kontrollér indstillingerne, før du gemmer. Opret users først, fordi
+            posts om lidt skal pege på users.id. [Sources] - Supabase Tables and Data ·
+            https://supabase.com/docs/guides/database/tables [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide ui-guide-slide">
+          <span class="eyebrow">Supabase uden SQL · 2</span>
+          <h2>Tilføj forbindelsen som en kolonne i <code>posts</code></h2>
+          <div class="relation-builder">
+            <article class="relation-source">
+              <span>Åbn posts</span>
+              <strong>New column</strong>
+              <p><code>userId</code></p>
+              <small>Type: <b>int8</b></small>
+            </article>
+            <div class="relation-builder-arrow">→</div>
+            <article class="relation-target">
+              <span>Tilføj foreign key relation</span>
+              <p><code>public.users</code></p>
+              <b>kolonne: <code>id</code></b>
+              <small>Gem kolonnen og tabellen</small>
+            </article>
+          </div>
+          <p class="ui-rule"><code>posts.userId</code> og <code>users.id</code> skal have samme type: <strong>int8</strong>.</p>
+          <aside class="notes">
+            Redigér posts i Table Editor. Tilføj userId med samme datatype som users.id. Brug interfacets mulighed for at
+            tilføje en foreign key relation, og vælg public.users og id. Ordlyden i Dashboard kan ændre sig lidt; de skal
+            lede efter relation/foreign key i kolonnens indstillinger. [Sources] - Supabase Tables and Data ·
+            https://supabase.com/docs/guides/database/tables [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide ui-guide-slide">
+          <span class="eyebrow">Supabase uden SQL · 3</span>
+          <h2>Opret users før posts får deres <code>userId</code></h2>
+          <div class="row-order">
+            <article>
+              <span>1</span>
+              <strong>Insert row i users</strong>
+              <p>Rasmus gemmes og får fx <code>id = 1</code></p>
+            </article>
+            <b>→</b>
+            <article>
+              <span>2</span>
+              <strong>Redigér en post-række</strong>
+              <p>Sæt <code>userId = 1</code></p>
+            </article>
+            <b>→</b>
+            <article>
+              <span>3</span>
+              <strong>Gentag for resten</strong>
+              <p>Hver post peger på den rigtige user</p>
+            </article>
+          </div>
+          <p class="ui-rule"><strong>Rækkefølgen betyder noget:</strong> En fremmednøgle kan kun pege på en række, der allerede findes.</p>
+          <aside class="notes">
+            Lad eventuelt de studerende prøve userId 99 på en test-række og læse fejlbeskeden. Ret derefter værdien til et
+            eksisterende id. Det gør fremmednøglens regel konkret uden SQL. [Sources] - Supabase Tables and Data ·
+            https://supabase.com/docs/guides/database/tables - SQL 03 · lokalt undervisningsmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide ui-guide-slide">
+          <span class="eyebrow">Supabase uden SQL · 4</span>
+          <h2>Kontrollér modellen tre steder</h2>
+          <div class="ui-verification">
+            <article><span>Table Editor</span><strong>Findes rækkerne?</strong><small>Har hver post det forventede <code>userId</code>?</small></article>
+            <article><span>Schema Visualizer</span><strong>Kan du se linjen?</strong><small>Går den fra <code>posts.userId</code> til <code>users.id</code>?</small></article>
+            <article><span>Post App</span><strong>Vises den rigtige user?</strong><small>Matcher flere posts den samme user?</small></article>
+          </div>
+          <div class="verification-test"><code>userId = 1</code><b>✓</b><span>virker</span><i></i><code>userId = 99</code><b>×</b><span>afvises</span></div>
+          <p class="ui-help">Hvis rækkerne findes, men appen ikke kan hente dem, kan problemet være adgangspolitikker — ikke relationen.</p>
+          <aside class="notes">
+            Verificér først data, så model, så UI. Hvis REST-requestet fejler eller returnerer tomt, selv om rækkerne
+            findes, så kontrollér projektets eksisterende RLS/policies sammen med den studerende. RLS er adgangskontrol
+            og ikke dagens relationsemne. [Sources] - Supabase Tables and Data ·
+            https://supabase.com/docs/guides/database/tables [/Sources]
           </aside>
         </section>
 
