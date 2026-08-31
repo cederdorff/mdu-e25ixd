@@ -75,6 +75,27 @@
           </aside>
         </section>
 
+        <section class="po-slide user-need-slide">
+          <span class="eyebrow">Trin 1 · Behovet opstår</span>
+          <h2>Vi vil også vise, hvem der har lavet postet</h2>
+          <div class="user-need-layout">
+            <img src="../assets/post-app-posts-and-users.webp" alt="Post App, hvor hvert post-card viser brugerens billede, navn og titel" />
+            <div class="user-card-fields">
+              <span>På hvert card vil vi vise</span>
+              <p><code>userImage</code><strong>Brugerens billede</strong></p>
+              <p><code>userName</code><strong>Brugerens navn</strong></p>
+              <p><code>userTitle</code><strong>Brugerens titel</strong></p>
+              <div><strong>Det ønskede UI er tydeligt.</strong><small>Men hvor skal brugerdataene gemmes?</small></div>
+            </div>
+          </div>
+          <aside class="notes">
+            Vis først det ønskede resultat uden at forklare datamodellen bag det. Nu har vi et konkret behov: Cardet skal
+            kunne vise userens billede, navn og titel. Spørg de studerende, hvor de ville gemme oplysningerne med den
+            simple posts-tabel, de allerede kender. Det leder naturligt til den hurtige løsning på næste slide. [Sources]
+            - User-provided Post App screenshot · slides/assets/post-app-posts-and-users.webp [/Sources]
+          </aside>
+        </section>
+
         <section class="po-slide duplicated-table-slide">
           <span class="eyebrow">Trin 2 · <code>postsWithUserData</code></span>
           <h2>Den hurtige løsning er at lægge brugeren ind i hvert post</h2>
@@ -426,22 +447,19 @@
         <section class="po-slide react-shape-slide">
           <span class="eyebrow">React følger dataformen</span>
           <h2>Flade kopier bliver til et relateret objekt</h2>
-          <div class="react-visual-layout">
-            <div class="data-shape-change">
-              <article class="before-code"><span>Før</span><pre class="po-code"><code class="language-js">post.userName
+          <div class="code-before-after react-paths">
+            <article class="before-code"><span>Før · kopier på postet</span><pre class="po-code"><code class="language-js">post.userName
 post.userTitle
-post.userImage</code></pre></article>
-              <b>↓</b>
-              <article class="after-code"><span>Efter</span><pre class="po-code"><code class="language-js">post.user.name
+post.userImage</code></pre><small>Brugeroplysningerne ligger direkte på hvert post</small></article>
+            <b>→</b>
+            <article class="after-code"><span>Efter · relateret user</span><pre class="po-code"><code class="language-js">post.user.name
 post.user.title
-post.user.image</code></pre></article>
-            </div>
-            <img src="../assets/post-app-posts-and-users.webp" alt="Post App med relaterede brugeroplysninger vist øverst på hvert post" />
+post.user.image</code></pre><small>Brugeroplysningerne kommer fra det indlejrede user-objekt</small></article>
           </div>
           <p class="react-rule">UI’et ligner sig selv. Det er datastrukturen bag det, der er blevet bedre.</p>
           <aside class="notes">
             Sammenlign PostCard på de to branches. Hold fokus på dataformen, ikke styling eller komponentarkitektur.
-            [Sources] - User-provided normalized Post App screenshot · slides/assets/post-app-posts-and-users.webp - Post App duplicated branch · https://github.com/cederdorff/post-app-supabase/tree/posts-with-duplicated-user-data
+            [Sources] - Post App duplicated branch · https://github.com/cederdorff/post-app-supabase/tree/posts-with-duplicated-user-data
             - Post App normalized branch · https://github.com/cederdorff/post-app-supabase/tree/posts-and-users [/Sources]
           </aside>
         </section>
