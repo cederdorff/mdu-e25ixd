@@ -9,7 +9,7 @@ Efter undervisningen skal du kunne:
 - identificere data, der gentages og kan blive inkonsistente
 - modellere en enkel en-til-mange-relation med primær- og fremmednøgler
 - hente relaterede data gennem Supabase REST API og anvende dem i React
-- forbedre og verificere relationerne mellem `venues`, `events` og `registrations` i Case 1
+- anvende princippet på relationerne mellem `venues`, `events` og `registrations` i Case 1
 
 <hr style="margin: 2rem 0;">
 
@@ -23,7 +23,7 @@ Efter undervisningen skal du kunne:
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Se princippet i Post App → undersøg Mellemrums data → modellér relationerne → implementér → verificér.
+**Dagens arbejdsrytme:** Se princippet i Post App → undersøg Mellemrums data → modellér relationerne → begynd implementeringen → verificér arbejdet.
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Fra gentagne data til relationer</strong></summary>
@@ -70,23 +70,13 @@ Efter undervisningen skal du kunne:
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>5. Verificér og dokumentér forbedringen</strong></summary>
+<summary><strong>5. Verificér og dokumentér arbejdet</strong></summary>
 <ul>
-<li>Kontrollér relationerne i Schema Visualizer og de konkrete fremmednøgler i Table Editor.</li>
-<li>Gennemfør en tilmelding, og kontrollér at den gemmes med det korrekte <code>event_id</code>.</li>
-<li>Kontrollér i Network-panelet, at de relaterede data hentes som forventet.</li>
-<li>Kontrollér at events fortsat viser korrekt venue, og at den interne side viser tilmeldinger med de korrekte eventdata.</li>
-<li>Dokumentér problemet, den forbedrede model og din verifikation i den tekniske audit.</li>
+<li>Kontrollér de relationer, du har oprettet, i Schema Visualizer og Table Editor.</li>
+<li>Brug Network-panelet og UI'et til at verificere de dele, du har implementeret.</li>
+<li>Dokumentér problemet, din model, status og næste skridt i den tekniske audit.</li>
 </ul>
 </details>
-
-### Dagens leverance
-
-- En datamodel med tabeller, primærnøgler, fremmednøgler og relationer.
-- En fungerende relation mellem `events` og `venues` samt mellem `registrations` og `events`.
-- Et gennemført tilmeldingsflow, der gemmer det korrekte `event_id`.
-- Evidens fra Supabase, Network-panelet og den relevante del af UI'et.
-- En opdateret audit med problem, løsning og verifikation.
 
 <hr style="margin: 2rem 0;">
 
