@@ -892,23 +892,38 @@
 
 .create-table-steps code { color: var(--data-blue); }
 
-.user-data-guide {
+.user-insert-visual {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 0.62fr 1.38fr;
   gap: 30px;
   align-items: stretch;
-  margin-top: 30px;
+  margin-top: 24px;
 }
 
-.user-data-fields {
+.user-insert-shot {
+  height: 420px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: #111413;
+}
+
+.user-insert-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.user-insert-explanation {
   display: grid;
-  padding: 26px 28px;
+  align-content: start;
+  padding: 25px 28px;
   border-top: 6px solid var(--green);
   background: var(--surface);
 }
 
-.user-data-fields > span {
-  margin-bottom: 12px;
+.user-insert-explanation > span {
   color: var(--green);
   font-size: 15px;
   font-weight: 800;
@@ -916,58 +931,101 @@
   text-transform: uppercase;
 }
 
-.user-data-fields > p {
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: 20px;
-  align-items: center;
-  margin-top: 14px;
-  padding: 13px 0;
-  border-bottom: 1px solid var(--line);
+.user-insert-explanation > strong {
+  margin-top: 18px;
+  color: var(--ink);
+  font-size: 26px;
 }
 
-.user-data-fields code {
-  color: var(--data-blue);
+.user-insert-explanation > p {
+  margin-top: 10px;
+  color: var(--muted);
   font-size: 19px;
 }
 
-.user-data-fields strong {
-  color: var(--ink);
-  font-size: 20px;
+.user-insert-explanation code {
+  color: var(--data-blue);
 }
 
-.generated-user-id {
+.generated-id-note {
   display: grid;
-  align-content: center;
-  justify-items: start;
-  padding: 34px;
+  gap: 5px;
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-left: 5px solid var(--data-blue);
+  background: var(--data-blue-soft);
+}
+
+.generated-id-note b { color: var(--ink); font-size: 19px; }
+.generated-id-note small { color: var(--muted); font-size: 16px; }
+
+.user-insert-explanation figure {
+  margin-top: 20px;
+}
+
+.user-insert-explanation figure img {
+  display: block;
+  width: 100%;
+  height: 92px;
+  border: 1px solid var(--line-strong);
+  object-fit: cover;
+}
+
+.user-insert-explanation figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.relation-interface-shots,
+.connect-row-shots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.relation-interface-shots figure,
+.connect-row-shots figure {
+  overflow: hidden;
   border: 1px solid var(--line-strong);
   border-radius: 10px;
-  background: linear-gradient(145deg, rgb(101 167 255 / 13%), rgb(62 207 142 / 8%));
+  background: var(--surface);
 }
 
-.generated-user-id > span {
-  color: var(--muted);
-  font-size: 20px;
+.relation-interface-shots img,
+.connect-row-shots img {
+  display: block;
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  object-position: right center;
 }
 
-.generated-user-id > strong {
-  margin-top: 20px;
+.connect-row-shots {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.connect-row-shots img {
+  height: 330px;
+}
+
+.connect-row-shots figure:last-child img {
+  object-position: center center;
+}
+
+.relation-interface-shots figcaption,
+.connect-row-shots figcaption {
+  padding: 14px 18px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.relation-interface-shots figcaption b,
+.connect-row-shots figcaption b {
+  margin-right: 8px;
   color: var(--green);
-  font-size: 46px;
-}
-
-.generated-user-id > p {
-  margin-top: 36px;
-  color: var(--muted);
-  font-size: 19px;
-}
-
-.generated-user-id > code {
-  margin-top: 10px;
-  color: var(--data-blue);
-  font-size: 28px;
-  font-weight: 800;
 }
 
 .ui-path {

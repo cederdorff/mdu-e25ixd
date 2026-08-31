@@ -306,19 +306,19 @@
         <section class="po-slide ui-guide-slide">
           <span class="eyebrow">Supabase uden SQL · 2</span>
           <h2>Tilføj mindst én user, som posts kan pege på</h2>
-          <div class="user-data-guide">
-            <div class="user-data-fields">
-              <span>Database → Tables → users → Insert → Insert row</span>
-              <p><code>name</code><strong>Rasmus Cederdorff</strong></p>
-              <p><code>mail</code><strong>race@eaaa.dk</strong></p>
-              <p><code>title</code><strong>Senior Lecturer</strong></p>
-              <p><code>image</code><strong>URL til profilbilledet</strong></p>
+          <div class="user-insert-visual">
+            <div class="user-insert-shot">
+              <img src="../assets/supabase-insert-user.png" alt="Supabase-dialog til at indsætte en user med name, mail, title og image" />
             </div>
-            <div class="generated-user-id">
-              <span>Lad <code>id</code> stå tomt</span>
-              <strong>Save</strong>
-              <p>Supabase opretter fx</p>
-              <code>users.id = 1</code>
+            <div class="user-insert-explanation">
+              <span>Database → Tables → users → Insert → Insert row</span>
+              <strong>Udfyld userens fire felter</strong>
+              <p><code>name</code> · <code>mail</code> · <code>title</code> · <code>image</code></p>
+              <div class="generated-id-note"><b>Lad <code>id</code> stå tomt</b><small>Supabase genererer nummeret, når du vælger Save.</small></div>
+              <figure>
+                <img src="../assets/supabase-user-row.png" alt="Users-tabellen efter Save med én user og det genererede id 1" />
+                <figcaption>Efter Save findes useren som en række med fx <code>id = 1</code>.</figcaption>
+              </figure>
             </div>
           </div>
           <p class="ui-rule"><strong>Opret gerne to users.</strong> Så kan I bagefter se, at forskellige posts kan pege på forskellige users.</p>
@@ -326,7 +326,8 @@
             Åbn users i Table Editor, vælg Insert → Insert row, og indtast én konkret user. Lad id stå tomt, så Supabase
             genererer værdien. Hvis tabellen har createdAt, behold default-værdien. Gem gerne Rasmus og Maria, så flere
             relationer kan afprøves bagefter. Det centrale er, at user-rækkerne skal findes, før posts kan få deres userId.
-            [Sources] - SQL 03 seed data · lokalt undervisningsmateriale - Supabase Tables and Data ·
+            [Sources] - User-provided Supabase screenshots · slides/assets/supabase-insert-user.png ·
+            slides/assets/supabase-user-row.png - SQL 03 seed data · lokalt undervisningsmateriale - Supabase Tables and Data ·
             https://supabase.com/docs/guides/database/tables [/Sources]
           </aside>
         </section>
@@ -334,26 +335,22 @@
         <section class="po-slide ui-guide-slide">
           <span class="eyebrow">Supabase uden SQL · 3</span>
           <h2>Tilføj forbindelsen som en kolonne i <code>posts</code></h2>
-          <div class="relation-builder">
-            <article class="relation-source">
-              <span>Åbn posts</span>
-              <strong>New column</strong>
-              <p><code>userId</code></p>
-              <small>Type: <b>int8</b></small>
-            </article>
-            <div class="relation-builder-arrow">→</div>
-            <article class="relation-target">
-              <span>Tilføj foreign key relation</span>
-              <p><code>public.users</code></p>
-              <b>kolonne: <code>id</code></b>
-              <small>Gem kolonnen og tabellen</small>
-            </article>
+          <div class="relation-interface-shots">
+            <figure>
+              <img src="../assets/supabase-add-user-id-column.png" alt="Supabase Update table for posts med kolonnen userId og knappen Add foreign key relation" />
+              <figcaption><b>1</b> Tilføj <code>userId</code> som <code>int8</code></figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/supabase-create-foreign-key.png" alt="Supabase-dialog hvor posts.userId forbindes med public.users.id" />
+              <figcaption><b>2</b> Forbind <code>posts.userId</code> med <code>users.id</code></figcaption>
+            </figure>
           </div>
           <p class="ui-rule"><code>posts.userId</code> og <code>users.id</code> skal have samme type: <strong>int8</strong>.</p>
           <aside class="notes">
             Redigér posts i Table Editor. Tilføj userId med samme datatype som users.id. Brug interfacets mulighed for at
             tilføje en foreign key relation, og vælg public.users og id. Ordlyden i Dashboard kan ændre sig lidt; de skal
-            lede efter relation/foreign key i kolonnens indstillinger. [Sources] - Supabase Tables and Data ·
+            lede efter relation/foreign key i kolonnens indstillinger. [Sources] - User-provided Supabase screenshots ·
+            slides/assets/supabase-add-user-id-column.png · slides/assets/supabase-create-foreign-key.png - Supabase Tables and Data ·
             https://supabase.com/docs/guides/database/tables [/Sources]
           </aside>
         </section>
@@ -361,29 +358,21 @@
         <section class="po-slide ui-guide-slide">
           <span class="eyebrow">Supabase uden SQL · 4</span>
           <h2>Forbind derefter de eksisterende posts med en user</h2>
-          <div class="row-order">
-            <article>
-              <span>1</span>
-              <strong>Find userens id</strong>
-              <p>Rasmus har fx <code>id = 1</code></p>
-            </article>
-            <b>→</b>
-            <article>
-              <span>2</span>
-              <strong>Redigér en post-række</strong>
-              <p>Sæt <code>userId = 1</code></p>
-            </article>
-            <b>→</b>
-            <article>
-              <span>3</span>
-              <strong>Gentag for resten</strong>
-              <p>Hver post peger på den rigtige user</p>
-            </article>
+          <div class="connect-row-shots">
+            <figure>
+              <img src="../assets/supabase-select-related-user.png" alt="Supabase Table Editor hvor en eksisterende user vælges til et posts userId" />
+              <figcaption><b>1</b> Klik i <code>userId</code> og vælg en række fra <code>users</code></figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/supabase-post-with-user-id.png" alt="Posts-tabellen hvor et post nu har userId 1 og et relationsikon" />
+              <figcaption><b>2</b> Postet gemmer kun værdien <code>userId = 1</code></figcaption>
+            </figure>
           </div>
           <p class="ui-rule"><strong>Rækkefølgen betyder noget:</strong> En fremmednøgle kan kun pege på en række, der allerede findes.</p>
           <aside class="notes">
             Lad eventuelt de studerende prøve userId 99 på en test-række og læse fejlbeskeden. Ret derefter værdien til et
-            eksisterende id. Det gør fremmednøglens regel konkret uden SQL. [Sources] - Supabase Tables and Data ·
+            eksisterende id. Det gør fremmednøglens regel konkret uden SQL. [Sources] - User-provided Supabase screenshots ·
+            slides/assets/supabase-select-related-user.png · slides/assets/supabase-post-with-user-id.png - Supabase Tables and Data ·
             https://supabase.com/docs/guides/database/tables - SQL 03 · lokalt undervisningsmateriale [/Sources]
           </aside>
         </section>
