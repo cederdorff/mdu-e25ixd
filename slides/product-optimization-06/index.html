@@ -18,13 +18,13 @@
       <div class="slides">
         <section class="po-slide po-title performance-title">
           <span class="eyebrow">Product Optimization · Case 1</span>
-          <h1>Find flaskehalsen.<br /><span>Ikke bare scoren.</span></h1>
-          <p class="lead">Performance · Lighthouse · Network · prioriteret videre arbejde</p>
+          <h1>Mål det, der<br /><span>betyder noget.</span></h1>
+          <p class="lead">Performance · Lighthouse · Network · brugeroplevelse</p>
           <p class="date"><span>RACE</span><time datetime="2026-09-02">2. september 2026</time></p>
           <aside class="notes">
-            Åbn med dagens præmis: En hurtig app er en app, der føles klar og reagerer, når brugeren har brug for det.
-            Lighthouse er et startpunkt, ikke facit. [Sources] - Dagens undervisningsside · lokalt kursusmateriale
-            [/Sources]
+            Åbn med dagens præmis: Vi måler ikke for målingens skyld. En hurtig app er en app, der føles klar og
+            reagerer, når brugeren har brug for det. Lighthouse er et startpunkt, men brugerens oplevelse afgør, hvad
+            der er vigtigt at arbejde videre med. [Sources] - Dagens undervisningsside · lokalt kursusmateriale [/Sources]
           </aside>
         </section>
 
@@ -33,19 +33,19 @@
           <h2>Vælg en user — og vis relationen på postet</h2>
           <div class="recap-screens">
             <figure>
-              <img src="../assets/Screenshot 2026-09-01 at 13.11.23.png" alt="Create Post-formular med valg af user" />
+              <img src="../assets/post-app-create-post-select-user.png" alt="Create Post-formular med valg af user" />
               <figcaption><span>01</span><strong>Vælg user</strong><small>ved oprettelse — og tilsvarende ved redigering</small></figcaption>
             </figure>
             <figure>
-              <img src="../assets/Screenshot 2026-09-01 at 13.10.53.png" alt="Post App med relateret user vist på hvert post" />
+              <img src="../assets/post-app-posts-with-related-user.png" alt="Post App med relateret user vist på hvert post" />
               <figcaption><span>02</span><strong>Vis relationen</strong><small><code>post.user</code> bruges på post-kortet</small></figcaption>
             </figure>
           </div>
           <aside class="notes">
             Peg kort i den fungerende løsning. Opret et post og redigér et eksisterende post. Vis select-feltet, den
             gemte userId-værdi i requestet og den indlejrede user i responsen. Brug højst 10 minutter. [Sources] -
-            User-provided Post App screenshots · slides/assets/Screenshot 2026-09-01 at 13.11.23.png og
-            slides/assets/Screenshot 2026-09-01 at 13.10.53.png - Race 05 og Post App med posts/users · lokalt
+            User-provided Post App screenshots · slides/assets/post-app-create-post-select-user.png og
+            slides/assets/post-app-posts-with-related-user.png - Race 05 og Post App med posts/users · lokalt
             kursusmateriale [/Sources]
           </aside>
         </section>
@@ -102,12 +102,14 @@
           <div class="moment-line">
             <article><b>01</b><span>Indlæsning</span><strong>Hvornår kan jeg se det vigtigste?</strong><small>fx eventtitel, dato og hero-billede</small></article>
             <article><b>02</b><span>Stabilitet</span><strong>Bliver indholdet stående?</strong><small>eller flytter layoutet sig, når assets ankommer?</small></article>
-            <article><b>03</b><span>Respons</span><strong>Kan jeg mærke mit klik?</strong><small>loading, disabled state, succes eller fejl</small></article>
+            <article><b>03</b><span>Respons · INP</span><strong>Kan jeg mærke mit klik?</strong><small>Reagerer UI straks med loading eller disabled — også mens requestet fortsætter?</small></article>
           </div>
           <aside class="notes">
             Knyt ordene til Core Web Vitals uden at gøre metrikkerne til udenadslære: LCP handler om det vigtigste
-            synlige indhold, CLS om visuel stabilitet og INP om respons på interaktioner. [Sources] - Largest
-            Contentful Paint · https://web.dev/articles/lcp - Web Vitals · https://web.dev/articles/vitals [/Sources]
+            synlige indhold, CLS om visuel stabilitet og INP om tiden fra klik, tap eller tastaturinput til browserens
+            næste synlige respons. Den endelige handling må gerne tage længere tid, men brugeren skal hurtigt kunne se,
+            at noget sker. [Sources] - Largest Contentful Paint · https://web.dev/articles/lcp - Web Vitals ·
+            https://web.dev/articles/vitals - Interaction to Next Paint · https://web.dev/articles/inp [/Sources]
           </aside>
         </section>
 
@@ -121,15 +123,18 @@
             <b>→</b>
             <article><span>Brugerflow</span><strong>Har det betydning?</strong><small>observer appen under realistiske forhold</small></article>
           </div>
+          <p class="tool-note"><strong>Lighthouse er en kontrolleret lab-test.</strong> Den viser ikke nødvendigvis det, alle virkelige brugere oplever.</p>
           <p class="tool-impact"><span>Det vigtigste filter</span><strong>Hvis vi ikke kan forklare betydningen for brugeren, har vi endnu ikke et prioriteret problem.</strong></p>
           <aside class="notes">
             Svar eksplicit på spørgsmålet: Lighthouse er egnet til før/efter, hvis betingelserne holdes ens. Network er
-            det vigtigste supplement på deres niveau. Stop derefter ved brugerflowet: Hvem rammes? Hvad prøver personen
+            det vigtigste supplement på deres niveau. Gør forskellen eksplicit: Lighthouse er en kontrolleret lab-test,
+            mens virkelige brugere har forskellige devices, netværk og interaktioner. Stop derefter ved brugerflowet: Hvem rammes? Hvad prøver personen
             at gøre? Hvad venter, hopper eller reagerer ikke? Og sker det ofte nok til at være vigtigt? Performance-panelet
             og React Profiler er trin to, når et konkret load eller klik stadig kræver en dybere forklaring — ikke
             standard for alle. [Sources] - Lighthouse · https://developer.chrome.com/docs/lighthouse - Network overview ·
             https://developer.chrome.com/docs/devtools/network/overview - Performance insights ·
-            https://developer.chrome.com/docs/performance/insights [/Sources]
+            https://developer.chrome.com/docs/performance/insights - CrUX og Lighthouse i PageSpeed Insights ·
+            https://developer.chrome.com/docs/crux/guides/pagespeed-insights [/Sources]
           </aside>
         </section>
 
@@ -176,6 +181,29 @@
             eksempel. Sammenlign altid den samme route før og efter. [Sources] - Lighthouse ·
             https://developer.chrome.com/docs/lighthouse - Network overview ·
             https://developer.chrome.com/docs/devtools/network/overview [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide lighthouse-evidence-slide">
+          <span class="eyebrow">Mellemrum · Lighthouse i DevTools</span>
+          <h2>En score på 99 er et startpunkt</h2>
+          <figure class="lighthouse-evidence">
+            <img
+              src="../assets/mellemrum-lighthouse-performance-report.png"
+              alt="Mellemrum på den deployede side ved siden af en Lighthouse-rapport med Performance 99, Accessibility 100, Best Practices 77 og SEO 100"
+            />
+            <figcaption>
+              <strong>Hvad kan vi konkludere?</strong>
+              Se score, metrics og advarsler — og undersøg derefter requests og brugerflow.
+            </figcaption>
+          </figure>
+          <aside class="notes">
+            Brug skærmbilledet som fælles observation, før tallene forklares. Spørg først: Hvad lægger I mærke til?
+            Hvad kan vi konkludere ud fra Performance 99? Hvad kan vi endnu ikke konkludere? Peg også på advarslen om
+            lagret IndexedDB-data: selve rapporten fortæller, at testmiljøet kan påvirke resultatet. Det skaber den
+            naturlige overgang til den konkrete baseline og senere forskellen mellem inkognito og Disable cache.
+            [Sources] - User-provided Lighthouse screenshot · slides/assets/mellemrum-lighthouse-performance-report.png ·
+            https://cederdorff.com/mellemrum/ · captured 1. september 2026 [/Sources]
           </aside>
         </section>
 
@@ -266,6 +294,33 @@
           </aside>
         </section>
 
+        <section class="po-slide network-evidence-slide">
+          <span class="eyebrow">Mellemrum · Network med Disable cache</span>
+          <h2>7,9 MB bliver til konkrete requests</h2>
+          <figure class="network-evidence">
+            <img
+              src="../assets/mellemrum-network-disable-cache-size.png"
+              alt="Mellemrum og Chrome DevTools Network med Disable cache slået til og requests sorteret efter størrelse"
+            />
+            <figcaption class="network-investigation">
+              <span><b>Waterfall</b>Hvornår starter requestet?</span>
+              <span><b>Initiator</b>Hvad startede det?</span>
+              <span><b>LCP-spørgsmålet</b>Bliver det vigtigste billede opdaget sent?</span>
+            </figcaption>
+          </figure>
+          <aside class="notes">
+            Lad holdet læse det virkelige Network-panel før tabellen på næste slide. Start nederst: 16 requests og
+            7,9 MB transferred. Panelet er sorteret efter Size, og Disable cache er slået til. Spørg derefter: Hvilken
+            type fylder? Hvilke requests skiller sig ud? Hvem startede dem? Brug Waterfall til at se, hvornår et
+            request begynder, og Initiator til at se, hvad der udløste det. Et vigtigt asset kan være lille nok, men
+            stadig komme sent, fordi browseren først opdager det gennem CSS, JavaScript eller data. Undgå endnu at
+            foreslå løsninger — næste slide gør observationerne lettere at sammenligne. [Sources] - User-provided Network screenshot ·
+            slides/assets/mellemrum-network-disable-cache-size.png · https://cederdorff.com/mellemrum/ · captured
+            1. september 2026 - Network features reference ·
+            https://developer.chrome.com/docs/devtools/network/reference [/Sources]
+          </aside>
+        </section>
+
         <section class="po-slide network-reading-slide">
           <span class="eyebrow">Mellemrum · requests fra Lighthouse-run</span>
           <h2>Sortér efter størrelse — hvad skiller sig ud?</h2>
@@ -281,8 +336,9 @@
           <aside class="notes">
             Lad holdet selv pege på mønsteret. Ti billeder udgjorde cirka 7,8 MiB, mens appens JavaScript-request var
             cirka 76 KiB og Supabase-responsen cirka 2,8 KiB. Det afgør ikke hele prioriteringen, men det kvalificerer
-            det næste sted at undersøge. Forklar Disable cache som et første-besøg-scenarie, ikke som den eneste
-            brugeroplevelse. [Sources] - User-provided Lighthouse 13.4.1 report for
+            det næste sted at undersøge. Hvis et datarequest har lang Waiting, så åbn Timing og undersøg TTFB, før I
+            konkluderer, at problemet ligger i React. Forklar Disable cache som et første-besøg-scenarie, ikke som den
+            eneste brugeroplevelse. [Sources] - User-provided Lighthouse 13.4.1 report for
             https://cederdorff.com/mellemrum/ · fetched 1. september 2026 - Inspect network activity ·
             https://developer.chrome.com/docs/devtools/network [/Sources]
           </aside>
@@ -503,21 +559,40 @@
 
         <section class="po-slide js-optimization-slide">
           <span class="eyebrow">Greb 4 · JavaScript</span>
-          <h2>Lazy-load en stor route — kun hvis bundlen er et målt problem</h2>
+          <h2>Lazy-load PostDetailPage — hvis første bundle er problemet</h2>
           <div class="lazy-layout">
             <pre class="po-code"><code class="language-jsx">import { lazy, Suspense } from "react";
 
-const AdminPage = lazy(() =&gt; import("./AdminPage"));
+const PostDetailPage = lazy(() =&gt;
+  import("./pages/PostDetailPage")
+);
 
-&lt;Suspense fallback={&lt;Loading /&gt;}&gt;
-  &lt;AdminPage /&gt;
-&lt;/Suspense&gt;</code></pre>
-            <div class="lazy-when"><span>Giver mening når</span><strong>en stor route sjældent åbnes</strong><small>og første JS-load er et dokumenteret problem</small><b>Ikke som standard på små komponenter.</b></div>
+&lt;Route
+  path="/posts/:id"
+  element={
+    &lt;Suspense fallback={&lt;p&gt;Indlæser post…&lt;/p&gt;}&gt;
+      &lt;PostDetailPage /&gt;
+    &lt;/Suspense&gt;
+  }
+/&gt;</code></pre>
+            <div class="lazy-explanation">
+              <p><b><code>lazy()</code></b><span>venter med at hente sidens JavaScript, til routen skal vises</span></p>
+              <p><b><code>Suspense</code></b><span>viser en fallback, mens komponentens kode bliver hentet</span></p>
+              <p><b>Tradeoff</b><span>mindre første bundle — men et ekstra load, når detaljesiden åbnes første gang</span></p>
+              <strong>Brug det kun, hvis første JS-load er et dokumenteret problem.</strong>
+            </div>
           </div>
           <aside class="notes">
-            Vis dette som et valgfrit, senere greb. De fleste studerende får mere ud af at optimere billeder og
-            requests først. React.lazy udsætter indlæsningen af komponentens kode, indtil komponenten skal renderes.
-            [Sources] - React lazy · https://react.dev/reference/react/lazy [/Sources]
+            Knyt eksemplet til den eksisterende Post App: App.jsx forbinder allerede /posts/:id med PostDetailPage.
+            En almindelig statisk import lægger normalt page-koden i den JavaScript, der er klar ved første load.
+            lazy() bruger en dynamisk import og venter med at hente modulet, til PostDetailPage skal renderes.
+            Suspense viser fallbacken imens. Modulet skal have en default export, hvilket den eksisterende
+            PostDetailPage allerede har. Gevinsten er ikke mindre samlet kode, hvis brugeren besøger alle routes;
+            koden flyttes til det tidspunkt, hvor den skal bruges. Vis derfor dette som et valgfrit, senere greb.
+            De fleste studerende får mere ud af at optimere billeder og requests først. [Sources] - Post App ·
+            src/App.jsx og src/pages/PostDetailPage.jsx · lokalt referenceprojekt - React lazy ·
+            https://react.dev/reference/react/lazy - React Suspense · https://react.dev/reference/react/Suspense
+            [/Sources]
           </aside>
         </section>
 
