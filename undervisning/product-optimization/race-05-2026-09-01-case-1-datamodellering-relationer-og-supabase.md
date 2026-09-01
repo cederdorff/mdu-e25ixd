@@ -91,7 +91,9 @@ Efter undervisningen skal du kunne:
   - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
   - [Teknisk audit af en React-løsning](https://eaaa.instructure.com/courses/30922/pages/teknisk-audit-af-en-react-losning)
 - **Fælles eksempel:**
-  - [Post App med Supabase](https://github.com/cederdorff/post-app-supabase)
+  - [Post App · enkel `posts`-model](https://github.com/cederdorff/post-app-supabase)
+  - [Post App · gentagne brugerdata](https://github.com/cederdorff/post-app-supabase/tree/posts-with-duplicated-user-data)
+  - [Post App · `posts` og `users` med relation](https://github.com/cederdorff/post-app-supabase/tree/posts-and-users)
 - **Supabase:**
   - [Tables and Data · primærnøgler, fremmednøgler og relationer](https://supabase.com/docs/guides/database/tables)
   - [Querying Joins and Nested Tables](https://supabase.com/docs/guides/database/joins-and-nesting)
