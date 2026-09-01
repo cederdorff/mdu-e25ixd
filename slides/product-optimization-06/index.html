@@ -537,21 +537,23 @@
 
         <section class="po-slide request-optimization-slide">
           <span class="eyebrow">Greb 3 · requests og React</span>
-          <h2>Et dobbelt request er et spørgsmål — ikke automatisk en bug</h2>
+          <h2>Derfor kan dev mode vise to requests</h2>
           <div class="strict-layout">
-            <div class="strict-signal"><span>Development</span><strong>2 × GET /events</strong><small>kan skyldes React Strict Mode</small></div>
+            <div class="strict-signal"><span>Lokalt · development</span><strong>2 × GET /events</strong><small>Strict Mode kører Effects en ekstra gang for at afsløre problemer</small></div>
             <div class="strict-arrow">→</div>
-            <div class="strict-check"><span>Kontrollér</span><strong><code>npm run build</code></strong><small>test production build og flowet igen</small></div>
+            <div class="strict-check"><span>Deployet · production</span><strong>Typisk 1 × GET /events</strong><small>det ekstra development-tjek kører ikke i production</small></div>
           </div>
           <ul class="request-rules">
-            <li>Fetch kun når den nødvendige dependency ændrer sig.</li>
-            <li>Undgå samme datafetch i både parent og child.</li>
-            <li>Vis loading, disabled og error — oplevet performance tæller også.</li>
+            <li>Se først, om det dobbelte request kun findes lokalt.</li>
+            <li>Test Network på den deployede version, før du optimerer.</li>
+            <li>Sker det også dér? Undersøg dependencies og flere fetch-steder.</li>
           </ul>
           <aside class="notes">
             React Strict Mode kører ekstra udviklingstjek, herunder en ekstra setup/cleanup-cyklus for Effects i
-            development. Ret ikke blindt ved at fjerne Strict Mode. Kontrollér først om problemet findes i en
-            production build, og kontrollér derefter effectens dependencies og placering. [Sources] - React StrictMode
+            development. Det kan derfor ligne et dobbelt datarequest lokalt, selv om det ekstra tjek ikke køres i
+            production. Ret ikke blindt ved at fjerne Strict Mode. Kontrollér først Network på den deployede version.
+            Hvis requestet også er dobbelt dér, undersøges effectens dependencies og om samme fetch ligger flere
+            steder. [Sources] - React StrictMode
             · https://react.dev/reference/react/StrictMode - Synchronizing with Effects ·
             https://react.dev/learn/synchronizing-with-effects [/Sources]
           </aside>

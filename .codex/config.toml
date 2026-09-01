@@ -1,0 +1,4 @@
+# Everyday work in this repository is primarily scoped slide and course-material editing.
+# Switch to Sol manually for broad restructuring, difficult debugging, or final editorial review.
+model = "gpt-5.6-terra"
+model_reasoning_effort = "low"

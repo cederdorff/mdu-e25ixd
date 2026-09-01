@@ -52,3 +52,36 @@ Samlet materialeoversigt til 3. semester Interaction Design (IxD), Multimediedes
 - [Beskrivelser af forløb og eksamener](semesteroverblik/forloeb-og-eksamen.md)
 - [Modulnavne til Canvas](semesteroverblik/canvas-moduler.md)
 - [Udkast til RACE-undervisning](semesteroverblik/udkast-undervisning-race.md)
+
+## Arbejd med repoet i Codex
+
+Repoets lokale Codex-standard er **GPT-5.6 Terra med low reasoning**. Det passer til det daglige arbejde med tekst, HTML, CSS og afgrænsede slideændringer. Skift model efter opgaven:
+
+| Opgave | Model og reasoning |
+| --- | --- |
+| Små tekst-, asset- og stylingrettelser | Luna eller Terra · low |
+| Almindelig udvikling af undervisning og slides | Terra · low/medium |
+| Ny struktur, svær fejlsøgning eller samlet fagligt review | Sol · medium |
+
+### Anbefalet arbejdsgang
+
+1. Brug én chat per undervisningsgang eller samlet opgave.
+2. Saml feedback til en liste, før Codex retter decket igen.
+3. Bed om én implementeringsrunde og ét build til sidst.
+4. Kontrollér primært de slides, der er ændret.
+5. Start en ny chat med en kort status, når emnet eller decket skifter.
+
+Eksempel på en fokuseret opgave:
+
+```text
+Opdater product-optimization-06 i én samlet omgang ud fra punkterne nedenfor.
+Match det foregående deck i styling, tone og eksisterende modeller.
+Genbrug eksisterende komponenter, og bevar syntax highlighting og speaker notes.
+Byg én gang til sidst, og kontrollér kun de ændrede slides visuelt.
+Hold slutrapporten kort.
+
+- ...
+- ...
+```
+
+Projektets varige instruktioner ligger i [`AGENTS.md`](AGENTS.md), mens modelstandarden ligger i [`.codex/config.toml`](.codex/config.toml). Projektkonfigurationen indlæses kun, når repoet er markeret som trusted i Codex.
