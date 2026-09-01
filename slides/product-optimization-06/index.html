@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RACE · Product Optimization · Case 1, performance, Lighthouse og videre arbejde · 2. september 2026."
+    />
+    <title>Case 1 · Performance, Lighthouse og videre arbejde · 02.09.2026</title>
+    <link rel="stylesheet" href="../vendor/reveal/reveal.css" />
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="../product-optimization-03/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="po-slide po-title performance-title">
+          <span class="eyebrow">Product Optimization · Case 1</span>
+          <h1>Find flaskehalsen.<br /><span>Ikke bare scoren.</span></h1>
+          <p class="lead">Performance · Lighthouse · Network · prioriteret videre arbejde</p>
+          <p class="date"><span>RACE</span><time datetime="2026-09-02">2. september 2026</time></p>
+          <aside class="notes">
+            Åbn med dagens præmis: En hurtig app er en app, der føles klar og reagerer, når brugeren har brug for det.
+            Lighthouse er et startpunkt, ikke facit. [Sources] - Dagens undervisningsside · lokalt kursusmateriale
+            [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide recap-slide" id="recap">
+          <span class="eyebrow">Først · løsningen fra i går</span>
+          <h2>Vælg en user — og vis relationen på postet</h2>
+          <div class="recap-screens">
+            <figure>
+              <img src="../assets/Screenshot 2026-09-01 at 13.11.23.png" alt="Create Post-formular med valg af user" />
+              <figcaption><span>01</span><strong>Vælg user</strong><small>ved oprettelse — og tilsvarende ved redigering</small></figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/Screenshot 2026-09-01 at 13.10.53.png" alt="Post App med relateret user vist på hvert post" />
+              <figcaption><span>02</span><strong>Vis relationen</strong><small><code>post.user</code> bruges på post-kortet</small></figcaption>
+            </figure>
+          </div>
+          <aside class="notes">
+            Peg kort i den fungerende løsning. Opret et post og redigér et eksisterende post. Vis select-feltet, den
+            gemte userId-værdi i requestet og den indlejrede user i responsen. Brug højst 10 minutter. [Sources] -
+            User-provided Post App screenshots · slides/assets/Screenshot 2026-09-01 at 13.11.23.png og
+            slides/assets/Screenshot 2026-09-01 at 13.10.53.png - Race 05 og Post App med posts/users · lokalt
+            kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide demo-check-slide">
+          <span class="eyebrow">Kort demonstration</span>
+          <h2>Kan vi følge relationen gennem hele flowet?</h2>
+          <div class="demo-checks">
+            <article><span>Form</span><strong>User kan vælges</strong><small>ved både oprettelse og redigering</small></article>
+            <article><span>Request</span><strong><code>userId</code> sendes</strong><small>kontrollér payload i Network</small></article>
+            <article><span>Database</span><strong>Relationen holder</strong><small><code>posts.userId → users.id</code></small></article>
+            <article><span>Response</span><strong>User er indlejret</strong><small>og vises på post-cardet</small></article>
+          </div>
+          <p class="slide-question">Hvor i flowet ville I først lede, hvis den forkerte user blev vist?</p>
+          <aside class="notes">
+            Brug sliden som live-checkliste. Hvis noget fejler, så lad holdet pege på det næste sted at undersøge i
+            stedet for straks at rette det. [Sources] - Race 05 · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide po-agenda" id="agenda">
+          <span class="eyebrow">Agenda · konkrete forbedringsspor</span>
+          <h2>Brug værktøjernes output til at vælge det rigtige greb</h2>
+          <ol class="agenda-list six-items" start="0">
+            <li><a href="#/recap"><b>Kort recap: posts og users</b><small>Vælg user ved create/edit, og gem relationen med userId</small></a></li>
+            <li><a href="#/maaling"><b>Måling og værktøjsoutput</b><small>Lighthouse som baseline · Network som konkret bevis</small></a></li>
+            <li><a href="#/billeder-assets"><b>Billeder og øvrige assets</b><small>Dimensioner, formater, fonte og tunge projektfiler</small></a></li>
+            <li><a href="#/supabase"><b>Supabase og data</b><small>Hent kun de kolonner, relationer og rækker, visningen bruger</small></a></li>
+            <li><a href="#/javascript-react"><b>JavaScript og React</b><small>Gentagne requests, loading states og relevant code splitting</small></a></li>
+            <li><a href="#/arbejde"><b>Prioritér og arbejd videre</b><small>Vælg et dokumenteret fund — eller en vigtigere audit-forbedring</small></a></li>
+          </ol>
+          <aside class="notes">
+            Understreg rækkefølgen: Vi vælger ikke en optimering før vi har et fund. En høj score eller fravær af et
+            vigtigt performanceproblem er også et resultat. [Sources] - Dagens undervisningsside · lokalt
+            kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide performance-chapter" id="maaling">
+          <span class="chapter-index">01</span>
+          <span class="eyebrow">Start hos brugeren</span>
+          <h2>“Langsom” er ikke<br />et præcist problem</h2>
+          <p class="kicker">Beskriv momentet: Hvad prøver brugeren at gøre — og hvad oplever personen?</p>
+          <aside class="notes">
+            Få et par eksempler fra Mellemrum. Omskriv “siden er langsom” til et observerbart brugerproblem, fx at
+            eventlisten er tom længe, eller at der mangler feedback efter tilmelding. [Sources] - Dagens
+            undervisningsside · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide user-moments-slide">
+          <span class="eyebrow">Tre brugerøjeblikke</span>
+          <h2>Performance viser sig som ventetid, hop eller manglende respons</h2>
+          <div class="moment-line">
+            <article><b>01</b><span>Indlæsning</span><strong>Hvornår kan jeg se det vigtigste?</strong><small>fx eventtitel, dato og hero-billede</small></article>
+            <article><b>02</b><span>Stabilitet</span><strong>Bliver indholdet stående?</strong><small>eller flytter layoutet sig, når assets ankommer?</small></article>
+            <article><b>03</b><span>Respons</span><strong>Kan jeg mærke mit klik?</strong><small>loading, disabled state, succes eller fejl</small></article>
+          </div>
+          <aside class="notes">
+            Knyt ordene til Core Web Vitals uden at gøre metrikkerne til udenadslære: LCP handler om det vigtigste
+            synlige indhold, CLS om visuel stabilitet og INP om respons på interaktioner. [Sources] - Largest
+            Contentful Paint · https://web.dev/articles/lcp - Web Vitals · https://web.dev/articles/vitals [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide tools-slide" id="lighthouse">
+          <span class="eyebrow">Er Lighthouse det rigtige værktøj?</span>
+          <h2>Ja — til baseline og hypoteser. Nej — som eneste bevis.</h2>
+          <div class="tool-funnel">
+            <article><span>Lighthouse</span><strong>Hvad bør vi undersøge?</strong><small>gentagelig lab-test og mulige problemer</small></article>
+            <b>→</b>
+            <article><span>Network</span><strong>Hvad bliver faktisk hentet?</strong><small>størrelse, timing, type, status og gentagelser</small></article>
+            <b>→</b>
+            <article><span>Brugerflow</span><strong>Har det betydning?</strong><small>observer appen under realistiske forhold</small></article>
+          </div>
+          <p class="tool-impact"><span>Det vigtigste filter</span><strong>Hvis vi ikke kan forklare betydningen for brugeren, har vi endnu ikke et prioriteret problem.</strong></p>
+          <aside class="notes">
+            Svar eksplicit på spørgsmålet: Lighthouse er egnet til før/efter, hvis betingelserne holdes ens. Network er
+            det vigtigste supplement på deres niveau. Stop derefter ved brugerflowet: Hvem rammes? Hvad prøver personen
+            at gøre? Hvad venter, hopper eller reagerer ikke? Og sker det ofte nok til at være vigtigt? Performance-panelet
+            og React Profiler er trin to, når et konkret load eller klik stadig kræver en dybere forklaring — ikke
+            standard for alle. [Sources] - Lighthouse · https://developer.chrome.com/docs/lighthouse - Network overview ·
+            https://developer.chrome.com/docs/devtools/network/overview - Performance insights ·
+            https://developer.chrome.com/docs/performance/insights [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide baseline-slide">
+          <span class="eyebrow">Baseline på deployment</span>
+          <h2>Test den deployede løsning — og kør mere end én gang</h2>
+          <div class="baseline-layout">
+            <ol>
+              <li><b>Brug deployment-URL’en</b><span>det er miljøet, brugeren møder</span></li>
+              <li><b>Lav en liste over sider og flows</b><span>test hele løsningen — ikke kun forsiden</span></li>
+              <li><b>Vælg samme device og throttling</b><span>fx Lighthouse Mobile</span></li>
+              <li><b>Kør 3 gange</b><span>notér et repræsentativt resultat og variationen</span></li>
+            </ol>
+            <div class="dont-compare"><span>Sammenlign ikke</span><strong>localhost før</strong><b>↔</b><strong>deployment efter</strong><small>Det er to forskellige miljøer.</small></div>
+          </div>
+          <aside class="notes">
+            Brug deployment som standard: det er den byggede løsning, de faktiske assets og det miljø, brugeren møder.
+            En lokal production build kan bruges til en hurtig kontrol under udvikling, men før og efter skal måles på
+            samme deployede URL. Demonstrér samme side og samme Lighthouse-mode. Forklar, at labmålinger varierer med
+            maskine, netværk, browsertilstand og baggrundsarbejde; derfor er gentagelser vigtigere end en enkelt score. [Sources] -
+            Lighthouse performance scoring · https://developer.chrome.com/docs/lighthouse/performance/performance-scoring
+            - Lighthouse variability · https://github.com/GoogleChrome/lighthouse/blob/main/docs/variability.md [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide route-coverage-slide">
+          <span class="eyebrow">Testdækning · ikke kun forsiden</span>
+          <h2>Hver side kan have sin egen performanceflaskehals</h2>
+          <div class="route-coverage">
+            <article><code>/</code><strong>Forside</strong><small>første load, hero og globale assets</small></article>
+            <article><code>/events</code><strong>Eventliste</strong><small>mange billeder, elementer og Supabase-data</small></article>
+            <article><code>/events/:id</code><strong>Eventdetalje</strong><small>stort indholdsbillede og relationelle data</small></article>
+            <article><code>tilmeldingsflow</code><strong>Interaktion</strong><small>requests, loading, success og fejl</small></article>
+          </div>
+          <div class="coverage-tools">
+            <p><strong>Lighthouse</strong><span>Kør på hver central sidetype under samme forhold.</span></p>
+            <p><strong>Network</strong><span>Gennemfør også flows — requests opstår efter navigation og klik.</span></p>
+          </div>
+          <p class="coverage-rule">Test mindst én gang på hver side/route. Har I mange ens detaljesider, så vælg repræsentative eksempler.</p>
+          <aside class="notes">
+            Gør dækningen eksplicit før I måler: forsiden er kun én route. Lighthouse skal køres på alle centrale
+            sidetyper, mens Network også skal observeres gennem de centrale brugerflows. Et dynamisk site kan have
+            mange ens detaljesider; her er relevante eksempler nok, men vælg gerne både et typisk og et tungt
+            eksempel. Sammenlign altid den samme route før og efter. [Sources] - Lighthouse ·
+            https://developer.chrome.com/docs/lighthouse - Network overview ·
+            https://developer.chrome.com/docs/devtools/network/overview [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide case-baseline-slide">
+          <span class="eyebrow">Mellemrum · første Lighthouse-run</span>
+          <h2>Performance 99 — men siden overfører 7,7 MiB</h2>
+          <div class="case-metrics">
+            <article><span>Performance</span><strong>99</strong><small>samlet lab-score</small></article>
+            <article><span>LCP</span><strong>1,0 s</strong><small>største synlige element</small></article>
+            <article><span>TBT</span><strong>0 ms</strong><small>ingen målt blokering</small></article>
+            <article><span>Payload</span><strong>7,7 MiB</strong><small>cirka 7,8 MiB er billeder</small></article>
+          </div>
+          <div class="case-tension">
+            <p><span>Lighthouse-spor</span><strong>Estimeret billedpotentiale: 6,9 MiB</strong></p>
+            <p><span>Jeres spørgsmål</span><strong>Hvad skal vi se i Network, før vi foreslår et greb?</strong></p>
+          </div>
+          <p class="case-context">Desktop · deployment · én måling · 1. september 2026</p>
+          <aside class="notes">
+            Lad kontrasten stå et øjeblik: En score på 99 betyder ikke, at der ikke er noget at undersøge. Den samlede
+            transfer var 7.885.895 bytes; billeder stod for 7.787.717 bytes. Lighthouse estimerede 6.920 KiB muligt
+            billedpotentiale, men estimatet er et spor, ikke et løfte. Bed holdet formulere, hvad de vil verificere i
+            Network, før I nævner mulige greb. [Sources] - User-provided Lighthouse 13.4.1 report for
+            https://cederdorff.com/mellemrum/ · fetched 1. september 2026 [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide report-noise-slide">
+          <span class="eyebrow">To forskellige testvalg</span>
+          <h2>Inkognito og Disable cache løser ikke det samme</h2>
+          <div class="noise-layout">
+            <div class="noise-warning">
+              <span>Inkognito</span>
+              <strong>Giver et renere testmiljø</strong>
+              <small>Reducerer påvirkning fra extensions og eksisterende IndexedDB-/browserdata.</small>
+            </div>
+            <div class="noise-evidence">
+              <span>Disable cache</span>
+              <strong>Simulerer bedre et første besøg</strong>
+              <small>Tvinger requests forbi browserens cache, mens DevTools er åbent.</small>
+            </div>
+          </div>
+          <div class="test-distinction">
+            <span>God cold-cache-baseline</span>
+            <strong>Inkognito + DevTools åbent + Disable cache slået til</strong>
+          </div>
+          <p class="warm-reminder">Kør derefter et separat warm-cache-run med <code>Disable cache</code> slået fra.</p>
+          <aside class="notes">
+            Sig forskellen direkte: Inkognito handler om testmiljøet. Disable cache handler om cache-scenariet. De kan
+            bruges sammen, men de er ikke synonymer. Rapporten advarer om lagret IndexedDB-data, og Reduce unused
+            JavaScript indeholder scripts fra browser-extensions; derfor er inkognito relevant. Disable cache gælder,
+            mens DevTools er åbent, og gør cold-cache-runnet mere lig et første besøg. Kør også warm cache, fordi en
+            tilbagevendende bruger kan få assets fra memory eller disk cache. [Sources] - User-provided Lighthouse
+            13.4.1 report for https://cederdorff.com/mellemrum/ · fetched 1. september 2026 - Network features
+            reference · https://developer.chrome.com/docs/devtools/network/reference [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide report-slide">
+          <span class="eyebrow">Læs rapporten som spor</span>
+          <h2>Gå fra måling til årsag og betydning for brugeren</h2>
+          <div class="report-path">
+            <article><span>Signal</span><strong>7,7 MiB overført</strong><small>en måling — endnu ikke årsagen</small></article>
+            <b>→</b>
+            <article><span>Request</span><strong>Ét billede er 2,0 MiB</strong><small>find det samme i Network</small></article>
+            <b>→</b>
+            <article><span>Kontekst</span><strong>2400 × 1795 px</strong><small>vist omkring 323 × 575 px i testen</small></article>
+            <b>→</b>
+            <article><span>Spørgsmål</span><strong>Kan færre bytes mærkes?</strong><small>afprøv før I vælger løsningen</small></article>
+          </div>
+          <aside class="notes">
+            Dette er faktiske tal fra det vedlagte Lighthouse-run. Undgå at afslutte ræsonnementet for holdet: Lad dem
+            finde requestet, se Preview, kontrollere visningsstørrelsen og formulere en bruger-konsekvens. Først
+            derefter skal de foreslå og afprøve et greb. [Sources] - User-provided Lighthouse 13.4.1 report for
+            https://cederdorff.com/mellemrum/ · fetched 1. september 2026 - Optimizing Web Vitals using Lighthouse ·
+            https://web.dev/articles/optimize-vitals-lighthouse [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide network-chapter" id="network">
+          <span class="chapter-index">02</span>
+          <span class="eyebrow">Undersøg årsagen</span>
+          <h2>Network gør<br />problemet konkret</h2>
+          <p class="kicker">Hvad hentes? Hvornår? Hvor meget? Hvor mange gange?</p>
+          <aside class="notes">
+            Gå fra rapporten til Network-panelet. Test både et første besøg med cache slået fra og et gentaget besøg
+            med cache slået til. Brug samme throttling, route og viewport, når resultater skal sammenlignes. [Sources] - Network features reference ·
+            https://developer.chrome.com/docs/devtools/network/reference [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide network-reading-slide">
+          <span class="eyebrow">Mellemrum · requests fra Lighthouse-run</span>
+          <h2>Sortér efter størrelse — hvad skiller sig ud?</h2>
+          <div class="network-table" role="table" aria-label="Requests fra Mellemrum-testen">
+            <div class="network-head" role="row"><span>Name</span><span>Type</span><span>Size</span><span>Kilde</span><span>Spørgsmål</span></div>
+            <div role="row"><code>photo-178…</code><span>img</span><strong>2,0 MiB</strong><span>Unsplash</span><small>hvor og hvor stort vises det?</small></div>
+            <div role="row"><code>premium-169…</code><span>img</span><strong>1,2 MiB</strong><span>Unsplash</span><small>hvilke URL-parametre bruges?</small></div>
+            <div role="row"><code>photo-155…</code><span>img</span><strong>961 KiB</strong><span>Unsplash</span><small>er billedet synligt ved første load?</small></div>
+            <div role="row"><code>index-Dgz…js</code><span>js</span><strong>76 KiB</strong><span>Mellemrum</span><small>er JS vigtigst på denne route?</small></div>
+            <div role="row"><code>events?order=…</code><span>fetch</span><strong>2,8 KiB</strong><span>Supabase</span><small>hvad viser responsen?</small></div>
+          </div>
+          <p class="mock-label">Faktiske transfer sizes fra dette run — kontrollér dem igen i Network.</p>
+          <aside class="notes">
+            Lad holdet selv pege på mønsteret. Ti billeder udgjorde cirka 7,8 MiB, mens appens JavaScript-request var
+            cirka 76 KiB og Supabase-responsen cirka 2,8 KiB. Det afgør ikke hele prioriteringen, men det kvalificerer
+            det næste sted at undersøge. Forklar Disable cache som et første-besøg-scenarie, ikke som den eneste
+            brugeroplevelse. [Sources] - User-provided Lighthouse 13.4.1 report for
+            https://cederdorff.com/mellemrum/ · fetched 1. september 2026 - Inspect network activity ·
+            https://developer.chrome.com/docs/devtools/network [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide network-test-slide">
+          <span class="eyebrow">Network · test mere end ét scenarie</span>
+          <h2>Test både første besøg og gentagne besøg</h2>
+          <div class="network-scenarios">
+            <article>
+              <span>Cold cache · første besøg</span>
+              <strong><code>Disable cache</code> slået til</strong>
+              <small>Incognito · ryd loggen · vælg throttling · reload</small>
+            </article>
+            <article>
+              <span>Warm cache · gentaget besøg</span>
+              <strong><code>Disable cache</code> slået fra</strong>
+              <small>Normal reload · se hvad memory/disk cache ændrer</small>
+            </article>
+          </div>
+          <div class="network-screenshot-note">
+            <span>Skærmbilledet viser</span>
+            <strong>Incognito · Disable cache · No throttling · 16 requests · 7,9 MB transferred</strong>
+          </div>
+          <div class="network-test-rules">
+            <p><b>Samme forhold</b><span>route · viewport · throttling</span></p>
+            <p><b>Ren log</b><span>Clear før hvert nyt run</span></p>
+            <p><b>Preserve log</b><span>kun når flowet navigerer</span></p>
+            <p><b>Gentag</b><span>kør 3 gange og notér variation</span></p>
+          </div>
+          <aside class="notes">
+            Disable cache virker, mens DevTools er åbent, og emulerer bedre et første besøg. Kør også med cache slået
+            til, fordi tilbagevendende brugere ofte får assets fra browserens cache. Skærmbilledet bruger No
+            throttling; behold det som et hurtigt request-overblik, men lav også et separat run med fx Fast 4G eller
+            Slow 4G for at gøre waterfall og oplevet ventetid tydeligere. Start recording før reload eller klik. Clear
+            log mellem uafhængige runs. Preserve log er nyttigt gennem navigationer, men kan ellers blande flere runs
+            sammen. Network Settings kan desuden optage screenshots af indlæsningen, og Domain-kolonnen gør
+            tredjepartsressourcer nemmere at se. [Sources] - User-provided Network screenshot · 1. september 2026 -
+            Network features reference · https://developer.chrome.com/docs/devtools/network/reference - Inspect
+            network activity · https://developer.chrome.com/docs/devtools/network [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide diagnosis-slide">
+          <span class="eyebrow">Vælg næste værktøj efter symptomet</span>
+          <h2>Stop, når du har bevis nok til en beslutning</h2>
+          <div class="diagnosis-map">
+            <article><span>Stort eller sent asset</span><strong>Network</strong><small>dimension, format, waterfall og cache</small></article>
+            <article><span>Gentagne eller brede data</span><strong>Network + kode</strong><small>request URL, response og effect</small></article>
+            <article><span>Langsomt klik eller animation</span><strong>Performance</strong><small>record kun det konkrete flow</small></article>
+            <article><span>Mistænkt React-rendering</span><strong>React Profiler</strong><small>brug production-lignende data</small></article>
+          </div>
+          <aside class="notes">
+            Undgå et stort værktøjskursus. Vis Performance eller Profiler som en eskalation, hvis Network ikke
+            forklarer et konkret problem. [Sources] - Performance panel ·
+            https://developer.chrome.com/docs/devtools/performance/overview - React Developer Tools ·
+            https://react.dev/learn/react-developer-tools [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide optimization-chapter" id="billeder-assets">
+          <span class="chapter-index">03</span>
+          <span class="eyebrow">Forbedringsspor · billeder og assets</span>
+          <h2>Start med de bytes,<br />brugeren skal hente</h2>
+          <p class="kicker">Network viser, hvilke billeder, fonte og filer der er værd at undersøge.</p>
+          <aside class="notes">
+            Introducér de næste slides som en værktøjskasse, ikke en tjekliste, alle skal implementere. [Sources] -
+            Dagens undervisningsside · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide image-optimization-slide">
+          <span class="eyebrow">Billedsporet · undersøg før I ændrer</span>
+          <h2>Hvad fortæller URL, fil og visning tilsammen?</h2>
+          <div class="image-clue-layout">
+            <div class="image-clue">
+              <span>Et faktisk request</span>
+              <pre class="po-code"><code class="language-js">const imageUrl =
+  "images.unsplash.com/photo-…" +
+  "?q=80&amp;w=2940&amp;auto=format";</code></pre>
+              <dl>
+                <div><dt>Transfer</dt><dd>1,2 MiB</dd></div>
+                <div><dt>Fil</dt><dd>2609 × 1960 px</dd></div>
+                <div><dt>Vist</dt><dd>364 × 242 px</dd></div>
+              </dl>
+            </div>
+            <div class="image-questions">
+              <article><b>URL</b><span>Hvilke parametre påvirker leverancen?</span></article>
+              <article><b>Layout</b><span>Skal samme størrelse bruges på liste og detalje?</span></article>
+              <article><b>Timing</b><span>Hvilke billeder er nødvendige i første viewport?</span></article>
+            </div>
+          </div>
+          <p class="tech-rule">Vælg ét greb, forudsig effekten — og mål samme route igen.</p>
+          <aside class="notes">
+            Giv ikke løsningen med det samme. Lad holdet sammenholde URL-parametrene, filens dimensioner, den viste
+            størrelse og placeringen i viewporten. Mulige spor er dimension, komprimering, responsive varianter og
+            loading-adfærd, men de skal vælge ud fra det konkrete billede og verificere i Network. [Sources] -
+            User-provided Lighthouse 13.4.1 report for https://cederdorff.com/mellemrum/ · fetched 1. september 2026 - Image performance ·
+            https://web.dev/learn/performance/image-performance - LCP and lazy loading ·
+            https://web.dev/articles/lcp-lazy-loading - Unsplash dynamic image URLs ·
+            https://unsplash.com/documentation#supported-parameters [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide asset-optimization-slide">
+          <span class="eyebrow">Billeder og assets · se på hele projektet</span>
+          <h2>Sortér efter størrelse — og spørg hvorfor filen er med</h2>
+          <div class="asset-audit">
+            <article>
+              <span>Indholdsbilleder</span>
+              <strong>Brug image-CDN</strong>
+              <small>Anmod om den dimension og kvalitet, den aktuelle visning har brug for.</small>
+              <code>Img → Size → Preview</code>
+            </article>
+            <article>
+              <span>Logoer og UI-assets</span>
+              <strong>Optimér lokalt</strong>
+              <small>Komprimér faste filer, og undgå flere næsten identiske versioner.</small>
+              <code>Img / Media → Size</code>
+            </article>
+            <article>
+              <span>Fonte</span>
+              <strong>Begræns varianter</strong>
+              <small>Hent kun de familier og vægte, designet faktisk anvender.</small>
+              <code>Font → Size → Initiator</code>
+            </article>
+            <article>
+              <span>Dependencies</span>
+              <strong>Undersøg før du fjerner</strong>
+              <small>Reagér kun, hvis JavaScript-outputtet viser en relevant stor eller ubrugt dependency.</small>
+              <code>JS → Size → Initiator</code>
+            </article>
+          </div>
+          <p class="asset-rule">Output først: filnavn · type · størrelse · hvornår den bliver hentet.</p>
+          <aside class="notes">
+            Brug Network og sortér efter Size. Lad de studerende finde ét stort billede, én font eller én anden fil i
+            deres eget projekt og forklare, hvorfor browseren henter den. Faste UI-assets kan ligge lokalt eller i egen
+            storage; indholdsbilleder har ofte fordel af en image-CDN. Fjern ikke dependencies alene på baggrund af
+            navnet — kontrollér bundle- eller Network-output først. [Sources] - Network panel ·
+            https://developer.chrome.com/docs/devtools/network/overview - Image performance ·
+            https://web.dev/learn/performance/image-performance - Font performance ·
+            https://web.dev/learn/performance/optimize-web-fonts [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide supabase-chapter" id="supabase">
+          <span class="chapter-index">04</span>
+          <span class="eyebrow">Forbedringsspor · Supabase</span>
+          <h2>Hent mindre data<br />med et tydeligt formål</h2>
+          <p class="kicker">Response og request URL viser, om visningen henter mere end den bruger.</p>
+          <aside class="notes">
+            Knyt sporet til relationerne fra i går. Nested data er nyttige, men hvert felt og hver række bliver stadig
+            en del af payloaden. [Sources] - Supabase select · https://supabase.com/docs/reference/javascript/select -
+            Querying joins and nested tables · https://supabase.com/docs/guides/database/joins-and-nesting [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide data-optimization-slide">
+          <span class="eyebrow">Supabase-sporet · se på evidensen</span>
+          <h2>Er datarequestet problemet på denne route?</h2>
+          <div class="data-query-layout data-evidence-layout">
+            <div class="data-request">
+              <span>Network</span>
+              <pre class="po-code"><code class="language-js">const request =
+  "GET /rest/v1/events?order=date.asc";</code></pre>
+              <strong>2,8 KiB</strong>
+              <small>én succesfuld fetch i dette Lighthouse-run</small>
+            </div>
+            <div class="query-checks">
+              <article><b>Response</b><span>Hvilke felter og rækker indeholder den?</span></article>
+              <article><b>Andre routes</b><span>Er payloaden større på detalje- eller admin-sider?</span></article>
+              <article><b>Prioritering</b><span>Er dette vigtigere end de største requests?</span></article>
+            </div>
+          </div>
+          <aside class="notes">
+            Pointen er ikke, at Supabase aldrig skal optimeres. På denne route var den målte response kun cirka 2,8
+            KiB, så rapporten giver ikke i sig selv grund til at starte her. Åbn responsen, se på data og test de andre
+            routes, før I beslutter noget. [Sources] - User-provided Lighthouse 13.4.1 report for
+            https://cederdorff.com/mellemrum/ · fetched 1. september 2026 - Supabase select ·
+            https://supabase.com/docs/reference/javascript/select [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide javascript-chapter" id="javascript-react">
+          <span class="chapter-index">05</span>
+          <span class="eyebrow">Forbedringsspor · JavaScript og React</span>
+          <h2>Optimér et konkret<br />load eller en interaktion</h2>
+          <p class="kicker">Se først efter gentagne requests, manglende feedback og unødvendigt JavaScript.</p>
+          <aside class="notes">
+            Markér niveauforskellen: Network og konkrete brugerflows kommer først. Performance-panelet og React
+            Profiler bruges, når et bestemt load eller klik stadig kræver en dybere forklaring. [Sources] - React
+            Developer Tools · https://react.dev/learn/react-developer-tools - Performance panel ·
+            https://developer.chrome.com/docs/devtools/performance/overview [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide request-optimization-slide">
+          <span class="eyebrow">Greb 3 · requests og React</span>
+          <h2>Et dobbelt request er et spørgsmål — ikke automatisk en bug</h2>
+          <div class="strict-layout">
+            <div class="strict-signal"><span>Development</span><strong>2 × GET /events</strong><small>kan skyldes React Strict Mode</small></div>
+            <div class="strict-arrow">→</div>
+            <div class="strict-check"><span>Kontrollér</span><strong><code>npm run build</code></strong><small>test production build og flowet igen</small></div>
+          </div>
+          <ul class="request-rules">
+            <li>Fetch kun når den nødvendige dependency ændrer sig.</li>
+            <li>Undgå samme datafetch i både parent og child.</li>
+            <li>Vis loading, disabled og error — oplevet performance tæller også.</li>
+          </ul>
+          <aside class="notes">
+            React Strict Mode kører ekstra udviklingstjek, herunder en ekstra setup/cleanup-cyklus for Effects i
+            development. Ret ikke blindt ved at fjerne Strict Mode. Kontrollér først om problemet findes i en
+            production build, og kontrollér derefter effectens dependencies og placering. [Sources] - React StrictMode
+            · https://react.dev/reference/react/StrictMode - Synchronizing with Effects ·
+            https://react.dev/learn/synchronizing-with-effects [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide js-optimization-slide">
+          <span class="eyebrow">Greb 4 · JavaScript</span>
+          <h2>Lazy-load en stor route — kun hvis bundlen er et målt problem</h2>
+          <div class="lazy-layout">
+            <pre class="po-code"><code class="language-jsx">import { lazy, Suspense } from "react";
+
+const AdminPage = lazy(() =&gt; import("./AdminPage"));
+
+&lt;Suspense fallback={&lt;Loading /&gt;}&gt;
+  &lt;AdminPage /&gt;
+&lt;/Suspense&gt;</code></pre>
+            <div class="lazy-when"><span>Giver mening når</span><strong>en stor route sjældent åbnes</strong><small>og første JS-load er et dokumenteret problem</small><b>Ikke som standard på små komponenter.</b></div>
+          </div>
+          <aside class="notes">
+            Vis dette som et valgfrit, senere greb. De fleste studerende får mere ud af at optimere billeder og
+            requests først. React.lazy udsætter indlæsningen af komponentens kode, indtil komponenten skal renderes.
+            [Sources] - React lazy · https://react.dev/reference/react/lazy [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide priority-slide">
+          <span class="eyebrow">Prioritér før du koder</span>
+          <h2>Vælg det fund, der både kan mærkes og forklares</h2>
+          <div class="priority-axis">
+            <div class="axis-y">Stor bruger-konsekvens ↑</div>
+            <div class="axis-x">Stærkt bevis →</div>
+            <article class="priority-best"><span>Arbejd nu</span><strong>Konkret flow + tydeligt fund</strong><small>fx langsom eventliste pga. store billeder</small></article>
+            <article class="priority-watch"><span>Undersøg</span><strong>Signal uden årsag</strong><small>fx en svingende score</small></article>
+            <article class="priority-skip"><span>Parkér</span><strong>Lav konsekvens</strong><small>selv hvis værktøjet foreslår det</small></article>
+          </div>
+          <aside class="notes">
+            Brug matricen til at afvise optimeringsteater. Hvis performance er tilfredsstillende, skal den studerende
+            dokumentere konklusionen og gå videre til en vigtigere audit-prioritet. [Sources] - Dagens
+            undervisningsside og audit-skabelon · lokale kursusmaterialer [/Sources]
+          </aside>
+        </section>
+
+        <section class="chapter po-chapter po-slide work-chapter" id="arbejde">
+          <span class="chapter-index">06</span>
+          <span class="eyebrow">Arbejd videre med Case 1</span>
+          <h2>Ét begrundet skridt<br />er nok til at lære noget</h2>
+          <p class="kicker">Du må vælge et performancefund — eller en vigtigere forbedring fra din audit.</p>
+          <aside class="notes">
+            Giv eksplicit tilladelse til at vælge noget andet end performance. Målet er prioriteret produktarbejde og
+            dokumentation, ikke at alle laver samme tekniske ændring. [Sources] - Dagens undervisningsside · lokalt
+            kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide work-slide">
+          <span class="eyebrow">Arbejdsgang</span>
+          <h2>Dokumentér før, ændring og efter</h2>
+          <div class="work-path">
+            <article><span>01</span><strong>Vælg testdækning</strong><small>Alle centrale routes og flows — ikke kun forsiden</small></article>
+            <article><span>02</span><strong>Etablér baseline</strong><small>Samme deployede URL, mode og testforhold</small></article>
+            <article><span>03</span><strong>Find årsag</strong><small>Lighthouse → Network → kode</small></article>
+            <article><span>04</span><strong>Lav ét greb</strong><small>i en tydeligt navngivet feature branch</small></article>
+            <article><span>05</span><strong>Mål igen</strong><small>samme forhold — og vurder forskellen</small></article>
+          </div>
+          <div class="work-done"><span>Din audit skal kunne svare</span><p>Problem · evidens · valg · resultat · næste skridt</p></div>
+          <aside class="notes">
+            Start med en kort dækningsliste, så forsiden ikke bliver hele testen. Gør derefter baseline lille nok for
+            den enkelte route: ét screenshot af Lighthouse og ét Network-fund kan være nok, hvis konteksten er
+            tydelig. Feature branchen gør ændringen nem at isolere og forklare. [Sources] - Dagens undervisningsside
+            og audit-skabelon · lokale kursusmaterialer [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide no-problem-slide">
+          <span class="eyebrow">Et gyldigt resultat</span>
+          <h2>“Vi fandt ikke et væsentligt performanceproblem”</h2>
+          <blockquote>
+            På eventlisten testede vi deployment tre gange med Lighthouse Mobile. Vi undersøgte de største requests i
+            Network og fandt ingen flaskehals med tydelig betydning for brugerflowet. Derfor prioriterer vi nu
+            fejlhåndtering ved tilmelding.
+          </blockquote>
+          <p class="no-problem-rule">En begrundet prioritering er bedre end en tilfældig optimering mod 100.</p>
+          <aside class="notes">
+            Teksten er et eksempel på dokumentationsformen, ikke et faktisk projektreultat. Giv dem lov til at stoppe
+            performanceundersøgelsen, når evidensen ikke retfærdiggør mere arbejde. [Sources] - Dagens
+            undervisningsside · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+
+        <section class="po-slide po-closing performance-closing-slide">
+          <span class="eyebrow">Dagens centrale pointe</span>
+          <h2>En score starter samtalen.<br />Et brugerproblem styrer arbejdet.</h2>
+          <div class="closing-formula">
+            <span>Flow</span><b>→</b><span>Baseline</span><b>→</b><span>Bevis</span><b>→</b><span>Ét greb</span><b>→</b><span>Ny måling</span>
+          </div>
+          <p class="lead">Arbejd videre dér, hvor din audit peger på den største forskel.</p>
+          <div class="closing-links"><a href="#/agenda">Tilbage til agenda</a></div>
+          <aside class="notes">
+            Luk ved at få et par studerende til at formulere deres valgte flow og næste undersøgelse i én sætning.
+            [Sources] - Dagens undervisningsside · lokalt kursusmateriale [/Sources]
+          </aside>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="../shared/deck.js"></script>
+  </body>
+</html>

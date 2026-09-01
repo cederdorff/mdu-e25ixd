@@ -32,8 +32,12 @@ Efter det fælles indspark arbejder du videre med din prioriterede audit og får
 <details style="margin-left: 1.5rem;">
 <summary><strong>2. Fra Lighthouse til et begrundet fund</strong></summary>
 <ul>
-<li>Kør Lighthouse som en sammenlignelig baseline på deployment eller en production build.</li>
-<li>Brug rapporten til at formulere mulige problemer, og undersøg dem videre med Network-panelet og det konkrete brugerflow.</li>
+<li>Kør Lighthouse på den deployede løsning for alle centrale sidetyper/routes – ikke kun forsiden. Brug kun en lokal production build som kontrol under udvikling.</li>
+<li>Brug rapporten til at formulere mulige problemer, og undersøg dem videre med Network-panelet gennem de centrale brugerflows.</li>
+<li>Brug Mellemrum-rapportens kontrast som eksempel: Performance 99, men cirka 7,7 MiB overført og et estimeret billedpotentiale på 6,9 MiB. Tallene er spor, ikke løsningen.</li>
+<li>Skeln tydeligt mellem testvalgene: Incognito giver et renere testmiljø ved at reducere påvirkning fra extensions og eksisterende browserdata; <code>Disable cache</code> ændrer selve cache-scenariet.</li>
+<li>Test både med <code>Disable cache</code> slået til som et første besøg og slået fra som et gentaget besøg. Hold route, viewport og throttling ens, når målinger sammenlignes.</li>
+<li>Ryd Network-loggen før et nyt run, start recording før reload eller klik, og brug kun <code>Preserve log</code>, når et flow navigerer mellem sider.</li>
 <li>Brug kun Performance-panelet eller React DevTools Profiler, hvis et load eller en interaktion kræver en dybere undersøgelse.</li>
 <li>Gentag målinger under samme forhold, og sammenlign ikke localhost direkte med deployment.</li>
 <li>En høj score og fraværet af et væsentligt problem er også et gyldigt resultat. Opfind ikke en optimering for at ramme 100.</li>
@@ -87,3 +91,5 @@ Efter det fælles indspark arbejder du videre med din prioriterede audit og får
   - [React Developer Tools](https://react.dev/learn/react-developer-tools)
   - [Image performance](https://web.dev/learn/performance/image-performance)
   - [Unsplash · dynamiske billedstørrelser og formater](https://unsplash.com/documentation#dynamically-resizable-images)
+- **Slides:**
+  - [Performance, Lighthouse og videre arbejde](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-06/)
