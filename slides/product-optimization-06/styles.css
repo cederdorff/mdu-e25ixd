@@ -84,9 +84,9 @@
 .slide-question { margin-top: 34px !important; padding: 18px 22px; border-left: 6px solid var(--perf-yellow); background: var(--perf-yellow-soft); color: var(--perf-yellow) !important; font-size: 23px !important; font-weight: 750; }
 .recap-footer { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; align-items: stretch; margin-top: 28px; }
 .recap-footer .slide-question { display: grid; align-items: center; margin: 0 !important; }
-.recap-solution-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-content: center; padding: 13px 16px; border-left: 6px solid var(--perf-blue); background: var(--perf-blue-soft); }
+.recap-solution-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-content: center; padding: 13px 16px; border-left: 6px solid var(--perf-blue); background: var(--perf-blue-soft); }
 .recap-solution-links span { grid-column: 1 / -1; color: var(--perf-blue); font-size: 13px; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
-.recap-solution-links a { padding: 8px 10px; border: 1px solid rgb(101 167 255 / 34%); border-radius: 5px; color: var(--ink); font-size: 14px; font-weight: 750; line-height: 1.2; text-decoration: none; }
+.recap-solution-links a { display: grid; align-items: center; padding: 8px 10px; border: 1px solid rgb(101 167 255 / 34%); border-radius: 5px; color: var(--ink); font-size: 13px; font-weight: 750; line-height: 1.2; text-decoration: none; }
 .recap-solution-links a:hover { border-color: var(--perf-blue); background: rgb(101 167 255 / 10%); }
 
 .po-agenda .agenda-list.six-items { grid-template-rows: repeat(6, 1fr); }

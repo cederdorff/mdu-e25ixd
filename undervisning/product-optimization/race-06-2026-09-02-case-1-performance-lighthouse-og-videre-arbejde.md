@@ -103,6 +103,7 @@ Efter det fælles indspark arbejder du videre med din prioriterede audit og får
 - **Post App-recap:**
   - [Løsning · posts og users med relation](https://github.com/cederdorff/post-app-supabase/tree/posts-and-users)
   - [Løsning · vælg user i formularen](https://github.com/cederdorff/post-app-supabase/tree/feature/select-post-user)
+  - [Løsning · performance-eksempler med målrettede felter og lazy loading](https://github.com/cederdorff/post-app-supabase/tree/feature/performance-examples)
 - **Case 1:**
   - [Casebeskrivelse: Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
 - **Audit:**
