@@ -19,7 +19,7 @@
 - Genbrug `slides/shared/`, eksisterende modeller, komponenter og mønstre fra det nærmeste relevante deck.
 - Bevar et klart match mellem undervisningssiden i `undervisning/` og det tilhørende deck i `slides/`.
 - Brug beskrivende filnavne med små bogstaver og bindestreger til assets i `slides/assets/`.
-- Angiv altid sprog på fenced code blocks, så syntax highlighting virker.
+- Angiv altid sprog på Markdown-kodeblokke og en relevant `language-*`-klasse på HTML `<code>`-elementer, så syntax highlighting virker.
 - Bevar undervisernoter og eksisterende kildehenvisninger.
 - Brug `[Sources]` i speaker notes til nye eksterne assets og ikke-trivielle eksterne påstande.
 - Kontrollér tekstombrydning, overlap og billedbeskæring på ændrede slides.
