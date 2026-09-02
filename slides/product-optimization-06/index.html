@@ -25,13 +25,14 @@
 
         <section class="po-slide po-agenda" id="agenda">
           <span class="eyebrow">Agenda · konkrete forbedringsspor</span>
-          <h2>Brug værktøjernes output til at vælge den rigtige forbedring</h2>
+          <h2>Brug værktøjernes resultater til at vælge, hvad der er vigtigst</h2>
           <ol class="agenda-list six-items" start="0">
             <li>
               <a href="#/recap"
                 ><b>Kort recap: posts og users</b
                 ><small
-                  >Relationen fra <code>userId</code> i <code>posts</code> til nested <code>post.user</code></small
+                  >Relationen fra <code>userId</code> i <code>posts</code> til den indlejrede
+                  <code>post.user</code></small
                 ></a
               >
             </li>
@@ -42,7 +43,7 @@
             </li>
             <li>
               <a href="#/billeder-assets"
-                ><b>Billeder og assets</b><small>Optimering af billeder og andre assets</small></a
+                ><b>Billeder og filer</b><small>Optimering af billeder, fonte og andre filer</small></a
               >
             </li>
             <li>
@@ -58,7 +59,7 @@
             <li>
               <a href="#/arbejde"
                 ><b>Prioritér og arbejd videre</b
-                ><small>Vælg et dokumenteret performance-fund — eller en audit-forbedring</small></a
+                ><small>Vælg et dokumenteret performanceproblem — eller en vigtigere audit-forbedring</small></a
               >
             </li>
           </ol>
@@ -183,7 +184,7 @@
 
         <section class="po-slide user-moments-slide">
           <span class="eyebrow">Tre brugerøjeblikke</span>
-          <h2>Performance viser sig som ventetid, hop eller manglende respons</h2>
+          <h2>Performance viser sig som ventetid, et layout der hopper eller manglende respons</h2>
           <div class="moment-line">
             <article>
               <b>01</b><span>Indlæsning</span><strong>Hvornår kan jeg se det vigtigste?</strong
@@ -201,12 +202,12 @@
         </section>
 
         <section class="po-slide tools-slide" id="lighthouse">
-          <span class="eyebrow">Er Lighthouse det rigtige værktøj?</span>
-          <h2>Ja — til baseline og hypoteser. <br />Nej — som eneste bevis.</h2>
+          <span class="eyebrow">Hvad kan Lighthouse hjælpe med?</span>
+          <h2>Ja — til en første måling og til at finde spor. <br />Nej — som eneste bevis.</h2>
           <div class="tool-funnel">
             <article>
               <span>Lighthouse</span><strong>Hvad bør vi undersøge?</strong
-              ><small>gentagelig lab-test og mulige problemer</small>
+              ><small>gentagelig test i faste rammer og mulige problemer</small>
             </article>
             <b>→</b>
             <article>
@@ -220,26 +221,27 @@
             </article>
           </div>
           <p class="tool-note">
-            <strong>Lighthouse er en kontrolleret lab-test.</strong> Den viser ikke nødvendigvis det, alle virkelige
-            brugere oplever.
+            <strong>Lighthouse tester under faste, kontrollerede forhold.</strong> Det er ikke nødvendigvis det samme,
+            som virkelige brugere oplever.
           </p>
           <p class="tool-impact">
             <span>Det vigtigste filter</span
             ><strong
-              >Hvis vi ikke kan forklare betydningen for brugeren, har vi endnu ikke et prioriteret problem.</strong
+              >Hvis vi ikke kan forklare betydningen for brugeren, ved vi endnu ikke, om problemet skal
+              prioriteres.</strong
             >
           </p>
         </section>
 
         <section class="po-slide baseline-slide">
-          <span class="eyebrow">Baseline på deployment</span>
-          <h2>Lås testbetingelserne,<br />før du måler</h2>
+          <span class="eyebrow">Baseline · måling før ændringen</span>
+          <h2>Hold testforholdene ens,<br />før du måler</h2>
           <div class="baseline-layout">
             <ol>
-              <li><b>Brug deployment-URL’en</b><span>det er miljøet, brugeren møder</span></li>
-              <li><b>Test mobil og desktop hver for sig</b><span>de er to selvstændige baselines</span></li>
+              <li><b>Brug den deployede løsning</b><span>det er den version, brugeren møder</span></li>
+              <li><b>Lav en baseline for mobil og desktop</b><span>sammenlign kun samme type måling</span></li>
               <li><b>Hold route og throttling ens</b><span>ellers kan et før/efter ikke forklares</span></li>
-              <li><b>Kør 3 gange</b><span>notér et repræsentativt resultat og variationen</span></li>
+              <li><b>Kør 3 gange</b><span>notér et typisk resultat, og hvor meget det svinger</span></li>
             </ol>
             <div class="dont-compare compare-rule">
               <span>Sammenlign ikke</span><strong>localhost før</strong><b>↔</b><strong>deployment efter</strong
@@ -251,18 +253,21 @@
 
         <section class="po-slide route-coverage-slide">
           <span class="eyebrow">Testdækning · ikke kun forsiden</span>
-          <h2>Hver side kan have sin egen performanceflaskehals</h2>
+          <h2>Hver sidetype kan have sit eget performanceproblem</h2>
           <div class="route-coverage">
-            <article><code>/</code><strong>Forside</strong><small>første load, hero og globale assets</small></article>
+            <article>
+              <code>/</code><strong>Forside</strong><small>første indlæsning, hero-billede og globale filer</small>
+            </article>
             <article>
               <code>/events</code><strong>Eventliste</strong><small>mange billeder, elementer og Supabase-data</small>
             </article>
             <article>
               <code>/events/:id</code><strong>Eventdetalje</strong
-              ><small>stort indholdsbillede og relationelle data</small>
+              ><small>stort billede og data fra relaterede tabeller</small>
             </article>
             <article>
-              <code>tilmeldingsflow</code><strong>Interaktion</strong><small>requests, loading, success og fejl</small>
+              <code>tilmeldingsflow</code><strong>Interaktion</strong
+              ><small>request, feedback, kvittering og fejl</small>
             </article>
           </div>
           <div class="coverage-tools">
@@ -270,7 +275,7 @@
             <p><strong>Network</strong><span>Gennemfør også flows — requests opstår efter navigation og klik.</span></p>
           </div>
           <p class="coverage-rule">
-            Test mindst én gang på hver side/route. Har I mange ens detaljesider, så vælg repræsentative eksempler.
+            Test hver central sidetype mindst én gang. Har I mange ens detaljesider, så vælg et par typiske eksempler.
           </p>
         </section>
 
@@ -312,7 +317,7 @@
             <article><span>Performance</span><strong>99</strong><small>samlet lab-score</small></article>
             <article><span>LCP</span><strong>1,0 s</strong><small>største synlige element</small></article>
             <article><span>TBT</span><strong>0 ms</strong><small>ingen målt blokering</small></article>
-            <article><span>Payload</span><strong>7,7 MiB</strong><small>cirka 7,8 MiB er billeder</small></article>
+            <article><span>Overført</span><strong>7,7 MiB</strong><small>cirka 7,8 MB er billeder</small></article>
           </div>
           <div class="case-tension">
             <p><span>Lighthouse-spor</span><strong>Estimeret billedpotentiale: 6,9 MiB</strong></p>
@@ -477,8 +482,8 @@
           <span class="eyebrow">Efter Network · vælg kun næste værktøj ved behov</span>
           <h2>Har Network allerede forklaret fundet?</h2>
           <p class="diagnosis-decision">
-            <strong>Ja →</strong> dokumentér fundet og prioritér en forbedring. <strong>Nej →</strong> vælg ét værktøj efter
-            symptomet.
+            <strong>Ja →</strong> dokumentér fundet og prioritér en forbedring. <strong>Nej →</strong> vælg ét værktøj
+            efter symptomet.
           </p>
           <div class="diagnosis-map">
             <article>
@@ -609,8 +614,8 @@
           </div>
           <p class="image-rule unsplash-rule">
             <span
-              ><strong>I jeres eksempel:</strong> Skift <code>w=2400</code> til mål, der matcher den største reelle
-              brug og det ønskede aspect ratio — og mål igen.</span
+              ><strong>I jeres eksempel:</strong> Skift <code>w=2400</code> til mål, der matcher den største reelle brug
+              og det ønskede aspect ratio — og mål igen.</span
             ><a href="https://unsplash.com/documentation#dynamically-resizable-images" target="_blank" rel="noreferrer"
               >Se alle muligheder →</a
             >
@@ -705,10 +710,6 @@
               ><small>Sammenlign motivet visuelt, og kontrollér bytes i Network.</small>
             </article>
           </div>
-          <div class="image-export-checks">
-            <span>1. Resize</span><b>→</b><span>2. Eksportér</span><b>→</b><span>3. Sammenlign</span><b>→</b
-            ><span>4. Kontrollér i Network</span>
-          </div>
           <p class="image-rule">
             <strong>Praktisk regel:</strong> Behold originalen som arbejdsfil; deploy kun de optimerede varianter, siden
             bruger.
@@ -738,7 +739,7 @@
               <pre class="po-code"><code class="language-http">GET /rest/v1/posts?
   select=id,caption,image,
   user:users(id,name,title,image)</code></pre>
-              <small>Mindre response og en tydelig kontrakt til UI’et.</small>
+              <small>Mindre response og et tydeligt match med det, UI’et viser.</small>
             </article>
           </div>
           <p class="rest-selection-rule">
@@ -758,10 +759,9 @@
                 alt="Post App-kort med Lars Bøge Eskildsen, titel, billede og caption"
               />
               <figcaption>
-                <span>Fra <code>post.user</code></span
-                ><code>post.user.image</code><code>post.user.name</code><code>post.user.title</code>
-                <span>Fra <code>post</code></span
-                ><code>post.image</code><code>post.caption</code>
+                ><code>post.user.image</code><code>post.user.name</code><code>post.user.title</code> ><code
+                  >post.image</code
+                ><code>post.caption</code>
               </figcaption>
             </figure>
             <div class="field-selection-arrow">→</div>
@@ -780,7 +780,7 @@
         </section>
 
         <section class="po-slide data-optimization-slide">
-          <span class="eyebrow">Supabase-sporet · se på evidensen</span>
+          <span class="eyebrow">Supabase-sporet · undersøg målingen</span>
           <h2>Er responsen værd at optimere?</h2>
           <div class="data-query-layout data-evidence-layout">
             <div class="data-request">
@@ -810,22 +810,22 @@
 
         <section class="po-slide request-optimization-slide">
           <span class="eyebrow">Forbedringsspor · requests og React</span>
-          <h2>Derfor kan dev mode vise to requests</h2>
+          <h2>Development kan vise to requests</h2>
           <div class="strict-layout">
             <div class="strict-signal">
               <span>Lokalt · development</span><strong>2 × GET /events</strong
-              ><small>Strict Mode kører Effects en ekstra gang for at afsløre problemer</small>
+              ><small>Strict Mode kører din Effect en ekstra gang for at finde problemer</small>
             </div>
             <div class="strict-arrow">→</div>
             <div class="strict-check">
               <span>Deployet · production</span><strong>Typisk 1 × GET /events</strong
-              ><small>det ekstra development-tjek kører ikke i production</small>
+              ><small>det ekstra tjek fra development kører ikke i production</small>
             </div>
           </div>
           <ul class="request-rules">
             <li>Se først, om det dobbelte request kun findes lokalt.</li>
             <li>Test Network på den deployede version, før du optimerer.</li>
-            <li>Sker det også dér? Undersøg dependencies og flere fetch-steder.</li>
+            <li>Sker det også dér? Undersøg Effect-dependencies og flere fetch-steder.</li>
           </ul>
         </section>
 
@@ -867,7 +867,7 @@ const EventDetailPage = lazy(() =&gt;
 
         <section class="po-slide priority-slide">
           <span class="eyebrow">Prioritér før du koder</span>
-          <h2>Vælg det fund, der både kan mærkes og forklares</h2>
+          <h2>Vælg det problem, der både kan mærkes og forklares</h2>
           <div class="priority-matrix" aria-label="Prioriteringsmatrix for performancefund">
             <span class="matrix-corner">Bruger-konsekvens ↓<br />Bevis →</span>
             <span class="matrix-column">Svagt bevis</span>
@@ -897,7 +897,7 @@ const EventDetailPage = lazy(() =&gt;
           <span class="chapter-index">06</span>
           <span class="eyebrow">Arbejd videre med Case 1</span>
           <h2>Lær af én ændring<br />ad gangen</h2>
-          <p class="kicker">Du må vælge et performancefund — eller en vigtigere forbedring fra din audit.</p>
+          <p class="kicker">Du må vælge et performanceproblem — eller en vigtigere forbedring fra din audit.</p>
         </section>
 
         <section class="po-slide work-slide">
@@ -906,7 +906,7 @@ const EventDetailPage = lazy(() =&gt;
           <div class="work-path">
             <article>
               <span>01</span><strong>Vælg testdækning</strong
-              ><small>centrale sidetyper og flows — repræsentative detaljer</small>
+              ><small>centrale sidetyper og flows — vælg typiske detaljesider</small>
             </article>
             <article>
               <span>02</span><strong>Etablér baseline</strong><small>Samme deployede URL, mode og testforhold</small>
@@ -930,7 +930,7 @@ const EventDetailPage = lazy(() =&gt;
           <h2>“Vi fandt ikke et væsentligt performanceproblem”</h2>
           <blockquote>
             På eventlisten testede vi deployment tre gange med Lighthouse Mobile. Vi undersøgte de største requests i
-            Network og fandt ingen flaskehals med tydelig betydning for brugerflowet. Derfor prioriterer vi nu
+            Network og fandt ikke et problem med tydelig betydning for brugerflowet. Derfor prioriterer vi nu
             fejlhåndtering ved tilmelding.
           </blockquote>
           <p class="no-problem-rule">En begrundet prioritering er bedre end en tilfældig optimering mod 100.</p>
