@@ -18,7 +18,15 @@ Efter det fælles indspark arbejder du videre med din prioriterede audit og får
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Fælles performanceindspark → etablér en baseline → vurdér om der er et væsentligt fund → arbejd videre med Case 1 → dokumentér status og næste skridt.
+**Dagens arbejdsrytme:** Kort recap fra relationer og nested data → fælles performanceindspark → etablér en baseline → vurdér om der er et væsentligt fund → arbejd videre med Case 1 → dokumentér status og næste skridt.
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>0. Kort recap fra i går</strong></summary>
+<ul>
+<li>Følg relationen fra <code>posts.userId</code> til den indlejrede <code>post.user</code> gennem formular, request, database og visning.</li>
+<li>Brug recap'et som bro til dagens spørgsmål: Hvilke felter har UI'et faktisk brug for at hente?</li>
+</ul>
+</details>
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Performance med udgangspunkt i brugeren</strong></summary>
@@ -35,8 +43,8 @@ Efter det fælles indspark arbejder du videre med din prioriterede audit og får
 <li>Kør Lighthouse på den deployede løsning for alle centrale sidetyper/routes – ikke kun forsiden. Brug kun en lokal production build som kontrol under udvikling.</li>
 <li>Brug rapporten til at formulere mulige problemer, og undersøg dem videre med Network-panelet gennem de centrale brugerflows.</li>
 <li>Brug Mellemrum-rapportens kontrast som eksempel: Performance 99, men cirka 7,7 MiB overført og et estimeret billedpotentiale på 6,9 MiB. Tallene er spor, ikke løsningen.</li>
-<li>Skeln tydeligt mellem testvalgene: Incognito giver et renere testmiljø ved at reducere påvirkning fra extensions og eksisterende browserdata; <code>Disable cache</code> ændrer selve cache-scenariet.</li>
-<li>Test både med <code>Disable cache</code> slået til som et første besøg og slået fra som et gentaget besøg. Hold route, viewport og throttling ens, når målinger sammenlignes.</li>
+<li>Skeln tydeligt mellem testvalgene: Incognito reducerer påvirkning fra extensions og eksisterende browserdata; Lighthouse-indstillingen <code>Clear storage</code> vælger mellem et første og et gentaget besøg; <code>Disable cache</code> ændrer cache-scenariet i Network.</li>
+<li>Test et første besøg i Network med <code>Disable cache</code> slået til. Til et gentaget besøg: Slå indstillingen fra, load siden én gang for at fylde cachen, ryd loggen, og reload derefter igen under samme forhold.</li>
 <li>Ryd Network-loggen før et nyt run, start recording før reload eller klik, og brug kun <code>Preserve log</code>, når et flow navigerer mellem sider.</li>
 <li>Brug kun Performance-panelet eller React DevTools Profiler, hvis et load eller en interaktion kræver en dybere undersøgelse.</li>
 <li>Gentag målinger under samme forhold, og sammenlign ikke localhost direkte med deployment.</li>
@@ -49,7 +57,7 @@ Efter det fælles indspark arbejder du videre med din prioriterede audit og får
 <ul>
 <li>Resize billeder til deres konkrete brug, eksportér som <code>WebP</code> eller <code>AVIF</code>, og sammenlign kvalitet og filstørrelse.</li>
 <li>Brug Inspect på <code>&lt;img&gt;</code> til at sammenligne <em>rendered size</em>, <em>intrinsic size</em> og filstørrelse.</li>
-<li>For billeder fra Unsplash kan URL-parametre som <code>w</code>, <code>q</code>, <code>auto=format</code> og <code>fit</code> bruges til at hente en variant, der passer bedre til den konkrete brug. <a href="https://unsplash.com/documentation#dynamically-resizable-images">Se Unsplash: Dynamically resizable images</a>.</li>
+<li>For billeder fra Unsplash kan URL-parametre som <code>w</code>, <code>h</code>, <code>q</code>, <code>auto=format</code> og <code>fit</code> bruges til at hente en variant, der passer bedre til den konkrete brug. Brug fx <code>fit=crop</code> sammen med en ønsket bredde og højde. <a href="https://unsplash.com/documentation#dynamically-resizable-images">Se Unsplash: Dynamically resizable images</a>.</li>
 <li>Angiv helst billedfilens faktiske pixelmål med <code>width</code> og <code>height</code>. Det reserverer det rigtige aspect ratio; CSS styrer stadig den responsive, viste størrelse.</li>
 <li>Brug kun <code>loading="lazy"</code> på billeder under den første viewport – ikke på hero- eller LCP-billedet.</li>
 <li>Behold originalen som arbejdsfil, og deploy kun de optimerede billeder, løsningen bruger.</li>

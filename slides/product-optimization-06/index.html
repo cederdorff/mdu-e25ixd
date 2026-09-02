@@ -25,7 +25,7 @@
 
         <section class="po-slide po-agenda" id="agenda">
           <span class="eyebrow">Agenda · konkrete forbedringsspor</span>
-          <h2>Brug værktøjernes output til at vælge det rigtige greb</h2>
+          <h2>Brug værktøjernes output til at vælge den rigtige forbedring</h2>
           <ol class="agenda-list six-items" start="0">
             <li>
               <a href="#/recap"
@@ -316,7 +316,7 @@
           </div>
           <div class="case-tension">
             <p><span>Lighthouse-spor</span><strong>Estimeret billedpotentiale: 6,9 MiB</strong></p>
-            <p><span>Jeres spørgsmål</span><strong>Hvad skal vi se i Network, før vi foreslår et greb?</strong></p>
+            <p><span>Jeres spørgsmål</span><strong>Hvad skal vi se i Network, før vi foreslår en ændring?</strong></p>
           </div>
           <p class="case-context">Desktop · deployment · én måling · 1. september 2026</p>
         </section>
@@ -458,7 +458,7 @@
             <article>
               <span>Warm cache · gentaget besøg</span>
               <strong><code>Disable cache</code> slået fra</strong>
-              <small>Normal reload · se hvad memory/disk cache ændrer</small>
+              <small>load én gang · ryd loggen · reload igen og mål</small>
             </article>
           </div>
           <div class="network-screenshot-note">
@@ -477,7 +477,7 @@
           <span class="eyebrow">Efter Network · vælg kun næste værktøj ved behov</span>
           <h2>Har Network allerede forklaret fundet?</h2>
           <p class="diagnosis-decision">
-            <strong>Ja →</strong> dokumentér fundet og prioritér et greb. <strong>Nej →</strong> vælg ét værktøj efter
+            <strong>Ja →</strong> dokumentér fundet og prioritér en forbedring. <strong>Nej →</strong> vælg ét værktøj efter
             symptomet.
           </p>
           <div class="diagnosis-map">
@@ -574,7 +574,7 @@
             <a href="https://images.unsplash.com/photo-1562535375-d6ce64f58475" target="_blank" rel="noreferrer"
               ><code>images.unsplash.com/photo-1562535375-d6ce64f58475</code></a
             >
-            <strong>?</strong><code class="url-width">w=800</code><strong>&amp;</strong
+            <strong>?</strong><code class="url-width">w=800&amp;h=600</code><strong>&amp;</strong
             ><code class="url-quality">q=70</code><strong>&amp;</strong><code class="url-format">auto=format</code
             ><strong>&amp;</strong><code class="url-fit">fit=crop</code>
           </div>
@@ -583,7 +583,7 @@
               >Åbn uden parametre ↗</a
             >
             <a
-              href="https://images.unsplash.com/photo-1562535375-d6ce64f58475?w=800&amp;q=70&amp;auto=format&amp;fit=crop"
+              href="https://images.unsplash.com/photo-1562535375-d6ce64f58475?w=800&amp;h=600&amp;q=70&amp;auto=format&amp;fit=crop"
               target="_blank"
               rel="noreferrer"
               >Åbn optimeret variant ↗</a
@@ -591,8 +591,8 @@
           </nav>
           <div class="url-parameter-grid">
             <article>
-              <code>w=800</code><strong>Bredde</strong
-              ><small>Returnér cirka den pixelbredde, layoutet har brug for.</small>
+              <code>w=800&amp;h=600</code><strong>Dimensioner</strong
+              ><small>Returnér en variant tæt på den største konkrete brug.</small>
             </article>
             <article>
               <code>q=70</code><strong>Kvalitet</strong
@@ -604,13 +604,13 @@
             </article>
             <article>
               <code>fit=crop</code><strong>Tilpasning</strong
-              ><small>Bestem, hvordan billedet tilpasses de ønskede dimensioner.</small>
+              ><small>Beskær motivet til den ønskede bredde og højde.</small>
             </article>
           </div>
           <p class="image-rule unsplash-rule">
             <span
-              ><strong>I jeres eksempel:</strong> Skift <code>w=2400</code> til en bredde, der matcher den største
-              reelle brug — og mål igen.</span
+              ><strong>I jeres eksempel:</strong> Skift <code>w=2400</code> til mål, der matcher den største reelle
+              brug og det ønskede aspect ratio — og mål igen.</span
             ><a href="https://unsplash.com/documentation#dynamically-resizable-images" target="_blank" rel="noreferrer"
               >Se alle muligheder →</a
             >
@@ -809,7 +809,7 @@
         </section>
 
         <section class="po-slide request-optimization-slide">
-          <span class="eyebrow">Greb 3 · requests og React</span>
+          <span class="eyebrow">Forbedringsspor · requests og React</span>
           <h2>Derfor kan dev mode vise to requests</h2>
           <div class="strict-layout">
             <div class="strict-signal">
@@ -830,20 +830,20 @@
         </section>
 
         <section class="po-slide js-optimization-slide">
-          <span class="eyebrow">Greb 4 · JavaScript</span>
-          <h2>Lazy-load PostDetailPage — hvis første bundle er problemet</h2>
+          <span class="eyebrow">Forbedringsspor · JavaScript</span>
+          <h2>Lazy-load EventDetailPage — hvis første bundle er problemet</h2>
           <div class="lazy-layout">
             <pre class="po-code"><code class="language-jsx">import { lazy, Suspense } from "react";
 
-const PostDetailPage = lazy(() =&gt;
-  import("./pages/PostDetailPage")
+const EventDetailPage = lazy(() =&gt;
+  import("./pages/EventDetailPage")
 );
 
 &lt;Route
-  path="/posts/:id"
+  path="/events/:id"
   element={
-    &lt;Suspense fallback={&lt;p&gt;Indlæser post…&lt;/p&gt;}&gt;
-      &lt;PostDetailPage /&gt;
+    &lt;Suspense fallback={&lt;p&gt;Indlæser event…&lt;/p&gt;}&gt;
+      &lt;EventDetailPage /&gt;
     &lt;/Suspense&gt;
   }
 /&gt;</code></pre>
@@ -906,14 +906,14 @@ const PostDetailPage = lazy(() =&gt;
           <div class="work-path">
             <article>
               <span>01</span><strong>Vælg testdækning</strong
-              ><small>Alle centrale routes og flows — ikke kun forsiden</small>
+              ><small>centrale sidetyper og flows — repræsentative detaljer</small>
             </article>
             <article>
               <span>02</span><strong>Etablér baseline</strong><small>Samme deployede URL, mode og testforhold</small>
             </article>
             <article><span>03</span><strong>Find årsag</strong><small>Lighthouse → Network → kode</small></article>
             <article>
-              <span>04</span><strong>Lav ét greb</strong><small>i en tydeligt navngivet feature branch</small>
+              <span>04</span><strong>Lav én ændring</strong><small>i en tydeligt navngivet feature branch</small>
             </article>
             <article>
               <span>05</span><strong>Mål igen</strong><small>samme forhold — og vurder forskellen</small>
