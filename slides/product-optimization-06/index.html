@@ -30,34 +30,35 @@
             <li>
               <a href="#/recap"
                 ><b>Kort recap: posts og users</b
-                ><small>Relationen fra <code>userId</code> til nested <code>post.user</code></small></a
+                ><small
+                  >Relationen fra <code>userId</code> i <code>posts</code> til nested <code>post.user</code></small
+                ></a
               >
             </li>
             <li>
               <a href="#/maaling"
-                ><b>Måling og værktøjsoutput</b><small>Lighthouse som baseline · Network som konkret bevis</small></a
+                ><b>Måling og værktøjer</b><small>Lighthouse som udgangspunkt · Network som konkret bevis</small></a
               >
             </li>
             <li>
               <a href="#/billeder-assets"
-                ><b>Billeder og øvrige assets</b><small>Dimensioner, formater, fonte og tunge projektfiler</small></a
+                ><b>Billeder og assets</b><small>Optimering af billeder og andre assets</small></a
               >
             </li>
             <li>
               <a href="#/supabase"
-                ><b>Supabase og data</b><small>Hent kun de kolonner, relationer og rækker, visningen bruger</small></a
+                ><b>Supabase og data</b><small>Hent kun de kolonner, relationer og rækker, vi har brug for</small></a
               >
             </li>
             <li>
               <a href="#/javascript-react"
-                ><b>JavaScript og React</b
-                ><small>Gentagne requests, loading states og relevant code splitting</small></a
+                ><b>JavaScript og React</b><small>Gentagne requests, lazy loading og relevant code splitting</small></a
               >
             </li>
             <li>
               <a href="#/arbejde"
                 ><b>Prioritér og arbejd videre</b
-                ><small>Vælg et dokumenteret fund — eller en vigtigere audit-forbedring</small></a
+                ><small>Vælg et dokumenteret performance-fund — eller en audit-forbedring</small></a
               >
             </li>
           </ol>
@@ -939,12 +940,10 @@ const PostDetailPage = lazy(() =&gt;
           <span class="eyebrow">Dagens centrale pointe</span>
           <h2>Brug Lighthouse som pejlemærke <br />— og test, om forbedringen også hjælper brugeren.</h2>
           <div class="closing-formula">
-            <span>Vælg et flow</span><b>→</b><span>Mål</span><b>→</b><span>Undersøg</span><b>→</b
-            ><span>Prioritér</span><b>→</b><span>Test igen</span>
+            <span>Vælg et flow</span><b>→</b><span>Mål</span><b>→</b><span>Undersøg</span><b>→</b><span>Prioritér</span
+            ><b>→</b><span>Test igen</span>
           </div>
-          <p class="lead">
-            En høj score er ikke målet. En mærkbar forbedring for brugeren er.
-          </p>
+          <p class="lead">En høj score er ikke målet. En mærkbar forbedring for brugeren er.</p>
           <div class="closing-links"><a href="#/agenda">Tilbage til agenda</a></div>
         </section>
       </div>
