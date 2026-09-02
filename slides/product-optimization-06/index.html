@@ -663,9 +663,9 @@
             Kan I nu pege på det konkrete request eller brugerøjeblik, forklare hvorfor det betyder noget, og formulere
             et relevant greb? Hvis ja, stopper vi undersøgelsen og dokumenterer fundet. Hvis nej, vælger vi kun den ene
             eskalering, der matcher symptomet. Fx Performance ved et langsomt klik og React Profiler ved en konkret
-            mistanke om rendering. Giv holdet to minutter til at installere React Developer Tools i Chrome fra linket
-            på sliden. Når deres app genåbnes, vises fanerne Components og Profiler i DevTools. [Sources] -
-            React Developer Tools · https://react.dev/learn/react-developer-tools - Performance panel ·
+            mistanke om rendering. Giv holdet to minutter til at installere React Developer Tools i Chrome fra linket på
+            sliden. Når deres app genåbnes, vises fanerne Components og Profiler i DevTools. [Sources] - React Developer
+            Tools · https://react.dev/learn/react-developer-tools - Performance panel ·
             https://developer.chrome.com/docs/devtools/performance/overview - React Developer Tools ·
             https://react.dev/learn/react-developer-tools [/Sources]
           </aside>
@@ -686,13 +686,25 @@
           <span class="eyebrow">Billedsporet · en praktisk arbejdsgang</span>
           <h2>Fra tung original til web-billede</h2>
           <div class="image-workflow">
-            <article><b>01</b><strong>Find behovet</strong><small>Hvor stort vises billedet på den aktuelle route?</small></article>
-            <article><b>02</b><strong>Resize</strong><small>Eksportér tæt på største nødvendige størrelse — ofte op til 2× CSS-bredden.</small></article>
-            <article><b>03</b><strong>Format + kvalitet</strong><small>Brug WebP eller AVIF til fotos, og sænk kvaliteten til forskellen netop kan ses.</small></article>
-            <article><b>04</b><strong>Kontrollér</strong><small>Sammenlign Preview, dimensioner og transferred bytes i Network.</small></article>
+            <article>
+              <b>01</b><strong>Find behovet</strong><small>Hvor stort vises billedet på den aktuelle route?</small>
+            </article>
+            <article>
+              <b>02</b><strong>Resize</strong
+              ><small>Eksportér tæt på største nødvendige størrelse — ofte op til 2× CSS-bredden.</small>
+            </article>
+            <article>
+              <b>03</b><strong>Format + kvalitet</strong
+              ><small>Brug WebP eller AVIF til fotos, og sænk kvaliteten til forskellen netop kan ses.</small>
+            </article>
+            <article>
+              <b>04</b><strong>Kontrollér</strong
+              ><small>Sammenlign Preview, dimensioner og transferred bytes i Network.</small>
+            </article>
           </div>
           <div class="workflow-example">
-            <span>Eksempel</span><code>2609 × 1960 px · 1,2 MiB</code><b>→</b><code>800 × 600 px · WebP</code><small>Mål den faktiske fil bagefter — størrelsen her er målet, ikke et løfte.</small>
+            <span>Eksempel</span><code>2609 × 1960 px · 1,2 MiB</code><b>→</b><code>800 × 600 px · WebP</code
+            ><small>Mål den faktiske fil bagefter — størrelsen her er målet, ikke et løfte.</small>
           </div>
           <aside class="notes">
             Gennemgå workflowet med ét billede fra deres eget projekt. Start med den viste CSS-størrelse. Hvis kortet
@@ -709,16 +721,30 @@
           <h2>Inspect afslører forskellen</h2>
           <div class="image-inspect-layout">
             <figure>
-              <img src="../assets/image-size.png" alt="Chrome DevTools viser et billedes rendered size, intrinsic size og filstørrelse" />
+              <img
+                src="../assets/image-size.png"
+                alt="Chrome DevTools viser et billedes rendered size, intrinsic size og filstørrelse"
+              />
               <span class="inspect-focus" aria-hidden="true"><b>Kig her</b></span>
             </figure>
             <div class="inspect-findings">
-              <article><span>Rendered size</span><strong>573 × 719 px</strong><small>Så stort vises billedet i dette layout.</small></article>
-              <article><span>Intrinsic size</span><strong>2940 × 1960 px</strong><small>Så mange pixels indeholder den hentede fil.</small></article>
-              <article><span>File size</span><strong>1,2 MB</strong><small>Det er de bytes, brugeren skal hente.</small></article>
+              <article>
+                <span>Rendered size</span><strong>573 × 719 px</strong
+                ><small>Så stort vises billedet i dette layout.</small>
+              </article>
+              <article>
+                <span>Intrinsic size</span><strong>2940 × 1960 px</strong
+                ><small>Så mange pixels indeholder den hentede fil.</small>
+              </article>
+              <article>
+                <span>File size</span><strong>1,2 MB</strong><small>Det er de bytes, brugeren skal hente.</small>
+              </article>
             </div>
           </div>
-          <p class="image-rule"><strong>Sådan:</strong> Højreklik på billedet → Inspect → hold musen over det markerede <code>&lt;img&gt;</code>.</p>
+          <p class="image-rule">
+            <strong>Sådan:</strong> Højreklik på billedet → Inspect → hold musen over det markerede
+            <code>&lt;img&gt;</code>.
+          </p>
           <aside class="notes">
             Peg på DevTools-popoveren: rendered size er den aktuelle visning, intrinsic size er billedfilens egne
             dimensioner, og file size er downloadens størrelse. Her hentes langt flere pixels end layoutet bruger.
@@ -732,20 +758,50 @@
           <span class="eyebrow">Unsplash · optimér allerede i URL’en</span>
           <h2>Bed om den billedfil, du faktisk skal bruge</h2>
           <div class="unsplash-url-example">
-            <a href="https://images.unsplash.com/photo-1562535375-d6ce64f58475" target="_blank" rel="noreferrer"><code>images.unsplash.com/photo-1562535375-d6ce64f58475</code></a>
-            <strong>?</strong><code class="url-width">w=800</code><strong>&amp;</strong><code class="url-quality">q=70</code><strong>&amp;</strong><code class="url-format">auto=format</code><strong>&amp;</strong><code class="url-fit">fit=crop</code>
+            <a href="https://images.unsplash.com/photo-1562535375-d6ce64f58475" target="_blank" rel="noreferrer"
+              ><code>images.unsplash.com/photo-1562535375-d6ce64f58475</code></a
+            >
+            <strong>?</strong><code class="url-width">w=800</code><strong>&amp;</strong
+            ><code class="url-quality">q=70</code><strong>&amp;</strong><code class="url-format">auto=format</code
+            ><strong>&amp;</strong><code class="url-fit">fit=crop</code>
           </div>
           <nav class="unsplash-demo-links" aria-label="Links til demonstration af Unsplash-parametre">
-            <a href="https://images.unsplash.com/photo-1562535375-d6ce64f58475" target="_blank" rel="noreferrer">Åbn uden parametre ↗</a>
-            <a href="https://images.unsplash.com/photo-1562535375-d6ce64f58475?w=800&amp;q=70&amp;auto=format&amp;fit=crop" target="_blank" rel="noreferrer">Åbn optimeret variant ↗</a>
+            <a href="https://images.unsplash.com/photo-1562535375-d6ce64f58475" target="_blank" rel="noreferrer"
+              >Åbn uden parametre ↗</a
+            >
+            <a
+              href="https://images.unsplash.com/photo-1562535375-d6ce64f58475?w=800&amp;q=70&amp;auto=format&amp;fit=crop"
+              target="_blank"
+              rel="noreferrer"
+              >Åbn optimeret variant ↗</a
+            >
           </nav>
           <div class="url-parameter-grid">
-            <article><code>w=800</code><strong>Bredde</strong><small>Returnér cirka den pixelbredde, layoutet har brug for.</small></article>
-            <article><code>q=70</code><strong>Kvalitet</strong><small>Lavere kvalitet giver typisk færre bytes. Kontrollér motivet visuelt.</small></article>
-            <article><code>auto=format</code><strong>Format</strong><small>Unsplash vælger et passende format til browseren.</small></article>
-            <article><code>fit=crop</code><strong>Tilpasning</strong><small>Bestem, hvordan billedet tilpasses de ønskede dimensioner.</small></article>
+            <article>
+              <code>w=800</code><strong>Bredde</strong
+              ><small>Returnér cirka den pixelbredde, layoutet har brug for.</small>
+            </article>
+            <article>
+              <code>q=70</code><strong>Kvalitet</strong
+              ><small>Lavere kvalitet giver typisk færre bytes. Kontrollér motivet visuelt.</small>
+            </article>
+            <article>
+              <code>auto=format</code><strong>Format</strong
+              ><small>Unsplash vælger et passende format til browseren.</small>
+            </article>
+            <article>
+              <code>fit=crop</code><strong>Tilpasning</strong
+              ><small>Bestem, hvordan billedet tilpasses de ønskede dimensioner.</small>
+            </article>
           </div>
-          <p class="image-rule unsplash-rule"><span><strong>I jeres eksempel:</strong> Skift <code>w=2400</code> til en bredde, der matcher den største reelle brug — og mål igen.</span><a href="https://unsplash.com/documentation#dynamically-resizable-images" target="_blank" rel="noreferrer">Se alle muligheder →</a></p>
+          <p class="image-rule unsplash-rule">
+            <span
+              ><strong>I jeres eksempel:</strong> Skift <code>w=2400</code> til en bredde, der matcher den største
+              reelle brug — og mål igen.</span
+            ><a href="https://unsplash.com/documentation#dynamically-resizable-images" target="_blank" rel="noreferrer"
+              >Se alle muligheder →</a
+            >
+          </p>
           <aside class="notes">
             Mange af projekternes billeder kommer allerede fra images.unsplash.com. De dynamiske URL'er understøtter
             blandt andet w og h til dimensioner, q til lossy kvalitet, auto=format, fit, crop og dpr. Pointen er derfor
@@ -767,22 +823,34 @@
   height="500"
 /&gt;</code></pre>
             <div class="dimension-explanation">
-              <article><b>Før download</b><span><code>900 / 500 = 9 / 5</code>. Browseren kan derfor reservere den rigtige form.</span></article>
-              <article><b>Hvilke tal skriver jeg?</b><span>Er selve filen <code>900 × 500</code>? Skriv <code>width="900" height="500"</code>.</span></article>
-              <article><b>CSS gør det responsivt</b><pre class="po-code"><code class="language-css">img {
+              <article>
+                <b>Før download</b
+                ><span><code>900 / 500 = 9 / 5</code>. Browseren kan derfor reservere den rigtige form.</span>
+              </article>
+              <article>
+                <b>Hvilke tal skriver jeg?</b
+                ><span>Er selve filen <code>900 × 500</code>? Skriv <code>width="900" height="500"</code>.</span>
+              </article>
+              <article>
+                <b>CSS gør det responsivt</b>
+                <pre class="po-code"><code class="language-css">img {
   max-width: 100%;
   height: auto;
-}</code></pre></article>
+}</code></pre>
+              </article>
             </div>
           </div>
-          <p class="image-rule"><strong>CSS bestemmer visningen:</strong> Samme fil på <code>900 × 500</code> må gerne vises som <code>450 × 250</code> eller <code>100% × auto</code>.</p>
+          <p class="image-rule">
+            <strong>CSS bestemmer visningen:</strong> Samme fil på <code>900 × 500</code> må gerne vises som
+            <code>450 × 250</code> eller <code>100% × auto</code>.
+          </p>
           <aside class="notes">
             Width og height er ikke en lås på den visuelle størrelse. De fortæller browseren filens proportioner, så
             pladsen kan reserveres allerede før download og layout-hop reduceres. Brug helst den valgte billedfils
-            faktiske pixelmål. En fil på 900 × 500 får altså width 900 og height 500. Den viste størrelse behøver ikke matche tallene: CSS kan gøre billedet smallere med
-            max-width 100% og height auto.
-            [Sources] - HTML img element · https://developer.mozilla.org/docs/Web/HTML/Reference/Elements/img -
-            Responsive images · https://web.dev/learn/design/responsive-images [/Sources]
+            faktiske pixelmål. En fil på 900 × 500 får altså width 900 og height 500. Den viste størrelse behøver ikke
+            matche tallene: CSS kan gøre billedet smallere med max-width 100% og height auto. [Sources] - HTML img
+            element · https://developer.mozilla.org/docs/Web/HTML/Reference/Elements/img - Responsive images ·
+            https://web.dev/learn/design/responsive-images [/Sources]
           </aside>
         </section>
 
@@ -791,7 +859,15 @@
           <h2>Load det synlige nu — resten senere</h2>
           <div class="lazy-demo-layout">
             <figure class="lazy-video">
-              <video src="../assets/native-lazy-loading.webm" autoplay muted loop playsinline controls aria-label="Demonstration af billeder, der lazy-loades under scroll"></video>
+              <video
+                src="../assets/native-lazy-loading.webm"
+                autoplay
+                muted
+                loop
+                playsinline
+                controls
+                aria-label="Demonstration af billeder, der lazy-loades under scroll"
+              ></video>
               <figcaption>Scroll: requests starter først, når billederne nærmer sig viewporten.</figcaption>
             </figure>
             <div class="loading-compare">
@@ -809,15 +885,19 @@
               </article>
             </div>
           </div>
-          <p class="loading-scope"><code>loading</code> gælder native for <code>&lt;img&gt;</code> og <code>&lt;iframe&gt;</code> — ikke CSS, fonte, scripts eller alle andre assets.</p>
+          <p class="loading-scope">
+            <code>loading</code> gælder native for <code>&lt;img&gt;</code> og <code>&lt;iframe&gt;</code> — ikke CSS,
+            fonte, scripts eller alle andre assets.
+          </p>
           <aside class="notes">
             Lazy loading er ikke en generel optimeringsknap. Brug det på billeder under folden, fordi de ikke behøver
-            konkurrere om båndbredde under første load. Brug det ikke på hero- eller andre sandsynlige LCP-billeder;
-            de skal opdages tidligt og kan eventuelt få fetchpriority high. Loading-attributten gælder billeder og
-            iframes. JavaScript, fonte og video har andre mekanismer. [Sources] - Lazy load images and iframe elements ·
+            konkurrere om båndbredde under første load. Brug det ikke på hero- eller andre sandsynlige LCP-billeder; de
+            skal opdages tidligt og kan eventuelt få fetchpriority high. Loading-attributten gælder billeder og iframes.
+            JavaScript, fonte og video har andre mekanismer. [Sources] - Lazy load images and iframe elements ·
             https://web.dev/learn/performance/lazy-load-images-and-iframe-elements - Responsive images ·
             https://web.dev/learn/design/responsive-images - Native lazy-loading demonstration ·
-            https://web.dev/static/articles/browser-level-image-lazy-loading/video/web-dev-assets/native-lazy-loading/lazyload.webm [/Sources]
+            https://web.dev/static/articles/browser-level-image-lazy-loading/video/web-dev-assets/native-lazy-loading/lazyload.webm
+            [/Sources]
           </aside>
         </section>
 
@@ -825,12 +905,27 @@
           <span class="eyebrow">Billeder · format og komprimering</span>
           <h2>Eksportér til den konkrete brug</h2>
           <div class="format-grid">
-            <article><span>Foto</span><strong>WebP eller AVIF</strong><small>Resize først. Eksportér med lossy compression, og sammenlign kvaliteten visuelt.</small></article>
-            <article><span>Logo og ikon</span><strong>SVG når det er vector</strong><small>Brug ellers en komprimeret WebP/PNG, hvis motivet er raster.</small></article>
-            <article><span>Efter eksport</span><strong>Kontrollér resultatet</strong><small>Sammenlign motivet visuelt, og kontrollér bytes i Network.</small></article>
+            <article>
+              <span>Foto</span><strong>WebP eller AVIF</strong
+              ><small>Resize først. Eksportér med lossy compression, og sammenlign kvaliteten visuelt.</small>
+            </article>
+            <article>
+              <span>Logo og ikon</span><strong>SVG når det er vector</strong
+              ><small>Brug ellers en komprimeret WebP/PNG, hvis motivet er raster.</small>
+            </article>
+            <article>
+              <span>Efter eksport</span><strong>Kontrollér resultatet</strong
+              ><small>Sammenlign motivet visuelt, og kontrollér bytes i Network.</small>
+            </article>
           </div>
-          <div class="image-export-checks"><span>1. Resize</span><b>→</b><span>2. Eksportér</span><b>→</b><span>3. Sammenlign</span><b>→</b><span>4. Kontrollér i Network</span></div>
-          <p class="image-rule"><strong>Praktisk regel:</strong> Behold originalen som arbejdsfil; deploy kun de optimerede varianter, siden bruger.</p>
+          <div class="image-export-checks">
+            <span>1. Resize</span><b>→</b><span>2. Eksportér</span><b>→</b><span>3. Sammenlign</span><b>→</b
+            ><span>4. Kontrollér i Network</span>
+          </div>
+          <p class="image-rule">
+            <strong>Praktisk regel:</strong> Behold originalen som arbejdsfil; deploy kun de optimerede varianter, siden
+            bruger.
+          </p>
           <aside class="notes">
             Den vigtigste rækkefølge er resize, format, kvalitet og derefter kontrol. WebP og AVIF komprimerer typisk
             fotos bedre end JPEG og PNG, men den rigtige kvalitet findes ved at sammenligne det konkrete motiv visuelt.
@@ -872,7 +967,9 @@
               <small>Mindre response og en tydelig kontrakt til UI’et.</small>
             </article>
           </div>
-          <p class="rest-selection-rule"><strong>Feltudvælgelse er en forbedring:</strong> Ikke en forudsætning for at forstå relationen.</p>
+          <p class="rest-selection-rule">
+            <strong>Feltudvælgelse er en forbedring:</strong> Ikke en forudsætning for at forstå relationen.
+          </p>
           <aside class="notes">
             Genbrug modellen fra i går. Venstre URL er et godt lærings- og kontroltrin: den viser, at nested user-data
             kommer med. Højre URL er næste skridt, når komponenten er kendt. Den henter kun de felter, PostCard bruger.
@@ -889,8 +986,15 @@
           <div class="field-selection-layout">
             <figure class="postcard-preview">
               <span>PostCard · det brugeren ser</span>
-              <img class="postcard-preview-image" src="../assets/post-app-card-lars-boege-eskildsen.png" alt="Post App-kort med Lars Bøge Eskildsen, titel, billede og caption" />
-              <figcaption><code>post.user.image</code><code>post.user.name</code><code>post.user.title</code><code>post.image</code><code>post.caption</code></figcaption>
+              <img
+                class="postcard-preview-image"
+                src="../assets/post-app-card-lars-boege-eskildsen.png"
+                alt="Post App-kort med Lars Bøge Eskildsen, titel, billede og caption"
+              />
+              <figcaption>
+                <span>Fra <code>post.user</code></span><code>post.user.image</code><code>post.user.name</code><code>post.user.title</code>
+                <span>Fra <code>post</code></span><code>post.image</code><code>post.caption</code>
+              </figcaption>
             </figure>
             <div class="field-selection-arrow">→</div>
             <article class="select-needed-card">
@@ -901,14 +1005,17 @@
               <small>Hvert felt i URL’en har et synligt hjem i kortet.</small>
             </article>
           </div>
-          <p class="field-selection-rule"><strong>Ikke dette:</strong> <code>select=*,user:users(*)</code>. Det er fint, mens relationen undersøges — men når UI’et er kendt, vælger vi specifikt.</p>
+          <p class="field-selection-rule">
+            <strong>Ikke dette:</strong> <code>select=*,user:users(*)</code>. Det er fint, mens relationen undersøges —
+            men når UI’et er kendt, vælger vi specifikt.
+          </p>
           <aside class="notes">
             Knyt direkte til Post App fra i går. Læs kortet fra top til bund og peg på hvert label: caption og image
             kommer fra postet; name, title og image kommer fra den relaterede user. Læs derefter REST-URL'en ved siden
             af og markér de samme felter i select-parameteren. Stjerne i select er en fin start, mens I får relationen
-            til at virke. Når UI'et er kendt, erstattes stjernen med konkrete felter. Spørg: Hvor bruges
-            hvert felt i komponenten? Felter til fx en detaljeside eller edit-form skal først hentes dér, hvor de bruges.
-            [Sources] - Product Optimization 05 · lokalt deck, slide 29 - Supabase select ·
+            til at virke. Når UI'et er kendt, erstattes stjernen med konkrete felter. Spørg: Hvor bruges hvert felt i
+            komponenten? Felter til fx en detaljeside eller edit-form skal først hentes dér, hvor de bruges. [Sources] -
+            Product Optimization 05 · lokalt deck, slide 29 - Supabase select ·
             https://supabase.com/docs/reference/javascript/select - Querying joins and nested tables ·
             https://supabase.com/docs/guides/database/joins-and-nesting [/Sources]
           </aside>
@@ -920,8 +1027,11 @@
           <div class="data-query-layout data-evidence-layout">
             <div class="data-request">
               <span>Network</span>
-              <pre class="po-code"><code class="language-js">const request =
-  "GET /rest/v1/events?order=date.asc";</code></pre>
+              <img
+                class="network-events-shot"
+                src="../assets/network-events.png"
+                alt="Network-panelet med events?order=date.asc markeret som et fetch på 2,8 KiB"
+              />
               <strong>2,8 KiB</strong>
               <small>én succesfuld fetch i dette Lighthouse-run</small>
             </div>
@@ -934,8 +1044,9 @@
           <aside class="notes">
             Feltudvælgelse er et godt princip, men ikke nødvendigvis det vigtigste problem på hver route. På denne route
             var den målte response kun cirka 2,8 KiB, så rapporten giver ikke i sig selv grund til at prioritere den før
-            større requests. Åbn responsen, se på felterne og test de andre routes, før I beslutter noget. [Sources] - User-provided Lighthouse 13.4.1 report for
-            https://cederdorff.com/mellemrum/ · fetched 1. september 2026 - Supabase select ·
+            større requests. Åbn responsen, se på felterne og test de andre routes, før I beslutter noget. [Sources] -
+            User-provided Network screenshot · slides/assets/network-events.png - User-provided Lighthouse 13.4.1 report
+            for https://cederdorff.com/mellemrum/ · fetched 1. september 2026 - Supabase select ·
             https://supabase.com/docs/reference/javascript/select [/Sources]
           </aside>
         </section>
