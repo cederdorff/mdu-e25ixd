@@ -2163,6 +2163,12 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.reveal .slide-number,
+.reveal .slide-number a,
+.reveal .slide-number span {
+  text-decoration: none !important;
+}
+
 .reveal .slide-number-delimiter {
   margin: 0 5px;
   color: var(--green);
