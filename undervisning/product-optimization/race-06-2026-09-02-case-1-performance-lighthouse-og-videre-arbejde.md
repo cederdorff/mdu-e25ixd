@@ -47,10 +47,12 @@ Efter det fælles indspark arbejder du videre med din prioriterede audit og får
 <details style="margin-left: 1.5rem;">
 <summary><strong>3. Billeder, assets og indlæsning</strong></summary>
 <ul>
-<li>Undersøg billeddimensioner, filstørrelser og moderne formater som <code>WebP</code> og <code>AVIF</code>.</li>
-<li>Angiv <code>width</code> og <code>height</code>, og brug lazy loading til billeder, der ikke er vigtige for den første visning.</li>
-<li>Brug Unsplash-parametrene <code>w</code>, <code>q</code> og <code>auto=format</code>, og kontrollér resultatet i Network-panelet.</li>
-<li>Vurdér om egne logoer og faste produktassets skal ligge i projektet eller egen storage, mens indholdsbilleder leveres gennem en image-CDN.</li>
+<li>Resize billeder til deres konkrete brug, eksportér som <code>WebP</code> eller <code>AVIF</code>, og sammenlign kvalitet og filstørrelse.</li>
+<li>Brug Inspect på <code>&lt;img&gt;</code> til at sammenligne <em>rendered size</em>, <em>intrinsic size</em> og filstørrelse.</li>
+<li>For billeder fra Unsplash kan URL-parametre som <code>w</code>, <code>q</code>, <code>auto=format</code> og <code>fit</code> bruges til at hente en variant, der passer bedre til den konkrete brug. <a href="https://unsplash.com/documentation#dynamically-resizable-images">Se Unsplash: Dynamically resizable images</a>.</li>
+<li>Angiv helst billedfilens faktiske pixelmål med <code>width</code> og <code>height</code>. Det reserverer det rigtige aspect ratio; CSS styrer stadig den responsive, viste størrelse.</li>
+<li>Brug kun <code>loading="lazy"</code> på billeder under den første viewport – ikke på hero- eller LCP-billedet.</li>
+<li>Behold originalen som arbejdsfil, og deploy kun de optimerede billeder, løsningen bruger.</li>
 <li>Undersøg store eller unødvendige fonte, assets og dependencies.</li>
 </ul>
 </details>
@@ -59,7 +61,7 @@ Efter det fælles indspark arbejder du videre med din prioriterede audit og får
 <summary><strong>4. Requests, Supabase og React</strong></summary>
 <ul>
 <li>Brug Network-panelet til at se, hvad der hentes, hvornår det hentes, og hvor meget data der overføres.</li>
-<li>Hent kun de nødvendige kolonner og rækker, og undersøg unødvendige eller gentagne requests.</li>
+<li>Hent kun de nødvendige kolonner og rækker: Start med komponentens render, links og formularer, og lad dens behov styre REST-URL’ens <code>select</code>-felter — også inde i relaterede tabeller.</li>
 <li>Kontrollér mistænkte gentagelser i en production build, så React Strict Mode ikke fejltolkes som et produktionsproblem.</li>
 <li>Undersøg kun renderinger med React DevTools Profiler, hvis et konkret brugerflow virker langsomt.</li>
 <li>Overvej lazy loading af større routes, hvis målingen viser, at den første JavaScript-indlæsning er et relevant problem.</li>
@@ -90,6 +92,5 @@ Efter det fælles indspark arbejder du videre med din prioriterede audit og får
   - [Chrome DevTools · Performance](https://developer.chrome.com/docs/devtools/performance/overview)
   - [React Developer Tools](https://react.dev/learn/react-developer-tools)
   - [Image performance](https://web.dev/learn/performance/image-performance)
-  - [Unsplash · dynamiske billedstørrelser og formater](https://unsplash.com/documentation#dynamically-resizable-images)
 - **Slides:**
   - [Performance, Lighthouse og videre arbejde](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-06/)
