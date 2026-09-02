@@ -20,8 +20,8 @@
 - Bevar et klart match mellem undervisningssiden i `undervisning/` og det tilhørende deck i `slides/`.
 - Brug beskrivende filnavne med små bogstaver og bindestreger til assets i `slides/assets/`.
 - Angiv altid sprog på Markdown-kodeblokke og en relevant `language-*`-klasse på HTML `<code>`-elementer, så syntax highlighting virker.
-- Bevar undervisernoter og eksisterende kildehenvisninger.
-- Brug `[Sources]` i speaker notes til nye eksterne assets og ikke-trivielle eksterne påstande.
+- Brug ikke speaker notes eller `<aside class="notes">` i Reveal.js-slides. Fjern dem, hvis de findes i det deck, du redigerer.
+- Angiv nødvendige kildehenvisninger synligt på slidet eller i den tilhørende undervisningsside.
 - Kontrollér tekstombrydning, overlap og billedbeskæring på ændrede slides.
 
 ## Verifikation
