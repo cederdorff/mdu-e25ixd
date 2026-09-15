@@ -14,7 +14,7 @@ Denne beskrivelse giver dig fra forløbets start et overblik over, hvordan casea
 
 ## Fra casearbejde til den samlede eksamensaflevering
 
-Hver case afsluttes ved udgangen af den tilhørende periode på to uger. Arbejdet fra de tre cases bliver tilsammen råmateriale til den samlede eksamensaflevering.
+Arbejdet fra de tre cases bliver tilsammen råmateriale til den samlede eksamensaflevering.
 
 Forløbet frem mod eksamensafleveringen består af fire trin:
 
@@ -85,7 +85,7 @@ Casebeskrivelserne må **tilsammen fylde maksimalt fem normalsider svarende til 
 
 ## Formkrav og redelighed
 
-Materialet skal give et retvisende billede af dit arbejde. Gør dit eget bidrag og dine kilder tydelige, og følg uddannelsens regler for brug og deklaration af digitale værktøjer og generativ AI. Du kan kun gå til prøven, hvis prøveforudsætningerne er opfyldt.
+Materialet skal give et retvisende billede af dit arbejde. Gør dit eget bidrag og dine kilder tydelige, og følg uddannelsens regler for brug og deklaration af digitale værktøjer og generativ AI.
 
 <hr style="margin: 2rem 0;">
 
