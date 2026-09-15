@@ -4,7 +4,7 @@
 
 Product Optimization afsluttes med en **individuel skriftlig eksamen**, der tager udgangspunkt i de tre produktoptimeringscases, du arbejder med gennem forløbet.
 
-Denne beskrivelse giver dig fra forløbets start et overblik over, hvordan casearbejdet bliver til dit samlede eksamensmateriale. Hver case varer to uger og har sit eget faglige fokus. De konkrete opgaver, faglige forventninger og leverancer fremgår af den enkelte casebeskrivelse:
+Denne beskrivelse giver dig fra forløbets start et overblik over, hvordan casearbejdet bliver til dit samlede eksamensmateriale. Hver case varer to uger og har sit eget faglige fokus. De konkrete opgaver og faglige forventninger fremgår af den enkelte casebeskrivelse:
 
 - [Case 1 – Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
 - [Case 2 – Design Better Onboarding](https://eaaa.instructure.com/courses/30922/modules/178441)
@@ -12,14 +12,16 @@ Denne beskrivelse giver dig fra forløbets start et overblik over, hvordan casea
 
 <hr style="margin: 2rem 0;">
 
-## Fra casearbejde til eksamensaflevering
+## Fra casearbejde til den samlede eksamensaflevering
 
-De løbende caseafleveringer er råmateriale til eksamen – ikke færdige eksamenscases. Forløbet frem mod eksamensafleveringen består af fire trin:
+Hver case afsluttes ved udgangen af den tilhørende periode på to uger. Arbejdet fra de tre cases bliver tilsammen råmateriale til den samlede eksamensaflevering.
 
-1. **Arbejd med én case ad gangen.** Gennemfør og aflever casen, inden den næste begynder.
+Forløbet frem mod eksamensafleveringen består af fire trin:
+
+1. **Arbejd med én case ad gangen.** Afslut arbejdet med casen, inden den næste begynder.
 2. **Saml materiale undervejs.** Gem relevante analyser, prioriteringer, valg, iterationer, feedback, løsninger, resultater og anden dokumentation fra hver case.
 3. **Bearbejd materialet efter Case 3.** Udvælg det vigtigste, og formidl hver case som en kort, faglig casefortælling på dit portfolio – ikke som en projektdagbog.
-4. **Aflever den samlede eksamen.** Publicér de tre casesider, og aflever dit eksamensmateriale individuelt i WISEflow.
+4. **Aflever én gang.** Publicér de tre casesider, og aflever det samlede eksamensmateriale individuelt i WISEflow.
 
 De endelige casefortællinger skal vise en tydelig sammenhæng:
 
@@ -91,7 +93,9 @@ Materialet skal give et retvisende billede af dit arbejde. Gør dit eget bidrag 
 
 Prøven bedømmes efter 7-trinsskalaen med intern censur. Du får én samlet individuel karakter – ikke en karakter for hver case.
 
-Vurderingen omfatter casebeskrivelser, refleksioner, begrundelser, dokumenterede resultater, forretningspotentiale og den samlede formidling. De caseansvarlige undervisere vurderer hver deres case og foretager helhedsvurderingen sammen. De konkrete faglige forventninger fremgår af de enkelte casebeskrivelser.
+Vurderingen omfatter casebeskrivelser, refleksioner, begrundelser, dokumenterede resultater, forretningspotentiale og den samlede formidling.
+
+De caseansvarlige undervisere vurderer hver deres case og foretager helhedsvurderingen sammen. De konkrete faglige forventninger fremgår af de enkelte casebeskrivelser.
 
 Hvis du ikke består prøven, går du til omprøve med udgangspunkt i de samme cases. De nærmere rammer og frister oplyses særskilt.
 
