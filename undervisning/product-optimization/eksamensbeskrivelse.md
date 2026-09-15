@@ -8,7 +8,7 @@ Denne beskrivelse giver dig et overblik over, hvordan casearbejdet bliver til di
 
 - [Case 1 – Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
 - [Case 2 – Design Better Onboarding](https://eaaa.instructure.com/courses/30922/modules/178441)
-- **Case 3 – Koncept- og subbrandudvikling** – link tilføjes
+- **Case 3 – Koncept- og subbrandudvikling** – link tilføjes senere
 
 <hr style="margin: 2rem 0;">
 
