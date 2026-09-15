@@ -1,34 +1,29 @@
-# Product Optimization – eksamen og aflevering
+# Product Optimization – fra tre cases til individuel eksamen
 
-## Kort fortalt
+## Product Optimization eksamen (15 ECTS)
 
-Product Optimization afsluttes med en **individuel skriftlig eksamen** med udgangspunkt i de tre produktoptimeringscases, du arbejder med gennem forløbet.
+Product Optimization afsluttes med en **individuel skriftlig eksamen**, der tager udgangspunkt i de tre produktoptimeringscases, du arbejder med gennem forløbet.
 
-Til eksamen præsenterer du de tre cases på dit personlige portfolio website. I WISEflow afleverer du ét PDF-dokument med et direkte link til hver af de tre casesider.
-
-De skriftlige casebeskrivelser på de tre casesider må tilsammen fylde **maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum**.
-
-<hr style="margin: 2rem 0;">
-
-## De tre cases
-
-Hver case har sit eget faglige fokus og sin egen casebeskrivelse:
+Hver case varer to uger og har sit eget faglige fokus. De konkrete opgaver, faglige forventninger og leverancer fremgår af den enkelte casebeskrivelse:
 
 - [Case 1 – Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
-- **Case 2 – Design Better Onboarding** – link tilføjes
-- **Case 3 – titel og link tilføjes**
+- [Case 2 – Design Better Onboarding](https://eaaa.instructure.com/courses/30922/modules/178441)
+- **Case 3 – Koncept- og subbrandudvikling** – link tilføjes
 
-De enkelte casebeskrivelser forklarer de konkrete opgaver, leverancer og faglige forventninger til hver case. Denne side beskriver, hvordan casearbejdet hænger sammen med den samlede eksamen, og hvilke fælles krav der gælder.
+Denne beskrivelse giver dig fra forløbets start et overblik over, hvordan arbejdet med de tre cases bliver til dit samlede eksamensmateriale. Når alle tre cases er afsluttet, bearbejder du dit materiale til tre korte casesider på dit personlige portfolio website.
 
 <hr style="margin: 2rem 0;">
 
-## Fra casearbejde til eksamensmateriale
+## Fra casearbejde til eksamensaflevering
 
-Hver produktoptimeringscase gennemføres og afleveres ved afslutningen af den tilhørende caseperiode, inden den næste case begynder. Undervejs arbejder du med opgaven og samler fx analyser, prioriteringer, valg, iterationer, feedback, løsninger og dokumentation.
+Forløbet består af fire trin:
 
-De løbende caseafleveringer er grundlaget for dit eksamensmateriale. Du skal altså **ikke** have udarbejdet den endelige eksamenscase på dit portfolio efter Case 1 eller Case 2.
+1. **Arbejd med én case ad gangen.** Hver case gennemføres og afleveres ved afslutningen af den tilhørende caseperiode, inden den næste case begynder.
+2. **Saml materiale undervejs.** Gem relevante analyser, prioriteringer, valg, iterationer, feedback, løsninger, resultater og anden dokumentation fra hver case.
+3. **Bearbejd materialet efter Case 3.** Udvælg det vigtigste, og formidl hver case som en kort, faglig casefortælling på dit portfolio – ikke som en projektdagbog.
+4. **Aflever den samlede eksamen individuelt.** Publicér de tre casesider, og aflever ét PDF-dokument med direkte links til dem i WISEflow.
 
-Når alle tre caseforløb er afsluttet, udvælger og bearbejder du materialet til tre korte, faglige casefortællinger på dit portfolio – ikke projektdagbøger. Hver fortælling skal vise en tydelig sammenhæng:
+De løbende caseafleveringer giver dig råmaterialet til eksamen, men er ikke i sig selv de færdige eksamenscases. I de endelige casefortællinger skal der være en tydelig sammenhæng:
 
 **udfordring → undersøgelse → valg → løsning → resultat → refleksion og værdi**
 
@@ -38,17 +33,17 @@ Når alle tre caseforløb er afsluttet, udvælger og bearbejder du materialet ti
 
 Dit eksamensmateriale består af:
 
-1. **Tre casesider på dit portfolio**, hvor du præsenterer og reflekterer over de tre optimeringscases.
-2. **Relevante løsninger og outputs**, som der linkes til fra den enkelte caseside.
+1. **Tre casesider på dit portfolio** med en skriftlig præsentation og faglig refleksion over hver af de tre optimeringscases.
+2. **Relevante løsninger og outputs**, som du linker til fra den tilhørende caseside.
 3. **Ét PDF-dokument til WISEflow** med tre direkte links – ét til hver caseside.
 
-Casesiderne skal være publicerede og tilgængelige for bedømmerne. Et link til forsiden af dit portfolio er ikke tilstrækkeligt.
+Det er PDF-dokumentet, du uploader i WISEflow, men bedømmelsen omfatter de tre casesider og det relevante materiale, de linker til. Casesiderne skal derfor være publicerede og tilgængelige for bedømmerne. Et link til forsiden af dit portfolio er ikke tilstrækkeligt.
 
 <hr style="margin: 2rem 0;">
 
 ## Hvad skal en caseside vise?
 
-De tre casesider behøver ikke have samme layout eller rækkefølge. Hver side skal dog kort og tydeligt vise:
+De tre casesider behøver ikke have samme layout eller rækkefølge. Hver side skal dog kort vise:
 
 1. **Case og udfordring:** Hvad handlede casen om, hvad var udfordringen, og hvad var dit bidrag?
 2. **Undersøgelse og prioritering:** Hvad fandt du frem til, hvad prioriterede du, og hvilket fagligt grundlag brugte du?
@@ -69,20 +64,24 @@ Hver caseside skal linke til de løsninger og outputs, der er relevante for den 
   - Link til GitHub-repository
   - Link til den deployede løsning på GitHub Pages eller en tilsvarende platform
   - Eventuelt anden relevant dokumentation
-- **Case 2:** Krav til løsninger og outputs tilføjes.
-- **Case 3:** Krav til løsninger og outputs tilføjes.
+- **Case 2 – Design Better Onboarding:**
+  - De krævede løsninger og outputs fremgår af casebeskrivelsen
+- **Case 3 – Koncept- og subbrandudvikling:**
+  - Link til branddeck
+  - Link til Figma-prototype
+  - Visuel gennemgang af koncept og løsning
 
 Billeder, prototyper og kodeeksempler må gerne understøtte formidlingen, men de vigtigste faglige pointer skal fremgå af selve casesiderne.
 
 <hr style="margin: 2rem 0;">
 
-## Aflevering og omfang
+## Omfang og aflevering
 
 Det samlede eksamensmateriale afleveres **16. oktober 2026 før kl. 12.00 via WISEflow**.
 
 Du afleverer ét PDF-dokument med et direkte link til hver af de tre casesider – altså tre links i alt.
 
-De skriftlige casebeskrivelser på de tre casesider må **samlet fylde maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum** – ikke fem sider pr. case. Du bestemmer selv fordelingen, så længe alle tre cases er tydeligt behandlet.
+Casebeskrivelserne må **tilsammen fylde maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum**. Det svarer som tommelfingerregel til omkring halvanden sides beskrivelse pr. case, men du bestemmer selv fordelingen, så længe alle tre cases er tydeligt behandlet.
 
 <hr style="margin: 2rem 0;">
 
@@ -117,9 +116,7 @@ Beskrivelsen bygger på studieordningens bestemmelser for prøven i Product Opti
 
 <!--
 Afklaringspunkter før siden publiceres endeligt på Canvas:
-- Link til Case 2.
-- Titel og link til Case 3.
-- Krav til løsninger og outputs for Case 2 og Case 3.
+- Link til Case 3.
 - Eventuel navngivning af PDF-dokumentet.
 - Den lokale definition af en normalside, og hvordan billedtekster, noter og lignende indgår i optællingen.
 - Den præcise formulering og placering af en eventuel deklaration af generativ AI.
