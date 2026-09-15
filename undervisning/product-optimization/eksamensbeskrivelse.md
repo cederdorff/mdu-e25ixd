@@ -4,7 +4,7 @@
 
 Product Optimization afsluttes med en **individuel skriftlig eksamen**, der tager udgangspunkt i de tre produktoptimeringscases, du arbejder med gennem forløbet.
 
-Denne beskrivelse giver dig fra forløbets start et overblik over, hvordan casearbejdet bliver til dit samlede eksamensmateriale. Hver case varer to uger og har sit eget faglige fokus. De konkrete opgaver og faglige forventninger fremgår af den enkelte casebeskrivelse:
+Denne beskrivelse giver dig et overblik over, hvordan casearbejdet bliver til dit samlede eksamensmateriale. Hver case varer to uger og har sit eget faglige fokus. De konkrete opgaver og faglige forventninger fremgår af den enkelte casebeskrivelse:
 
 - [Case 1 – Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
 - [Case 2 – Design Better Onboarding](https://eaaa.instructure.com/courses/30922/modules/178441)
@@ -77,7 +77,7 @@ Billeder, prototyper og kodeeksempler må gerne understøtte formidlingen, men d
 
 ## Omfang og aflevering
 
-PDF-dokumentet afleveres **16. oktober 2026 før kl. 12.00 via WISEflow**.
+PDF-dokumentet med tre links til hver caseside afleveres **16. oktober 2026 før kl. 12.00 via WISEflow**.
 
 Casebeskrivelserne må **tilsammen fylde maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum**. Det svarer som tommelfingerregel til omkring halvanden sides beskrivelse pr. case, men du bestemmer selv fordelingen, så længe alle tre cases er tydeligt behandlet.
 
