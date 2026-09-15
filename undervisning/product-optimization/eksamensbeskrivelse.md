@@ -60,7 +60,7 @@ De tre casesider behøver ikke have samme layout eller rækkefølge. Hver side s
 
 Hver caseside skal linke til de løsninger og outputs, der er relevante for den konkrete case. Kontrollér, at alle links fungerer.
 
-- **Case 1 – React-optimering:**
+- **Case 1 – Fra prototype til produktionsklar React-løsning:**
   - Link til GitHub-repository
   - Link til den deployede løsning på GitHub Pages eller en tilsvarende platform
   - Eventuelt anden relevant dokumentation
