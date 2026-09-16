@@ -1,4 +1,4 @@
-# Product Optimization – fra tre cases til individuel eksamen
+# Product Optimization – eksamen og aflevering
 
 ## Product Optimization eksamen (15 ECTS)
 
@@ -7,7 +7,7 @@ Product Optimization afsluttes med en **individuel skriftlig eksamen**, der tage
 Denne beskrivelse giver dig et overblik over, hvordan casearbejdet bliver til dit samlede eksamensmateriale. Hver case varer to uger og har sit eget faglige fokus. De konkrete opgaver og faglige forventninger fremgår af den enkelte casebeskrivelse:
 
 - [Case 1 – Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
-- [Case 2 – Design Better Onboarding](https://eaaa.instructure.com/courses/30922/modules/178441)
+- [Case 2 – Design Better Onboarding](https://eaaa.instructure.com/courses/30922/modules/178438)
 - **Case 3 – Koncept- og subbrandudvikling** – link tilføjes senere
 
 <hr style="margin: 2rem 0;">
@@ -65,7 +65,8 @@ Hver caseside skal linke til de løsninger og outputs, der er relevante for den 
   - Link til den deployede løsning på GitHub Pages eller en tilsvarende platform
   - Eventuelt anden relevant dokumentation
 - **Case 2 – Design Better Onboarding:**
-  - De krævede løsninger og outputs fremgår af casebeskrivelsen
+  - Link til UX Audit Summary
+  - Link til Figma-prototype
 - **Case 3 – Koncept- og subbrandudvikling:**
   - Link til branddeck
   - Link til Figma-prototype
