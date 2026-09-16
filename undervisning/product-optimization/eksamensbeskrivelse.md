@@ -58,7 +58,7 @@ De tre casesider behøver ikke have samme layout eller rækkefølge. Hver side s
 
 ## Løsninger og outputs
 
-Hver caseside skal linke til de løsninger og outputs, der er relevante for den konkrete case. Kontrollér, at alle links fungerer.
+Hver caseside på dit portfolio skal linke til de løsninger og outputs, der er relevante for den konkrete case. Kontrollér, at alle links fungerer.
 
 - **Case 1 – Fra prototype til produktionsklar React-løsning:**
   - Link til GitHub-repository
