@@ -58,7 +58,7 @@ De tre casesider behøver ikke have samme layout eller rækkefølge. Hver side s
 
 ## Løsninger og outputs
 
-Hver caseside på dit portfolio skal linke til de løsninger og outputs, der er relevante for den konkrete case. Kontrollér, at alle links fungerer.
+Hver caseside på dit portfolio skal indeholde eller linke til de løsninger og outputs, der er relevante for den konkrete case. Kontrollér, at alle links fungerer.
 
 - **Case 1 – Fra prototype til produktionsklar React-løsning:**
   - Link til GitHub-repository
@@ -78,9 +78,9 @@ Billeder, prototyper og kodeeksempler må gerne understøtte formidlingen, men d
 
 ## Omfang og aflevering
 
-PDF-dokumentet med tre links til hver caseside afleveres **16. oktober 2026 før kl. 12.00 via WISEflow**.
+PDF-dokumentet med ét direkte link til hver af de tre casesider afleveres **16. oktober 2026 før kl. 12.00 via WISEflow**.
 
-Casebeskrivelserne må **tilsammen fylde maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum**. Det svarer som tommelfingerregel til omkring halvanden sides beskrivelse pr. case, men du bestemmer selv fordelingen, så længe alle tre cases er tydeligt behandlet.
+Teksten på de tre casesider må **tilsammen fylde maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum**. Det svarer som tommelfingerregel til omkring halvanden sides beskrivelse pr. case, men du bestemmer selv fordelingen, så længe alle tre cases er tydeligt behandlet.
 
 <hr style="margin: 2rem 0;">
 
