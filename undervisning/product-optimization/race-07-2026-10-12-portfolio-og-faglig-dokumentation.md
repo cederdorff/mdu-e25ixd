@@ -48,13 +48,12 @@ Resten af dagen arbejder du med dine casesider og dit portfolio og får vejledni
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>2. Hold din Supabase-løsning kørende med en GitHub Action</strong></summary>
+<summary><strong>2. Hold dine Supabase-løsninger kørende med en GitHub Action</strong></summary>
 <ul>
-<li>Supabase pauser projekter på Free Plan, hvis der er for lidt databaseaktivitet over en periode på 7 dage. Så virker din deployede løsning ikke, når den åbnes fra dit portfolio.</li>
+<li>Mange af de løsninger, du linker til fra dine casesider, bruger Supabase – fx Mellemrum fra Case 1. Supabase pauser projekter på Free Plan, hvis der er for lidt databaseaktivitet over en periode på 7 dage. Så virker løsningen ikke, når den åbnes fra dit portfolio.</li>
 <li>Et projekt, der allerede er pauset, skal først genstartes manuelt med <em>Restore</em> i Supabase-dashboardet.</li>
 <li>Løsningen er en planlagt GitHub Action, der henter én række fra en tabel gennem Supabase REST API to gange om ugen.</li>
-<li>Læg workflowet i dit <strong>portfolio-repository</strong>. GitHub slår planlagte workflows fra efter 60 dage uden aktivitet i et offentligt repository, og dit portfolio er det repository, du oftest opdaterer.</li>
-<li>Opret filen <code>.github/workflows/supabase-keep-alive.yml</code> på din default branch (typisk <code>main</code>):</li>
+<li>Læg workflowet i <strong>repositoryet for hver løsning, der bruger Supabase</strong>. Opret filen <code>.github/workflows/supabase-keep-alive.yml</code> på default branch (typisk <code>main</code>):</li>
 </ul>
 <pre><code class="language-yaml">name: Supabase keep-alive
 
@@ -74,10 +73,10 @@ jobs:
             -H "apikey: ${{ secrets.SUPABASE_KEY }}"
 </code></pre>
 <ul>
-<li>Udskift <code>events</code> med en tabel fra dit eget projekt, som din publishable/anon key kan læse.</li>
+<li>Udskift <code>events</code> med en tabel fra løsningens Supabase-projekt, som din publishable/anon key kan læse.</li>
 <li>Tilføj <code>SUPABASE_URL</code> og <code>SUPABASE_KEY</code> under <em>Settings → Secrets and variables → Actions</em> i repositoryet.</li>
 <li>Kør workflowet manuelt under <em>Actions → Supabase keep-alive → Run workflow</em>, og kontrollér, at det bliver grønt.</li>
-<li>Har du flere Supabase-projekter, tilføjer du et ekstra step med egne secrets for hvert projekt.</li>
+<li>GitHub slår planlagte workflows fra efter 60 dage uden aktivitet i et offentligt repository. Får du en mail om det, eller står workflowet som <em>disabled</em>, kan du slå det til igen under <em>Actions</em>.</li>
 </ul>
 </details>
 
