@@ -53,6 +53,14 @@ Samlet materialeoversigt til 3. semester Interaction Design (IxD), Multimediedes
 - [Modulnavne til Canvas](semesteroverblik/canvas-moduler.md)
 - [Udkast til RACE-undervisning](semesteroverblik/udkast-undervisning-race.md)
 
+## Canvas-synkronisering
+
+Når en `race-*.md`-fil i `undervisning/` pushes til `main`, opdaterer GitHub Actions den tilsvarende Canvas-side automatisk ([`canvas-sync.yml`](.github/workflows/canvas-sync.yml)). Siden matches på H1-titlen. Nye sider oprettes som kladde; eksisterende sider beholder deres publiceringsstatus.
+
+- Kræver repository secret `CANVAS_ACCESS_TOKEN` (Settings → Secrets and variables → Actions).
+- Alle race-sider kan synkroniseres manuelt via *Actions → Sync race-sider til Canvas → Run workflow*.
+- Lokalt: `npm run canvas:preview -- <fil>` viser HTML'en, `npm run canvas:sync -- <fil>` pusher én side.
+
 ## Arbejd med repoet i Codex
 
 Repoets lokale Codex-standard er **GPT-5.6 Terra med low reasoning**. Det passer til det daglige arbejde med tekst, HTML, CSS og afgrænsede slideændringer. Skift model efter opgaven:
@@ -76,7 +84,7 @@ Eksempel på en fokuseret opgave:
 ```text
 Opdater product-optimization-06 i én samlet omgang ud fra punkterne nedenfor.
 Match det foregående deck i styling, tone og eksisterende modeller.
-Genbrug eksisterende komponenter, og bevar syntax highlighting og speaker notes.
+Genbrug eksisterende komponenter, og bevar syntax highlighting.
 Byg én gang til sidst, og kontrollér kun de ændrede slides visuelt.
 Hold slutrapporten kort.
 

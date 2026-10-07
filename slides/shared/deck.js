@@ -1,6 +1,6 @@
-import Reveal from "../vendor/reveal/reveal.mjs";
+import Reveal from "reveal.js";
 import RevealHighlight from "reveal.js/plugin/highlight";
-import RevealNotes from "../vendor/reveal/notes.mjs";
+import RevealNotes from "reveal.js/plugin/notes";
 
 const numericHash = window.location.hash.match(/^#\/(\d+)$/);
 if (numericHash) {

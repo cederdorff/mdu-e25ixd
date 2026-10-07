@@ -1,5 +1,11 @@
+import { readdirSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
+
+// Alle mapper i slides/ med en index.html bygges automatisk som et deck.
+const decks = readdirSync(resolve("slides"), { withFileTypes: true })
+  .filter((entry) => entry.isDirectory() && existsSync(resolve("slides", entry.name, "index.html")))
+  .map((entry) => entry.name);
 
 export default defineConfig({
   root: resolve("slides"),
@@ -10,13 +16,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: resolve("slides/index.html"),
-        semesterstart: resolve("slides/semesterstart/index.html"),
-        productOptimization01: resolve("slides/product-optimization-01/index.html"),
-        productOptimization02: resolve("slides/product-optimization-02/index.html"),
-        productOptimization03: resolve("slides/product-optimization-03/index.html"),
-        productOptimization04: resolve("slides/product-optimization-04/index.html"),
-        productOptimization05: resolve("slides/product-optimization-05/index.html"),
-        productOptimization06: resolve("slides/product-optimization-06/index.html")
+        ...Object.fromEntries(decks.map((name) => [name, resolve("slides", name, "index.html")]))
       }
     }
   }

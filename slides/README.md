@@ -29,7 +29,7 @@ npm run slides:dev
 
 1. Kopiér en eksisterende deck-mappe.
 2. Behold importen af `../shared/theme.css` og `../shared/deck.js`.
-3. Tilføj deckets `index.html` til `rollupOptions.input` i `vite.config.js`.
+3. Decket bygges automatisk, når mappen har en `index.html`.
 4. Tilføj et link på `slides/index.html`.
 
 Brug `data-accent="orange|green|pink|purple"` på et slide for at vælge accentfarve. Brug `chapter` til sektionsslides og `title-slide` til åbningssliden.

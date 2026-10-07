@@ -1,0 +1,47 @@
+name: Sync race-sider til Canvas
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "undervisning/**/race-*.md"
+  workflow_dispatch:
+
+concurrency:
+  group: canvas-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      CANVAS_BASE_URL: https://eaaa.instructure.com
+      CANVAS_COURSE_ID: "30922"
+      CANVAS_ACCESS_TOKEN: ${{ secrets.CANVAS_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Synkronisér ændrede race-sider
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          pattern=':(glob)undervisning/**/race-*.md'
+          # Manuel kørsel eller første push: synkronisér alle race-sider.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || ! git cat-file -e "$BEFORE" 2>/dev/null; then
+            files=$(git ls-files -- "$pattern")
+          else
+            files=$(git diff --name-only --diff-filter=AMR "$BEFORE" "$AFTER" -- "$pattern")
+          fi
+
+          for file in $files; do
+            echo "::group::$file"
+            node scripts/sync-canvas-page.js "$file" --push --sync-module
+            echo "::endgroup::"
+          done
