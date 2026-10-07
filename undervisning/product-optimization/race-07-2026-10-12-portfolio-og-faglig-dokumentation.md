@@ -2,9 +2,11 @@
 
 ## Formål
 
-I dag samler vi trådene frem mod afleveringen. Vi starter med at kigge kort på, hvad du skal have klar til WordPress-forløbet i uge 43. Derefter sikrer vi, at dine løsninger på Supabase forbliver tilgængelige, så de links, du afleverer, også virker, når opgaven bedømmes. Til sidst præciserer vi kort, hvad de tre casesider skal indeholde, og hvad der skal afleveres.
+I dag samler vi trådene frem mod afleveringen. Vi starter kort med at kigge på, hvad du skal have klar til WordPress-forløbet i uge 43. Derefter sikrer vi, at dine løsninger på Supabase forbliver tilgængelige, så de links, du afleverer, også virker, når opgaven bedømmes. Til sidst præciserer vi kort, hvad de tre casesider skal indeholde, og hvad der skal afleveres.
 
 Resten af dagen arbejder du med dine casesider og dit portfolio og får vejledning dér, hvor du har mest brug for det. Målet er, at du går hjem med en klar status på de tre casesider og en konkret plan frem mod afleveringen.
+
+Glæder mig til at se jer igen!
 
 <hr style="margin: 2rem 0;">
 
