@@ -2,7 +2,7 @@
 
 ## Formål
 
-I dag samler vi trådene frem mod afleveringen. Vi starter med en kort præcisering af, hvad de tre casesider skal indeholde, og hvad der skal afleveres. Derefter sikrer vi, at dine løsninger på Supabase forbliver tilgængelige, så de links, du afleverer, også virker, når opgaven bedømmes, og vi kigger kort på, hvad du skal have klar til WordPress-forløbet i uge 43.
+I dag samler vi trådene frem mod afleveringen. Vi starter med at kigge kort på, hvad du skal have klar til WordPress-forløbet i uge 43. Derefter sikrer vi, at dine løsninger på Supabase forbliver tilgængelige, så de links, du afleverer, også virker, når opgaven bedømmes. Til sidst præciserer vi kort, hvad de tre casesider skal indeholde, og hvad der skal afleveres.
 
 Resten af dagen arbejder du med dine casesider og dit portfolio og får vejledning dér, hvor du har mest brug for det. Målet er, at du går hjem med en klar status på de tre casesider og en konkret plan frem mod afleveringen.
 
@@ -19,10 +19,34 @@ Resten af dagen arbejder du med dine casesider og dit portfolio og får vejledni
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Kort præcisering af casesider og aflevering → Supabase keep-alive → klar til WordPress i uge 43 → faciliteret arbejde med casesider og portfolio → plan frem mod aflevering.
+**Dagens arbejdsrytme:** Klar til WordPress i uge 43 → Supabase keep-alive → kort præcisering af casesider og aflevering → faciliteret arbejde med casesider og portfolio → plan frem mod aflevering.
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>1. Hvad skal casesiderne indeholde – og hvad skal afleveres?</strong></summary>
+<summary><strong>1. Bliv klar til WordPress i uge 43</strong></summary>
+<ul>
+<li>I uge 43 har I et kort WordPress-forløb med Per Thykjær Jensen. For at I kan gå direkte i gang med at sætte WordPress op, skal du have <strong>et domæne og et webhotel, hvor du kan installere WordPress</strong>, klar, inden forløbet starter.</li>
+<li><strong>Anbefalet: Simply.com.</strong> Bestil et <code>.dk</code>-domæne med <em>Basic Suite</em> (webhotel) hos <a href="https://www.simply.com/dk/">Simply.com</a>, og brug rabatkoden <code>EAAA-STUDIE-2026</code>. Med koden koster det første år 9 kr. i alt. Vælg et navn, du kan genbruge senere – fx til dit portfolio.<br>
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/simply-basic-suite-rabatkode.webp" alt="Bestilling hos Simply.com af et .dk-domæne med Basic Suite i 12 måneder. Med rabatkoden EAAA-STUDIE-2026 bliver prisen 9,00 kr. i alt." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;"></li>
+<li><strong>Efter det første år</strong> fornyes abonnementet til normalpris: Basic Suite koster 69,95 kr./md. (839,40 kr./år), og fornyelse af et <code>.dk</code>-domæne koster 109 kr./år. Vil du ikke fortsætte, så opsig webhotellet og domænet i kontrolpanellet, inden de fornyes.</li>
+<li><strong>Domænet kan også pege på GitHub Pages.</strong> Vi har brugt GitHub Pages meget, og det er lige så godt til det, vi laver. Med et <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">custom domain</a> kan dit portfolio fx ligge på dit eget domæne i stedet for <code>brugernavn.github.io</code> – som <a href="https://cederdorff.com">cederdorff.com</a>. Så kan du beholde domænet efter det første år, også selvom du opsiger webhotellet.</li>
+<li><strong>Har du allerede et domæne og webhotel</strong> et andet sted, kan du bruge det. De fleste udbydere har en one-click installer til WordPress.</li>
+<li><strong>Vil du ikke have dit eget domæne,</strong> så aftal at arbejde sammen med en medstuderende, der har et.</li>
+<li>Kontrollér, at du kan logge ind i kontrolpanelet hos din udbyder, så du er klar, når forløbet starter.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>2. Hold dine Supabase-løsninger kørende med en GitHub Action</strong></summary>
+<ul>
+<li>Mange af de løsninger, du linker til fra dine casesider, bruger Supabase – fx Mellemrum fra Case 1. Supabase pauser gratis projekter, hvis databasen ikke bliver brugt i ca. en uge. Så virker løsningen ikke, når den åbnes fra dit portfolio.</li>
+<li>Løsningen er en lille GitHub Action, der automatisk bruger databasen to gange om ugen.</li>
+<li>Følg guiden <a href="https://github.com/cederdorff/post-app-supabase/blob/main/docs/supabase-keep-alive.md">Hold dit Supabase-projekt i live med GitHub Actions</a> for <strong>hvert repository, der bruger Supabase</strong>, og kontrollér, at kørslen bliver grøn.</li>
+<li>Er et projekt allerede pauset, skal du først starte det igen med <em>Restore project</em> i Supabase-dashboardet.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>3. Hvad skal casesiderne indeholde – og hvad skal afleveres?</strong></summary>
 <ul>
 <li>Du afleverer ét PDF-dokument i WISEflow med dit navn, hold, uddannelse og tre direkte links – ét til hver caseside. Et link til forsiden af dit portfolio er ikke nok.</li>
 <li>Afleveringen er <strong>16. oktober 2026 før kl. 12.00</strong>. Bedømmelsen omfatter casesiderne og det materiale, de linker til.</li>
@@ -47,30 +71,6 @@ Resten af dagen arbejder du med dine casesider og dit portfolio og får vejledni
 <li>Henter løsningen data fra Supabase i den deployede version – ikke kun lokalt?</li>
 </ul>
 </li>
-</ul>
-</details>
-
-<details style="margin-left: 1.5rem;">
-<summary><strong>2. Hold dine Supabase-løsninger kørende med en GitHub Action</strong></summary>
-<ul>
-<li>Mange af de løsninger, du linker til fra dine casesider, bruger Supabase – fx Mellemrum fra Case 1. Supabase pauser gratis projekter, hvis databasen ikke bliver brugt i ca. en uge. Så virker løsningen ikke, når den åbnes fra dit portfolio.</li>
-<li>Løsningen er en lille GitHub Action, der automatisk bruger databasen to gange om ugen.</li>
-<li>Følg guiden <a href="https://github.com/cederdorff/post-app-supabase/blob/main/docs/supabase-keep-alive.md">Hold dit Supabase-projekt i live med GitHub Actions</a> for <strong>hvert repository, der bruger Supabase</strong>, og kontrollér, at kørslen bliver grøn.</li>
-<li>Er et projekt allerede pauset, skal du først starte det igen med <em>Restore project</em> i Supabase-dashboardet.</li>
-</ul>
-</details>
-
-<details style="margin-left: 1.5rem;">
-<summary><strong>3. Bliv klar til WordPress i uge 43</strong></summary>
-<ul>
-<li>I uge 43 har I et kort WordPress-forløb med Per Thykjær Jensen. For at I kan gå direkte i gang med at sætte WordPress op, skal du have <strong>et domæne og et webhotel, hvor du kan installere WordPress</strong>, klar, inden forløbet starter.</li>
-<li><strong>Anbefalet: Simply.com.</strong> Bestil et <code>.dk</code>-domæne med <em>Basic Suite</em> (webhotel) hos <a href="https://www.simply.com/dk/">Simply.com</a>, og brug rabatkoden <code>EAAA-STUDIE-2026</code>. Med koden koster det første år 9 kr. i alt. Vælg et navn, du kan genbruge senere – fx til dit portfolio.<br>
-<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/simply-basic-suite-rabatkode.webp" alt="Bestilling hos Simply.com af et .dk-domæne med Basic Suite i 12 måneder. Med rabatkoden EAAA-STUDIE-2026 bliver prisen 9,00 kr. i alt." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;"></li>
-<li><strong>Efter det første år</strong> fornyes abonnementet til normalpris: Basic Suite koster 69,95 kr./md. (839,40 kr./år), og fornyelse af et <code>.dk</code>-domæne koster 109 kr./år. Vil du ikke fortsætte, så opsig webhotellet og domænet i kontrolpanellet, inden de fornyes.</li>
-<li><strong>Domænet kan også pege på GitHub Pages.</strong> Vi har brugt GitHub Pages meget, og det er lige så godt til det, vi laver. Med et <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">custom domain</a> kan dit portfolio fx ligge på dit eget domæne i stedet for <code>brugernavn.github.io</code> – som <a href="https://cederdorff.com">cederdorff.com</a>. Så kan du beholde domænet efter det første år, også selvom du opsiger webhotellet.</li>
-<li><strong>Har du allerede et domæne og webhotel</strong> et andet sted, kan du bruge det. De fleste udbydere har en one-click installer til WordPress.</li>
-<li><strong>Vil du ikke have dit eget domæne,</strong> så aftal at arbejde sammen med en medstuderende, der har et.</li>
-<li>Kontrollér, at du kan logge ind i kontrolpanelet hos din udbyder, så du er klar, når forløbet starter.</li>
 </ul>
 </details>
 
