@@ -8,7 +8,7 @@ Denne beskrivelse giver dig et overblik over, hvordan casearbejdet bliver til di
 
 - [Case 1 – Fra prototype til produktionsklar React-løsning](https://eaaa.instructure.com/courses/30922/pages/case-1-fra-prototype-til-produktionsklar-react-losning)
 - [Case 2 – Design Better Onboarding](https://eaaa.instructure.com/courses/30922/modules/178438)
-- **Case 3 – Koncept- og subbrandudvikling** – link tilføjes senere
+- [Case 3 – Koncept- og subbrandudvikling](https://eaaa.instructure.com/courses/30922/pages/case-3-projektbeskrivelse-la-rouge-og-re-commerce)
 
 <hr style="margin: 2rem 0;">
 
@@ -82,6 +82,16 @@ PDF-dokumentet med ét direkte link til hver af de tre casesider afleveres **16.
 
 Teksten på de tre casesider må **tilsammen fylde maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum**. Det svarer som tommelfingerregel til omkring halvanden sides beskrivelse pr. case, men du bestemmer selv fordelingen, så længe alle tre cases er tydeligt behandlet.
 
+Kun brødteksten tæller med i de 12.000 anslag. Illustrationer tæller som ét anslag, medmindre det er teksttunge figurer eller tabeller.
+
+PDF-dokumentet skal ud over de tre links indeholde dit navn, dit hold og din uddannelse.
+
+Casesiderne skal som udgangspunkt skrives på dansk. Passer engelsk bedre til dit portfolio, må du gerne skrive dem på engelsk.
+
+Casesiderne behøver ikke være en del af navigationen på dit portfolio, men gør dem gerne synlige på en eller anden måde.
+
+**Du må ikke rette casesiderne efter afleveringen**, før bedømmelsen er færdig. Du må gerne rette andre sider på dit portfolio.
+
 <hr style="margin: 2rem 0;">
 
 ## Formkrav og redelighed
@@ -107,16 +117,9 @@ Hvis du ikke består prøven, går du til omprøve med udgangspunkt i de samme c
 - Tre publicerede casesider med fungerende direkte links til relevante løsninger og outputs
 - Maksimalt fem normalsider eller 12.000 anslag inklusive mellemrum samlet
 - Faglig refleksion, forretningspotentiale, eget bidrag og kilder fremgår
-- Ét PDF-dokument med tre direkte links afleveret i WISEflow senest 16. oktober 2026 før kl. 12.00
+- Ét PDF-dokument med dit navn, hold, uddannelse og tre direkte links afleveret i WISEflow senest 16. oktober 2026 før kl. 12.00
+- Ingen rettelser på casesiderne efter afleveringen, før bedømmelsen er færdig
 
 <hr style="margin: 2rem 0;">
 
 Beskrivelsen bygger på studieordningens bestemmelser for prøven i Product Optimization. De konkrete casekrav og øvrige afleveringsoplysninger offentliggøres på Canvas.
-
-<!--
-Afklaringspunkter før siden publiceres endeligt på Canvas:
-- Link til Case 3.
-- Eventuel navngivning af PDF-dokumentet.
-- Den lokale definition af en normalside, og hvordan billedtekster, noter og lignende indgår i optællingen.
-- Den præcise formulering og placering af en eventuel deklaration af generativ AI.
--->

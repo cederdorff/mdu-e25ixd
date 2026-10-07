@@ -24,11 +24,14 @@ Resten af dagen arbejder du med dine casesider og dit portfolio og får vejledni
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Hvad skal casesiderne indeholde – og hvad skal afleveres?</strong></summary>
 <ul>
-<li>Du afleverer ét PDF-dokument i WISEflow med tre direkte links – ét til hver caseside. Et link til forsiden af dit portfolio er ikke nok.</li>
+<li>Du afleverer ét PDF-dokument i WISEflow med dit navn, hold, uddannelse og tre direkte links – ét til hver caseside. Et link til forsiden af dit portfolio er ikke nok.</li>
 <li>Afleveringen er <strong>16. oktober 2026 før kl. 12.00</strong>. Bedømmelsen omfatter casesiderne og det materiale, de linker til.</li>
 <li>Hver caseside formidler casen som en kort, faglig casefortælling – ikke som en projektdagbog: <strong>udfordring → undersøgelse → valg → løsning → resultat → refleksion og værdi</strong>.</li>
-<li>Hver side skal kort vise: case og udfordring, undersøgelse og prioritering, løsning og faglige valg, resultat og dokumentation, faglig refleksion samt forretningspotentiale.</li>
-<li>Teksten på de tre sider må tilsammen fylde maksimalt 12.000 anslag inklusive mellemrum. Vælg det vigtigste, og lad billeder, prototyper og links understøtte – men de vigtigste faglige pointer skal stå på selve siden.</li>
+<li>Hver side skal kort vise: case og udfordring, undersøgelse og prioritering, løsning og faglige valg, resultat og dokumentation, faglig refleksion samt forretningspotentiale. Se uddybningen af hvert punkt, herunder forretningspotentiale, i <a href="https://eaaa.instructure.com/courses/30922/pages/product-optimization-eksamen-og-aflevering">Product Optimization – eksamen og aflevering</a>.</li>
+<li>Gør dit eget bidrag og dine kilder tydelige – se <em>Formkrav og redelighed</em> og <em>Tjek før aflevering</em> i eksamensbeskrivelsen.</li>
+<li>Teksten på de tre sider må tilsammen fylde maksimalt 12.000 anslag inklusive mellemrum. Kun brødteksten tæller; illustrationer tæller som ét anslag, medmindre det er teksttunge figurer eller tabeller. Vælg det vigtigste, og lad billeder, prototyper og links understøtte – men de vigtigste faglige pointer skal stå på selve siden.</li>
+<li>Skriv som udgangspunkt på dansk – eller på engelsk, hvis det passer bedre til dit portfolio. Siderne behøver ikke være i navigationen, men gør dem gerne synlige.</li>
+<li>Du må ikke rette casesiderne efter afleveringen, før bedømmelsen er færdig. Andre sider på dit portfolio må du gerne rette.</li>
 <li>Vis evidens frem for påstande: fx før/efter, målinger, testresultater, feedback eller konkrete eksempler fra dit arbejde.</li>
 <li>Løsninger og outputs, der skal linkes til:
 <ul>
