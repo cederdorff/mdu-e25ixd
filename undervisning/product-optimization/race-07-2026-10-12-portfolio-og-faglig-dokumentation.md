@@ -99,4 +99,3 @@ Resten af dagen arbejder du med dine casesider og dit portfolio og får vejledni
   - [Simply.com · Basic Suite](https://www.simply.com/dk/hosting/basicsuite/)
   - [Simply.com · Prisændring på .dk-domæner](https://blog.simply.com/2021/dkhostmaster-haever-prisen-pa-dk-domaener/)
   - [GitHub Docs · Configuring a custom domain for your GitHub Pages site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
-- **Slides:** Vil blive tilgængelige her
