@@ -2,7 +2,7 @@
 
 ## Formål
 
-I dag samler vi trådene frem mod afleveringen. Vi starter med at kigge kort på, hvad du skal have klar til WordPress-forløbet, der starter i morgen. Derefter sikrer vi, at dine løsninger på Supabase forbliver tilgængelige, så de links, du afleverer, også virker, når opgaven bedømmes. Til sidst præciserer vi kort, hvad de tre casesider skal indeholde, og hvad der skal afleveres.
+I dag samler vi trådene frem mod afleveringen. Vi starter med at kigge kort på, hvad du skal have klar til WordPress-forløbet i uge 43. Derefter sikrer vi, at dine løsninger på Supabase forbliver tilgængelige, så de links, du afleverer, også virker, når opgaven bedømmes. Til sidst præciserer vi kort, hvad de tre casesider skal indeholde, og hvad der skal afleveres.
 
 Resten af dagen arbejder du med dine casesider og dit portfolio og får vejledning dér, hvor du har mest brug for det. Målet er, at du går hjem med en klar status på de tre casesider og en konkret plan frem mod afleveringen.
 
@@ -19,12 +19,12 @@ Resten af dagen arbejder du med dine casesider og dit portfolio og får vejledni
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Klar til WordPress → Supabase keep-alive → kort præcisering af casesider og aflevering → faciliteret arbejde med casesider og portfolio → plan frem mod aflevering.
+**Dagens arbejdsrytme:** Klar til WordPress i uge 43 → Supabase keep-alive → kort præcisering af casesider og aflevering → faciliteret arbejde med casesider og portfolio → plan frem mod aflevering.
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>1. Bliv klar til WordPress – tirsdag til torsdag i denne uge</strong></summary>
+<summary><strong>1. Bliv klar til WordPress i uge 43</strong></summary>
 <ul>
-<li><strong>Hvad skal du have klar?</strong> Fra tirsdag til torsdag i denne uge (13.–15. oktober) har I et kort WordPress-forløb med Per Thykjær Jensen. For at I kan gå direkte i gang med at sætte WordPress op, skal du have <strong>et domæne og et webhotel, hvor du kan installere WordPress</strong>, klar i morgen, når forløbet starter.</li>
+<li><strong>Hvad skal du have klar?</strong> I uge 43 – tirsdag til torsdag den 20.–22. oktober – har I et kort WordPress-forløb med Per Thykjær Jensen. For at I kan gå direkte i gang med at sætte WordPress op, skal du have <strong>et domæne og et webhotel, hvor du kan installere WordPress</strong>, klar, inden forløbet starter.</li>
 <li><strong>Anbefalet: Simply.com.</strong> Bestil et <code>.dk</code>-domæne med <em>Basic Suite</em> (webhotel) hos <a href="https://www.simply.com/dk/">Simply.com</a>, og brug rabatkoden <code>EAAA-STUDIE-2026</code>. Med koden koster det første år 9 kr. i alt. Vælg et navn, du kan genbruge senere – fx til dit portfolio.<br>
 <img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/simply-basic-suite-rabatkode.webp" alt="Bestilling hos Simply.com af et .dk-domæne med Basic Suite i 12 måneder. Med rabatkoden EAAA-STUDIE-2026 bliver prisen 9,00 kr. i alt." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;"></li>
 <li><strong>Efter det første år</strong> fornyes abonnementet til normalpris: Basic Suite koster 69,95 kr./md. (839,40 kr./år), og fornyelse af et <code>.dk</code>-domæne koster 109 kr./år. Vil du ikke fortsætte, så opsig webhotellet og domænet i kontrolpanellet, inden de fornyes.</li>
