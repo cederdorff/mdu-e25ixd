@@ -50,44 +50,24 @@ Resten af dagen arbejder du med dine casesider og dit portfolio og får vejledni
 <details style="margin-left: 1.5rem;">
 <summary><strong>2. Hold dine Supabase-løsninger kørende med en GitHub Action</strong></summary>
 <ul>
-<li>Mange af de løsninger, du linker til fra dine casesider, bruger Supabase – fx Mellemrum fra Case 1. Supabase pauser projekter på Free Plan, hvis der er for lidt databaseaktivitet over en periode på 7 dage. Så virker løsningen ikke, når den åbnes fra dit portfolio.</li>
-<li>Et projekt, der allerede er pauset, skal først genstartes manuelt med <em>Restore</em> i Supabase-dashboardet.</li>
-<li>Løsningen er en planlagt GitHub Action, der henter én række fra en tabel gennem Supabase REST API to gange om ugen.</li>
-<li>Læg workflowet i <strong>repositoryet for hver løsning, der bruger Supabase</strong>. Opret filen <code>.github/workflows/supabase-keep-alive.yml</code> på default branch (typisk <code>main</code>):</li>
-</ul>
-<pre><code class="language-yaml">name: Supabase keep-alive
-
-on:
-  schedule:
-    - cron: "0 6 * * 1,4" # mandag og torsdag kl. 06 (UTC)
-  workflow_dispatch: # gør det muligt at køre workflowet manuelt
-
-jobs:
-  ping:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Ping Supabase
-        run: |
-          curl --fail -sS -o /dev/null \
-            "${{ secrets.SUPABASE_URL }}/rest/v1/events?select=id&amp;limit=1" \
-            -H "apikey: ${{ secrets.SUPABASE_KEY }}"
-</code></pre>
-<ul>
-<li>Udskift <code>events</code> med en tabel fra løsningens Supabase-projekt, som din publishable/anon key kan læse.</li>
-<li>Tilføj <code>SUPABASE_URL</code> og <code>SUPABASE_KEY</code> under <em>Settings → Secrets and variables → Actions</em> i repositoryet.</li>
-<li>Kør workflowet manuelt under <em>Actions → Supabase keep-alive → Run workflow</em>, og kontrollér, at det bliver grønt.</li>
-<li>GitHub slår planlagte workflows fra efter 60 dage uden aktivitet i et offentligt repository. Får du en mail om det, eller står workflowet som <em>disabled</em>, kan du slå det til igen under <em>Actions</em>.</li>
+<li>Mange af de løsninger, du linker til fra dine casesider, bruger Supabase – fx Mellemrum fra Case 1. Supabase pauser gratis projekter, hvis databasen ikke bliver brugt i ca. en uge. Så virker løsningen ikke, når den åbnes fra dit portfolio.</li>
+<li>Løsningen er en lille GitHub Action, der automatisk bruger databasen to gange om ugen.</li>
+<li>Følg guiden <a href="https://github.com/cederdorff/post-app-supabase/blob/main/docs/supabase-keep-alive.md">Hold dit Supabase-projekt i live med GitHub Actions</a> for <strong>hvert repository, der bruger Supabase</strong>, og kontrollér, at kørslen bliver grøn.</li>
+<li>Er et projekt allerede pauset, skal du først starte det igen med <em>Restore project</em> i Supabase-dashboardet.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>3. Bliv klar til WordPress i uge 43</strong></summary>
 <ul>
-<li>I uge 43 har I et kort WordPress-forløb med Per Thykjær Jensen. For at I kan gå direkte i gang med at sætte WordPress op, skal du have følgende klar, inden forløbet starter:</li>
-<li><strong>Et domænenavn</strong> hos <a href="https://www.simply.com/dk/">Simply.com</a>. Vælg et navn, du kan genbruge senere – fx til dit portfolio.</li>
-<li><strong>Et webhotel</strong> hos Simply.com, som domænet er tilknyttet.</li>
-<li>Brug rabatkoden <code>EAAA-STUDIE-2026</code>, når du køber.</li>
-<li>Kontrollér, at du kan logge ind på dit kontrolpanel hos Simply.com, så du er klar, når forløbet starter.</li>
+<li>I uge 43 har I et kort WordPress-forløb med Per Thykjær Jensen. For at I kan gå direkte i gang med at sætte WordPress op, skal du have <strong>et domæne og et webhotel, hvor du kan installere WordPress</strong>, klar, inden forløbet starter.</li>
+<li><strong>Anbefalet: Simply.com.</strong> Bestil et <code>.dk</code>-domæne med <em>Basic Suite</em> (webhotel) hos <a href="https://www.simply.com/dk/">Simply.com</a>, og brug rabatkoden <code>EAAA-STUDIE-2026</code>. Med koden koster det første år 9 kr. i alt. Vælg et navn, du kan genbruge senere – fx til dit portfolio.<br>
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/simply-basic-suite-rabatkode.webp" alt="Bestilling hos Simply.com af et .dk-domæne med Basic Suite i 12 måneder. Med rabatkoden EAAA-STUDIE-2026 bliver prisen 9,00 kr. i alt." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;"></li>
+<li><strong>Efter det første år</strong> fornyes abonnementet til normalpris: Basic Suite koster 69,95 kr./md. (839,40 kr./år), og fornyelse af et <code>.dk</code>-domæne koster 109 kr./år. Vil du ikke fortsætte, så opsig webhotellet og domænet i kontrolpanellet, inden de fornyes.</li>
+<li><strong>Domænet kan også pege på GitHub Pages.</strong> Vi har brugt GitHub Pages meget, og det er lige så godt til det, vi laver. Med et <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site">custom domain</a> kan dit portfolio fx ligge på dit eget domæne i stedet for <code>brugernavn.github.io</code> – som <a href="https://cederdorff.com">cederdorff.com</a>. Så kan du beholde domænet efter det første år, også selvom du opsiger webhotellet.</li>
+<li><strong>Har du allerede et domæne og webhotel</strong> et andet sted, kan du bruge det. De fleste udbydere har en one-click installer til WordPress.</li>
+<li><strong>Vil du ikke have dit eget domæne,</strong> så aftal at arbejde sammen med en medstuderende, der har et.</li>
+<li>Kontrollér, at du kan logge ind i kontrolpanelet hos din udbyder, så du er klar, når forløbet starter.</li>
 </ul>
 </details>
 
@@ -108,7 +88,12 @@ jobs:
 - **Eksamen:**
   - [Product Optimization – eksamen og aflevering](https://eaaa.instructure.com/courses/30922/pages/product-optimization-eksamen-og-aflevering)
 - **Supabase og GitHub Actions:**
+  - [Guide · Hold dit Supabase-projekt i live med GitHub Actions](https://github.com/cederdorff/post-app-supabase/blob/main/docs/supabase-keep-alive.md)
   - [Supabase · Project Pausing](https://supabase.com/docs/guides/platform/free-project-pausing)
   - [GitHub Docs · Events that trigger workflows: schedule](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
   - [GitHub Docs · Using secrets in GitHub Actions](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets)
+- **Domæne og webhotel:**
+  - [Simply.com · Basic Suite](https://www.simply.com/dk/hosting/basicsuite/)
+  - [Simply.com · Prisændring på .dk-domæner](https://blog.simply.com/2021/dkhostmaster-haever-prisen-pa-dk-domaener/)
+  - [GitHub Docs · Configuring a custom domain for your GitHub Pages site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
 - **Slides:** Vil blive tilgængelige her
