@@ -36,6 +36,8 @@ Dokumentér det oprindelige interface, og undersøg, hvad der virker, og hvad de
 
 ### 3. Formulér en delight-hypotese
 
+Brug gerne denne skabelon:
+
 > Vi tror, at **[virkemiddel]** i **[interaktion]** vil få **[brugeren]** til at **[opleve eller gøre noget]**, uden at **[usability-mål]** forringes. Det ved vi, når **[målbart resultat]**.
 
 ### 4. Udforsk spektret – fra funktionel til ekspressiv
@@ -48,7 +50,7 @@ Udforsk samme interaktion i tre niveauer, før I lægger jer fast – i Figma, R
 
 ### 5. Test og iterér
 
-Test versionerne med brugere, og mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder delight at skade usability?**
+Test versionerne med brugere, og mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder delight at skade usability – og kan vi måle det?**
 
 Begrund testmetode og antal testpersoner, og vurdér kritisk, hvor sikre resultaterne er. Testpersoner skal give samtykke, og I må ikke bruge rigtige persondata.
 
@@ -70,7 +72,7 @@ Produktet skal være en fungerende, deployet løsning, der:
 
 Det skriftlige materiale afleveres som ét PDF-dokument og skal kort og fagligt vise:
 
-1. **Udgangspunkt og problem:** Produkt, interaktion og problemet med det oprindelige interface.
+1. **Udgangspunkt og problem:** Produkt, interaktion og problemet med det oprindelige interface. Vis gerne før-billeder.
 2. **Hypotese og udforskning:** Hvad ville I opnå, og hvad lærte I af at udforske spektret?
 3. **Undersøgelsesresultater:** Hvad viste testene, hvor sikre er resultaterne, og hvordan påvirkede de jeres valg?
 4. **Det endelige produkt:** Virkemidler, designsystem, implementering, tilgængelighed, performance og eventuelt it-sikkerhed.
