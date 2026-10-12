@@ -62,14 +62,7 @@ Gå tilbage til **Settings → Pages**. Når DNS-tjekket er gennemført, så sæ
 
 ## Typiske problemer
 
-**Hvid side, eller CSS og JavaScript mangler:** Har du sat `base` i Vite til repository-navnet, skal den være `/` på dit eget domæne. Det samme gælder `basename` i React Router.
-
-```js
-// vite.config.js
-export default defineConfig({
-  base: "/",
-});
-```
+**Hvid side, eller CSS og JavaScript mangler:** Gælder kun, hvis siden ligger i et projekt-repository, fx `brugernavn.github.io/portfolio`. Så har du sikkert sat `base: "/portfolio/"` i Vite – på dit eget domæne skal den fjernes eller ændres til `/`. Det samme gælder `basename` i React Router. Et `brugernavn.github.io`-repository ligger allerede i roden og kræver ingen ændring.
 
 **Custom domain forsvinder:** Publicerer du fra en branch, gemmer GitHub domænet i en `CNAME`-fil. Slet den ikke, og pas på, at dit build ikke overskriver den. Med GitHub Actions bruges filen ikke.
 
