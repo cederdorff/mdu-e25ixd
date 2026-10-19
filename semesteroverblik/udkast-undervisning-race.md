@@ -169,6 +169,8 @@ Post App kan enten være den eksisterende løsning i Case 1 eller en mindre, fæ
 
 ### Dynamic User Interface
 
+Progression og planlægning af forløbet ligger i [`undervisning/dynamic-user-interface/planlaegning.md`](../undervisning/dynamic-user-interface/planlaegning.md).
+
 Forløbet er et mere oplagt sted til:
 
 - Headless WordPress → API → React-interface
