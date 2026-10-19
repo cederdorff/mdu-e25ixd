@@ -4,7 +4,7 @@
 
 I dag går vi fra React med Vite og React Router til Next.js. Vi opretter et nyt Next.js-projekt, gennemgår strukturen sammen og bruger vores egne WordPress-løsninger som headless CMS.
 
-Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et og viser det i en liste og på en detaljeside. Appen bliver vores lab-app i forløbet: Vi bygger videre på den med designsystem, login, brugere og motion, og principperne tager vi med over i gruppeprojekterne.
+Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et og viser det som en liste eller et grid af cards og på en detaljeside. Appen bliver vores lab-app i forløbet: Vi bygger videre på den med designsystem, login, brugere og motion, og principperne tager vi med over i gruppeprojekterne.
 
 <hr style="margin: 2rem 0;">
 
@@ -92,7 +92,6 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <ul>
 <li>Vis også pages, fremhævede billeder eller kategorier.</li>
 <li>Sammenlign din løsning med referencerepoet, hvis du sidder fast.</li>
-<li>Overvej jeres projektidé: Hvilket indhold kunne komme fra et CMS, og hvad giver ikke mening at lægge der?</li>
 <li>Commit og push dit arbejde. Du skal bruge appen næste gang.</li>
 </ul>
 </details>
