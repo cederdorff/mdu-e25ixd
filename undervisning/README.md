@@ -19,7 +19,7 @@ undervisning/
 ├── product-optimization/
 │   └── race-03-2026-08-25-case-1-kick-off-fejlhaandtering-og-robuste-ui-states.md
 └── dynamic-user-interface/
-    └── race-08-2026-10-26-dynamic-user-interface.md
+    └── race-08-2026-10-26-nextjs-og-headless-wordpress.md
 ```
 
 Sidens overskrift skal være identisk med Canvas-modulets navn. Hver side indeholder formål, forberedelse, agenda og materialer. Slides, opgaver, kodeeksempler og øvrige filer kan placeres i forløbets mappe, når de bliver tilgængelige.

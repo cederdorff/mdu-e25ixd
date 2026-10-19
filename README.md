@@ -34,12 +34,12 @@ Samlet materialeoversigt til 3. semester Interaction Design (IxD), Multimediedes
 
 | Dato | Undervisningsgang | Materialer |
 | --- | --- | --- |
-| 26. oktober | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-08-2026-10-26-dynamic-user-interface.md) |
-| 29. oktober | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-09-2026-10-29-dynamic-user-interface.md) |
-| 30. oktober | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-10-2026-10-30-dynamic-user-interface.md) |
+| 26. oktober | Next.js og headless WordPress | [Undervisningsside](undervisning/dynamic-user-interface/race-08-2026-10-26-nextjs-og-headless-wordpress.md) |
+| 29. oktober | Designsystem fra Figma til kode | [Undervisningsside](undervisning/dynamic-user-interface/race-09-2026-10-29-designsystem-fra-figma-til-kode.md) |
+| 30. oktober | Supabase Auth i Next.js | [Undervisningsside](undervisning/dynamic-user-interface/race-10-2026-10-30-supabase-auth-i-nextjs.md) |
 | 2. november | Kick-off | [Undervisningsside](undervisning/dynamic-user-interface/race-11-2026-11-02-kick-off.md) |
-| 10. november | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-12-2026-11-10-dynamic-user-interface.md) |
-| 12. november | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-13-2026-11-12-dynamic-user-interface.md) |
+| 10. november | User management, roller og beskyttet adgang | [Undervisningsside](undervisning/dynamic-user-interface/race-12-2026-11-10-user-management-roller-og-beskyttet-adgang.md) |
+| 12. november | Motion og microinteractions i kode | [Undervisningsside](undervisning/dynamic-user-interface/race-13-2026-11-12-motion-og-microinteractions-i-kode.md) |
 | 16. november | Faciliteret vejledning | [Undervisningsside](undervisning/dynamic-user-interface/race-14-2026-11-16-faciliteret-vejledning.md) |
 | 23. november | Faciliteret vejledning | [Undervisningsside](undervisning/dynamic-user-interface/race-15-2026-11-23-faciliteret-vejledning.md) |
 | 27. november | Pitch Day | [Undervisningsside](undervisning/dynamic-user-interface/race-16-2026-11-27-pitch-day.md) |
