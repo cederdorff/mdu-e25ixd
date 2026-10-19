@@ -2,17 +2,22 @@
 
 ## Formål
 
-I dag går vi fra React med Vite og React Router til Next.js. Du opretter selv et nyt Next.js-projekt, gennemgår strukturen og bruger din egen WordPress-løsning som headless CMS.
+I dag går vi fra React med Vite og React Router til Next.js. Vi opretter et nyt Next.js-projekt, gennemgår strukturen sammen og bruger vores egne WordPress-løsninger som headless CMS.
 
-Målet er en Next.js-app, der henter indhold fra din WordPress via REST API'et og viser det i en liste og på en detaljeside. Appen er din lab-app i forløbet: Vi bygger videre på den med designsystem, login, brugere og motion, og principperne overfører du til jeres gruppeprojekt.
+Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et og viser det i en liste og på en detaljeside. Appen bliver vores lab-app i forløbet: Vi bygger videre på den med designsystem, login, brugere og motion, og principperne tager vi med over i gruppeprojekterne.
 
 <hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
-- Opret nogle **posts og pages** i din WordPress på Simply.com. Giv dem gerne et fremhævet billede, en kategori og nok indhold til både en liste og en detaljeside.
+- Se og kod med på første del af [Learn Next.js på Scrimba](https://scrimba.com/learn-nextjs-c02moisq6a) (gratis): **Build a Next.js App** (ca. 2 timer). Så har du set de grundlæggende begreber, før vi bygger vores egen app.
+- Opret testindhold i din WordPress på Simply.com:
+  - **Mindst 5 posts** med titel, et par afsnit tekst og gerne et billede i indholdet.
+  - Giv hver post et **fremhævet billede** og en **kategori**. Brug mindst 2 forskellige kategorier.
+  - **Mindst 1 page**, fx _Om_, som du kan vise på `/om` i din app.
+  - Sørg for, at indholdet er **udgivet**. Kladder kommer ikke med i REST API'et.
 - Åbn `https://<dit-domæne>/wp-json/wp/v2/posts` i browseren, og tjek, at du får JSON tilbage.
-  - Får du en fejl, så tjek, at **Permalinks** under *Indstillinger* ikke står til *Plain*.
+  - Får du en fejl, så tjek, at **Permalinks** under _Indstillinger_ ikke står til _Plain_.
   - Tjek også, at et sikkerhedsplugin ikke blokerer REST API'et.
 - Sørg for, at du har en opdateret LTS-version af [Node.js](https://nodejs.org/) installeret.
 
@@ -20,7 +25,7 @@ Målet er en Next.js-app, der henter indhold fra din WordPress via REST API'et o
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Kort input → opret og forstå projektet → hent data fra WordPress → byg liste og detaljeside → overfør til jeres projektidé.
+**Dagens arbejdsrytme:** Kort input → opret og forstå projektet → hent data fra WordPress → vis posts som liste eller grid af cards → byg detaljeside.
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Fra Vite og React Router til Next.js</strong></summary>
@@ -68,7 +73,7 @@ Målet er en Next.js-app, der henter indhold fra din WordPress via REST API'et o
 <li>Gem din WordPress-URL i <code>.env.local</code>, fx <code>WORDPRESS_URL=https://dit-domæne.dk</code>, og dokumentér variablen i <code>.env.example</code>.</li>
 <li>Variabler uden <code>NEXT_PUBLIC_</code> kan kun læses på serveren. Sammenlign med <code>VITE_</code>-variablerne fra Product optimization, som kunne læses i frontend.</li>
 <li>Gør din page-komponent <code>async</code>, og hent posts med <code>fetch</code> direkte i komponenten – uden <code>useEffect</code> og <code>useState</code>.</li>
-<li>Vis posts i en liste med titel, uddrag, dato og link til detaljesiden.</li>
+<li>Vis posts som en liste eller et grid af cards med titel, uddrag, dato og link til detaljesiden.</li>
 <li>Håndtér fejl og tomme svar, ligesom du gjorde med robuste UI-states i Case 1.</li>
 </ul>
 </details>
@@ -99,6 +104,7 @@ Målet er en Next.js-app, der henter indhold fra din WordPress via REST API'et o
 - **Slides:** Vil blive tilgængelige her
 - **Opgaver:** Vil blive tilgængelige her
 - **Next.js:**
+  - [Learn Next.js på Scrimba](https://scrimba.com/learn-nextjs-c02moisq6a) (gratis kursus) – første del: _Build a Next.js App_
   - [Installation](https://nextjs.org/docs/app/getting-started/installation)
   - [Project structure](https://nextjs.org/docs/app/getting-started/project-structure)
   - [Layouts and pages](https://nextjs.org/docs/app/getting-started/layouts-and-pages)
