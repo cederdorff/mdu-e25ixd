@@ -55,11 +55,11 @@ NKKR/RACE - Dynamic User Interface - 29-10-2026
 RACE - Dynamic User Interface - 30-10-2026
 BKI/NKKR/RACE - Dynamic User Interface: Kick-off - 02-11-2026
 BKI/NKKR - Dynamic User Interface - 03-11-2026
-RACE - Dynamic User Interface - 05-11-2026
 BKI - Dynamic User Interface - 06-11-2026
 NKKR - Dynamic User Interface - 09-11-2026
 RACE - Dynamic User Interface - 10-11-2026
 NKKR - Dynamic User Interface - 11-11-2026
+RACE - Dynamic User Interface - 12-11-2026
 BKI - Dynamic User Interface - 13-11-2026
 NKKR/RACE - Dynamic User Interface: Faciliteret vejledning - 16-11-2026
 NKKR - Dynamic User Interface: Faciliteret vejledning - 18-11-2026

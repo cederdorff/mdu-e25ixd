@@ -38,8 +38,8 @@ Samlet materialeoversigt til 3. semester Interaction Design (IxD), Multimediedes
 | 29. oktober | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-09-2026-10-29-dynamic-user-interface.md) |
 | 30. oktober | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-10-2026-10-30-dynamic-user-interface.md) |
 | 2. november | Kick-off | [Undervisningsside](undervisning/dynamic-user-interface/race-11-2026-11-02-kick-off.md) |
-| 5. november | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-12-2026-11-05-dynamic-user-interface.md) |
-| 10. november | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-13-2026-11-10-dynamic-user-interface.md) |
+| 10. november | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-12-2026-11-10-dynamic-user-interface.md) |
+| 12. november | Dynamic User Interface | [Undervisningsside](undervisning/dynamic-user-interface/race-13-2026-11-12-dynamic-user-interface.md) |
 | 16. november | Faciliteret vejledning | [Undervisningsside](undervisning/dynamic-user-interface/race-14-2026-11-16-faciliteret-vejledning.md) |
 | 23. november | Faciliteret vejledning | [Undervisningsside](undervisning/dynamic-user-interface/race-15-2026-11-23-faciliteret-vejledning.md) |
 | 27. november | Pitch Day | [Undervisningsside](undervisning/dynamic-user-interface/race-16-2026-11-27-pitch-day.md) |
