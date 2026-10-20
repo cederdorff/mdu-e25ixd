@@ -79,7 +79,8 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Variabler uden <code>NEXT_PUBLIC_</code> kan kun læses på serveren. Sammenlign med <code>VITE_</code>-variablerne fra Product optimization, som kunne læses i frontend.</li>
 <li>Start simpelt: Gør <code>app/posts/page.js</code> <code>async</code>, hent posts med <code>fetch</code> direkte i komponenten – uden <code>useEffect</code> og <code>useState</code> – og vis titlerne i en <code>&lt;ul&gt;</code>.</li>
 <li>Byg videre: Lav en <code>PostCard</code>-komponent, og vis posts som et grid af cards med titel, uddrag, dato og link til detaljesiden. Vis en besked, hvis der ingen posts er.</li>
-<li>Læg mærke til advarslen i terminalen om data, der hentes uden for <code>&lt;Suspense&gt;</code>. Det skyldes Cache Components: Siden venter på WordPress ved hver request, og Next.js vil vide, hvad brugeren skal se imens. Tilføj en <code>app/loading.js</code>. Den gælder for alle routes og fungerer som en loading-state – ligesom robuste UI-states i Case 1. Uden den fejler <code>npm run build</code>.</li>
+<li>Læg mærke til advarslen i terminalen om data, der hentes uden for <code>&lt;Suspense&gt;</code>. Det skyldes Cache Components: Siden venter på WordPress ved hver request, og Next.js vil vide, hvad brugeren skal se imens. Tilføj en <code>app/posts/loading.js</code> ved siden af siden. Den vises, mens data hentes – ligesom robuste UI-states i Case 1. Uden den fejler <code>npm run build</code>.</li>
+<li>Tommelfingerregel: <strong>Hver route, der henter data, får sin egen <code>loading.js</code>.</strong> En fælles <code>app/loading.js</code> er ikke nok. Når du navigerer fra fx <code>/posts</code> til <code>/about</code>, bliver header og footer i layoutet stående, og kun siden under layoutet skifter. Derfor skal loading-staten ligge i samme mappe som siden.</li>
 </ul>
 </details>
 
@@ -88,6 +89,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <ul>
 <li>Opret <code>app/posts/[slug]/page.js</code>, og læs <code>slug</code> fra <code>params</code>. Husk, at <code>params</code> skal <code>await</code>'es.</li>
 <li>Hent den enkelte post med <code>?slug=</code>. Svaret er altid et array, også når der kun er ét match. Brug derfor det første element, og kald <code>notFound()</code>, hvis arrayet er tomt.</li>
+<li>Giv detaljesiden sin egen <code>app/posts/[slug]/loading.js</code>.</li>
 <li>WordPress returnerer indholdet som HTML. Vis det med <code>dangerouslySetInnerHTML</code>, og diskutér, hvorfor det kun er i orden, når du selv kontrollerer kilden.</li>
 </ul>
 </details>
@@ -98,6 +100,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Vis de 3 seneste posts på forsiden. Skriv <code>fetch</code> direkte i <code>app/page.js</code> igen, og tilføj <code>?per_page=3</code> til URL'en.</li>
 <li>Nu skal griddet bruges to steder. Flyt det til en <code>PostList</code>-komponent, så forsiden og <code>/posts</code> kan genbruge den.</li>
 <li>Hent din <em>About</em>-page fra WordPress med <code>/pages?slug=about</code>, og vis den på <code>/about</code>. Det er samme mønster som detaljesiden: et array, det første element og <code>notFound()</code>.</li>
+<li>Forsiden og About henter nu også data, så de skal have hver deres <code>loading.js</code>: <code>app/loading.js</code> og <code>app/about/loading.js</code>.</li>
 <li>Nu henter du data fire steder. Flyt dine <code>fetch</code>-kald til funktioner i <code>lib/wordpress.js</code>: <code>getPosts()</code>, <code>getLatestPosts()</code>, <code>getPostBySlug(slug)</code> og <code>getPageBySlug(slug)</code>. Koden er den samme – den har bare fået et navn og et nyt sted. Gem starten af URL'en i en variabel øverst i filen, fx <code>const API_URL = `${process.env.WORDPRESS_URL}/wp-json/wp/v2`;</code>, så hvert <code>fetch</code> bliver kort.</li>
 <li>Datoen formaterer du både på dine cards og på detaljesiden. Flyt <code>toLocaleDateString</code> til en <code>formatDate()</code>-funktion i <code>lib/format.js</code>, så datoen ser ens ud overalt.</li>
 </ul>
