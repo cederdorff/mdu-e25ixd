@@ -14,7 +14,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 - Opret testindhold i din WordPress på Simply.com:
   - **Mindst 5 posts** med titel, et par afsnit tekst og gerne et billede i indholdet.
   - Giv hver post et **fremhævet billede** og en **kategori**. Brug mindst 2 forskellige kategorier.
-  - **Mindst 1 page**, fx _Om_, som du kan vise på `/om` i din app.
+  - **Mindst 1 page**, fx _Om_, som du kan hente og vise på `/om` i din app.
   - Sørg for, at indholdet er **udgivet**. Kladder kommer ikke med i REST API'et.
 - Åbn `https://<dit-domæne>/wp-json/wp/v2/posts` i browseren, og tjek, at du får JSON tilbage.
   - Får du en fejl, så tjek, at **Permalinks** under _Indstillinger_ ikke står til _Plain_.
@@ -25,10 +25,10 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Kort input → opret og forstå projektet → hent data fra WordPress → vis posts som liste eller grid af cards → byg detaljeside.
+**Dagens arbejdsrytme:** Kort input → opret og forstå projektet → routing og layouts → hent data fra WordPress → vis posts som liste eller grid af cards → byg detaljeside.
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>1. Fra Vite og React Router til Next.js</strong></summary>
+<summary><strong>1. Fra React og Vite til Next.js</strong></summary>
 <ul>
 <li>Hvorfor et framework? Next.js giver routing, rendering på serveren, datahentning og build i én samlet løsning.</li>
 <li>Sammenlign med det, du kender: Komponenter, props, state og hooks virker som før – men routing og datahentning ændrer sig.</li>
@@ -41,6 +41,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <summary><strong>2. Opret dit Next.js-projekt</strong></summary>
 <ul>
 <li>Kør <code>npx create-next-app@latest</code>, og svar <strong>No</strong> til TypeScript, <strong>Yes</strong> til Tailwind CSS og <strong>Yes</strong> til App Router. Brug standardvalget til resten.</li>
+<li>Tailwind er installeret, så det er klar til designsystemet næste gang. I dag må du gerne style med almindelig CSS i <code>globals.css</code> eller et par simple Tailwind-klasser – fokus er på Next.js.</li>
 <li>Kør <code>npm run dev</code>, og åbn appen i browseren.</li>
 <li>Gennemgå den genererede struktur: <code>app/layout.js</code>, <code>app/page.js</code>, <code>app/globals.css</code>, <code>public/</code>, <code>next.config.mjs</code> og <code>package.json</code>.</li>
 <li>Ryd op i templaten: Fjern demoindhold, og opdatér titel, beskrivelse og <code>lang</code> i <code>layout.js</code>.</li>
@@ -90,7 +91,8 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <details style="margin-left: 1.5rem;">
 <summary><strong>7. Arbejd videre</strong></summary>
 <ul>
-<li>Vis også pages, fremhævede billeder eller kategorier.</li>
+<li>Hent din <em>Om</em>-page fra WordPress, og vis den på <code>/om</code>.</li>
+<li>Vis fremhævede billeder og kategorier på dine cards.</li>
 <li>Sammenlign din løsning med referencerepoet, hvis du sidder fast.</li>
 <li>Commit og push dit arbejde. Du skal bruge appen næste gang.</li>
 </ul>
@@ -102,6 +104,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 
 - **Slides:** Vil blive tilgængelige her
 - **Opgaver:** Vil blive tilgængelige her
+- **Referencerepo:** Vil blive tilgængeligt her
 - **Next.js:**
   - [Learn Next.js på Scrimba](https://scrimba.com/learn-nextjs-c02moisq6a) (gratis kursus) – første del: _Build a Next.js App_
   - [Installation](https://nextjs.org/docs/app/getting-started/installation)
