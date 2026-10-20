@@ -109,7 +109,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <details style="margin-left: 1.5rem;">
 <summary><strong>8. Arbejd videre</strong></summary>
 <ul>
-<li>Tilføj <code>?_embed</code> til URL'erne i <code>lib/wordpress.js</code> – nu skal du kun rette ét sted – og vis fremhævede billeder og kategorier på dine cards. Du finder dem under <code>post._embedded</code> i JSON'en – kig efter dem i browseren først. Brug et almindeligt <code>&lt;img&gt;</code> i dag. Vil du bruge <code>next/image</code>, skal dit WordPress-domæne først tilføjes under <code>images.remotePatterns</code> i <code>next.config.mjs</code>.</li>
+<li>Tilføj <code>?_embed</code> til URL'erne i <code>lib/wordpress.js</code> – nu skal du kun rette ét sted – og vis fremhævede billeder og kategorier på dine cards. Vis også det fremhævede billede på detaljesiden og About. Du finder dem under <code>post._embedded</code> i JSON'en – kig efter dem i browseren først. Brug et almindeligt <code>&lt;img&gt;</code> i dag. Vil du bruge <code>next/image</code>, skal dit WordPress-domæne først tilføjes under <code>images.remotePatterns</code> i <code>next.config.mjs</code>.</li>
 <li>Tjek <code>response.ok</code> i funktionerne i <code>lib/wordpress.js</code>, og kast en fejl, hvis WordPress ikke svarer med en status i 200-serien. Tilføj en <code>app/error.js</code>, der viser en fejlbesked og en knap, der kalder <code>retry()</code>.</li>
 <li>Sammenlign din løsning med referencerepoet, hvis du sidder fast. Hvert commit svarer til ét skridt i agendaen.</li>
 <li>Commit og push dit arbejde. Du skal bruge appen næste gang.</li>
