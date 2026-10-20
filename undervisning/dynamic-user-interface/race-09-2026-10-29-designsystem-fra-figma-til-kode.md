@@ -33,7 +33,8 @@ Målet er, at din lab-app fra sidst bruger dine egne tokens for farve, typografi
 <summary><strong>2. Fra Figma variables til CSS variables</strong></summary>
 <ul>
 <li>Opret eller gennemgå variables i Figma for farve, typografi og spacing.</li>
-<li>Omsæt dem til CSS variables i <code>app/globals.css</code>, og gør dem tilgængelige i Tailwind med <code>@theme</code>.</li>
+<li>Tilføj Tailwind CSS til din lab-app: Installér <code>tailwindcss</code>, <code>@tailwindcss/postcss</code> og <code>postcss</code>, opret <code>postcss.config.mjs</code>, og importér Tailwind i <code>app/globals.css</code>.</li>
+<li>Omsæt dine Figma variables til CSS variables i <code>app/globals.css</code>, og gør dem tilgængelige i Tailwind med <code>@theme</code>.</li>
 <li>Brug samme navne i Figma og kode, så designer og udvikler taler om det samme.</li>
 </ul>
 </details>
@@ -84,6 +85,7 @@ Målet er, at din lab-app fra sidst bruger dine egne tokens for farve, typografi
 - **Slides:** Vil blive tilgængelige her
 - **Opgaver:** Vil blive tilgængelige her
 - **Tailwind CSS:**
+  - [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
   - [Theme variables](https://tailwindcss.com/docs/theme)
 - **shadcn/ui:**
   - [Installation: Next.js](https://ui.shadcn.com/docs/installation/next)

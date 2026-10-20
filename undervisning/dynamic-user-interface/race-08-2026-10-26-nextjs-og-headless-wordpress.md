@@ -40,10 +40,10 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <details style="margin-left: 1.5rem;">
 <summary><strong>2. Opret dit Next.js-projekt</strong></summary>
 <ul>
-<li>Kør <code>npx create-next-app@latest</code>, og svar <strong>No</strong> til TypeScript, <strong>Yes</strong> til Tailwind CSS og <strong>Yes</strong> til App Router. Brug standardvalget til resten.</li>
-<li>Tailwind er installeret, så det er klar til designsystemet næste gang. I dag må du gerne style med almindelig CSS i <code>globals.css</code> eller et par simple Tailwind-klasser – fokus er på Next.js.</li>
+<li>Kør <code>npx create-next-app@latest</code>, og svar <strong>No</strong> til TypeScript, <strong>No</strong> til Tailwind CSS og <strong>Yes</strong> til App Router. Brug standardvalget til resten.</li>
+<li>I dag styler vi med almindelig CSS, så fokus er på Next.js. Tailwind CSS tilføjer vi næste gang, når vi bygger designsystemet.</li>
 <li>Kør <code>npm run dev</code>, og åbn appen i browseren.</li>
-<li>Gennemgå den genererede struktur: <code>app/layout.js</code>, <code>app/page.js</code>, <code>app/globals.css</code>, <code>public/</code>, <code>next.config.mjs</code> og <code>package.json</code>.</li>
+<li>Gennemgå den genererede struktur: <code>app/layout.js</code>, <code>app/page.js</code>, <code>app/globals.css</code>, <code>app/page.module.css</code>, <code>public/</code>, <code>next.config.mjs</code> og <code>package.json</code>.</li>
 <li>Ryd op i templaten: Fjern demoindhold, og opdatér titel, beskrivelse og <code>lang</code> i <code>layout.js</code>.</li>
 <li>Opret et GitHub-repository, og commit dit udgangspunkt.</li>
 </ul>
