@@ -98,7 +98,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Vis de 3 seneste posts på forsiden. Skriv <code>fetch</code> direkte i <code>app/page.js</code> igen, og tilføj <code>?per_page=3</code> til URL'en.</li>
 <li>Nu skal griddet bruges to steder. Flyt det til en <code>PostList</code>-komponent, så forsiden og <code>/posts</code> kan genbruge den.</li>
 <li>Hent din <em>About</em>-page fra WordPress med <code>/pages?slug=about</code>, og vis den på <code>/about</code>. Det er samme mønster som detaljesiden: et array, det første element og <code>notFound()</code>.</li>
-<li>Nu henter du data fire steder. Flyt dine <code>fetch</code>-kald til funktioner i <code>lib/wordpress.js</code>: <code>getPosts()</code>, <code>getLatestPosts()</code>, <code>getPostBySlug(slug)</code> og <code>getPageBySlug(slug)</code>. Koden er den samme – den har bare fået et navn og et nyt sted.</li>
+<li>Nu henter du data fire steder. Flyt dine <code>fetch</code>-kald til funktioner i <code>lib/wordpress.js</code>: <code>getPosts()</code>, <code>getLatestPosts()</code>, <code>getPostBySlug(slug)</code> og <code>getPageBySlug(slug)</code>. Koden er den samme – den har bare fået et navn og et nyt sted. Gem starten af URL'en i en variabel øverst i filen, fx <code>const API_URL = `${process.env.WORDPRESS_URL}/wp-json/wp/v2`;</code>, så hvert <code>fetch</code> bliver kort.</li>
 <li>Datoen formaterer du både på dine cards og på detaljesiden. Flyt <code>toLocaleDateString</code> til en <code>formatDate()</code>-funktion i <code>lib/format.js</code>, så datoen ser ens ud overalt.</li>
 </ul>
 </details>
@@ -106,9 +106,9 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <details style="margin-left: 1.5rem;">
 <summary><strong>8. Arbejd videre</strong></summary>
 <ul>
-<li>Tilføj <code>?_embed</code> til URL'erne i <code>lib/wordpress.js</code>, og vis fremhævede billeder og kategorier på dine cards. Nu skal du kun rette ét sted. Du finder billeder og kategorier under <code>post._embedded</code> i JSON'en, så kig efter dem i browseren først. Brug et almindeligt <code>&lt;img&gt;</code> i dag. Vil du bruge <code>next/image</code>, skal dit WordPress-domæne først tilføjes under <code>images.remotePatterns</code> i <code>next.config.mjs</code>.</li>
+<li>Tilføj <code>?_embed</code> til URL'erne i <code>lib/wordpress.js</code> – nu skal du kun rette ét sted – og vis fremhævede billeder og kategorier på dine cards. Du finder dem under <code>post._embedded</code> i JSON'en – kig efter dem i browseren først. Brug et almindeligt <code>&lt;img&gt;</code> i dag. Vil du bruge <code>next/image</code>, skal dit WordPress-domæne først tilføjes under <code>images.remotePatterns</code> i <code>next.config.mjs</code>.</li>
 <li>Tjek <code>response.ok</code> i funktionerne i <code>lib/wordpress.js</code>, og kast en fejl, hvis WordPress ikke svarer med en status i 200-serien. Tilføj en <code>app/error.js</code>, der viser en fejlbesked og en knap, der kalder <code>retry()</code>.</li>
-<li>Sammenlign din løsning med referencerepoet, hvis du sidder fast. Commits følger agendaen skridt for skridt.</li>
+<li>Sammenlign din løsning med referencerepoet, hvis du sidder fast. Hvert commit svarer til ét skridt i agendaen.</li>
 <li>Commit og push dit arbejde. Du skal bruge appen næste gang.</li>
 </ul>
 </details>
@@ -119,7 +119,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 
 - **Slides:** Vil blive tilgængelige her
 - **Opgaver:** Vil blive tilgængelige her
-- **Referencerepo:** [nextjs-headless-wordpress](https://github.com/cederdorff/nextjs-headless-wordpress) – commits følger agendaen skridt for skridt
+- **Referencerepo:** [nextjs-headless-wordpress](https://github.com/cederdorff/nextjs-headless-wordpress) – hvert commit svarer til ét skridt i agendaen
 - **Next.js:**
   - [Learn Next.js på Scrimba](https://scrimba.com/learn-nextjs-c02moisq6a) (gratis kursus) – første del: _Build a Next.js App_
   - [Installation](https://nextjs.org/docs/app/getting-started/installation)
