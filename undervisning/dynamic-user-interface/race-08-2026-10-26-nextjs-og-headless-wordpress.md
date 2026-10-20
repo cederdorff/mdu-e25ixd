@@ -14,9 +14,9 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 - Opret testindhold i din WordPress på Simply.com:
   - **Mindst 5 posts** med titel, et par afsnit tekst og gerne et billede i indholdet.
   - Giv hver post et **fremhævet billede** og en **kategori**. Brug mindst 2 forskellige kategorier.
-  - **Mindst 1 page**, fx _Om_, som du kan hente og vise på `/om` i din app.
+  - **Mindst 1 page** med titlen _About_ og slug `about`, som du kan hente og vise på `/about` i din app.
   - Sørg for, at indholdet er **udgivet**. Kladder kommer ikke med i REST API'et.
-- Åbn `https://<dit-domæne>/wp-json/wp/v2/posts` i browseren, og tjek, at du får JSON tilbage.
+- Åbn `https://<dit-domæne>/wp-json/wp/v2/posts` i browseren, og tjek, at du får JSON tilbage. Notér URL'en til din WordPress uden `/` til sidst – den skal du bruge i appen.
   - Får du en fejl, så tjek, at **Permalinks** under _Indstillinger_ ikke står til _Plain_.
   - Tjek også, at et sikkerhedsplugin ikke blokerer REST API'et.
 - Sørg for, at du har en opdateret LTS-version af [Node.js](https://nodejs.org/) installeret.
@@ -25,7 +25,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Kort input → opret og forstå projektet → routing og layouts → hent data fra WordPress → vis posts som liste eller grid af cards → byg detaljeside.
+**Dagens arbejdsrytme:** Kort input → opret og forstå projektet → routing og layouts → hent posts fra WordPress → byg detaljeside → forside, About og fælles datalag. Vi skriver `fetch` direkte i hver side, så du kan se, hvad der sker, og samler koden i `lib/`, når du selv har mærket gentagelsen. Vi starter så simpelt som muligt og bygger ovenpå, når behovet opstår.
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Fra React og Vite til Next.js</strong></summary>
@@ -40,19 +40,23 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <details style="margin-left: 1.5rem;">
 <summary><strong>2. Opret dit Next.js-projekt</strong></summary>
 <ul>
-<li>Kør <code>npx create-next-app@latest</code>, og svar <strong>No</strong> til TypeScript, <strong>No</strong> til Tailwind CSS og <strong>Yes</strong> til App Router. Brug standardvalget til resten.</li>
-<li>I dag styler vi med almindelig CSS, så fokus er på Next.js. Tailwind CSS tilføjer vi næste gang, når vi bygger designsystemet.</li>
-<li>Kør <code>npm run dev</code>, og åbn appen i browseren.</li>
+<li>Opret projektet med én kommando, så alle får samme udgangspunkt. Skift <code>my-app</code> ud med navnet på dit projekt:
+<pre><code class="language-bash">npx create-next-app@latest my-app --js --no-tailwind --eslint --app --no-src-dir --import-alias "@/*" --no-react-compiler --cache-components</code></pre>
+</li>
+<li>Flagene svarer på de spørgsmål, du ellers ville få: JavaScript i stedet for TypeScript, App Router, ESLint og ingen Tailwind CSS. I dag styler vi med almindelig CSS, så fokus er på Next.js. Tailwind CSS tilføjer vi næste gang, når vi bygger designsystemet.</li>
+<li>Kør <code>npm run dev</code> i projektmappen, og åbn appen i browseren.</li>
 <li>Gennemgå den genererede struktur: <code>app/layout.js</code>, <code>app/page.js</code>, <code>app/globals.css</code>, <code>app/page.module.css</code>, <code>public/</code>, <code>next.config.mjs</code> og <code>package.json</code>.</li>
-<li>Ryd op i templaten: Fjern demoindhold, og opdatér titel, beskrivelse og <code>lang</code> i <code>layout.js</code>.</li>
-<li>Opret et GitHub-repository, og commit dit udgangspunkt.</li>
+<li>Kig i <code>next.config.mjs</code>: <code>cacheComponents: true</code> betyder, at Next.js som udgangspunkt henter data på ny ved hver request og kræver en loading-state, mens det sker. Det møder du i punkt 5.</li>
+<li>Ryd op i templaten: Fjern demoindhold, og opdatér titel, beskrivelse og <code>lang</code> i <code>layout.js</code>, fx <code>lang="da"</code>, hvis dit indhold er på dansk.</li>
+<li><code>create-next-app</code> har allerede oprettet et git-repository med et første commit. Opret et tomt repository på GitHub uden README, og push dit udgangspunkt med de kommandoer, GitHub viser.</li>
+<li>Tjek dit udgangspunkt mod de første commits i referencerepoet.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>3. Routing og layouts</strong></summary>
 <ul>
-<li>Opret en ny route, fx <code>app/om/page.js</code>, og navigér mellem siderne med <code>Link</code> fra <code>next/link</code>.</li>
+<li>Opret routes til <code>/posts</code> og <code>/about</code> med <code>app/posts/page.js</code> og <code>app/about/page.js</code>, og navigér mellem siderne med <code>Link</code> fra <code>next/link</code>.</li>
 <li>Brug <code>layout.js</code> til det, der går igen på alle sider, fx header, navigation og footer.</li>
 <li>Tilføj en <code>not-found.js</code>, så ukendte routes får en forståelig side.</li>
 </ul>
@@ -64,7 +68,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Headless betyder, at WordPress kun håndterer indholdet, mens Next.js står for præsentationen.</li>
 <li>Undersøg REST API'et i browseren: <code>/wp-json/wp/v2/posts</code>, <code>/wp-json/wp/v2/pages</code> og <code>/wp-json/wp/v2/posts?slug=...</code>.</li>
 <li>Find de felter, du skal bruge: <code>id</code>, <code>slug</code>, <code>date</code>, <code>title.rendered</code>, <code>excerpt.rendered</code> og <code>content.rendered</code>.</li>
-<li>Tilføj <code>?_embed</code> for at få fremhævet billede og kategorier med i samme request.</li>
+<li>Læg mærke til, at <code>.rendered</code>-felterne indeholder HTML. Uddraget er pakket ind i <code>&lt;p&gt;</code>, og titler kan indeholde entities som <code>&amp;#8217;</code>. Viser du dem som almindelig tekst, kommer tags og koder med på dine cards.</li>
 </ul>
 </details>
 
@@ -73,9 +77,9 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <ul>
 <li>Gem din WordPress-URL i <code>.env.local</code>, fx <code>WORDPRESS_URL=https://dit-domæne.dk</code>, og dokumentér variablen i <code>.env.example</code>.</li>
 <li>Variabler uden <code>NEXT_PUBLIC_</code> kan kun læses på serveren. Sammenlign med <code>VITE_</code>-variablerne fra Product optimization, som kunne læses i frontend.</li>
-<li>Gør din page-komponent <code>async</code>, og hent posts med <code>fetch</code> direkte i komponenten – uden <code>useEffect</code> og <code>useState</code>.</li>
-<li>Vis posts som en liste eller et grid af cards med titel, uddrag, dato og link til detaljesiden.</li>
-<li>Håndtér fejl og tomme svar, ligesom du gjorde med robuste UI-states i Case 1.</li>
+<li>Start simpelt: Gør <code>app/posts/page.js</code> <code>async</code>, hent posts med <code>fetch</code> direkte i komponenten – uden <code>useEffect</code> og <code>useState</code> – og vis titlerne i en <code>&lt;ul&gt;</code>.</li>
+<li>Byg videre: Lav en <code>PostCard</code>-komponent, og vis posts som et grid af cards med titel, uddrag, dato og link til detaljesiden. Vis en besked, hvis der ingen posts er.</li>
+<li>Læg mærke til advarslen i terminalen om data, der hentes uden for <code>&lt;Suspense&gt;</code>. Det skyldes Cache Components: Siden venter på WordPress ved hver request, og Next.js vil vide, hvad brugeren skal se imens. Tilføj en <code>app/loading.js</code>. Den gælder for alle routes og fungerer som en loading-state – ligesom robuste UI-states i Case 1. Uden den fejler <code>npm run build</code>.</li>
 </ul>
 </details>
 
@@ -83,17 +87,28 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <summary><strong>6. Detaljeside med dynamisk route</strong></summary>
 <ul>
 <li>Opret <code>app/posts/[slug]/page.js</code>, og læs <code>slug</code> fra <code>params</code>. Husk, at <code>params</code> skal <code>await</code>'es.</li>
-<li>Hent den enkelte post med <code>?slug=</code>, og kald <code>notFound()</code>, hvis den ikke findes.</li>
+<li>Hent den enkelte post med <code>?slug=</code>. Svaret er altid et array, også når der kun er ét match. Brug derfor det første element, og kald <code>notFound()</code>, hvis arrayet er tomt.</li>
 <li>WordPress returnerer indholdet som HTML. Vis det med <code>dangerouslySetInnerHTML</code>, og diskutér, hvorfor det kun er i orden, når du selv kontrollerer kilden.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>7. Arbejd videre</strong></summary>
+<summary><strong>7. Forside, About og et fælles datalag</strong></summary>
 <ul>
-<li>Hent din <em>Om</em>-page fra WordPress, og vis den på <code>/om</code>.</li>
-<li>Vis fremhævede billeder og kategorier på dine cards.</li>
-<li>Sammenlign din løsning med referencerepoet, hvis du sidder fast.</li>
+<li>Vis de 3 seneste posts på forsiden. Skriv <code>fetch</code> direkte i <code>app/page.js</code> igen, og tilføj <code>?per_page=3</code> til URL'en.</li>
+<li>Nu skal griddet bruges to steder. Flyt det til en <code>PostList</code>-komponent, så forsiden og <code>/posts</code> kan genbruge den.</li>
+<li>Hent din <em>About</em>-page fra WordPress med <code>/pages?slug=about</code>, og vis den på <code>/about</code>. Det er samme mønster som detaljesiden: et array, det første element og <code>notFound()</code>.</li>
+<li>Nu henter du data fire steder. Flyt dine <code>fetch</code>-kald til funktioner i <code>lib/wordpress.js</code>: <code>getPosts()</code>, <code>getLatestPosts()</code>, <code>getPostBySlug(slug)</code> og <code>getPageBySlug(slug)</code>. Koden er den samme – den har bare fået et navn og et nyt sted.</li>
+<li>Datoen formaterer du både på dine cards og på detaljesiden. Flyt <code>toLocaleDateString</code> til en <code>formatDate()</code>-funktion i <code>lib/format.js</code>, så datoen ser ens ud overalt.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>8. Arbejd videre</strong></summary>
+<ul>
+<li>Tilføj <code>?_embed</code> til URL'erne i <code>lib/wordpress.js</code>, og vis fremhævede billeder og kategorier på dine cards. Nu skal du kun rette ét sted. Du finder billeder og kategorier under <code>post._embedded</code> i JSON'en, så kig efter dem i browseren først. Brug et almindeligt <code>&lt;img&gt;</code> i dag. Vil du bruge <code>next/image</code>, skal dit WordPress-domæne først tilføjes under <code>images.remotePatterns</code> i <code>next.config.mjs</code>.</li>
+<li>Tjek <code>response.ok</code> i funktionerne i <code>lib/wordpress.js</code>, og kast en fejl, hvis WordPress ikke svarer med en status i 200-serien. Tilføj en <code>app/error.js</code>, der viser en fejlbesked og en knap, der kalder <code>retry()</code>.</li>
+<li>Sammenlign din løsning med referencerepoet, hvis du sidder fast. Commits følger agendaen skridt for skridt.</li>
 <li>Commit og push dit arbejde. Du skal bruge appen næste gang.</li>
 </ul>
 </details>
@@ -104,7 +119,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 
 - **Slides:** Vil blive tilgængelige her
 - **Opgaver:** Vil blive tilgængelige her
-- **Referencerepo:** Vil blive tilgængeligt her
+- **Referencerepo:** [nextjs-headless-wordpress](https://github.com/cederdorff/nextjs-headless-wordpress) – commits følger agendaen skridt for skridt
 - **Next.js:**
   - [Learn Next.js på Scrimba](https://scrimba.com/learn-nextjs-c02moisq6a) (gratis kursus) – første del: _Build a Next.js App_
   - [Installation](https://nextjs.org/docs/app/getting-started/installation)
