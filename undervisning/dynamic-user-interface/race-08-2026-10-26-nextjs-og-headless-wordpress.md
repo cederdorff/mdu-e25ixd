@@ -2,7 +2,7 @@
 
 ## Formål
 
-I dag går vi fra React med Vite og React Router til Next.js. Vi opretter et nyt Next.js-projekt, gennemgår strukturen sammen og bruger vores egne WordPress-løsninger som headless CMS.
+Indtil nu har vi arbejdet med React og Vite. I dag kaster vi os over React-frameworket Next.js, som vi arbejder med resten af semesteret. Det er stadig React, men med routing, server components og data fetching indbygget. Vi opretter et nyt Next.js-projekt og bruger vores egne WordPress-løsninger som headless CMS.
 
 Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et og viser det som en liste eller et grid af cards og på en detaljeside. Appen bliver vores lab-app i forløbet: Vi bygger videre på den med designsystem, login, brugere og motion, og principperne tager vi med over i gruppeprojekterne.
 
