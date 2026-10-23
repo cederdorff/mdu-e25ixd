@@ -22,13 +22,106 @@
           <p class="date"><span>RACE</span><time datetime="2026-10-26">26. oktober 2026</time></p>
         </section>
 
+        <section class="po-slide" id="forloebet">
+          <span class="eyebrow">Dynamic User Interface · 15 ECTS · mundtlig gruppeprøve</span>
+          <h2>Make it memorable — but don't break it</h2>
+          <p class="course-lead">
+            I grupper gør I et eksisterende, kedeligt produkt mindeværdigt med motion, microinteractions og
+            personlighed — uden at det går ud over brugerens mål.
+          </p>
+          <div class="course-phases">
+            <article>
+              <span>Fundament · 26.–30. okt</span>
+              <h3>Lab-appen</h3>
+              <p>Vi bygger den tekniske stack sammen: Next.js, headless WordPress, designsystem og login.</p>
+            </article>
+            <article>
+              <span>Projekt · 2.–24. nov</span>
+              <h3>Gruppeprojektet</h3>
+              <p>Kick-off, roller og beskyttet adgang, motion i kode — og faciliteret vejledning frem mod aflevering.</p>
+            </article>
+            <article>
+              <span>Pitch og eksamen · 27. nov–11. dec</span>
+              <h3>Vis det og forbedr det</h3>
+              <p>Pitch Day, optimeringer på branches og mundtlig eksamen med produktet live.</p>
+            </article>
+          </div>
+          <div class="course-rhythm" aria-label="Arbejdsrytmen i de faglige undervisningsgange">
+            <p><b>Kort input</b>et nyt begreb eller værktøj</p>
+            <i aria-hidden="true">→</i>
+            <p><b>Implementering</b>i lab-appen</p>
+            <i aria-hidden="true">→</i>
+            <p><b>Overførsel</b>til jeres gruppeprojekt</p>
+          </div>
+          <p class="po-source-link">
+            <a
+              href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/eksamensbeskrivelse.md"
+              target="_blank"
+              rel="noreferrer"
+              >Eksamensbeskrivelse ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="tidsplan">
+          <span class="eyebrow">Dynamic User Interface · tidsplan</span>
+          <h2>Syv uger fra Next.js til eksamen</h2>
+          <div class="course-timeline">
+            <article class="is-now">
+              <span>Uge 44</span>
+              <p class="is-lesson"><b>26/10 · I dag</b>Next.js og headless WordPress</p>
+              <p class="is-lesson"><b>29/10</b>Designsystem fra Figma til kode</p>
+              <p class="is-lesson"><b>30/10</b>Supabase Auth i Next.js</p>
+            </article>
+            <article>
+              <span>Uge 45</span>
+              <p class="is-milestone"><b>2/11</b>Kick-off<small>grupper og produkt</small></p>
+              <p class="is-milestone"><b>3/11</b>Produktkvalificering med underviserne</p>
+            </article>
+            <article>
+              <span>Uge 46</span>
+              <p class="is-lesson"><b>10/11</b>User management, roller og beskyttet adgang</p>
+              <p class="is-lesson"><b>12/11</b>Motion og microinteractions i kode</p>
+            </article>
+            <article>
+              <span>Uge 47</span>
+              <p class="is-guidance"><b>16/11</b>Faciliteret vejledning<small>morgen: deployment</small></p>
+            </article>
+            <article>
+              <span>Uge 48</span>
+              <p class="is-guidance"><b>23/11</b>Faciliteret vejledning<small>morgen: tjek før aflevering</small></p>
+              <p class="is-milestone"><b>24/11 kl. 12</b>Aflevering i WISEflow</p>
+              <p class="is-milestone"><b>27/11</b>Pitch Day</p>
+            </article>
+            <article>
+              <span>Uge 49</span>
+              <p class="is-guidance"><b>1/12 og 3/12</b>Optimering og eksamens&shy;forberedelse</p>
+            </article>
+            <article>
+              <span>Uge 50</span>
+              <p class="is-exam"><b>9.–11/12</b>Mundtlig eksamen</p>
+            </article>
+          </div>
+          <div class="timeline-legend" aria-hidden="true">
+            <span class="is-lesson">Faglig undervisning · RACE</span>
+            <span class="is-guidance">Vejledning og optimering</span>
+            <span class="is-milestone">Milepæl i projektet</span>
+            <span class="is-exam">Eksamen</span>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Faciliteret vejledning:</strong> Dagen starter med en kort fælles morgen-session. Resten af dagen
+            arbejder I i grupperne, og vi går rundt og vejleder. Derudover har I undervisning med NKKR og BKI — se Canvas.
+          </p>
+        </section>
+
         <section class="po-slide po-agenda dui-agenda" id="agenda">
           <span class="eyebrow">Agenda · vi starter simpelt og bygger ovenpå</span>
           <h2>Fra tomt projekt til app med indhold fra WordPress</h2>
           <ol class="agenda-list">
             <li>
               <a href="#/fra-vite"
-                ><b>Fra React og Vite til Next.js</b><small>Hvad bliver ved det samme — og hvad er nyt?</small></a
+                ><b>Fra React og Vite til Next.js</b
+                ><small>Problemet med CSR · client-server · SSR · server components</small></a
               >
             </li>
             <li>
@@ -113,7 +206,361 @@
           <span class="chapter-index">01</span>
           <span class="eyebrow">Fra React og Vite til Next.js</span>
           <h2>Det er stadig<br />React</h2>
-          <p class="kicker">— men routing, rendering på serveren og datahentning er bygget ind.</p>
+          <p class="kicker">— så hvad er problemet med den React-app, I allerede kan bygge?</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Next.js</dt>
+              <dd>
+                Et framework bygget oven på React. React laver komponenterne — Next.js giver rammen omkring: routing,
+                rendering på serveren, datahentning og build.
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="po-slide" id="foer-videoen">
+          <span class="eyebrow">Før videoen · læg mærke til</span>
+          <h2>Traditional React vs. Next.js</h2>
+          <div class="watch-grid" role="table" aria-label="Spørgsmål at lægge mærke til i videoen">
+            <div class="watch-row watch-head" role="row">
+              <span></span><span>Traditional React app</span><span>Next.js app</span>
+            </div>
+            <div class="watch-row" role="row">
+              <b>Hvad modtager browseren først?</b><span></span><span></span>
+            </div>
+            <div class="watch-row" role="row">
+              <b>Hvor bliver HTML'en lavet?</b><span></span><span></span>
+            </div>
+            <div class="watch-row" role="row">
+              <b>Hvilke ulemper og fordele nævner han?</b><span></span><span></span>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Skriv stikord ned</strong> i de to kolonner, mens du ser. Vi bruger dem lige bagefter.
+          </p>
+        </section>
+
+        <section class="po-slide video-slide" id="video-nextjs">
+          <span class="eyebrow">Video · Fireship · de første ca. 2 minutter</span>
+          <h2>Next.js in 100 Seconds</h2>
+          <div class="video-layout">
+            <div class="video-frame">
+              <iframe
+                data-src="https://www.youtube.com/embed/Sklc_fQBmcs?rel=0&amp;enablejsapi=1"
+                title="Next.js in 100 Seconds af Fireship"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="video-watch">
+              <span>Læg mærke til</span>
+              <ol>
+                <li>Hvad modtager browseren i en <b>traditional React app</b>?</li>
+                <li>Hvad er <b>ulempen</b> ved det?</li>
+                <li>Hvad betyder <b>"render the content in advance on the server"</b>?</li>
+              </ol>
+              <p>
+                <b>Videoen er fra 2021.</b> Resten af videoen bruger den ældre Pages Router. Vi bruger App Router —
+                principperne er de samme.
+              </p>
+            </div>
+          </div>
+          <p class="po-source-link">
+            <a href="https://www.youtube.com/watch?v=Sklc_fQBmcs" target="_blank" rel="noreferrer"
+              >YouTube: Next.js in 100 Seconds ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="csr-problem">
+          <span class="eyebrow">Hvad så I? · er CSR et problem?</span>
+          <h2>CSR har en pris</h2>
+          <div class="csr-tradeoff">
+            <article class="is-cost">
+              <span>Prisen ved CSR</span>
+              <ul>
+                <li>
+                  <b>Tom side først.</b> Brugeren venter på JavaScript og data — især på mobil og langsomt net. Det så I
+                  i Lighthouse.
+                </li>
+                <li>
+                  <b>Søgemaskiner og link previews.</b> Google kan køre JavaScript, men med forsinkelse. Mange bots — fx
+                  link previews i Slack og LinkedIn — ser kun <code>&lt;div id="root"&gt;</code>.
+                </li>
+                <li>
+                  <b>Et vandfald af requests.</b> HTML → JavaScript → <code>fetch</code> → render. Hvert trin venter på
+                  det forrige.
+                </li>
+                <li><b>Alt ligger i browseren.</b> API-kald og nøgler kan ses af alle.</li>
+              </ul>
+            </article>
+            <article>
+              <span>CSR fungerer fint, når …</span>
+              <ul>
+                <li><b>Appen er bag login</b> — fx et dashboard eller et admin-panel.</li>
+                <li><b>Indholdet er personligt</b> og ikke skal findes på Google.</li>
+                <li><b>Brugeren bliver længe</b> og interagerer meget — fx et værktøj som Figma.</li>
+              </ul>
+              <p>Jeres Post App fra Product optimization var fin som CSR.</p>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>I dag viser vi offentligt indhold fra WordPress,</strong> som skal vises hurtigt og kunne findes.
+            Derfor renderer vi på serveren — og det er præcis det, Next.js er bygget til.
+          </p>
+        </section>
+
+        <section class="po-slide" id="client-server">
+          <span class="eyebrow">Client-server-modellen</span>
+          <h2>Client spørger — server svarer</h2>
+          <div class="cs-model">
+            <article>
+              <span>Client</span>
+              <h3>Browseren</h3>
+              <small>Chrome, Safari, Firefox — på brugerens enhed</small>
+            </article>
+            <div class="cs-arrows" aria-hidden="true">
+              <p class="is-request"><b>Request →</b><code>GET /posts</code></p>
+              <p class="is-response"><b>← Response</b><code>HTML · CSS · JS · JSON</code></p>
+            </div>
+            <article class="is-server">
+              <span>Server</span>
+              <h3>En computer på nettet</h3>
+              <small>GitHub Pages, Simply.com, Vercel — eller <code>localhost</code></small>
+            </article>
+          </div>
+          <dl class="term-row is-four">
+            <div>
+              <dt>Client</dt>
+              <dd>Programmet, der <b>beder om</b> noget og viser det for brugeren.</dd>
+            </div>
+            <div>
+              <dt>Server</dt>
+              <dd>Programmet, der <b>venter på requests</b> og sender svar tilbage.</dd>
+            </div>
+            <div>
+              <dt>Request</dt>
+              <dd>En forespørgsel over HTTP: en URL, en metode som <code>GET</code> og evt. data.</dd>
+            </div>
+            <div>
+              <dt>Response</dt>
+              <dd>Svaret: en statuskode som <code>200</code> eller <code>404</code> og et indhold.</dd>
+            </div>
+          </dl>
+          <p class="dui-lead-note">
+            <strong>Dagens spørgsmål:</strong> Hvor kører React-koden — på clienten eller på serveren?
+          </p>
+        </section>
+
+        <section class="po-slide" id="hvor-koerer-koden">
+          <span class="eyebrow">Client-server · fra Vite til Next.js</span>
+          <h2>Hvor kører React-koden?</h2>
+          <div class="arch-compare">
+            <div class="arch-row">
+              <span class="arch-label">React og Vite<small>Product optimization</small></span>
+              <article>
+                <span>Server</span><strong>GitHub Pages</strong><small>en filserver — sender bare filerne</small>
+              </article>
+              <b aria-hidden="true">→<small>tom HTML + JS</small></b>
+              <article class="is-react">
+                <span>Client · browser</span><strong>React kører her</strong
+                ><small>bygger siden og henter data bagefter</small>
+              </article>
+              <b aria-hidden="true">⇄<small>JSON</small></b>
+              <article>
+                <span>API</span><strong>Supabase</strong><small>kaldes fra browseren</small>
+              </article>
+            </div>
+            <div class="arch-row is-next">
+              <span class="arch-label">Next.js<small>i dag</small></span>
+              <article>
+                <span>API</span><strong>WordPress</strong><small>kaldes fra serveren</small>
+              </article>
+              <b aria-hidden="true">⇄<small>JSON</small></b>
+              <article class="is-react">
+                <span>Server · Node.js</span><strong>React kører her</strong
+                ><small>henter data og bygger HTML'en</small>
+              </article>
+              <b aria-hidden="true">→<small>færdig HTML</small></b>
+              <article>
+                <span>Client · browser</span><strong>Viser siden</strong
+                ><small>og gør de interaktive dele levende</small>
+              </article>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong><code>npm run dev</code> starter en rigtig server.</strong> I Vite serverede den kun filer. I
+            Next.js kører din React-kode på den, før browseren får noget.
+          </p>
+        </section>
+
+        <section class="po-slide" id="csr-ssr">
+          <span class="eyebrow">Rendering · CSR og SSR</span>
+          <h2>Hvor bliver HTML'en lavet?</h2>
+          <div class="render-modes">
+            <article>
+              <span>CSR · Client-Side Rendering</span>
+              <h3>React og Vite</h3>
+              <p class="mode-def">Browseren modtager en næsten tom side og bygger HTML'en selv med JavaScript.</p>
+              <ol>
+                <li>Browseren henter <code>index.html</code> — en tom <code>&lt;div id="root"&gt;</code></li>
+                <li>Browseren henter og kører JavaScript-bundlen</li>
+                <li>React renderer — og <code>useEffect</code> henter data</li>
+                <li>React renderer igen med indholdet</li>
+              </ol>
+            </article>
+            <article class="is-now">
+              <span>SSR · Server-Side Rendering</span>
+              <h3>Next.js</h3>
+              <p class="mode-def">Serveren kører React, henter data og sender færdig HTML med indholdet.</p>
+              <ol>
+                <li>Browseren beder om <code>/posts</code></li>
+                <li>Serveren henter posts fra WordPress</li>
+                <li>Serveren renderer komponenterne til HTML</li>
+                <li>Browseren viser indholdet med det samme</li>
+              </ol>
+            </article>
+          </div>
+          <dl class="term-row">
+            <div>
+              <dt>Rendering</dt>
+              <dd>At omsætte komponenter og data til den HTML, brugeren ser.</dd>
+            </div>
+            <div>
+              <dt>Hydration</dt>
+              <dd>
+                Når JavaScript bagefter gør den færdige HTML interaktiv i browseren — fx en knap med
+                <code>onClick</code>.
+              </dd>
+            </div>
+          </dl>
+          <p class="po-source-link">
+            <a href="https://developer.mozilla.org/en-US/docs/Glossary/SSR" target="_blank" rel="noreferrer"
+              >MDN: SSR ↗</a
+            >
+            ·
+            <a href="https://developer.mozilla.org/en-US/docs/Glossary/CSR" target="_blank" rel="noreferrer"
+              >MDN: CSR ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="hvad-modtager-browseren">
+          <span class="eyebrow">CSR og SSR · se det selv</span>
+          <h2>Hvad modtager browseren?</h2>
+          <div class="before-after source-compare">
+            <article>
+              <span>React og Vite · Vis sidekilde</span>
+              <pre class="po-code code-sm"><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Post App&lt;/title&gt;
+    &lt;script type="module" src="/assets/index-B3x9.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              <small
+                ><b>Ingen posts i HTML'en.</b> De dukker først op, når JavaScript har kørt, og data er hentet i
+                browseren.</small
+              >
+            </article>
+            <article class="is-now">
+              <span>Next.js · Vis sidekilde (forenklet)</span>
+              <pre class="po-code code-sm"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="da"&gt;
+  &lt;head&gt;
+    &lt;title&gt;My WordPress App&lt;/title&gt;
+    &lt;script src="/_next/static/chunks/…js" async&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;…&lt;/header&gt;
+    &lt;main&gt;
+      &lt;h1&gt;Posts&lt;/h1&gt;
+      &lt;article&gt;
+        &lt;h2&gt;Beautiful sunset at the beach&lt;/h2&gt;
+        &lt;p&gt;Experience serenity as …&lt;/p&gt;</code></pre>
+              <small
+                ><b>Indholdet fra WordPress står i HTML'en.</b> JavaScript sendes stadig med — men kun til at gøre
+                siden interaktiv.</small
+              >
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Prøv selv:</strong> Højreklik → <em>Vis sidekilde</em> (<code>⌥⌘U</code>) på din app fra Product
+            optimization og på din Next.js-app. Brug ikke <em>Elements</em> i DevTools — den viser DOM'en, efter
+            JavaScript har kørt.
+          </p>
+        </section>
+
+        <section class="po-slide" id="hvad-er-nextjs">
+          <span class="eyebrow">Hvad er Next.js?</span>
+          <h2>Next.js er et React-framework</h2>
+          <div class="stack-roles">
+            <article>
+              <span>Library</span>
+              <h3>React</h3>
+              <p>Bygger UI'et af komponenter, props og state.</p>
+              <small>Du bestemmer selv, hvordan resten af appen hænger sammen.</small>
+            </article>
+            <article>
+              <span>Build tool</span>
+              <h3>Vite</h3>
+              <p>Starter en dev-server og bundler din kode til filer, browseren kan køre.</p>
+              <small>Det, I har brugt indtil nu — sammen med React Router.</small>
+            </article>
+            <article class="is-new">
+              <span>Framework</span>
+              <h3>Next.js</h3>
+              <p>React + routing, server, datahentning og build i én samlet løsning.</p>
+              <small>Frameworket bestemmer strukturen. Du udfylder den med dine komponenter.</small>
+            </article>
+          </div>
+          <dl class="term-row">
+            <div>
+              <dt>Library</dt>
+              <dd>Kode, <b>du kalder</b>, når du har brug for den.</dd>
+            </div>
+            <div>
+              <dt>Framework</dt>
+              <dd>En ramme, der <b>kalder din kode</b> — fx når Next.js finder din <code>page.js</code>.</dd>
+            </div>
+          </dl>
+          <p class="po-source-link">
+            <a href="https://nextjs.org/docs" target="_blank" rel="noreferrer">Next.js: Docs ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="hvorfor-nextjs">
+          <span class="eyebrow">Mere end rendering · hvorfor Next.js?</span>
+          <h2>React alene løser kun UI'et</h2>
+          <div class="why-table" role="table" aria-label="Problemer i React og Vite og hvordan Next.js løser dem">
+            <div class="why-row why-head" role="row">
+              <span></span><span>React og Vite · det I kender</span><span>Next.js · i dag</span>
+            </div>
+            <div class="why-row" role="row">
+              <b>Routing</b><span>Installér og konfigurér React Router selv</span
+              ><span class="is-next">Mapper i <code>app/</code> bliver til routes</span>
+            </div>
+            <div class="why-row" role="row">
+              <b>Data</b><span><code>useEffect</code>, <code>useState</code> og loading i hver komponent</span
+              ><span class="is-next"><code>await fetch</code> direkte i komponenten</span>
+            </div>
+            <div class="why-row" role="row">
+              <b>Hemmeligheder</b><span><code>VITE_</code>-værdier ender i browserens JavaScript</span
+              ><span class="is-next">Koden på serveren kan bruge værdier, browseren aldrig ser</span>
+            </div>
+            <div class="why-row" role="row">
+              <b>Første visning</b><span>Browseren får en tom side og bygger den selv</span
+              ><span class="is-next">Browseren får HTML med indholdet — hurtigere og bedre til SEO</span>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Next.js erstatter ikke React.</strong> Det er React plus de beslutninger, I ellers skulle træffe og
+            sætte sammen selv.
+          </p>
         </section>
 
         <section class="po-slide">
@@ -181,8 +628,8 @@
               <h3>Henter og viser data</h3>
               <ul>
                 <li>kan være <code>async</code> og bruge <code>await</code></li>
-                <li>kører på serveren — hemmeligheder bliver dér</li>
-                <li>browseren modtager færdig HTML</li>
+                <li>kører kun på serveren — koden sendes ikke til browseren</li>
+                <li>browseren modtager færdig HTML · SSR</li>
               </ul>
               <pre class="po-code"><code class="language-jsx">export default async function PostsPage() {
   const response = await fetch(url);
@@ -194,9 +641,9 @@
               <span>Client component · <code>"use client"</code></span>
               <h3>Når brugeren interagerer</h3>
               <ul>
-                <li>state med <code>useState</code></li>
-                <li>events som <code>onClick</code></li>
+                <li>state med <code>useState</code> og events som <code>onClick</code></li>
                 <li>browser-API'er som <code>localStorage</code></li>
+                <li>renderes også på serveren og hydreres</li>
               </ul>
               <pre class="po-code"><code class="language-jsx">"use client";
 
@@ -225,6 +672,12 @@ export default function LikeButton() {
           <span class="eyebrow">Opret dit Next.js-projekt</span>
           <h2>Samme udgangspunkt<br />for alle</h2>
           <p class="kicker">Én kommando med flag — så ingen svarer forkert på et spørgsmål undervejs.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>create-next-app</dt>
+              <dd>Next.js' officielle værktøj, der opretter et færdigt projekt — mappestruktur, scripts og konfiguration — så du kan starte med det samme.</dd>
+            </div>
+          </dl>
         </section>
 
         <section class="po-slide command-block">
@@ -342,6 +795,16 @@ export default function LikeButton() {
           <span class="eyebrow">Routing og layouts</span>
           <h2>Mapper bliver<br />til routes</h2>
           <p class="kicker">Og <code>layout.js</code> er det, der går igen på alle sider.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Route</dt>
+              <dd>En URL-sti i appen, fx <code>/posts</code>, som viser en bestemt side. I Next.js er det en mappe i <code>app/</code> med en <code>page.js</code>.</dd>
+            </div>
+            <div>
+              <dt>Layout</dt>
+              <dd>UI, der omkranser flere sider — fx header og footer — og bliver stående, når du navigerer.</dd>
+            </div>
+          </dl>
         </section>
 
         <section class="po-slide">
@@ -454,6 +917,16 @@ export default function RootLayout({ children }) {
           <span class="eyebrow">WordPress som headless CMS</span>
           <h2>WordPress<br />uden hoved</h2>
           <p class="kicker">WordPress håndterer indholdet. Next.js står for præsentationen.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Headless CMS</dt>
+              <dd>Et CMS uden eget frontend — "hovedet". Indholdet redigeres i admin og leveres som data til en anden app.</dd>
+            </div>
+            <div>
+              <dt>REST API</dt>
+              <dd>En måde at hente data over HTTP: hver ressource har sin URL — et endpoint — og svaret er typisk JSON.</dd>
+            </div>
+          </dl>
         </section>
 
         <section class="po-slide">
@@ -639,6 +1112,16 @@ export default function RootLayout({ children }) {
           <span class="eyebrow">Hent posts i en server component</span>
           <h2>Hent data,<br />hvor du viser den</h2>
           <p class="kicker">Uden <code>useEffect</code> og <code>useState</code>.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Server component</dt>
+              <dd>En React-komponent, der kører på serveren. Den kan være <code>async</code>, hente data direkte og sende færdig HTML til browseren.</dd>
+            </div>
+            <div>
+              <dt>Loading-state</dt>
+              <dd>Det, brugeren ser, mens data hentes. I Next.js er det en fil: <code>loading.js</code>.</dd>
+            </div>
+          </dl>
         </section>
 
         <section class="po-slide">
@@ -808,13 +1291,21 @@ export default function PostCard({ post }) {
           <span class="eyebrow">Loading-state · Cache Components</span>
           <h2>Hvad ser brugeren imens?</h2>
           <div class="loading-layout">
-            <div class="layout-mock" aria-label="Layoutet vises med det samme, mens loading.js står i stedet for siden">
-              <div class="mock-header">Header · fra <code>layout.js</code></div>
-              <div class="mock-page">
-                <b>Loading posts …</b><code>app/posts/loading.js</code
-                ><small>står her, indtil <code>page.js</code> er klar</small>
+            <div>
+              <div class="layout-mock" aria-label="Layoutet vises med det samme, mens loading.js står i stedet for siden">
+                <div class="mock-header">Header · fra <code>layout.js</code></div>
+                <div class="mock-page">
+                  <b>Loading posts …</b><code>app/posts/loading.js</code
+                  ><small>står her, indtil <code>page.js</code> er klar</small>
+                </div>
+                <div class="mock-footer">Footer · fra <code>layout.js</code></div>
               </div>
-              <div class="mock-footer">Footer · fra <code>layout.js</code></div>
+              <div class="explain-list stream-note">
+                <p>
+                  <b>Stadig ét svar fra serveren</b>Browseren får layout og loading-state først. Indholdet streames
+                  bagefter i samme HTML-svar — tjek det med <em>Vis sidekilde</em>.
+                </p>
+              </div>
             </div>
             <div class="loading-steps">
               <p class="terminal-note">
@@ -930,6 +1421,16 @@ export default function PostCard({ post }) {
           <span class="eyebrow">Detaljeside med dynamisk route</span>
           <h2>Én route —<br />mange sider</h2>
           <p class="kicker"><code>[slug]</code> er en pladsholder i URL'en.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Dynamisk route</dt>
+              <dd>En route med en pladsholder, fx <code>[slug]</code>, så én <code>page.js</code> kan vise mange forskellige sider.</dd>
+            </div>
+            <div>
+              <dt>Slug</dt>
+              <dd>Den læsbare, unikke del af en URL, fx <code>beautiful-sunset-at-the-beach</code>.</dd>
+            </div>
+          </dl>
         </section>
 
         <section class="po-slide">
@@ -1074,6 +1575,12 @@ if (!post) {
           <span class="eyebrow">Forside, About og et fælles datalag</span>
           <h2>Genbrug, når<br />behovet opstår</h2>
           <p class="kicker">Først gentager vi koden. Så samler vi den.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Datalag</dt>
+              <dd>Ét sted i koden — her <code>lib/wordpress.js</code> — hvor al kommunikation med API'et samles i navngivne funktioner. Siderne beder om data uden at vide, hvordan det hentes.</dd>
+            </div>
+          </dl>
         </section>
 
         <section class="po-slide">
@@ -1211,6 +1718,16 @@ const date = formatDate(post.date);</code></pre>
           <p class="kicker">
             Billeder og kategorier med <code>_embed</code> — og en plan for, når WordPress ikke svarer.
           </p>
+          <dl class="chapter-definition">
+            <div>
+              <dt><code>_embed</code></dt>
+              <dd>En parameter, der får WordPress til at sende relateret indhold — billeder og kategorier — med i samme svar.</dd>
+            </div>
+            <div>
+              <dt>Error boundary</dt>
+              <dd>En grænse, der fanger fejl i en del af appen og viser en fejlside i stedet. I Next.js er det <code>error.js</code>.</dd>
+            </div>
+          </dl>
         </section>
 
         <section class="po-slide">
@@ -1396,6 +1913,45 @@ export default function Error({ retry }) {
               >Referencerepo: nextjs-headless-wordpress ↗</a
             >
           </p>
+        </section>
+
+        <section class="po-slide" id="begreber">
+          <span class="eyebrow">Opsamling · dagens begreber</span>
+          <h2>Forklar dem med dine egne ord</h2>
+          <dl class="glossary-grid">
+            <div>
+              <dt><i>1</i>Framework</dt>
+              <dd>En ramme, der bestemmer strukturen og kalder din kode. Next.js er et React-framework.</dd>
+            </div>
+            <div>
+              <dt><i>1</i>Client og server</dt>
+              <dd>Browseren sender en request. Serveren sender en response tilbage.</dd>
+            </div>
+            <div>
+              <dt><i>1</i>CSR og SSR</dt>
+              <dd>Bygges HTML'en i browseren med JavaScript — eller på serveren, før den sendes?</dd>
+            </div>
+            <div>
+              <dt><i>3</i>Route og layout</dt>
+              <dd>En mappe med <code>page.js</code> er en side. <code>layout.js</code> er rammen om siderne.</dd>
+            </div>
+            <div>
+              <dt><i>4</i>Headless CMS</dt>
+              <dd>WordPress leverer indholdet som JSON. Next.js står for visningen.</dd>
+            </div>
+            <div>
+              <dt><i>5</i>Server component</dt>
+              <dd>Kører på serveren, kan være <code>async</code> og henter data uden <code>useEffect</code>.</dd>
+            </div>
+            <div>
+              <dt><i>6</i>Dynamisk route</dt>
+              <dd><code>[slug]</code> er en pladsholder — én <code>page.js</code> viser mange posts.</dd>
+            </div>
+            <div>
+              <dt><i>7–8</i>Datalag og UI-states</dt>
+              <dd><code>lib/wordpress.js</code> samler datahentningen. <code>loading</code>, <code>error</code> og <code>not-found</code> er filer.</dd>
+            </div>
+          </dl>
         </section>
 
         <section class="po-slide po-closing dui-closing">

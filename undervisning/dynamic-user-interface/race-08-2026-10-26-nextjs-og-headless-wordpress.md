@@ -30,8 +30,14 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Fra React og Vite til Next.js</strong></summary>
 <ul>
-<li>Hvorfor et framework? Next.js giver routing, rendering på serveren, datahentning og build i én samlet løsning.</li>
+<li>Se de første ca. 2 minutter af <a href="https://www.youtube.com/watch?v=Sklc_fQBmcs">Next.js in 100 Seconds</a>. Læg mærke til forskellen på en <em>traditional React app</em> og en Next.js-app: Hvad modtager browseren først, hvor bliver HTML'en lavet, og hvilke ulemper og fordele nævnes?</li>
+<li>Er CSR et problem? Ikke altid. CSR fungerer fint bag login og i værktøjer, hvor brugeren bliver længe. Prisen er en tom side først, svagere SEO og link previews, et vandfald af requests og at alt ligger i browseren. Når indholdet er offentligt og skal vises hurtigt, giver det mening at rendere på serveren.</li>
+<li>Hvad er Next.js? Et framework bygget oven på React. React er et <em>library</em>, du kalder, når du har brug for det. Et <em>framework</em> bestemmer strukturen og kalder din kode – fx når Next.js finder din <code>page.js</code>.</li>
+<li>Hvorfor Next.js, når vi allerede kan React? React løser UI'et. Routing, datahentning, hemmeligheder og første visning måtte du selv løse i Vite. Next.js giver routing, rendering på serveren, datahentning og build i én samlet løsning.</li>
 <li>Sammenlign med det, du kender: Komponenter, props, state og hooks virker som før – men routing og datahentning ændrer sig.</li>
+<li>Client-server-modellen: Browseren (client) sender en request, og serveren sender en response. I Vite var serveren en filserver, og al React-koden kørte i browseren. I Next.js kører React-koden også på serveren.</li>
+<li>CSR og SSR: Med <strong>Client-Side Rendering</strong> i Vite modtager browseren en næsten tom HTML-side og bygger indholdet selv med JavaScript. Med <strong>Server-Side Rendering</strong> i Next.js henter serveren data og sender færdig HTML med indholdet. Bagefter gør JavaScript siden interaktiv – det kaldes <em>hydration</em>.</li>
+<li>Se forskellen selv: Brug <em>Vis sidekilde</em> (<code>⌥⌘U</code>) på din app fra Product optimization og på din Next.js-app. Brug ikke <em>Elements</em> i DevTools – den viser DOM'en, efter JavaScript har kørt.</li>
 <li>Filbaseret routing: Mapper i <code>app/</code> bliver til routes, og <code>page.js</code> er siden.</li>
 <li>Server components er standard. Kun komponenter med state, events eller browser-API'er skal have <code>"use client"</code>.</li>
 </ul>
@@ -133,6 +139,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
   - [Opgave 7 · Billeder, kategorier og fejlhåndtering](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/opgave-7)
 - **Referencerepo:** [nextjs-headless-wordpress](https://github.com/cederdorff/nextjs-headless-wordpress) – hvert commit svarer til ét skridt i agendaen
 - **Next.js:**
+  - [Next.js in 100 Seconds](https://www.youtube.com/watch?v=Sklc_fQBmcs) (Fireship) – de første ca. 2 minutter. Resten af videoen bruger den ældre Pages Router.
   - [Learn Next.js på Scrimba](https://scrimba.com/learn-nextjs-c02moisq6a) (gratis kursus) – første del: _Build a Next.js App_
   - [Installation](https://nextjs.org/docs/app/getting-started/installation)
   - [Project structure](https://nextjs.org/docs/app/getting-started/project-structure)
