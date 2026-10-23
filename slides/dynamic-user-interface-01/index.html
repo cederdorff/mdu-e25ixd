@@ -734,7 +734,7 @@ export default function LikeButton() {
             </p>
             <p><code>public/</code><span>Statiske filer som billeder og ikoner</span></p>
             <p class="is-key">
-              <code>next.config.mjs</code><span>Konfiguration. Læg mærke til <code>cacheComponents: true</code></span>
+              <code>next.config.mjs</code><span>Konfiguration. Læg mærke til <code>cacheComponents</code> og <code>partialPrefetching</code></span>
             </p>
             <p>
               <code>package.json</code
@@ -1394,6 +1394,7 @@ export default function PostCard({ post }) {
                 Gør <code>app/posts/page.js</code> <code>async</code>, hent posts med <code>fetch</code>, og vis
                 titlerne i en <code>&lt;ul&gt;</code>.
               </p>
+              <p>Fejl om <code>&lt;Suspense&gt;</code>? Den løser du under Loading.</p>
             </article>
             <article>
               <h3>Cards</h3>
