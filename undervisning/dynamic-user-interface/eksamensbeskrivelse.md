@@ -42,15 +42,17 @@ Formulér én eller flere hypoteser om, hvordan jeres virkemidler gør flowet mi
 
 ### 4. Udforsk spektret – fra funktionel til ekspressiv
 
-Udforsk samme interaktion i tre niveauer, før I lægger jer fast – i Figma, Rive, kode eller en kombination:
+Udforsk en eller flere nøgleinteraktioner i flowet i tre niveauer, før I lægger jer fast – i Figma, Rive, kode eller en kombination:
 
 - **A – Minimal og funktionel:** Løser opgaven uden ekstra virkemidler.
 - **B – Moderat og personlig:** Udvalgte microinteractions, motion og personlighed.
 - **C – Ekstrem og ekspressiv:** Må gerne være næsten absurd.
 
+Alle tre versioner skal kunne afprøves af testpersoner, fx som klikbare prototyper eller i kode.
+
 ### 5. Test og iterér
 
-Test versionerne med brugere, og mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder det mindeværdige at skade usability – og kan vi måle det?**
+Test de tre versioner med brugere, og mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder det mindeværdige at skade usability – og kan vi måle det?**
 
 Begrund testmetode og antal testpersoner, og vurdér kritisk, hvor sikre resultaterne er. Testpersoner skal give samtykke, og I må ikke bruge rigtige persondata.
 
@@ -60,10 +62,10 @@ Produktet skal være en fungerende, deployet løsning, der:
 
 - er bygget i React – fx med Next.js, Tailwind og shadcn/ui
 - anvender mindst én datakilde, fx et API, et headless CMS eller Supabase
-- bruger virkemidler som motion, microinteractions, lyd, illustration eller gamification med en tydelig begrundelse
+- bruger virkemidler som motion, microinteractions, feedback, lyd, illustration, tone of voice eller gamification med en tydelig begrundelse
 - opbygger virkemidlerne systematisk i et designsystem, fx med tokens for motion, timing og easing samt genbrugelige komponenter i Figma og kode
 - er tilgængelig, fx med respekt for `prefers-reduced-motion`, tastaturbetjening, kontrast og mulighed for at slå lyd fra – lyd og animation må ikke være eneste bærer af information
-- tager højde for performance og – hvis løsningen håndterer brugere eller data – it-sikkerhed
+- tager højde for performance og – hvis løsningen har login eller gemmer brugerdata – it-sikkerhed
 - tydeligt viser, at det er et studieprojekt uden tilknytning til virksomheden bag det oprindelige produkt
 
 <hr style="margin: 2rem 0;">
@@ -72,7 +74,7 @@ Produktet skal være en fungerende, deployet løsning, der:
 
 Det skriftlige materiale afleveres som ét PDF-dokument og skal kort og fagligt vise:
 
-1. **Udgangspunkt og problem:** Produkt, interaktion og problemet med det oprindelige interface. Vis gerne før-billeder.
+1. **Udgangspunkt og problem:** Produkt, flow og problemet med det oprindelige interface. Vis gerne før-billeder.
 2. **Hypotese og udforskning:** Hvad ville I opnå, og hvad lærte I af at udforske spektret?
 3. **Undersøgelsesresultater:** Hvad viste testene, hvor sikre er resultaterne, og hvordan påvirkede de jeres valg?
 4. **Det endelige produkt:** Virkemidler, designsystem, implementering, tilgængelighed, performance og eventuelt it-sikkerhed.
@@ -100,7 +102,7 @@ PDF-dokumentet afleveres **tirsdag 24. november 2026 kl. 12.00 via WISEflow**.
 - **Uge 49:** Optimering og eksamensforberedelse
 - **9.-11. december:** Mundtlige eksamener
 
-I uge 49 optimerer I produktet ud fra fx feedback fra Pitch Day eller nye tests. Optimeringerne udvikles på separate branches, der ikke må merges ind i `main`. Vis dem til eksamen fx via en preview-deployment.
+I uge 49 optimerer I produktet ud fra fx feedback fra Pitch Day eller nye tests. Vælg få, velbegrundede optimeringer frem for mange små – fx et virkemiddel, I justerer eller fjerner – og vær klar til at vise, hvad I har ændret, hvorfor, og hvad det har betydet for oplevelsen. Optimeringerne udvikles på separate branches, der ikke må merges ind i `main`. Vis dem til eksamen fx via en preview-deployment.
 
 <hr style="margin: 2rem 0;">
 
@@ -146,7 +148,7 @@ Hvis du ikke består prøven, går du til omprøve med udgangspunkt i det afleve
 
 ## Tjek før aflevering
 
-- Deployet React-løsning fra `main` med mindst én datakilde, der viser, at den er et studieprojekt
+- Deployet React-løsning fra `main` med mindst én datakilde og en tydelig markering af, at det er et studieprojekt
 - Fungerende links på forsiden, offentligt repository og Figma-fil, der kan åbnes af alle med linket
 - Maksimalt 12.000 anslag inklusive mellemrum
 - Kilder, inspiration og brug af AI er deklareret

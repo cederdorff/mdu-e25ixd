@@ -132,7 +132,9 @@ async function syncLinkedModule({ baseUrl, courseId, page, token }) {
     throw new Error(`Canvas returnerede modulpunktet, men ikke modul ${moduleId}.`);
   }
 
-  if (linkedModule.name !== page.title) {
+  if (linkedModule.name.startsWith(">>>")) {
+    console.log("Modulnavn: skillemodul (>>>) — navnet blev ikke ændret.");
+  } else if (linkedModule.name !== page.title) {
     const form = new URLSearchParams();
     form.set("module[name]", page.title);
     await canvasRequest(
