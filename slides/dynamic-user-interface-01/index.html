@@ -17,7 +17,7 @@
       <div class="slides">
         <section class="po-slide po-title dui-title">
           <span class="eyebrow">Dynamic User Interface · 3. semester</span>
-          <h1>Stadig React.<br /><span>Nu med struktur.</span></h1>
+          <h1>Stadig React.<br /><span>Nu med (mere) struktur.</span></h1>
           <p class="lead">Next.js · Server components · WordPress som headless CMS</p>
           <p class="date"><span>RACE</span><time datetime="2026-10-26">26. oktober 2026</time></p>
         </section>
@@ -26,19 +26,21 @@
           <span class="eyebrow">Dynamic User Interface · 15 ECTS · mundtlig gruppeprøve</span>
           <h2>Make it memorable — but don't break it</h2>
           <p class="course-lead">
-            I grupper gør I et eksisterende, kedeligt produkt mindeværdigt med motion, microinteractions og
-            personlighed — uden at det går ud over brugerens mål.
+            I grupper gør I et eksisterende, kedeligt produkt til noget, brugerne husker — med motion, microinteractions
+            og personlighed, men uden at det går ud over brugerens mål.
           </p>
           <div class="course-phases">
             <article>
               <span>Fundament · 26.–30. okt</span>
-              <h3>Lab-appen</h3>
+              <h3>Next.js-appen</h3>
               <p>Vi bygger den tekniske stack sammen: Next.js, headless WordPress, designsystem og login.</p>
             </article>
             <article>
               <span>Projekt · 2.–24. nov</span>
               <h3>Gruppeprojektet</h3>
-              <p>Kick-off, roller og beskyttet adgang, motion i kode — og faciliteret vejledning frem mod aflevering.</p>
+              <p>
+                Kick-off, roller og beskyttet adgang, motion i kode — og faciliteret vejledning frem mod aflevering.
+              </p>
             </article>
             <article>
               <span>Pitch og eksamen · 27. nov–11. dec</span>
@@ -49,7 +51,7 @@
           <div class="course-rhythm" aria-label="Arbejdsrytmen i de faglige undervisningsgange">
             <p><b>Kort input</b>et nyt begreb eller værktøj</p>
             <i aria-hidden="true">→</i>
-            <p><b>Implementering</b>i lab-appen</p>
+            <p><b>Implementering</b>i Next.js-appen</p>
             <i aria-hidden="true">→</i>
             <p><b>Overførsel</b>til jeres gruppeprojekt</p>
           </div>
@@ -110,7 +112,8 @@
           </div>
           <p class="dui-lead-note">
             <strong>Faciliteret vejledning:</strong> Dagen starter med en kort fælles morgen-session. Resten af dagen
-            arbejder I i grupperne, og vi går rundt og vejleder. Derudover har I undervisning med NKKR og BKI — se Canvas.
+            arbejder I i grupperne, og vi går rundt og vejleder. Derudover har I undervisning med NKKR og BKI — se
+            Canvas.
           </p>
         </section>
 
@@ -193,7 +196,7 @@
               </article>
             </div>
           </div>
-          <div class="lab-path" aria-label="Lab-appen bygges videre i de kommende undervisningsgange">
+          <div class="lab-path" aria-label="Next.js-appen bygges videre i de kommende undervisningsgange">
             <p class="is-today"><b>I dag</b>Next.js og WordPress</p>
             <p><b>29. oktober</b>Designsystem og Tailwind CSS</p>
             <p><b>30. oktober</b>Supabase Auth</p>
@@ -225,12 +228,8 @@
             <div class="watch-row watch-head" role="row">
               <span></span><span>Traditional React app</span><span>Next.js app</span>
             </div>
-            <div class="watch-row" role="row">
-              <b>Hvad modtager browseren først?</b><span></span><span></span>
-            </div>
-            <div class="watch-row" role="row">
-              <b>Hvor bliver HTML'en lavet?</b><span></span><span></span>
-            </div>
+            <div class="watch-row" role="row"><b>Hvad modtager browseren først?</b><span></span><span></span></div>
+            <div class="watch-row" role="row"><b>Hvor bliver HTML'en lavet?</b><span></span><span></span></div>
             <div class="watch-row" role="row">
               <b>Hvilke ulemper og fordele nævner han?</b><span></span><span></span>
             </div>
@@ -368,15 +367,11 @@
                 ><small>bygger siden og henter data bagefter</small>
               </article>
               <b aria-hidden="true">⇄<small>JSON</small></b>
-              <article>
-                <span>API</span><strong>Supabase</strong><small>kaldes fra browseren</small>
-              </article>
+              <article><span>API</span><strong>Supabase</strong><small>kaldes fra browseren</small></article>
             </div>
             <div class="arch-row is-next">
               <span class="arch-label">Next.js<small>i dag</small></span>
-              <article>
-                <span>API</span><strong>WordPress</strong><small>kaldes fra serveren</small>
-              </article>
+              <article><span>API</span><strong>WordPress</strong><small>kaldes fra serveren</small></article>
               <b aria-hidden="true">⇄<small>JSON</small></b>
               <article class="is-react">
                 <span>Server · Node.js</span><strong>React kører her</strong
@@ -483,8 +478,8 @@
         &lt;h2&gt;Beautiful sunset at the beach&lt;/h2&gt;
         &lt;p&gt;Experience serenity as …&lt;/p&gt;</code></pre>
               <small
-                ><b>Indholdet fra WordPress står i HTML'en.</b> JavaScript sendes stadig med — men kun til at gøre
-                siden interaktiv.</small
+                ><b>Indholdet fra WordPress står i HTML'en.</b> JavaScript sendes stadig med — men kun til at gøre siden
+                interaktiv.</small
               >
             </article>
           </div>
@@ -675,7 +670,10 @@ export default function LikeButton() {
           <dl class="chapter-definition">
             <div>
               <dt>create-next-app</dt>
-              <dd>Next.js' officielle værktøj, der opretter et færdigt projekt — mappestruktur, scripts og konfiguration — så du kan starte med det samme.</dd>
+              <dd>
+                Next.js' officielle værktøj, der opretter et færdigt projekt — mappestruktur, scripts og konfiguration —
+                så du kan starte med det samme.
+              </dd>
             </div>
           </dl>
         </section>
@@ -734,7 +732,8 @@ export default function LikeButton() {
             </p>
             <p><code>public/</code><span>Statiske filer som billeder og ikoner</span></p>
             <p class="is-key">
-              <code>next.config.mjs</code><span>Konfiguration. Læg mærke til <code>cacheComponents</code> og <code>partialPrefetching</code></span>
+              <code>next.config.mjs</code
+              ><span>Konfiguration. Læg mærke til <code>cacheComponents</code> og <code>partialPrefetching</code></span>
             </p>
             <p>
               <code>package.json</code
@@ -798,7 +797,10 @@ export default function LikeButton() {
           <dl class="chapter-definition">
             <div>
               <dt>Route</dt>
-              <dd>En URL-sti i appen, fx <code>/posts</code>, som viser en bestemt side. I Next.js er det en mappe i <code>app/</code> med en <code>page.js</code>.</dd>
+              <dd>
+                En URL-sti i appen, fx <code>/posts</code>, som viser en bestemt side. I Next.js er det en mappe i
+                <code>app/</code> med en <code>page.js</code>.
+              </dd>
             </div>
             <div>
               <dt>Layout</dt>
@@ -920,11 +922,15 @@ export default function RootLayout({ children }) {
           <dl class="chapter-definition">
             <div>
               <dt>Headless CMS</dt>
-              <dd>Et CMS uden eget frontend — "hovedet". Indholdet redigeres i admin og leveres som data til en anden app.</dd>
+              <dd>
+                Et CMS uden eget frontend — "hovedet". Indholdet redigeres i admin og leveres som data til en anden app.
+              </dd>
             </div>
             <div>
               <dt>REST API</dt>
-              <dd>En måde at hente data over HTTP: hver ressource har sin URL — et endpoint — og svaret er typisk JSON.</dd>
+              <dd>
+                En måde at hente data over HTTP: hver ressource har sin URL — et endpoint — og svaret er typisk JSON.
+              </dd>
             </div>
           </dl>
         </section>
@@ -1115,7 +1121,10 @@ export default function RootLayout({ children }) {
           <dl class="chapter-definition">
             <div>
               <dt>Server component</dt>
-              <dd>En React-komponent, der kører på serveren. Den kan være <code>async</code>, hente data direkte og sende færdig HTML til browseren.</dd>
+              <dd>
+                En React-komponent, der kører på serveren. Den kan være <code>async</code>, hente data direkte og sende
+                færdig HTML til browseren.
+              </dd>
             </div>
             <div>
               <dt>Loading-state</dt>
@@ -1292,7 +1301,10 @@ export default function PostCard({ post }) {
           <h2>Hvad ser brugeren imens?</h2>
           <div class="loading-layout">
             <div>
-              <div class="layout-mock" aria-label="Layoutet vises med det samme, mens loading.js står i stedet for siden">
+              <div
+                class="layout-mock"
+                aria-label="Layoutet vises med det samme, mens loading.js står i stedet for siden"
+              >
                 <div class="mock-header">Header · fra <code>layout.js</code></div>
                 <div class="mock-page">
                   <b>Loading posts …</b><code>app/posts/loading.js</code
@@ -1425,7 +1437,10 @@ export default function PostCard({ post }) {
           <dl class="chapter-definition">
             <div>
               <dt>Dynamisk route</dt>
-              <dd>En route med en pladsholder, fx <code>[slug]</code>, så én <code>page.js</code> kan vise mange forskellige sider.</dd>
+              <dd>
+                En route med en pladsholder, fx <code>[slug]</code>, så én <code>page.js</code> kan vise mange
+                forskellige sider.
+              </dd>
             </div>
             <div>
               <dt>Slug</dt>
@@ -1579,7 +1594,10 @@ if (!post) {
           <dl class="chapter-definition">
             <div>
               <dt>Datalag</dt>
-              <dd>Ét sted i koden — her <code>lib/wordpress.js</code> — hvor al kommunikation med API'et samles i navngivne funktioner. Siderne beder om data uden at vide, hvordan det hentes.</dd>
+              <dd>
+                Ét sted i koden — her <code>lib/wordpress.js</code> — hvor al kommunikation med API'et samles i
+                navngivne funktioner. Siderne beder om data uden at vide, hvordan det hentes.
+              </dd>
             </div>
           </dl>
         </section>
@@ -1722,11 +1740,17 @@ const date = formatDate(post.date);</code></pre>
           <dl class="chapter-definition">
             <div>
               <dt><code>_embed</code></dt>
-              <dd>En parameter, der får WordPress til at sende relateret indhold — billeder og kategorier — med i samme svar.</dd>
+              <dd>
+                En parameter, der får WordPress til at sende relateret indhold — billeder og kategorier — med i samme
+                svar.
+              </dd>
             </div>
             <div>
               <dt>Error boundary</dt>
-              <dd>En grænse, der fanger fejl i en del af appen og viser en fejlside i stedet. I Next.js er det <code>error.js</code>.</dd>
+              <dd>
+                En grænse, der fanger fejl i en del af appen og viser en fejlside i stedet. I Next.js er det
+                <code>error.js</code>.
+              </dd>
             </div>
           </dl>
         </section>
@@ -1950,7 +1974,10 @@ export default function Error({ retry }) {
             </div>
             <div>
               <dt><i>7–8</i>Datalag og UI-states</dt>
-              <dd><code>lib/wordpress.js</code> samler datahentningen. <code>loading</code>, <code>error</code> og <code>not-found</code> er filer.</dd>
+              <dd>
+                <code>lib/wordpress.js</code> samler datahentningen. <code>loading</code>, <code>error</code> og
+                <code>not-found</code> er filer.
+              </dd>
             </div>
           </dl>
         </section>

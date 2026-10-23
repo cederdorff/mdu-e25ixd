@@ -24,28 +24,28 @@ NKKR og BKI underviser i forløbet 27/10, 3/11, 6/11, 9/11, 11/11, 13/11, 18/11,
 
 ## Progression i de fem faglige undervisningsgange
 
-RACE-gangene dækker forløbets tekniske stack: Next.js, headless CMS, designsystem i kode, Supabase-auth, brugerroller og beskyttet adgang samt motion i kode. De studerende arbejder i en fælles lab-app, som udvides gang for gang. Principperne overføres løbende til gruppeprojektet efter princippet **kort input → implementering → overførsel**.
+RACE-gangene dækker forløbets tekniske stack: Next.js, headless CMS, designsystem i kode, Supabase-auth, brugerroller og beskyttet adgang samt motion i kode. De studerende arbejder i deres egen Next.js-app, som udvides gang for gang. Principperne overføres løbende til gruppeprojektet efter princippet **kort input → implementering → overførsel**.
 
 ### Før kick-off: fundament og værktøjer
 
 | # | Dato | Tema | Indhold | Hovedoutput |
 | --- | --- | --- | --- | --- |
 | 08 | 26/10 | Next.js og intro til headless WordPress | App Router, layouts, server components, WordPress REST API (`/wp-json/wp/v2/posts`), liste- og detaljeside (`[slug]`) | En Next.js-app, der viser indhold fra deres egen WordPress |
-| 09 | 29/10 | Designsystem fra Figma til kode | Tailwind, shadcn/ui, tokens for farve, typografi og spacing, Figma variables → CSS variables, Figma MCP, kontrast og fokus-states i tokens, tastaturbetjening i shadcn-komponenter | Lab-appen bruger egne tokens og komponenter |
-| 10 | 30/10 | Supabase Auth i Next.js | Fra REST til Supabase SDK, sign up, sign in og sign out, sessioner i cookies sammenlignet med `localStorage` og `sessionStorage`, Supabase-klient på server og client, beskyttede sider | Lab-appen har login og en side, der kun kan ses af brugere, der er logget ind |
+| 09 | 29/10 | Designsystem fra Figma til kode | Tailwind, shadcn/ui, tokens for farve, typografi og spacing, Figma variables → CSS variables, Figma MCP, kontrast og fokus-states i tokens, tastaturbetjening i shadcn-komponenter | Next.js-appen bruger egne tokens og komponenter |
+| 10 | 30/10 | Supabase Auth i Next.js | Fra REST til Supabase SDK, sign up, sign in og sign out, sessioner i cookies sammenlignet med `localStorage` og `sessionStorage`, Supabase-klient på server og client, beskyttede sider | Next.js-appen har login og en side, der kun kan ses af brugere, der er logget ind |
 
 ### Efter kick-off: projektet er i gang
 
 | # | Dato | Tema | Indhold | Hovedoutput |
 | --- | --- | --- | --- | --- |
-| 12 | 10/11 | User management, roller og beskyttet adgang | `profiles`-tabel koblet til `auth.users`, brugerroller, Row Level Security, beskyttelse af routes og data, kombination af WordPress-indhold og Supabase-brugerdata | Lab-appen har roller, og data er beskyttet med RLS |
+| 12 | 10/11 | User management, roller og beskyttet adgang | `profiles`-tabel koblet til `auth.users`, brugerroller, Row Level Security, beskyttelse af routes og data, kombination af WordPress-indhold og Supabase-brugerdata | Next.js-appen har roller, og data er beskyttet med RLS |
 | 13 | 12/11 | Motion i kode | Motion (Framer Motion), motion-tokens for duration og easing, microinteractions i React-komponenter, `"use client"` til animerede komponenter, `prefers-reduced-motion`, lyd med mute, animationer med god performance (transform/opacity), varianter A/B/C styret af tokens til test | En microinteraction i projektet, som bruger tokens og respekterer reduced motion |
 
 ### Beslutninger
 
 - **JavaScript, ikke TypeScript:** De studerende vælger *No* til TypeScript i `create-next-app`. shadcn/ui sættes op med `"tsx": false` i `components.json`, så komponenterne genereres som JSX.
-- **Eget Next.js-projekt fra start:** I gang 08 opretter de studerende selv lab-appen med `create-next-app` (TypeScript: No, Tailwind: No, App Router: Yes) og gennemgår den genererede struktur. Tailwind tilføjes først i gang 09, så gang 08 kan fokusere på Next.js. Det forbereder dem på at sætte gruppeprojektet op.
-- **Referencerepo i stedet for starter-repo:** RACE laver et referencerepo med den færdige lab-app fra gang 08, som bruges som facit og fallback. WordPress-URL'en ligger i en environment variable, så repoet kan pege på enhver WP-side.
+- **Eget Next.js-projekt fra start:** I gang 08 opretter de studerende selv Next.js-appen med `create-next-app` (TypeScript: No, Tailwind: No, App Router: Yes) og gennemgår den genererede struktur. Tailwind tilføjes først i gang 09, så gang 08 kan fokusere på Next.js. Det forbereder dem på at sætte gruppeprojektet op.
+- **Referencerepo i stedet for starter-repo:** RACE laver et referencerepo med den færdige Next.js-app fra gang 08, som bruges som facit og fallback. WordPress-URL'en ligger i en environment variable, så repoet kan pege på enhver WP-side.
 - **De studerendes egen WordPress som datakilde:** De studerende fetcher fra den WordPress-løsning, de selv har sat op på Simply.com ugen før. Der er ikke brug for en fælles demo-WP.
 
 ### Forberedelse til gang 08
@@ -79,7 +79,7 @@ Hvor kravene i [eksamensbeskrivelsen](eksamensbeskrivelse.md) bliver dækket. Kr
 | Tilgængelighed: reduced motion, tastatur, kontrast, lyd fra | 09, 13, tjek 23/11 | RACE |
 | Performance | 13 (transform/opacity), 16/11 (Lighthouse) | RACE |
 | It-sikkerhed, hvis løsningen har brugere eller data | 10, 12, 16/11 | RACE |
-| Analyse, delight-hypotese, spektret A/B/C og test | 13 (varianter i kode), resten uden for RACE-gangene | NKKR/BKI |
+| Analyse, hypotese om mindeværdighed, spektret A/B/C og test | 13 (varianter i kode), resten uden for RACE-gangene | NKKR/BKI |
 | Deployet løsning fra `main`, markeret som studieprojekt | 16/11, 23/11 | RACE |
 | Git i grupper og `main` som aflevering | Kick-off 2/11 eller 08 (åbent spørgsmål) | RACE |
 | Optimeringer på branches med preview-deployment | 1/12 | RACE |
@@ -101,7 +101,6 @@ Prioritet: It-sikkerhed og performance 16/11 rammer bedømmelseskriterierne dire
 ## Åbne spørgsmål
 
 - Hvad dækker NKKR og BKI af motion, delight og test, og hvad er NKKR's rolle 29/10?
-- Hvilken lab-app skal bruges, fx en timer, en vejr-app eller en to-do?
 - Skal alle grupper bruge Supabase-auth, eller kun dem, hvis produkt har brugere?
 - Vil NKKR være med i morgen-sessionen 3/12, og hvor lang skal en morgen-session være?
 - Skal Git i grupper ligge ved kick-off 2/11 eller i gang 08?

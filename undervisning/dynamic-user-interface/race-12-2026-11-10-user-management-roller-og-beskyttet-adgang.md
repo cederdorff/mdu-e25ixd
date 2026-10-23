@@ -2,15 +2,15 @@
 
 ## Formål
 
-Sidst fik lab-appen login. I dag bygger vi videre med user management, brugerroller og beskyttet adgang til data. Vi kobler også de to datakilder: Indholdet kommer fra WordPress, mens brugerdata gemmes i Supabase.
+Sidst fik Next.js-appen login. I dag bygger vi videre med user management, brugerroller og beskyttet adgang til data. Vi kobler også de to datakilder: Indholdet kommer fra WordPress, mens brugerdata gemmes i Supabase.
 
-Målet er, at lab-appen har profiler, at brugere kan gemme eller tilføje noget til WordPress-indholdet, og at data er beskyttet med Row Level Security. Bagefter overfører I principperne til jeres gruppeprojekt.
+Målet er, at Next.js-appen har profiler, at brugere kan gemme eller tilføje noget til WordPress-indholdet, og at data er beskyttet med Row Level Security. Bagefter overfører I principperne til jeres gruppeprojekt.
 
 <hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
-- Sørg for, at din lab-app kører lokalt med login fra 30. oktober.
+- Sørg for, at din Next.js-app kører lokalt med login fra 30. oktober.
 - Overvej, hvilke brugerdata jeres gruppeprojekt har brug for, og hvem der må se og ændre dem.
 - Genbesøg gerne relationen mellem `users` og `posts` fra Case 1 i Product optimization.
 

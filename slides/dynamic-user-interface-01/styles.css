@@ -43,6 +43,10 @@
     linear-gradient(135deg, transparent 50%, rgb(101 167 255 / 8%));
 }
 
+.dui-title h1 {
+  max-width: none;
+}
+
 .dui-title h1 span,
 .dui-title .date span {
   color: var(--dui);

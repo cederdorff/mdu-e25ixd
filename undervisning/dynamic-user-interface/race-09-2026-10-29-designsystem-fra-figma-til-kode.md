@@ -4,14 +4,14 @@
 
 I dag kobler vi design og kode gennem et designsystem. Vi går fra beslutninger i Figma til tokens og genbrugelige komponenter i Next.js med Tailwind CSS og shadcn/ui.
 
-Målet er, at din lab-app fra sidst bruger dine egne tokens for farve, typografi og spacing og et par genbrugelige komponenter. Tokens for motion, timing og easing kommer til i undervisningsgangen om motion 12. november.
+Målet er, at din Next.js-app fra sidst bruger dine egne tokens for farve, typografi og spacing og et par genbrugelige komponenter. Tokens for motion, timing og easing kommer til i undervisningsgangen om motion 12. november.
 
 <hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
-- Sørg for, at din lab-app fra 26. oktober kører lokalt.
-- Hav en Figma-fil klar med et simpelt udgangspunkt for din lab-app, fx en side med farver, typografi og et par komponenter.
+- Sørg for, at din Next.js-app fra 26. oktober kører lokalt.
+- Hav en Figma-fil klar med et simpelt udgangspunkt for din Next.js-app, fx en side med farver, typografi og et par komponenter.
 - Opdatér Figma, så du kan afprøve Figma MCP-serveren.
 
 <hr style="margin: 2rem 0;">
@@ -33,7 +33,7 @@ Målet er, at din lab-app fra sidst bruger dine egne tokens for farve, typografi
 <summary><strong>2. Fra Figma variables til CSS variables</strong></summary>
 <ul>
 <li>Opret eller gennemgå variables i Figma for farve, typografi og spacing.</li>
-<li>Tilføj Tailwind CSS til din lab-app: Installér <code>tailwindcss</code>, <code>@tailwindcss/postcss</code> og <code>postcss</code>, opret <code>postcss.config.mjs</code>, og importér Tailwind i <code>app/globals.css</code>.</li>
+<li>Tilføj Tailwind CSS til din Next.js-app: Installér <code>tailwindcss</code>, <code>@tailwindcss/postcss</code> og <code>postcss</code>, opret <code>postcss.config.mjs</code>, og importér Tailwind i <code>app/globals.css</code>.</li>
 <li>Omsæt dine Figma variables til CSS variables i <code>app/globals.css</code>, og gør dem tilgængelige i Tailwind med <code>@theme</code>.</li>
 <li>Brug samme navne i Figma og kode, så designer og udvikler taler om det samme.</li>
 </ul>
@@ -71,7 +71,7 @@ Målet er, at din lab-app fra sidst bruger dine egne tokens for farve, typografi
 <details style="margin-left: 1.5rem;">
 <summary><strong>6. Arbejd videre</strong></summary>
 <ul>
-<li>Gør din lab-app konsekvent: Erstat hardcodede farver, størrelser og afstande med tokens.</li>
+<li>Gør din Next.js-app konsekvent: Erstat hardcodede farver, størrelser og afstande med tokens.</li>
 <li>Byg eller tilpas to-tre genbrugelige komponenter.</li>
 <li>Overvej jeres projekt: Hvilke tokens og komponenter skal jeres designsystem have fra start?</li>
 <li>Commit og push dit arbejde.</li>

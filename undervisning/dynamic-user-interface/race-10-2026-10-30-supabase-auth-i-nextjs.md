@@ -2,16 +2,16 @@
 
 ## Formål
 
-I dag tilføjer vi brugere til lab-appen med Supabase Auth. I Product optimization brugte vi Supabase via REST for at forstå fetch, HTTP og JSON. Nu skifter vi til Supabase SDK'et, som også håndterer auth og sessioner.
+I dag tilføjer vi brugere til Next.js-appen med Supabase Auth. I Product optimization brugte vi Supabase via REST for at forstå fetch, HTTP og JSON. Nu skifter vi til Supabase SDK'et, som også håndterer auth og sessioner.
 
-Målet er, at din lab-app har sign up, sign in og sign out og en side, der kun kan ses af brugere, der er logget ind. Inden kick-off på mandag skal du også have en idé om, hvorvidt jeres produkt har brug for brugere.
+Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der kun kan ses af brugere, der er logget ind. Inden kick-off på mandag skal du også have en idé om, hvorvidt jeres produkt har brug for brugere.
 
 <hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
-- Sørg for, at din lab-app kører lokalt med indhold fra WordPress.
-- Opret et nyt Supabase-projekt til lab-appen, eller genoptag et eksisterende (resume project).
+- Sørg for, at din Next.js-app kører lokalt med indhold fra WordPress.
+- Opret et nyt Supabase-projekt til Next.js-appen, eller genoptag et eksisterende (resume project).
 - Genbesøg gerne slidet om REST og SDK fra [Product optimization 01](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/supabase-rest-og-sdk).
 
 <hr style="margin: 2rem 0;">

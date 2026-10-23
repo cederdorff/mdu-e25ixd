@@ -6,15 +6,15 @@ Dynamic User Interface er en **mundtlig gruppeprøve** på baggrund af et gruppe
 
 > **Make it memorable – but don't break it.**
 
-Mange digitale produkter er brugervenlige, men kedelige. I dette projekt tager I udgangspunkt i noget, der allerede virker, og gør det lækkert. I arbejder helt ned i detaljen med motion, microinteractions, feedback, lyd, illustration, tone of voice og personlighed – og dokumenterer samtidig, at produktet stadig understøtter brugerens mål.
+Mange digitale produkter er brugervenlige, men kedelige. I dette projekt tager I udgangspunkt i noget, der allerede virker, og gør det interessant. I arbejder helt ned i detaljen med motion, microinteractions, feedback, lyd, illustration, tone of voice og personlighed.
 
-Delight kan gøre et produkt mere mindeværdigt, men effekter kan også forsinke, forvirre, ekskludere eller irritere. Projektet er derfor ikke en æstetisk øvelse alene, men en UX-metodisk opgave, hvor I formulerer hypoteser om delight og undersøger, om det faktisk skaber værdi:
+### Æstetik + UX = mindeværdigt
 
-**usability → delight → emotion → personality → memorability → validation**
+Æstetiske og emotionelle virkemidler kan gøre et produkt mere mindeværdigt, men de kan også forsinke, forvirre, ekskludere eller irritere. Projektet er derfor ikke kun en æstetisk øvelse, men en UX-metodisk opgave: I formulerer hypoteser om, hvordan jeres virkemidler kan vække begejstring, og tester og dokumenterer løbende, om de skaber værdi uden at gå ud over brugerens mål.
 
-Projektet har én gennemgående regel:
+> **Hvis en effekt eller et greb ikke kan forsvares ud fra brugerens oplevelse, skal den fjernes. Kill your darlings.**
 
-> **Hvis en effekt ikke kan forklares ud fra brugerens oplevelse, skal den fjernes.**
+### Inspiration
 
 Lad jer inspirere af fx [Not Boring Software](https://notbor.ing/), der gør helt almindelige værktøjer som vejr, lommeregner og timer til sjove og mindeværdige oplevelser, eller af Duolingo, Spotify Wrapped og Things 3. Fagligt kan I bl.a. læne jer op ad Dan Saffers _Microinteractions_ og Aaron Walters _Designing for Emotion_.
 
@@ -22,21 +22,21 @@ Lad jer inspirere af fx [Not Boring Software](https://notbor.ing/), der gør hel
 
 ## Projektet
 
-I arbejder i grupper af 3-4 studerende.
+I arbejder i grupper af 2-4 studerende.
 
 ### 1. Vælg et eksisterende produkt
 
-Vælg et eksisterende digitalt produkt, som I oplever som funktionelt, men kedeligt. Afgræns projektet til **ét centralt flow eller én til tre centrale interaktioner**. Det er bedre at gøre lidt helt færdigt og gennemarbejdet end at gøre meget halvt.
+Vælg et eksisterende digitalt produkt, som I oplever som funktionelt, men kedeligt. Afgræns projektet til **ét centralt flow**. Det er bedre at gøre lidt helt færdigt og gennemarbejdet end at gøre meget halvt.
 
-Produktvalg og afgrænsning kvalificeres sammen med underviserne **tirsdag 3. november**. Kom med jeres produkt, de interaktioner, I vil arbejde med, og en kort begrundelse.
+Produktvalg og afgrænsning kvalificeres sammen med underviserne **tirsdag 3. november**. Medbring jeres produktidé, det flow, I vil arbejde med, og en kort begrundelse for jeres valg.
 
 ### 2. Analysér udgangspunktet
 
-Dokumentér det oprindelige interface, og undersøg, hvad der virker, og hvad der mangler, fx med UX audit, heuristisk evaluering, brugertest eller analyse af konkurrenter.
+Fastlæg først, hvad brugerens mål med produktet er – det er dem, jeres ændringer ikke må gå ud over. Dokumentér derefter det oprindelige interface, og undersøg, hvad der virker, og hvad der mangler, fx med UX audit, heuristisk evaluering, brugertest eller analyse af konkurrenter.
 
-### 3. Formulér en delight-hypotese
+### 3. Formulér en hypotese om mindeværdighed
 
-Brug gerne denne skabelon:
+Formulér én eller flere hypoteser om, hvordan jeres virkemidler gør flowet mindeværdigt. Brug gerne denne skabelon:
 
 > Vi tror, at **[virkemiddel]** i **[interaktion]** vil få **[brugeren]** til at **[opleve eller gøre noget]**, uden at **[usability-mål]** forringes. Det ved vi, når **[målbart resultat]**.
 
@@ -45,12 +45,12 @@ Brug gerne denne skabelon:
 Udforsk samme interaktion i tre niveauer, før I lægger jer fast – i Figma, Rive, kode eller en kombination:
 
 - **A – Minimal og funktionel:** Løser opgaven uden ekstra virkemidler.
-- **B – Moderat delight:** Udvalgte microinteractions, motion og personlighed.
+- **B – Moderat og personlig:** Udvalgte microinteractions, motion og personlighed.
 - **C – Ekstrem og ekspressiv:** Må gerne være næsten absurd.
 
 ### 5. Test og iterér
 
-Test versionerne med brugere, og mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder delight at skade usability – og kan vi måle det?**
+Test versionerne med brugere, og mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder det mindeværdige at skade usability – og kan vi måle det?**
 
 Begrund testmetode og antal testpersoner, og vurdér kritisk, hvor sikre resultaterne er. Testpersoner skal give samtykke, og I må ikke bruge rigtige persondata.
 
@@ -77,7 +77,7 @@ Det skriftlige materiale afleveres som ét PDF-dokument og skal kort og fagligt 
 3. **Undersøgelsesresultater:** Hvad viste testene, hvor sikre er resultaterne, og hvordan påvirkede de jeres valg?
 4. **Det endelige produkt:** Virkemidler, designsystem, implementering, tilgængelighed, performance og eventuelt it-sikkerhed.
 5. **Proces og samarbejde:** Hvordan planlagde og styrede I processen, og hvordan spillede design og kode sammen?
-6. **Faglig refleksion:** Hvornår er delight godt UX? Hvilke effekter fjernede I – og hvorfor? Hvad kunne være næste skridt?
+6. **Faglig refleksion:** Hvornår gør det mindeværdige produktet bedre at bruge – og hvornår står det i vejen? Hvilke effekter fjernede I – og hvorfor? Hvad kunne være næste skridt?
 
 <hr style="margin: 2rem 0;">
 
@@ -112,7 +112,7 @@ Prøven varer 40-50 minutter afhængigt af gruppens størrelse:
 2. **Gruppeeksamination:** ca. 10 minutter pr. studerende
 3. **Votering og meddelelse af karakter:** 15 minutter
 
-Vis produktet i brug – delight skal opleves, ikke kun beskrives. Vis også, hvad I har optimeret efter afleveringen, og hvorfor. Hav en kort skærmoptagelse klar som backup.
+Vis produktet i brug – det mindeværdige skal opleves, ikke kun beskrives. Vis også, hvad I har optimeret efter afleveringen, og hvorfor. Hav en kort skærmoptagelse klar som backup.
 
 Hver studerende skal kunne redegøre for hele projektet – design, kode og proces – ikke kun egne dele.
 
@@ -137,7 +137,7 @@ Der lægges især vægt på:
 - valg og anvendelse af dynamiske elementer, datakilde og designsystem
 - tilgængelighed, performance og eventuelt it-sikkerhed
 - validiteten af undersøgelsesresultaterne og jeres kritiske vurdering af dem
-- refleksionen over balancen mellem delight og usability
+- refleksionen over balancen mellem mindeværdighed og usability
 - formidling og begrundelse af jeres valg – skriftligt og mundtligt
 
 Hvis du ikke består prøven, går du til omprøve med udgangspunkt i det afleverede projekt.
