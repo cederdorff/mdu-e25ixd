@@ -95,9 +95,8 @@ PDF-dokumentet afleveres **tirsdag 24. november 2026 kl. 12.00 via WISEflow**.
 
 <!-- TODO: Beskriv, hvordan gruppeafleveringen sættes op i WISEflow, når det er afklaret. -->
 
-- **Forside:** Gruppens navne, hold og uddannelse samt direkte links til den deployede løsning, GitHub-repositoryet og Figma-filen.
+- **Forside:** Projekttitel, det oprindelige produkt, gruppens navne, hold og uddannelse, antal anslag samt klikbare links til den deployede løsning, GitHub-repositoryet og Figma-filen.
 - **Omfang:** Maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum. Kun brødteksten tæller. Illustrationer tæller som ét anslag, medmindre det er teksttunge figurer eller tabeller – så tæller teksten i dem med. Forside, indholdsfortegnelse, litteraturliste og bilag tæller ikke med. Bilag indgår ikke i bedømmelsen.
-- **Sprog:** Som udgangspunkt dansk.
 - **Adgang:** Den deployede løsning, repositoryet og Figma-filen skal være tilgængelige via linkene, indtil bedømmelsen er færdig. GitHub-repositoryet skal være offentligt, og Figma-filen skal kunne åbnes af alle med linket. Test linkene i et privat browservindue.
 - **`main` er jeres aflevering:** Den deployede løsning skal være bygget fra `main`, og `main` må ikke ændres efter afleveringsfristen, før bedømmelsen er færdig.
 
@@ -156,7 +155,7 @@ Hvis du ikke består prøven, går du til omprøve med udgangspunkt i det afleve
 ## Tjek før aflevering
 
 - Deployet React-løsning fra `main` med mindst én datakilde og en tydelig markering af, at det er et studieprojekt
-- Fungerende links på forsiden, offentligt repository og Figma-fil, der kan åbnes af alle med linket
+- Forside med titel, navne, antal anslag og fungerende links – offentligt repository og Figma-fil, der kan åbnes af alle med linket
 - Maksimalt 12.000 anslag inklusive mellemrum
 - Kilder, inspiration og brug af AI er deklareret
 - PDF afleveret i WISEflow senest tirsdag 24. november 2026 kl. 12.00
