@@ -22,7 +22,7 @@ Lad jer inspirere af fx [Not Boring Software](https://notbor.ing/), der gør hel
 
 ## Projektet
 
-I arbejder i grupper af 2-4 studerende.
+I arbejder i grupper af 3-4 studerende.
 
 ### 1. Vælg et eksisterende produkt
 
@@ -64,8 +64,10 @@ Produktet skal være en fungerende, deployet løsning, der:
 - opbygger virkemidlerne systematisk i et designsystem, fx med tokens for motion, timing og easing samt genbrugelige komponenter i Figma og kode
 - er tilgængelig, fx med respekt for `prefers-reduced-motion`, tastaturbetjening, kontrast og mulighed for at slå lyd fra – lyd og animation må ikke være eneste bærer af information
 - er bygget i React – fx med Next.js, Tailwind og shadcn/ui
-- anvender mindst én datakilde, fx et API, et headless CMS eller Supabase
-- tager højde for performance og – hvis løsningen har login eller gemmer brugerdata – it-sikkerhed
+- henter indholdet i kerneflowet fra mindst én datakilde, fx et API, et headless CMS eller Supabase
+- tager højde for performance
+- tager højde for it-sikkerhed, fx ved at holde hemmelige nøgler ude af klienten og – hvis løsningen har login eller gemmer brugerdata – beskytte adgangen med fx Row Level Security
+- er udviklet i ét fælles GitHub-repository med branches og pull requests
 - tydeligt viser, at det er et studieprojekt uden tilknytning til virksomheden bag det oprindelige produkt
 
 <hr style="margin: 2rem 0;">
@@ -77,7 +79,7 @@ Det skriftlige materiale afleveres som ét PDF-dokument og skal kort og fagligt 
 1. **Udgangspunkt og problem:** Produkt, udsnit og kerneflow samt problemet med det oprindelige interface. Vis gerne før-billeder.
 2. **Hypotese og udforskning:** Hvad ville I opnå, og hvad lærte I af at udforske spektret?
 3. **Undersøgelsesresultater:** Hvad viste testene, hvor sikre er resultaterne, og hvordan påvirkede de jeres valg?
-4. **Det endelige produkt:** Virkemidler, designsystem, implementering, tilgængelighed, performance og eventuelt it-sikkerhed.
+4. **Det endelige produkt:** Virkemidler, designsystem, implementering, tilgængelighed, performance og it-sikkerhed.
 5. **Proces og samarbejde:** Hvordan planlagde og styrede I processen, og hvordan spillede design og kode sammen?
 6. **Faglig refleksion:** Hvornår gør det mindeværdige produktet bedre at bruge – og hvornår står det i vejen? Hvilke effekter fjernede I – og hvorfor? Hvad kunne være næste skridt?
 
@@ -139,9 +141,10 @@ Der lægges især vægt på:
 - sammenhæng mellem analyse, hypotese, test og endeligt design
 - kvaliteten af detaljerne i det implementerede produkt
 - valg og anvendelse af dynamiske elementer, datakilde og designsystem
-- tilgængelighed, performance og eventuelt it-sikkerhed
+- tilgængelighed, performance og it-sikkerhed
 - validiteten af undersøgelsesresultaterne og jeres kritiske vurdering af dem
 - refleksionen over balancen mellem mindeværdighed og usability
+- planlægning og styring af processen samt samspillet mellem design og kode
 - formidling og begrundelse af jeres valg – skriftligt og mundtligt
 
 Hvis du ikke består prøven, går du til omprøve med udgangspunkt i det afleverede projekt.

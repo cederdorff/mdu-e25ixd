@@ -72,16 +72,16 @@ Hvor kravene i [eksamensbeskrivelsen](eksamensbeskrivelse.md) bliver dækket. Kr
 | Krav i eksamensbeskrivelsen | Dækkes | Ansvar |
 | --- | --- | --- |
 | Bygget i React, fx Next.js, Tailwind og shadcn/ui | 08, 09 | RACE |
-| Mindst én datakilde | 08 (WordPress), 10 (Supabase) | RACE |
+| Indholdet i kerneflowet hentes fra mindst én datakilde | 08 (WordPress), 10 (Supabase) | RACE |
 | Designsystem med tokens og genbrugelige komponenter i Figma og kode | 09 (farve, typografi, spacing), 13 (motion, timing, easing) | RACE/NKKR |
 | Motion og microinteractions | 13 | RACE/NKKR/BKI |
 | Lyd, illustration, gamification, tone of voice, Rive | 13 (lyd med mute), resten uden for RACE-gangene | NKKR/BKI |
 | Tilgængelighed: reduced motion, tastatur, kontrast, lyd fra | 09, 13, tjek 23/11 | RACE |
 | Performance | 13 (transform/opacity), 16/11 (Lighthouse) | RACE |
-| It-sikkerhed, hvis løsningen har brugere eller data | 10, 12, 16/11 | RACE |
+| It-sikkerhed: hemmelige nøgler ude af klienten, login og RLS ved brugerdata | 10, 12, 16/11 | RACE |
 | Analyse, hypotese om mindeværdighed, spektret A/B/C og test | 13 (varianter i kode), resten uden for RACE-gangene | NKKR/BKI |
 | Deployet løsning fra `main`, markeret som studieprojekt | 16/11, 23/11 | RACE |
-| Git i grupper og `main` som aflevering | Kick-off 2/11 eller 08 (åbent spørgsmål) | RACE |
+| Fælles GitHub-repository med branches og pull requests, `main` som aflevering | Kick-off 2/11 eller 08 (åbent spørgsmål) | RACE |
 | Optimeringer på branches med preview-deployment | 1/12 | RACE |
 | Hver studerende kan forklare hele projektet og vise det live med backup | 3/12 | RACE/NKKR |
 
