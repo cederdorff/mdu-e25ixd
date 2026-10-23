@@ -70,6 +70,8 @@ Produktet skal være en fungerende, deployet løsning, der:
 - er udviklet i ét fælles GitHub-repository med branches og pull requests
 - tydeligt viser, at det er et studieprojekt uden tilknytning til virksomheden bag det oprindelige produkt
 
+**Det, I allerede kan, gælder stadig.** Kravene ovenfor er det, der er særligt for dette projekt – ikke alt, hvad der forventes. Produktet skal også leve op til det, I har lært tidligere på uddannelsen, fx fra Product Optimization: robuste UI states med loading, fejl og tomme tilstande, semantisk HTML og tilgængelighed, en gennemtænkt datamodel, målt performance og et Git-flow med pull requests og review. Det samme gælder metoderne, fx UX audit, brugertest og koncept- og brandarbejde.
+
 <hr style="margin: 2rem 0;">
 
 ## Det skriftlige materiale
@@ -139,7 +141,7 @@ Prøven bedømmes efter 7-trinsskalaen med ekstern censur. Hver studerende får 
 Der lægges især vægt på:
 
 - sammenhæng mellem analyse, hypotese, test og endeligt design
-- kvaliteten af detaljerne i det implementerede produkt
+- kvaliteten af detaljerne i det implementerede produkt – også i det, der ikke er nævnt i kravlisten
 - valg og anvendelse af dynamiske elementer, datakilde og designsystem
 - tilgængelighed, performance og it-sikkerhed
 - validiteten af undersøgelsesresultaterne og jeres kritiske vurdering af dem
