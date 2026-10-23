@@ -81,9 +81,11 @@ Det skriftlige materiale afleveres som ét PDF-dokument og skal kort og fagligt 
 1. **Udgangspunkt og problem:** Produkt, udsnit og kerneflow samt problemet med det oprindelige interface. Vis gerne før-billeder.
 2. **Hypotese og udforskning:** Hvad ville I opnå, og hvad lærte I af at udforske spektret?
 3. **Undersøgelsesresultater:** Hvad viste testene, hvor sikre er resultaterne, og hvordan påvirkede de jeres valg?
-4. **Det endelige produkt:** Virkemidler, designsystem, implementering, tilgængelighed, performance og it-sikkerhed.
+4. **Det endelige produkt:** Virkemidler, designsystem, datakilde, implementering, tilgængelighed, performance og it-sikkerhed – og hvorfor I valgte, som I gjorde.
 5. **Proces og samarbejde:** Hvordan planlagde og styrede I processen, og hvordan spillede design og kode sammen?
 6. **Faglig refleksion:** Hvornår gør det mindeværdige produktet bedre at bruge – og hvornår står det i vejen? Hvilke effekter fjernede I – og hvorfor? Hvad kunne være næste skridt?
+
+Gennem hele materialet skal I argumentere for jeres valg og fravalg med udgangspunkt i analyse, testresultater og faglig teori. Det er ikke nok at beskrive, hvad I gjorde – I skal begrunde, hvorfor I gjorde det, og hvad I valgte fra.
 
 Prioritér punkt 3 og 6 – det er her, projektets faglighed viser sig. De øvrige punkter kan være kortere.
 
@@ -146,7 +148,7 @@ Der lægges især vægt på:
 - validiteten af undersøgelsesresultaterne og jeres kritiske vurdering af dem
 - refleksionen over balancen mellem mindeværdighed og usability
 - planlægning og styring af processen samt samspillet mellem design og kode
-- formidling og begrundelse af jeres valg – skriftligt og mundtligt
+- argumentation for jeres valg og fravalg og formidlingen af dem – skriftligt og mundtligt
 
 Hvis du ikke består prøven, går du til omprøve med udgangspunkt i det afleverede projekt.
 
