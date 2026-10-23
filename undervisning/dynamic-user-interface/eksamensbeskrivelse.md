@@ -6,7 +6,7 @@ Dynamic User Interface er en **mundtlig gruppeprøve** på baggrund af et gruppe
 
 > **Make it memorable – but don't break it.**
 
-Mange digitale produkter er brugervenlige, men kedelige. I dette projekt tager I udgangspunkt i noget, der allerede virker, og gør det interessant. I arbejder helt ned i detaljen med motion, microinteractions, feedback, lyd, illustration, tone of voice og personlighed.
+Mange digitale produkter er brugervenlige, men kedelige. I dette projekt tager I udgangspunkt i noget, der allerede virker, og gør det mindeværdigt. I arbejder helt ned i detaljen med motion, microinteractions, feedback, lyd, illustration, tone of voice og personlighed.
 
 ### Æstetik + UX = mindeværdigt
 
@@ -26,45 +26,45 @@ I arbejder i grupper af 2-4 studerende.
 
 ### 1. Vælg et eksisterende produkt
 
-Vælg et eksisterende digitalt produkt, som I oplever som funktionelt, men kedeligt. Afgræns projektet til **ét centralt flow**. Det er bedre at gøre lidt helt færdigt og gennemarbejdet end at gøre meget halvt.
+Vælg et eksisterende digitalt produkt, som I oplever som funktionelt, men kedeligt. Afgræns projektet til **et sammenhængende udsnit af produktet** – typisk ét kerneflow og de skærme, der skal til, for at det fungerer som et rigtigt produkt. Udsnittet skal være stort nok til at bære et designsystem og en datakilde, og lille nok til, at I kan gennemarbejde detaljerne. Jo flere I er i gruppen, jo mere forventes I at nå.
 
-Produktvalg og afgrænsning kvalificeres sammen med underviserne **tirsdag 3. november**. Medbring jeres produktidé, det flow, I vil arbejde med, og en kort begrundelse for jeres valg.
+Produktvalg og afgrænsning kvalificeres sammen med underviserne **tirsdag 3. november**. Medbring jeres produktidé, det udsnit og kerneflow, I vil arbejde med, og en kort begrundelse for jeres valg.
 
 ### 2. Analysér udgangspunktet
 
-Fastlæg først, hvad brugerens mål med produktet er – det er dem, jeres ændringer ikke må gå ud over. Dokumentér derefter det oprindelige interface, og undersøg, hvad der virker, og hvad der mangler, fx med UX audit, heuristisk evaluering, brugertest eller analyse af konkurrenter.
+Fastlæg først, hvad brugerens mål med produktet er, og hvilke usability-mål – fx tid, fejl og forståelse – jeres ændringer ikke må forringe. Dokumentér derefter det oprindelige interface, og undersøg, hvad der virker, og hvad der mangler, fx med UX audit, heuristisk evaluering, brugertest eller analyse af konkurrenter.
 
 ### 3. Formulér en hypotese om mindeværdighed
 
-Formulér én eller flere hypoteser om, hvordan jeres virkemidler gør flowet mindeværdigt. Brug gerne denne skabelon:
+Formulér én eller flere hypoteser om, hvordan jeres virkemidler gør kerneflowet mindeværdigt. Brug gerne denne skabelon:
 
 > Vi tror, at **[virkemiddel]** i **[interaktion]** vil få **[brugeren]** til at **[opleve eller gøre noget]**, uden at **[usability-mål]** forringes. Det ved vi, når **[målbart resultat]**.
 
 ### 4. Udforsk spektret – fra funktionel til ekspressiv
 
-Udforsk en eller flere nøgleinteraktioner i flowet i tre niveauer, før I lægger jer fast – i Figma, Rive, kode eller en kombination:
+Udforsk en eller flere nøgleinteraktioner i kerneflowet i tre niveauer, før I lægger jer fast – i Figma, Rive, kode eller en kombination:
 
 - **A – Minimal og funktionel:** Løser opgaven uden ekstra virkemidler.
 - **B – Moderat og personlig:** Udvalgte microinteractions, motion og personlighed.
 - **C – Ekstrem og ekspressiv:** Må gerne være næsten absurd.
 
-Alle tre versioner skal kunne afprøves af testpersoner, fx som klikbare prototyper eller i kode.
+Alle tre versioner skal kunne afprøves af testpersoner, fx som klikbare prototyper eller i kode. De behøver ikke være færdige.
 
 ### 5. Test og iterér
 
-Test de tre versioner med brugere, og mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder det mindeværdige at skade usability – og kan vi måle det?**
+Test de tre versioner med brugere – og test igen, efterhånden som jeres løsning tager form. Mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder det mindeværdige at skade usability – og kan vi måle det?**
 
 Begrund testmetode og antal testpersoner, og vurdér kritisk, hvor sikre resultaterne er. Testpersoner skal give samtykke, og I må ikke bruge rigtige persondata.
 
-### 6. Design og byg det forbedrede produkt
+### 6. Byg det endelige produkt
 
 Produktet skal være en fungerende, deployet løsning, der:
 
-- er bygget i React – fx med Next.js, Tailwind og shadcn/ui
-- anvender mindst én datakilde, fx et API, et headless CMS eller Supabase
 - bruger virkemidler som motion, microinteractions, feedback, lyd, illustration, tone of voice eller gamification med en tydelig begrundelse
 - opbygger virkemidlerne systematisk i et designsystem, fx med tokens for motion, timing og easing samt genbrugelige komponenter i Figma og kode
 - er tilgængelig, fx med respekt for `prefers-reduced-motion`, tastaturbetjening, kontrast og mulighed for at slå lyd fra – lyd og animation må ikke være eneste bærer af information
+- er bygget i React – fx med Next.js, Tailwind og shadcn/ui
+- anvender mindst én datakilde, fx et API, et headless CMS eller Supabase
 - tager højde for performance og – hvis løsningen har login eller gemmer brugerdata – it-sikkerhed
 - tydeligt viser, at det er et studieprojekt uden tilknytning til virksomheden bag det oprindelige produkt
 
@@ -74,12 +74,14 @@ Produktet skal være en fungerende, deployet løsning, der:
 
 Det skriftlige materiale afleveres som ét PDF-dokument og skal kort og fagligt vise:
 
-1. **Udgangspunkt og problem:** Produkt, flow og problemet med det oprindelige interface. Vis gerne før-billeder.
+1. **Udgangspunkt og problem:** Produkt, udsnit og kerneflow samt problemet med det oprindelige interface. Vis gerne før-billeder.
 2. **Hypotese og udforskning:** Hvad ville I opnå, og hvad lærte I af at udforske spektret?
 3. **Undersøgelsesresultater:** Hvad viste testene, hvor sikre er resultaterne, og hvordan påvirkede de jeres valg?
 4. **Det endelige produkt:** Virkemidler, designsystem, implementering, tilgængelighed, performance og eventuelt it-sikkerhed.
 5. **Proces og samarbejde:** Hvordan planlagde og styrede I processen, og hvordan spillede design og kode sammen?
 6. **Faglig refleksion:** Hvornår gør det mindeværdige produktet bedre at bruge – og hvornår står det i vejen? Hvilke effekter fjernede I – og hvorfor? Hvad kunne være næste skridt?
+
+Prioritér punkt 3 og 6 – det er her, projektets faglighed viser sig. De øvrige punkter kan være kortere.
 
 <hr style="margin: 2rem 0;">
 
@@ -90,7 +92,7 @@ PDF-dokumentet afleveres **tirsdag 24. november 2026 kl. 12.00 via WISEflow**.
 <!-- TODO: Beskriv, hvordan gruppeafleveringen sættes op i WISEflow, når det er afklaret. -->
 
 - **Forside:** Gruppens navne, hold og uddannelse samt direkte links til den deployede løsning, GitHub-repositoryet og Figma-filen.
-- **Omfang:** Maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum. Kun brødteksten tæller. Illustrationer tæller som ét anslag, medmindre det er teksttunge figurer eller tabeller. Forside, indholdsfortegnelse, litteraturliste og bilag tæller ikke med. Bilag indgår ikke i bedømmelsen.
+- **Omfang:** Maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum. Kun brødteksten tæller. Illustrationer tæller som ét anslag, medmindre det er teksttunge figurer eller tabeller – så tæller teksten i dem med. Forside, indholdsfortegnelse, litteraturliste og bilag tæller ikke med. Bilag indgår ikke i bedømmelsen.
 - **Sprog:** Som udgangspunkt dansk.
 - **Adgang:** Den deployede løsning, repositoryet og Figma-filen skal være tilgængelige via linkene, indtil bedømmelsen er færdig. GitHub-repositoryet skal være offentligt, og Figma-filen skal kunne åbnes af alle med linket. Test linkene i et privat browservindue.
 - **`main` er jeres aflevering:** Den deployede løsning skal være bygget fra `main`, og `main` må ikke ændres efter afleveringsfristen, før bedømmelsen er færdig.
