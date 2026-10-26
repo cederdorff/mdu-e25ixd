@@ -157,6 +157,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
   - [Next.js og headless WordPress](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/)
   - [PDF-version: Next.js og headless WordPress](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/?print-pdf)
 - **Opgaver:**
+  - [Opgaveoversigt](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/opgaver)
   - [Opgave 1 · Opret dit Next.js-projekt](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/opgave-1)
   - [Opgave 2 · Routes, layout og navigation](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/opgave-2)
   - [Opgave 3 · Undersøg dit eget REST API](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/opgave-3)

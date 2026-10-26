@@ -39,6 +39,16 @@ agendaLink.setAttribute("aria-label", "Gå tilbage til agendaen");
 agendaLink.textContent = "Agenda";
 document.querySelector(".reveal")?.append(agendaLink);
 
+const assignmentsSlide = document.querySelector("section#opgaver");
+const assignmentsLink = document.createElement("a");
+assignmentsLink.className = "agenda-link assignments-link";
+assignmentsLink.href = "#/opgaver";
+assignmentsLink.setAttribute("aria-label", "Gå til opgaveoversigten");
+assignmentsLink.textContent = "Opgaver";
+if (assignmentsSlide) {
+  document.querySelector(".reveal")?.append(assignmentsLink);
+}
+
 const conceptIndexSlides = [...document.querySelectorAll("section.po-concept-index")];
 const conceptIndexLink = document.createElement("a");
 conceptIndexLink.className = "agenda-link concept-index-link";
@@ -58,15 +68,21 @@ const syncAgendaLink = () => {
   agendaLink.hidden = deck.getCurrentSlide() === agendaSlide;
 };
 
+const syncAssignmentsLink = () => {
+  assignmentsLink.hidden = deck.getCurrentSlide() === assignmentsSlide;
+};
+
 const syncConceptIndexLink = () => {
   conceptIndexLink.hidden = conceptIndexSlides.includes(deck.getCurrentSlide());
 };
 
 deck.on("slidechanged", syncCoverVideo);
 deck.on("slidechanged", syncAgendaLink);
+deck.on("slidechanged", syncAssignmentsLink);
 deck.on("slidechanged", syncConceptIndexLink);
 syncCoverVideo();
 syncAgendaLink();
+syncAssignmentsLink();
 syncConceptIndexLink();
 
 document.documentElement.classList.add("deck-ready");

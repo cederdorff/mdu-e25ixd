@@ -87,8 +87,13 @@ body {
   display: none;
 }
 
-.reveal .agenda-link.concept-index-link {
+.reveal .agenda-link.concept-index-link,
+.reveal .agenda-link.assignments-link {
   left: 236px;
+}
+
+.reveal .assignments-link ~ .concept-index-link {
+  left: 344px;
 }
 
 .reveal .slide-number {
