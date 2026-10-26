@@ -42,16 +42,6 @@ Din app fra mandag skal stadig køre og være pushet til GitHub før torsdag.
 
 <hr style="margin: 2rem 0;">
 
-## Klar til torsdag
-
-Se [forberedelsen til torsdag](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/race-09-2026-10-29-designsystem-fra-figma-til-kode.md):
-
-- Din Next.js-app kører lokalt og er pushet til GitHub.
-- Du har oprettet en Figma-fil til din app med skærmbilleder af listen og detaljesiden.
-- Du har opdateret Figma, så du kan afprøve Figma MCP-serveren.
-
-<hr style="margin: 2rem 0;">
-
 ## Materialer
 
 - [Slides: Next.js og headless WordPress](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/)
