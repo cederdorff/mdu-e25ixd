@@ -17,12 +17,10 @@ Til sidst viser RACE, hvordan Figma MCP kan holde koden opdateret, når designet
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Design i Figma → byg i React → hold design og kode i sync med Figma MCP.
-
-### Del 1: Pill og modal i Figma (NKKR)
+**Dagens arbejdsrytme:** Én komponent hele dagen: design i Figma → samme begreber i React → byg i Next.js → ret i Figma, og hold koden i sync med Figma MCP.
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>1. Design en pill, der bliver til en modal</strong></summary>
+<summary><strong>1. Design en pill, der bliver til en modal, i Figma</strong></summary>
 <ul>
 <li>Byg pillen som en komponent med auto layout, så den tilpasser sig indholdet.</li>
 <li>Lav to variants af samme komponent: en lukket pill og en åben modal.</li>
@@ -32,10 +30,8 @@ Til sidst viser RACE, hvordan Figma MCP kan holde koden opdateret, når designet
 </ul>
 </details>
 
-### Del 2: Fra Figma til React/Next.js (RACE)
-
 <details style="margin-left: 1.5rem;">
-<summary><strong>2. Fra Figma-begreber til React-begreber</strong></summary>
+<summary><strong>2. Samme komponent, to sprog: Figma og React</strong></summary>
 <ul>
 <li>Component i Figma → komponent i React, fx <code>PillModal.js</code>.</li>
 <li>Instance i Figma → brug af komponenten, fx <code>&lt;PillModal label="Om" /&gt;</code>.</li>
@@ -48,7 +44,7 @@ Til sidst viser RACE, hvordan Figma MCP kan holde koden opdateret, når designet
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Byg pill og modal i din Next.js-app</strong></summary>
+<summary><strong>3. Byg pill og modal i din Next.js-app med Figma ved siden af</strong></summary>
 <ul>
 <li>Opret komponenten, og markér den med <code>"use client"</code>, fordi den bruger state og events.</li>
 <li>Byg pillen som en <code>&lt;button&gt;</code>, og brug den i en side fra sidst.</li>
@@ -58,10 +54,8 @@ Til sidst viser RACE, hvordan Figma MCP kan holde koden opdateret, når designet
 </ul>
 </details>
 
-### Afslutning: Figma MCP (RACE)
-
 <details style="margin-left: 1.5rem;">
-<summary><strong>4. Hold koden opdateret med Figma MCP</strong></summary>
+<summary><strong>4. Ret i Figma, og hold koden opdateret med Figma MCP</strong></summary>
 <ul>
 <li>Forbind din AI-agent til Figma MCP-serveren, og lad den læse komponenten i Figma.</li>
 <li>Ret designet i Figma, og bed agenten opdatere den eksisterende komponent i stedet for at bygge en ny.</li>
