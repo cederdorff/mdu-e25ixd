@@ -1,4 +1,4 @@
-# Opgaver: Next.js og headless WordPress - 26-10-2026
+# Opgave: Next.js og headless WordPress - 26-10-2026
 
 ## Formål
 
@@ -42,6 +42,8 @@ Opgaverne er de samme som i slides, men med mere hjælp. Hvert trin forklarer, h
 - **Får du en fejl?** Tjek, at **Permalinks** under _Indstillinger_ ikke står til _Plain_, og at et sikkerhedsplugin ikke blokerer REST API'et. Brug test-URL'en [`https://headless.cederdorff.dk`](https://headless.cederdorff.dk/wp-json/wp/v2/posts), mens du fejlfinder.
 
 <hr style="margin: 2rem 0;">
+
+<a id="opgave-1"></a>
 
 ## Opgave 1: Opret dit Next.js-projekt
 
@@ -134,17 +136,17 @@ import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 export const metadata = {
   title: "Headless WordPress",
-  description: "A Next.js app that fetches content from WordPress through the REST API",
+  description: "A Next.js app that fetches content from WordPress through the REST API"
 };
 
 export default function RootLayout({ children }) {
@@ -163,6 +165,8 @@ export default function RootLayout({ children }) {
 **Referencerepo:** [Oprydning af templaten](https://github.com/cederdorff/nextjs-headless-wordpress/commit/6fc6d02)
 
 <hr style="margin: 2rem 0;">
+
+<a id="opgave-2"></a>
 
 ## Opgave 2: Routes, layout og navigation
 
@@ -266,8 +270,7 @@ export default function Home() {
       <section className={styles.hero}>
         <h1>Stories from Aarhus</h1>
         <p>
-          City walks, food and places worth a visit. The content is written in
-          WordPress and presented with Next.js.
+          City walks, food and places worth a visit. The content is written in WordPress and presented with Next.js.
         </p>
       </section>
     </main>
@@ -297,7 +300,7 @@ export default function Home() {
 
 ```jsx
 export const metadata = {
-  title: "Posts",
+  title: "Posts"
 };
 
 export default function PostsPage() {
@@ -314,7 +317,7 @@ export default function PostsPage() {
 
 ```jsx
 export const metadata = {
-  title: "About",
+  title: "About"
 };
 
 export default function AboutPage() {
@@ -381,17 +384,17 @@ import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 export const metadata = {
   title: "Headless WordPress",
-  description: "A Next.js app that fetches content from WordPress through the REST API",
+  description: "A Next.js app that fetches content from WordPress through the REST API"
 };
 
 export default function RootLayout({ children }) {
@@ -432,6 +435,8 @@ CSS: [`Header.module.css`](https://github.com/cederdorff/nextjs-headless-wordpre
 **Referencerepo:** [Header, footer, routes og not-found](https://github.com/cederdorff/nextjs-headless-wordpress/commit/89c1be4)
 
 <hr style="margin: 2rem 0;">
+
+<a id="opgave-3"></a>
 
 ## Opgave 3: Undersøg dit eget REST API
 
@@ -531,6 +536,8 @@ Notér din WordPress-URL uden `/` til sidst, fx `https://dit-domæne.dk`. Den sk
 
 <hr style="margin: 2rem 0;">
 
+<a id="opgave-4"></a>
+
 ## Opgave 4: Hent og vis dine posts
 
 Du henter dine posts fra WordPress i en server component og viser dem som et grid af cards på `/posts`.
@@ -550,6 +557,8 @@ Genstart `npm run dev` med `Ctrl+C` og `npm run dev`. Next.js læser kun `.env.l
 Variabler uden `NEXT_PUBLIC_` kan kun læses på serveren. Sammenlign med `VITE_`-variablerne fra Product optimization, som kunne læses i frontend.
 
 Opret også `.env.example` med samme variabel, men uden din rigtige URL. Den viser andre, hvilke variabler projektet skal bruge. Git ignorerer alle `.env*`-filer – også `.env.example`. Tilføj derfor `!.env.example` nederst i `.gitignore`, så eksempelfilen kommer med i dit commit, mens `.env.local` bliver lokalt.
+
+**Tjek:** Source Control viser `.env.example` og `.gitignore` som ændringer – men ikke `.env.local`.
 
 [Slide: .env.local](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/env) · [Slide: .env.example](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/env-example)
 
@@ -580,7 +589,7 @@ export default async function PostsPage() {
 
 **Tjek:** `/posts` viser titlerne på dine posts, og terminalen viser arrayet. Fjern `console.log`, når du har set dine data.
 
-Du ser måske en fejl i terminalen om data, der hentes uden for `<Suspense>`. Den løser du i trin 4.
+Du ser måske en fejl i terminalen om data, der hentes uden for `<Suspense>`. Den løser du i 4.4.
 
 [Slide: Hent og log](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/hent-log) · [Slide: Vis titlerne](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/hent-direkte)
 
@@ -605,6 +614,8 @@ Kopiér CSS fra repoet:
 - [`components/PostCard.js`](https://github.com/cederdorff/nextjs-headless-wordpress/blob/88e6baee8faef5e90bb2a1c0718e381c48fc8a56/components/PostCard.js) og [`components/PostCard.module.css`](https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/PostCard.module.css)
 - [`app/posts/page.module.css`](https://github.com/cederdorff/nextjs-headless-wordpress/blob/88e6baee8faef5e90bb2a1c0718e381c48fc8a56/app/posts/page.module.css) til griddet
 
+**Tjek:** `/posts` viser et grid af cards med dato, titel og uddrag uden synlige `<p>`-tags. _Read more_ fører til `/posts/<slug>`, som viser din not-found-side, indtil du har lavet opgave 5.
+
 [Slide: Brug PostCard](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/postcard-brug) · [Slide: Indholdet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/postcard)
 
 <details>
@@ -616,7 +627,7 @@ Kopiér CSS fra repoet:
 const date = new Date(post.date).toLocaleDateString("da-DK", {
   day: "numeric",
   month: "long",
-  year: "numeric",
+  year: "numeric"
 });
 ```
 
@@ -631,6 +642,8 @@ Med Cache Components venter siden på WordPress ved hver request, og Next.js vil
 **Tommelfingerregel:** Hver route, der henter data, får sin egen `loading.js`. Når du navigerer, bliver header og footer i layoutet stående, og kun siden skifter. Derfor skal loading-staten ligge i samme mappe som siden.
 
 Stop `npm run dev`, kør `npm run build`, og commit og push, når buildet går igennem.
+
+**Tjek:** Fejlen om `<Suspense>` er væk, og `npm run build` slutter uden fejl.
 
 [Slide: loading.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/loading)
 
@@ -674,7 +687,7 @@ import PostCard from "@/components/PostCard";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Posts",
+  title: "Posts"
 };
 
 export default async function PostsPage() {
@@ -708,7 +721,7 @@ export default function PostCard({ post }) {
   const date = new Date(post.date).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
-    year: "numeric",
+    year: "numeric"
   });
 
   return (
@@ -716,14 +729,8 @@ export default function PostCard({ post }) {
       <time className={styles.date} dateTime={post.date}>
         {date}
       </time>
-      <h2
-        className={styles.title}
-        dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-      />
-      <div
-        className={styles.excerpt}
-        dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-      />
+      <h2 className={styles.title} dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+      <div className={styles.excerpt} dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
       <Link href={`/posts/${post.slug}`} className={styles.link}>
         Read more
       </Link>
@@ -751,6 +758,8 @@ CSS: [`PostCard.module.css`](https://github.com/cederdorff/nextjs-headless-wordp
 **Referencerepo:** [Hent posts](https://github.com/cederdorff/nextjs-headless-wordpress/commit/dc5fac6) · [Grid af cards](https://github.com/cederdorff/nextjs-headless-wordpress/commit/88e6bae) · [loading.js](https://github.com/cederdorff/nextjs-headless-wordpress/commit/e7b510e)
 
 <hr style="margin: 2rem 0;">
+
+<a id="opgave-5"></a>
 
 ## Opgave 5: Byg detaljesiden
 
@@ -791,6 +800,8 @@ if (!post) {
 
 Husk at importere `notFound` fra `next/navigation`.
 
+**Tjek:** Log `post.title.rendered` med `console.log`. Terminalen viser titlen, når du åbner en rigtig slug, og `/posts/findes-ikke` viser din not-found-side.
+
 [Slide: Hent én post](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/hent-en)
 
 ### 5.3 Vis indholdet
@@ -801,11 +812,15 @@ Funktionen hedder `dangerouslySetInnerHTML`, fordi HTML'en indsættes, som den e
 
 Kopiér [`app/posts/[slug]/page.module.css`](https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/posts/%5Bslug%5D/page.module.css).
 
+**Tjek:** Et klik på et card viser hele posten med titel, dato og indhold – uden synlige HTML-tags – og linket fører tilbage til `/posts`.
+
 [Slide: Vis posten](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/vis-post)
 
 ### 5.4 Loading-state og push
 
-Giv detaljesiden sin egen `app/posts/[slug]/loading.js`. Test et klik på et card og `/posts/findes-ikke`. Commit og push.
+Giv detaljesiden sin egen `app/posts/[slug]/loading.js`. Kør `npm run build`, og commit og push, når buildet går igennem.
+
+**Tjek:** Du ser kort din loading-tekst, når du åbner en post, og `npm run build` slutter uden fejl.
 
 [Slide: loading.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/loading-regel)
 
@@ -828,9 +843,7 @@ import styles from "./page.module.css";
 
 export default async function PostPage({ params }) {
   const { slug } = await params;
-  const response = await fetch(
-    `${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts?slug=${slug}`
-  );
+  const response = await fetch(`${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts?slug=${slug}`);
   // WordPress always returns an array, even for a single match
   const posts = await response.json();
   const post = posts[0];
@@ -842,7 +855,7 @@ export default async function PostPage({ params }) {
   const date = new Date(post.date).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
-    year: "numeric",
+    year: "numeric"
   });
 
   return (
@@ -853,10 +866,7 @@ export default async function PostPage({ params }) {
           {date}
         </time>
         <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-        <div
-          className="wp-content"
-          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-        />
+        <div className="wp-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
       </article>
     </main>
   );
@@ -883,6 +893,8 @@ CSS: [`page.module.css`](https://github.com/cederdorff/nextjs-headless-wordpress
 
 <hr style="margin: 2rem 0;">
 
+<a id="opgave-6"></a>
+
 ## Opgave 6: Forside, About og et fælles datalag
 
 Du viser de seneste posts på forsiden og din About-page på `/about`. Bagefter samler du alle `fetch`-kald ét sted, så du kun skal rette ét sted, når noget ændrer sig.
@@ -907,12 +919,12 @@ Hent din About-page med `/pages?slug=about` i `app/about/page.js`, og vis titel 
 
 Forsiden og About henter nu også data. Giv dem hver deres `loading.js`: `app/loading.js` og `app/about/loading.js`.
 
-**Tjek:** `/about` viser din About-page fra WordPress.
+**Tjek:** `/about` viser din About-page fra WordPress, og `npm run build` går stadig igennem.
 
 [Slide: About](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/about) · [Slide: loading.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/loading-regel)
 
 <details>
-<summary><strong>Se løsningen til trin 1 og 2</strong></summary>
+<summary><strong>Se løsningen til 6.1 og 6.2</strong></summary>
 
 `components/PostList.js`:
 
@@ -943,9 +955,7 @@ import PostList from "@/components/PostList";
 import styles from "./page.module.css";
 
 export default async function Home() {
-  const response = await fetch(
-    `${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts?per_page=3`
-  );
+  const response = await fetch(`${process.env.WORDPRESS_URL}/wp-json/wp/v2/posts?per_page=3`);
   const posts = await response.json();
 
   return (
@@ -953,8 +963,7 @@ export default async function Home() {
       <section className={styles.hero}>
         <h1>Stories from Aarhus</h1>
         <p>
-          City walks, food and places worth a visit. The content is written in
-          WordPress and presented with Next.js.
+          City walks, food and places worth a visit. The content is written in WordPress and presented with Next.js.
         </p>
       </section>
 
@@ -976,7 +985,7 @@ export default async function Home() {
 import PostList from "@/components/PostList";
 
 export const metadata = {
-  title: "Posts",
+  title: "Posts"
 };
 
 export default async function PostsPage() {
@@ -998,13 +1007,11 @@ export default async function PostsPage() {
 import { notFound } from "next/navigation";
 
 export const metadata = {
-  title: "About",
+  title: "About"
 };
 
 export default async function AboutPage() {
-  const response = await fetch(
-    `${process.env.WORDPRESS_URL}/wp-json/wp/v2/pages?slug=about`
-  );
+  const response = await fetch(`${process.env.WORDPRESS_URL}/wp-json/wp/v2/pages?slug=about`);
   const pages = await response.json();
   const page = pages[0];
 
@@ -1015,10 +1022,7 @@ export default async function AboutPage() {
   return (
     <main>
       <h1 dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
-      <div
-        className="wp-content"
-        dangerouslySetInnerHTML={{ __html: page.content.rendered }}
-      />
+      <div className="wp-content" dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
     </main>
   );
 }
@@ -1078,6 +1082,8 @@ const posts = await getPosts();
 
 Flyt én side ad gangen, og test siden, før du går videre til den næste.
 
+**Tjek:** Søg efter `fetch(` i projektet med `⇧⌘F`. Det findes kun i `lib/wordpress.js`, og alle fire sider ser ud som før.
+
 [Slide: Hvorfor?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/datalag-model) · [Slide: lib/wordpress.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/datalag-kode) · [Slide: getPostBySlug](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/datalag-slug)
 
 ### 6.4 Formatér datoen ét sted og push
@@ -1085,6 +1091,8 @@ Flyt én side ad gangen, og test siden, før du går videre til den næste.
 Du formaterer datoen både i `PostCard` og på detaljesiden. Flyt `toLocaleDateString` til en `formatDate()`-funktion i `lib/format.js`, og brug den begge steder. Så ser datoen ens ud overalt.
 
 Kør `npm run build`, og commit og push, når buildet går igennem.
+
+**Tjek:** `toLocaleDateString` findes kun i `lib/format.js`, og datoen ser ens ud på cards og detaljesiden.
 
 [Slide: formatDate()](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/format)
 
@@ -1144,7 +1152,7 @@ export function formatDate(date) {
   return new Date(date).toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
-    year: "numeric",
+    year: "numeric"
   });
 }
 ```
@@ -1165,8 +1173,7 @@ export default async function Home() {
       <section className={styles.hero}>
         <h1>Stories from Aarhus</h1>
         <p>
-          City walks, food and places worth a visit. The content is written in
-          WordPress and presented with Next.js.
+          City walks, food and places worth a visit. The content is written in WordPress and presented with Next.js.
         </p>
       </section>
 
@@ -1189,7 +1196,7 @@ import PostList from "@/components/PostList";
 import { getPosts } from "@/lib/wordpress";
 
 export const metadata = {
-  title: "Posts",
+  title: "Posts"
 };
 
 export default async function PostsPage() {
@@ -1231,10 +1238,7 @@ export default async function PostPage({ params }) {
           {date}
         </time>
         <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-        <div
-          className="wp-content"
-          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-        />
+        <div className="wp-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
       </article>
     </main>
   );
@@ -1248,7 +1252,7 @@ import { notFound } from "next/navigation";
 import { getPageBySlug } from "@/lib/wordpress";
 
 export const metadata = {
-  title: "About",
+  title: "About"
 };
 
 export default async function AboutPage() {
@@ -1261,10 +1265,7 @@ export default async function AboutPage() {
   return (
     <main>
       <h1 dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
-      <div
-        className="wp-content"
-        dangerouslySetInnerHTML={{ __html: page.content.rendered }}
-      />
+      <div className="wp-content" dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
     </main>
   );
 }
@@ -1285,14 +1286,8 @@ export default function PostCard({ post }) {
       <time className={styles.date} dateTime={post.date}>
         {date}
       </time>
-      <h2
-        className={styles.title}
-        dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-      />
-      <div
-        className={styles.excerpt}
-        dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-      />
+      <h2 className={styles.title} dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+      <div className={styles.excerpt} dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
       <Link href={`/posts/${post.slug}`} className={styles.link}>
         Read more
       </Link>
@@ -1301,13 +1296,15 @@ export default function PostCard({ post }) {
 }
 ```
 
-`components/PostList.js`, `app/loading.js` og `app/about/loading.js` er de samme som i løsningen til trin 1 og 2.
+`components/PostList.js`, `app/loading.js` og `app/about/loading.js` er de samme som i løsningen til 6.1 og 6.2.
 
 </details>
 
 **Referencerepo:** [Forside, About og PostList](https://github.com/cederdorff/nextjs-headless-wordpress/commit/15e6817) · [Fælles datalag](https://github.com/cederdorff/nextjs-headless-wordpress/commit/8c165b0)
 
 <hr style="margin: 2rem 0;">
+
+<a id="opgave-7"></a>
 
 ## Opgave 7: Billeder, kategorier og fejlhåndtering
 
@@ -1329,6 +1326,8 @@ Tilføj `_embed` til URL'erne i `lib/wordpress.js` – nu skal du kun rette ét 
 `${API_URL}/posts?slug=${slug}&_embed`;
 ```
 
+**Tjek:** Log `posts[0]._embedded` i en af dine sider. Terminalen viser `wp:featuredmedia` og `wp:term`.
+
 [Slide: Hvad sendes med?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/embed-json)
 
 ### 7.2 Vis billeder og kategorier
@@ -1348,6 +1347,8 @@ Har du kopieret `PostCard.module.css` og `globals.css` fra `main` i referencerep
 
 Vil du bruge `next/image` i stedet for `<img>`, skal dit WordPress-domæne først tilføjes under `images.remotePatterns` i `next.config.mjs`.
 
+**Tjek:** Dine cards viser billede og kategorier, detaljesiden og About viser det fremhævede billede, og en post uden billede giver ingen fejl.
+
 [Slide: Følg stien](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/embed-vis)
 
 ### 7.3 Fejlhåndtering
@@ -1362,11 +1363,15 @@ if (!response.ok) {
 
 Opret `app/error.js`. Next.js viser den, når en side kaster en fejl. Den skal have `"use client"` øverst, fordi den har en knap med `onClick`. Knappen kalder `retry()`, som prøver at vise siden igen.
 
+**Tjek:** Alle fire funktioner i `lib/wordpress.js` tjekker `response.ok`, og `app/error.js` starter med `"use client"`.
+
 [Slide: response.ok](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/response-ok) · [Slide: error.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/#/error-js)
 
 ### 7.4 Test og push
 
-Stav et endpoint forkert i `lib/wordpress.js`, fx `/postz`, og åbn `/posts`. Ser du din fejlside? Ret endpointet igen, og klik på knappen. Kør `npm run build`, og commit og push.
+Stav et endpoint forkert i `lib/wordpress.js`, fx `/postz`, og åbn `/posts`. Ret endpointet igen, og klik på knappen. Kør `npm run build`, og commit og push.
+
+**Tjek:** Med det forkerte endpoint ser du din fejlside. Når du har rettet det, viser knappen dine posts igen.
 
 **Sidder du fast?**
 
@@ -1449,13 +1454,7 @@ export default function PostCard({ post }) {
 
   return (
     <article className={styles.card}>
-      {image && (
-        <img
-          className={styles.image}
-          src={image.source_url}
-          alt={image.alt_text}
-        />
-      )}
+      {image && <img className={styles.image} src={image.source_url} alt={image.alt_text} />}
       {categories.length > 0 && (
         <ul className={styles.categories}>
           {categories.map((category) => (
@@ -1466,14 +1465,8 @@ export default function PostCard({ post }) {
       <time className={styles.date} dateTime={post.date}>
         {date}
       </time>
-      <h2
-        className={styles.title}
-        dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-      />
-      <div
-        className={styles.excerpt}
-        dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-      />
+      <h2 className={styles.title} dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+      <div className={styles.excerpt} dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
       <Link href={`/posts/${post.slug}`} className={styles.link}>
         Read more
       </Link>
@@ -1512,17 +1505,8 @@ export default async function PostPage({ params }) {
           {date}
         </time>
         <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-        {image && (
-          <img
-            className="featured-image"
-            src={image.source_url}
-            alt={image.alt_text}
-          />
-        )}
-        <div
-          className="wp-content"
-          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
-        />
+        {image && <img className="featured-image" src={image.source_url} alt={image.alt_text} />}
+        <div className="wp-content" dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
       </article>
     </main>
   );
@@ -1536,7 +1520,7 @@ import { notFound } from "next/navigation";
 import { getPageBySlug } from "@/lib/wordpress";
 
 export const metadata = {
-  title: "About",
+  title: "About"
 };
 
 export default async function AboutPage() {
@@ -1552,17 +1536,8 @@ export default async function AboutPage() {
   return (
     <main>
       <h1 dangerouslySetInnerHTML={{ __html: page.title.rendered }} />
-      {image && (
-        <img
-          className="featured-image"
-          src={image.source_url}
-          alt={image.alt_text}
-        />
-      )}
-      <div
-        className="wp-content"
-        dangerouslySetInnerHTML={{ __html: page.content.rendered }}
-      />
+      {image && <img className="featured-image" src={image.source_url} alt={image.alt_text} />}
+      <div className="wp-content" dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
     </main>
   );
 }
@@ -1592,10 +1567,19 @@ CSS: Klasserne `image` og `categories` ligger i [`PostCard.module.css`](https://
 
 <hr style="margin: 2rem 0;">
 
+## Når du er færdig
+
+- Commit og push dit arbejde. Du skal bruge appen næste gang, hvor vi bygger et designsystem ovenpå den.
+- Sammenlign din løsning med [referencerepoet](https://github.com/cederdorff/nextjs-headless-wordpress), og læg mærke til, hvor din kode er anderledes.
+- Har du tid tilbage, så fortsæt med de næste dele af [Learn Next.js på Scrimba](https://scrimba.com/learn-nextjs-c02moisq6a).
+
+<hr style="margin: 2rem 0;">
+
 ## Materialer
 
 - [Slides: Next.js og headless WordPress](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/)
-- [Undervisningsside: Next.js og headless WordPress](race-08-2026-10-26-nextjs-og-headless-wordpress.md)
+- [Undervisningsside: Next.js og headless WordPress](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/race-08-2026-10-26-nextjs-og-headless-wordpress.md)
+- [Produktionsdag 28. oktober](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-produktionsdag-2026-10-28-nextjs-og-headless-wordpress.md)
 - [Referencerepo: nextjs-headless-wordpress](https://github.com/cederdorff/nextjs-headless-wordpress) – [commits](https://github.com/cederdorff/nextjs-headless-wordpress/commits/main) følger opgaverne
 - [Learn Next.js på Scrimba](https://scrimba.com/learn-nextjs-c02moisq6a) (gratis)
 - [Next.js: Layouts and pages](https://nextjs.org/docs/app/getting-started/layouts-and-pages)
