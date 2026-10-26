@@ -1579,7 +1579,7 @@ CSS: Klasserne `image` og `categories` ligger i [`PostCard.module.css`](https://
 
 - [Slides: Next.js og headless WordPress](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-01/)
 - [Undervisningsside: Next.js og headless WordPress](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/race-08-2026-10-26-nextjs-og-headless-wordpress.md)
-- [Produktionsdag 28. oktober](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-produktionsdag-2026-10-28-nextjs-og-headless-wordpress.md)
+- [Produktionsdag 28. oktober](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/2026-10-28-produktionsdag-nextjs-og-headless-wordpress.md)
 - [Referencerepo: nextjs-headless-wordpress](https://github.com/cederdorff/nextjs-headless-wordpress) – [commits](https://github.com/cederdorff/nextjs-headless-wordpress/commits/main) følger opgaverne
 - [Learn Next.js på Scrimba](https://scrimba.com/learn-nextjs-c02moisq6a) (gratis)
 - [Next.js: Layouts and pages](https://nextjs.org/docs/app/getting-started/layouts-and-pages)

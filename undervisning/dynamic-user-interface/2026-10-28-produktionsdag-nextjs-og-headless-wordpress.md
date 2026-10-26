@@ -1,4 +1,4 @@
-# Produktionsdag: Next.js og headless WordPress - 28-10-2026
+# Produktionsdag - 28-10-2026
 
 ## Formål
 
