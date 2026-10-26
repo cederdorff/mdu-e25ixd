@@ -70,7 +70,7 @@ Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der k
 <details style="margin-left: 1.5rem;">
 <summary><strong>6. Arbejd videre og overfør til jeres projekt</strong></summary>
 <ul>
-<li>Gør login-flowet færdigt, og brug komponenterne fra jeres designsystem.</li>
+<li>Gør login-flowet færdigt. Genbrug gerne din pill-modal fra torsdag, fx en pill, der åbner login i en modal.</li>
 <li>Overvej jeres projektidé: Skal produktet have brugere? Hvad kan en bruger, der er logget ind, som andre ikke kan?</li>
 <li>Har produktet brugere, stiller eksamen også krav til it-sikkerhed. Notér, hvilke data der skal beskyttes.</li>
 <li>Commit og push dit arbejde.</li>
