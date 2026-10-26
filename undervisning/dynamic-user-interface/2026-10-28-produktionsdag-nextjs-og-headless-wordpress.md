@@ -37,9 +37,9 @@ Se [Deploying](https://nextjs.org/docs/app/getting-started/deploying) og [Enviro
 
 **I WordPress-admin på Simply.com:**
 
-1. Installér pluginet [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) under _Plugins → Tilføj nyt_.
+1. Installér pluginet [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) under _Plugins_.
 2. Opret en field group under _ACF → Field Groups_ med 2–3 felter, fx sted eller læsetid. Sæt _Location Rules_ til _Post Type_ er lig med _Post_, og slå **Show in REST API** til under _Group Settings_.
-3. Udfyld felterne på dine posts, og find dem under `acf` i `/wp-json/wp/v2/posts`, fx `post.acf.location`.
+3. Udfyld felterne på dine posts, og find dem under `acf` i `/wp-json/wp/v2/posts`. Nøglen er feltets _Field Name_, fx `post.acf.location`.
 
 **I din Next.js-app:**
 
