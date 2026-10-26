@@ -101,6 +101,7 @@ body {
   text-align: center;
 }
 
+.reveal .agenda-link[aria-current],
 .reveal .agenda-link:hover,
 .reveal .agenda-link:focus-visible {
   border-color: var(--green);

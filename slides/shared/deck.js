@@ -64,12 +64,13 @@ const syncCoverVideo = () => {
   coverVideo?.classList.toggle("is-visible", deck.getIndices().h === 0);
 };
 
+// Agenda og Opgaver vises altid; knappen markeres som aktiv på sit eget slide.
 const syncAgendaLink = () => {
-  agendaLink.hidden = deck.getCurrentSlide() === agendaSlide;
+  agendaLink.toggleAttribute("aria-current", deck.getCurrentSlide() === agendaSlide);
 };
 
 const syncAssignmentsLink = () => {
-  assignmentsLink.hidden = deck.getCurrentSlide() === assignmentsSlide;
+  assignmentsLink.toggleAttribute("aria-current", deck.getCurrentSlide() === assignmentsSlide);
 };
 
 const syncConceptIndexLink = () => {
