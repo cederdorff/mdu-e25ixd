@@ -4355,3 +4355,16 @@
 #opgave-2 .work-if-stuck {
   margin-top: 28px;
 }
+
+#opgave-2 .step-links {
+  gap: 6px;
+}
+
+#opgave-2 .step-links a {
+  padding: 3px 9px;
+  font-size: 14px;
+}
+
+#opgave-2 .step-links a code {
+  font-size: 13px !important;
+}
