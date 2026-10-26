@@ -35,7 +35,7 @@ Samlet materialeoversigt til 3. semester Interaction Design (IxD), Multimediedes
 | Dato | Undervisningsgang | Materialer |
 | --- | --- | --- |
 | 26. oktober | Next.js og headless WordPress | [Undervisningsside](undervisning/dynamic-user-interface/race-08-2026-10-26-nextjs-og-headless-wordpress.md) |
-| 29. oktober | Designsystem fra Figma til kode | [Undervisningsside](undervisning/dynamic-user-interface/race-09-2026-10-29-designsystem-fra-figma-til-kode.md) |
+| 29. oktober | Fra Figma til React/Next.js | [Undervisningsside](undervisning/dynamic-user-interface/race-09-2026-10-29-fra-figma-til-react-nextjs.md) |
 | 30. oktober | Supabase Auth i Next.js | [Undervisningsside](undervisning/dynamic-user-interface/race-10-2026-10-30-supabase-auth-i-nextjs.md) |
 | 2. november | Kick-off | [Undervisningsside](undervisning/dynamic-user-interface/race-11-2026-11-02-kick-off.md) |
 | 10. november | User management, roller og beskyttet adgang | [Undervisningsside](undervisning/dynamic-user-interface/race-12-2026-11-10-user-management-roller-og-beskyttet-adgang.md) |

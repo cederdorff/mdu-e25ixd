@@ -51,7 +51,7 @@ PETJ - WordPress: Full site, blog, HTML, CSS og JavaScript - 23-10-2026
 
 RACE - Dynamic User Interface: Next.js og headless WordPress - 26-10-2026
 NKKR - Dynamic User Interface - 27-10-2026
-NKKR/RACE - Dynamic User Interface: Designsystem fra Figma til kode - 29-10-2026
+NKKR/RACE - Dynamic User Interface: Fra Figma til React/Next.js - 29-10-2026
 RACE - Dynamic User Interface: Supabase Auth i Next.js - 30-10-2026
 BKI/NKKR/RACE - Dynamic User Interface: Kick-off - 02-11-2026
 BKI/NKKR - Dynamic User Interface - 03-11-2026
