@@ -117,63 +117,71 @@
         <section class="po-slide po-agenda dui-agenda" id="agenda">
           <span class="eyebrow">Agenda · vi starter simpelt og bygger ovenpå</span>
           <h2>Fra tomt projekt til app med indhold fra WordPress</h2>
-          <ol class="agenda-list">
-            <li>
-              <a href="#/fra-vite"
-                ><b>Fra React og Vite til Next.js</b
-                ><small>Client-server · CSR og SSR · library vs. framework · server components</small></a
-              >
-            </li>
-            <li>
-              <a href="#/opret-projekt"
-                ><b>Opret dit Next.js-projekt</b><small>Én kommando · den genererede struktur · opgave 1</small></a
-              >
-            </li>
-            <li>
-              <a href="#/routing"
-                ><b>Routing og layouts</b
-                ><small>Mapper bliver til routes · <code>layout.js</code> · <code>Link</code> · opgave 2</small></a
-              >
-            </li>
-            <li>
-              <a href="#/headless"
-                ><b>WordPress som headless CMS</b
-                ><small>Med og uden hoved · REST API'et og felterne · opgave 3</small></a
-              >
-            </li>
-            <li>
-              <a href="#/hent-posts"
-                ><b>Hent posts i en server component</b
-                ><small
-                  >Dataflowet · <code>.env.local</code> · <code>fetch</code> i komponenten · cards ·
-                  <code>loading.js</code> · opgave 4</small
-                ></a
-              >
-            </li>
-            <li>
-              <a href="#/detaljeside"
-                ><b>Detaljeside med dynamisk route</b
-                ><small
-                  ><code>[slug]</code> · <code>posts[0]</code> og <code>notFound()</code> · vis posten · opgave 5</small
-                ></a
-              >
-            </li>
-            <li>
-              <a href="#/datalag"
-                ><b>Forside, About og et fælles datalag</b
-                ><small
-                  ><code>PostList</code> · About · <code>lib/wordpress.js</code> · <code>formatDate()</code> · opgave
-                  6</small
-                ></a
-              >
-            </li>
-            <li>
-              <a href="#/arbejd-videre"
-                ><b>Arbejd videre</b
-                ><small>Billeder og kategorier med <code>_embed</code> · fejlhåndtering · opgave 7</small></a
-              >
-            </li>
-          </ol>
+          <div class="agenda-phased">
+            <div class="agenda-phases" aria-hidden="true">
+              <p class="span-2"><span>Del 1</span><b>Fra React til Next.js</b></p>
+              <p class="span-1"><span>Del 2</span><b>Sider og navigation</b></p>
+              <p class="span-3"><span>Del 3</span><b>Headless WordPress</b></p>
+              <p class="span-2"><span>Del 4</span><b>Genbrug og fejlhåndtering</b></p>
+            </div>
+            <ol class="agenda-list">
+              <li>
+                <a href="#/fra-vite"
+                  ><b>Fra React og Vite til Next.js</b
+                  ><small>Client-server · CSR og SSR · library vs. framework · server components</small></a
+                >
+              </li>
+              <li>
+                <a href="#/opret-projekt"
+                  ><b>Opret dit Next.js-projekt</b><small>Én kommando · den genererede struktur · opgave 1</small></a
+                >
+              </li>
+              <li>
+                <a href="#/routing"
+                  ><b>Routing og layouts</b
+                  ><small>Mapper bliver til routes · <code>layout.js</code> · <code>Link</code> · opgave 2</small></a
+                >
+              </li>
+              <li>
+                <a href="#/headless"
+                  ><b>WordPress som headless CMS</b
+                  ><small>Med og uden hoved · REST API'et og felterne · opgave 3</small></a
+                >
+              </li>
+              <li>
+                <a href="#/hent-posts"
+                  ><b>Hent posts i en server component</b
+                  ><small
+                    ><code>.env.local</code> · <code>fetch</code> i komponenten · cards ·
+                    <code>loading.js</code> · opgave 4</small
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="#/detaljeside"
+                  ><b>Detaljeside med dynamisk route</b
+                  ><small
+                    ><code>[slug]</code> · <code>posts[0]</code> og <code>notFound()</code> · vis posten · opgave 5</small
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="#/datalag"
+                  ><b>Forside, About og et fælles datalag</b
+                  ><small
+                    ><code>PostList</code> · About · <code>lib/wordpress.js</code> · <code>formatDate()</code> · opgave
+                    6</small
+                  ></a
+                >
+              </li>
+              <li>
+                <a href="#/arbejd-videre"
+                  ><b>Arbejd videre</b
+                  ><small>Billeder og kategorier med <code>_embed</code> · fejlhåndtering · opgave 7</small></a
+                >
+              </li>
+            </ol>
+          </div>
         </section>
 
         <section class="po-slide po-agenda dui-agenda" id="opgaver">
@@ -861,7 +869,7 @@ export default function LikeButton() {
             </article>
             <article>
               <h3>Ryd op</h3>
-              <p>Ryd <code>page.js</code> op, opdatér <code>metadata</code> i <code>layout.js</code>, og kopiér <code>globals.css</code> fra referencerepoet.</p>
+              <p>Lad <code>page.js</code> vise en <code>&lt;h1&gt;</code>, tøm <code>page.module.css</code>, ret <code>metadata</code> i <code>layout.js</code>, og kopiér <code>globals.css</code>.</p>
               <p class="step-links"><a href="#/layout"><code>layout.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/globals.css" target="_blank" rel="noreferrer"><code>globals.css</code></a></p>
             </article>
             <article>
@@ -869,7 +877,7 @@ export default function LikeButton() {
               <p>Commit, opret et tomt repository på GitHub uden README, og push.</p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>CSS er ikke dagens fokus:</strong> Kopiér den fra referencerepoet via linket. <strong>Fejl om <em>npm naming restrictions</em>?</strong> Omdøb mappen til små bogstaver og bindestreger, og kør kommandoen igen.</p>
+          <p class="work-if-stuck"><strong>CSS er ikke dagens fokus:</strong> Kopiér den fra referencerepoet via linket. <code>Header</code> og <code>Footer</code> i <code>layout.js</code> kommer først i opgave 2. <strong>Fejl om <em>npm naming restrictions</em>?</strong> Omdøb mappen til små bogstaver og bindestreger, og kør kommandoen igen.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Appen kører lokalt med din egen titel, og udgangspunktet ligger på GitHub.</p>
           <p class="po-source-link">
             <a
@@ -1146,7 +1154,7 @@ export default function NotFound() {
             </article>
             <article>
               <h3>Header og Footer</h3>
-              <p>Lav <code>Header.js</code> med <code>Link</code> til dine routes og en <code>Footer.js</code> i <code>components/</code>.</p>
+              <p>Lav <code>Header.js</code> og <code>Footer.js</code> i <code>components/</code> — kopiér dem med CSS fra repoet.</p>
               <p class="step-links"><a href="#/link"><code>Link</code> i Header</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Header.js" target="_blank" rel="noreferrer"><code>Header.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Header.module.css" target="_blank" rel="noreferrer"><code>Header.module.css</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Footer.js" target="_blank" rel="noreferrer"><code>Footer.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Footer.module.css" target="_blank" rel="noreferrer"><code>Footer.module.css</code></a></p>
             </article>
             <article>
@@ -1160,7 +1168,7 @@ export default function NotFound() {
               <p class="step-links"><a href="#/not-found"><code>not-found.js</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Ingen styling?</strong> Kopiér både komponenten og dens <code>.module.css</code>. <strong>Virker en route ikke?</strong> Mappen skal hedde som URL'en, og filen <code>page.js</code>.</p>
+          <p class="work-if-stuck"><strong>Ingen styling?</strong> Kopiér komponenten og dens <code>.module.css</code>. <strong>Route virker ikke?</strong> Mappen skal hedde som URL'en.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Du kan navigere mellem <code>/</code>, <code>/posts</code> og <code>/about</code> uden fuld reload, <code>/findes-ikke</code> viser din not-found-side, og arbejdet er pushet.</p>
         </section>
 
@@ -1901,10 +1909,18 @@ export default function PostCard({ post }) {
 
   return (
     &lt;article className={styles.card}&gt;
-      &lt;time dateTime={post.date}&gt;{date}&lt;/time&gt;
-      &lt;h2 dangerouslySetInnerHTML={{ __html: post.title.rendered }} /&gt;
-      &lt;div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} /&gt;
-      &lt;Link href={`/posts/${post.slug}`}&gt;Read more&lt;/Link&gt;
+      &lt;time className={styles.date} dateTime={post.date}&gt;{date}&lt;/time&gt;
+      &lt;h2
+        className={styles.title}
+        dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+      /&gt;
+      &lt;div
+        className={styles.excerpt}
+        dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+      /&gt;
+      &lt;Link href={`/posts/${post.slug}`} className={styles.link}&gt;
+        Read more
+      &lt;/Link&gt;
     &lt;/article&gt;
   );
 }</code></pre>
@@ -1932,8 +1948,8 @@ export default function PostCard({ post }) {
             <article class="is-problem">
               <span>1 · Fejlen i terminalen</span>
               <p class="terminal-note">
-                <b>Error:</b> Route "/posts": … <code>fetch(...)</code> accessed outside of
-                <code>&lt;Suspense&gt;</code>
+                <b>Error:</b> Route "/posts": Next.js encountered uncached data during prerendering.
+                <code>fetch(...)</code> … accessed outside of <code>&lt;Suspense&gt;</code>
               </p>
               <p class="loading-why">
                 Siden venter på WordPress ved hver request. Next.js vil vide, hvad brugeren skal se imens — ellers
@@ -2019,7 +2035,7 @@ export default function PostCard({ post }) {
             </article>
             <article>
               <h3>Cards</h3>
-              <p>Lav <code>PostCard</code>, og vis dine posts som et grid af cards.</p>
+              <p>Lav <code>PostCard</code> med CSS fra repoet, og vis dine posts som et grid af cards.</p>
               <p class="step-links"><a href="#/postcard-brug">Brug <code>PostCard</code></a><a href="#/postcard">Indholdet</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/88e6baee8faef5e90bb2a1c0718e381c48fc8a56/components/PostCard.js" target="_blank" rel="noreferrer"><code>PostCard.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/PostCard.module.css" target="_blank" rel="noreferrer"><code>PostCard.module.css</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/88e6baee8faef5e90bb2a1c0718e381c48fc8a56/app/posts/page.module.css" target="_blank" rel="noreferrer"><code>posts/page.module.css</code></a></p>
             </article>
             <article>
@@ -2119,7 +2135,7 @@ if (!post) {
                 <code>[ ]</code><b>→</b>
                 <p>
                   <strong><code>notFound()</code></strong
-                  >Next.js viser din <code>not-found.js</code> med status 404.
+                  >Next.js viser din <code>not-found.js</code>.
                 </p>
               </article>
             </div>
@@ -2135,12 +2151,15 @@ if (!post) {
           <h2>Titel, dato og hele indholdet</h2>
           <div class="code-explain">
             <div>
-              <span class="code-label"><code>app/posts/[slug]/page.js</code> · <code>return</code></span>
-              <pre class="po-code"><code class="language-jsx">return (
+              <span class="code-label"
+                ><code>app/posts/[slug]/page.js</code> · <code>return</code> · med
+                <code>import styles from "./page.module.css"</code></span
+              >
+              <pre class="po-code code-sm"><code class="language-jsx">return (
   &lt;main&gt;
-    &lt;article&gt;
+    &lt;article className={styles.post}&gt;
       &lt;Link href="/posts"&gt;← All posts&lt;/Link&gt;
-      &lt;time dateTime={post.date}&gt;{date}&lt;/time&gt;
+      &lt;time className={styles.date} dateTime={post.date}&gt;{date}&lt;/time&gt;
       &lt;h1
         dangerouslySetInnerHTML={{ __html: post.title.rendered }}
       /&gt;
@@ -2160,8 +2179,9 @@ if (!post) {
                 >Hele indholdet er HTML — afsnit, billeder og overskrifter fra WordPress.
               </p>
               <p>
-                <b><code>wp-content</code></b>Styler HTML'en fra WordPress, så fx billeder ikke går ud over kanten.
-                Klassen står i <code>globals.css</code> fra referencerepoet.
+                <b>CSS</b><code>styles.post</code> og <code>styles.date</code> kommer fra
+                <code>[slug]/page.module.css</code>. <code>wp-content</code> fra <code>globals.css</code> styler
+                HTML'en fra WordPress.
               </p>
             </div>
           </div>
@@ -2283,8 +2303,8 @@ return (
                   >WordPress sender kun de 3 nyeste.
                 </p>
                 <p>
-                  <b>Brug <code>PostList</code> på <code>/posts</code> også</b>Så er griddet ét sted. Omdøb
-                  <code>app/posts/page.module.css</code> til <code>PostList.module.css</code>.
+                  <b>Brug <code>PostList</code> på <code>/posts</code> også</b>Så er griddet ét sted. Flyt
+                  <code>app/posts/page.module.css</code> til <code>components/PostList.module.css</code>.
                 </p>
               </div>
             </div>
@@ -2498,7 +2518,7 @@ const date = formatDate(post.date);</code></pre>
             <article>
               <h3>Forside</h3>
               <p>Vis de 3 seneste posts, og flyt griddet til <code>PostList</code>.</p>
-              <p class="step-links"><a href="#/postlist"><code>PostList</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/page.js" target="_blank" rel="noreferrer"><code>page.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/page.module.css" target="_blank" rel="noreferrer"><code>page.module.css</code></a></p>
+              <p class="step-links"><a href="#/postlist"><code>PostList</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/15e6817b4edd1177205001de40bd33b5e10d67e7/app/page.js" target="_blank" rel="noreferrer"><code>page.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/15e6817b4edd1177205001de40bd33b5e10d67e7/app/page.module.css" target="_blank" rel="noreferrer"><code>page.module.css</code></a></p>
             </article>
             <article>
               <h3>About</h3>
@@ -2609,8 +2629,10 @@ const categories = post._embedded?.["wp:term"]?.[0] ?? [];
 
 return (
   &lt;article className={styles.card}&gt;
-    {image &amp;&amp; &lt;img src={image.source_url} alt={image.alt_text} /&gt;}
-    &lt;ul&gt;
+    {image &amp;&amp; (
+      &lt;img className={styles.image} src={image.source_url} alt={image.alt_text} /&gt;
+    )}
+    &lt;ul className={styles.categories}&gt;
       {categories.map((category) =&gt; (
         &lt;li key={category.id}&gt;{category.name}&lt;/li&gt;
       ))}
@@ -2634,8 +2656,8 @@ return (
                 >En tom liste, hvis der ingen kategorier er — så virker <code>.map()</code> stadig.
               </p>
               <p>
-                <b><code>&lt;img&gt;</code> i dag</b><code>next/image</code> kræver, at dit domæne står i
-                <code>images.remotePatterns</code>.
+                <b><code>&lt;img&gt;</code> i dag</b>ESLint advarer om <code>&lt;img&gt;</code> — det er forventet.
+                <code>next/image</code> kræver, at dit domæne står i <code>images.remotePatterns</code>.
               </p>
             </div>
           </div>
@@ -2748,7 +2770,7 @@ export default function Error({ retry }) {
             </article>
             <article>
               <h3>Vis det</h3>
-              <p>Vis billede og kategorier på cards — og billedet på detaljesiden og About.</p>
+              <p>Vis billede og kategorier på cards — og billedet på detaljesiden og About med <code class="nowrap">className="featured-image"</code>.</p>
               <p class="step-links"><a href="#/embed-vis">Følg stien</a></p>
             </article>
             <article>

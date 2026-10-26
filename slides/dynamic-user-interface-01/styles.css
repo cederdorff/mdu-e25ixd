@@ -4344,27 +4344,108 @@
 }
 
 /* Opgave 2 har flere repo-links og en lang "Du er klar, når" */
-#opgave-2 .assignment-flow {
+#opgave-2 .assignment-flow,
+#opgave-4 .assignment-flow {
   margin-top: 64px;
 }
 
-#opgave-2 .assignment-flow article {
+#opgave-2 .assignment-flow article,
+#opgave-4 .assignment-flow article {
   min-height: 0;
 }
 
-#opgave-2 .work-if-stuck {
+#opgave-2 .work-if-stuck,
+#opgave-4 .work-if-stuck {
   margin-top: 28px;
 }
 
-#opgave-2 .step-links {
+.reveal .mode-work .step-links {
   gap: 6px;
 }
 
-#opgave-2 .step-links a {
+.reveal .mode-work .step-links a {
   padding: 3px 9px;
   font-size: 14px;
 }
 
-#opgave-2 .step-links a code {
+.reveal .mode-work .step-links a code {
   font-size: 13px !important;
+}
+
+/* Agenda · fire overpunkter til tavlen */
+.dui-agenda .agenda-phased {
+  display: grid;
+  flex: none;
+  height: 520px;
+  grid-template-columns: 290px minmax(0, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+  margin-bottom: 26px;
+}
+
+.dui-agenda .agenda-phased .agenda-list {
+  grid-template-rows: repeat(8, minmax(0, 1fr)) !important;
+  height: 100%;
+  margin: 0 !important;
+}
+
+.dui-agenda .agenda-phases {
+  display: grid;
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.dui-agenda .agenda-phases p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding-right: 18px;
+  border-right: 3px solid var(--dui);
+  text-align: right;
+}
+
+.dui-agenda .agenda-phases p:nth-child(2) { border-color: var(--dui-blue); }
+.dui-agenda .agenda-phases p:nth-child(3) { border-color: var(--dui-yellow); }
+.dui-agenda .agenda-phases p:nth-child(4) { border-color: var(--green); }
+
+.dui-agenda .agenda-phases .span-1 { grid-row: span 1; }
+.dui-agenda .agenda-phases .span-2 { grid-row: span 2; }
+.dui-agenda .agenda-phases .span-3 { grid-row: span 3; }
+
+.dui-agenda .agenda-phases span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dui-agenda .agenda-phases b {
+  margin-top: 4px;
+  color: var(--ink);
+  font-size: 21px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.dui-agenda .agenda-phased .agenda-list a {
+  grid-template-columns: 430px 1fr;
+}
+
+.dui-agenda .agenda-phased .agenda-list b {
+  font-size: 22px;
+}
+
+.dui-agenda .agenda-phased .agenda-list small {
+  font-size: 16px;
+}
+
+#postcard .code-explain {
+  margin-top: 20px;
+}
+
+#postcard pre.po-code code {
+  font-size: 15px !important;
+  line-height: 1.34 !important;
 }
