@@ -842,57 +842,26 @@ export default nextConfig;</code></pre>
           <div class="assignment-flow">
             <article>
               <h3>Opret</h3>
-              <p>Opret en tom mappe med små bogstaver, og åbn den i VS Code.</p>
-              <p>Kopiér kommandoen fra undervisningssiden, og kør den i <em>Terminal → New Terminal</em>.</p>
+              <p>Opret en tom mappe med små bogstaver, og kør kommandoen i VS Code-terminalen.</p>
               <p class="step-links"><a href="#/kommando">Kommandoen</a></p>
             </article>
             <article>
               <h3>Kør og undersøg</h3>
-              <p>Kør <code>npm run dev</code>, og åbn <code>localhost:3000</code>.</p>
-              <p>
-                Gennemgå strukturen: Hvilken fil er forsiden? Hvor står <code>&lt;html&gt;</code> og
-                <code>&lt;body&gt;</code>? Hvad er slået til i <code>next.config.mjs</code>?
-              </p>
-              <p class="step-links">
-                <a href="#/struktur">Strukturen</a><a href="#/next-config"><code>next.config.mjs</code></a>
-              </p>
+              <p>Kør <code>npm run dev</code>, og find forsiden, <code>&lt;html&gt;</code> og indstillingerne i <code>next.config.mjs</code>.</p>
+              <p class="step-links"><a href="#/struktur">Strukturen</a><a href="#/next-config"><code>next.config.mjs</code></a></p>
             </article>
             <article>
               <h3>Ryd op</h3>
-              <p>
-                Lad <code>page.js</code> vise en <code>&lt;h1&gt;</code> med appens navn, og tøm
-                <code>page.module.css</code>.
-              </p>
-              <p>Opdatér titel og beskrivelse i <code>layout.js</code>, og tjek <code>lang</code>.</p>
-              <p>Kopiér <code>globals.css</code> fra referencerepoet.</p>
-              <p class="step-links">
-                <a href="#/layout"><code>layout.js</code></a
-                ><a
-                  class="is-repo"
-                  href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/globals.css"
-                  target="_blank"
-                  rel="noreferrer"
-                  ><code>globals.css</code></a
-                >
-              </p>
+              <p>Ryd <code>page.js</code> op, opdatér <code>metadata</code> i <code>layout.js</code>, og kopiér <code>globals.css</code> fra referencerepoet.</p>
+              <p class="step-links"><a href="#/layout"><code>layout.js</code></a></p>
             </article>
             <article>
               <h3>Push</h3>
-              <p>Commit oprydningen. Git og et første commit er allerede sat op.</p>
-              <p>
-                Opret et tomt repository på GitHub uden README, og kør kommandoerne under
-                <em>push an existing repository</em>.
-              </p>
+              <p>Commit, opret et tomt repository på GitHub uden README, og push.</p>
             </article>
           </div>
-          <p class="work-if-stuck">
-            <strong>Fejl om <em>npm naming restrictions</em>?</strong> Omdøb mappen til små bogstaver og bindestreger,
-            og kør kommandoen igen. <strong>CSS er ikke dagens fokus:</strong> Kopiér den fra referencerepoet, så du
-            kan bruge tiden på Next.js.
-          </p>
-          <p class="done-when">
-            <strong>Du er klar, når:</strong> Appen kører lokalt med din egen titel, og udgangspunktet ligger på GitHub.
-          </p>
+          <p class="work-if-stuck"><strong>CSS er ikke dagens fokus:</strong> Kopiér den fra referencerepoet. Fejlfinding og links til CSS-filerne står under punkt 2 på undervisningssiden.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Appen kører lokalt med din egen titel, og udgangspunktet ligger på GitHub.</p>
           <p class="po-source-link">
             <a
               href="https://github.com/cederdorff/nextjs-headless-wordpress/commits/main"
@@ -1163,73 +1132,27 @@ export default function NotFound() {
           <div class="assignment-flow">
             <article>
               <h3>Opret routes</h3>
-              <p>Lav <code>app/posts/page.js</code> og <code>app/about/page.js</code>.</p>
-              <p>Kopiér opbygningen fra <code>app/page.js</code>, og giv hver side en overskrift og en kort tekst.</p>
+              <p>Lav <code>app/posts/page.js</code> og <code>app/about/page.js</code> med en overskrift hver.</p>
               <p class="step-links"><a href="#/route-regler">Hvad bliver en route?</a></p>
             </article>
             <article>
               <h3>Header</h3>
-              <p>
-                Opret mappen <code>components/</code> i roden, og lav <code>Header.js</code> med navigation til
-                <code>/</code>, <code>/posts</code> og <code>/about</code>.
-              </p>
-              <p>Tag udgangspunkt i eksemplet med <code>Link</code>.</p>
-              <p class="step-links">
-                <a href="#/link"><code>Link</code> i Header</a
-                ><a
-                  class="is-repo"
-                  href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Header.js"
-                  target="_blank"
-                  rel="noreferrer"
-                  ><code>Header.js</code></a
-                ><a
-                  class="is-repo"
-                  href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Header.module.css"
-                  target="_blank"
-                  rel="noreferrer"
-                  ><code>Header.module.css</code></a
-                >
-              </p>
+              <p>Lav <code>components/Header.js</code> med <code>Link</code> til <code>/</code>, <code>/posts</code> og <code>/about</code>.</p>
+              <p class="step-links"><a href="#/link"><code>Link</code> i Header</a></p>
             </article>
             <article>
               <h3>Layout</h3>
-              <p>Lav <code>components/Footer.js</code>, fx med appens navn og årstal.</p>
-              <p>
-                Vis <code>Header</code> og <code>Footer</code> i <code>layout.js</code> rundt om
-                <code>{children}</code>.
-              </p>
-              <p class="step-links">
-                <a href="#/layout"><code>layout.js</code></a
-                ><a
-                  class="is-repo"
-                  href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Footer.module.css"
-                  target="_blank"
-                  rel="noreferrer"
-                  ><code>Footer.module.css</code></a
-                >
-              </p>
+              <p>Vis <code>Header</code> og en <code>Footer</code> rundt om <code>{children}</code> i <code>layout.js</code>.</p>
+              <p class="step-links"><a href="#/layout"><code>layout.js</code></a></p>
             </article>
             <article>
               <h3>Not found og push</h3>
-              <p>Tilføj <code>app/not-found.js</code> med en forståelig besked og et <code>Link</code> til forsiden.</p>
-              <p>Test <code>/findes-ikke</code>, og commit og push.</p>
-              <p class="step-links">
-                <a href="#/not-found"><code>not-found.js</code></a>
-              </p>
+              <p>Tilføj <code>app/not-found.js</code>, test <code>/findes-ikke</code>, og push.</p>
+              <p class="step-links"><a href="#/not-found"><code>not-found.js</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck">
-            <strong>Virker en route ikke?</strong> Mappen skal hedde det samme som URL'en, og filen skal hedde
-            <code>page.js</code>. <strong>Kan <code>Header</code> ikke findes?</strong> Tjek, at
-            <code>components/</code> ligger i roden, og at importen er <code>@/components/Header</code>.
-            <strong>Ingen styling?</strong> En kopieret <code>.module.css</code> virker kun med de samme
-            <code>className</code>s — tag komponenten med fra repoet.
-          </p>
-          <p class="done-when">
-            <strong>Du er klar, når:</strong> Du kan navigere mellem <code>/</code>, <code>/posts</code> og
-            <code>/about</code> uden fuld reload, <code>/findes-ikke</code> viser din not-found-side, og arbejdet er
-            pushet.
-          </p>
+          <p class="work-if-stuck"><strong>Sidder du fast?</strong> Fejlfinding og CSS til Header og Footer står under punkt 3 på undervisningssiden.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Du kan navigere mellem <code>/</code>, <code>/posts</code> og <code>/about</code> uden fuld reload, <code>/findes-ikke</code> viser din not-found-side, og arbejdet er pushet.</p>
         </section>
 
         <section class="chapter po-chapter po-slide" id="headless">
@@ -1627,43 +1550,27 @@ export default function NotFound() {
           <div class="assignment-flow">
             <article>
               <h3>Åbn posts</h3>
-              <p>Åbn <code>/wp-json/wp/v2/posts</code> på dit eget WordPress-domæne.</p>
-              <p>
-                Brug browseren med Pretty print — eller Thunder Client i VS Code. Starter svaret med <code>[</code>?
-              </p>
+              <p>Åbn <code class="nowrap">/wp-json/wp/v2/posts</code> med Pretty print. Starter svaret med&nbsp;<code>[</code>?</p>
               <p class="step-links"><a href="#/endpoints">Endpoints</a><a href="#/json">Pretty print</a></p>
             </article>
             <article>
               <h3>Find felterne</h3>
-              <p>
-                Find <code>id</code>, <code>slug</code>, <code>date</code> og de tre <code>.rendered</code>-felter i
-                første post.
-              </p>
-              <p>Hvilke er objekter <code>{ }</code>, og hvilke er tekst? Skriv stien til titlen og til uddraget.</p>
+              <p>Find de seks felter i første post, og skriv stien til titlen og uddraget.</p>
               <p class="step-links"><a href="#/felter">Seks felter</a><a href="#/datastruktur">Stien</a></p>
             </article>
             <article>
               <h3>Test en slug</h3>
-              <p>Kopiér en <code>slug</code>, og åbn <code class="nowrap">/posts?slug=…</code></p>
-              <p>Hvad får du tilbage med en slug, der ikke findes?</p>
+              <p>Åbn <code class="nowrap">/posts?slug=…</code> — og prøv en slug, der ikke findes.</p>
               <p class="step-links"><a href="#/endpoints">Endpoints</a></p>
             </article>
             <article>
               <h3>Hent About</h3>
-              <p>Åbn <code class="nowrap">/pages?slug=about</code></p>
-              <p>Får du et array med din About-page?</p>
+              <p>Åbn <code class="nowrap">/pages?slug=about</code>. Får du et array med din About-page?</p>
               <p class="step-links"><a href="#/endpoints">Endpoints</a></p>
             </article>
           </div>
-          <p class="work-if-stuck">
-            <strong>Får du en fejl?</strong> Tjek, at Permalinks under Indstillinger ikke står til Plain, og at et
-            sikkerhedsplugin ikke blokerer REST API'et. Brug test-URL'en <code>https://headless.cederdorff.dk</code>,
-            mens du fejlfinder.
-          </p>
-          <p class="done-when">
-            <strong>Du er klar, når:</strong> Du kan forklare, hvad de seks felter skal bruges til, har en slug at teste
-            med og har noteret din WordPress-URL uden <code>/</code> til sidst.
-          </p>
+          <p class="work-if-stuck"><strong>Får du en fejl?</strong> Brug test-URL'en <code>https://headless.cederdorff.dk</code>, mens du fejlfinder. Fejlfinding står under punkt 4 på undervisningssiden.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Du kan forklare, hvad de seks felter skal bruges til, og har noteret din WordPress-URL uden <code>/</code> til sidst.</p>
         </section>
 
         <section class="chapter po-chapter po-slide" id="hent-posts">
@@ -2093,74 +2000,27 @@ export default function PostCard({ post }) {
           <div class="assignment-flow">
             <article>
               <h3>Miljøvariabel</h3>
-              <p>
-                Gem din WordPress-URL uden <code>/</code> til sidst i <code>.env.local</code> i roden — ikke i
-                <code>app/</code>.
-              </p>
-              <p>
-                Dokumentér den i <code>.env.example</code>, tilføj <code>!.env.example</code> i
-                <code>.gitignore</code>, og genstart <code>npm run dev</code>.
-              </p>
-              <p class="step-links">
-                <a href="#/env"><code>.env.local</code></a><a href="#/env-example"><code>.env.example</code></a>
-              </p>
+              <p>Gem URL'en i <code>.env.local</code>, dokumentér den i <code>.env.example</code>, og genstart <code>npm run dev</code>.</p>
+              <p class="step-links"><a href="#/env"><code>.env.local</code></a><a href="#/env-example"><code>.env.example</code></a></p>
             </article>
             <article>
               <h3>Hent posts</h3>
-              <p>
-                Gør <code>app/posts/page.js</code> <code>async</code>, hent posts med <code>fetch</code>, og log dem.
-                Vis derefter titlerne i en <code>&lt;ul&gt;</code>.
-              </p>
-              <p>Fejl om <code>&lt;Suspense&gt;</code>? Den løser du i trin 4.</p>
+              <p>Hent posts i <code>app/posts/page.js</code>, log dem, og vis titlerne i en <code>&lt;ul&gt;</code>.</p>
               <p class="step-links"><a href="#/hent-log">Hent og log</a><a href="#/hent-direkte">Vis titlerne</a></p>
             </article>
             <article>
               <h3>Cards</h3>
-              <p>Lav <code>components/PostCard.js</code> med titel, uddrag, dato og link.</p>
-              <p>Vis dem i et grid — og en besked, hvis der ingen posts er.</p>
-              <p class="step-links">
-                <a href="#/postcard-brug">Brug <code>PostCard</code></a
-                ><a href="#/postcard">Indholdet</a
-                ><a
-                  class="is-repo"
-                  href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/88e6baee8faef5e90bb2a1c0718e381c48fc8a56/components/PostCard.js"
-                  target="_blank"
-                  rel="noreferrer"
-                  ><code>PostCard.js</code></a
-                ><a
-                  class="is-repo"
-                  href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/PostCard.module.css"
-                  target="_blank"
-                  rel="noreferrer"
-                  ><code>PostCard.module.css</code></a
-                ><a
-                  class="is-repo"
-                  href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/88e6baee8faef5e90bb2a1c0718e381c48fc8a56/app/posts/page.module.css"
-                  target="_blank"
-                  rel="noreferrer"
-                  ><code>posts/page.module.css</code></a
-                >
-              </p>
+              <p>Lav <code>PostCard</code>, og vis dine posts som et grid af cards.</p>
+              <p class="step-links"><a href="#/postcard-brug">Brug <code>PostCard</code></a><a href="#/postcard">Indholdet</a></p>
             </article>
             <article>
               <h3>Loading og push</h3>
-              <p>Tilføj <code>app/posts/loading.js</code>.</p>
-              <p>Kør <code>npm run build</code>. Går det igennem, så commit og push.</p>
-              <p class="step-links">
-                <a href="#/loading"><code>loading.js</code></a>
-              </p>
+              <p>Tilføj <code>app/posts/loading.js</code>, kør <code>npm run build</code>, og push.</p>
+              <p class="step-links"><a href="#/loading"><code>loading.js</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck">
-            <strong>Står der <code>undefined</code> i URL'en?</strong> Tjek stavning og placering af
-            <code>.env.local</code>, og genstart <code>npm run dev</code>.
-            <strong>Er <code>posts</code> ikke et array?</strong> Log det — outputtet står i terminalen.
-            <strong>Module not found?</strong> Opret den <code>.module.css</code>, du importerer.
-          </p>
-          <p class="done-when">
-            <strong>Du er klar, når:</strong> <code>/posts</code> viser dine posts som cards, <code>npm run build</code>
-            går igennem, og arbejdet er pushet.
-          </p>
+          <p class="work-if-stuck"><strong>Fejl om <code>&lt;Suspense&gt;</code>?</strong> Den løser du i trin 4. Fejlfinding og CSS til cards og grid står under punkt 5 på undervisningssiden.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> <code>/posts</code> viser dine posts som cards, <code>npm run build</code> går igennem, og arbejdet er pushet.</p>
         </section>
 
         <section class="chapter po-chapter po-slide" id="detaljeside">
@@ -2332,52 +2192,27 @@ if (!post) {
           <div class="assignment-flow">
             <article>
               <h3>Route</h3>
-              <p>Opret <code>app/posts/[slug]/page.js</code>.</p>
-              <p>Læs <code>slug</code> fra <code>params</code> — husk <code>await</code>.</p>
-              <p class="step-links">
-                <a href="#/slug-flow">Fra URL til <code>slug</code></a>
-              </p>
+              <p>Opret <code class="nowrap">app/posts/[slug]/page.js</code>, og læs <code>slug</code> fra <code>params</code> med <code>await</code>.</p>
+              <p class="step-links"><a href="#/slug-flow">Fra URL til <code>slug</code></a></p>
             </article>
             <article>
               <h3>Hent posten</h3>
-              <p>Hent med <code>?slug=</code>, og brug <code>posts[0]</code>.</p>
-              <p>Kald <code>notFound()</code>, hvis arrayet er tomt.</p>
+              <p>Hent med <code>?slug=</code>, brug <code>posts[0]</code>, og kald <code>notFound()</code>, hvis den mangler.</p>
               <p class="step-links"><a href="#/hent-en">Hent én post</a></p>
             </article>
             <article>
               <h3>Vis indholdet</h3>
-              <p>Vis titel, dato og <code>content.rendered</code>.</p>
-              <p>Tilføj et <code>Link</code> tilbage til <code>/posts</code>.</p>
-              <p class="step-links">
-                <a href="#/vis-post">Vis posten</a
-                ><a
-                  class="is-repo"
-                  href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/posts/%5Bslug%5D/page.module.css"
-                  target="_blank"
-                  rel="noreferrer"
-                  ><code>[slug]/page.module.css</code></a
-                >
-              </p>
+              <p>Vis titel, dato og <code>content.rendered</code> — med et <code>Link</code> tilbage.</p>
+              <p class="step-links"><a href="#/vis-post">Vis posten</a></p>
             </article>
             <article>
               <h3>Loading og push</h3>
-              <p>Giv detaljesiden sin egen <code>app/posts/[slug]/loading.js</code>.</p>
-              <p>Test et card og <code>/posts/findes-ikke</code>. Commit og push.</p>
-              <p class="step-links">
-                <a href="#/loading-regel"><code>loading.js</code></a>
-              </p>
+              <p>Tilføj <code>[slug]/loading.js</code>, test <code>/posts/findes-ikke</code>, og push.</p>
+              <p class="step-links"><a href="#/loading-regel"><code>loading.js</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck">
-            <strong>Er <code>slug</code> <code>undefined</code>?</strong> Mappen skal hedde <code>[slug]</code> med
-            firkantede parenteser, og <code>params</code> skal <code>await</code>'es.
-            <strong>404, selvom posten findes?</strong> Log <code>slug</code> og URL'en, og sammenlign med din
-            WordPress.
-          </p>
-          <p class="done-when">
-            <strong>Du er klar, når:</strong> Et klik på et card åbner detaljesiden, <code>/posts/findes-ikke</code>
-            viser din not-found-side, og arbejdet er pushet.
-          </p>
+          <p class="work-if-stuck"><strong>Sidder du fast?</strong> Fejlfinding og CSS til detaljesiden står under punkt 6 på undervisningssiden.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Et klik på et card åbner detaljesiden, <code>/posts/findes-ikke</code> viser din not-found-side, og arbejdet er pushet.</p>
         </section>
 
         <section class="chapter po-chapter po-slide" id="datalag">
@@ -2653,52 +2488,27 @@ const date = formatDate(post.date);</code></pre>
           <div class="assignment-flow">
             <article>
               <h3>Forside</h3>
-              <p>Vis de 3 seneste posts med <code>?per_page=3</code>.</p>
-              <p>
-                Flyt griddet til <code>PostList</code>, og brug den på forsiden og <code>/posts</code>. CSS'en flytter
-                med.
-              </p>
-              <p class="step-links">
-                <a href="#/postlist"><code>PostList</code></a>
-              </p>
+              <p>Vis de 3 seneste posts, og flyt griddet til <code>PostList</code>.</p>
+              <p class="step-links"><a href="#/postlist"><code>PostList</code></a></p>
             </article>
             <article>
               <h3>About</h3>
-              <p>Hent <code>/pages?slug=about</code>, og vis den på <code>/about</code>.</p>
-              <p>Tilføj <code>app/loading.js</code> og <code>app/about/loading.js</code>.</p>
-              <p class="step-links">
-                <a href="#/about">About</a><a href="#/loading-regel"><code>loading.js</code></a>
-              </p>
+              <p>Hent din About-page, og giv forsiden og About hver sin <code>loading.js</code>.</p>
+              <p class="step-links"><a href="#/about">About</a><a href="#/loading-regel"><code>loading.js</code></a></p>
             </article>
             <article>
               <h3>Saml koden</h3>
-              <p>
-                Flyt dine <code>fetch</code>-kald til fire funktioner i <code>lib/wordpress.js</code> med
-                <code>API_URL</code>.
-              </p>
-              <p class="step-links">
-                <a href="#/datalag-model">Hvorfor?</a><a href="#/datalag-kode"><code>lib/wordpress.js</code></a
-                ><a href="#/datalag-slug"><code>getPostBySlug</code></a>
-              </p>
+              <p>Flyt dine <code>fetch</code>-kald til fire funktioner i <code>lib/wordpress.js</code>.</p>
+              <p class="step-links"><a href="#/datalag-model">Hvorfor?</a><a href="#/datalag-kode"><code>lib/wordpress.js</code></a><a href="#/datalag-slug"><code>getPostBySlug</code></a></p>
             </article>
             <article>
               <h3>Dato og push</h3>
-              <p>Flyt datoen til <code>formatDate()</code> i <code>lib/format.js</code>.</p>
-              <p>Kør <code>npm run build</code>. Commit og push.</p>
-              <p class="step-links">
-                <a href="#/format"><code>formatDate()</code></a>
-              </p>
+              <p>Flyt datoen til <code>formatDate()</code>, kør <code>npm run build</code>, og push.</p>
+              <p class="step-links"><a href="#/format"><code>formatDate()</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck">
-            <strong>Virker alt, men ser ens ud?</strong> Godt — datalaget ændrer ikke det, brugeren ser. Test alle fire
-            sider efter hver flytning. <strong>Fejl om import?</strong> Tjek, at funktionerne er
-            <code>export</code>'et, og at importen er <code>@/lib/wordpress</code>.
-          </p>
-          <p class="done-when">
-            <strong>Du er klar, når:</strong> Ingen sider kalder <code>fetch</code> direkte, datoen formateres ét sted,
-            <code>npm run build</code> går igennem, og arbejdet er pushet.
-          </p>
+          <p class="work-if-stuck"><strong>Virker alt, men ser ens ud?</strong> Godt — datalaget ændrer ikke det, brugeren ser. Fejlfinding står under punkt 7 på undervisningssiden.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Ingen sider kalder <code>fetch</code> direkte, datoen formateres ét sted, <code>npm run build</code> går igennem, og arbejdet er pushet.</p>
         </section>
 
         <section class="chapter po-chapter po-slide" id="arbejd-videre">
@@ -2924,45 +2734,31 @@ export default function Error({ retry }) {
           <div class="assignment-flow">
             <article>
               <h3><code>_embed</code></h3>
-              <p>Find <code>_embedded</code> i JSON'en i browseren først.</p>
-              <p>Tilføj <code>_embed</code> til URL'erne i <code>lib/wordpress.js</code>.</p>
+              <p>Find <code>_embedded</code> i JSON'en, og tilføj <code>_embed</code> i <code>lib/wordpress.js</code>.</p>
               <p class="step-links"><a href="#/embed-json">Hvad sendes med?</a></p>
             </article>
             <article>
               <h3>Vis det</h3>
-              <p>Vis billede og kategorier på dine cards.</p>
-              <p>Vis også billedet på detaljesiden og About med <code class="nowrap">.featured-image</code>.</p>
+              <p>Vis billede og kategorier på cards — og billedet på detaljesiden og About.</p>
               <p class="step-links"><a href="#/embed-vis">Følg stien</a></p>
             </article>
             <article>
               <h3>Fejl</h3>
-              <p>Tjek <code>response.ok</code> i funktionerne i <code>lib/wordpress.js</code>.</p>
-              <p>Tilføj <code>app/error.js</code> med <code>retry()</code>.</p>
-              <p class="step-links">
-                <a href="#/response-ok"><code>response.ok</code></a
-                ><a href="#/error-js"><code>error.js</code></a>
-              </p>
+              <p>Tjek <code>response.ok</code>, og tilføj <code>app/error.js</code> med <code>retry()</code>.</p>
+              <p class="step-links"><a href="#/response-ok"><code>response.ok</code></a><a href="#/error-js"><code>error.js</code></a></p>
             </article>
             <article>
               <h3>Test og push</h3>
-              <p>
-                Stav et endpoint forkert i <code>lib/wordpress.js</code>, og se <code>error.js</code>. Ret det igen.
-              </p>
-              <p>Commit og push — du skal bruge appen næste gang.</p>
+              <p>Stav et endpoint forkert, se <code>error.js</code>, ret det igen, og push.</p>
             </article>
           </div>
-          <p class="work-if-stuck">
-            <strong>Intet billede?</strong> Har posten et fremhævet billede i WordPress, og står <code>_embed</code> i
-            URL'en? <strong>Viser forsiden pludselig 10 posts?</strong> Tjek, at der står <code>&amp;_embed</code> — ikke
-            <code>?_embed</code> — efter <code>?per_page=3</code>. <strong>Cannot read properties of undefined?</strong>
-            Brug <code>?.</code> hele vejen ned ad stien.
-          </p>
-          <p class="done-when">
-            <strong>Du er klar, når:</strong> Dine cards har billede og kategori, en forkert URL giver din fejlside med
-            en knap, der virker, og arbejdet er pushet.
-          </p>
+          <p class="work-if-stuck"><strong>Sidder du fast?</strong> Fejlfinding står under punkt 8 på undervisningssiden.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Dine cards har billede og kategori, en forkert URL giver din fejlside med en knap, der virker, og arbejdet er pushet.</p>
           <p class="po-source-link">
-            <a href="https://github.com/cederdorff/nextjs-headless-wordpress" target="_blank" rel="noreferrer"
+            <a
+              href="https://github.com/cederdorff/nextjs-headless-wordpress"
+              target="_blank"
+              rel="noreferrer"
               >Referencerepo: nextjs-headless-wordpress ↗</a
             >
           </p>

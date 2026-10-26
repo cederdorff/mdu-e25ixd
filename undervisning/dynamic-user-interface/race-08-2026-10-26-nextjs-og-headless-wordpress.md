@@ -61,6 +61,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Ryd op i templaten: Fjern demoindhold, og opdatér titel, beskrivelse og <code>lang</code> i <code>layout.js</code>, fx <code>lang="da"</code>, hvis dit indhold er på dansk. Kopiér <a href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/globals.css"><code>app/globals.css</code></a> fra referencerepoet – den indeholder også de globale klasser, du skal bruge senere.</li>
 <li><code>create-next-app</code> har allerede oprettet et git-repository med et første commit. Commit din oprydning, opret et tomt repository på GitHub uden README, og push med kommandoerne under <em>…or push an existing repository from the command line</em>.</li>
 <li>Tjek dit udgangspunkt mod de første commits i referencerepoet.</li>
+<li><strong>Sidder du fast?</strong> Får du en fejl om <em>npm naming restrictions</em>, så omdøb mappen til små bogstaver og bindestreger, og kør kommandoen igen.</li>
 </ul>
 </details>
 
@@ -72,6 +73,8 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Komponenter, der ikke selv er sider, lægger du i <code>components/</code> i roden – ved siden af <code>app/</code>. Lav <code>components/Header.js</code> med navigation, og brug <code>Link</code> fra <code>next/link</code> i stedet for <code>&lt;a&gt;</code>. Så skifter kun siden uden fuld reload, og i produktion hentes siden bag linket på forhånd.</li>
 <li>Brug <code>layout.js</code> til det, der går igen på alle sider: Vis <code>Header</code> og en <code>Footer</code> rundt om <code>{children}</code>, som er den aktuelle side. Lad <code>metadata</code> og fonts fra <code>create-next-app</code> blive stående.</li>
 <li>Tilføj en <code>not-found.js</code>, så ukendte routes får en forståelig side, og test den på fx <code>/findes-ikke</code>. Commit og push, når navigationen virker.</li>
+<li><strong>CSS:</strong> <a href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Header.js"><code>components/Header.js</code></a> med <a href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Header.module.css"><code>components/Header.module.css</code></a> og <a href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Footer.module.css"><code>components/Footer.module.css</code></a>. En kopieret <code>.module.css</code> virker kun med de samme <code>className</code>s, så tag komponenten med fra repoet.</li>
+<li><strong>Sidder du fast?</strong> Virker en route ikke, skal mappen hedde det samme som URL'en, og filen skal hedde <code>page.js</code>. Kan <code>Header</code> ikke findes, så tjek, at <code>components/</code> ligger i roden, og at importen er <code>@/components/Header</code>.</li>
 </ul>
 </details>
 
@@ -87,6 +90,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Forstå datastrukturen, før du skriver kode: <code>[ ]</code> er et array, som du tilgår med et index eller <code>.map()</code>. <code>{ }</code> er et objekt, som du tilgår med <code>.navn</code>. Følg stien med punktum: <code>posts</code> → <code>posts[0]</code> → <code>posts[0].title</code> → <code>posts[0].title.rendered</code>. Skriver du <code>{post.title}</code>, får du fejlen <em>Objects are not valid as a React child</em>, fordi du stoppede ved objektet.</li>
 <li>Læg mærke til, at <code>.rendered</code>-felterne indeholder HTML. Uddraget er pakket ind i <code>&lt;p&gt;</code>, og titler kan indeholde entities som <code>&amp;#8217;</code>. Viser du dem som almindelig tekst, kommer tags og koder med på dine cards.</li>
 <li>Notér din WordPress-URL uden <code>/</code> til sidst. Den skal du bruge i næste punkt.</li>
+<li><strong>Sidder du fast?</strong> Får du en fejl fra REST API'et, så tjek, at Permalinks under <em>Indstillinger</em> ikke står til <em>Plain</em>, og at et sikkerhedsplugin ikke blokerer REST API'et. Brug test-URL'en <code>https://headless.cederdorff.dk</code>, mens du fejlfinder.</li>
 </ul>
 </details>
 
@@ -101,6 +105,8 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Byg videre: Lav en <code>PostCard</code>-komponent i <code>components/PostCard.js</code> med en <code>PostCard.module.css</code> ved siden af, og skift <code>&lt;li&gt;</code> ud med <code>&lt;PostCard key={post.id} post={post} /&gt;</code> i <code>posts.map()</code>. Vis posts som et grid af cards med titel, uddrag, dato og link til detaljesiden. Griddet styles med <code>styles.grid</code> fra <code>app/posts/page.module.css</code>. Vis en besked, hvis der ingen posts er. CSS'en til begge kan du kopiere fra referencerepoet.</li>
 <li>Læg mærke til fejlen i terminalen om data, der hentes uden for <code>&lt;Suspense&gt;</code>. Det skyldes Cache Components: Siden venter på WordPress ved hver request, og Next.js vil vide, hvad brugeren skal se imens. Tilføj en <code>app/posts/loading.js</code> ved siden af siden. Den vises, mens data hentes – ligesom robuste UI-states i Case 1. Uden den fejler <code>npm run build</code>. Går buildet igennem, så commit og push.</li>
 <li>Tommelfingerregel: <strong>Hver route, der henter data, får sin egen <code>loading.js</code>.</strong> En fælles <code>app/loading.js</code> er ikke nok. Når du navigerer fra fx <code>/posts</code> til <code>/about</code>, bliver header og footer i layoutet stående, og kun siden under layoutet skifter. Derfor skal loading-staten ligge i samme mappe som siden.</li>
+<li><strong>CSS:</strong> <a href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/88e6baee8faef5e90bb2a1c0718e381c48fc8a56/components/PostCard.js"><code>components/PostCard.js</code></a> med <a href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/PostCard.module.css"><code>components/PostCard.module.css</code></a> og <a href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/88e6baee8faef5e90bb2a1c0718e381c48fc8a56/app/posts/page.module.css"><code>app/posts/page.module.css</code></a> til griddet.</li>
+<li><strong>Sidder du fast?</strong> Står der <code>undefined</code> i URL'en, så tjek stavning og placering af <code>.env.local</code>, og genstart <code>npm run dev</code>. Er <code>posts</code> ikke et array, så log det – outputtet står i terminalen. Får du <em>Module not found</em>, så opret den <code>.module.css</code>, du importerer. Svarer din WordPress ikke, så brug test-URL'en.</li>
 </ul>
 </details>
 
@@ -112,6 +118,8 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Giv detaljesiden sin egen <code>app/posts/[slug]/loading.js</code>.</li>
 <li>Vis titel, dato og <code>content.rendered</code> i en <code>&lt;div className="wp-content"&gt;</code>. Klassen fra <code>globals.css</code> styler HTML'en fra WordPress, så fx billeder ikke går ud over kanten. Tilføj et <code>Link</code> tilbage til <code>/posts</code>. Commit og push, når et klik på et card åbner detaljesiden, og <code>/posts/findes-ikke</code> viser din not-found-side.</li>
 <li>WordPress returnerer indholdet som HTML. Vis det med <code>dangerouslySetInnerHTML</code>, og diskutér, hvorfor det kun er i orden, når du selv kontrollerer kilden.</li>
+<li><strong>CSS:</strong> <a href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/posts/%5Bslug%5D/page.module.css"><code>app/posts/[slug]/page.module.css</code></a>. <code>.wp-content</code> ligger allerede i <code>globals.css</code>.</li>
+<li><strong>Sidder du fast?</strong> Er <code>slug</code> <code>undefined</code>, skal mappen hedde <code>[slug]</code> med firkantede parenteser, og <code>params</code> skal <code>await</code>'es. Får du 404, selvom posten findes, så log <code>slug</code> og URL'en, og sammenlign med din WordPress.</li>
 </ul>
 </details>
 
@@ -125,6 +133,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Nu henter fire sider data fra WordPress med den samme URL. Skal URL'en ændres, eller skal du tilføje <code>_embed</code>, retter du fire steder. Et fælles datalag samler det ét sted.</li>
 <li>Nu henter du data fire steder. Flyt dine <code>fetch</code>-kald til funktioner i <code>lib/wordpress.js</code>: <code>getPosts()</code>, <code>getLatestPosts()</code>, <code>getPostBySlug(slug)</code> og <code>getPageBySlug(slug)</code>. Koden er den samme – den har bare fået et navn og et nyt sted. Gem starten af URL'en i en variabel øverst i filen, fx <code>const API_URL = `${process.env.WORDPRESS_URL}/wp-json/wp/v2`;</code>, så hvert <code>fetch</code> bliver kort. <code>getPostBySlug(slug)</code> og <code>getPageBySlug(slug)</code> returnerer det første element i arrayet, og siden kalder stadig selv <code>notFound()</code>, hvis der ikke kom noget tilbage.</li>
 <li>Datoen formaterer du både på dine cards og på detaljesiden. Flyt <code>toLocaleDateString</code> til en <code>formatDate()</code>-funktion i <code>lib/format.js</code>, så datoen ser ens ud overalt.</li>
+<li><strong>Sidder du fast?</strong> Ser alt ens ud efter flytningen, er det meningen – datalaget ændrer ikke det, brugeren ser. Test alle fire sider efter hver flytning. Får du en fejl om import, så tjek, at funktionerne er <code>export</code>'et, og at importen er <code>@/lib/wordpress</code>.</li>
 </ul>
 </details>
 
@@ -136,6 +145,7 @@ Målet er en Next.js-app, der henter indhold fra vores WordPress via REST API'et
 <li>Tjek <code>response.ok</code> i funktionerne i <code>lib/wordpress.js</code>, og kast en fejl, hvis WordPress ikke svarer med en status i 200-serien. Tilføj en <code>app/error.js</code>, der viser en fejlbesked og en knap, der kalder <code>retry()</code>.</li>
 <li>Sammenlign din løsning med referencerepoet, hvis du sidder fast. Commits følger trinene i opgaverne.</li>
 <li>Commit og push dit arbejde. Du skal bruge appen næste gang.</li>
+<li><strong>Sidder du fast?</strong> Intet billede? Tjek, at posten har et fremhævet billede i WordPress, og at <code>_embed</code> står i URL'en. Viser forsiden pludselig 10 posts, står der <code>?_embed</code> i stedet for <code>&amp;_embed</code> efter <code>?per_page=3</code>. Får du <em>Cannot read properties of undefined</em>, så brug <code>?.</code> hele vejen ned ad stien.</li>
 </ul>
 </details>
 

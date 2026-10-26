@@ -4296,3 +4296,58 @@
 #datalag-kode .datalayer-pages pre.po-code code {
   font-size: 16px !important;
 }
+
+/* Opgaveslides · korte trin, der fylder højden */
+.reveal .mode-work .assignment-flow {
+  gap: 36px;
+  margin-top: 84px;
+}
+
+.reveal .mode-work .assignment-flow article {
+  min-height: 330px;
+  padding-top: 72px;
+}
+
+.reveal .mode-work .assignment-flow h3 {
+  font-size: 34px;
+}
+
+.reveal .mode-work .assignment-flow p {
+  font-size: 25px;
+  line-height: 1.38;
+}
+
+.reveal .mode-work .assignment-flow code {
+  font-size: 22px;
+}
+
+.reveal .mode-work .assignment-flow p.step-links {
+  margin-top: 22px;
+}
+
+.reveal .mode-work .work-if-stuck,
+.reveal .mode-work .done-when {
+  font-size: 23px;
+}
+
+.reveal .mode-work .work-if-stuck {
+  margin-top: 40px;
+}
+
+.reveal .mode-work .assignment-flow .step-links code {
+  font-size: 15px;
+}
+
+/* Opgave 7 har en overskrift på to linjer */
+#opgave-7 .assignment-flow {
+  margin-top: 60px;
+}
+
+#opgave-7 .assignment-flow article {
+  min-height: 0;
+  padding-top: 60px;
+}
+
+#opgave-7 .work-if-stuck {
+  margin-top: 28px;
+}
