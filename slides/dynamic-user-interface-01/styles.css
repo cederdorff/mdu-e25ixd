@@ -3042,6 +3042,21 @@
     0 0 70px rgb(160 200 255 / 25%);
 }
 
+#headless .chapter-meme {
+  top: 220px;
+}
+
+.reveal .chapter-meme figcaption {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.reveal .chapter-meme figcaption b {
+  color: var(--ink);
+}
+
 /* Hvorfor headless? */
 .headless-why {
   display: grid;
@@ -3678,6 +3693,62 @@
   font-size: 23px !important;
 }
 
+#env .env-simple {
+  gap: 30px;
+  margin-top: 56px;
+}
+
+#env .env-simple pre.po-code code {
+  font-size: 28px !important;
+}
+
+#env .dui-lead-note {
+  margin-top: 44px !important;
+}
+
+#env .dui-lead-note.is-warning {
+  margin-top: 20px !important;
+}
+
+#env-example .code-explain,
+#next-config .code-explain {
+  margin-top: 56px;
+}
+
+#env-example .env-simple {
+  gap: 34px;
+  margin-top: 0;
+}
+
+#env-example .env-simple pre.po-code code {
+  font-size: 24px !important;
+}
+
+#env-example .dui-lead-note {
+  margin-top: 56px !important;
+}
+
+#next-config pre.po-code code {
+  font-size: 30px !important;
+  line-height: 1.6 !important;
+}
+
+#env-example .explain-list,
+#next-config .explain-list {
+  gap: 22px;
+}
+
+#env-example .explain-list p,
+#next-config .explain-list p {
+  padding: 20px 24px;
+  font-size: 22px;
+}
+
+#env-example .explain-list p b,
+#next-config .explain-list p b {
+  font-size: 26px;
+}
+
 .reveal .dui-lead-note.is-warning {
   margin-top: 14px !important;
   border-color: var(--dui-yellow);
@@ -3761,6 +3832,15 @@
   content: "← ";
 }
 
+.reveal .step-links a.is-repo::before {
+  content: none;
+}
+
+.reveal .step-links a.is-repo::after {
+  color: var(--green);
+  content: " ↗";
+}
+
 .reveal .step-links a:hover,
 .reveal .step-links a:focus-visible {
   border-color: var(--green);
@@ -3773,13 +3853,15 @@
 
 #hent-log .hljs-ln-numbers,
 #hent-direkte .hljs-ln-numbers,
-#postcard-brug .hljs-ln-numbers {
+#postcard-brug .hljs-ln-numbers,
+#datalag-slug .hljs-ln-numbers {
   display: none;
 }
 
 #hent-log .hljs-ln-code,
 #hent-direkte .hljs-ln-code,
-#postcard-brug .hljs-ln-code {
+#postcard-brug .hljs-ln-code,
+#datalag-slug .hljs-ln-code {
   padding-left: 0 !important;
 }
 
@@ -4036,6 +4118,10 @@
 #about pre.po-code code {
   font-size: 16px !important;
   line-height: 1.5 !important;
+}
+
+#about pre.po-code code {
+  line-height: 1.38 !important;
 }
 
 #datalag-model .dl-compare article {
