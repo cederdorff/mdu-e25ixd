@@ -869,12 +869,12 @@ export default function LikeButton() {
             </article>
             <article>
               <h3>Ryd op</h3>
-              <p>Lad <code>page.js</code> vise en <code>&lt;h1&gt;</code>, tøm <code>page.module.css</code>, ret <code>metadata</code> i <code>layout.js</code>, og kopiér <code>globals.css</code>.</p>
+              <p>Lad <code>page.js</code> vise en <code>&lt;h1&gt;</code>, slet <code>page.module.css</code>, ret <code>metadata</code> i <code>layout.js</code>, og kopiér <code>globals.css</code>.</p>
               <p class="step-links"><a href="#/layout"><code>layout.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/globals.css" target="_blank" rel="noreferrer"><code>globals.css</code></a></p>
             </article>
             <article>
               <h3>Push</h3>
-              <p>Commit, opret et tomt repository på GitHub uden README, og push.</p>
+              <p>Commit, og publicér repositoriet med Source Control i VS Code eller GitHub Desktop.</p>
             </article>
           </div>
           <p class="work-if-stuck"><strong>CSS er ikke dagens fokus:</strong> Kopiér den fra referencerepoet via linket. <code>Header</code> og <code>Footer</code> i <code>layout.js</code> kommer først i opgave 2. <strong>Fejl om <em>npm naming restrictions</em>?</strong> Omdøb mappen til små bogstaver og bindestreger, og kør kommandoen igen.</p>
@@ -1149,8 +1149,8 @@ export default function NotFound() {
           <div class="assignment-flow">
             <article>
               <h3>Opret routes</h3>
-              <p>Lav <code>app/posts/page.js</code> og <code>app/about/page.js</code> med en overskrift hver.</p>
-              <p class="step-links"><a href="#/route-regler">Hvad bliver en route?</a></p>
+              <p>Lav <code>app/posts/page.js</code> og <code>app/about/page.js</code> med en overskrift hver — og en intro på forsiden.</p>
+              <p class="step-links"><a href="#/route-regler">Hvad bliver en route?</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/89c1be4/app/page.js" target="_blank" rel="noreferrer"><code>page.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/89c1be4/app/page.module.css" target="_blank" rel="noreferrer"><code>page.module.css</code></a></p>
             </article>
             <article>
               <h3>Header og Footer</h3>
@@ -1754,7 +1754,7 @@ export default function NotFound() {
                 værdier ikke ender på GitHub.
               </p>
               <p>
-                <b>Også <code>.env.example</code></b><code>git add .</code> springer den over uden at sige noget.
+                <b>Også <code>.env.example</code></b>Den dukker ikke op i Source Control og kommer ikke med i dit commit.
               </p>
               <p>
                 <b><code>!</code> er en undtagelse</b><code>!.env.example</code> tager filen med igen.
@@ -1762,7 +1762,7 @@ export default function NotFound() {
             </div>
           </div>
           <p class="dui-lead-note">
-            <strong>Tjek med <code>git status</code>:</strong> <code>.env.example</code> skal stå der —
+            <strong>Tjek i Source Control eller GitHub Desktop:</strong> <code>.env.example</code> skal stå under ændringerne —
             <code>.env.local</code> må ikke.
           </p>
         </section>
