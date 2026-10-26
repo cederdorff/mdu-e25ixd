@@ -3710,8 +3710,7 @@
   margin-top: 20px !important;
 }
 
-#env-example .code-explain,
-#next-config .code-explain {
+#env-example .code-explain {
   margin-top: 56px;
 }
 
@@ -3728,24 +3727,16 @@
   margin-top: 56px !important;
 }
 
-#next-config pre.po-code code {
-  font-size: 30px !important;
-  line-height: 1.6 !important;
-}
-
-#env-example .explain-list,
-#next-config .explain-list {
+#env-example .explain-list {
   gap: 22px;
 }
 
-#env-example .explain-list p,
-#next-config .explain-list p {
+#env-example .explain-list p {
   padding: 20px 24px;
   font-size: 22px;
 }
 
-#env-example .explain-list p b,
-#next-config .explain-list p b {
+#env-example .explain-list p b {
   font-size: 26px;
 }
 
@@ -4349,5 +4340,18 @@
 }
 
 #opgave-7 .work-if-stuck {
+  margin-top: 28px;
+}
+
+/* Opgave 2 har flere repo-links og en lang "Du er klar, når" */
+#opgave-2 .assignment-flow {
+  margin-top: 64px;
+}
+
+#opgave-2 .assignment-flow article {
+  min-height: 0;
+}
+
+#opgave-2 .work-if-stuck {
   margin-top: 28px;
 }

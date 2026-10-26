@@ -828,9 +828,9 @@ export default function LikeButton() {
               ><span>CSS Module — klassenavne gælder kun i den komponent, der importerer filen</span>
             </p>
             <p><code>public/</code><span>Statiske filer som billeder og ikoner</span></p>
-            <p class="is-key">
+            <p>
               <code>next.config.mjs</code
-              ><span>Konfiguration. Læg mærke til <code>cacheComponents</code> og <code>partialPrefetching</code></span>
+              ><span>Konfiguration — den lader vi stå, som den er</span>
             </p>
             <p>
               <code>package.json</code
@@ -841,45 +841,6 @@ export default function LikeButton() {
           <p class="po-source-link">
             <a href="https://nextjs.org/docs/app/getting-started/project-structure" target="_blank" rel="noreferrer"
               >Next.js: Project structure ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide" id="next-config">
-          <span class="eyebrow">Konfiguration · <code>next.config.mjs</code></span>
-          <h2>To indstillinger, du møder i dag</h2>
-          <div class="code-explain">
-            <div>
-              <span class="code-label"><code>next.config.mjs</code> · fra <code>create-next-app</code></span>
-              <pre
-                class="po-code"
-              ><code class="language-js" data-line-numbers="4-5">/** @type {import('next').NextConfig} */
-const nextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
-};
-
-export default nextConfig;</code></pre>
-            </div>
-            <div class="explain-list">
-              <p>
-                <b><code>cacheComponents</code></b>Data hentes på ny ved hver request, og Next.js kræver en
-                loading-state, mens det sker. Den møder du i punkt 5.
-              </p>
-              <p>
-                <b><code>partialPrefetching</code></b><code>Link</code> henter på forhånd de dele af en side, der ikke
-                afhænger af data. Så føles navigationen hurtig.
-              </p>
-              <p><b>Lad dem stå</b>Begge bliver standard i næste version af Next.js.</p>
-            </div>
-          </div>
-          <p class="po-source-link">
-            <a
-              href="https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents"
-              target="_blank"
-              rel="noreferrer"
-              >Next.js: cacheComponents ↗</a
             >
           </p>
         </section>
@@ -895,20 +856,20 @@ export default nextConfig;</code></pre>
             </article>
             <article>
               <h3>Kør og undersøg</h3>
-              <p>Kør <code>npm run dev</code>, og find forsiden, <code>&lt;html&gt;</code> og indstillingerne i <code>next.config.mjs</code>.</p>
-              <p class="step-links"><a href="#/struktur">Strukturen</a><a href="#/next-config"><code>next.config.mjs</code></a></p>
+              <p>Kør <code>npm run dev</code>, og find filen til forsiden og den fil, hvor <code>&lt;html&gt;</code> står.</p>
+              <p class="step-links"><a href="#/struktur">Strukturen</a></p>
             </article>
             <article>
               <h3>Ryd op</h3>
               <p>Ryd <code>page.js</code> op, opdatér <code>metadata</code> i <code>layout.js</code>, og kopiér <code>globals.css</code> fra referencerepoet.</p>
-              <p class="step-links"><a href="#/layout"><code>layout.js</code></a></p>
+              <p class="step-links"><a href="#/layout"><code>layout.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/globals.css" target="_blank" rel="noreferrer"><code>globals.css</code></a></p>
             </article>
             <article>
               <h3>Push</h3>
               <p>Commit, opret et tomt repository på GitHub uden README, og push.</p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>CSS er ikke dagens fokus:</strong> Kopiér den fra referencerepoet. Fejlfinding og links til CSS-filerne står under punkt 2 på undervisningssiden.</p>
+          <p class="work-if-stuck"><strong>CSS er ikke dagens fokus:</strong> Kopiér den fra referencerepoet via linket. <strong>Fejl om <em>npm naming restrictions</em>?</strong> Omdøb mappen til små bogstaver og bindestreger, og kør kommandoen igen.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Appen kører lokalt med din egen titel, og udgangspunktet ligger på GitHub.</p>
           <p class="po-source-link">
             <a
@@ -1184,13 +1145,13 @@ export default function NotFound() {
               <p class="step-links"><a href="#/route-regler">Hvad bliver en route?</a></p>
             </article>
             <article>
-              <h3>Header</h3>
-              <p>Lav <code>components/Header.js</code> med <code>Link</code> til <code>/</code>, <code>/posts</code> og <code>/about</code>.</p>
-              <p class="step-links"><a href="#/link"><code>Link</code> i Header</a></p>
+              <h3>Header og Footer</h3>
+              <p>Lav <code>components/Header.js</code> med <code>Link</code> til <code>/</code>, <code>/posts</code> og <code>/about</code> — og en <code>Footer.js</code>.</p>
+              <p class="step-links"><a href="#/link"><code>Link</code> i Header</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Header.js" target="_blank" rel="noreferrer"><code>Header.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Header.module.css" target="_blank" rel="noreferrer"><code>Header.module.css</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Footer.js" target="_blank" rel="noreferrer"><code>Footer.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/Footer.module.css" target="_blank" rel="noreferrer"><code>Footer.module.css</code></a></p>
             </article>
             <article>
               <h3>Layout</h3>
-              <p>Vis <code>Header</code> og en <code>Footer</code> rundt om <code>{children}</code> i <code>layout.js</code>.</p>
+              <p>Vis <code>Header</code> og <code>Footer</code> rundt om <code>{children}</code> i <code>layout.js</code>.</p>
               <p class="step-links"><a href="#/layout"><code>layout.js</code></a></p>
             </article>
             <article>
@@ -1199,7 +1160,7 @@ export default function NotFound() {
               <p class="step-links"><a href="#/not-found"><code>not-found.js</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Sidder du fast?</strong> Fejlfinding og CSS til Header og Footer står under punkt 3 på undervisningssiden.</p>
+          <p class="work-if-stuck"><strong>Ingen styling?</strong> Kopiér både komponenten og dens <code>.module.css</code>. <strong>Virker en route ikke?</strong> Mappen skal hedde som URL'en, og filen <code>page.js</code>.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Du kan navigere mellem <code>/</code>, <code>/posts</code> og <code>/about</code> uden fuld reload, <code>/findes-ikke</code> viser din not-found-side, og arbejdet er pushet.</p>
         </section>
 
@@ -1617,7 +1578,7 @@ export default function NotFound() {
               <p class="step-links"><a href="#/endpoints">Endpoints</a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Får du en fejl?</strong> Brug test-URL'en <code>https://headless.cederdorff.dk</code>, mens du fejlfinder. Fejlfinding står under punkt 4 på undervisningssiden.</p>
+          <p class="work-if-stuck"><strong>Får du en fejl?</strong> Tjek, at Permalinks under <em>Indstillinger</em> ikke står til <em>Plain</em>. Brug test-URL'en <code>https://headless.cederdorff.dk</code>, mens du fejlfinder.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Du kan forklare, hvad de seks felter skal bruges til, og har noteret din WordPress-URL uden <code>/</code> til sidst.</p>
         </section>
 
@@ -2059,7 +2020,7 @@ export default function PostCard({ post }) {
             <article>
               <h3>Cards</h3>
               <p>Lav <code>PostCard</code>, og vis dine posts som et grid af cards.</p>
-              <p class="step-links"><a href="#/postcard-brug">Brug <code>PostCard</code></a><a href="#/postcard">Indholdet</a></p>
+              <p class="step-links"><a href="#/postcard-brug">Brug <code>PostCard</code></a><a href="#/postcard">Indholdet</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/88e6baee8faef5e90bb2a1c0718e381c48fc8a56/components/PostCard.js" target="_blank" rel="noreferrer"><code>PostCard.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/components/PostCard.module.css" target="_blank" rel="noreferrer"><code>PostCard.module.css</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/88e6baee8faef5e90bb2a1c0718e381c48fc8a56/app/posts/page.module.css" target="_blank" rel="noreferrer"><code>posts/page.module.css</code></a></p>
             </article>
             <article>
               <h3>Loading og push</h3>
@@ -2067,7 +2028,7 @@ export default function PostCard({ post }) {
               <p class="step-links"><a href="#/loading"><code>loading.js</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Fejl om <code>&lt;Suspense&gt;</code>?</strong> Den løser du i trin 4. Fejlfinding og CSS til cards og grid står under punkt 5 på undervisningssiden.</p>
+          <p class="work-if-stuck"><strong>Fejl om <code>&lt;Suspense&gt;</code>?</strong> Den løser du i trin 4. <strong>Står der <code>undefined</code> i URL'en?</strong> Tjek placeringen af <code>.env.local</code>, og genstart <code>npm run dev</code>. <strong>Module not found?</strong> Opret den <code>.module.css</code>, du importerer.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> <code>/posts</code> viser dine posts som cards, <code>npm run build</code> går igennem, og arbejdet er pushet.</p>
         </section>
 
@@ -2251,7 +2212,7 @@ if (!post) {
             <article>
               <h3>Vis indholdet</h3>
               <p>Vis titel, dato og <code>content.rendered</code> — med et <code>Link</code> tilbage.</p>
-              <p class="step-links"><a href="#/vis-post">Vis posten</a></p>
+              <p class="step-links"><a href="#/vis-post">Vis posten</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/posts/%5Bslug%5D/page.module.css" target="_blank" rel="noreferrer"><code>[slug]/page.module.css</code></a></p>
             </article>
             <article>
               <h3>Loading og push</h3>
@@ -2259,7 +2220,7 @@ if (!post) {
               <p class="step-links"><a href="#/loading-regel"><code>loading.js</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Sidder du fast?</strong> Fejlfinding og CSS til detaljesiden står under punkt 6 på undervisningssiden.</p>
+          <p class="work-if-stuck"><strong>Er <code>slug</code> <code>undefined</code>?</strong> Mappen skal hedde <code>[slug]</code>, og <code>params</code> skal <code>await</code>'es. <strong>404, selvom posten findes?</strong> Log <code>slug</code> og URL'en.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Et klik på et card åbner detaljesiden, <code>/posts/findes-ikke</code> viser din not-found-side, og arbejdet er pushet.</p>
         </section>
 
@@ -2537,7 +2498,7 @@ const date = formatDate(post.date);</code></pre>
             <article>
               <h3>Forside</h3>
               <p>Vis de 3 seneste posts, og flyt griddet til <code>PostList</code>.</p>
-              <p class="step-links"><a href="#/postlist"><code>PostList</code></a></p>
+              <p class="step-links"><a href="#/postlist"><code>PostList</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/page.js" target="_blank" rel="noreferrer"><code>page.js</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-headless-wordpress/blob/main/app/page.module.css" target="_blank" rel="noreferrer"><code>page.module.css</code></a></p>
             </article>
             <article>
               <h3>About</h3>
@@ -2555,7 +2516,7 @@ const date = formatDate(post.date);</code></pre>
               <p class="step-links"><a href="#/format"><code>formatDate()</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Virker alt, men ser ens ud?</strong> Godt — datalaget ændrer ikke det, brugeren ser. Fejlfinding står under punkt 7 på undervisningssiden.</p>
+          <p class="work-if-stuck"><strong>Virker alt, men ser ens ud?</strong> Godt — datalaget ændrer ikke det, brugeren ser. <strong>Fejl om import?</strong> Tjek, at funktionerne er <code>export</code>'et, og at importen er <code>@/lib/wordpress</code>.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Ingen sider kalder <code>fetch</code> direkte, datoen formateres ét sted, <code>npm run build</code> går igennem, og arbejdet er pushet.</p>
         </section>
 
@@ -2800,7 +2761,7 @@ export default function Error({ retry }) {
               <p>Stav et endpoint forkert, se <code>error.js</code>, ret det igen, og push.</p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Sidder du fast?</strong> Fejlfinding står under punkt 8 på undervisningssiden.</p>
+          <p class="work-if-stuck"><strong>Viser forsiden 10 posts?</strong> Brug <code>&amp;_embed</code> — ikke <code>?_embed</code> — efter <code>?per_page=3</code>. <strong>Cannot read properties of undefined?</strong> Brug <code>?.</code> hele vejen ned ad stien.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Dine cards har billede og kategori, en forkert URL giver din fejlside med en knap, der virker, og arbejdet er pushet.</p>
           <p class="po-source-link">
             <a
