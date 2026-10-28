@@ -54,7 +54,7 @@ Alle tre versioner skal kunne afprøves af testpersoner, fx som klikbare prototy
 
 Test de tre versioner med brugere – og test igen, efterhånden som jeres løsning tager form. Mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder det mindeværdige at skade usability – og kan vi måle det?**
 
-Begrund testmetode og antal testpersoner, og vurdér kritisk, hvor sikre resultaterne er. Testpersoner skal give samtykke, og I må ikke bruge rigtige persondata.
+Begrund testmetode og antal testpersoner, og vurdér kritisk, hvor sikre resultaterne er.
 
 ### 6. Byg det endelige produkt
 

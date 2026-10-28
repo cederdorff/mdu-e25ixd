@@ -22,10 +22,13 @@ Til sidst viser RACE, hvordan Figma MCP kan holde koden opdateret, når designet
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Design en pill, der bliver til en modal, i Figma</strong></summary>
 <ul>
-<li>Byg pillen som en komponent med auto layout, så den tilpasser sig indholdet.</li>
-<li>Lav to variants af samme komponent: en lukket pill og en åben modal.</li>
-<li>Brug component properties til fx label og ikon, så komponenten kan genbruges.</li>
-<li>Gør komponenten interaktiv: Klik på pillen skifter til modal-varianten, og klik på luk skifter tilbage. Brug Smart Animate til overgangen.</li>
+<li>Byg en pill ved brug af auto-layout. byg 2 versioner med hver sin hover variant.</li>
+<li>Lav et 'component set' der indeholder de 2 typer af pills med hver sin hover variant</li>
+<li>Sørg for at lave en variant-property med navnet "type" og navngiv så de 2 versioner af din pill under denne property. Sørg også for at lave variant-property med navnet "state" og tildel derefter stadierne "default" og "hover" til de relevante udgaver af dine pill's</li>
+<li>Sørg for at gøre din pill interaktiv med en hover interaktion.</li>
+<li>Byg et modal komponent med divider linje, rubrik og text. Lav en boolean-property der hhv. viser og skjuler divider linjen</li>
+<li>Opsæt variabler med udgangspunkt i dit design – brug number variabel til variabler med numeriske værdier, string variable til variabler med tekstværdier og brug color variable til variabler med hex-koder. Sørg for at lave logiske grupperinger ved at bruge '/' som gruppe-divider</li>
+<li>Lav nu instances af dine komponenter og gør dem interaktive: Klik på pillen åbner modal-varianten som overlay, og klik udenfor modalen skifter tilbage. Brug Smart Animate til overgangen.</li>
 <li>Navngiv komponenter, variants, properties og layers, så de beskriver indholdet. Navnene følger med over i koden.</li>
 </ul>
 </details>
