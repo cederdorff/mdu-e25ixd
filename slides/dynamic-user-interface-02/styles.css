@@ -873,3 +873,87 @@
 .prompt-part.is-answer {
   border-color: var(--green);
 }
+
+/* Go crazy · åben leg med Figma MCP */
+.reveal .crazy-kicker {
+  margin-top: 14px !important;
+  color: var(--muted);
+  font-size: 26px;
+}
+
+.crazy-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.crazy-grid article {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 350px;
+  padding: 26px 26px 28px;
+  border-top: 5px solid var(--green);
+  background: var(--surface);
+}
+
+.crazy-grid article:nth-child(2) {
+  border-color: var(--dui);
+}
+
+.crazy-grid article:nth-child(3) {
+  border-color: var(--dui-yellow);
+}
+
+.crazy-grid article:nth-child(4) {
+  border-color: var(--coral);
+}
+
+.crazy-grid span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.crazy-grid span code {
+  font-size: 14px;
+  text-transform: none;
+}
+
+.crazy-grid h3 {
+  font-size: 30px;
+}
+
+.crazy-grid p {
+  margin: 0;
+  color: var(--ink);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.reveal .crazy-rules {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 32px 0 0 !important;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .crazy-rules li {
+  margin: 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--line-strong);
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.reveal .crazy-rules li b {
+  color: var(--ink);
+}

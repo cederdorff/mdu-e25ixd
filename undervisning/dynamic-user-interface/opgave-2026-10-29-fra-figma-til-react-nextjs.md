@@ -28,8 +28,9 @@ Opgaverne er de samme som i slides, men med mere hjælp. Hvert trin linker til d
 1. [Før du starter](#før-du-starter): Starteren kører, og din Figma-fil ligger i dit Education-team.
 2. [Rul 1: Den simpleste version først](#rul-1) – trin 1.1–1.5
 3. [Rul 2: Byg igen med Figma MCP – i iterationer](#rul-2) – trin 2.1–2.3
-4. [Refleksion](#refleksion)
-5. [Ekstraopgaver](#ekstraopgaver): en ny variant, pills fra et array, fold ud fra pillen og fra kode til Figma
+4. [Go crazy: Lav noget vildt](#go-crazy), når Figma MCP kører
+5. [Refleksion](#refleksion)
+6. [Ekstraopgaver](#ekstraopgaver): en ny variant, pills fra et array, fold ud fra pillen og fra kode til Figma
 
 Hvordan Figma-begreberne bliver til kode, står samlet i [Fra Figma til kode](#fra-figma-til-kode). Opsætning af Figma MCP, adgang til designet og alle prompts står i [tool-guiden](#tool-guide).
 
@@ -844,6 +845,54 @@ import Pill from "./Pill";
 - **TypeScript, Tailwind eller `state="hover"`?** Henvis til reglerne, og send en præcis rettelse.
 - **Byggede agenten en ny komponent i 2.3?** Fortryd med **Discard Changes**, og skriv filnavnene i prompten.
 - **Rate limit eller for mange kald?** Kør `whoami`. Står der ikke Education, så ligger filen sandsynligvis i _Drafts_. Flyt den til dit Education-team, og brug [plan B](#plan-b), mens du venter.
+
+<hr style="margin: 2rem 0;">
+
+<a id="go-crazy"></a>
+
+## Go crazy: Lav noget vildt
+
+Når Figma MCP kører, og 2.3 er pushet, må du lege. Agenten kan læse og skrive både din Figma-fil og din kode. Brug det til at prøve noget, du ikke ville have tid til at bygge i hånden.
+
+**Sikkerhedssele først:**
+
+- **Commit og push,** før du går i gang. Så kan du altid gå tilbage med **Discard Changes**.
+- **Leg i en kopi af din Figma-fil** (**Duplicate**), så dit rigtige design får lov at være i fred.
+- **Vildt, men brugbart:** Pillen er stadig en `<button>`, og modalen er stadig en `<dialog>`. <kbd>Tab</kbd>, <kbd>Enter</kbd> og <kbd>Esc</kbd> skal stadig virke.
+- **Grænsen:** Kald, der læser fra Figma, tæller med i Education-planens 200 om dagen. Kald, der skriver til Figma, gør ikke.
+
+Brug idéerne nedenfor, eller find på dine egne.
+
+**Vilde varianter i Figma.** Agenten skriver til Figma med `use_figma`:
+
+```text
+Lav tre vilde varianter af min Pill direkte i Figma: neon, glas og brutalisme. Brug mine variables, hvor det giver mening, og læg dem i en ny frame ved siden af: <link til din Pill>
+```
+
+**Den vildeste i kode:**
+
+```text
+Byg den vildeste af de nye varianter som en ny type i components/Pill.js og Pill.module.css: <link til varianten>
+Behold <button>, og lav hover med :hover og :focus-visible.
+```
+
+**Vild overgang:**
+
+```text
+Lad modalen springe ud af pillen med en vild animation i Modal.module.css. Under prefers-reduced-motion skal den kun fade.
+```
+
+**Din side i Figma.** Agenten sender din kørende side ind i Figma som lag med `generate_figma_design`. Værktøjet findes ikke i alle agenter:
+
+```text
+Send min side på http://localhost:3000 ind i min Figma-fil som lag, så jeg kan remixe den: <link til din kopi>
+```
+
+Vil du længere ud, så kan `generate_image` lave et billede direkte i din Figma-fil, fx en vild baggrund til modalen.
+
+**Tjek:** Du har noget vildt at vise frem i opsamlingen, og du kan forklare, hvad agenten gjorde i Figma og i koden.
+
+[Slide: Go crazy](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/go-crazy) · [Figma: Tools and prompts](https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/)
 
 <hr style="margin: 2rem 0;">
 
