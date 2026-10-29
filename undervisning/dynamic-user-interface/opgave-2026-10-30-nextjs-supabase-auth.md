@@ -281,9 +281,11 @@ Giv formularen `action={signUp}`. Når brugeren klikker på knappen, kører `sig
 
 Åbn browserens udviklerværktøjer. Gå til _Application_ (Chrome) eller _Storage_ (Safari og Firefox), og kig under **Cookies**.
 
-**Tjek:** Der står en cookie, der slutter med `-auth-token`. Det er din session.
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/nextjs-supabase-auth-devtools-cookie.webp" alt="Chrome DevTools, Application, Cookies, http://localhost:3100. Øverst står cookien sb-…-auth-token med en værdi, der starter med base64-." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
 
-[Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
+**Tjek:** Der står en cookie, der slutter med `-auth-token`. Det er din session. Står der flere med samme start, er det i orden.
+
+[Slide: Din session er en cookie](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/cookie-skaerm) · [Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
 
 ### 2.5 Vis en fejl · valgfri
 
@@ -596,6 +598,8 @@ export async function getCurrentUser() {
 
 Opret `app/profile/page.js`. Siden er en **Server Component**. Den kører på serveren og kan derfor læse cookien, før HTML'en sendes. Gør komponenten `async`, kald `await getCurrentUser()`, og vis `user.email` og `user.sub`.
 
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/nextjs-supabase-auth-profile.webp" alt="Siden Profile med Email, et user id og knappen Log out." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
+
 **Tjek:** Logget ind viser `/profile` din e-mail og dit id. Åbn nu `/profile` i et **privat vindue**. Siden fejler, fordi `user` er `null`. Det løser du i næste trin.
 
 <details>
@@ -801,7 +805,7 @@ Stop `npm run dev`, og kør `npm run build`. Kig på listen over routes nederst 
 
 ### 5.1 /members
 
-Opret `app/members/page.js` med en tekst, som kun brugere, der er logget ind, må se. Brug det samme tjek som på profilen. Tilføj et link til `/members` i `components/Header.js`.
+Opret `app/members/page.js` med en tekst, som kun brugere, der er logget ind, må se. Brug det samme tjek som på profilen. Tilføj et link til `/members` i `components/Header.js` og i listen over routes i `app/page.js`.
 
 **Tjek:** Logget ud sender `/members` dig til `/login`. Logget ind ser du siden.
 
@@ -847,6 +851,16 @@ I `components/Header.js`:
 ```jsx
 <li>
   <Link href="/members">Members</Link>
+</li>
+```
+
+I `app/page.js` – under `/profile` i listen:
+
+```jsx
+<li>
+  <Link href="/members">/members</Link>
+  <span>Content for members only</span>
+  <em className={styles.protected}>Logged in</em>
 </li>
 ```
 

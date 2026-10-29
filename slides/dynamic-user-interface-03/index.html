@@ -757,7 +757,7 @@ export default async function LoginPage({ searchParams }) {
             <article>
               <h3>Server Action</h3>
               <p>Skriv <code>signUp</code> med <code>"use server"</code> i samme fil, og giv formularen <code>action={signUp}</code>. Find cookien.</p>
-              <p class="step-links"><a href="#/next-component-action">Component eller Action?</a><a href="#/sekvens">Flowet</a><a href="#/storage">Cookies</a></p>
+              <p class="step-links"><a href="#/next-component-action">Component eller Action?</a><a href="#/sekvens">Flowet</a><a href="#/cookie-skaerm">Cookien</a></p>
             </article>
             <article>
               <h3>Fejlen · valgfri</h3>
@@ -815,6 +815,18 @@ export default async function LoginPage({ searchParams }) {
               <figcaption><b>3</b><span><strong><code>/login?error=true</code></strong> · fejlbeskeden · valgfri</span></figcaption>
             </figure>
           </div>
+        </section>
+
+        <section class="po-slide" id="cookie-skaerm">
+          <span class="eyebrow">Opgave 2 · find sessionen</span>
+          <h2>Din session er en cookie</h2>
+          <figure class="au-figure is-short is-shot">
+            <img src="../assets/nextjs-supabase-auth-devtools-cookie.webp" alt="Chrome DevTools, Application, Cookies, http://localhost:3100. Øverst står cookien sb-…-auth-token med en værdi, der starter med base64-, domænet localhost og SameSite Lax." />
+          </figure>
+          <p class="dui-lead-note">
+            <strong><em>Application → Cookies</em> i Chrome</strong> · <em>Storage</em> i Safari og Firefox. Den første
+            slutter med <code>-auth-token</code> — det er sessionen. Flere med samme start er i orden.
+          </p>
         </section>
 
         <section class="chapter po-chapter po-slide" id="kap-beskyt">
@@ -891,6 +903,7 @@ export default async function LoginPage({ searchParams }) {
             <article>
               <h3>Profilen</h3>
               <p>Opret <code>app/profile/page.js</code>, og vis <code>user.email</code> og <code>user.sub</code>. Åbn den i et privat vindue.</p>
+              <p class="step-links"><a href="#/profil-skaerm">Skærmbillede</a></p>
             </article>
             <article>
               <h3>Beskyt den</h3>
@@ -907,6 +920,18 @@ export default async function LoginPage({ searchParams }) {
           <p class="done-when"><strong>Resultat:</strong> <code>/profile</code> viser din e-mail, når du er logget ind, og sender dig til <code>/login</code>, når du ikke er.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-4" target="_blank" rel="noreferrer">Opgavefil: opgave 4 med hints ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="profil-skaerm">
+          <span class="eyebrow">Opgave 4 · sådan ser det ud</span>
+          <h2>Profilen — kun når du er logget ind</h2>
+          <figure class="au-figure is-short is-shot">
+            <img src="../assets/nextjs-supabase-auth-profile.webp" alt="Siden Profile i appen med Email: demo@example.com, et user id og knappen Log out." />
+          </figure>
+          <p class="dui-lead-note">
+            <strong>Åbn <code>/profile</code> i et privat vindue.</strong> Så lander du på <code>/login</code> — tjekket
+            virker.
           </p>
         </section>
 
