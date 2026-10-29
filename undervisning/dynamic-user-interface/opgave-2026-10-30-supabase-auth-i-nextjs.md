@@ -83,7 +83,7 @@ npm install @supabase/supabase-js @supabase/ssr
 
 **Tjek:** `package.json` har begge pakker under `dependencies`.
 
-[Slide: Samme kald – to måder](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sdk-samme-kald)
+[Slide: Vi bruger Supabase' SDK](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sdk)
 
 ### 1.3 Miljøvariabler
 
@@ -285,7 +285,7 @@ Kopiér CSS'en til `.auth-form` og `.form-error` nederst i [`app/globals.css`](h
 
 **Tjek:** Opret en bruger på [http://localhost:3000/signup](http://localhost:3000/signup). Du lander på forsiden, og under _Authentication → Users_ i Supabase står din nye bruger.
 
-[Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens) · [Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-action)
+[Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens) · [Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action)
 
 ### 3.2 Vis en fejl
 
@@ -442,7 +442,7 @@ Kopiér `app/signup/` til `app/login/`, og ret siden til: `signIn` i stedet for 
 
 **Tjek:** Log ind med den bruger, du oprettede i opgave 3. Du lander på forsiden.
 
-[Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-action)
+[Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action)
 
 ### 4.2 Test
 
@@ -573,8 +573,6 @@ Vis `<AuthStatus />` i `components/Header.js` efter `<ul>`, og kør `npm run bui
 Importér `Suspense` fra `react`.
 
 **Tjek:** `npm run build` går igennem. Headeren viser din e-mail og _Log out_. Efter _Log out_ viser den _Log in_, og cookien er væk. Commit og push.
-
-[Slide: Headeren venter på cookien](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/suspense)
 
 **Sidder du fast?**
 
@@ -816,8 +814,6 @@ På mandag starter gruppeprojektet. Tag stilling til tre spørgsmål i jeres gru
 1. **Hvad kan en bruger, der er logget ind, som andre ikke kan?** Eller er produktet bedst uden login?
 2. **Hvilke data om brugeren skal I gemme?** Jo færre, jo mindre skal I beskytte.
 3. **Hvem må se og ændre hvad?** Det er grundlaget for jeres afsnit om it-sikkerhed – og for 10. november.
-
-[Slide: Skal jeres produkt have brugere?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/projekt)
 
 <hr style="margin: 2rem 0;">
 

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420" font-family="Aptos, 'Segoe UI', Inter, ui-sans-serif, -apple-system, Helvetica, Arial, sans-serif">
+  <title>Routes i nextjs-supabase-auth: hvilke alle kan se, og hvilken der kræver login</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b9892"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f08f73"/>
+    </marker>
+    <style>
+      .card { fill: #0b0f0d; stroke: #34403a; stroke-width: 1.5; }
+      .route { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 17px; font-weight: 700; fill: #f5f7f6; text-anchor: middle; }
+      .file { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; fill: #9aa7a1; text-anchor: middle; }
+      .label { font-size: 12.5px; fill: #9aa7a1; text-anchor: middle; }
+      .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; fill: #9aa7a1; text-anchor: middle; }
+      .flow { stroke: #8b9892; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .pill { fill: #0b0f0d; stroke: #34403a; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="16" fill="#0e1311" stroke="#26302b"/>
+
+  <!-- Kan alle se -->
+  <rect x="20" y="20" width="500" height="380" rx="14" fill="#10241a" stroke="#2b7a55" stroke-width="1.5"/>
+  <text x="44" y="54" font-size="16" font-weight="700" fill="#3ecf8e">Kan alle se</text>
+
+  <!-- Kræver login -->
+  <rect x="580" y="20" width="280" height="380" rx="14" fill="#2a1913" stroke="#8f4d39" stroke-width="1.5"/>
+  <path d="M607 44 v-3.5 a4 4 0 0 1 8 0 v3.5" fill="none" stroke="#f08f73" stroke-width="2"/>
+  <rect x="604" y="44" width="14" height="11" rx="2" fill="#f08f73"/>
+  <text x="626" y="54" font-size="16" font-weight="700" fill="#f08f73">Kræver login</text>
+
+  <!-- Routes -->
+  <rect class="card" x="50" y="78" width="200" height="66" rx="10"/>
+  <text class="route" x="150" y="107">/</text>
+  <text class="file" x="150" y="128">app/page.js</text>
+
+  <rect class="card" x="50" y="178" width="200" height="66" rx="10"/>
+  <text class="route" x="150" y="207">/signup</text>
+  <text class="file" x="150" y="228">app/signup/page.js</text>
+
+  <rect class="card" x="50" y="278" width="200" height="66" rx="10"/>
+  <text class="route" x="150" y="307">/login</text>
+  <text class="file" x="150" y="328">app/login/page.js</text>
+
+  <rect class="card" x="620" y="178" width="200" height="66" rx="10"/>
+  <text class="route" x="720" y="207">/profile</text>
+  <text class="file" x="720" y="228">app/profile/page.js</text>
+
+  <!-- Sign up og log ind fører til profilen -->
+  <line class="flow" x1="252" y1="211" x2="617" y2="211"/>
+  <rect class="pill" x="280" y="200" width="190" height="22" rx="11"/>
+  <text class="code" x="375" y="215">signUp() · ny konto</text>
+
+  <path class="flow" d="M252 311 H560 Q580 311 580 291 V240 Q580 228 592 228 H617"/>
+  <rect class="pill" x="280" y="300" width="190" height="22" rx="11"/>
+  <text class="code" x="375" y="315">signIn() · logget ind</text>
+
+  <!-- Log out -->
+  <path class="flow" d="M720 176 V111 H253"/>
+  <rect class="pill" x="280" y="100" width="190" height="22" rx="11"/>
+  <text class="code" x="375" y="115">signOut() · Log out</text>
+
+  <!-- Ikke logget ind -->
+  <path d="M720 246 V372 H150 V347" fill="none" stroke="#f08f73" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow-red)"/>
+  <rect class="pill" x="335" y="361" width="270" height="22" rx="11" stroke="#8f4d39"/>
+  <text x="470" y="376" font-size="12.5" fill="#f08f73" text-anchor="middle">ikke logget ind → <tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="12">redirect("/login")</tspan></text>
+</svg>

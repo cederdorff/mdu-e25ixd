@@ -172,7 +172,7 @@ Mappen er URL'en, og filen hedder altid `page.js`. Opret `app/signup/page.js` me
 
 **Tjek:** [http://localhost:3000/signup](http://localhost:3000/signup) viser din overskrift i stedet for _Page not found_, og fanen viser din titel.
 
-[Slide: Mappen er routen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-routes)
+[Slide: Begge kører på serveren](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-model)
 
 <details>
 <summary><strong>Løsning</strong></summary>
@@ -275,7 +275,7 @@ Giv formularen `action={signUp}`. Når brugeren klikker på knappen, kører `sig
 
 <img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/supabase-auth-users.webp" alt="Authentication, Users i Supabase med en tabel over brugere. Hver række har et UID, en e-mail og Email som provider." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
 
-[Slide: Server Component eller Server Action?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-component-action) · [Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens) · [Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-action)
+[Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action) · [Slide: name bliver til formData](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/formdata) · [Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens)
 
 ### 2.4 Find sessionen
 
@@ -285,7 +285,7 @@ Giv formularen `action={signUp}`. Når brugeren klikker på knappen, kører `sig
 
 **Tjek:** Der står en cookie, der slutter med `-auth-token`. Det er din session. Står der flere med samme start, er det i orden.
 
-[Slide: Din session er en cookie](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/cookie-skaerm) · [Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
+[Slide: Her ligger sessionen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/cookie-skaerm) · [Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
 
 ### 2.5 Vis en fejl · valgfri
 
@@ -450,7 +450,7 @@ Ret Server Action'en:
 
 **Tjek:** Log ind med den bruger, du oprettede i opgave 2. Du lander på forsiden.
 
-[Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-action)
+[Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action) · [Slide: Vi bruger Supabase' SDK](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sdk)
 
 <details>
 <summary><strong>Hint</strong></summary>
@@ -592,7 +592,7 @@ export async function getCurrentUser() {
 
 `getClaims()` tjekker, at sessionen i cookien er ægte. Du får brugeren tilbage – eller `null`, hvis ingen er logget ind. E-mailen står i `user.email`, og id'et står i `user.sub`.
 
-[Slide: Hvem er logget ind?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/beskyt-kode)
+[Slide: Hvem er logget ind?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/beskyt-kode) · [Slide: Server Component](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-component)
 
 ### 4.2 Profilsiden
 
@@ -678,6 +678,8 @@ Skriv en Server Action, `signOut`, i `app/profile/page.js`. Den kalder `supabase
 Ret til sidst `redirect("/")` til `redirect("/profile")` i `signUp` og `signIn`. Så ser brugeren med det samme, at det virkede.
 
 **Tjek:** Log ind, og du lander på profilen. Klik på _Log out_. Cookien er væk, og `/profile` sender dig til `/login`.
+
+[Slide: Vi bruger Supabase' SDK](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sdk)
 
 <details>
 <summary><strong>Hint</strong></summary>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 400" width="880" height="400" font-family="Aptos, 'Segoe UI', Inter, ui-sans-serif, -apple-system, Helvetica, Arial, sans-serif">
+  <title>Én if på serveren: /profile viser siden, hvis der er en bruger, og sender til /login, hvis ikke</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b9892"/>
+    </marker>
+    <style>
+      .card { fill: #0b0f0d; stroke: #34403a; stroke-width: 1.5; }
+      .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #8b9892; text-anchor: middle; }
+      .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 16px; font-weight: 700; fill: #f5f7f6; text-anchor: middle; }
+      .q { font-size: 16px; font-weight: 700; fill: #f5f7f6; text-anchor: middle; }
+      .desc { font-size: 13px; fill: #9aa7a1; text-anchor: middle; }
+      .flow { stroke: #8b9892; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="400" rx="16" fill="#0e1311" stroke="#26302b"/>
+
+  <!-- Request -->
+  <rect class="card" x="40" y="165" width="220" height="70" rx="10"/>
+  <text class="kicker" x="150" y="191">BROWSEREN</text>
+  <text class="code" x="150" y="217">GET /profile</text>
+
+  <line class="flow" x1="262" y1="200" x2="327" y2="200"/>
+
+  <!-- Serveren -->
+  <rect x="330" y="20" width="510" height="360" rx="14" fill="#151b18" stroke="#34403a" stroke-width="1.5"/>
+  <text x="354" y="50" font-size="16" font-weight="700" fill="#d5dcd8">På serveren · ProfilePage</text>
+
+  <rect class="card" x="460" y="64" width="250" height="56" rx="10"/>
+  <text class="code" x="585" y="98">await getCurrentUser()</text>
+
+  <line class="flow" x1="585" y1="122" x2="585" y2="150"/>
+
+  <rect class="card" x="460" y="153" width="250" height="50" rx="25"/>
+  <text class="q" x="585" y="184">Er der en bruger?</text>
+
+  <path class="flow" d="M520 205 L460 252"/>
+  <path class="flow" d="M650 205 L710 252"/>
+
+  <!-- Ja -->
+  <rect x="350" y="255" width="225" height="105" rx="10" fill="#10241a" stroke="#2b7a55" stroke-width="1.5"/>
+  <text class="kicker" x="462" y="281" style="fill: #3ecf8e">JA</text>
+  <text class="q" x="462" y="310">Vis siden</text>
+  <text class="desc" x="462" y="336">HTML med brugerens e-mail</text>
+
+  <!-- Nej -->
+  <rect x="595" y="255" width="225" height="105" rx="10" fill="#2a1913" stroke="#8f4d39" stroke-width="1.5"/>
+  <text class="kicker" x="707" y="281" style="fill: #f08f73">NEJ · null</text>
+  <text class="code" x="707" y="310">redirect("/login")</text>
+  <text class="desc" x="707" y="336">Indholdet bliver aldrig sendt</text>
+</svg>
