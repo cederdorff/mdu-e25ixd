@@ -60,61 +60,6 @@
   font-size: 19px;
 }
 
-/* Anatomi · Figma-lag og React-filer */
-.anatomy {
-  display: grid;
-  gap: 12px;
-  margin-top: 40px;
-}
-
-.anatomy-row {
-  display: grid;
-  grid-template-columns: 1fr 70px 1fr;
-  gap: 16px;
-  align-items: center;
-}
-
-.anatomy-row > span {
-  color: var(--muted);
-  font-size: 30px;
-  text-align: center;
-}
-
-.anatomy-row p {
-  margin: 0;
-  padding: 18px 24px;
-  border-left: 5px solid var(--dui);
-  background: var(--surface);
-  font-size: 23px;
-  line-height: 1.3;
-}
-
-.anatomy-row p + span + p {
-  border-left-color: var(--green);
-}
-
-.anatomy-row p small {
-  display: block;
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 18px;
-}
-
-.anatomy-head p {
-  padding: 0 24px;
-  border: 0;
-  background: none;
-  color: var(--dui);
-  font-size: 16px;
-  font-weight: 850;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.anatomy-head p + span + p {
-  color: var(--green);
-}
-
 /* Mapping-tabellen bruger why-table med Figma og kode */
 .mapping .why-row {
   grid-template-columns: 210px 1fr 1.15fr;
@@ -336,93 +281,6 @@
   font-size: 20px;
 }
 
-/* Opsætning · fire klienter */
-.client-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.client-grid a {
-  display: block;
-  padding: 26px 26px 30px;
-  border-top: 4px solid var(--dui);
-  background: var(--surface);
-  color: var(--ink) !important;
-  text-decoration: none;
-}
-
-.client-grid a:hover {
-  background: var(--surface-strong);
-}
-
-.client-grid h3 {
-  font-size: 28px;
-}
-
-.client-grid p {
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 19px;
-  line-height: 1.4;
-}
-
-.client-setup {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 40px;
-  align-items: start;
-  margin-top: 36px;
-}
-
-.client-setup ol {
-  display: grid;
-  gap: 14px;
-  margin: 0;
-  padding-left: 30px;
-}
-
-.client-setup li {
-  color: var(--muted);
-  font-size: 22px;
-  line-height: 1.4;
-}
-
-.client-setup li::marker {
-  color: var(--dui);
-  font-weight: 900;
-}
-
-.client-setup h3 {
-  margin-bottom: 16px;
-  color: var(--dui);
-  font-size: 17px;
-  font-weight: 850;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.client-setup pre.po-code {
-  margin: 0 0 18px !important;
-}
-
-.client-setup pre.po-code code {
-  font-size: 17px !important;
-  white-space: pre-wrap;
-}
-
-/* Prompt som tekst, der kan læses på afstand */
-.prompt-block pre.po-code {
-  margin-top: 30px !important;
-}
-
-.prompt-block pre.po-code code {
-  font-size: 18.5px !important;
-  line-height: 1.5 !important;
-  white-space: pre-wrap;
-}
-
 /* Tjeklister i 4 kolonner bruger glossary-grid */
 .checklist dt {
   font-size: 24px;
@@ -474,18 +332,6 @@
   font-size: 23px;
 }
 
-.client-setup ol {
-  gap: 20px;
-}
-
-.client-setup li {
-  font-size: 25px;
-}
-
-.client-setup pre.po-code code {
-  font-size: 19px !important;
-}
-
 .reveal .glossary-grid.checklist div,
 .reveal .glossary-grid.reflect-grid div {
   min-height: 190px;
@@ -512,29 +358,8 @@
   font-size: 25px;
 }
 
-.anatomy-row p {
-  padding: 14px 24px;
-}
-
 .raw-output pre.po-code code {
   font-size: 16px !important;
-}
-
-.prompt-block pre.po-code code {
-  font-size: 17.5px !important;
-}
-
-/* Opsætning med tre extensions */
-.client-grid.three {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.client-grid + .compare-cols {
-  margin-top: 32px;
-}
-
-.client-setup .dui-lead-note {
-  margin: 0 0 18px !important;
 }
 
 /* Prop, state eller CSS · tre beslutninger */
@@ -553,4 +378,498 @@
 
 .decision p code {
   font-size: 21px;
+}
+
+/* Ingen agenda i dette deck: Overblikket ligger på #/opgaver */
+.reveal .agenda-link:not(.assignments-link, .concept-index-link) {
+  display: none;
+}
+
+.reveal .agenda-link.assignments-link {
+  left: 138px;
+}
+
+/* Rul 1 i fem trin */
+.reveal .assignment-flow.five {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+}
+
+.reveal .assignment-flow.five h3 {
+  font-size: 26px;
+}
+
+/* To kodeblokke side om side */
+.code-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  margin-top: 28px;
+}
+
+.code-pair pre.po-code code {
+  white-space: pre-wrap;
+}
+
+.code-pair p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+/* To kodeblokke over hinanden i code-explain */
+.code-explain pre.po-code + .code-label {
+  display: block;
+  margin-top: 18px;
+}
+
+/* Opsætning · tre extensions */
+.setup-url {
+  margin-top: 22px !important;
+  color: var(--muted);
+  font-size: 22px;
+}
+
+.setup-url code {
+  color: var(--ink);
+  font-size: 24px;
+}
+
+.setup-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 26px;
+}
+
+.setup-cols article {
+  padding: 24px 26px 28px;
+  border-top: 4px solid var(--dui);
+  background: var(--surface);
+}
+
+.setup-cols h3 {
+  font-size: 28px;
+}
+
+.setup-cols ol {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 0;
+  padding-left: 26px;
+}
+
+.setup-cols li {
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.setup-cols li::marker {
+  color: var(--dui);
+  font-weight: 900;
+}
+
+/* Rul 1 · fem trin med skærmbilleder */
+.step-shots {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  margin: 56px 0 0 !important;
+  padding: 0;
+  list-style: none;
+}
+
+.step-shots li {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.step-shots img {
+  width: 100%;
+  margin: 0 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.step-shots b {
+  font-size: 26px;
+}
+
+.step-shots span {
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.step-phases {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.step-phases + .dui-lead-note {
+  margin-top: 40px !important;
+}
+
+.step-phases span {
+  padding: 14px 16px;
+  border-top: 4px solid var(--green);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.step-phases .is-looks {
+  border-color: var(--dui);
+}
+
+.step-phases .is-feels {
+  border-color: var(--dui-yellow);
+}
+
+/* Visuelle modeller · diagram ved siden af forklaringen */
+.visual-explain {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 44px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.visual-explain pre.po-code code {
+  white-space: pre-wrap;
+}
+
+.diagram-figure {
+  margin: 0;
+}
+
+.diagram-figure figcaption {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.diagram text {
+  fill: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.diagram .mono {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+
+.diagram .box {
+  fill: var(--surface-strong);
+  stroke: var(--line);
+  stroke-width: 2;
+}
+
+.diagram .box.is-dui {
+  stroke: var(--dui);
+}
+
+.diagram .box.is-green {
+  stroke: var(--green);
+}
+
+.diagram .box.is-coral {
+  stroke: var(--coral);
+}
+
+.diagram .label {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.diagram .sub {
+  fill: var(--muted);
+  font-size: 15px;
+}
+
+.diagram .edge {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2.5;
+}
+
+.diagram .edge.is-prop,
+.diagram .edge.is-right {
+  stroke: var(--green);
+}
+
+.diagram .edge.is-event {
+  stroke: var(--dui);
+  stroke-dasharray: 8 6;
+}
+
+.diagram .edge.is-wrong {
+  stroke: var(--coral);
+}
+
+.diagram .edge-label {
+  fill: var(--muted);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.diagram .edge-label.is-prop,
+.diagram .edge-label.is-right {
+  fill: var(--green);
+}
+
+.diagram .edge-label.is-event {
+  fill: var(--dui);
+}
+
+.diagram .edge-label.is-wrong {
+  fill: var(--coral);
+}
+
+.diagram .arrow-muted path {
+  fill: var(--muted);
+}
+
+.diagram .arrow-green path {
+  fill: var(--green);
+}
+
+.diagram .arrow-dui path {
+  fill: var(--dui);
+}
+
+.diagram .arrow-coral path {
+  fill: var(--coral);
+}
+
+/* Server og client · zoner og grænsen */
+.diagram .zone.is-server {
+  fill: rgb(62 207 142 / 6%);
+}
+
+.diagram .zone.is-client {
+  fill: var(--dui-soft);
+}
+
+.diagram .zone-label {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.diagram .zone-label.is-server {
+  fill: var(--green);
+}
+
+.diagram .zone-label.is-client {
+  fill: var(--dui);
+}
+
+.diagram .boundary {
+  stroke: var(--dui);
+  stroke-width: 3;
+  stroke-dasharray: 12 8;
+}
+
+.diagram .boundary-label {
+  fill: var(--dui);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* Den iterative model */
+.loop-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  grid-template-rows: auto auto;
+  align-items: start;
+  margin-top: 14px;
+}
+
+.loop-layout .diagram {
+  grid-row: span 2;
+  max-height: 600px;
+}
+
+.loop-layout .rounds {
+  align-self: end;
+}
+
+.reveal .rounds-note {
+  margin: 0 !important;
+  padding: 14px 18px;
+  border-left: 4px solid var(--green);
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.reveal .rounds-note strong {
+  color: var(--ink);
+}
+
+.tree-layout {
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.diagram .loop-track {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 7;
+}
+
+.diagram .loop-center {
+  fill: var(--ink);
+  font-size: 34px;
+  font-weight: 850;
+}
+
+.rounds {
+  display: grid;
+  gap: 14px;
+  margin: 0 !important;
+  padding: 0;
+  list-style: none;
+  counter-reset: round;
+}
+
+.rounds li {
+  margin: 0;
+  padding: 14px 18px;
+  border-left: 4px solid var(--dui);
+  background: rgb(255 255 255 / 3%);
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.rounds li b {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+  font-size: 22px;
+}
+
+.rounds li.is-design {
+  border-color: var(--dui-yellow);
+}
+
+/* Linket er konteksten */
+.url-anatomy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 30px;
+  padding: 16px 22px 38px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 24px;
+}
+
+.url-anatomy span {
+  position: relative;
+  color: var(--muted);
+}
+
+.url-anatomy .is-file,
+.url-anatomy .is-node {
+  padding: 0 4px;
+  border-bottom: 3px solid;
+  color: var(--ink);
+}
+
+.url-anatomy .is-file {
+  border-color: var(--dui-blue);
+}
+
+.url-anatomy .is-node {
+  border-color: var(--green);
+}
+
+.url-anatomy small {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 4px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.url-anatomy .is-file small {
+  color: var(--dui-blue);
+}
+
+.url-anatomy .is-node small {
+  color: var(--green);
+}
+
+/* Promptens dele */
+.prompt-anatomy {
+  display: grid;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.prompt-part {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  padding: 18px 24px;
+  border-left: 6px solid var(--dui);
+  background: var(--surface);
+}
+
+.prompt-part b {
+  color: var(--ink);
+  font-size: 25px;
+}
+
+.prompt-part b small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.prompt-part p {
+  margin: 0;
+  color: var(--ink);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 19px;
+  line-height: 1.45;
+}
+
+.prompt-part.is-link {
+  border-color: var(--dui-blue);
+}
+
+.prompt-part.is-task {
+  border-color: var(--dui-yellow);
+}
+
+.prompt-part.is-answer {
+  border-color: var(--green);
 }

@@ -23,71 +23,47 @@
           <p class="date"><span>RACE</span><time datetime="2026-10-29">29. oktober 2026</time></p>
         </section>
 
-        <section class="po-slide po-agenda dui-agenda" id="agenda">
-          <span class="eyebrow">Agenda · én komponent hele vejen</span>
+        <section class="po-slide po-agenda dui-agenda" id="opgaver">
+          <span class="eyebrow">Overblik · det er der i slides</span>
           <h2>Fra pill i Figma til pill i Next.js</h2>
           <ol class="agenda-list">
             <li>
               <a href="#/fra-figma"
-                ><b>Samme komponent, to sprog</b
-                ><small>Figma-anatomi og React-anatomi · mapping-tabellen · to rul</small></a
+                ><b>Fra Figma til kode</b
+                ><small>Variables, components, variants og prototype — oversat til React</small></a
               >
             </li>
             <li>
-              <a href="#/starter"><b>Hent starteren</b><small>Use this template · klon · <code>npm i</code></small></a>
+              <a href="#/starter"><b>Kom i gang</b><small>Starteren · Use this template · <code>npm i</code></small></a>
             </li>
             <li>
               <a href="#/rul-1"
-                ><b>Rul 1: Håndkod med Dev Mode</b
-                ><small>Tokens · <code>Pill</code> · <code>&lt;dialog&gt;</code> · <code>showSeparator</code> · transition</small></a
+                ><b>Rul 1 · 1.1–1.2</b
+                ><small>Den simpleste version: <code>Pill</code> + <code>Modal</code> = <code>PillModal</code> · <code>"use client"</code></small></a
               >
             </li>
             <li>
-              <a href="#/rul-2"
-                ><b>Rul 2a: Byg igen med Figma MCP</b
-                ><small>Hvad agenten ser · opsætning · prompt · sammenlign</small></a
+              <a href="#/dev-mode"
+                ><b>Rul 1 · 1.3–1.5</b><small>Tokens og CSS fra Dev Mode · variants · animation</small></a
               >
             </li>
             <li>
-              <a href="#/prompt-2b"><b>Rul 2b: Ret i Figma, opdatér koden</b><small>Prompt · læs diffen · commit</small></a>
+              <a href="#/rul-2"><b>Rul 2 · Figma MCP</b><small>Sådan virker det · adgang til designet · opsætning</small></a>
             </li>
             <li>
-              <a href="#/refleksion"><b>Refleksion</b><small>Hvornår hjalp agenten, og hvornår gjorde den ikke?</small></a>
-            </li>
-          </ol>
-        </section>
-
-        <section class="po-slide po-agenda dui-agenda" id="opgaver">
-          <span class="eyebrow">Opgaver · ét trin ad gangen</span>
-          <h2>Trinene i dag</h2>
-          <ol class="agenda-list">
-            <li>
-              <a href="#/starter"><b>Før du starter</b><small>Starteren kører · Figma-filen i dit Education-team</small></a>
-            </li>
-            <li>
-              <a href="#/opgave-1-1"
-                ><b>Rul 1 · 1.1–1.5</b
-                ><small>Tokens · <code>Pill</code> · åbn og luk · indhold og CSS · transition</small></a
+              <a href="#/iterationer"
+                ><b>Rul 2 · 2.2–2.3</b><small>Byg i iterationer · tydelige prompts · validér outputtet</small></a
               >
             </li>
             <li>
-              <a href="#/opgave-2-1"><b>Rul 2a · 2.1</b><small>Forbind din agent til Figma MCP · <code>whoami</code></small></a>
-            </li>
-            <li>
-              <a href="#/opgave-2a"><b>Rul 2a · 2.2–2.3</b><small>Byg med agenten på <code>/agent</code> · sammenlign</small></a>
-            </li>
-            <li>
-              <a href="#/opgave-2b"><b>Rul 2b · 2.4–2.6</b><small>Ret i Figma · opdatér komponenten · læs diffen</small></a>
-            </li>
-            <li>
-              <a href="#/ekstra"><b>Ekstra</b><small>En ny variant · pills fra et array · modalen folder sig ud fra pillen · fra kode til Figma</small></a>
+              <a href="#/refleksion"><b>Refleksion og ekstra</b><small>Varianter, <code>map</code>, fold ud og fra kode til Figma</small></a>
             </li>
           </ol>
         </section>
 
         <section class="po-slide" id="maal">
           <span class="eyebrow">Dagens mål</span>
-          <h2>Den samme pill og modal — nu i kode</h2>
+          <h2>Samme komponent — nu i kode</h2>
           <div class="figma-code">
             <figure>
               <span>Figma · med NKKR</span>
@@ -110,11 +86,15 @@
               <figcaption><code>&lt;button&gt;</code> åbner en <code>&lt;dialog&gt;</code> · tokens fra dine variables</figcaption>
             </figure>
           </div>
+          <p class="dui-lead-note">
+            <strong>To rul:</strong> Først i hånden, så med en agent. Rul 1 giver dig forståelsen til at vurdere agentens
+            kode.
+          </p>
         </section>
 
         <section class="chapter po-chapter po-slide" id="fra-figma">
           <span class="chapter-index">01</span>
-          <span class="eyebrow">Fra Figma til React</span>
+          <span class="eyebrow">Fra Figma til kode</span>
           <h2>Samme komponent,<br />to sprog</h2>
           <p class="kicker">De fleste begreber, du har brugt i Figma i dag, har et navn i React.</p>
           <dl class="chapter-definition">
@@ -128,62 +108,30 @@
           </dl>
         </section>
 
-        <section class="po-slide" id="anatomi">
-          <span class="eyebrow">Fra Figma-anatomi til React-anatomi</span>
-          <h2>Hver del har en plads i koden</h2>
-          <div class="anatomy">
-            <div class="anatomy-row anatomy-head"><p>Figma</p><span></span><p>React og Next.js</p></div>
-            <div class="anatomy-row">
-              <p>Variables<small><code>Color/Primary</code> · <code>Paddings/lg</code></small></p>
-              <span aria-hidden="true">→</span>
-              <p><code>app/globals.css</code><small>tokens som custom properties</small></p>
-            </div>
-            <div class="anatomy-row">
-              <p>Component set <code>Pill</code> · component <code>Modal</code><small>variants og properties</small></p>
-              <span aria-hidden="true">→</span>
-              <p><code>components/Pill.js</code> · <code>components/Modal.js</code><small>hver med sin egen CSS Module</small></p>
-            </div>
-            <div class="anatomy-row">
-              <p>Instance med overrides<small>Type = Secondary · teksten <i>Fitts's Law</i></small></p>
-              <span aria-hidden="true">→</span>
-              <p><code>&lt;Pill type="secondary"&gt;Fitts's Law&lt;/Pill&gt;</code><small>komponenten brugt med props</small></p>
-            </div>
-            <div class="anatomy-row">
-              <p>Prototype<small>klik åbner overlay · Smart Animate</small></p>
-              <span aria-hidden="true">→</span>
-              <p><code>components/PillModal.js</code><small><code>useState</code> forbinder pill og modal</small></p>
-            </div>
-            <div class="anatomy-row">
-              <p>Frame'en <code>Components</code><small>hvor du viser dine komponenter</small></p>
-              <span aria-hidden="true">→</span>
-              <p><code>app/page.js</code><small>siden, der bruger komponenterne</small></p>
-            </div>
-          </div>
-        </section>
-
         <section class="po-slide mapping" id="mapping">
-          <span class="eyebrow">Mapping-tabellen · design</span>
+          <span class="eyebrow">Oversættelsen · design</span>
           <h2>Fra Figma-begreb til kode</h2>
           <div class="why-table" role="table" aria-label="Figma-begreber og hvad de bliver til i koden">
             <div class="why-row why-head" role="row"><span></span><span>Figma</span><span>Kode</span></div>
             <div class="why-row" role="row">
-              <b>Variables</b><span><code>Color/Neutral/Grey 900</code> · <code>font-weight/semi-bold</code></span
-              ><span class="is-next"><code>--color-neutral-grey-900</code> · <code>600</code> i <code>globals.css</code></span>
+              <b>Variables</b><span><code>Color/Primary</code> · <code>Paddings/lg</code></span
+              ><span class="is-next">Tokens i <code>globals.css</code>: <code>--color-primary</code></span>
             </div>
             <div class="why-row" role="row">
-              <b>Variant <code>Type</code></b><span>Primary / Secondary</span
-              ><span class="is-next">Prop <code>type="primary"</code>, der vælger en klasse</span>
+              <b>Component</b><span><code>Pill</code> · <code>Modal</code></span
+              ><span class="is-next">En funktion med sin egen CSS Module: <code>Pill.js</code></span>
             </div>
             <div class="why-row" role="row">
-              <b>Variant <code>State</code></b><span>Default / Hover</span
-              ><span class="is-next"><code>:hover</code> og <code>:focus-visible</code> i CSS — ikke en prop</span>
+              <b>Instance + overrides</b><span>Type = Secondary · teksten</span
+              ><span class="is-next">Props: <code>&lt;Pill type="secondary"&gt;Fitts's Law&lt;/Pill&gt;</code></span>
             </div>
             <div class="why-row" role="row">
-              <b>Boolean</b><span><code>showSeparator</code> = true</span
+              <b>Variants</b><span><code>Type</code> · <code>State</code></span
+              ><span class="is-next">En prop eller CSS — se næste slide</span>
+            </div>
+            <div class="why-row" role="row">
+              <b>Boolean</b><span><code>showSeparator</code></span
               ><span class="is-next"><code>{showSeparator &amp;&amp; &lt;hr /&gt;}</code></span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Tekst</b><span>Label, rubrik og tekst</span><span class="is-next">Props eller <code>children</code></span>
             </div>
             <div class="why-row" role="row">
               <b>Auto layout</b><span>Direction, gap og padding</span
@@ -193,7 +141,7 @@
         </section>
 
         <section class="po-slide" id="prop-state-css">
-          <span class="eyebrow">Mapping · variants</span>
+          <span class="eyebrow">Oversættelsen · variants</span>
           <h2>Prop, state eller CSS?</h2>
           <div class="compare-cols three decision">
             <article>
@@ -221,80 +169,17 @@
           </p>
         </section>
 
-        <section class="po-slide mapping" id="properties">
-          <span class="eyebrow">Mapping · component properties</span>
-          <h2>Properties bliver til props</h2>
-          <div class="why-table" role="table" aria-label="Component properties i Figma og props i React">
-            <div class="why-row why-head" role="row"><span>Figma</span><span>Prop i React</span><span>Eksempel</span></div>
-            <div class="why-row" role="row">
-              <b>Variant</b><span>En string, der vælger en klasse</span
-              ><span class="is-next"><code>type="primary"</code> → <code>styles.primary</code></span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Boolean</b><span><code>true</code> eller <code>false</code> og betinget rendering</span
-              ><span class="is-next"><code>{showSeparator &amp;&amp; &lt;hr /&gt;}</code></span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Text</b><span>En string eller <code>children</code></span
-              ><span class="is-next"><code>title="Hick's Law"</code> · <code>&lt;Pill&gt;Hick's Law&lt;/Pill&gt;</code></span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Instance swap</b><span>Et element som prop</span><span class="is-next"><code>icon={&lt;ArrowIcon /&gt;}</code></span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Nested instance</b><span>En komponent i en komponent</span
-              ><span class="is-next"><code>&lt;Pill&gt;</code> som lukkeknap i <code>Modal</code></span>
-            </div>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Navnene følger med:</strong> Hedder din property <code>showSeparator</code> i Figma, så hedder
-            prop'en det samme i koden.
-          </p>
-        </section>
-
-        <section class="po-slide mapping" id="auto-layout">
-          <span class="eyebrow">Mapping · auto layout</span>
-          <h2>Auto layout bliver til flexbox</h2>
-          <div class="why-table" role="table" aria-label="Auto layout i Figma og CSS">
-            <div class="why-row why-head" role="row"><span>Auto layout</span><span>CSS</span><span>I dag</span></div>
-            <div class="why-row" role="row">
-              <b>Direction</b><span><code>flex-direction: column</code> eller <code>row</code></span
-              ><span class="is-next">Indholdet i modalen står i en kolonne</span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Gap · padding</b><span><code>gap</code> · <code>padding</code></span
-              ><span class="is-next"><code>gap: var(--gaps-md)</code></span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Alignment</b><span><code>align-items</code> · <code>justify-content</code></span
-              ><span class="is-next">Teksten i pillen er centreret</span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Hug contents</b><span>Ingen bredde — indholdet bestemmer</span
-              ><span class="is-next">Pillen: <code>display: inline-flex</code></span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Fill container</b><span><code>flex: 1</code> eller <code>align-self: stretch</code></span
-              ><span class="is-next">Fx en knap i fuld bredde</span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Fixed</b><span><code>width</code> — gerne med <code>max-width</code></span
-              ><span class="is-next">Modalen: <code>500px</code>, men aldrig bredere end skærmen</span>
-            </div>
-          </div>
-        </section>
-
         <section class="po-slide mapping" id="mapping-interaktion">
-          <span class="eyebrow">Mapping-tabellen · prototype</span>
+          <span class="eyebrow">Oversættelsen · prototype</span>
           <h2>Interaktionen bliver til state og CSS</h2>
           <div class="why-table" role="table" aria-label="Prototype-begreber i Figma og hvad de bliver til i koden">
             <div class="why-row why-head" role="row"><span></span><span>Figma</span><span>Kode</span></div>
             <div class="why-row" role="row">
-              <b>On click</b><span>Klik på pillen åbner modalen som overlay</span
+              <b>On click</b><span>Klik på pillen åbner modalen</span
               ><span class="is-next"><code>onClick</code> sætter <code>isOpen</code> med <code>useState</code></span>
             </div>
             <div class="why-row" role="row">
-              <b>Overlay</b><span>Modalen ligger oven på resten</span
+              <b>Open overlay</b><span>Modalen ligger oven på resten</span
               ><span class="is-next"><code>&lt;dialog&gt;</code> åbnet med <code>showModal()</code></span>
             </div>
             <div class="why-row" role="row">
@@ -306,40 +191,10 @@
               ><span class="is-next"><code>transition: opacity 300ms ease-out</code></span>
             </div>
           </div>
-          <p class="dui-lead-note">
-            <strong>Pas på med navnet <code>type</code>:</strong> Prop'en <code>type="primary"</code> er din egen.
-            <code>type="button"</code> på selve <code>&lt;button&gt;</code> er HTML og betyder noget andet.
-          </p>
-        </section>
-
-        <section class="po-slide" id="to-rul">
-          <span class="eyebrow">Dagens to rul</span>
-          <h2>Først i hånden. Så med en agent.</h2>
-          <div class="compare-cols three">
-            <article>
-              <span>Rul 1</span>
-              <h3>Håndkod med Dev Mode</h3>
-              <p>Du oversætter selv variables, variants og properties til tokens, props og CSS.</p>
-            </article>
-            <article class="is-new">
-              <span>Rul 2a</span>
-              <h3>Byg igen med Figma MCP</h3>
-              <p>En agent læser Figma og bygger den samme komponent i en ny mappe. Du sammenligner med din egen.</p>
-            </article>
-            <article class="is-new">
-              <span>Rul 2b</span>
-              <h3>Ret i Figma, opdatér koden</h3>
-              <p>Du ændrer designet, agenten opdaterer din komponent, og du læser diffen kritisk.</p>
-            </article>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Derfor i den rækkefølge:</strong> Rul 1 giver dig den forståelse, du skal bruge for at vurdere
-            agentens kode i rul 2.
-          </p>
         </section>
 
         <section class="po-slide" id="starter">
-          <span class="eyebrow">Før du starter</span>
+          <span class="eyebrow">Kom i gang</span>
           <h2>Hent starteren, og få den til at køre</h2>
           <div class="start-steps">
             <article>
@@ -378,21 +233,23 @@ npm run dev</code></pre>
         </section>
 
         <section class="po-slide" id="starter-filer">
-          <span class="eyebrow">Starteren</span>
-          <h2>Det har du fået</h2>
+          <span class="eyebrow">Kom i gang · starteren</span>
+          <h2>Her havner Figma i koden</h2>
           <div class="file-tree">
             <p class="is-key">
-              <code>app/globals.css</code><span>Kommentarer om, hvor dine tokens skal ind — tom <code>:root</code></span>
+              <code>components/Pill.js</code><span>Component set'et <code>Pill</code> — en tom <code>&lt;button&gt;</code> · 1.1</span>
             </p>
             <p class="is-key">
-              <code>components/Pill.js</code><span>En tom <code>&lt;button&gt;</code> og en tom <code>Pill.module.css</code></span>
+              <code>components/Modal.js</code><span>Komponenten <code>Modal</code> — en tom <code>&lt;dialog&gt;</code> · 1.1</span>
             </p>
             <p class="is-key">
-              <code>components/Modal.js</code><span>En tom <code>&lt;dialog&gt;</code> og en tom <code>Modal.module.css</code></span>
+              <code>components/PillModal.js</code><span>Prototypen: Pill og Modal sat sammen — den opretter du · 1.2</span>
             </p>
-            <p><code>app/page.js</code><span>Siden, der viser komponenterne</span></p>
-            <p><code>app/layout.js</code><span>Indlæser fonten Inter med <code>next/font</code> — skift den, hvis dit design bruger en anden</span></p>
-            <p><code>AGENTS.md</code><span>Vejledning til AI-agenter om den aktuelle version af Next.js</span></p>
+            <p class="is-key">
+              <code>app/globals.css</code><span>Dine variables som tokens — kommentarer viser, hvor de skal ind · 1.3</span>
+            </p>
+            <p><code>*.module.css</code><span>Auto layout og styling for hver komponent · 1.3</span></p>
+            <p><code>app/page.js</code><span>Siden, der viser komponenterne — som din frame i Figma</span></p>
           </div>
           <p class="dui-lead-note">
             <strong>Samme opsætning som 26. oktober:</strong> App Router, JavaScript og ingen Tailwind. Men det er et nyt
@@ -403,21 +260,274 @@ npm run dev</code></pre>
         <section class="chapter po-chapter po-slide" id="rul-1">
           <span class="chapter-index">02</span>
           <span class="eyebrow">Rul 1 · i hånden</span>
-          <h2>Håndkod med<br />Dev Mode</h2>
-          <p class="kicker">Figma i Dev Mode på den ene side. VS Code på den anden.</p>
+          <h2>Den simpleste<br />version først</h2>
+          <p class="kicker">Få pill og modal til at virke sammen. Så bygger du designet ovenpå.</p>
           <dl class="chapter-definition">
             <div>
-              <dt>Design token</dt>
+              <dt>Komposition</dt>
               <dd>
-                En navngiven designværdi, fx en farve eller en afstand. I Figma er det en variable. I koden er det en
-                custom property, som alle komponenter bruger.
+                At bygge en større komponent af mindre. <code>PillModal</code> består af <code>Pill</code> og
+                <code>Modal</code> — ligesom en instance inde i en anden i Figma.
               </dd>
             </div>
           </dl>
         </section>
 
+        <section class="po-slide" id="trin">
+          <span class="eyebrow">Rul 1 · fem trin</span>
+          <h2>Hvert trin virker for sig</h2>
+          <ol class="step-shots">
+            <li>
+              <img src="../assets/pillmodal-trin-1-1.png" alt="Trin 1.1: en knap og en dialog uden styling" />
+              <b>1.1 Pill og Modal</b>
+              <span>En <code>&lt;button&gt;</code> og en <code>&lt;dialog&gt;</code></span>
+            </li>
+            <li>
+              <img src="../assets/pillmodal-trin-1-2.png" alt="Trin 1.2: et klik på pillen åbner dialogen, stadig uden styling" />
+              <b>1.2 PillModal</b>
+              <span>Klik åbner, <kbd>Esc</kbd> lukker</span>
+            </li>
+            <li>
+              <img src="../assets/pillmodal-trin-1-3.png" alt="Trin 1.3: pill og modal med tokens og CSS og en mørk backdrop" />
+              <b>1.3 Tokens og CSS</b>
+              <span>Variables og auto layout</span>
+            </li>
+            <li>
+              <img src="../assets/pillmodal-trin-1-4.png" alt="Trin 1.4: primary-pillen i pink og modalen med separator" />
+              <b>1.4 Variants</b>
+              <span><code>Type</code>, hover og <code>showSeparator</code></span>
+            </li>
+            <li>
+              <img src="../assets/pillmodal-trin-1-5.png" alt="Trin 1.5: modalen er midt i at fade ind" />
+              <b>1.5 Animation</b>
+              <span>Smart Animate som <code>transition</code></span>
+            </li>
+          </ol>
+          <div class="step-phases" aria-hidden="true">
+            <span class="is-works">Det virker</span><span class="is-looks">Det ligner Figma</span><span class="is-feels">Det føles som Figma</span>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Byg → tjek → commit.</strong> Hvert trin slutter med en version, der virker. Agenten i rul 2
+            bygger i samme rækkefølge.
+          </p>
+        </section>
+
+        <section class="po-slide" id="komponenter">
+          <span class="eyebrow">1.1 · to små komponenter</span>
+          <h2>En <code>&lt;button&gt;</code> og en <code>&lt;dialog&gt;</code></h2>
+          <div class="code-pair">
+            <div>
+              <span class="code-label"><code>components/Pill.js</code></span>
+              <pre class="po-code code-sm"><code class="language-jsx">export default function Pill({ onClick, children }) {
+  return (
+    &lt;button
+      type="button"
+      className={styles.pill}
+      onClick={onClick}
+    &gt;
+      {children}
+    &lt;/button&gt;
+  );
+}</code></pre>
+              <p>Teksten bliver til <code>children</code>. <code>onClick</code> kommer fra den, der bruger pillen.</p>
+            </div>
+            <div>
+              <span class="code-label"><code>components/Modal.js</code> · uddrag</span>
+              <pre class="po-code code-sm"><code class="language-jsx">export default function Modal({
+  isOpen, onClose, title, text
+}) {
+  const dialogRef = useRef(null);
+  useEffect(() =&gt; {
+    if (isOpen) {
+      dialogRef.current.showModal();
+    } else {
+      dialogRef.current.close();
+    }
+  }, [isOpen]);
+  return (
+    &lt;dialog ref={dialogRef} onClose={onClose}&gt;
+      &lt;h2&gt;{title}&lt;/h2&gt;
+      &lt;p&gt;{text}&lt;/p&gt;
+    &lt;/dialog&gt;
+  );
+}</code></pre>
+              <p><code>showModal()</code> giver fokus, <kbd>Esc</kbd> og en backdrop gratis. Det gør <code>open</code>-attributten ikke.</p>
+            </div>
+          </div>
+          <p class="po-source-link">
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog" target="_blank" rel="noreferrer"
+              >MDN: The dialog element ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-1-1">
+          <span class="eyebrow">Opgave 1.1</span>
+          <h2>Byg Pill og Modal</h2>
+          <div class="assignment-flow three">
+            <article>
+              <h3><code>Pill</code></h3>
+              <p>En <code>&lt;button type="button"&gt;</code> med <code>children</code> og <code>onClick</code> som props.</p>
+              <p class="step-links"><a href="#/komponenter">Kode</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/e0dffad/components/Pill.js" target="_blank" rel="noreferrer"><code>Pill.js</code></a></p>
+            </article>
+            <article>
+              <h3><code>Modal</code></h3>
+              <p>En <code>&lt;dialog&gt;</code> med <code>title</code> og <code>text</code>. En <code>ref</code> kalder <code>showModal()</code>, når <code>isOpen</code> er <code>true</code>.</p>
+              <p class="step-links"><a href="#/komponenter">Kode</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/e0dffad/components/Modal.js" target="_blank" rel="noreferrer"><code>Modal.js</code></a></p>
+            </article>
+            <article>
+              <h3>Se dem</h3>
+              <p>Vis pillen i <code>app/page.js</code>. Giv modalen <code>isOpen</code> et øjeblik for at se den.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/e0dffad/app/page.js" target="_blank" rel="noreferrer"><code>page.js</code></a></p>
+            </article>
+          </div>
+          <p class="work-if-stuck"><strong>useEffect only works in Client Components?</strong> Tilføj <code>"use client"</code> øverst i <code>Modal.js</code>. <strong>Cannot read properties of null (reading 'showModal')?</strong> Sæt <code>ref={dialogRef}</code> på <code>&lt;dialog&gt;</code>.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Pillen viser din tekst, og med <code>isOpen</code> åbner modalen, når siden loader. <kbd>Esc</kbd> lukker den.</p>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/e0dffad" target="_blank" rel="noreferrer"
+              >Starterrepo: 1.1 Pill og Modal ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="pillmodal">
+          <span class="eyebrow">1.2 · prototypen bliver til state</span>
+          <h2><code>PillModal</code> sætter dem sammen</h2>
+          <div class="visual-explain">
+            <div>
+              <span class="code-label"><code>components/PillModal.js</code></span>
+              <pre class="po-code code-sm"><code class="language-jsx">"use client";
+
+import { useState } from "react";
+import Modal from "./Modal";
+import Pill from "./Pill";
+
+export default function PillModal({ label, title, text }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    &lt;&gt;
+      &lt;Pill onClick={() =&gt; setIsOpen(true)}&gt;{label}&lt;/Pill&gt;
+      &lt;Modal isOpen={isOpen} onClose={() =&gt; setIsOpen(false)}
+        title={title} text={text} /&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+            </div>
+            <figure class="diagram-figure">
+              <svg class="diagram" viewBox="0 0 560 450" role="img" aria-label="PillModal har state og giver onClick til Pill og isOpen til Modal. Pill og Modal sender klik og onClose tilbage op.">
+                <defs>
+                  <marker id="comp-prop" class="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" /></marker>
+                  <marker id="comp-event" class="arrow-dui" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" /></marker>
+                </defs>
+                <rect class="box is-dui" x="60" y="20" width="440" height="100" rx="18" />
+                <text class="label" x="280" y="62" text-anchor="middle">PillModal</text>
+                <text class="sub mono" x="280" y="94" text-anchor="middle">state: isOpen = true / false</text>
+                <rect class="box" x="60" y="290" width="190" height="100" rx="18" />
+                <text class="label" x="155" y="332" text-anchor="middle">Pill</text>
+                <text class="sub mono" x="155" y="364" text-anchor="middle">&lt;button&gt;</text>
+                <rect class="box" x="310" y="290" width="190" height="100" rx="18" />
+                <text class="label" x="405" y="332" text-anchor="middle">Modal</text>
+                <text class="sub mono" x="405" y="364" text-anchor="middle">&lt;dialog&gt;</text>
+                <line class="edge is-prop" x1="110" y1="122" x2="110" y2="286" marker-end="url(#comp-prop)" />
+                <text class="edge-label is-prop mono" x="100" y="200" text-anchor="end">onClick</text>
+                <line class="edge is-event" x1="200" y1="288" x2="200" y2="124" marker-end="url(#comp-event)" />
+                <text class="edge-label is-event" x="210" y="226">klik</text>
+                <line class="edge is-prop" x1="360" y1="122" x2="360" y2="286" marker-end="url(#comp-prop)" />
+                <text class="edge-label is-prop mono" x="350" y="200" text-anchor="end">isOpen</text>
+                <line class="edge is-event" x1="450" y1="288" x2="450" y2="124" marker-end="url(#comp-event)" />
+                <text class="edge-label is-event mono" x="460" y="226">onClose</text>
+                <line class="edge is-prop" x1="70" y1="430" x2="120" y2="430" />
+                <text class="edge-label" x="130" y="436">props ned</text>
+                <line class="edge is-event" x1="300" y1="430" x2="350" y2="430" />
+                <text class="edge-label" x="360" y="436">events op</text>
+              </svg>
+              <figcaption>
+                <strong>State bor i <code>PillModal</code>.</strong> Så skal <code>page.js</code> kun skrive
+                <code>&lt;PillModal label="Hick's Law" … /&gt;</code>.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="po-slide" id="use-client">
+          <span class="eyebrow">1.2 · Next.js: server og client</span>
+          <h2>Hvorfor <code>"use client"</code> lige dér?</h2>
+          <div class="visual-explain tree-layout">
+            <svg class="diagram" viewBox="0 0 640 480" role="img" aria-label="Komponenttræet: page.js er en server component. PillModal har use client og er grænsen. Pill og Modal kører også i browseren.">
+              <defs>
+                <marker id="tree-arrow" class="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" /></marker>
+              </defs>
+              <rect class="zone is-server" x="0" y="0" width="640" height="186" rx="16" />
+              <text class="zone-label is-server" x="22" y="34">SERVER</text>
+              <rect class="zone is-client" x="0" y="194" width="640" height="286" rx="16" />
+              <text class="zone-label is-client" x="22" y="228">CLIENT · OGSÅ I BROWSEREN</text>
+              <line class="boundary" x1="0" y1="190" x2="640" y2="190" />
+              <text class="boundary-label mono" x="618" y="180" text-anchor="end">"use client" = grænsen</text>
+              <rect class="box is-green" x="200" y="56" width="240" height="88" rx="16" />
+              <text class="label mono" x="320" y="94" text-anchor="middle">app/page.js</text>
+              <text class="sub" x="320" y="124" text-anchor="middle">server component · standard</text>
+              <rect class="box is-dui" x="200" y="246" width="240" height="88" rx="16" />
+              <text class="label" x="320" y="284" text-anchor="middle">PillModal</text>
+              <text class="sub mono" x="320" y="314" text-anchor="middle">"use client" · useState</text>
+              <rect class="box" x="40" y="384" width="240" height="80" rx="16" />
+              <text class="label" x="160" y="418" text-anchor="middle">Pill</text>
+              <text class="sub" x="160" y="446" text-anchor="middle">intet direktiv</text>
+              <rect class="box" x="360" y="384" width="240" height="80" rx="16" />
+              <text class="label" x="480" y="418" text-anchor="middle">Modal</text>
+              <text class="sub mono" x="480" y="446" text-anchor="middle">"use client" · useEffect</text>
+              <line class="edge" x1="320" y1="146" x2="320" y2="242" marker-end="url(#tree-arrow)" />
+              <line class="edge" x1="280" y1="336" x2="190" y2="380" marker-end="url(#tree-arrow)" />
+              <line class="edge" x1="360" y1="336" x2="450" y2="380" marker-end="url(#tree-arrow)" />
+            </svg>
+            <div class="explain-list">
+              <p><b>Server components er standard</b><code>page.js</code> kører kun på serveren. Browseren får færdig HTML.</p>
+              <p><b><code>"use client"</code> er en grænse</b>Komponenten og alt, den importerer, sendes også som JavaScript til browseren.</p>
+              <p><b>Kun dér, hvor den skal reagere</b>State, effects og events. Hold grænsen så langt nede i træet som muligt.</p>
+              <p><b><code>Pill</code> behøver det ikke</b>Den har ingen state, men kører i browseren, fordi <code>PillModal</code> importerer den.</p>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Som 26. oktober:</strong> Server components er standard. I morgen møder du begge slags igen, når
+            Supabase skal bruges på både server og client.
+          </p>
+          <p class="po-source-link">
+            <a href="https://nextjs.org/docs/app/getting-started/server-and-client-components" target="_blank" rel="noreferrer"
+              >Next.js: Server and Client Components ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-1-2">
+          <span class="eyebrow">Opgave 1.2</span>
+          <h2>Sæt dem sammen i <code>PillModal</code></h2>
+          <div class="assignment-flow three">
+            <article>
+              <h3>Opret</h3>
+              <p>Opret <code>components/PillModal.js</code> med <code>"use client"</code> og <code>isOpen</code> i <code>useState</code>.</p>
+              <p class="step-links"><a href="#/pillmodal">Kode</a><a href="#/use-client">use client</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/7fbde98/components/PillModal.js" target="_blank" rel="noreferrer"><code>PillModal.js</code></a></p>
+            </article>
+            <article>
+              <h3>Forbind</h3>
+              <p>Pillens <code>onClick</code> åbner. Modalens <code>onClose</code> lukker, også når brugeren trykker <kbd>Esc</kbd>.</p>
+            </article>
+            <article>
+              <h3>Brug den</h3>
+              <p>Vis to <code>PillModal</code>s med hver sin tekst i <code>app/page.js</code>.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/7fbde98/app/page.js" target="_blank" rel="noreferrer"><code>page.js</code></a></p>
+            </article>
+          </div>
+          <p class="work-if-stuck"><strong>Åbner modalen kun første gang?</strong> <code>onClose</code> skal sætte <code>isOpen</code> til <code>false</code>. Ellers tror state, at den stadig er åben.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Et klik åbner modalen, <kbd>Esc</kbd> lukker den, og fokus kommer tilbage til pillen. Commit.</p>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/7fbde98" target="_blank" rel="noreferrer"
+              >Starterrepo: 1.2 PillModal ↗</a
+            >
+          </p>
+        </section>
+
         <section class="po-slide" id="dev-mode">
-          <span class="eyebrow">Tool-guide · Dev Mode</span>
+          <span class="eyebrow">1.3 · Dev Mode</span>
           <h2>Her finder du det, du skal oversætte</h2>
           <div class="devmode-grid">
             <article>
@@ -449,7 +559,7 @@ npm run dev</code></pre>
         </section>
 
         <section class="po-slide" id="tokens">
-          <span class="eyebrow">1.1 · Variables bliver til tokens</span>
+          <span class="eyebrow">1.3 · variables bliver til tokens</span>
           <h2>Dine variables flytter ind i <code>:root</code></h2>
           <div class="code-explain">
             <div>
@@ -481,42 +591,78 @@ body {
           </div>
         </section>
 
-        <section class="po-slide mode-work" id="opgave-1-1">
-          <span class="eyebrow">Opgave 1.1</span>
-          <h2>Overfør variables til tokens</h2>
+        <section class="po-slide" id="css">
+          <span class="eyebrow">1.3 · auto layout bliver til flexbox</span>
+          <h2>CSS Modules med dine tokens</h2>
+          <div class="code-explain">
+            <div>
+              <span class="code-label"><code>Pill.module.css</code> og <code>Modal.module.css</code> · uddrag</span>
+              <pre class="po-code code-sm"><code class="language-css">.pill {
+  display: inline-flex;
+  align-items: center;
+  height: var(--btn-height-md);
+  padding: 0 var(--paddings-sm);
+  border-radius: var(--border-radius-full);
+}
+
+.modal {
+  width: 500px;
+  max-width: calc(100% - 32px);
+  padding: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gaps-md);
+  padding: var(--paddings-lg);
+}</code></pre>
+            </div>
+            <div class="explain-list">
+              <p><b>Auto layout → flexbox</b>Direction, gap og padding hedder næsten det samme.</p>
+              <p><b>Kun tokens</b>Er værdien en variable i Figma, så brug <code>var()</code>. Skyggen har ingen variable, så den skriver du direkte.</p>
+              <p><b>Fast bredde</b><code>500px</code> fra Figma og <code>max-width</code>, så modalen passer på en mobil.</p>
+              <p><b>Klik udenfor</b>Uden padding på <code>&lt;dialog&gt;</code> er et klik på den selv et klik på backdroppen: <code>event.target === event.currentTarget</code>.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-1-3">
+          <span class="eyebrow">Opgave 1.3</span>
+          <h2>Tokens og CSS fra Dev Mode</h2>
           <div class="assignment-flow three">
             <article>
-              <h3>Find</h3>
-              <p>Åbn <b>Local variables</b> i din Figma-fil: Design-tilstand, klik på et tomt sted på canvas.</p>
-              <p class="step-links"><a href="#/dev-mode">Dev Mode</a></p>
+              <h3>Tokens</h3>
+              <p>Skriv dine variables ind i grupperne i <code>app/globals.css</code>. Brug to af dem på <code>body</code>.</p>
+              <p class="step-links"><a href="#/tokens">Tokens</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/edef78e/app/globals.css" target="_blank" rel="noreferrer"><code>globals.css</code></a></p>
             </article>
             <article>
-              <h3>Skriv</h3>
-              <p>Skriv dem ind i grupperne i <code>app/globals.css</code>. <code>/</code> bliver <code>-</code>, tal får <code>px</code>.</p>
-              <p class="step-links"><a href="#/tokens">Tokens</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/c22f3a2/app/globals.css" target="_blank" rel="noreferrer"><code>globals.css</code></a></p>
+              <h3>CSS</h3>
+              <p>Style <code>.pill</code>, <code>.modal</code>, <code>.content</code>, rubrik og tekst med værdierne fra <i>Inspect</i>.</p>
+              <p class="step-links"><a href="#/css">CSS</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/edef78e/components/Modal.module.css" target="_blank" rel="noreferrer"><code>Modal.module.css</code></a></p>
             </article>
             <article>
-              <h3>Brug</h3>
-              <p>Giv <code>body</code> en <code>color</code> og en <code>background</code> med <code>var()</code>.</p>
+              <h3>Klik udenfor</h3>
+              <p>Læg indholdet i <code>&lt;div className={styles.content}&gt;</code>, og luk, når klikket rammer <code>&lt;dialog&gt;</code> selv.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/edef78e/components/Modal.js" target="_blank" rel="noreferrer"><code>Modal.js</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Virker et token ikke?</strong> Inspicér <code>&lt;html&gt;</code> i DevTools, og tjek stavningen under <code>:root</code>. <strong>Anden font end Inter?</strong> Skift den i <code>app/layout.js</code>.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Overskriften har farven fra din variable, og dine tokens står under <code>:root</code> i DevTools.</p>
+          <p class="work-if-stuck"><strong>Virker et token ikke?</strong> Inspicér <code>&lt;html&gt;</code> i DevTools, og tjek stavningen under <code>:root</code>. <strong>Lukker modalen ved klik inde i den?</strong> Flyt <code>padding</code> fra <code>.modal</code> til <code>.content</code>.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Pill og modal ligner Figma, alle værdier kommer fra tokens, og klik udenfor lukker.</p>
           <p class="po-source-link">
-            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/c22f3a2" target="_blank" rel="noreferrer"
-              >Starterrepo: 1.1 Tokens ↗</a
+            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/edef78e" target="_blank" rel="noreferrer"
+              >Starterrepo: 1.3 Tokens og CSS ↗</a
             >
           </p>
         </section>
 
-        <section class="po-slide" id="pill">
-          <span class="eyebrow">1.2 · Variants bliver til props og CSS</span>
-          <h2>Pillen er en <code>&lt;button&gt;</code></h2>
+        <section class="po-slide" id="variants">
+          <span class="eyebrow">1.4 · variants og properties</span>
+          <h2><code>Type</code> bliver en prop, <code>State</code> bliver CSS</h2>
           <div class="code-explain">
             <div>
-              <span class="code-label"><code>components/Pill.js</code></span>
-              <pre class="po-code code-sm"><code class="language-jsx">import styles from "./Pill.module.css";
-
+              <span class="code-label"><code>Pill.js</code> og <code>Modal.js</code> · uddrag</span>
+              <pre class="po-code code-sm"><code class="language-jsx">// Pill.js
 export default function Pill({ type = "primary", onClick, children }) {
   return (
     &lt;button
@@ -529,297 +675,46 @@ export default function Pill({ type = "primary", onClick, children }) {
   );
 }
 
-// Brug:
-&lt;Pill type="secondary"&gt;Secondary&lt;/Pill&gt;</code></pre>
-            </div>
-            <div class="explain-list">
-              <p><b><code>Type</code> → prop</b>Et valg, når pillen bruges. <code>type="primary"</code> vælger klassen <code>.primary</code>.</p>
-              <p><b><code>State</code> → CSS</b>Hover sker af sig selv. Den bliver til <code>:hover</code> og <code>:focus-visible</code> — ikke en prop.</p>
-              <p><b>Teksten → <code>children</code></b>Som tekst i en almindelig <code>&lt;button&gt;</code>.</p>
-              <p><b><code>type="button"</code></b>HTML-attributten: knappen sender ikke en formular. Den er ikke din prop.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="po-slide" id="pill-css">
-          <span class="eyebrow">1.2 · Auto layout bliver til flexbox</span>
-          <h2><code>Pill.module.css</code> med dine tokens</h2>
-          <div class="code-explain">
-            <div>
-              <span class="code-label"><code>components/Pill.module.css</code> · uddrag</span>
-              <pre class="po-code code-sm"><code class="language-css">.pill {
-  display: inline-flex;
-  align-items: center;
-  height: var(--btn-height-md);
-  padding: 0 var(--paddings-sm);
-  border: 1px solid var(--color-neutral-grey-200);
-  border-radius: var(--border-radius-full);
-  font-family: inherit;
-  font-size: var(--font-size-md);
-}
-
-.primary {
-  color: var(--color-primary);
-}
-
-.primary:hover,
-.primary:focus-visible {
-  border-color: var(--color-primary);
-}</code></pre>
-            </div>
-            <div class="explain-list">
-              <p><b>Auto layout → flexbox</b>Padding og alignment hedder næsten det samme. Højden kommer fra <code>btn-height/md</code>.</p>
-              <p><b>Én klasse pr. type</b><code>.primary</code> og <code>.secondary</code> — samme navne som værdierne i prop'en.</p>
-              <p><b>Hover og fokus</b>Samme stil på <code>:hover</code> og <code>:focus-visible</code>, så tastaturet også ser den.</p>
-              <p><b><code>font-family: inherit</code></b>En <code>&lt;button&gt;</code> arver ikke fonten af sig selv.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="po-slide mode-work" id="opgave-1-2">
-          <span class="eyebrow">Opgave 1.2</span>
-          <h2>Byg pillen</h2>
-          <div class="assignment-flow three">
-            <article>
-              <h3>Props</h3>
-              <p>Giv <code>Pill</code> props til <code>type</code>, <code>onClick</code> og <code>children</code>, og vælg klassen med <code>styles[type]</code>.</p>
-              <p class="step-links"><a href="#/pill">Pill.js</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/8a5a360/components/Pill.js" target="_blank" rel="noreferrer"><code>Pill.js</code></a></p>
-            </article>
-            <article>
-              <h3>CSS</h3>
-              <p>Skriv <code>.pill</code>, én klasse pr. type og <code>:hover</code>/<code>:focus-visible</code> med dine tokens.</p>
-              <p class="step-links"><a href="#/pill-css">Pill.module.css</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/8a5a360/components/Pill.module.css" target="_blank" rel="noreferrer"><code>Pill.module.css</code></a></p>
-            </article>
-            <article>
-              <h3>Vis begge</h3>
-              <p>Vis en <code>primary</code> og en <code>secondary</code> pill i <code>app/page.js</code>.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/8a5a360/app/page.js" target="_blank" rel="noreferrer"><code>page.js</code></a></p>
-            </article>
-          </div>
-          <p class="work-if-stuck"><strong>Virker <code>styles[type]</code> ikke?</strong> Klassen skal hedde det samme som værdien: <code>.primary</code> til <code>type="primary"</code>. <strong>Anden font i pillen?</strong> Tilføj <code>font-family: inherit</code>.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Begge pills ligner Figma, og hover-stilen og en fokusring er synlige med musen og med <kbd>Tab</kbd>.</p>
-          <p class="po-source-link">
-            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/8a5a360" target="_blank" rel="noreferrer"
-              >Starterrepo: 1.2 Pill ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide" id="dialog">
-          <span class="eyebrow">1.3 · Hvorfor <code>&lt;dialog&gt;</code>?</span>
-          <h2><code>showModal()</code> giver dig det meste gratis</h2>
-          <div class="why-table" role="table" aria-label="Forskellen på open-attributten og showModal på dialog">
-            <div class="why-row why-head" role="row">
-              <span></span><span><code>&lt;dialog open&gt;</code></span><span><code>dialog.showModal()</code></span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Oven på alt</b><span>Nej — den ligger i sidens flow</span><span class="is-next">Ja — i browserens top layer</span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Fokus</b><span>Bliver, hvor det var</span><span class="is-next">Flyttes ind i modalen og tilbage, når den lukker</span>
-            </div>
-            <div class="why-row" role="row">
-              <b><kbd>Esc</kbd></b><span>Gør ingenting</span><span class="is-next">Lukker modalen</span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Backdrop</b><span>Ingen</span><span class="is-next"><code>::backdrop</code>, og resten af siden kan ikke bruges imens</span>
-            </div>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Klik udenfor er ikke gratis i alle browsere endnu.</strong> Attributten <code>closedby="any"</code>
-            virker ikke i Safari. Derfor lukker vi selv, når klikket rammer backdroppen.
-          </p>
-          <p class="po-source-link">
-            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog" target="_blank" rel="noreferrer"
-              >MDN: The dialog element ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide" id="pillmodal">
-          <span class="eyebrow">1.3 · Prototypen bliver til state</span>
-          <h2><code>PillModal</code> forbinder pill og modal</h2>
-          <div class="code-explain">
-            <div>
-              <span class="code-label"><code>components/PillModal.js</code></span>
-              <pre class="po-code code-sm"><code class="language-jsx">"use client";
-
-import { useState } from "react";
-import Modal from "./Modal";
-import Pill from "./Pill";
-
-export default function PillModal({ type, label, title, text }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    &lt;&gt;
-      &lt;Pill type={type} onClick={() =&gt; setIsOpen(true)}&gt;{label}&lt;/Pill&gt;
-      &lt;Modal isOpen={isOpen} onClose={() =&gt; setIsOpen(false)}
-        title={title} text={text} /&gt;
-    &lt;/&gt;
-  );
-}</code></pre>
-            </div>
-            <div class="explain-list">
-              <p><b>On click → <code>setIsOpen(true)</code></b>Prototypens klik bliver til en event handler.</p>
-              <p><b>Close overlay → <code>onClose</code></b>Modalen fortæller, at den er lukket, og state følger med.</p>
-              <p><b><code>"use client"</code></b>Komponenten bruger state og events. <code>Pill</code> behøver det ikke — den får bare <code>onClick</code>.</p>
-              <p><b>Siden bliver simpel</b><code>&lt;PillModal type="primary" label="Hick's Law" … /&gt;</code> i <code>page.js</code>.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="po-slide" id="modal-js">
-          <span class="eyebrow">1.3 · <code>&lt;dialog&gt;</code> med en ref</span>
-          <h2><code>Modal.js</code> kalder <code>showModal()</code></h2>
-          <div class="code-explain wide">
-            <div>
-              <span class="code-label"><code>components/Modal.js</code> · uddrag</span>
-              <pre class="po-code code-sm"><code class="language-jsx">const dialogRef = useRef(null);
-
-useEffect(() =&gt; {
-  if (isOpen) {
-    dialogRef.current.showModal();
-  } else {
-    dialogRef.current.close();
-  }
-}, [isOpen]);
-
-function handleClick(event) {
-  if (event.target === event.currentTarget) {
-    onClose();
-  }
-}
-
-&lt;dialog ref={dialogRef} onClose={onClose} onClick={handleClick}&gt;
-  &lt;div className={styles.content}&gt;…&lt;/div&gt;
-&lt;/dialog&gt;</code></pre>
-            </div>
-            <div class="explain-list">
-              <p><b><code>ref</code></b>Giver adgang til selve <code>&lt;dialog&gt;</code>-elementet.</p>
-              <p><b><code>useEffect</code></b>Når <code>isOpen</code> skifter, åbner eller lukker modalen.</p>
-              <p><b><code>onClose</code></b>Kører også ved <kbd>Esc</kbd>, så state er i sync.</p>
-              <p><b>Klik udenfor</b>Rammer <code>&lt;dialog&gt;</code> selv. Klik på indholdet rammer <code>.content</code>.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="po-slide mode-work" id="opgave-1-3">
-          <span class="eyebrow">Opgave 1.3</span>
-          <h2>Åbn og luk modalen</h2>
-          <div class="assignment-flow three">
-            <article>
-              <h3><code>PillModal</code></h3>
-              <p>Opret <code>components/PillModal.js</code> med <code>"use client"</code> og <code>useState</code>.</p>
-              <p class="step-links"><a href="#/pillmodal">PillModal</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/e5681b3/components/PillModal.js" target="_blank" rel="noreferrer"><code>PillModal.js</code></a></p>
-            </article>
-            <article>
-              <h3><code>Modal</code></h3>
-              <p>Åbn <code>&lt;dialog&gt;</code> med <code>showModal()</code>, og luk ved klik på backdroppen.</p>
-              <p class="step-links"><a href="#/dialog">Hvorfor dialog?</a><a href="#/modal-js">Modal.js</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/e5681b3/components/Modal.js" target="_blank" rel="noreferrer"><code>Modal.js</code></a></p>
-            </article>
-            <article>
-              <h3>Brug den</h3>
-              <p>Erstat dine <code>Pill</code>s i <code>app/page.js</code> med <code>PillModal</code>.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/e5681b3/app/page.js" target="_blank" rel="noreferrer"><code>page.js</code></a></p>
-            </article>
-          </div>
-          <p class="work-if-stuck"><strong>useState only works in Client Components?</strong> Tilføj <code>"use client"</code> øverst. <strong>Cannot read properties of null (reading 'showModal')?</strong> Sæt <code>ref={dialogRef}</code> på <code>&lt;dialog&gt;</code>.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Et klik åbner modalen, <kbd>Esc</kbd> og klik udenfor lukker den, og et klik inde i den lukker den ikke.</p>
-          <p class="po-source-link">
-            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/e5681b3" target="_blank" rel="noreferrer"
-              >Starterrepo: 1.3 Åbn og luk ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide" id="separator">
-          <span class="eyebrow">1.4 · Boolean bliver til betinget rendering</span>
-          <h2><code>showSeparator</code> viser eller skjuler linjen</h2>
-          <div class="code-explain">
-            <div>
-              <span class="code-label"><code>components/Modal.js</code> · uddrag</span>
-              <pre class="po-code"><code class="language-jsx">export default function Modal({
-  isOpen, onClose, title, text,
-  showSeparator = true
-}) {
-  // ...
-  &lt;div className={styles.content}&gt;
-    {showSeparator &amp;&amp; &lt;hr className={styles.separator} /&gt;}
-    &lt;h2 className={styles.title}&gt;{title}&lt;/h2&gt;
-    &lt;p className={styles.text}&gt;{text}&lt;/p&gt;
-  &lt;/div&gt;
-}
+// Modal.js
+{showSeparator &amp;&amp; &lt;hr className={styles.separator} /&gt;}
 
 // Brug:
-&lt;PillModal … showSeparator={false} /&gt;</code></pre>
+&lt;PillModal type="secondary" showSeparator={false} … /&gt;</code></pre>
             </div>
             <div class="explain-list">
-              <p><b>Boolean → <code>true</code>/<code>false</code></b>Samme property som i Figma, nu som prop.</p>
-              <p><b><code>&amp;&amp;</code></b>Er venstre side <code>false</code>, renderes højre side ikke.</p>
-              <p><b>Standardværdi</b><code>= true</code> svarer til standardværdien i Figma.</p>
-              <p><b>Tekst → props</b><code>title</code> og <code>text</code> kommer fra den, der bruger komponenten.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="po-slide" id="modal-css">
-          <span class="eyebrow">1.4 · Modalens CSS</span>
-          <h2>Boksen og auto layout</h2>
-          <div class="code-explain">
-            <div>
-              <span class="code-label"><code>components/Modal.module.css</code> · uddrag</span>
-              <pre class="po-code"><code class="language-css">.modal {
-  width: 500px;
-  max-width: calc(100% - 32px);
-  padding: 0;
-  border: none;
-  border-radius: var(--border-radius-md);
-  box-shadow: 0 20px 48px -12px rgb(0 0 0 / 0.12);
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--gaps-md);
-  padding: var(--paddings-lg);
-}</code></pre>
-            </div>
-            <div class="explain-list">
-              <p><b><code>padding: 0</code> på dialog</b>Så er et klik på <code>&lt;dialog&gt;</code> altid et klik på backdroppen.</p>
-              <p><b>Auto layout → <code>.content</code></b>Direction, gap og padding fra Modal-frame'en i Figma.</p>
-              <p><b>Fast bredde?</b>Figma siger <code>500px</code>. <code>max-width</code> får den til at passe på en mobil.</p>
-              <p><b>Ingen variable?</b>Skyggen og separatorens størrelse står kun som værdier i Figma. Dem skriver du direkte.</p>
+              <p><b><code>Type</code> → prop</b><code>type="primary"</code> vælger klassen <code>.primary</code> i CSS'en.</p>
+              <p><b><code>State</code> → CSS</b><code>.primary:hover</code> og <code>.primary:focus-visible</code> — ikke en prop.</p>
+              <p><b>Boolean → <code>&amp;&amp;</code></b>Er <code>showSeparator</code> <code>false</code>, vises linjen ikke. Standardværdien er <code>true</code> som i Figma.</p>
+              <p><b>To slags <code>type</code></b><code>type="button"</code> er HTML. Din prop <code>type</code> vælger variant.</p>
             </div>
           </div>
         </section>
 
         <section class="po-slide mode-work" id="opgave-1-4">
           <span class="eyebrow">Opgave 1.4</span>
-          <h2>Modalens indhold og CSS</h2>
+          <h2>Variants og properties</h2>
           <div class="assignment-flow three">
             <article>
-              <h3>Separator</h3>
-              <p>Tilføj <code>showSeparator</code> med standardværdien <code>true</code>, og send den videre fra <code>PillModal</code>.</p>
-              <p class="step-links"><a href="#/separator">showSeparator</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/f88d70e/components/Modal.js" target="_blank" rel="noreferrer"><code>Modal.js</code></a></p>
+              <h3><code>Type</code></h3>
+              <p>Giv <code>Pill</code> prop'en <code>type</code>, og lav én klasse pr. type. Send den videre fra <code>PillModal</code>.</p>
+              <p class="step-links"><a href="#/variants">Kode</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/6fcc24c/components/Pill.js" target="_blank" rel="noreferrer"><code>Pill.js</code></a></p>
             </article>
             <article>
-              <h3>CSS</h3>
-              <p>Style <code>.modal</code>, <code>.content</code>, separator, rubrik og tekst med dine tokens.</p>
-              <p class="step-links"><a href="#/modal-css">Modal.module.css</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/f88d70e/components/Modal.module.css" target="_blank" rel="noreferrer"><code>Modal.module.css</code></a></p>
+              <h3>Hover</h3>
+              <p>Samme stil på <code>:hover</code> og <code>:focus-visible</code>, så tastaturet også ser den.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/6fcc24c/components/Pill.module.css" target="_blank" rel="noreferrer"><code>Pill.module.css</code></a></p>
             </article>
             <article>
-              <h3>Prøv <code>false</code></h3>
-              <p>Giv en af dine pills <code>showSeparator={false}</code> i <code>page.js</code>.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/f88d70e/app/page.js" target="_blank" rel="noreferrer"><code>page.js</code></a></p>
+              <h3><code>showSeparator</code></h3>
+              <p>En boolean med standardværdien <code>true</code>. Prøv <code>showSeparator={false}</code> på én pill.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/6fcc24c/components/Modal.js" target="_blank" rel="noreferrer"><code>Modal.js</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Lukker modalen ved klik inde i den?</strong> Flyt <code>padding</code> fra <code>.modal</code> til <code>.content</code>. <strong>Separatoren er en tynd grå streg?</strong> Sæt <code>border: none</code> og en <code>background</code> på <code>&lt;hr&gt;</code>.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Modalen ligner Figma, og separatoren forsvinder, når <code>showSeparator</code> er <code>false</code>.</p>
+          <p class="work-if-stuck"><strong>Virker <code>styles[type]</code> ikke?</strong> Klassen skal hedde det samme som værdien: <code>.primary</code> til <code>type="primary"</code>. <strong>Separatoren er en grå streg?</strong> Sæt <code>border: none</code> og en <code>background</code> på <code>&lt;hr&gt;</code>.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Begge typer ligner Figma, hover og fokus kan ses, og separatoren forsvinder med <code>false</code>.</p>
           <p class="po-source-link">
-            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/f88d70e" target="_blank" rel="noreferrer"
-              >Starterrepo: 1.4 Indhold og CSS ↗</a
+            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/6fcc24c" target="_blank" rel="noreferrer"
+              >Starterrepo: 1.4 Variants og properties ↗</a
             >
           </p>
         </section>
@@ -873,7 +768,7 @@ function handleClick(event) {
             <article>
               <h3>Transition</h3>
               <p>Tilføj <code>transition</code> på pillen og på modalen, inkl. <code>::backdrop</code>.</p>
-              <p class="step-links"><a href="#/transition">Transition</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/7dca707/components/Modal.module.css" target="_blank" rel="noreferrer"><code>Modal.module.css</code></a></p>
+              <p class="step-links"><a href="#/transition">Transition</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/7be4bc9/components/Modal.module.css" target="_blank" rel="noreferrer"><code>Modal.module.css</code></a></p>
             </article>
             <article>
               <h3>Tastatur</h3>
@@ -887,7 +782,7 @@ function handleClick(event) {
           <p class="work-if-stuck"><strong>Animerer modalen ikke ud?</strong> Du skal have både <code>overlay</code> og <code>display</code> med <code>allow-discrete</code>. <strong>Sidder du fast?</strong> Fold løsningen til rul 1 ud i opgavefilen.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Modalen fader ind og ud, du kan bruge den med tastaturet alene, og arbejdet er pushet.</p>
           <p class="po-source-link">
-            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/7dca707" target="_blank" rel="noreferrer"
+            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/7be4bc9" target="_blank" rel="noreferrer"
               >Starterrepo: 1.5 Transition ↗</a
             >
           </p>
@@ -912,20 +807,20 @@ function handleClick(event) {
               <dt>MCP</dt>
               <dd>
                 Model Context Protocol. En fælles standard, der lader en AI-agent bruge værktøjer i andre programmer —
-                fx at læse en Figma-fil.
+                fx at læse og rette en Figma-fil.
               </dd>
             </div>
           </dl>
         </section>
 
         <section class="po-slide" id="mcp">
-          <span class="eyebrow">MCP kort fortalt</span>
+          <span class="eyebrow">Figma MCP · sådan virker det</span>
           <h2>Agenten og Figma taler sammen</h2>
           <div class="mcp-flow">
             <article>
               <span>Din agent i VS Code</span>
               <h3>Copilot, Codex eller Claude Code</h3>
-              <p>Får din prompt og et link til en frame i Figma.</p>
+              <p>Får din prompt og et link til en node i Figma.</p>
             </article>
             <b aria-hidden="true">⇄</b>
             <article class="is-server">
@@ -941,44 +836,14 @@ function handleClick(event) {
             </article>
           </div>
           <div class="tool-list">
-            <p><code>get_design_context</code>Referencekode og et screenshot af en node</p>
+            <p><code>get_design_context</code>Referencekode og et screenshot af noden</p>
             <p><code>get_variable_defs</code>De variables, noden bruger</p>
-            <p><code>use_figma</code>Opretter og retter lag, komponenter og variables</p>
+            <p><code>use_figma</code>Skriver til Figma: lag, komponenter og variables</p>
             <p><code>whoami</code>Hvem du er logget ind som, og dit seat</p>
           </div>
-          <p class="po-source-link">
-            <a href="https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server" target="_blank" rel="noreferrer"
-              >Figma: Guide to the Figma MCP server ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide" id="mcp-begge-veje">
-          <span class="eyebrow">MCP kort fortalt · begge veje</span>
-          <h2>MCP snakker begge veje</h2>
-          <div class="compare-cols">
-            <article class="is-new">
-              <span>Figma → kode · rul 2a og 2b</span>
-              <h3>Agenten læser designet</h3>
-              <ul>
-                <li><code>get_design_context</code> — referencekode og screenshot</li>
-                <li><code>get_variable_defs</code> — dine variables</li>
-                <li><code>get_screenshot</code> — et billede af designet</li>
-              </ul>
-            </article>
-            <article>
-              <span>Kode → Figma · ekstra 4</span>
-              <h3>Agenten skriver til designet</h3>
-              <ul>
-                <li><code>use_figma</code> — retter lag, komponenter og variables</li>
-                <li><code>generate_figma_design</code> — sender en kørende side ind i Figma som lag</li>
-                <li>Kræver, at du kan redigere filen</li>
-              </ul>
-            </article>
-          </div>
           <p class="dui-lead-note">
-            <strong>Så kan design og kode holdes i sync — i begge retninger.</strong> Men I skal aftale, hvor sandheden
-            bor: Retter I først i Figma eller i koden?
+            <strong>Begge veje:</strong> I rul 2 læser agenten designet og skriver kode. I ekstra 4 går det den anden
+            vej: Du ændrer koden, og agenten opdaterer Figma.
           </p>
           <p class="po-source-link">
             <a href="https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/" target="_blank" rel="noreferrer"
@@ -987,39 +852,197 @@ function handleClick(event) {
           </p>
         </section>
 
-        <section class="po-slide" id="mcp-ser">
-          <span class="eyebrow">MCP kort fortalt · grænsen</span>
-          <h2>Hvad kan agenten se — og hvad kan den ikke?</h2>
-          <div class="compare-cols">
-            <article class="is-new">
-              <span>Det kan den se i Figma</span>
-              <h3>Det, der står i filen</h3>
-              <ul>
-                <li><b>Struktur</b> — lag, auto layout og navne</li>
-                <li><b>Variables</b> — navne og værdier</li>
-                <li><b>Properties</b> — variants og booleans</li>
-                <li><b>Et screenshot</b> af designet</li>
-              </ul>
+        <section class="po-slide" id="adgang">
+          <span class="eyebrow">Figma MCP · adgang til designkonteksten</span>
+          <h2>Sådan kan agenten se dit design</h2>
+          <div class="start-steps">
+            <article>
+              <h3>Filen i dit Education-team</h3>
+              <p>Ikke i <i>Drafts</i>. Så har du Dev Mode og 200 kald om dagen i stedet for 20 om måneden.</p>
             </article>
-            <article class="is-warning">
-              <span>Det kan den ikke se</span>
-              <h3>Det, du skal fortælle den</h3>
-              <ul>
-                <li><b>Intentionen</b> — hvad komponenten skal bruges til</li>
-                <li><b>Semantik</b> — at pillen er en <code>&lt;button&gt;</code></li>
-                <li><b>Tilgængelighed</b> — fokus, tastatur og <kbd>Esc</kbd></li>
-                <li><b>Projektets regler</b> — JavaScript, tokens og CSS Modules</li>
-              </ul>
+            <article>
+              <h3>Samme konto</h3>
+              <p>Log ind med den Figma-konto, der har adgang til filen, og klik <b>Allow access</b>.</p>
+            </article>
+            <article>
+              <h3>Et link til en node</h3>
+              <p>Højreklik på din komponent i Figma → <b>Copy link to selection</b>.</p>
+            </article>
+            <article>
+              <h3>Tjek med <code>whoami</code></h3>
+              <p>Viser din e-mail, din plan og dit seat. Det tæller ikke med i grænserne.</p>
+            </article>
+          </div>
+          <div class="url-anatomy" aria-label="Et link fra Copy link to selection">
+            <span>figma.com/design/</span><span class="is-file">XTTxNnZjIIWPGyvq6Ya5Wj<small>filen</small></span
+            ><span>/Figma-Øvelse-IXD…</span><span class="is-node">?node-id=9-61<small>noden, agenten læser</small></span>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Linket er konteksten.</strong> Agenten læser den node, linket peger på — ikke det, du har markeret i
+            Figma. Link til én komponent ad gangen.
+          </p>
+          <p class="po-source-link">
+            <a href="https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/" target="_blank" rel="noreferrer"
+              >Figma: Remote server installation ↗</a
+            >
+            <a href="https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/" target="_blank" rel="noreferrer"
+              >Figma: Rate limits &amp; access, tjekket 28.10.2026 ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="opsaetning">
+          <span class="eyebrow">Figma MCP · opsætning i VS Code</span>
+          <h2>Tilføj serveren i din extension</h2>
+          <p class="setup-url">Server-URL: <code>https://mcp.figma.com/mcp</code></p>
+          <div class="setup-cols">
+            <article>
+              <h3>GitHub Copilot</h3>
+              <ol>
+                <li><kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> → <b>MCP: Open User Configuration</b></li>
+                <li>Tilføj <code>figma</code> med URL'en og <code>"type": "http"</code></li>
+                <li>Klik <b>Start</b> → <b>Allow access</b></li>
+                <li>Vælg <b>Agent</b> i Copilot Chat</li>
+              </ol>
+            </article>
+            <article>
+              <h3>Codex</h3>
+              <ol>
+                <li>Tandhjulet → <b>MCP servers</b> → <b>Add server</b></li>
+                <li>Navn <code>figma</code> · <b>Streamable HTTP</b> · URL'en</li>
+                <li><b>Restart extension</b></li>
+                <li><b>Authenticate</b> → <b>Allow access</b></li>
+              </ol>
+            </article>
+            <article>
+              <h3>Claude Code</h3>
+              <ol>
+                <li><code>/plugins</code> → installér <code>figma</code> fra den officielle marketplace</li>
+                <li><code>/mcp</code> → <b>figma</b> → log ind</li>
+                <li><b>Allow access</b> i browseren</li>
+              </ol>
             </article>
           </div>
           <p class="dui-lead-note">
-            <strong>Det, agenten ikke kan se, skriver du i prompten.</strong> Gode navne i Figma giver bedre kode —
-            dårlige navne giver dårlig kode.
+            <strong>Andet setup?</strong> Det er fint. Brug samme URL, og følg Figma's guide til din agent. Trinene med
+            kode står i opgavefilen.
+          </p>
+          <p class="po-source-link">
+            <a href="https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/" target="_blank" rel="noreferrer"
+              >Figma: Remote server installation ↗</a
+            >
+            <a href="https://learn.chatgpt.com/docs/extend/mcp" target="_blank" rel="noreferrer">OpenAI: Codex og MCP ↗</a>
+            <a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noreferrer">Claude Code: VS Code ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-2-1">
+          <span class="eyebrow">Opgave 2.1</span>
+          <h2>Forbind din agent til Figma</h2>
+          <div class="assignment-flow three">
+            <article>
+              <h3>Opsæt</h3>
+              <p>Tilføj Figma MCP i din extension i VS Code: Copilot, Codex eller Claude Code.</p>
+              <p class="step-links"><a href="#/opsaetning">Opsætning</a></p>
+            </article>
+            <article>
+              <h3>Adgang</h3>
+              <p>Filen ligger i dit Education-team. Log ind med samme konto, og klik <b>Allow access</b>.</p>
+              <p class="step-links"><a href="#/adgang">Adgang</a></p>
+            </article>
+            <article>
+              <h3><code>whoami</code></h3>
+              <p>Bed agenten: <i>Kør whoami fra Figma MCP.</i> Tjek e-mail og plan.</p>
+            </article>
+          </div>
+          <p class="work-if-stuck"><strong>Kan agenten ikke se Figma?</strong> Genstart agenten eller VS Code. I Copilot skal du bruge <b>Agent</b>-tilstand. <strong>Står der ikke Education?</strong> Flyt filen fra <i>Drafts</i>. <strong>Virker det slet ikke?</strong> Arbejd sammen med en, hvis MCP virker.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> <code>whoami</code> viser din skole-e-mail og Education-planen.</p>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#opsaetning" target="_blank" rel="noreferrer"
+              >Opgavefil: opsætning trin for trin ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="iterationer">
+          <span class="eyebrow">Rul 2 · den iterative model</span>
+          <h2>Frem og tilbage, til det er rigtigt</h2>
+          <div class="visual-explain loop-layout">
+            <svg class="diagram loop" viewBox="0 0 660 560" role="img" aria-label="Iterationen: prompt, kør, validér. Er noget forkert, retter du og prompter igen. Er det rigtigt, committer du og går videre til næste runde.">
+              <defs>
+                <marker id="loop-arrow" class="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" /></marker>
+                <marker id="loop-wrong" class="arrow-coral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" /></marker>
+                <marker id="loop-right" class="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" /></marker>
+              </defs>
+              <circle class="loop-track" cx="300" cy="280" r="190" />
+              <path class="edge" d="M 400.7 118.9 A 190 190 0 0 1 467.8 190.8" marker-end="url(#loop-arrow)" />
+              <path class="edge" d="M 467.8 369.2 A 190 190 0 0 1 400.7 441.1" marker-end="url(#loop-arrow)" />
+              <path class="edge is-wrong" d="M 199.3 441.1 A 190 190 0 0 1 132.2 369.2" marker-end="url(#loop-wrong)" />
+              <path class="edge" d="M 132.2 190.8 A 190 190 0 0 1 199.3 118.9" marker-end="url(#loop-arrow)" />
+              <text class="edge-label is-wrong" x="118" y="452" text-anchor="middle">✗ forkert</text>
+              <rect class="box is-dui" x="220" y="55" width="160" height="70" rx="16" />
+              <text class="label" x="300" y="87" text-anchor="middle">1 Prompt</text>
+              <text class="sub" x="300" y="110" text-anchor="middle">én ting + et link</text>
+              <rect class="box is-dui" x="410" y="245" width="160" height="70" rx="16" />
+              <text class="label" x="490" y="277" text-anchor="middle">2 Kør</text>
+              <text class="sub" x="490" y="300" text-anchor="middle">se /agent</text>
+              <rect class="box is-dui" x="220" y="435" width="160" height="70" rx="16" />
+              <text class="label" x="300" y="467" text-anchor="middle">3 Validér</text>
+              <text class="sub" x="300" y="490" text-anchor="middle">tjeklisten</text>
+              <rect class="box is-coral" x="30" y="245" width="160" height="70" rx="16" />
+              <text class="label" x="110" y="277" text-anchor="middle">4 Ret</text>
+              <text class="sub" x="110" y="300" text-anchor="middle">en præcis rettelse</text>
+              <line class="edge is-right" x1="382" y1="488" x2="474" y2="488" marker-end="url(#loop-right)" />
+              <text class="edge-label is-right" x="428" y="528" text-anchor="middle">✓ rigtigt</text>
+              <rect class="box is-green" x="480" y="455" width="150" height="66" rx="16" />
+              <text class="label" x="555" y="486" text-anchor="middle">Commit</text>
+              <text class="sub" x="555" y="508" text-anchor="middle">næste runde</text>
+              <text class="loop-center" x="300" y="268" text-anchor="middle">Én ting</text>
+              <text class="loop-center" x="300" y="308" text-anchor="middle">ad gangen</text>
+            </svg>
+            <ol class="rounds">
+              <li><b>Runde 1 · <code>Pill</code></b>Fx <code>state="hover"</code> som prop. Ret: <code>:hover</code> i CSS.</li>
+              <li><b>Runde 2 · <code>Modal</code></b>Fx en <code>&lt;div&gt;</code>. Ret: <code>&lt;dialog&gt;</code> med <code>showModal()</code>.</li>
+              <li><b>Runde 3 · <code>PillModal</code></b>Klik, <kbd>Esc</kbd> og klik udenfor virker. Commit.</li>
+              <li class="is-design"><b>Ny runde · designet ændrer sig</b>Ret i Figma → opdatér koden → læs diffen.</li>
+            </ol>
+            <p class="rounds-note">
+              <strong>En god rettelse</strong> siger, hvad der er forkert, hvad det skal være, og at agenten kun skal
+              rette det.
+            </p>
+          </div>
+        </section>
+
+        <section class="po-slide" id="prompt">
+          <span class="eyebrow">Rul 2 · tydelige prompts</span>
+          <h2>Det skal stå i prompten</h2>
+          <div class="prompt-anatomy">
+            <div class="prompt-part is-rules">
+              <b>Reglerne<small>det, agenten ikke kan se · send én gang</small></b>
+              <p>Next.js med App Router og JavaScript, ikke TypeScript. CSS Modules og tokens fra app/globals.css — ingen Tailwind eller hardcodede værdier. Pillen er en &lt;button&gt;, modalen en &lt;dialog&gt; med showModal(). Hover med :hover i CSS. Lav kun det, jeg beder om.</p>
+            </div>
+            <div class="prompt-part is-link">
+              <b>Linket<small>hvilken node i Figma</small></b>
+              <p>Byg komponenten Pill fra mit Figma-design: &lt;link til Pill&gt;</p>
+            </div>
+            <div class="prompt-part is-task">
+              <b>Opgaven og stedet<small>én ting · hvilke filer</small></b>
+              <p>Læs design, variables og component properties med Figma MCP. Læg den i components/agent/, og vis den på app/agent/page.js.</p>
+            </div>
+            <div class="prompt-part is-answer">
+              <b>Svaret<small>så du kan validere</small></b>
+              <p>Fortæl, hvilke props og tokens du brugte, og hvad du ikke kunne se i Figma.</p>
+            </div>
+          </div>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompts" target="_blank" rel="noreferrer"
+              >Opgavefil: alle prompts til kopiering ↗</a
+            >
           </p>
         </section>
 
         <section class="po-slide" id="mcp-output">
-          <span class="eyebrow">Det sender Figma MCP · demofilen</span>
+          <span class="eyebrow">Derfor validerer du · demofilen</span>
           <h2>Råmaterialet er ikke dit projekt</h2>
           <div class="raw-output">
             <div>
@@ -1049,216 +1072,14 @@ export default function Pill({ state = "Default", type = "Primary" }: PillProps)
             </div>
           </div>
           <p class="dui-lead-note">
-            <strong>Det er en reference, ikke færdig kode.</strong> Figma beder selv agenten om at oversætte den til
-            projektets stack. Om det sker, er det, du tjekker i 2a.
+            <strong>Det er en reference, ikke færdig kode.</strong> Figma beder selv agenten oversætte den til projektets
+            stack. Om det sker, er det, du validerer — og derfor står reglerne i prompten.
           </p>
         </section>
 
-        <section class="po-slide" id="opsaetning">
-          <span class="eyebrow">Tool-guide · opsætning af Figma MCP i VS Code</span>
-          <h2>Vælg din extension i VS Code</h2>
-          <div class="client-grid three">
-            <a href="#/opsaetning-copilot">
-              <h3>GitHub Copilot</h3>
-              <p>Indbygget i VS Code · serveren i <code>mcp.json</code> · Agent-tilstand</p>
-            </a>
-            <a href="#/opsaetning-codex">
-              <h3>Codex</h3>
-              <p>Extension fra OpenAI · tandhjulet → <b>MCP servers</b></p>
-            </a>
-            <a href="#/opsaetning-claude-code">
-              <h3>Claude Code</h3>
-              <p>Extension fra Anthropic · <code>/plugins</code> og <code>/mcp</code></p>
-            </a>
-          </div>
-          <div class="compare-cols three">
-            <article>
-              <span>Samme server</span>
-              <p>Alle bruger Figma's remote server på <code>https://mcp.figma.com/mcp</code>. Figma-appen er ikke nødvendig.</p>
-            </article>
-            <article>
-              <span>Log ind</span>
-              <p>Første gang åbner browseren. Log ind med din Figma-konto, og klik <b>Allow access</b>.</p>
-            </article>
-            <article>
-              <span>Andet setup?</span>
-              <p>Har du en anden agent, der kan bruge MCP, er det fint. Følg Figma's guide til den.</p>
-            </article>
-          </div>
-          <p class="po-source-link">
-            <a href="https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/" target="_blank" rel="noreferrer"
-              >Figma: Remote server installation, tjekket 28.10.2026 ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide" id="opsaetning-copilot">
-          <span class="eyebrow">Opsætning · GitHub Copilot i VS Code</span>
-          <h2>Serveren i <code>mcp.json</code></h2>
-          <div class="client-setup">
-            <div>
-              <h3>Indsæt, og gem</h3>
-              <pre class="po-code"><code class="language-json">{
-  "inputs": [],
-  "servers": {
-    "figma": {
-      "url": "https://mcp.figma.com/mcp",
-      "type": "http"
-    }
-  }
-}</code></pre>
-            </div>
-            <ol>
-              <li>Åbn kommandopaletten: <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>.</li>
-              <li>Vælg <b>MCP: Open User Configuration</b>, og indsæt serveren i <code>mcp.json</code>.</li>
-              <li>Klik <b>Start</b> over <code>figma</code> i filen.</li>
-              <li>Klik <b>Allow access</b> i browseren.</li>
-              <li>Vælg <b>Agent</b> i Copilot Chat. Ellers kan Copilot ikke bruge MCP.</li>
-            </ol>
-          </div>
-          <p class="po-source-link">
-            <a href="https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/" target="_blank" rel="noreferrer"
-              >Figma: Remote server installation ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide" id="opsaetning-codex">
-          <span class="eyebrow">Opsætning · Codex i VS Code</span>
-          <h2>Tilføj serveren under MCP servers</h2>
-          <div class="client-setup">
-            <div>
-              <h3>I Codex-panelet</h3>
-              <ol>
-                <li>Klik på tandhjulet, og vælg <b>MCP servers</b> → <b>Add server</b>.</li>
-                <li>Navn: <code>figma</code> · type: <b>Streamable HTTP</b>.</li>
-                <li>URL: <code>https://mcp.figma.com/mcp</code></li>
-                <li>Gem, og vælg <b>Restart extension</b>.</li>
-                <li>Klik <b>Authenticate</b>, og derefter <b>Allow access</b> i browseren.</li>
-              </ol>
-            </div>
-            <div>
-              <h3>Eller i terminalen</h3>
-              <pre class="po-code"><code class="language-bash">codex mcp add figma --url https://mcp.figma.com/mcp
-codex mcp login figma</code></pre>
-              <p class="dui-lead-note">Extensionen og Codex CLI deler opsætning.</p>
-            </div>
-          </div>
-          <p class="po-source-link">
-            <a href="https://learn.chatgpt.com/docs/extend/mcp" target="_blank" rel="noreferrer">OpenAI: Codex og MCP ↗</a>
-            <a href="https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/" target="_blank" rel="noreferrer">Figma: Remote server installation ↗</a>
-          </p>
-        </section>
-
-        <section class="po-slide" id="opsaetning-claude-code">
-          <span class="eyebrow">Opsætning · Claude Code i VS Code</span>
-          <h2>Installér Figma-pluginnet</h2>
-          <div class="client-setup">
-            <div>
-              <h3>I Claude Code-panelet</h3>
-              <ol>
-                <li>Skriv <code>/plugins</code>, og installér <code>figma</code> fra den officielle marketplace.</li>
-                <li>Skriv <code>/mcp</code>, vælg <b>figma</b>, og log ind.</li>
-                <li>Klik <b>Allow access</b> i browseren.</li>
-              </ol>
-            </div>
-            <div>
-              <h3>Finder du ikke pluginnet?</h3>
-              <p class="dui-lead-note">Tilføj serveren i <code>/mcp</code>-dialogen — eller i terminalen i VS Code, og log ind med <code>/mcp</code>:</p>
-              <pre class="po-code"><code class="language-bash">claude mcp add --scope user --transport http figma https://mcp.figma.com/mcp</code></pre>
-            </div>
-          </div>
-          <p class="po-source-link">
-            <a href="https://code.claude.com/docs/en/vs-code" target="_blank" rel="noreferrer">Claude Code: VS Code ↗</a>
-            <a href="https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/" target="_blank" rel="noreferrer">Figma: Remote server installation ↗</a>
-          </p>
-        </section>
-
-        <section class="po-slide" id="whoami">
-          <span class="eyebrow">Tool-guide · seat og grænser</span>
-          <h2>Tjek med <code>whoami</code>, før du bygger</h2>
-          <div class="why-table" role="table" aria-label="Grænser for Figma MCP pr. plan og seat">
-            <div class="why-row why-head" role="row"><span>Plan og seat</span><span>Grænse</span><span>Betyder</span></div>
-            <div class="why-row" role="row">
-              <b>Education</b><span class="is-next">200 kald pr. dag · 10 pr. minut</span><span>Rigeligt til i dag</span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Starter · View · Collab</b><span>20 kald pr. måned</span><span>Filen ligger nok i <i>Drafts</i> — flyt den</span>
-            </div>
-          </div>
-          <div class="compare-cols">
-            <article>
-              <span><code>whoami</code></span>
-              <h3>Spørg agenten</h3>
-              <p><i>Kør whoami fra Figma MCP.</i> Svaret viser din e-mail, dine planer og dit seat. Det tæller ikke med i grænserne.</p>
-            </article>
-            <article class="is-warning">
-              <span>Plan B</span>
-              <h3>Ingen MCP?</h3>
-              <p><b>Makkerprogrammering</b> med en, hvis MCP virker. Eller <b>screenshot plus CSS fra Dev Mode</b> i agentens chat.</p>
-            </article>
-          </div>
-          <p class="po-source-link">
-            <a href="https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/" target="_blank" rel="noreferrer"
-              >Figma: Rate limits &amp; access, tjekket 28.10.2026 ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide mode-work" id="opgave-2-1">
-          <span class="eyebrow">Opgave 2.1</span>
-          <h2>Forbind din agent til Figma MCP</h2>
-          <div class="assignment-flow three">
-            <article>
-              <h3>Opsæt</h3>
-              <p>Følg vejledningen til din extension i VS Code: Copilot, Codex eller Claude Code.</p>
-              <p class="step-links"><a href="#/opsaetning">Opsætning</a></p>
-            </article>
-            <article>
-              <h3>Log ind</h3>
-              <p>Log ind med din Figma-konto i browseren, og klik <b>Allow access</b>.</p>
-            </article>
-            <article>
-              <h3><code>whoami</code></h3>
-              <p>Bed agenten køre <code>whoami</code> fra Figma MCP, og tjek planen.</p>
-              <p class="step-links"><a href="#/whoami">whoami og grænser</a></p>
-            </article>
-          </div>
-          <p class="work-if-stuck"><strong>Kan agenten ikke se Figma?</strong> Genstart agenten eller VS Code. I Copilot skal du bruge <b>Agent</b>-tilstand. <strong>Står der ikke Education?</strong> Flyt filen fra <i>Drafts</i> til dit Education-team. <strong>Virker det slet ikke?</strong> Brug plan B.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> <code>whoami</code> viser din skole-e-mail og Education-planen.</p>
-          <p class="po-source-link">
-            <a href="https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/" target="_blank" rel="noreferrer"
-              >Figma: Remote server installation ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide prompt-block" id="prompt-2a">
-          <span class="eyebrow">Rul 2a · prompten</span>
-          <h2>Fortæl agenten det, den ikke kan se</h2>
-          <pre class="po-code"><code class="language-plaintext">Byg komponenterne Pill og Modal fra mit Figma-design: &lt;indsæt dit link&gt;
-
-Brug Figma MCP-serveren til at læse designet, dets variables og component properties.
-
-Projektet er Next.js med App Router og JavaScript. Følg disse regler:
-- Skriv JavaScript, ikke TypeScript.
-- Læg de nye filer i components/agent/, og vis komponenterne på en ny side i app/agent/page.js. Rør ikke de andre filer i components/.
-- Brug CSS Modules og de tokens, der allerede ligger i app/globals.css. Ingen Tailwind, inline styles eller hardcodede værdier, hvor der findes et token.
-- Pillen er en &lt;button type="button"&gt;. Prop'en type vælger Primary eller Secondary. Hover og fokus laves med :hover og :focus-visible i CSS.
-- Modalen er en &lt;dialog&gt;, der åbnes med showModal(), så fokus og Esc virker. Klik udenfor lukker den. Prop'en showSeparator viser eller skjuler separatoren.
-- Et klik på pillen åbner modalen. Brug kun "use client" i de komponenter, der har brug for state eller effects.
-- Smart Animate bliver til en CSS transition.
-
-Forklar kort bagefter, hvilke filer du har lavet, og hvilke tokens du har brugt.</code></pre>
-          <p class="dui-lead-note">
-            <strong>Linket:</strong> Højreklik på din frame i Figma → <b>Copy link to selection</b>. Prompten står også i
-            opgavefilen, så du kan kopiere den.
-          </p>
-        </section>
-
-        <section class="po-slide" id="sammenlign">
-          <span class="eyebrow">Rul 2a · sammenlign</span>
-          <h2>Din version mod agentens</h2>
+        <section class="po-slide" id="valider">
+          <span class="eyebrow">Rul 2 · validér outputtet</span>
+          <h2>Tjeklisten til hver iteration</h2>
           <dl class="glossary-grid checklist">
             <div>
               <dt>Sprog</dt>
@@ -1289,111 +1110,63 @@ Forklar kort bagefter, hvilke filer du har lavet, og hvilke tokens du har brugt.
               <dd>Ligner props og klasser navnene i din Figma-fil?</dd>
             </div>
             <div>
-              <dt>Tid</dt>
-              <dd>Hvad gik hurtigst: at skrive selv eller at prompte og rette?</dd>
+              <dt>Omfang</dt>
+              <dd>Ændrede den kun det, du bad om? Læs diffen i Source Control.</dd>
             </div>
           </dl>
-          <p class="dui-lead-note">
-            <strong>Åbn <code>/</code> og <code>/agent</code> side om side</strong>, og læg filerne ved siden af hinanden i
-            VS Code.
-          </p>
         </section>
 
-        <section class="po-slide mode-work" id="opgave-2a">
-          <span class="eyebrow">Opgave 2a · 2.2–2.3</span>
-          <h2>Byg med agenten, og sammenlign</h2>
+        <section class="po-slide mode-work" id="opgave-2-2">
+          <span class="eyebrow">Opgave 2.2</span>
+          <h2>Byg igen i iterationer</h2>
           <div class="assignment-flow three">
             <article>
-              <h3>Prompt</h3>
-              <p>Kopiér et link til din frame, og send prompten til 2a til agenten.</p>
-              <p class="step-links"><a href="#/prompt-2a">Prompten</a></p>
+              <h3>Regler</h3>
+              <p>Start en ny chat, og send de faste regler først.</p>
+              <p class="step-links"><a href="#/prompt">Prompten</a></p>
             </article>
             <article>
-              <h3>Sammenlign</h3>
-              <p>Åbn <code>/</code> og <code>/agent</code>, gå tjeklisten igennem, og notér, hvad du skulle rette.</p>
-              <p class="step-links"><a href="#/sammenlign">Tjeklisten</a><a href="#/mcp-output">Råmaterialet</a></p>
+              <h3>Pill</h3>
+              <p>Link til din <code>Pill</code>. Validér, og ret med præcise prompts, til den er rigtig.</p>
+              <p class="step-links"><a href="#/iterationer">Iterationer</a><a href="#/valider">Tjeklisten</a></p>
             </article>
             <article>
-              <h3>Commit for sig</h3>
-              <p>Ret fejlene, og commit agentens version alene. Så viser diffen i 2b kun 2b.</p>
+              <h3>Modal og PillModal</h3>
+              <p>Næste iteration: <code>Modal</code>, så <code>PillModal</code>. Validér, og commit agentens version for sig.</p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Ingen adgang til filen?</strong> Tjek kontoen med <code>whoami</code>, og at linket peger på en frame. <strong>Rate limit?</strong> Brug plan B: makkerprogrammering eller screenshot plus CSS fra Dev Mode.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Agentens version kører på <code>/agent</code>, du har tre noter fra tjeklisten, og versionen er committet.</p>
+          <p class="work-if-stuck"><strong>TypeScript eller Tailwind?</strong> Henvis til reglerne. <strong>Ingen adgang?</strong> Tjek <code>whoami</code> og linket. <strong>Rate limit?</strong> Arbejd sammen med en, hvis MCP virker.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Agentens <code>PillModal</code> kører på <code>/agent</code>, du har rettet mindst én ting med en præcis prompt, og versionen er committet.</p>
           <p class="po-source-link">
-            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompt-2a" target="_blank" rel="noreferrer"
-              >Opgavefil: prompten til 2a ↗</a
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompts" target="_blank" rel="noreferrer"
+              >Opgavefil: prompts til hver iteration ↗</a
             >
           </p>
         </section>
 
-        <section class="po-slide prompt-block" id="prompt-2b">
-          <span class="eyebrow">Rul 2b · prompten</span>
-          <h2>Opdatér det, der findes — byg ikke nyt</h2>
-          <pre class="po-code"><code class="language-plaintext">Jeg har rettet designet i Figma: &lt;indsæt dit link&gt;
-
-Opdatér de eksisterende komponenter i components/Pill.js, components/Modal.js og deres CSS Modules, så de matcher det rettede design. Byg ikke nye komponenter, og rør ikke components/agent/.
-- Har en variable fået en ny værdi, så ret token'et i app/globals.css.
-- Er der kommet en ny variable, så tilføj den som token i app/globals.css med samme navngivning som de andre.
-- Behold JavaScript, CSS Modules, &lt;button&gt; og &lt;dialog&gt;.
-- Lav kun de ændringer, designet kræver, og forklar kort hver ændring bagefter.</code></pre>
-          <p class="dui-lead-note">
-            <strong>Ret mindst to ting i Figma først:</strong> en variable, fx <code>Color/Primary</code>, og noget i en
-            komponent, fx en lukkeknap i modalen som en instance af din pill.
-          </p>
-        </section>
-
-        <section class="po-slide" id="diff">
-          <span class="eyebrow">Rul 2b · læs diffen</span>
-          <h2>Læs diffen, før du committer</h2>
-          <div class="compare-cols">
-            <article>
-              <span>Sådan</span>
-              <h3>Source Control eller GitHub Desktop</h3>
-              <ul>
-                <li>Klik dig igennem <b>hver ændret fil</b></li>
-                <li><b>Rødt</b> er fjernet, <b>grønt</b> er tilføjet</li>
-                <li><b>Discard Changes</b> fortryder en fil</li>
-                <li>Commit først, når du kan forklare hver linje</li>
-              </ul>
-            </article>
-            <article class="is-new">
-              <span>Spørg dig selv</span>
-              <h3>Fire spørgsmål til diffen</h3>
-              <ul>
-                <li>Ændrede agenten <b>kun det, du bad om</b>?</li>
-                <li>Blev en ny værdi til et <b>token</b> i <code>globals.css</code>?</li>
-                <li>Er <code>&lt;button&gt;</code>, <code>&lt;dialog&gt;</code> og <b>tastaturet</b> i orden?</li>
-                <li>Kan du <b>forklare</b> hver ændring?</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="po-slide mode-work" id="opgave-2b">
-          <span class="eyebrow">Opgave 2b · 2.4–2.6</span>
+        <section class="po-slide mode-work" id="opgave-2-3">
+          <span class="eyebrow">Opgave 2.3 · når designet ændrer sig</span>
           <h2>Ret i Figma, og opdatér koden</h2>
           <div class="assignment-flow three">
             <article>
               <h3>Ret i Figma</h3>
-              <p>Ændr en variable og noget i en komponent. Kopiér et link til frame'en.</p>
+              <p>Giv en variable en ny værdi, og ændr noget i en komponent, fx en lukkeknap i modalen.</p>
             </article>
             <article>
               <h3>Opdatér</h3>
-              <p>Send prompten til 2b. Agenten retter dine eksisterende filer.</p>
-              <p class="step-links"><a href="#/prompt-2b">Prompten</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/7f7fd0d" target="_blank" rel="noreferrer">Eksempel: lukkeknap</a></p>
+              <p><i>Opdatér de eksisterende filer. Ret tokens i globals.css. Byg ikke nyt. Forklar hver ændring.</i></p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/d5613c1" target="_blank" rel="noreferrer">Eksempel: lukkeknap</a></p>
             </article>
             <article>
               <h3>Læs diffen</h3>
-              <p>Gennemgå hver fil, fortryd det, du ikke vil have, og commit og push.</p>
-              <p class="step-links"><a href="#/diff">Læs diffen</a></p>
+              <p>Klik dig igennem hver fil i Source Control. Fortryd det, du ikke vil have, og commit og push.</p>
             </article>
           </div>
           <p class="work-if-stuck"><strong>Byggede agenten en ny komponent?</strong> Fortryd med <b>Discard Changes</b>, og skriv filnavnene i prompten. <strong>Står den nye farve direkte i CSS'en?</strong> Bed agenten flytte den til et token.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Din komponent matcher det rettede design, du har læst hele diffen, og arbejdet er pushet.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Din komponent matcher det rettede design, og du kan forklare hver linje i dit commit.</p>
           <p class="po-source-link">
-            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/7f7fd0d" target="_blank" rel="noreferrer"
-              >Starterrepo: 2b Lukkeknap i modalen ↗</a
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompt-opdater" target="_blank" rel="noreferrer"
+              >Opgavefil: prompten til en designændring ↗</a
             >
           </p>
         </section>
@@ -1411,8 +1184,8 @@ Opdatér de eksisterende komponenter i components/Pill.js, components/Modal.js o
               <dd>Hvilke fejl havde du ikke opdaget uden rul 1?</dd>
             </div>
             <div>
-              <dt><i>?</i>Tid</dt>
-              <dd>Hvornår var agenten hurtigst, og hvornår tog det længere at rette end at skrive selv?</dd>
+              <dt><i>?</i>Iterationer</dt>
+              <dd>Hvilken rettelse tog flest runder — og hvad manglede i din prompt?</dd>
             </div>
             <div>
               <dt><i>?</i>Begge veje</dt>
@@ -1420,24 +1193,24 @@ Opdatér de eksisterende komponenter i components/Pill.js, components/Modal.js o
             </div>
           </dl>
           <p class="dui-lead-note">
-            <strong>Tal med sidemanden først</strong>, og tag ét svar med til den fælles opsamling. Bonus: Hvordan
-            navngiver du din Figma-fil, så koden bliver bedre?
+            <strong>Tag ét svar med til den fælles opsamling.</strong> Bonus: Hvordan navngiver du din Figma-fil, så
+            koden bliver bedre?
           </p>
         </section>
 
         <section class="po-slide mode-work" id="ekstra">
           <span class="eyebrow">Ekstraopgaver · når du er færdig</span>
-          <h2>Fire ekstraopgaver</h2>
+          <h2>Byg videre på din PillModal</h2>
           <div class="assignment-flow">
             <article>
               <h3>Ny variant</h3>
               <p>Tilføj fx <code>Size</code> i Figma. Den bliver til prop'en <code>size</code>, der vælger en klasse.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/46ae0de" target="_blank" rel="noreferrer">Ekstra 1: Size</a></p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/e7353f8" target="_blank" rel="noreferrer">Ekstra 1: Size</a></p>
             </article>
             <article>
               <h3>Pills fra et array</h3>
               <p>Læg indholdet i et array, og vis dine pills med <code>map</code>. Hver pill åbner sin egen modal.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/ca446bb" target="_blank" rel="noreferrer">Ekstra 2: map</a></p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/2f81745" target="_blank" rel="noreferrer">Ekstra 2: map</a></p>
             </article>
             <article>
               <h3>Fold ud fra pillen</h3>
@@ -1447,10 +1220,10 @@ Opdatér de eksisterende komponenter i components/Pill.js, components/Modal.js o
             <article>
               <h3>Fra kode til Figma</h3>
               <p>Ret et token i <code>globals.css</code>, og bed agenten opdatere variablen og komponenten i Figma.</p>
-              <p class="step-links"><a href="#/mcp-begge-veje">Begge veje</a></p>
+              <p class="step-links"><a href="#/mcp">Begge veje</a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Ændrede de gamle pills sig?</strong> Giv <code>size</code> standardværdien <code>"md"</code>. <strong>Åbner modalen stadig i midten?</strong> Tjek <code>--origin-x</code> og <code>--origin-y</code> på <code>&lt;dialog&gt;</code> i DevTools.</p>
+          <p class="work-if-stuck"><strong>Ændrede de gamle pills sig?</strong> Giv <code>size</code> standardværdien <code>"md"</code>. <strong>Mangler <code>key</code>?</strong> Giv hver <code>PillModal</code> en <code>key</code> i <code>map</code>.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Din ekstraopgave virker, og du kan forklare, hvad den svarer til i Figma.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#ekstraopgaver" target="_blank" rel="noreferrer"
@@ -1492,14 +1265,11 @@ Opdatér de eksisterende komponenter i components/Pill.js, components/Modal.js o
 
         <section class="po-slide" id="udfold">
           <span class="eyebrow">Ekstra 3a · overlay fra pillen</span>
-          <h2>Mål pillen, når den bliver klikket</h2>
+          <h2>Start animationen dér, hvor pillen er</h2>
           <div class="code-explain wide">
             <div>
-              <span class="code-label"><code>components/PillModal.js</code> og <code>Modal.js</code> · uddrag</span>
-              <pre class="po-code code-sm"><code class="language-jsx">// PillModal.js
-const [origin, setOrigin] = useState({ x: 0, y: 0 });
-
-function handleOpen(event) {
+              <span class="code-label"><code>PillModal.js</code> og <code>Modal.js</code> · uddrag</span>
+              <pre class="po-code code-sm"><code class="language-jsx">function handleOpen(event) {
   const pill = event.currentTarget.getBoundingClientRect();
   setOrigin({
     x: pill.left + pill.width / 2 - window.innerWidth / 2,
@@ -1508,72 +1278,26 @@ function handleOpen(event) {
   setIsOpen(true);
 }
 
-// Modal.js
-const originStyle = {
-  "--origin-x": `${origin.x}px`,
-  "--origin-y": `${origin.y}px`
-};
-
-&lt;dialog … style={originStyle}&gt;</code></pre>
+&lt;dialog style={{ "--origin-x": `${origin.x}px`, "--origin-y": `${origin.y}px` }}&gt;</code></pre>
+              <span class="code-label"><code>Modal.module.css</code> · lukket</span>
+              <pre class="po-code code-sm"><code class="language-css">.modal {
+  scale: 0.2;
+  translate: var(--origin-x) var(--origin-y);
+}</code></pre>
             </div>
             <div class="explain-list">
-              <p><b>Ikke en ny variant</b>Props og states er de samme. Det er bevægelsen mellem lukket og åben, der ændrer sig.</p>
-              <p><b><code>getBoundingClientRect()</code></b>Giver pillens position. Modalen åbner midt på skærmen, så vi gemmer afstanden derfra.</p>
-              <p><b><code>origin</code> → <code>Modal</code></b>Send den som prop fra <code>PillModal</code>, og brug <code>handleOpen</code> som <code>onClick</code>.</p>
-              <p><b><code>style</code> med custom properties</b>Værdien kendes først ved klikket. Derfor er <code>style</code> okay her.</p>
+              <p><b>Mål pillen</b>Modalen åbner midt på skærmen, så gem afstanden derfra til pillen.</p>
+              <p><b>Giv tallene til CSS</b>Værdien kendes først ved klikket. Derfor er <code>style</code> okay her.</p>
+              <p><b>Start dér</b>Lukket ligger modalen lille på pillen. Åben: <code>scale: 1</code> og <code>translate: 0 0</code>. Husk <code>translate</code> i <code>transition</code>.</p>
+              <p><b>Mindre bevægelse</b>Under <code>prefers-reduced-motion</code> fader modalen kun.</p>
             </div>
           </div>
           <p class="po-source-link">
             <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noreferrer"
               >MDN: getBoundingClientRect() ↗</a
             >
-            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/6c775e9" target="_blank" rel="noreferrer"
+            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/dbb62d8" target="_blank" rel="noreferrer"
               >Starterrepo: Ekstra 3a ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide" id="udfold-css">
-          <span class="eyebrow">Ekstra 3a · start dér, hvor pillen er</span>
-          <h2>Lukket ligger modalen på pillen</h2>
-          <div class="code-explain wide">
-            <div>
-              <span class="code-label"><code>components/Modal.module.css</code> · ændret fra 1.5</span>
-              <pre class="po-code code-sm"><code class="language-css">.modal {
-  scale: 0.2;
-  translate: var(--origin-x) var(--origin-y);
-  transition:
-    opacity 300ms ease-out,
-    scale 300ms ease-out,
-    translate 300ms ease-out,
-    overlay 300ms ease-out allow-discrete,
-    display 300ms ease-out allow-discrete;
-}
-
-.modal[open] {
-  translate: 0 0;
-}
-
-@starting-style {
-  .modal[open] {
-    scale: 0.2;
-    translate: var(--origin-x) var(--origin-y);
-  }
-}</code></pre>
-            </div>
-            <div class="explain-list">
-              <p><b>Lukket: på pillen</b><code>translate</code> flytter modalen hen over pillen, og <code>scale: 0.2</code> gør den lille.</p>
-              <p><b>Åben: i midten</b><code>translate: 0 0</code>. Transition klarer vejen derimellem, begge veje.</p>
-              <p><b><code>@starting-style</code></b>Samme startpunkt, når modalen åbner.</p>
-              <p><b>Mindre bevægelse</b>Under <code>prefers-reduced-motion</code> bliver <code>scale</code> og <code>translate</code> til <code>none</code>. Så fader modalen kun.</p>
-            </div>
-          </div>
-          <p class="po-source-link">
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank" rel="noreferrer"
-              >MDN: prefers-reduced-motion ↗</a
-            >
-            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/6c775e9/components/Modal.module.css" target="_blank" rel="noreferrer"
-              >Starterrepo: Modal.module.css ↗</a
             >
           </p>
         </section>
@@ -1584,10 +1308,7 @@ const originStyle = {
           <div class="code-explain wide">
             <div>
               <span class="code-label"><code>components/PillDisclosure.js</code> · uddrag</span>
-              <pre class="po-code code-sm"><code class="language-jsx">const [isOpen, setIsOpen] = useState(false);
-const id = useId();
-
-function handleClick() {
+              <pre class="po-code code-sm"><code class="language-jsx">function handleClick() {
   if (!document.startViewTransition) {
     setIsOpen(!isOpen);
     return;
@@ -1598,79 +1319,48 @@ function handleClick() {
 }
 
 &lt;div className={…} style={{ viewTransitionName: `item${id}` }}&gt;
-  &lt;Pill onClick={handleClick} aria-expanded={isOpen}
-    style={{ viewTransitionName: `pill${id}` }}&gt;{label}&lt;/Pill&gt;
+  &lt;Pill onClick={handleClick} aria-expanded={isOpen} …&gt;{label}&lt;/Pill&gt;
   {isOpen &amp;&amp; &lt;div className={styles.content}&gt;…&lt;/div&gt;}
 &lt;/div&gt;</code></pre>
+              <span class="code-label"><code>app/globals.css</code> · Smart Animate</span>
+              <pre class="po-code code-sm"><code class="language-css">::view-transition-group(*) {
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
+}</code></pre>
             </div>
             <div class="explain-list">
               <p><b>Ikke en modal</b>Siden bag kan stadig bruges. Derfor en <code>&lt;button aria-expanded&gt;</code> og ingen <code>&lt;dialog&gt;</code>.</p>
               <p><b><code>startViewTransition()</code></b>Browseren tager et billede før og efter og animerer imellem — også de pills, der flytter sig.</p>
-              <p><b><code>flushSync</code></b>React opdaterer siden med det samme, så billedet efter er rigtigt.</p>
-              <p><b><code>useId()</code></b>Giver hvert element et unikt <code>view-transition-name</code>.</p>
-            </div>
-          </div>
-          <p class="po-source-link">
-            <a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/" target="_blank" rel="noreferrer"
-              >WAI-ARIA: Disclosure pattern ↗</a
-            >
-            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/c47af8d" target="_blank" rel="noreferrer"
-              >Starterrepo: Ekstra 3b ↗</a
-            >
-          </p>
-        </section>
-
-        <section class="po-slide" id="paa-stedet-css">
-          <span class="eyebrow">Ekstra 3b · Smart Animate med view transitions</span>
-          <h2>Browseren animerer resten</h2>
-          <div class="code-explain wide">
-            <div>
-              <span class="code-label"><code>app/globals.css</code> · nederst</span>
-              <pre class="po-code"><code class="language-css">/* Smart Animate, ease out, 300ms */
-::view-transition-group(*) {
-  animation-duration: 300ms;
-  animation-timing-function: ease-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none;
-  }
-}</code></pre>
-            </div>
-            <div class="explain-list">
-              <p><b>Variant Open → <code>.open</code></b>Kant, radius, padding og bredde i <code>PillDisclosure.module.css</code>. Samme kantfarve som pillen, så den ser ud til at vokse.</p>
-              <p><b>Smart Animate</b>Varighed og easing fra din prototype på hver gruppe. Resten klarer browseren.</p>
-              <p><b>I <code>globals.css</code></b>En CSS Module kræver en klasse i selektoren, og det har den her ikke.</p>
-              <p><b>Mindre bevægelse</b><code>animation: none</code> under <code>prefers-reduced-motion</code>.</p>
+              <p><b><code>flushSync</code> og <code>useId()</code></b>React opdaterer med det samme, og hvert element får et unikt navn.</p>
+              <p><b>I <code>globals.css</code></b>Selektoren har ingen klasse, så den kan ikke ligge i en CSS Module.</p>
             </div>
           </div>
           <p class="po-source-link">
             <a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API" target="_blank" rel="noreferrer"
               >MDN: View Transition API ↗</a
             >
-            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/c47af8d/components/PillDisclosure.module.css" target="_blank" rel="noreferrer"
-              >Starterrepo: PillDisclosure.module.css ↗</a
+            <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/c9360ea" target="_blank" rel="noreferrer"
+              >Starterrepo: Ekstra 3b ↗</a
             >
           </p>
         </section>
 
         <section class="po-slide po-closing dui-closing">
           <span class="eyebrow">Dagens centrale pointe</span>
-          <h2>Når du selv kan oversætte designet, kan du vurdere agentens oversættelse.</h2>
+          <h2>Når du selv kan oversætte designet, kan du validere agentens oversættelse.</h2>
           <div class="closing-formula">
-            <span>Variables og properties</span><b>→</b><span>Tokens og props</span><b>→</b
-            ><span><code>&lt;button&gt;</code> og <code>&lt;dialog&gt;</code></span><b>→</b><span>Agent + din review</span>
+            <span>Figma-begreber</span><b>→</b><span>Tokens og props</span><b>→</b
+            ><span><code>Pill</code> + <code>Modal</code> = <code>PillModal</code></span><b>→</b><span>Agent i iterationer</span>
           </div>
           <p class="lead">Næste gang: Supabase Auth i Next.js.</p>
           <div class="closing-links">
             <a href="https://github.com/cederdorff/nextjs-figma-pill-modal" target="_blank" rel="noreferrer"
               >Starterrepo ↗</a
             >
-            <a href="#/agenda">Tilbage til agenda</a>
-            <a href="#/opgaver">Opgaveoversigt</a>
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md" target="_blank" rel="noreferrer"
+              >Opgavefil ↗</a
+            >
+            <a href="#/opgaver">Tilbage til overblikket</a>
           </div>
         </section>
       </div>

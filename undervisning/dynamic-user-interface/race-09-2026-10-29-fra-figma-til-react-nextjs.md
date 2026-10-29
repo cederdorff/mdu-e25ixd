@@ -4,7 +4,7 @@
 
 I dag følger vi én komponent hele vejen fra design til kode: en pill, der kan folde sig ud til en modal. Først designer du den i Figma med NKKR. Derefter bygger du den i Next.js med RACE og ser, hvordan begreberne i Figma svarer til begreberne i React.
 
-Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode. Så forbinder du din egen AI-agent til Figma MCP-serveren, lader den bygge den samme komponent og sammenligner. Til sidst retter du designet i Figma, lader agenten opdatere din kode og gennemgår ændringerne kritisk. Figma MCP virker begge veje, så agenten kan også opdatere designet i Figma, når du ændrer koden.
+Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode: den simpleste `PillModal` først, og så designet ovenpå. Så forbinder du din egen AI-agent til Figma MCP-serveren og bygger den samme komponent igen i små iterationer, hvor du validerer agentens kode og retter med præcise prompts. Til sidst retter du designet i Figma og lader agenten opdatere din kode. Figma MCP virker begge veje, så agenten kan også opdatere designet i Figma, når du ændrer koden.
 
 <hr style="margin: 2rem 0;">
 
@@ -18,7 +18,7 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Én komponent hele dagen: design i Figma → samme begreber i React → byg i hånden med Dev Mode → byg igen med Figma MCP → ret i Figma, og lad agenten opdatere koden.
+**Dagens arbejdsrytme:** Én komponent hele dagen: design i Figma → samme begreber i React → byg i hånden, den simpleste version først → byg igen med Figma MCP i iterationer → ret i Figma, og lad agenten opdatere koden.
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Design en pill, der bliver til en modal, i Figma</strong></summary>
@@ -47,27 +47,25 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Rul 1: Byg pill og modal i hånden med Dev Mode</strong></summary>
+<summary><strong>3. Rul 1: Byg i hånden – den simpleste version først</strong></summary>
 <ul>
-<li>Overfør dine variables fra Figma til tokens i <code>globals.css</code>.</li>
-<li>Byg pillen som en <code>&lt;button&gt;</code> med prop'en <code>type</code> og hover i CSS.</li>
-<li>Forbind pill og modal i en komponent med <code>"use client"</code> og <code>useState</code>.</li>
-<li>Byg modalen med <code>&lt;dialog&gt;</code> og <code>showModal()</code>, så fokus og <kbd>Esc</kbd> virker uden ekstra kode.</li>
-<li>Overfør farver, afstande og typografi fra Dev Mode, og lav Smart Animate om til transitions.</li>
-<li>Test med tastaturet: Kan du åbne og lukke modalen, og er fokus synligt?</li>
+<li>Byg <code>Pill</code> som en <code>&lt;button&gt;</code> og <code>Modal</code> som en <code>&lt;dialog&gt;</code> med <code>showModal()</code>, så fokus og <kbd>Esc</kbd> virker uden ekstra kode.</li>
+<li>Sæt dem sammen i <code>PillModal</code> med <code>"use client"</code> og <code>useState</code>. Nu virker den simpleste version. Kun komponenter med state, effects eller events skal være client components – siden forbliver en server component.</li>
+<li>Overfør dine variables til tokens i <code>globals.css</code>, og style komponenterne med CSS Modules og værdierne fra Dev Mode.</li>
+<li>Gør <code>Type</code> til en prop, hover til CSS og <code>showSeparator</code> til betinget rendering.</li>
+<li>Lav Smart Animate om til transitions, og test med tastaturet: Kan du åbne og lukke modalen, og er fokus synligt?</li>
 <li>Ekstra: Lad pillen folde sig ud, ligesom Smart Animate i din prototype – som overlay fra pillen eller på stedet, så resten af siden flytter sig.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>4. Rul 2: Byg igen med Figma MCP, og hold koden opdateret</strong></summary>
+<summary><strong>4. Rul 2: Byg igen med Figma MCP – i iterationer</strong></summary>
 <ul>
-<li>Forbind din egen AI-agent til Figma MCP-serveren, og tjek din plan med <code>whoami</code>.</li>
-<li>Lad agenten bygge den samme komponent i en ny mappe, og sammenlign med din egen: Hvad blev ens, og hvad skulle du rette?</li>
-<li>Ret designet i Figma, og bed agenten opdatere din eksisterende komponent i stedet for at bygge en ny.</li>
-<li>Gennemgå diffen kritisk: Matcher koden designet, bruger den dine tokens, og er HTML'en stadig semantisk og tilgængelig?</li>
+<li>Forbind din egen AI-agent til Figma MCP-serveren, og giv den adgang til designet: filen i dit Education-team, et link til en node og et tjek med <code>whoami</code>.</li>
+<li>Send de faste regler først. De fortæller agenten det, den ikke kan se i Figma: JavaScript, tokens og CSS Modules, <code>&lt;button&gt;</code> og <code>&lt;dialog&gt;</code>.</li>
+<li>Byg i små iterationer: prompt → kør → validér → ret, og tag en runde mere, til det er rigtigt. <code>Pill</code> → <code>Modal</code> → <code>PillModal</code>.</li>
+<li>Ret designet i Figma, og bed agenten opdatere din eksisterende komponent. Læs diffen, før du committer.</li>
 <li>Du har ansvaret for at forstå, rette og forklare koden.</li>
-<li>Commit og push dit arbejde.</li>
 <li>Ekstra: MCP virker begge veje. Ændr noget i koden, og lad agenten opdatere designet i Figma.</li>
 </ul>
 </details>
@@ -80,8 +78,8 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
   - [Fra Figma til React/Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/)
   - [PDF-version: Fra Figma til React/Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/?print-pdf)
 - **Opgaver:**
-  - [Opgaveoversigt i slides](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgaver)
-  - [Opgaver med ekstra hjælp og løsninger](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md) – trin for trin, tool-guide, prompts og den fulde løsning
+  - [Overblik i slides](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgaver)
+  - [Opgaver med ekstra hjælp og løsninger](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md) – trin for trin, opsætning og adgang, alle prompts og den fulde løsning
 - **Starterrepo:** [nextjs-figma-pill-modal](https://github.com/cederdorff/nextjs-figma-pill-modal) – branchen `solution` har ét commit pr. trin
 - **Demofil:** [Pill og Modal i Figma](https://www.figma.com/design/XTTxNnZjIIWPGyvq6Ya5Wj/Figma-%C3%98velse-IXD---Figma--%3E-React?node-id=9-61&m=dev)
 - **Figma:**
