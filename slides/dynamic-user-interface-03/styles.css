@@ -6,13 +6,10 @@
 .reveal .au-memory article > span,
 .reveal .au-tokens article > span,
 .reveal .au-proxy article > span,
-.reveal .au-guard-branches article > span,
 .reveal .au-levels article > span,
 .reveal .au-keys article > span,
 .reveal .au-lane span,
-.reveal .au-rls-key span,
-.reveal .au-guard-start span,
-.reveal .au-guard-check span {
+.reveal .au-rls-key span {
   display: block;
   color: var(--muted);
   font-size: 15px;
@@ -22,102 +19,28 @@
   text-transform: uppercase;
 }
 
-/* Dagens mål · skitse af appen */
-.reveal .au-goal {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 40px;
-  align-items: stretch;
-  margin-top: 30px;
-}
-
-.reveal .au-browser {
+/* Illustrationer · samme billeder som i opgavefilen */
+.reveal .au-figure {
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: #0a0a0a;
+  justify-content: center;
+  height: 560px;
+  margin: 28px 0 0;
 }
 
-.reveal .au-browser-bar {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  padding: 12px 16px;
-  background: #1b1b1b;
+.reveal .au-figure.is-short {
+  height: 480px;
 }
 
-.reveal .au-browser-bar i {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #3a3a3a;
-}
-
-.reveal .au-browser-bar span {
-  flex: 1;
-  margin-left: 12px;
-  padding: 4px 14px;
-  border-radius: 6px;
-  background: #0f0f0f;
-  color: var(--muted);
-  font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: 16px;
-}
-
-.reveal .au-app-header {
-  display: flex;
-  gap: 22px;
-  align-items: center;
-  padding: 18px 28px;
-  border-bottom: 1px solid #2e2e2e;
-  color: #ededed;
-  font-size: 19px;
-}
-
-.reveal .au-app-header b {
-  margin-right: auto;
-}
-
-.reveal .au-app-header em {
-  margin-left: 18px;
-  font-style: normal;
-  font-weight: 700;
-}
-
-.reveal .au-app-header u {
-  padding: 3px 14px;
-  border: 1px solid #2e2e2e;
-  border-radius: 999px;
-  text-decoration: none;
-}
-
-.reveal .au-app-body {
-  flex: 1;
-  padding: 34px 40px;
-  color: #ededed;
-}
-
-.reveal .au-app-body h3 {
-  margin: 0 0 22px;
-  font-size: 40px;
-}
-
-.reveal .au-app-body dl {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 10px 28px;
+.reveal .au-figure img {
+  max-width: 100%;
+  max-height: 100%;
   margin: 0;
-  font-size: 22px;
+  border-radius: 16px;
 }
 
-.reveal .au-app-body dt {
-  color: #a1a1a1;
-}
-
-.reveal .au-app-body dd {
-  margin: 0;
+.reveal .dui-lead-note + .po-source-link,
+.reveal .au-figure + .dui-lead-note {
+  margin-top: 18px;
 }
 
 /* Authentication og authorization · døren */
@@ -234,6 +157,32 @@
   color: var(--muted);
   font-size: 20px;
   line-height: 1.35;
+}
+
+.reveal .au-features.is-compact {
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.reveal .au-features.is-compact article {
+  min-height: 0;
+  padding: 18px 22px;
+}
+
+.reveal .au-features.is-compact h3 {
+  padding-right: 0;
+  margin-bottom: 6px;
+  font-size: 24px;
+}
+
+.reveal .au-features.is-compact p {
+  font-size: 18px;
+}
+
+.reveal .au-features.is-compact em {
+  position: static;
+  display: block;
+  margin-bottom: 6px;
 }
 
 /* Fra REST til SDK · to kodeblokke */
@@ -639,82 +588,6 @@
   color: var(--coral);
 }
 
-/* Beskyttet side · flowet */
-.reveal .au-guard {
-  display: grid;
-  justify-items: center;
-  gap: 8px;
-  margin-top: 22px;
-}
-
-.reveal .au-guard > p {
-  margin: 0 !important;
-  padding: 14px 28px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--surface);
-  font-size: 24px;
-  text-align: center;
-}
-
-.reveal .au-guard > i {
-  color: var(--muted);
-  font-size: 26px;
-  font-style: normal;
-  line-height: 1;
-}
-
-.reveal .au-guard .au-guard-check {
-  border-color: var(--dui);
-  background: var(--dui-soft);
-}
-
-.reveal .au-guard .au-guard-question {
-  padding: 16px 40px;
-  border: 2px solid var(--yellow);
-  color: var(--yellow);
-  font-weight: 800;
-  transform: none;
-}
-
-.reveal .au-guard-branches {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 120px;
-  width: 1100px;
-  margin-top: 10px;
-}
-
-.reveal .au-guard-branches article {
-  position: relative;
-  padding: 20px 28px;
-  border-top: 5px solid var(--green);
-  background: var(--surface);
-}
-
-.reveal .au-guard-branches article.is-no {
-  border-color: var(--coral);
-}
-
-.reveal .au-guard-branches article > span {
-  color: var(--green);
-}
-
-.reveal .au-guard-branches article.is-no > span {
-  color: var(--coral);
-}
-
-.reveal .au-guard-branches h3 {
-  margin: 6px 0 6px;
-  font-size: 30px;
-}
-
-.reveal .au-guard-branches p {
-  margin: 0 !important;
-  color: var(--muted);
-  font-size: 21px;
-}
-
 /* Suspense i headeren */
 .reveal .au-header-mock {
   display: grid;
@@ -972,46 +845,6 @@
   color: var(--dui);
 }
 
-/* Skal jeres produkt have brugere? */
-.reveal .au-questions {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 40px;
-}
-
-.reveal .au-questions article {
-  padding: 30px 30px 32px;
-  border-top: 6px solid var(--dui);
-  background: var(--surface);
-}
-
-.reveal .au-questions article:nth-child(2) { border-color: var(--dui-blue); }
-.reveal .au-questions article:nth-child(3) { border-color: var(--dui-yellow); }
-
-.reveal .au-questions b {
-  color: var(--dui);
-  font-size: 52px;
-  line-height: 1;
-}
-
-.reveal .au-questions article:nth-child(2) b { color: var(--dui-blue); }
-.reveal .au-questions article:nth-child(3) b { color: var(--dui-yellow); }
-
-.reveal .au-questions h3 {
-  margin: 14px 0 12px;
-  font-size: 32px;
-  line-height: 1.15;
-}
-
-.reveal .au-questions p {
-  margin: 0 !important;
-  color: var(--muted);
-  font-size: 22px;
-  line-height: 1.38;
-}
-
-
 /* Opgave 1 · skærmbilleder fra Supabase */
 .reveal .au-shots {
   display: grid;
@@ -1060,4 +893,8 @@
 
 .reveal .au-shots figcaption strong {
   color: var(--ink);
+}
+
+.reveal .au-shots.is-pair {
+  grid-template-columns: 1fr 1fr;
 }

@@ -49,9 +49,15 @@ Log out  -> signOut()        -> supabase.auth.signOut()            -> cookie sle
 3. [Log ind](#opgave-3)
 4. [Profilen – den beskyttede route](#opgave-4)
 
-**Ekstra:** [Static eller dynamic?](#static-dynamic) · [5. Flere beskyttede routes](#opgave-5) · [6. Login-status i headeren](#opgave-6)
+**Ekstra**
 
-**Videre:** [Auth i din headless WordPress-app](#videre) · [Fejlfinding](#fejlfinding)
+- [Static eller dynamic?](#static-dynamic)
+- [Opgave 5: Flere beskyttede routes](#opgave-5)
+- [Opgave 6: Login-status i headeren](#opgave-6)
+
+**Videre:** [Auth i din headless WordPress-app](#videre)
+
+Sidder du fast? Se [Fejlfinding](#fejlfinding).
 
 <hr style="margin: 2rem 0;">
 
@@ -108,14 +114,35 @@ Kør `npm run dev`, og åbn [http://localhost:3000](http://localhost:3000).
 
 ### 1.3 Kig i startprojektet
 
-Det meste er det samme som i din WordPress-app: `app/layout.js`, `components/Header.js` og `app/page.js`. To filer er nye, og dem skal du ikke ændre:
+Før du skriver kode, så kig projektet igennem. Det meste kender du fra din WordPress-app. Find svaret i koden:
 
-| Fil | Hvad gør den? |
-| --- | --- |
-| `lib/supabase/server.js` | Laver en Supabase-klient, der læser sessionen fra cookies. Du bruger den i al din Supabase-kode i dag. |
-| `proxy.js` | Kører før hver request og fornyer sessionen, så brugeren ikke bliver logget ud efter en time. |
+**Det kender du**
 
-**Tjek:** Du kan pege på de to filer og sige med én sætning, hvad de gør.
+1. **Routes:** Åbn `app/`. Hvilke `page.js` findes, og hvilken URL giver de? Hvilken fil viser _Page not found_ på `/signup`?
+2. **Layout:** Åbn `app/layout.js`. Hvor står `<Header />` i forhold til `{children}`? Hvad bliver `metadata` til?
+3. **Headeren:** Åbn `components/Header.js`. Hvilke routes linker den til – og hvilke findes ikke endnu?
+4. **Server eller client?** Søg efter `"use client"` i hele projektet med _Search_ i VS Code. Hvad betyder det, at den ikke står nogen steder?
+5. **`@/` i imports:** Hvad peger `@/components/Header` på? Se `jsconfig.json`.
+
+**Det er nyt** – de to filer ændrer du ikke:
+
+6. **`lib/supabase/server.js`:** Hvad hedder funktionen, og hvorfor er den `async`? Hvad læser den fra requesten?
+7. **`proxy.js`:** Ligger den i `app/` eller i roden? Hvornår kører den, og hvad gør den?
+
+**Tjek:** Du kan svare på de syv spørgsmål uden at kigge i løsningen.
+
+<details>
+<summary><strong>Løsning</strong></summary>
+
+1. Kun `app/page.js`, som er `/`. Der er ingen `app/signup/page.js`, så Next.js viser `app/not-found.js`. Routen laver du i opgave 2.
+2. `<Header />` står over `{children}` i `<body>`. `{children}` er den side, du er på, så headeren bliver stående, når du navigerer. `metadata` bliver til `<title>` – titlen i fanen. Du giver hver ny side sin egen `metadata`.
+3. `/`, `/profile`, `/signup` og `/login`. Kun `/` findes – de tre andre bygger du i dag.
+4. Alle komponenter er Server Components. De kører på serveren, kan være `async` og kan læse cookies. Derfor kan en side selv tjekke, om brugeren er logget ind, før HTML'en sendes.
+5. `@/` er roden af projektet. `@/lib/supabase/server` er altså `lib/supabase/server.js` – uanset hvor den fil, du importerer fra, ligger. Ligesom `@/lib/wordpress` i din WordPress-app.
+6. `createClient()`. Den er `async`, fordi `cookies()` fra `next/headers` skal have `await`. Derfor skriver du altid `const supabase = await createClient();`. Den læser sessionen fra requestens cookies og URL og key fra `.env.local`.
+7. I roden, ved siden af `app/`. Next.js kører den før hver request – undtagen billeder og statiske filer, se `matcher`. Den fornyer sessionen, så brugeren ikke bliver logget ud efter en time.
+
+</details>
 
 [Slide: Klienten læser cookies](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-klient) · [Slide: Hvorfor proxy.js?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/proxy)
 
@@ -141,7 +168,11 @@ Det meste er det samme som i din WordPress-app: `app/layout.js`, `components/Hea
 
 Mappen er URL'en, og filen hedder altid `page.js`. Opret `app/signup/page.js` med en `<h1>`, og giv siden `metadata` med titlen _Sign up_. Next.js laver `metadata` om til `<title>` i `<head>`.
 
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/nextjs-supabase-auth-mappe-route.webp" alt="Mappen app med page.js bliver til /. Mapperne signup, login og profile med hver sin page.js bliver til /signup, /login og /profile." style="max-width: 100%; margin: 0.75rem 0;">
+
 **Tjek:** [http://localhost:3000/signup](http://localhost:3000/signup) viser din overskrift i stedet for _Page not found_, og fanen viser din titel.
+
+[Slide: Mappen er routen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-routes)
 
 <details>
 <summary><strong>Løsning</strong></summary>
@@ -167,6 +198,8 @@ export default function SignUpPage() {
 Tilføj en `<form className="auth-form">` med et felt til e-mail, et til adgangskode og en knap. Giv hvert felt en `<label>`, en `name` og en `placeholder`. Det er `name`, du bruger til at hente værdien på serveren. CSS'en til `auth-form` ligger allerede i `app/globals.css`.
 
 **Tjek:** Siden viser en pæn formular. Der sker ingenting, når du klikker på knappen – endnu.
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/nextjs-supabase-auth-signup.webp" alt="Siden Sign up med felterne Email og Password, knappen Sign up og linket Already have an account? Log in." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
 
 <details>
 <summary><strong>Hint</strong></summary>
@@ -213,7 +246,11 @@ Knappen skal have `type="submit"`.
 
 ### 2.3 Server Action
 
-En **Server Action** er en funktion, der kører på serveren, men som en formular kan kalde. `"use server"` øverst i funktionen gør den til en Server Action. Skriv den i `app/signup/page.js` – over komponenten:
+En **Server Action** er en funktion, der kører på serveren, men som en formular kan kalde. `"use server"` øverst i funktionen gør den til en Server Action. Siden selv er en **Server Component**:
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/nextjs-supabase-auth-component-action.webp" alt="Server Component viser siden og kører, når siden hentes med GET. Server Action ændrer noget og kører, når formularen sendes med POST. Begge kører på serveren." style="max-width: 100%; margin: 0.75rem 0;">
+
+Skriv Server Action'en i `app/signup/page.js` – over komponenten:
 
 ```jsx
 import { redirect } from "next/navigation";
@@ -238,7 +275,7 @@ Giv formularen `action={signUp}`. Når brugeren klikker på knappen, kører `sig
 
 <img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/supabase-auth-users.webp" alt="Authentication, Users i Supabase med en tabel over brugere. Hver række har et UID, en e-mail og Email som provider." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
 
-[Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens) · [Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-action)
+[Slide: Server Component eller Server Action?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-component-action) · [Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens) · [Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-action)
 
 ### 2.4 Find sessionen
 
@@ -448,6 +485,8 @@ Og i formularen: `<form action={signIn} className="auth-form">`.
 ### 3.3 Test fejlen · valgfri
 
 Har du lavet fejlbeskeden i 2.5? Prøv med en forkert adgangskode og med en e-mail, der ikke findes.
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/nextjs-supabase-auth-login-fejl.webp" alt="Siden Log in med fejlbeskeden Wrong email or password over formularen." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
 
 **Tjek:** Begge giver _Wrong email or password._ Supabase siger med vilje ikke, hvad der var forkert, så ingen kan bruge login-siden til at finde ud af, hvem der har en bruger.
 

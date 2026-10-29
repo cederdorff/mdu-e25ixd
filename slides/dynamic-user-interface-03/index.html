@@ -37,6 +37,9 @@
               <a href="#/kap-session"><b>Hvor bor sessionen?</b><small>Cookies, <code>localStorage</code> og nøglekortet</small></a>
             </li>
             <li>
+              <a href="#/kap-next"><b>Next.js på serveren</b><small>Routes, Server Components og Server Actions</small></a>
+            </li>
+            <li>
               <a href="#/kap-flow"><b>Login-flowet</b><small>Formular → Server Action → cookie · <code>proxy.js</code></small></a>
             </li>
             <li>
@@ -48,76 +51,9 @@
         <section class="po-slide" id="maal">
           <span class="eyebrow">Dagens mål</span>
           <h2>Fire routes — én kræver login</h2>
-          <div class="au-goal">
-            <div class="au-browser" aria-label="Skitse af appen med login-status i headeren">
-              <div class="au-browser-bar"><i></i><i></i><i></i><span>localhost:3000/profile</span></div>
-              <div class="au-app-header">
-                <b>Supabase Auth</b>
-                <span>Home</span><span>Profile</span>
-                <em>dig@eaaa.dk</em><u>Log out</u>
-              </div>
-              <div class="au-app-body">
-                <h3>Profile</h3>
-                <dl>
-                  <dt>Email</dt>
-                  <dd>dig@eaaa.dk</dd>
-                  <dt>User id</dt>
-                  <dd>7f3c9a2e-…</dd>
-                </dl>
-              </div>
-            </div>
-            <div class="goal-points">
-              <article>
-                <span>Routes</span><strong>Forside, sign up, log ind og profil</strong
-                ><small><code>/</code> · <code>/signup</code> · <code>/login</code> · <code>/profile</code></small>
-              </article>
-              <article>
-                <span>Brugere</span><strong>Sign up, log ind og log ud</strong
-                ><small>formularer, der kalder en Server Action</small>
-              </article>
-              <article>
-                <span>Adgang</span><strong>Kun <code>/profile</code> kræver login</strong
-                ><small>alle andre sendes til <code>/login</code> · bagefter din WordPress-app</small>
-              </article>
-            </div>
-          </div>
-          <div class="lab-path" aria-label="Next.js-appen bygges videre i de kommende undervisningsgange">
-            <p><b>26. oktober</b>Next.js og WordPress</p>
-            <p><b>29. oktober</b>Fra Figma til React/Next.js</p>
-            <p class="is-today"><b>I dag</b>Supabase Auth</p>
-            <p><b>2. november</b>Kick-off på projektet</p>
-            <p><b>10. november</b>Roller og beskyttet adgang</p>
-          </div>
-        </section>
-
-        <section class="po-slide" id="next-begreber">
-          <span class="eyebrow">Next.js · det kender I — og det er nyt</span>
-          <h2>Samme Next.js som 26. oktober</h2>
-          <div class="compare-cols">
-            <article>
-              <span>Kender I</span>
-              <h3>Bruger vi igen</h3>
-              <ul>
-                <li><b>Mappe + <code>page.js</code></b> = route: <code>/signup</code>, <code>/login</code>, <code>/profile</code></li>
-                <li><b>Server Components</b> kører på serveren — nu tjekker de login</li>
-                <li><b><code>params</code></b> → <code>searchParams</code> efter <code>?</code> i URL'en</li>
-                <li><b><code>notFound()</code></b> → <code>redirect()</code> stopper siden og sender videre</li>
-              </ul>
-            </article>
-            <article class="is-new">
-              <span>Nyt i dag</span>
-              <h3>Tre nye ting</h3>
-              <ul>
-                <li><b>Server Action</b> · en funktion med <code>"use server"</code>, som en formular kalder</li>
-                <li><b><code>proxy.js</code></b> · kører før hver request og fornyer sessionen</li>
-                <li><b>○ og ƒ</b> · static eller dynamic i <code>npm run build</code></li>
-              </ul>
-            </article>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Alle komponenter er Server Components,</strong> indtil I skriver <code>"use client"</code>. I dag
-            skriver vi det ikke én eneste gang.
-          </p>
+          <figure class="au-figure">
+            <img src="../assets/nextjs-supabase-auth-routes.svg" alt="Routes i appen. /, /signup og /login kan alle se. /profile kræver login. signUp og signIn sender brugeren til /profile, signOut sender til forsiden, og er man ikke logget ind, sender /profile til /login." />
+          </figure>
         </section>
 
         <section class="chapter po-chapter po-slide" id="kap-auth">
@@ -337,7 +273,7 @@ const session = await response.json();
             </article>
             <article>
               <h3>Kig</h3>
-              <p>Find <code>lib/supabase/server.js</code> og <code>proxy.js</code>. De er sat op — dem ændrer du ikke.</p>
+              <p>Repetér routes, <code>layout.js</code> og <code>@/</code>. Find så <code>lib/supabase/server.js</code> og <code>proxy.js</code> — dem ændrer du ikke.</p>
               <p class="step-links"><a href="#/server-klient">Klienten</a><a href="#/proxy"><code>proxy.js</code></a></p>
             </article>
           </div>
@@ -517,20 +453,107 @@ const session = await response.json();
           </p>
         </section>
 
-        <section class="chapter po-chapter po-slide" id="kap-flow">
+        <section class="chapter po-chapter po-slide" id="kap-next">
           <span class="chapter-index">04</span>
-          <span class="eyebrow">Login-flowet</span>
-          <h2>Fra formular<br />til cookie</h2>
-          <p class="kicker">Hvad sker der, fra brugeren klikker på <em>Log in</em>, til headeren viser deres e-mail?</p>
+          <span class="eyebrow">Next.js på serveren</span>
+          <h2>Siden bygges<br />på serveren</h2>
+          <p class="kicker">— derfor kan den se, hvem du er, før HTML'en sendes.</p>
           <dl class="chapter-definition">
             <div>
-              <dt>Server Action</dt>
+              <dt>Server Component</dt>
               <dd>
-                En funktion med <code>"use server"</code>, der <b>kører på serveren</b>, men som en formular i browseren
-                kan kalde. Next.js sender formularen som en <code>POST</code>-request.
+                En komponent, der <b>kører på serveren</b>. Den kan være <code>async</code>, læse cookies og vente på
+                data, før HTML'en sendes. Alle komponenter er Server Components, indtil du skriver <code>"use client"</code>.
               </dd>
             </div>
           </dl>
+        </section>
+
+        <section class="po-slide" id="next-routes">
+          <span class="eyebrow">Next.js · routes</span>
+          <h2>Mappen er routen</h2>
+          <figure class="au-figure is-short">
+            <img src="../assets/nextjs-supabase-auth-mappe-route.svg" alt="Mappen app med page.js bliver til /. Mapperne signup, login og profile med hver sin page.js bliver til /signup, /login og /profile. /profile kræver login." />
+          </figure>
+          <p class="dui-lead-note">
+            <strong>Filen hedder altid <code>page.js</code>.</strong> Mappen giver URL'en, og <code>metadata</code> i
+            filen bliver til <code>&lt;title&gt;</code> i fanen.
+          </p>
+          <p class="po-source-link">
+            <a href="https://nextjs.org/docs/app/getting-started/layouts-and-pages" target="_blank" rel="noreferrer">Next.js: Layouts and pages ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="next-component-action">
+          <span class="eyebrow">Next.js · Server Component og Server Action</span>
+          <h2>Vise siden — eller ændre noget?</h2>
+          <figure class="au-figure">
+            <img src="../assets/nextjs-supabase-auth-component-action.svg" alt="Server Component viser siden og kører, når siden hentes med GET. Den kan være async og læse cookies. Server Action ændrer noget og kører, når formularen sendes med POST. Den har use server og kaldes med form action. Begge kører på serveren." />
+          </figure>
+          <p class="po-source-link">
+            <a href="https://nextjs.org/docs/app/getting-started/server-and-client-components" target="_blank" rel="noreferrer">Next.js: Server and Client Components ↗</a>
+            ·
+            <a href="https://nextjs.org/docs/app/getting-started/mutating-data" target="_blank" rel="noreferrer">Next.js: Mutating data ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="next-begreber">
+          <span class="eyebrow">Next.js · begreberne i dag</span>
+          <h2>Ni begreber — og hvor I bruger dem</h2>
+          <div class="au-features is-compact">
+            <article>
+              <em>Opgave 2–4</em>
+              <h3>Route og <code>page.js</code></h3>
+              <p>En mappe i <code>app/</code> med en <code>page.js</code> bliver til en URL.</p>
+            </article>
+            <article>
+              <em>Headeren</em>
+              <h3><code>layout.js</code></h3>
+              <p>Rammen om alle sider. Bliver stående, når du navigerer.</p>
+            </article>
+            <article class="is-today">
+              <em>Alle sider</em>
+              <h3>Server Component</h3>
+              <p>Kører på serveren, kan være <code>async</code> og læse cookies.</p>
+            </article>
+            <article class="is-today">
+              <em>signUp · signIn · signOut</em>
+              <h3>Server Action</h3>
+              <p>En funktion med <code>"use server"</code>, som en formular kalder.</p>
+            </article>
+            <article>
+              <em><code>?error=true</code></em>
+              <h3><code>searchParams</code></h3>
+              <p>Det efter <code>?</code> i URL'en. Et Promise, så <code>await</code>.</p>
+            </article>
+            <article class="is-today">
+              <em><code>/profile</code></em>
+              <h3><code>redirect()</code></h3>
+              <p>Stopper siden og sender brugeren videre.</p>
+            </article>
+            <article>
+              <em>Fanen</em>
+              <h3><code>metadata</code></h3>
+              <p>Bliver til <code>&lt;title&gt;</code> i <code>&lt;head&gt;</code>.</p>
+            </article>
+            <article>
+              <em>Sessionen</em>
+              <h3><code>proxy.js</code></h3>
+              <p>Kører før hver request og fornyer sessionen.</p>
+            </article>
+            <article class="is-next">
+              <em>Ekstra</em>
+              <h3>○ og ƒ</h3>
+              <p>Static eller dynamic i <code>npm run build</code>.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="chapter po-chapter po-slide" id="kap-flow">
+          <span class="chapter-index">05</span>
+          <span class="eyebrow">Login-flowet</span>
+          <h2>Fra formular<br />til cookie</h2>
+          <p class="kicker">Hvad sker der, fra brugeren klikker på <em>Log in</em>, til headeren viser deres e-mail?</p>
         </section>
 
         <section class="po-slide au-seq-slide" id="sekvens">
@@ -626,7 +649,7 @@ export default async function LoginPage({ searchParams }) {
             <div class="explain-list">
               <p><b><code>metadata</code></b>Bliver til <code>&lt;title&gt;</code> i fanen.</p>
               <p><b><code>"use server"</code></b>Server Action'en kører på serveren. Den sendes aldrig til browseren.</p>
-              <p><b><code>searchParams</code></b>Det efter <code>?</code> i URL'en — som <code>params</code>, et Promise, så <code>await</code>.</p>
+              <p><b><code>searchParams</code></b>Det efter <code>?</code> i URL'en. Et Promise, så <code>await</code>.</p>
               <p><b><code>action={signIn}</code></b>Formularen sendes som en <code>POST</code>, og Next.js kører <code>signIn</code>.</p>
             </div>
           </div>
@@ -723,16 +746,17 @@ export default async function LoginPage({ searchParams }) {
           <div class="assignment-flow">
             <article>
               <h3>Routen</h3>
-              <p>Opret <code>app/signup/page.js</code> med en <code>&lt;h1&gt;</code>. Mappen er URL'en.</p>
+              <p>Opret <code>app/signup/page.js</code> med en <code>&lt;h1&gt;</code> og <code>metadata</code>. Mappen er URL'en.</p>
             </article>
             <article>
               <h3>Formularen</h3>
               <p><code>&lt;form className="auth-form"&gt;</code> med en <code>&lt;label&gt;</code> og en <code>name</code> til e-mail og adgangskode. CSS'en findes allerede.</p>
+              <p class="step-links"><a href="#/app-skaerme">Skærmbillede</a><a href="#/next-routes">Mappen er routen</a></p>
             </article>
             <article>
               <h3>Server Action</h3>
               <p>Skriv <code>signUp</code> med <code>"use server"</code> i samme fil, og giv formularen <code>action={signUp}</code>. Find cookien.</p>
-              <p class="step-links"><a href="#/sekvens">Flowet</a><a href="#/server-action">Server Action</a><a href="#/storage">Cookies</a></p>
+              <p class="step-links"><a href="#/next-component-action">Component eller Action?</a><a href="#/sekvens">Flowet</a><a href="#/storage">Cookies</a></p>
             </article>
             <article>
               <h3>Fejlen · valgfri</h3>
@@ -767,7 +791,7 @@ export default async function LoginPage({ searchParams }) {
             <article>
               <h3>Test</h3>
               <p>Log ind med din bruger fra opgave 2. Valgfri: Prøv en forkert adgangskode.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-02-sign-up...opgave-03-log-ind" target="_blank" rel="noreferrer">Løsning</a></p>
+              <p class="step-links"><a href="#/app-skaerme">Skærmbillede</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-02-sign-up...opgave-03-log-ind" target="_blank" rel="noreferrer">Løsning</a></p>
             </article>
           </div>
           <p class="work-if-stuck"><strong>Intet nyt efter login?</strong> Det er rigtigt nok — det ser du på profilen i opgave 4.</p>
@@ -777,8 +801,23 @@ export default async function LoginPage({ searchParams }) {
           </p>
         </section>
 
+        <section class="po-slide" id="app-skaerme">
+          <span class="eyebrow">Opgave 2 og 3 · sådan ser det ud</span>
+          <h2>Formularerne — og fejlen</h2>
+          <div class="au-shots is-pair">
+            <figure>
+              <img src="../assets/nextjs-supabase-auth-signup.webp" alt="Siden Sign up i appen med felterne Email og Password, knappen Sign up og linket Already have an account? Log in." />
+              <figcaption><b>2</b><span><strong><code>/signup</code></strong> · formularen med <code>className="auth-form"</code></span></figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/nextjs-supabase-auth-login-fejl.webp" alt="Siden Log in i appen med fejlbeskeden Wrong email or password over formularen." />
+              <figcaption><b>3</b><span><strong><code>/login?error=true</code></strong> · fejlbeskeden · valgfri</span></figcaption>
+            </figure>
+          </div>
+        </section>
+
         <section class="chapter po-chapter po-slide" id="kap-beskyt">
-          <span class="chapter-index">05</span>
+          <span class="chapter-index">06</span>
           <span class="eyebrow">Beskyttede sider</span>
           <h2>Tjek på serveren —<br />før HTML'en sendes</h2>
           <p class="kicker">Kun profilen kræver login — resten er offentligt.</p>
@@ -787,28 +826,12 @@ export default async function LoginPage({ searchParams }) {
         <section class="po-slide" id="beskyt-flow">
           <span class="eyebrow">Beskyttede sider · flowet</span>
           <h2>Én <code>if</code> på serveren afgør det</h2>
-          <div class="au-guard">
-            <p class="au-guard-start"><span>Request</span><code>GET /profile</code></p>
-            <i aria-hidden="true">↓</i>
-            <p class="au-guard-check"><span>På serveren</span><code>await getCurrentUser()</code></p>
-            <i aria-hidden="true">↓</i>
-            <p class="au-guard-question">Er der en bruger?</p>
-            <div class="au-guard-branches">
-              <article class="is-yes">
-                <span>Ja</span>
-                <h3>Vis siden</h3>
-                <p>Byg profilen med brugerens e-mail.</p>
-              </article>
-              <article class="is-no">
-                <span>Nej · <code>null</code></span>
-                <h3><code>redirect("/login")</code></h3>
-                <p>Indholdet bliver aldrig sendt.</p>
-              </article>
-            </div>
-          </div>
+          <figure class="au-figure is-short">
+            <img src="../assets/nextjs-supabase-auth-beskyt-profile.svg" alt="Browseren beder om GET /profile. På serveren kalder ProfilePage await getCurrentUser(). Er der en bruger, vises siden med brugerens e-mail. Er svaret null, kaldes redirect til /login, og indholdet bliver aldrig sendt." />
+          </figure>
           <p class="dui-lead-note">
-            <strong>Det kender I:</strong> <code>notFound()</code> stoppede siden, når en post ikke fandtes.
-            <code>redirect()</code> stopper den, når brugeren ikke er logget ind.
+            <strong><code>redirect()</code> stopper siden.</strong> Koden under den kører kun, når der er en bruger — så
+            <code>user</code> er aldrig <code>null</code> længere nede.
           </p>
         </section>
 
@@ -1023,7 +1046,7 @@ export default async function LoginPage({ searchParams }) {
             </article>
             <article>
               <h3>WordPress-appen</h3>
-              <p>Byg login ind i appen fra 26. oktober, og lås detaljesiderne for posts.</p>
+              <p>Byg login ind i din WordPress-app, og lås detaljesiderne for posts.</p>
               <p class="step-links"><a href="#/suspense"><code>&lt;Suspense&gt;</code></a><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md" target="_blank" rel="noreferrer">Opgaven</a></p>
             </article>
           </div>
@@ -1081,7 +1104,7 @@ export default async function LoginPage({ searchParams }) {
               >
             </li>
             <li>
-              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-5" target="_blank" rel="noreferrer"
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#static-dynamic" target="_blank" rel="noreferrer"
                 ><b>Ekstra</b><small>○ og ƒ · <code>/members</code> · den anden vej · login-status i headeren</small></a
               >
             </li>
@@ -1101,32 +1124,6 @@ export default async function LoginPage({ searchParams }) {
             <a href="https://github.com/cederdorff/nextjs-supabase-auth#løsninger" target="_blank" rel="noreferrer"
               >Løsninger · én branch pr. opgave ↗</a
             >
-          </p>
-        </section>
-
-        <section class="po-slide" id="projekt">
-          <span class="eyebrow">Videre til gruppeprojektet · kick-off mandag</span>
-          <h2>Skal jeres produkt have brugere?</h2>
-          <div class="au-questions">
-            <article>
-              <b>1</b>
-              <h3>Hvad kan en bruger, der er logget ind?</h3>
-              <p>Gemme, skrive, bestille, se noget personligt? Eller er produktet bedst uden login?</p>
-            </article>
-            <article>
-              <b>2</b>
-              <h3>Hvilke data skal I gemme?</h3>
-              <p>Og hvilke kan I lade være med? Jo færre data, jo mindre skal I beskytte.</p>
-            </article>
-            <article>
-              <b>3</b>
-              <h3>Hvem må se og ændre hvad?</h3>
-              <p>Kun brugeren selv, alle brugere eller en admin? Det er grundlaget for 10. november.</p>
-            </article>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Har jeres produkt brugere,</strong> stiller eksamen også krav til it-sikkerhed. Skriv svarene ned —
-            de er starten på det afsnit.
           </p>
         </section>
 

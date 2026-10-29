@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Server Component viser siden, når den hentes. Server Action ændrer noget, når formularen sendes. Begge kører på serveren.</title>
+  <defs>
+    <style>
+      .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #6b7280; }
+      .title { font-size: 22px; font-weight: 700; fill: #0d0d0d; }
+      .sub { font-size: 15px; fill: #4b5563; }
+      .code { white-space: pre; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13.5px; fill: #0d0d0d; }
+      .cmt { fill: #6b7280; }
+      .key { fill: #9a3412; font-weight: 700; }
+      .row { font-size: 15px; fill: #374151; }
+      .rowb { font-weight: 700; fill: #0d0d0d; }
+      .codebox { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.2; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="880" height="420" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+
+  <!-- Server Component -->
+  <rect x="20" y="20" width="410" height="330" rx="14" fill="#eef7f0" stroke="#a7d7b4" stroke-width="1.5"/>
+  <text class="kicker" x="44" y="52" style="fill: #1f6b3a">SERVER COMPONENT</text>
+  <text class="title" x="44" y="84">Viser siden</text>
+  <text class="sub" x="44" y="108">kører, når siden hentes · GET</text>
+
+  <rect class="codebox" x="44" y="126" width="362" height="102" rx="8"/>
+  <text class="code" x="60" y="152">export default async function</text>
+  <text class="code" x="60" y="172">  ProfilePage() {</text>
+  <text class="code" x="60" y="192">  const user = await getCurrentUser();</text>
+  <text class="code" x="60" y="212">  return &lt;p&gt;{user.email}&lt;/p&gt;;</text>
+
+  <text class="row" x="44" y="262"><tspan class="rowb">Kan:</tspan> være async, læse cookies, vente på data</text>
+  <text class="row" x="44" y="290"><tspan class="rowb">Sender:</tspan> HTML til browseren</text>
+  <text class="row" x="44" y="318"><tspan class="rowb">I dag:</tspan> alle siderne</text>
+
+  <!-- Server Action -->
+  <rect x="450" y="20" width="410" height="330" rx="14" fill="#fdf1e7" stroke="#f2bf94" stroke-width="1.5"/>
+  <text class="kicker" x="474" y="52" style="fill: #9a3412">SERVER ACTION</text>
+  <text class="title" x="474" y="84">Ændrer noget</text>
+  <text class="sub" x="474" y="108">kører, når formularen sendes · POST</text>
+
+  <rect class="codebox" x="474" y="126" width="362" height="102" rx="8"/>
+  <text class="code" x="490" y="152">async function signIn(formData) {</text>
+  <text class="code" x="490" y="172">  <tspan class="key">"use server"</tspan>;</text>
+  <text class="code" x="490" y="192">  <tspan class="cmt">// … supabase.auth …</tspan></text>
+  <text class="code" x="490" y="212">  redirect("/profile");</text>
+
+  <text class="row" x="474" y="262"><tspan class="rowb">Kaldes af:</tspan> <tspan font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">&lt;form action={signIn}&gt;</tspan></text>
+  <text class="row" x="474" y="290"><tspan class="rowb">Får:</tspan> felterne i formData</text>
+  <text class="row" x="474" y="318"><tspan class="rowb">I dag:</tspan> signUp, signIn og signOut</text>
+
+  <!-- Fælles -->
+  <rect x="20" y="364" width="840" height="40" rx="10" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.2"/>
+  <text x="440" y="390" font-size="15" fill="#374151" text-anchor="middle"><tspan font-weight="700" fill="#0d0d0d">Begge kører på serveren.</tspan> Alle komponenter er Server Components, indtil du skriver "use client".</text>
+</svg>
