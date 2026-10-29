@@ -1015,8 +1015,9 @@
 /* Opgave 1 · skærmbilleder fra Supabase */
 .reveal .au-shots {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1.22fr 1fr;
   grid-template-rows: auto auto;
+  align-items: start;
   gap: 20px 24px;
   margin-top: 26px;
 }
