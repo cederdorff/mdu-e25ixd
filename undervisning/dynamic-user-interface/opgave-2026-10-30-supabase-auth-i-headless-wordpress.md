@@ -2,78 +2,85 @@
 
 ## Formål
 
-Her bygger du login ind i din Next.js-app fra 26. oktober. Lav [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md) først – så kender du flowet, og det meste her er genkendeligt. Appen får sign up, log ind, log ud, login-status i headeren, en profilside og posts, som kun kan læses af brugere, der er logget ind.
+Du bygger det samme login ind i din headless WordPress-app fra 26. oktober: sign up, log ind, en profil og posts, som kun brugere, der er logget ind, kan læse. Lav [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md) først. Opgaverne her følger den samme rækkefølge, og koden er næsten den samme.
 
-Slides forklarer teorien. Her står, hvad du skal gøre, trin for trin. Hvert trin linker til det slide, det bygger på. Under hver opgave kan du folde den fulde løsning ud. Koden er den samme som på branchen [`supabase-auth`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/supabase-auth) i referencerepoet, hvor hver opgave har sit eget commit.
+Det sker i koden, når du bruger siderne:
+
+```text
+/signup       -> signUp()         -> supabase.auth.signUp()             -> cookie sat     -> redirect("/profile")
+/login        -> signIn()         -> supabase.auth.signInWithPassword() -> cookie sat     -> redirect("/profile")
+/profile      -> getCurrentUser() -> tjekket på serveren                                  -> vis brugeren, eller redirect("/login")
+/posts/[slug] -> getCurrentUser() -> tjekket på serveren                                  -> vis posten, eller redirect("/login")
+Log out       -> signOut()        -> supabase.auth.signOut()            -> cookie slettet -> redirect("/")
+```
+
+**Det er anderledes end i Next.js og Supabase Auth:**
+
+- **Supabase er ikke sat op.** I opgave 1 installerer du SDK'et og kopierer klienten, `proxy.js` og CSS'en fra dit projekt fra i dag.
+- **Cache Components er slået til.** Sider, der læser cookies eller `searchParams`, skal have deres egen `loading.js`, og `AuthStatus` skal pakkes ind i `<Suspense>`.
+- **Du låser detaljesiderne for posts.** Men indholdet i WordPress er stadig offentligt – du låser siden i din app, ikke data i WordPress.
 
 <hr style="margin: 2rem 0;">
 
 ## Sådan bruger du opgaven
 
-- Fortsæt fra den opgave, du nåede til. Er du i tvivl, så tjek dit projekt mod **Resultat** øverst i de foregående opgaver.
-- Slut hvert trin med **Tjek**, så du ved, at det virker, før du går videre.
-- Prøv selv først. Sidder du fast, så læs **Sidder du fast?**, og fold først **den fulde løsning** ud, når du har prøvet. Nederst står en samlet [fejlfinding](#fejlfinding).
+- Slut hvert trin med **Tjek**. Trin mærket **valgfri** kan du tage til sidst.
+- Sidder du fast? Fold **Hint** ud – og **Løsning**, når du har prøvet selv.
 - Commit og push efter hver opgave med Source Control i VS Code eller GitHub Desktop.
-- Referencerepoet er på engelsk. Dine tekster og URL'er må gerne være på dansk.
 
 <hr style="margin: 2rem 0;">
 
 ## Oversigt
 
-1. [Supabase i projektet](#opgave-1)
-2. [Klienten og proxy.js](#opgave-2)
-3. [Sign up](#opgave-3)
-4. [Log ind](#opgave-4)
-5. [Login-status og log ud i headeren](#opgave-5)
-6. [Beskyttede sider](#opgave-6)
+1. [Gør projektet klar](#opgave-1)
+2. [Sign up](#opgave-2)
+3. [Log ind](#opgave-3)
+4. [Profilen og låste posts](#opgave-4)
+5. [Login-status i headeren](#opgave-5)
 
-Til sidst: [Skal jeres produkt have brugere?](#refleksion) og [fejlfinding](#fejlfinding).
+**Til sidst:** [Skal jeres produkt have brugere?](#refleksion)
+
+Sidder du fast? Se [Fejlfinding](#fejlfinding).
 
 <hr style="margin: 2rem 0;">
 
 ## Før du starter
 
-Du skal bruge din Next.js-app fra [26. oktober](opgave-2026-10-26-nextjs-og-headless-wordpress.md) med mindst opgave 6 – forside, posts, detaljeside, About og `lib/wordpress.js`.
+Du skal bruge din WordPress-app fra [26. oktober](opgave-2026-10-26-nextjs-og-headless-wordpress.md) med mindst opgave 6 – forside, posts, detaljeside, About og `lib/wordpress.js`. Åbn den i VS Code, og kør `npm run dev`.
 
-**Har du ikke en app, der virker?** Start fra referencerepoets commit for opgave 6:
+**Tjek:** [http://localhost:3000/posts](http://localhost:3000/posts) viser posts, og et klik på et card åbner detaljesiden.
 
-1. Download [ZIP-filen med opgave 6](https://github.com/cederdorff/nextjs-headless-wordpress/archive/8c165b0.zip), pak den ud, og omdøb mappen, fx til `nextjs-wordpress`.
-2. Åbn mappen i VS Code, og kør `npm install` i terminalen.
-3. Opret `.env.local` i roden med din WordPress-URL – eller test-URL'en – og kør `npm run dev`:
+**Har du ikke en app, der virker?** Brug referencerepoet som template:
+
+1. Åbn [nextjs-headless-wordpress](https://github.com/cederdorff/nextjs-headless-wordpress) på GitHub. Klik på **Use this template → Create a new repository**, giv det et navn, fx `nextjs-headless-wordpress`, og klik på _Create repository_.
+2. Klon dit nye repository:
+   - **VS Code:** Åbn et nyt vindue, klik på _Clone Git Repository_, og vælg dit repository.
+   - **GitHub Desktop:** Vælg _File → Clone Repository_, og vælg dit repository.
+3. Åbn mappen i VS Code, og kør i terminalen:
+
+   ```bash
+   npm install
+   ```
+
+4. Kopiér `.env.example` til en ny fil, `.env.local`, i roden, og skriv URL'en til din WordPress – eller test-URL'en:
 
    ```bash
    WORDPRESS_URL=https://headless.cederdorff.dk
    ```
 
-4. Læg projektet på GitHub. ZIP-filen har ingen git-historik, så du starter et nyt repository:
-   - **Source Control i VS Code:** Klik på _Initialize Repository_, skriv en besked, fx _Start from task 6_, klik på _Commit_ og derefter _Publish Branch_.
-   - **GitHub Desktop:** Vælg _File → Add Local Repository_, vælg mappen, og klik på _create a repository_. Klik på _Publish repository_.
-
-**Tjek:** [http://localhost:3000/posts](http://localhost:3000/posts) viser posts, og et klik på et card åbner detaljesiden.
+5. Kør `npm run dev`, og lav tjekket ovenfor.
 
 <hr style="margin: 2rem 0;">
 
 <a id="opgave-1"></a>
 
-## Opgave 1: Supabase i projektet
+## Opgave 1: Gør projektet klar
 
-Du gør et Supabase-projekt klar til login, installerer SDK'et og gemmer URL og nøgle i miljøvariabler.
+**Resultat:** Supabase er sat op i din WordPress-app – ligesom i startprojektet fra [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md#opgave-1).
 
-**Resultat:** Begge Supabase-pakker står i `package.json`, `.env.local` har tre variabler, og arbejdet er pushet.
+### 1.1 Installér SDK'et
 
-### 1.1 Gør Supabase-projektet klar
-
-Brug det samme Supabase-projekt som i [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md#opgave-1) – så virker dine brugere fra i dag også her.
-
-Gå til _Authentication → Sign In / Providers_, slå **Confirm email** fra, og gem. Så kan du logge ind, så snart du har oprettet en bruger – uden at skulle bekræfte en e-mail først.
-
-**Tjek:** Projektet er aktivt – ikke _Paused_ – og _Confirm email_ er slået fra.
-
-[Slide: Hvad er Supabase Auth?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/supabase-auth) · [Slide: Hvad kan det?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/hvad-kan-auth)
-
-### 1.2 Installér SDK'et
-
-Kør i terminalen i projektet:
+Brug det samme Supabase-projekt som i Next.js og Supabase Auth – så virker dine brugere fra i dag også her, og _Confirm email_ er allerede slået fra. Kør i terminalen:
 
 ```bash
 npm install @supabase/supabase-js @supabase/ssr
@@ -85,9 +92,9 @@ npm install @supabase/supabase-js @supabase/ssr
 
 [Slide: Vi bruger Supabase' SDK](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sdk)
 
-### 1.3 Miljøvariabler
+### 1.2 Miljøvariabler
 
-Klik på **Connect** øverst i dit Supabase-projekt. Kopiér projektets URL og din **publishable key**, der starter med `sb_publishable_`, til `.env.local`:
+Kopiér de to Supabase-linjer fra `.env.local` i dit projekt fra i dag – eller hent dem under **Connect** i Supabase – ind i `.env.local` her. Sådan ser din `.env.local` ud:
 
 ```bash
 WORDPRESS_URL=https://dit-domæne.dk
@@ -95,19 +102,53 @@ NEXT_PUBLIC_SUPABASE_URL=https://<dit-projekt>.supabase.co
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
 ```
 
-- **Kun domænet:** URL'en slutter med `.supabase.co` – ikke med `/rest/v1`.
-- **Publishable key må være offentlig.** Brug aldrig en nøgle, der starter med `sb_secret_`.
-
-Tilføj de to variabler – uden dine rigtige værdier – i `.env.example`, og genstart `npm run dev`. Commit og push.
+Tilføj de to variabler – uden dine rigtige værdier – i `.env.example`, og genstart `npm run dev`.
 
 **Tjek:** Source Control viser `package.json`, `package-lock.json` og `.env.example` – men ikke `.env.local`.
 
 [Slide: To nøgler](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/noegler)
 
+### 1.3 Klienten og proxy.js
+
+Kopiér de to filer fra dit projekt fra i dag – eller fra løsningen nedenfor. Du skal ikke kunne skrive dem selv, men du skal kunne forklare, hvad de gør.
+
+- `lib/supabase/server.js` – klienten, der læser sessionen fra cookies i requesten.
+- `proxy.js` – i **roden**, ved siden af `package.json`. Next.js kører den før hver request, og den fornyer sessionen.
+
+**Tjek:** Stop `npm run dev`, og kør `npm run build`. Nederst i outputtet står `ƒ Proxy (Middleware)`.
+
+[Slide: Klienten læser cookies](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-klient) · [Slide: Hvorfor proxy.js?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/proxy)
+
+### 1.4 CSS og links i headeren
+
+Kopiér CSS'en til `.auth-form` og `.form-error` nederst i [`app/globals.css`](https://github.com/cederdorff/nextjs-supabase-auth/blob/main/app/globals.css) fra startprojektet ind i din egen `app/globals.css`. Tilføj så links til `/profile`, `/signup` og `/login` i `components/Header.js` – ligesom headeren i startprojektet.
+
+**Tjek:** Headeren viser de tre nye links. Et klik på _Sign up_ giver _Page not found_ – den route laver du i opgave 2.
+
+<details>
+<summary><strong>Løsning</strong></summary>
+
+I `components/Header.js` – under _About_:
+
+```jsx
+<li>
+  <Link href="/profile">Profile</Link>
+</li>
+<li>
+  <Link href="/signup">Sign up</Link>
+</li>
+<li>
+  <Link href="/login">Log in</Link>
+</li>
+```
+
+</details>
+
 **Sidder du fast?**
 
 - **Står dit projekt som _Paused_?** Klik på _Resume project_, og vent et par minutter.
-- **Finder du ingen publishable key?** Se under _Project Settings → API Keys_.
+- **_Your project's URL and Key are required_?** Tjek navnene i `.env.local`, og genstart `npm run dev`.
+- **Ingen `Proxy` i outputtet?** `proxy.js` skal ligge i roden – ikke i `app/`.
 
 <details>
 <summary><strong>Se den fulde løsning til opgave 1</strong></summary>
@@ -122,44 +163,6 @@ WORDPRESS_URL=https://your-domain.com
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-ref.supabase.co
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_your-key
 ```
-
-</details>
-
-**Referencerepo:** [Supabase-pakker og miljøvariabler](https://github.com/cederdorff/nextjs-headless-wordpress/commit/d1cb0ae)
-
-<hr style="margin: 2rem 0;">
-
-<a id="opgave-2"></a>
-
-## Opgave 2: Klienten og proxy.js
-
-Du kopierer de to filer fra dit projekt fra [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md) – eller fra løsningen nedenfor. Du skal ikke kunne skrive dem selv, men du skal kunne forklare, hvad de gør.
-
-**Resultat:** `lib/supabase/server.js` og `proxy.js` findes, `npm run build` går igennem, og arbejdet er pushet.
-
-### 2.1 Klienten
-
-Opret `lib/supabase/server.js`. Den laver en Supabase-klient, der læser sessionen fra cookies i requesten. Al din Supabase-kode i dag kører på serveren og bruger den.
-
-**Tjek:** Filen ligger i en ny mappe, `supabase`, inde i `lib/`.
-
-[Slide: Klienten læser cookies](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-klient)
-
-### 2.2 proxy.js
-
-Opret `proxy.js` i **roden** af projektet – ved siden af `package.json`. Next.js kører den før hver request. Den fornyer sessionen, når access token'et er udløbet, så brugeren ikke bliver logget ud efter en time. Før Next.js 16 hed filen `middleware.js`.
-
-**Tjek:** Stop `npm run dev`, og kør `npm run build`. Nederst i outputtet står `ƒ Proxy (Middleware)`. Commit og push.
-
-[Slide: Hvorfor proxy.js?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/proxy) · [Slide: Nøglekortet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/tokens)
-
-**Sidder du fast?**
-
-- **Ingen `Proxy` i outputtet?** `proxy.js` skal ligge i roden – ikke i `app/`.
-- **_Your project's URL and Key are required_?** Tjek navnene i `.env.local`, og genstart `npm run dev`.
-
-<details>
-<summary><strong>Se den fulde løsning til opgave 2</strong></summary>
 
 `lib/supabase/server.js`:
 
@@ -242,33 +245,115 @@ export const config = {
 };
 ```
 
+CSS'en nederst i `app/globals.css`:
+
+```css
+/* The forms for sign up, log in and log out */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 24rem;
+  margin: 1.5rem 0;
+}
+
+.auth-form input {
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  color: var(--foreground);
+  font: inherit;
+}
+
+.auth-form input::placeholder {
+  color: var(--muted);
+}
+
+.auth-form button {
+  padding: 0.75rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--accent);
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-error {
+  margin-bottom: 1rem;
+  color: #d4380d;
+}
+```
+
 Koden følger [Supabase' guide til Next.js](https://supabase.com/docs/guides/auth/server-side/nextjs), oversat til JavaScript.
 
 </details>
 
-**Referencerepo:** [Klienten og proxy.js](https://github.com/cederdorff/nextjs-headless-wordpress/commit/b03df31)
+**Løsning:** [Gør projektet klar](https://github.com/cederdorff/nextjs-headless-wordpress/compare/main...auth-01-supabase) · [branchen `auth-01-supabase`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/auth-01-supabase)
 
 <hr style="margin: 2rem 0;">
 
-<a id="opgave-3"></a>
+<a id="opgave-2"></a>
 
-## Opgave 3: Sign up
+## Opgave 2: Sign up
 
-Du laver en side med en formular, hvor man kan oprette en bruger.
+**Resultat:** Du kan oprette en bruger på `/signup`, og brugeren står i Supabase.
 
-**Resultat:** Du kan oprette en bruger på `/signup`, brugeren står i Supabase, en fejl giver en besked, og arbejdet er pushet.
+Det er den samme side som i [opgave 2 i Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md#opgave-2). Byg den igen trin for trin, eller kopiér `app/signup/page.js` fra dit projekt fra i dag og gennemgå den.
 
-### 3.1 Formular og Server Action
+### 2.1 Opret routen
 
-En **Server Action** er en funktion, der kører på serveren, men som en formular kan kalde. Opret `lib/actions.js` med `"use server"` øverst og en `signUp`-funktion:
+Opret `app/signup/page.js` med en `<h1>`, og giv siden `metadata` med titlen _Sign up_.
 
-```js
-"use server";
+**Tjek:** [http://localhost:3000/signup](http://localhost:3000/signup) viser din overskrift i stedet for _Page not found_, og fanen viser din titel.
 
+### 2.2 Formularen
+
+Tilføj en `<form className="auth-form">` med et felt til e-mail, et til adgangskode og en knap. Giv hvert felt en `<label>`, en `name` og en `placeholder`. Det er `name`, du bruger til at hente værdien på serveren.
+
+**Tjek:** Siden viser en pæn formular. Der sker ingenting, når du klikker på knappen – endnu.
+
+[Slide: name bliver til formData](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/formdata)
+
+<details>
+<summary><strong>Løsning</strong></summary>
+
+```jsx
+<form className="auth-form">
+  <label htmlFor="email">Email</label>
+  <input id="email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
+
+  <label htmlFor="password">Password</label>
+  <input
+    id="password"
+    name="password"
+    type="password"
+    placeholder="At least 6 characters"
+    autoComplete="new-password"
+    minLength={6}
+    required
+  />
+
+  <button type="submit">Sign up</button>
+</form>
+```
+
+</details>
+
+### 2.3 Server Action
+
+Skriv Server Action'en i `app/signup/page.js` – over komponenten:
+
+```jsx
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-export async function signUp(formData) {
+async function signUp(formData) {
+  "use server";
+
   const email = formData.get("email");
   const password = formData.get("password");
 
@@ -279,75 +364,66 @@ export async function signUp(formData) {
 }
 ```
 
-Opret `app/signup/page.js` med en `<form action={signUp} className="auth-form">` og to felter med `name="email"` og `name="password"`. `formData.get("email")` henter feltet med `name="email"`. Giv hvert felt en `<label>`.
+Giv formularen `action={signUp}`.
 
-Kopiér CSS'en til `.auth-form` og `.form-error` nederst i [`app/globals.css`](https://github.com/cederdorff/nextjs-headless-wordpress/blob/supabase-auth/app/globals.css) ind i din egen `globals.css`.
+**Tjek:** Opret en bruger. Du lander på forsiden, og under _Authentication → Users_ i Supabase står din nye bruger.
 
-**Tjek:** Opret en bruger på [http://localhost:3000/signup](http://localhost:3000/signup). Du lander på forsiden, og under _Authentication → Users_ i Supabase står din nye bruger.
+[Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action) · [Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens)
 
-[Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action) · [Slide: name bliver til formData](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/formdata) · [Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens)
+### 2.4 Find sessionen
 
-### 3.2 Vis en fejl
+Åbn browserens udviklerværktøjer. Gå til _Application_ (Chrome) eller _Storage_ (Safari og Firefox), og kig under **Cookies**.
 
-Prøv at oprette den samme bruger igen. Der sker ingenting – fejlen forsvinder på serveren. Send brugeren tilbage til formularen med `?error=true` i URL'en, når Supabase svarer med en fejl:
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/nextjs-supabase-auth-devtools-cookie.webp" alt="Chrome DevTools, Application, Cookies. Øverst står cookien sb-…-auth-token med en værdi, der starter med base64-." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
 
-```js
-const { error } = await supabase.auth.signUp({ email, password });
+**Tjek:** Der står en cookie, der slutter med `-auth-token`. Det er din session.
 
-if (error) {
-  redirect("/signup?error=true");
-}
-```
+[Slide: Her ligger sessionen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/cookie-skaerm)
 
-På siden læser du `searchParams` – ligesom du læste `params` på detaljesiden:
+### 2.5 Vis en fejl · valgfri
 
-```jsx
-export default async function SignUpPage({ searchParams }) {
-  const { error } = await searchParams;
-```
+Opret den samme bruger igen. Send brugeren tilbage til `/signup?error=true`, når Supabase svarer med en fejl, og vis en besked på siden, når `error` står i URL'en – ligesom du læste `params` på detaljesiden.
 
-Vis en besked over formularen, når `error` er sat:
-
-```jsx
-{error && (
-  <p className="form-error" role="alert">
-    Could not sign up. Maybe the email is already in use.
-  </p>
-)}
-```
-
-Siden læser nu URL'en, så den skal have sin egen `app/signup/loading.js` – samme regel som 26. oktober. Giv også password-feltet `minLength={6}`, så browseren selv siger til, hvis adgangskoden er for kort.
+Siden læser nu URL'en, så den skal have sin egen `app/signup/loading.js` – samme regel som 26. oktober.
 
 **Tjek:** Den samme e-mail to gange giver din fejlbesked, og `npm run build` går igennem.
 
-### 3.3 Find sessionen
+[Slide: Hele routen i én fil](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/route-fil)
 
-Åbn browserens udviklerværktøjer på forsiden. Gå til _Application_ (Chrome) eller _Storage_ (Safari og Firefox), og kig under **Cookies**, **Local storage** og **Session storage**.
+<details>
+<summary><strong>Hint</strong></summary>
 
-**Tjek:** Under Cookies står en cookie, der slutter med `-auth-token`. Det er din session. Commit og push.
+- `supabase.auth.signUp()` svarer med et objekt, der har en `error`. Gem den: `const { error } = await …`.
+- Er der en `error`, så `redirect("/signup?error=true")`.
+- På siden: `const { error } = await searchParams;`, og vis en `<p>`, når `error` har en værdi.
 
-[Slide: Her ligger sessionen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/cookie-skaerm) · [Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
+</details>
 
 **Sidder du fast?**
 
-- **Står brugeren i Supabase, men er der ingen `-auth-token`-cookie?** _Confirm email_ er slået til. Slå det fra, som i 1.1, slet brugeren under _Authentication → Users_, og prøv igen.
-- **Får du altid fejlbeskeden?** Log `error.message` med `console.log` i `signUp`, og kig i terminalen.
+- **Står brugeren i Supabase, men er der ingen `-auth-token`-cookie?** _Confirm email_ er slået til. Slå det fra, slet brugeren under _Authentication → Users_, og prøv igen.
+- **Får du altid fejlbeskeden?** Log `error.message` med `console.log` i `signUp`, og kig i **terminalen** – ikke i browserens console.
 - **_Uncached or runtime data … outside of `<Suspense>`_?** Tilføj `app/signup/loading.js`.
 
 <details>
-<summary><strong>Se den fulde løsning til opgave 3</strong></summary>
+<summary><strong>Se den fulde løsning til opgave 2</strong></summary>
 
-`lib/actions.js`:
+`app/signup/page.js`:
 
-```js
-"use server";
-
-// Server Actions run on the server, even when a form in the browser calls them.
-
+```jsx
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-export async function signUp(formData) {
+export const metadata = {
+  title: "Sign up"
+};
+
+// A Server Action: "use server" makes it run on the server,
+// even though the form in the browser calls it
+async function signUp(formData) {
+  "use server";
+
   const email = formData.get("email");
   const password = formData.get("password");
 
@@ -361,17 +437,6 @@ export async function signUp(formData) {
 
   redirect("/");
 }
-```
-
-`app/signup/page.js`:
-
-```jsx
-import Link from "next/link";
-import { signUp } from "@/lib/actions";
-
-export const metadata = {
-  title: "Sign up"
-};
 
 export default async function SignUpPage({ searchParams }) {
   // ?error=true is set by signUp when Supabase says no
@@ -387,10 +452,18 @@ export default async function SignUpPage({ searchParams }) {
       )}
       <form action={signUp} className="auth-form">
         <label htmlFor="email">Email</label>
-        <input id="email" name="email" type="email" required />
+        <input id="email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
 
-        <label htmlFor="password">Password · at least 6 characters</label>
-        <input id="password" name="password" type="password" minLength={6} required />
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="At least 6 characters"
+          autoComplete="new-password"
+          minLength={6}
+          required
+        />
 
         <button type="submit">Sign up</button>
       </form>
@@ -414,53 +487,73 @@ export default function Loading() {
 }
 ```
 
-CSS: `.auth-form` og `.form-error` står nederst i [`app/globals.css`](https://github.com/cederdorff/nextjs-headless-wordpress/blob/supabase-auth/app/globals.css).
-
 </details>
 
-**Referencerepo:** [Sign up](https://github.com/cederdorff/nextjs-headless-wordpress/commit/114e9ad)
+**Løsning:** [Sign up](https://github.com/cederdorff/nextjs-headless-wordpress/compare/auth-01-supabase...auth-02-sign-up) · [branchen `auth-02-sign-up`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/auth-02-sign-up)
 
 <hr style="margin: 2rem 0;">
 
-<a id="opgave-4"></a>
+<a id="opgave-3"></a>
 
-## Opgave 4: Log ind
+## Opgave 3: Log ind
 
-Login-siden er næsten en kopi af sign up-siden. Kun Server Action'en og teksterne er nye.
+**Resultat:** Du kan logge ind på `/login` med din bruger fra opgave 2.
 
-**Resultat:** Du kan logge ind på `/login`, en forkert adgangskode giver en fejlbesked, og arbejdet er pushet.
+### 3.1 Kopiér routen
 
-### 4.1 signIn og /login
+Kopiér mappen `app/signup/` til `app/login/`, og ret i `app/login/page.js`:
 
-Tilføj en `signIn`-funktion i `lib/actions.js`. Den ligner `signUp`, men kalder `signInWithPassword` og sender til `/login?error=true` ved fejl:
+- [ ] `metadata`, `<h1>` og knappen: _Log in_
+- [ ] Komponenten: `LoginPage`
+- [ ] Adgangskoden: `placeholder="Your password"` og `autoComplete="current-password"`. Fjern `minLength`.
+- [ ] Linket nederst: _No account yet?_ og `/signup`
+- [ ] Har du lavet 2.5: fejlbeskeden _Wrong email or password._
 
-```js
-const { error } = await supabase.auth.signInWithPassword({ email, password });
-```
+`app/login/loading.js` kommer med, når du kopierer mappen.
 
-Kopiér `app/signup/` til `app/login/`, og ret siden til: `signIn` i stedet for `signUp`, overskriften _Log in_ og fejlbeskeden _Wrong email or password._
+**Tjek:** [http://localhost:3000/login](http://localhost:3000/login) viser din login-side.
 
-**Tjek:** Log ind med den bruger, du oprettede i opgave 3. Du lander på forsiden.
+### 3.2 signIn
 
-[Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action)
+Ret Server Action'en:
 
-### 4.2 Test
+- [ ] `signUp` hedder nu `signIn`
+- [ ] `supabase.auth.signUp` er nu `supabase.auth.signInWithPassword`
+- [ ] Formularen: `action={signIn}`
+- [ ] Har du lavet 2.5: `redirect("/login?error=true")` ved fejl
 
-Prøv med en forkert adgangskode og med en e-mail, der ikke findes. Commit og push.
+**Tjek:** Log ind med den bruger, du oprettede i opgave 2. Du lander på forsiden.
+
+[Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action) · [Slide: Vi bruger Supabase' SDK](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sdk)
+
+### 3.3 Test fejlen · valgfri
+
+Har du lavet fejlbeskeden i 2.5? Prøv med en forkert adgangskode og med en e-mail, der ikke findes.
 
 **Tjek:** Begge giver _Wrong email or password._ Supabase siger med vilje ikke, hvad der var forkert, så ingen kan bruge login-siden til at finde ud af, hvem der har en bruger.
 
 **Sidder du fast?**
 
-- **Logger du ind, men ser intet nyt?** Det er rigtigt nok. Headeren viser først login-status i opgave 5. Tjek cookien under _Application_.
+- **Logger du ind, men ser intet nyt?** Det er rigtigt nok. Du kan først se, at du er logget ind, når du har lavet profilen i opgave 4. Tjek cookien under _Application_ imens.
 
 <details>
-<summary><strong>Se den fulde løsning til opgave 4</strong></summary>
+<summary><strong>Se den fulde løsning til opgave 3</strong></summary>
 
-Nederst i `lib/actions.js`:
+`app/login/page.js`:
 
-```js
-export async function signIn(formData) {
+```jsx
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+
+export const metadata = {
+  title: "Log in"
+};
+
+// The same pattern as signUp, but with signInWithPassword
+async function signIn(formData) {
+  "use server";
+
   const email = formData.get("email");
   const password = formData.get("password");
 
@@ -473,17 +566,6 @@ export async function signIn(formData) {
 
   redirect("/");
 }
-```
-
-`app/login/page.js`:
-
-```jsx
-import Link from "next/link";
-import { signIn } from "@/lib/actions";
-
-export const metadata = {
-  title: "Log in"
-};
 
 export default async function LoginPage({ searchParams }) {
   // ?error=true is set by signIn when the email or password is wrong
@@ -499,10 +581,17 @@ export default async function LoginPage({ searchParams }) {
       )}
       <form action={signIn} className="auth-form">
         <label htmlFor="email">Email</label>
-        <input id="email" name="email" type="email" required />
+        <input id="email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
 
         <label htmlFor="password">Password</label>
-        <input id="password" name="password" type="password" required />
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Your password"
+          autoComplete="current-password"
+          required
+        />
 
         <button type="submit">Log in</button>
       </form>
@@ -518,21 +607,19 @@ export default async function LoginPage({ searchParams }) {
 
 </details>
 
-**Referencerepo:** [Log ind](https://github.com/cederdorff/nextjs-headless-wordpress/commit/3e01b3f)
+**Løsning:** [Log ind](https://github.com/cederdorff/nextjs-headless-wordpress/compare/auth-02-sign-up...auth-03-log-ind) · [branchen `auth-03-log-ind`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/auth-03-log-ind)
 
 <hr style="margin: 2rem 0;">
 
-<a id="opgave-5"></a>
+<a id="opgave-4"></a>
 
-## Opgave 5: Login-status og log ud i headeren
+## Opgave 4: Profilen og låste posts
 
-Headeren viser din e-mail og _Log out_, når du er logget ind – og _Log in_, når du ikke er.
+**Resultat:** `/profile` og `/posts/<slug>` viser indholdet, når du er logget ind, og sender alle andre til `/login`. Du kan logge ud.
 
-**Resultat:** Headeren skifter, når du logger ind og ud, `npm run build` går igennem, og arbejdet er pushet.
+### 4.1 Hvem er logget ind?
 
-### 5.1 Hvem er logget ind?
-
-Du skal finde brugeren i headeren, på profilen og på detaljesiden. Saml det i én funktion i `lib/auth.js` – ligesom `lib/wordpress.js` samler kaldene til WordPress:
+Opret `lib/auth.js` med én funktion, du kan bruge på alle sider – ligesom `lib/wordpress.js` samler kaldene til WordPress:
 
 ```js
 import { createClient } from "@/lib/supabase/server";
@@ -547,40 +634,74 @@ export async function getCurrentUser() {
 
 `getClaims()` tjekker, at sessionen i cookien er ægte. Du får brugeren tilbage – eller `null`, hvis ingen er logget ind. E-mailen står i `user.email`, og id'et står i `user.sub`.
 
-[Slide: Hvem er logget ind?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/beskyt-kode)
+[Slide: Hvem er logget ind?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/beskyt-kode) · [Slide: Server Component](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-component)
 
-### 5.2 AuthStatus og signOut
+### 4.2 Profilsiden
 
-Tilføj `signOut` i `lib/actions.js`. Den kalder `supabase.auth.signOut()` og sender brugeren til forsiden.
+Opret `app/profile/page.js`. Gør komponenten `async`, kald `await getCurrentUser()`, og vis `user.email` og `user.sub`. Siden læser cookies, så den skal have sin egen `app/profile/loading.js`.
 
-Lav en `async` komponent, `components/AuthStatus.js`, der kalder `getCurrentUser()`:
+**Tjek:** Logget ind viser `/profile` din e-mail og dit id. Åbn nu `/profile` i et **privat vindue**. Siden fejler, fordi `user` er `null`. Det løser du i næste trin.
 
-- **Ingen bruger:** et `Link` til `/login`.
-- **Logget ind:** e-mailen som et `Link` til `/profile` og en `<form action={signOut}>` med en knap.
+### 4.3 Beskyt routen
 
-Kopiér [`components/AuthStatus.module.css`](https://github.com/cederdorff/nextjs-headless-wordpress/blob/supabase-auth/components/AuthStatus.module.css).
+Tjek brugeren øverst i komponenten, og send til `/login`, hvis der ingen er – ligesom du kaldte `notFound()`, når en post ikke fandtes.
 
-### 5.3 Vis den i headeren med Suspense
+**Tjek:** I det private vindue lander du nu på `/login`. Log ind der, og åbn `/profile` igen.
 
-Vis `<AuthStatus />` i `components/Header.js` efter `<ul>`, og kør `npm run build`. Det fejler med _uncached or runtime data … outside of `<Suspense>`_. Headeren står på alle sider, og nu læser den cookies, som først findes, når en bruger sender en request. Pak den ind i `<Suspense>`, så resten af headeren vises med det samme:
+[Slide: Én if på serveren](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/beskyt-flow)
+
+<details>
+<summary><strong>Løsning</strong></summary>
 
 ```jsx
-<Suspense fallback={null}>
-  <AuthStatus />
-</Suspense>
+const user = await getCurrentUser();
+
+if (!user) {
+  redirect("/login");
+}
 ```
 
-Importér `Suspense` fra `react`.
+`redirect()` stopper siden og sender brugeren videre. Koden under den kører kun, når der er en bruger.
 
-**Tjek:** `npm run build` går igennem. Headeren viser din e-mail og _Log out_. Efter _Log out_ viser den _Log in_, og cookien er væk. Commit og push.
+</details>
+
+### 4.4 Log ud og send til profilen
+
+Skriv en Server Action, `signOut`, i `app/profile/page.js`. Den kalder `supabase.auth.signOut()` og sender brugeren til forsiden. Vis en `<form action={signOut} className="auth-form">` med en _Log out_-knap på profilen.
+
+Ret til sidst `redirect("/")` til `redirect("/profile")` i `signUp` og `signIn`.
+
+**Tjek:** Log ind, og du lander på profilen. Klik på _Log out_. Cookien er væk, og `/profile` sender dig til `/login`.
+
+<details>
+<summary><strong>Hint</strong></summary>
+
+`signOut` ligner `signUp`, men har ingen formular-felter – så den skal ikke have `formData`.
+
+</details>
+
+### 4.5 Lås detaljesiderne
+
+Sæt det samme tjek øverst i `app/posts/[slug]/page.js` – før posten hentes. Detaljesiden har allerede en `loading.js`.
+
+**Tjek:** Log ud, og klik på et card. Du lander på `/login`. Log ind, og klik igen. Nu kan du læse posten.
+
+### 4.6 Er indholdet nu beskyttet?
+
+Log ud, og åbn `/wp-json/wp/v2/posts` på din WordPress.
+
+**Tjek:** Hele indholdet står der stadig. Du har låst **siden** i din app – ikke **data** i WordPress. Data beskytter vi 10. november med Row Level Security.
+
+[Slide: Skjul ikke bare linket](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/skjul-ikke)
 
 **Sidder du fast?**
 
-- **Viser headeren _Log in_ efter login?** Tjek, at `proxy.js` ligger i roden, og at du skriver `await getCurrentUser()`.
-- **Fejl om _async Client Component_?** `AuthStatus` må ikke have `"use client"`.
+- **_redirect is not defined_?** Importér den sammen med `notFound` på detaljesiden: `import { notFound, redirect } from "next/navigation";`.
+- **Sender `/profile` dig altid til `/login`?** Tjek, at du skriver `await getCurrentUser()`, og at `proxy.js` ligger i roden.
+- **Ender du i en løkke mellem siderne?** Tjekket må kun stå på sider, der skal beskyttes – aldrig på `/login` eller i `app/layout.js`.
 
 <details>
-<summary><strong>Se den fulde løsning til opgave 5</strong></summary>
+<summary><strong>Se den fulde løsning til opgave 4</strong></summary>
 
 `lib/auth.js`:
 
@@ -598,15 +719,184 @@ export async function getCurrentUser() {
 }
 ```
 
-Nederst i `lib/actions.js`:
+`app/profile/page.js`:
+
+```jsx
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
+import { createClient } from "@/lib/supabase/server";
+
+export const metadata = {
+  title: "Profile"
+};
+
+async function signOut() {
+  "use server";
+
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+
+  redirect("/");
+}
+
+export default async function ProfilePage() {
+  // A Server Component: the check runs on the server, before any HTML is sent
+  const user = await getCurrentUser();
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  return (
+    <main>
+      <h1>Profile</h1>
+      <p>Email: {user.email}</p>
+      <p>User id: {user.sub}</p>
+      <form action={signOut} className="auth-form">
+        <button type="submit">Log out</button>
+      </form>
+    </main>
+  );
+}
+```
+
+`app/profile/loading.js`:
+
+```jsx
+export default function Loading() {
+  return (
+    <main>
+      <p>Loading your profile …</p>
+    </main>
+  );
+}
+```
+
+Starten af `app/posts/[slug]/page.js` – resten af siden er som før:
+
+```jsx
+import Link from "next/link";
+import { notFound, redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
+import { getPostBySlug } from "@/lib/wordpress";
+import { formatDate } from "@/lib/format";
+import styles from "./page.module.css";
+
+export default async function PostPage({ params }) {
+  // Only logged-in users can read a post
+  const user = await getCurrentUser();
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+  // ...
+}
+```
+
+I `signUp` og `signIn` står der nu `redirect("/profile")` i stedet for `redirect("/")`.
+
+</details>
+
+**Løsning:** [Profilen og låste posts](https://github.com/cederdorff/nextjs-headless-wordpress/compare/auth-03-log-ind...auth-04-profil) · [branchen `auth-04-profil`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/auth-04-profil)
+
+<hr style="margin: 2rem 0;">
+
+<a id="opgave-5"></a>
+
+## Opgave 5: Login-status i headeren
+
+**Resultat:** Headeren viser din e-mail og _Log out_, når du er logget ind – og _Log in_, når du ikke er.
+
+Det er den samme komponent som i [ekstraopgave 6 i Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md#opgave-6). Det nye er `<Suspense>` i 5.3.
+
+### 5.1 Del signOut
+
+Flyt `signOut` til `lib/actions.js` – med `"use server"` øverst i **filen**. Så er alle funktioner i filen Server Actions, og du kan importere dem, hvor du vil:
 
 ```js
+"use server";
+
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+
 export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();
 
   redirect("/");
 }
+```
+
+Slet `signOut` fra profilen, og importér den i stedet: `import { signOut } from "@/lib/actions";`.
+
+**Tjek:** _Log out_ på profilen virker stadig.
+
+### 5.2 AuthStatus
+
+Lav en `async` Server Component, `components/AuthStatus.js`, der kalder `getCurrentUser()`:
+
+- **Ingen bruger:** et `Link` til `/login`.
+- **Logget ind:** e-mailen som et `Link` til `/profile` og en `<form action={signOut}>` med en knap.
+
+Kopiér [`components/AuthStatus.module.css`](https://github.com/cederdorff/nextjs-headless-wordpress/blob/auth-05-header/components/AuthStatus.module.css).
+
+<details>
+<summary><strong>Hint</strong></summary>
+
+To `return`: ét inde i `if (!user)` med linket til `/login` og ét til sidst med e-mailen og _Log out_.
+
+</details>
+
+### 5.3 Vis den i headeren med Suspense
+
+Vis `<AuthStatus />` i `components/Header.js` efter `<ul>`, fjern linkene til _Sign up_ og _Log in_, og kør `npm run build`. Det fejler med _uncached or runtime data … outside of `<Suspense>`_. Headeren står på alle sider, og nu læser den cookies, som først findes, når en bruger sender en request. Pak den ind i `<Suspense>`, så resten af headeren vises med det samme:
+
+```jsx
+<Suspense fallback={null}>
+  <AuthStatus />
+</Suspense>
+```
+
+Importér `Suspense` fra `react`.
+
+**Tjek:** `npm run build` går igennem. Headeren viser din e-mail og _Log out_. Efter _Log out_ viser den _Log in_ – uden at du genindlæser siden.
+
+**Sidder du fast?**
+
+- **Viser headeren _Log in_ efter login?** Tjek, at `proxy.js` ligger i roden, og at du skriver `await getCurrentUser()`.
+- **Fejl om _async Client Component_?** `AuthStatus` må ikke have `"use client"`.
+
+<details>
+<summary><strong>Se den fulde løsning til opgave 5</strong></summary>
+
+`lib/actions.js`:
+
+```js
+"use server";
+
+// "use server" at the top of the file: every exported function is a Server Action.
+// signOut lives here, because both the profile page and AuthStatus use it.
+
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+
+export async function signOut() {
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+
+  redirect("/");
+}
+```
+
+Starten af `app/profile/page.js` – `signOut` er slettet fra filen, og resten er som før:
+
+```jsx
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
+import { signOut } from "@/lib/actions";
 ```
 
 `components/AuthStatus.js`:
@@ -617,7 +907,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { signOut } from "@/lib/actions";
 import styles from "./AuthStatus.module.css";
 
-// Reads the session, so it must be inside <Suspense> (see Header.js)
+// Shows the email and Log out when the user is logged in – or Log in when not
 export default async function AuthStatus() {
   const user = await getCurrentUser();
 
@@ -669,6 +959,9 @@ export default function Header() {
           <li>
             <Link href="/about">About</Link>
           </li>
+          <li>
+            <Link href="/profile">Profile</Link>
+          </li>
         </ul>
         {/* AuthStatus reads the cookies of the request, so it waits for the request.
             Suspense lets the rest of the header render right away. */}
@@ -683,125 +976,7 @@ export default function Header() {
 
 </details>
 
-**Referencerepo:** [Login-status og log ud](https://github.com/cederdorff/nextjs-headless-wordpress/commit/37a4948)
-
-<hr style="margin: 2rem 0;">
-
-<a id="opgave-6"></a>
-
-## Opgave 6: Beskyttede sider
-
-Profilsiden og alle posts kan kun ses af brugere, der er logget ind. Alle andre bliver sendt til `/login`.
-
-**Resultat:** `/profile` og `/posts/<slug>` sender dig til `/login`, når du er logget ud, viser indholdet, når du er logget ind, og arbejdet er pushet.
-
-### 6.1 Profilsiden
-
-Opret `app/profile/page.js`. Tjek brugeren øverst, og kald `redirect("/login")`, hvis der ingen er – ligesom du kaldte `notFound()`, når en post ikke fandtes:
-
-```jsx
-const user = await getCurrentUser();
-
-if (!user) {
-  redirect("/login");
-}
-```
-
-Vis `user.email` og `user.sub`. Siden læser cookies, så den skal have sin egen `app/profile/loading.js`.
-
-**Tjek:** Et klik på din e-mail i headeren åbner profilen. Logget ud lander du på `/login`.
-
-[Slide: Én if på serveren](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/beskyt-flow)
-
-### 6.2 Lås detaljesiderne
-
-Sæt det samme tjek øverst i `app/posts/[slug]/page.js` – før posten hentes. Detaljesiden har allerede en `loading.js`.
-
-**Tjek:** Log ud, og klik på et card. Du lander på `/login`. Log ind, og klik igen. Nu kan du læse posten. Test også i et privat vindue.
-
-### 6.3 Er indholdet nu beskyttet?
-
-Log ud, og åbn `/wp-json/wp/v2/posts` på din WordPress.
-
-**Tjek:** Hele indholdet står der stadig. Du har låst **siden** i din app – ikke **data** i WordPress. Data beskytter vi 10. november med Row Level Security. Kør `npm run build`, og commit og push.
-
-[Slide: Skjul ikke bare linket](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/skjul-ikke)
-
-**Sidder du fast?**
-
-- **_redirect is not defined_?** Importér den sammen med `notFound`: `import { notFound, redirect } from "next/navigation";`.
-- **Ender du i en løkke mellem siderne?** Tjekket må kun stå på de sider, der skal beskyttes – aldrig på `/login` eller i `app/layout.js`.
-
-<details>
-<summary><strong>Se den fulde løsning til opgave 6</strong></summary>
-
-`app/profile/page.js`:
-
-```jsx
-import { redirect } from "next/navigation";
-import { getCurrentUser } from "@/lib/auth";
-
-export const metadata = {
-  title: "Profile"
-};
-
-export default async function ProfilePage() {
-  // Check on the server, before anything is sent to the browser
-  const user = await getCurrentUser();
-
-  if (!user) {
-    redirect("/login");
-  }
-
-  return (
-    <main>
-      <h1>Profile</h1>
-      <p>Email: {user.email}</p>
-      <p>User id: {user.sub}</p>
-    </main>
-  );
-}
-```
-
-`app/profile/loading.js`:
-
-```jsx
-export default function Loading() {
-  return (
-    <main>
-      <p>Loading your profile …</p>
-    </main>
-  );
-}
-```
-
-Starten af `app/posts/[slug]/page.js` – resten af siden er som før:
-
-```jsx
-import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
-import { getCurrentUser } from "@/lib/auth";
-import { getPostBySlug } from "@/lib/wordpress";
-import { formatDate } from "@/lib/format";
-import styles from "./page.module.css";
-
-export default async function PostPage({ params }) {
-  // Only logged-in users can read a post
-  const user = await getCurrentUser();
-
-  if (!user) {
-    redirect("/login");
-  }
-
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
-  // ...
-}
-```
-
-</details>
-
-**Referencerepo:** [Beskyttede sider](https://github.com/cederdorff/nextjs-headless-wordpress/commit/829f006)
+**Løsning:** [Login-status i headeren](https://github.com/cederdorff/nextjs-headless-wordpress/compare/auth-04-profil...auth-05-header) · [branchen `auth-05-header`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/auth-05-header)
 
 <hr style="margin: 2rem 0;">
 
@@ -827,9 +1002,10 @@ På mandag starter gruppeprojektet. Tag stilling til tre spørgsmål i jeres gru
 | _Invalid path specified in request URL_ | URL'en må ikke ende på `/rest/v1` – kun `https://<dit-projekt>.supabase.co` |
 | Brugeren oprettes, men der kommer ingen session | Slå _Confirm email_ fra, slet brugeren, og opret den igen |
 | _Email rate limit exceeded_ | Slå _Confirm email_ fra |
-| Login virker, men headeren viser _Log in_ | `proxy.js` skal ligge i roden og hedde `proxy.js` – ikke `middleware.js` |
+| `/profile` sender dig altid til `/login` | `proxy.js` skal ligge i roden, og du skal skrive `await getCurrentUser()` |
+| _Functions cannot be passed directly to Client Components_ | `"use server"` mangler øverst i din Server Action |
+| _Uncached or runtime data … outside of `<Suspense>`_ | `loading.js` ved siden af sider, der læser cookies eller `searchParams`, og `<Suspense>` om `AuthStatus` |
 | Redirect-loop | Tjek kun på de sider, der skal beskyttes – aldrig på `/login` |
-| _Uncached or runtime data … outside of `<Suspense>`_ | `<Suspense>` om `AuthStatus` og `loading.js` ved siden af sider, der læser cookies eller `searchParams` |
 | _fetch failed_ eller ingen forbindelse | Supabase-projektet er sat på pause. Klik på _Resume project_ |
 
 <hr style="margin: 2rem 0;">
@@ -837,6 +1013,7 @@ På mandag starter gruppeprojektet. Tag stilling til tre spørgsmål i jeres gru
 ## Materialer
 
 - [Slides: Supabase Auth i Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/)
-- [Referencerepo: branchen `supabase-auth`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/supabase-auth)
+- [nextjs-headless-wordpress](https://github.com/cederdorff/nextjs-headless-wordpress) – din app fra 26. oktober på `main` og én løsningsbranch pr. opgave, fra `auth-01-supabase` til `auth-05-header`
+- [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md) – den samme kode i en lille app
 - [Supabase: Setting up Server-Side Auth for Next.js](https://supabase.com/docs/guides/auth/server-side/nextjs)
-- [Next.js: Proxy](https://nextjs.org/docs/app/getting-started/proxy)
+- [Next.js: Authentication](https://nextjs.org/docs/app/guides/authentication) – fx hvorfor tjekket står på siden og ikke i layoutet

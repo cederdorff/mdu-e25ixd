@@ -1071,12 +1071,11 @@ Kør `npm run build` – som i [Static eller dynamic?](#static-dynamic). Nu er a
 
 ## Videre: Auth i din headless WordPress-app
 
-Nu kender du flowet. I [Supabase Auth i din headless WordPress-app](opgave-2026-10-30-supabase-auth-i-headless-wordpress.md) bygger du det samme ind i din WordPress-app og låser detaljesiderne for posts. Fire ting er anderledes:
+Nu kender du flowet. I [Supabase Auth i din headless WordPress-app](opgave-2026-10-30-supabase-auth-i-headless-wordpress.md) bygger du det samme ind i din WordPress-app – i samme rækkefølge og med næsten den samme kode. Tre ting er anderledes:
 
-- **Du kopierer selv** `lib/supabase/server.js` og `proxy.js` fra dit projekt fra i dag.
-- **Alle Server Actions ligger i `lib/actions.js`** – ligesom `signOut` i ekstraopgave 6.
+- **Supabase er ikke sat op.** Du installerer SDK'et og kopierer `lib/supabase/server.js`, `proxy.js` og CSS'en fra dit projekt fra i dag.
 - **Cache Components er slået til** i WordPress-appen. Sider, der læser cookies eller `searchParams`, skal have deres egen `loading.js`, og `AuthStatus` skal pakkes ind i `<Suspense>`.
-- **Indholdet i WordPress er stadig offentligt.** Du låser siden i din app – ikke data i WordPress.
+- **Du låser detaljesiderne for posts** i stedet for `/members`. Indholdet i WordPress er stadig offentligt – du låser siden i din app, ikke data i WordPress.
 
 <hr style="margin: 2rem 0;">
 
