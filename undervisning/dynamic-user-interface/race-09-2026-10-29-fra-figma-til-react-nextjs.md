@@ -4,14 +4,14 @@
 
 I dag følger vi én komponent hele vejen fra design til kode: en pill, der kan folde sig ud til en modal. Først designer du den i Figma med NKKR. Derefter bygger du den i Next.js med RACE og ser, hvordan begreberne i Figma svarer til begreberne i React.
 
-Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode. Så forbinder du din egen AI-agent til Figma MCP-serveren, lader den bygge den samme komponent og sammenligner. Til sidst retter du designet i Figma, lader agenten opdatere din kode og gennemgår ændringerne kritisk.
+Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode. Så forbinder du din egen AI-agent til Figma MCP-serveren, lader den bygge den samme komponent og sammenligner. Til sidst retter du designet i Figma, lader agenten opdatere din kode og gennemgår ændringerne kritisk. Figma MCP virker begge veje, så agenten kan også opdatere designet i Figma, når du ændrer koden.
 
 <hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
 - Hent [starteren](https://github.com/cederdorff/nextjs-figma-pill-modal) med **Use this template**, klon dit nye repo med GitHub Desktop eller VS Code, og kør `npm i` og `npm run dev`. Det er et nyt projekt, ikke din WordPress-app.
-- Sæt Figma MCP op i den AI-agent, du bruger: Claude Code, Codex, GitHub Copilot i VS Code eller Cursor. Følg [tool-guiden i opgaven](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#tool-guide). Vi tager opsætningen sammen i timen, hvis du ikke når det.
+- Sæt Figma MCP op i VS Code med GitHub Copilot, Codex eller Claude Code. Har du et andet setup, der kan bruge MCP, er det også fint. Følg [tool-guiden i opgaven](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#tool-guide). Vi tager opsætningen sammen i timen, hvis du ikke når det.
 - Læg din Figma-fil i dit Education-team, ikke i _Drafts_. Så har du Dev Mode og Education-planens grænser for Figma MCP.
 
 <hr style="margin: 2rem 0;">
@@ -38,10 +38,10 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 <summary><strong>2. Samme komponent, to sprog: Figma og React</strong></summary>
 <ul>
 <li>Variables → tokens som custom properties i <code>globals.css</code>, fx <code>--color-primary</code>.</li>
-<li>Component set og component → en komponent i React med sin egen CSS Module, fx <code>Pill.js</code> og <code>Pill.module.css</code>.</li>
-<li>Variant <code>Type</code> → en prop, fx <code>type="primary"</code>, der vælger en klasse. Variant <code>State</code> → <code>:hover</code> og <code>:focus-visible</code> i CSS, ikke en prop.</li>
+<li>Component set og component → en komponent i React med sin egen CSS Module, fx <code>Pill.js</code> og <code>Pill.module.css</code>. Instance med overrides → komponenten brugt med props, fx <code>&lt;Pill type="secondary"&gt;</code>.</li>
+<li>Prop, state eller CSS? Spørg, hvem der bestemmer værdien. Variant <code>Type</code> → en prop, der vælger en klasse. Variant <code>State</code> → <code>:hover</code> og <code>:focus-visible</code> i CSS. Åben/lukket → state.</li>
 <li>Boolean property → betinget rendering, fx <code>{showSeparator &amp;&amp; &lt;hr /&gt;}</code>. Tekst → props eller <code>children</code>.</li>
-<li>Auto layout → flexbox i CSS: direction, gap og padding hedder næsten det samme.</li>
+<li>Auto layout → flexbox i CSS: direction, gap og padding hedder næsten det samme. Hug, fill og fixed bliver til bredder.</li>
 <li>Interaktion i prototypen → <code>useState</code> og <code>onClick</code> med en <code>&lt;dialog&gt;</code>. Smart Animate → CSS transition.</li>
 </ul>
 </details>
@@ -55,6 +55,7 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 <li>Byg modalen med <code>&lt;dialog&gt;</code> og <code>showModal()</code>, så fokus og <kbd>Esc</kbd> virker uden ekstra kode.</li>
 <li>Overfør farver, afstande og typografi fra Dev Mode, og lav Smart Animate om til transitions.</li>
 <li>Test med tastaturet: Kan du åbne og lukke modalen, og er fokus synligt?</li>
+<li>Ekstra: Lad pillen folde sig ud, ligesom Smart Animate i din prototype – som overlay fra pillen eller på stedet, så resten af siden flytter sig.</li>
 </ul>
 </details>
 
@@ -67,6 +68,7 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 <li>Gennemgå diffen kritisk: Matcher koden designet, bruger den dine tokens, og er HTML'en stadig semantisk og tilgængelig?</li>
 <li>Du har ansvaret for at forstå, rette og forklare koden.</li>
 <li>Commit og push dit arbejde.</li>
+<li>Ekstra: MCP virker begge veje. Ændr noget i koden, og lad agenten opdatere designet i Figma.</li>
 </ul>
 </details>
 

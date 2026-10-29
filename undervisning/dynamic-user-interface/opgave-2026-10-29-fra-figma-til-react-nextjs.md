@@ -15,7 +15,7 @@ Opgaverne er de samme som i slides, men med mere hjælp. Hvert trin linker til d
 
 ## Sådan bruger du opgaven
 
-- Tiden ved hvert trin er et pejlemærke, så alle når rul 1, 2a og 2b. Er du bagud, så fold løsningen ud, og skriv den af.
+- Det vigtigste er, at du når rul 2 med en komponent, du forstår. Sidder du fast i rul 1, så fold løsningen ud, og skriv den af.
 - Slut hvert trin med **Tjek**, så du ved, at det virker, før du går videre.
 - Dine navne og værdier kommer fra din egen Figma-fil og ser lidt anderledes ud end i eksemplerne. Eksemplerne bruger [demofilen](https://www.figma.com/design/XTTxNnZjIIWPGyvq6Ya5Wj/Figma-%C3%98velse-IXD---Figma--%3E-React?node-id=9-61&m=dev).
 - Commit og push med Source Control i VS Code eller GitHub Desktop efter rul 1, 2a og 2b.
@@ -25,18 +25,92 @@ Opgaverne er de samme som i slides, men med mere hjælp. Hvert trin linker til d
 
 ## Oversigt
 
-| Tid  | Del                                                        | Min. |
-| ---- | ---------------------------------------------------------- | ---- |
-| 0:00 | Intro: Fra Figma-anatomi til React-anatomi                 | 10   |
-| 0:10 | [Før du starter](#før-du-starter): Starteren kører         | 5    |
-| 0:15 | [Rul 1: Håndkod komponenten](#rul-1)                       | 40   |
-| 0:55 | Pause                                                      | 10   |
-| 1:05 | MCP kort fortalt                                           | 5    |
-| 1:10 | [Rul 2a: Byg den igen med Figma MCP](#rul-2a)              | 25   |
-| 1:35 | [Rul 2b: Ret i Figma, og opdatér koden](#rul-2b)           | 15   |
-| 1:50 | [Refleksion](#refleksion)                                  | 10   |
+1. [Før du starter](#før-du-starter): Starteren kører, og din Figma-fil ligger i dit Education-team.
+2. [Rul 1: Håndkod komponenten med Dev Mode](#rul-1)
+3. [Rul 2a: Byg den igen med Figma MCP](#rul-2a)
+4. [Rul 2b: Ret i Figma, og opdatér koden](#rul-2b)
+5. [Refleksion](#refleksion)
 
-Bliver du hurtigt færdig, så tag [ekstraopgaverne](#ekstraopgaver). Opsætning af Figma MCP, Dev Mode og prompts står i [tool-guiden](#tool-guide).
+Hvordan Figma-begreberne bliver til kode, står samlet i [Fra Figma til kode](#fra-figma-til-kode). Opsætning af Figma MCP, Dev Mode og prompts står i [tool-guiden](#tool-guide). Bliver du hurtigt færdig, så tag [ekstraopgaverne](#ekstraopgaver).
+
+<hr style="margin: 2rem 0;">
+
+<a id="fra-figma-til-kode"></a>
+
+## Fra Figma til kode
+
+Brug tabellerne som opslag under rul 1, og når du vurderer agentens kode i rul 2. Eksemplerne er fra demofilen.
+
+### Komponenter og instances
+
+| Figma                          | React og Next.js                                         | Eksempel                                            |
+| ------------------------------ | -------------------------------------------------------- | --------------------------------------------------- |
+| Component set eller component  | En funktion i sin egen fil i `components/` med en CSS Module | `Pill.js` og `Pill.module.css`                  |
+| Instance                       | Komponenten brugt i JSX                                  | `<Pill />`                                          |
+| Overrides på en instance       | Værdierne til props                                      | `<Pill type="secondary">Fitts's Law</Pill>`         |
+| Nested instance                | En komponent inde i en anden komponent                   | En `<Pill>` som lukkeknap inde i `Modal`            |
+| Lagnavne                       | HTML-elementer og klassenavne                            | Laget _Separator_ → `<hr className={styles.separator} />` |
+| Frame'en med dine komponenter  | En side i `app/`                                         | `app/page.js`                                       |
+
+### Variables bliver til tokens
+
+| Variable-type | Figma                                  | `app/globals.css`                                        |
+| ------------- | -------------------------------------- | -------------------------------------------------------- |
+| Color         | `Color/Primary` = `#ff3d8b`            | `--color-primary: #ff3d8b;`                              |
+| Number        | `Paddings/lg` = `36`                   | `--paddings-lg: 36px;`                                   |
+| String        | `font-weight/semi-bold` = `Semi Bold`  | `--font-weight-semi-bold: 600;`                          |
+| String        | `font-family/primary` = `Inter`        | `--font-family-primary: var(--font-inter), sans-serif;`  |
+
+- **Navnet:** Små bogstaver, og `/` og mellemrum bliver til `-`. Gruppen i Figma bliver starten af navnet.
+- **Brug:** Skriv `var(--color-primary)` i CSS'en. Ret værdien ét sted, og alle komponenter følger med – ligesom i Figma.
+- **Værdier uden variable,** fx skyggen på modalen, skriver du direkte i CSS'en. Går en værdi igen flere steder, så lav den til et token.
+
+### Properties bliver til props
+
+| Figma-property | Prop i React                              | Eksempel                                                  |
+| -------------- | ----------------------------------------- | --------------------------------------------------------- |
+| Variant        | En string, der vælger en klasse           | `type="primary"` → `styles.primary`                       |
+| Boolean        | `true` eller `false` og betinget rendering | `{showSeparator && <hr />}`                              |
+| Text           | En string eller `children`                | `title="Hick's Law"` eller `<Pill>Hick's Law</Pill>`      |
+| Instance swap  | Et element som prop                       | `icon={<ArrowIcon />}`                                    |
+
+Navnene følger med. Hedder din property `showSeparator` i Figma, så hedder prop'en det samme i koden.
+
+### Prop, state eller CSS?
+
+Ikke alle variants bliver til props. Spørg: **Hvem bestemmer værdien?**
+
+| Hvem bestemmer?                                   | Bliver til                | Eksempel fra i dag                                    |
+| ------------------------------------------------- | ------------------------- | ----------------------------------------------------- |
+| Den, der bruger komponenten                       | **Prop**                  | `Type`, `showSeparator` og teksterne                  |
+| Browseren, mens brugeren bruger mus eller tastatur | **CSS**                  | `State=Hover` → `:hover` og `:focus-visible`          |
+| Komponenten, der skal huske noget over tid        | **State** med `useState`  | Modalen er åben eller lukket → `isOpen`               |
+
+### Auto layout bliver til flexbox
+
+| Auto layout       | CSS                                                              |
+| ----------------- | ---------------------------------------------------------------- |
+| Direction         | `display: flex` og `flex-direction: column` eller `row`          |
+| Gap               | `gap`                                                            |
+| Padding           | `padding`                                                        |
+| Alignment         | `align-items` og `justify-content`                               |
+| Hug contents      | Ingen bredde. Indholdet bestemmer, fx `display: inline-flex` på pillen |
+| Fill container    | `flex: 1` i forælderens retning eller `align-self: stretch` på tværs |
+| Fixed             | `width` eller `height` – gerne med `max-width`, så det passer på en mobil |
+| Absolute position | `position: absolute`. Brug det kun, når noget skal ligge oven på noget andet |
+
+### Prototype bliver til state og CSS
+
+| Prototype                            | Kode                                                                         |
+| ------------------------------------ | ---------------------------------------------------------------------------- |
+| While hovering                       | `:hover` i CSS                                                               |
+| On click → Open overlay              | `onClick` sætter `isOpen` med `useState`, og `<dialog>` åbnes med `showModal()` |
+| Close when clicking outside          | Et klik på backdroppen kalder `onClose`. <kbd>Esc</kbd> virker af sig selv    |
+| Smart Animate, fx _Ease out, 300ms_  | `transition: opacity 300ms ease-out`                                         |
+| Open overlay, der vokser ud af pillen | En transition, der starter dér, hvor pillen er. Se [ekstra 3a](#ekstra-3a) |
+| Change to en anden variant på stedet, fx _Closed_ → _Open_ | `isOpen` og View Transitions API. Se [ekstra 3b](#ekstra-3b) |
+
+[Slide: Anatomi](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/anatomi) · [Slide: Mapping-tabellen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/mapping) · [Slide: Prop, state eller CSS?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/prop-state-css) · [Slide: Properties](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/properties) · [Slide: Auto layout](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/auto-layout) · [Slide: Prototype](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/mapping-interaktion)
 
 <hr style="margin: 2rem 0;">
 
@@ -68,7 +142,7 @@ Du oversætter selv designet. Hav Figma i Dev Mode ved siden af VS Code, og find
 
 **Du er klar, når:** Et klik på pillen åbner modalen med en animation, <kbd>Esc</kbd> og klik udenfor lukker den, alle værdier kommer fra tokens i `globals.css`, og arbejdet er pushet.
 
-### 1.1 Overfør variables til tokens · 8 min
+### 1.1 Overfør variables til tokens
 
 Dine Figma-variables bliver til custom properties i `:root` i `app/globals.css`. Så kan du bruge dem i alle komponenter med `var()`, ligesom du bruger variables i Figma.
 
@@ -98,9 +172,9 @@ body {
 
 [Slide: Variables bliver til tokens](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/tokens) · [Slide: Opgave 1.1](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-1-1)
 
-### 1.2 Byg pillen · 10 min
+### 1.2 Byg pillen
 
-Din pill er et component set med to variant-properties. De bliver til to forskellige ting i koden:
+Din pill er et component set med to variant-properties. De bliver til to forskellige ting i koden, fordi det er to forskellige, der bestemmer værdien (se [Prop, state eller CSS?](#prop-state-eller-css)):
 
 - **`Type` (Primary/Secondary)** er et valg, når pillen bruges. Den bliver til prop'en `type`, der vælger en klasse i CSS'en: `type="primary"` giver klassen `.primary`.
 - **`State` (Default/Hover)** sker af sig selv, når brugeren holder musen over. Den bliver ikke til en prop, men til `:hover` og `:focus-visible` i CSS'en, så hover-stilen også virker med tastaturet.
@@ -129,9 +203,9 @@ Vis begge typer i `app/page.js`:
 
 **Tjek:** De to pills ligner dem i Figma. Hold musen over dem, og tryk <kbd>Tab</kbd>: Hover-stilen og en fokusring er synlige.
 
-[Slide: Variants bliver til props og CSS](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/pill) · [Slide: Pill.module.css](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/pill-css) · [Slide: Opgave 1.2](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-1-2)
+[Slide: Prop, state eller CSS?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/prop-state-css) · [Slide: Variants bliver til props og CSS](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/pill) · [Slide: Pill.module.css](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/pill-css) · [Slide: Opgave 1.2](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-1-2)
 
-### 1.3 Åbn og luk modalen · 10 min
+### 1.3 Åbn og luk modalen
 
 I Figma åbner pillen modalen som et overlay i prototypen. I React bliver det til state: `isOpen` er `true` eller `false`, og et klik skifter den.
 
@@ -189,7 +263,7 @@ Brug `PillModal` i `app/page.js` i stedet for de to `Pill`s:
 
 [Slide: Hvorfor `<dialog>`?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/dialog) · [Slide: PillModal](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/pillmodal) · [Slide: Modal.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/modal-js) · [Slide: Opgave 1.3](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-1-3)
 
-### 1.4 Modalens indhold og CSS · 7 min
+### 1.4 Modalens indhold og CSS
 
 Din boolean-property `showSeparator` bliver til en prop med `true` eller `false`. Separatoren vises kun, når den er `true`:
 
@@ -209,9 +283,9 @@ Skriv CSS'en i `components/Modal.module.css` med dine tokens:
 
 **Tjek:** Modalen ligner den i Figma, og separatoren forsvinder, når `showSeparator` er `false`.
 
-[Slide: Boolean bliver til betinget rendering](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/separator) · [Slide: Modal.module.css](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/modal-css) · [Slide: Opgave 1.4](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-1-4)
+[Slide: Boolean bliver til betinget rendering](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/separator) · [Slide: Auto layout](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/auto-layout) · [Slide: Modal.module.css](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/modal-css) · [Slide: Opgave 1.4](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-1-4)
 
-### 1.5 Smart Animate, tastatur og commit · 5 min
+### 1.5 Smart Animate, tastatur og commit
 
 Smart Animate i Figma bliver til `transition` i CSS. Find varigheden og easing i din prototype, fx _Ease out, 300ms_.
 
@@ -579,19 +653,21 @@ export default function Home() {
 
 Du bygger den samme komponent igen, men nu skriver en AI-agent koden. Agenten læser din Figma-fil gennem Figma MCP-serveren. Du lægger dens version i sin egen mappe, så du kan sammenligne den med din egen.
 
+Figma MCP virker begge veje: Agenten kan læse designet, men den kan også skrive til din Figma-fil. I rul 2 bruger du læse-retningen. Prøv skrive-retningen i [ekstra 4](#ekstra-4-fra-kode-til-figma).
+
 **Du er klar, når:** Agentens version kører på `/agent`, du har noteret, hvad der blev ens, og hvad du skulle rette, og agentens version er committet for sig.
 
-### 2.1 Forbind din agent til Figma MCP · 10 min
+### 2.1 Forbind din agent til Figma MCP
 
-Følg vejledningen til din agent i [tool-guiden](#opsaetning): Claude Code, Codex, GitHub Copilot i VS Code eller Cursor. Du logger ind med din Figma-konto i browseren og klikker **Allow access**.
+Følg vejledningen til din agent i [tool-guiden](#opsaetning): GitHub Copilot, Codex eller Claude Code i VS Code. Har du et andet setup, der kan bruge MCP, er det også fint. Du logger ind med din Figma-konto i browseren og klikker **Allow access**.
 
 Bed derefter agenten om at køre `whoami` fra Figma MCP. Svaret viser, hvilken e-mail du er logget ind med, og hvilken plan og hvilket seat du har. `whoami` tæller ikke med i dine grænser.
 
 **Tjek:** `whoami` viser din skole-e-mail og Education-planen.
 
-[Slide: Hvad er MCP?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/mcp) · [Slide: Opsætning](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opsaetning) · [Slide: whoami og grænser](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/whoami) · [Slide: Opgave 2.1](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-2-1)
+[Slide: Hvad er MCP?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/mcp) · [Slide: Begge veje](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/mcp-begge-veje) · [Slide: Opsætning](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opsaetning) · [Slide: whoami og grænser](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/whoami) · [Slide: Opgave 2.1](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-2-1)
 
-### 2.2 Byg komponenten med agenten · 8 min
+### 2.2 Byg komponenten med agenten
 
 Højreklik på den frame i Figma, der indeholder din pill og din modal, og vælg **Copy link to selection**. Kopiér [prompten til 2a](#prompt-2a), indsæt dit link, og send den til agenten.
 
@@ -601,7 +677,7 @@ Prompten fortæller agenten det, den ikke kan se i Figma: at projektet bruger Ja
 
 [Slide: Prompten til 2a](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/prompt-2a) · [Slide: Opgave 2a](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-2a)
 
-### 2.3 Sammenlign med din egen version · 7 min
+### 2.3 Sammenlign med din egen version
 
 Åbn `/` og `/agent` side om side, og læg filerne ved siden af hinanden i VS Code. Notér svarene på tjeklisten:
 
@@ -639,7 +715,7 @@ Designet ændrer sig. Nu beder du agenten opdatere din håndkodede komponent i s
 
 **Du er klar, når:** Din håndkodede komponent matcher det rettede design, du har læst hele diffen i Source Control, og arbejdet er pushet.
 
-### 2.4 Ret designet i Figma · 4 min
+### 2.4 Ret designet i Figma
 
 Lav mindst to ændringer i din Figma-fil:
 
@@ -650,7 +726,7 @@ Lav mindst to ændringer i din Figma-fil:
 
 [Slide: Opgave 2b](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-2b)
 
-### 2.5 Bed agenten opdatere komponenten · 5 min
+### 2.5 Bed agenten opdatere komponenten
 
 Kopiér [prompten til 2b](#prompt-2b), indsæt dit link, og send den til agenten. Prompten beder agenten rette de eksisterende filer, rette tokens i `globals.css` i stedet for at hardcode nye værdier og forklare hver ændring.
 
@@ -658,7 +734,7 @@ Kopiér [prompten til 2b](#prompt-2b), indsæt dit link, og send den til agenten
 
 [Slide: Prompten til 2b](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/prompt-2b) · [Slide: Opgave 2b](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgave-2b)
 
-### 2.6 Gennemgå diffen, og commit · 6 min
+### 2.6 Gennemgå diffen, og commit
 
 Åbn **Source Control** i VS Code eller **Changes** i GitHub Desktop, og klik dig igennem hver ændret fil. Det røde er fjernet, og det grønne er tilføjet.
 
@@ -700,13 +776,14 @@ import Pill from "./Pill";
 
 <a id="refleksion"></a>
 
-## Refleksion · 10 min
+## Refleksion
 
 Tal med sidemanden, og tag svarene med i den fælles opsamling:
 
 - Hvad kunne agenten se i Figma, og hvad skulle du fortælle den?
 - Hvilke fejl ville du ikke have opdaget, hvis du ikke havde bygget komponenten selv først?
 - Hvornår var agenten hurtigst, og hvornår tog det længere tid at rette end at skrive selv?
+- Figma MCP virker begge veje. Hvem bestemmer, når Figma og koden er uenige – og hvor retter I først?
 - Hvordan kan du navngive og strukturere din Figma-fil, så koden bliver bedre næste gang?
 
 [Slide: Refleksion](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/refleksion)
@@ -832,7 +909,327 @@ export default function Home() {
 
 **Starterrepo:** [Ekstra 2: Pills fra et array](https://github.com/cederdorff/nextjs-figma-pill-modal/commit/ca446bb)
 
-[Slide: Ekstraopgaver](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/ekstra)
+### Ekstra 3: Fold ud fra pillen
+
+Der er flere måder at folde pillen ud på. Vælg den, der passer til din prototype:
+
+|                 | 3a: Som overlay fra pillen                            | 3b: På stedet                                                       |
+| --------------- | ----------------------------------------------------- | ------------------------------------------------------------------- |
+| **Det sker**    | Modalen vokser ud af pillen og lægger sig oven på siden | Pillen folder sig ud til et kort, hvor den er, og resten flytter sig |
+| **I Figma**     | _Open overlay_ med Smart Animate                      | _Change to_ en anden variant, fx _Closed_ → _Open_, med Smart Animate |
+| **Siden bag**   | Kan ikke bruges, mens modalen er åben                 | Kan stadig bruges                                                   |
+| **Element**     | `<dialog>` med `showModal()`                          | `<button aria-expanded>`. Det er ikke en modal                      |
+| **Animation**   | `translate` og `scale` fra pillens position           | View Transitions API                                                |
+
+[Slide: To måder at folde ud](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/fold-ud)
+
+<a id="ekstra-3a"></a>
+
+#### 3a: Som overlay fra pillen
+
+I din prototype kan Smart Animate få modalen til at vokse ud af pillen. I koden er det stadig en transition. Den starter bare dér, hvor pillen er, i stedet for midt på skærmen. Mønstret kaldes også _container transform_.
+
+Det er ikke en ny variant. Pillen og modalen har de samme props og den samme state. Det er kun bevægelsen mellem lukket og åben, der ændrer sig.
+
+1. **Mål pillen:** Giv pillen en `handleOpen(event)` som `onClick` i `PillModal`. `event.currentTarget.getBoundingClientRect()` giver pillens position. Modalen åbner midt på skærmen, så gem afstanden fra skærmens midte til pillens midte i state, fx `origin`.
+2. **Giv tallene til CSS:** Send `origin` til `Modal`, og sæt dem som custom properties med `style` på `<dialog>`. Ellers bruger vi ikke `style`, men her kendes værdien først, når brugeren klikker.
+3. **Start dér:** I `Modal.module.css` ligger den lukkede modal lille oven på pillen med `translate` og `scale`. Tilføj `translate` til `transition` og til `@starting-style`.
+4. **Mindre bevægelse:** Har brugeren bedt om mindre bevægelse (`prefers-reduced-motion`), så lad modalen kun fade.
+
+**Tjek:** Hver pill åbner sin modal ud fra sig selv, og modalen folder sig ind i pillen igen, når den lukker. Firefox lukker stadig uden animation.
+
+[Slide: To måder at folde ud](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/fold-ud) · [Slide: Mål pillen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/udfold) · [Slide: Start dér, hvor pillen er](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/udfold-css)
+
+<details>
+<summary><strong>Se løsningen til ekstra 3a</strong></summary>
+
+`components/PillModal.js` – `handleOpen` måler pillen, før modalen åbner:
+
+```jsx
+const [isOpen, setIsOpen] = useState(false);
+const [origin, setOrigin] = useState({ x: 0, y: 0 });
+
+// The modal opens in the middle of the screen. Measure how far the pill is from there,
+// so the modal can unfold from the pill.
+function handleOpen(event) {
+  const pill = event.currentTarget.getBoundingClientRect();
+  setOrigin({
+    x: pill.left + pill.width / 2 - window.innerWidth / 2,
+    y: pill.top + pill.height / 2 - window.innerHeight / 2
+  });
+  setIsOpen(true);
+}
+
+return (
+  <>
+    <Pill type={type} size={size} onClick={handleOpen}>
+      {label}
+    </Pill>
+    <Modal
+      isOpen={isOpen}
+      onClose={() => setIsOpen(false)}
+      origin={origin}
+      title={title}
+      text={text}
+      showSeparator={showSeparator}
+    />
+  </>
+);
+```
+
+`components/Modal.js` – `origin` bliver til to custom properties på `<dialog>`:
+
+```jsx
+export default function Modal({ isOpen, onClose, origin = { x: 0, y: 0 }, title, text, showSeparator = true }) {
+  const dialogRef = useRef(null);
+
+  // The pill's position as CSS custom properties. Modal.module.css starts the animation there.
+  const originStyle = { "--origin-x": `${origin.x}px`, "--origin-y": `${origin.y}px` };
+
+  // ...
+
+  return (
+    <dialog
+      ref={dialogRef}
+      className={styles.modal}
+      style={originStyle}
+      aria-label={title}
+      onClose={onClose}
+      onClick={handleClick}
+    >
+```
+
+`components/Modal.module.css` – erstatter animationen fra 1.5:
+
+```css
+/* Smart Animate -> transition. Closed is the state the modal animates from and back to.
+   Closed, the modal is small and sits on top of the pill, so it unfolds from there. */
+.modal {
+  opacity: 0;
+  scale: 0.2;
+  translate: var(--origin-x) var(--origin-y);
+  transition:
+    opacity 300ms ease-out,
+    scale 300ms ease-out,
+    translate 300ms ease-out,
+    overlay 300ms ease-out allow-discrete,
+    display 300ms ease-out allow-discrete;
+}
+
+.modal[open] {
+  opacity: 1;
+  scale: 1;
+  translate: 0 0;
+}
+
+/* .modal::backdrop and .modal[open]::backdrop are the same as in 1.5 */
+
+/* Where the animation starts when the modal opens */
+@starting-style {
+  .modal[open] {
+    opacity: 0;
+    scale: 0.2;
+    translate: var(--origin-x) var(--origin-y);
+  }
+
+  .modal[open]::backdrop {
+    background: rgb(22 22 26 / 0);
+  }
+}
+
+/* Less motion for users who have asked for it: the modal only fades */
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal[open] {
+    scale: none;
+    translate: none;
+  }
+}
+```
+
+</details>
+
+**Starterrepo:** [Ekstra 3a: Fold modalen ud fra pillen](https://github.com/cederdorff/nextjs-figma-pill-modal/commit/6c775e9)
+
+<a id="ekstra-3b"></a>
+
+#### 3b: På stedet, så resten flytter sig
+
+Her folder pillen sig ud til et kort, hvor den er, og de andre pills flytter sig og gør plads. I Figma er det en variant: Pillen får fx `State=Closed` og `State=Open`, og prototypen skifter mellem dem med **Change to** og Smart Animate.
+
+I koden er det ikke en modal længere. Resten af siden kan stadig bruges, så der er ingen `<dialog>`, ingen backdrop og ingen lukning med <kbd>Esc</kbd>. Pillen er en knap, der folder indhold ud og ind. Det mønster hedder _disclosure_, og `aria-expanded` fortæller skærmlæsere, om indholdet er foldet ud. Varianten `Open` bliver til state, fordi komponenten selv skal huske den (se [Prop, state eller CSS?](#prop-state-eller-css)).
+
+1. **Ny komponent:** Opret `components/PillDisclosure.js` med `"use client"` og `isOpen` i state. Vis pillen, og vis indholdet fra modalen under den, når `isOpen` er `true`.
+2. **`aria-expanded`:** Giv `Pill` `...props`, så du kan sende `aria-expanded={isOpen}` videre til `<button>`.
+3. **Kortet:** Giv elementet rundt om pillen og indholdet en klasse med kant, radius, padding og bredde, når det er åbent. Kanten har samme farve som pillens, så det ser ud, som om pillen vokser.
+4. **Animation:** Pak ændringen ind i `document.startViewTransition()`. Browseren tager et billede før og efter og animerer imellem dem, også af de pills, der flytter sig. `flushSync` får React til at opdatere siden med det samme, så billedet bagefter er rigtigt.
+5. **Navne:** Hvert element, der skal animere for sig, skal have et unikt `view-transition-name`. Lav det med `useId()`, fordi der er flere pills på siden.
+6. **Smart Animate:** Sæt varighed og easing på `::view-transition-group(*)` i `app/globals.css`. Det kan ikke ligge i en CSS Module, fordi selektoren ikke har en klasse. Slå animationen fra under `prefers-reduced-motion`.
+
+**Tjek:** Pillen folder sig ud til et kort, hvor den er, og de andre pills glider på plads. Et klik mere folder kortet sammen igen. <kbd>Tab</kbd> og <kbd>Enter</kbd> virker, og fokus bliver på pillen. Browsere uden View Transitions skifter uden animation. Derfor tjekker koden `document.startViewTransition` først.
+
+[Slide: To måder at folde ud](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/fold-ud) · [Slide: Fold ud på stedet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/paa-stedet) · [Slide: View transitions i CSS](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/paa-stedet-css)
+
+<details>
+<summary><strong>Se løsningen til ekstra 3b</strong></summary>
+
+`components/Pill.js` – andre props, fx `aria-expanded`, sendes videre til `<button>`:
+
+```jsx
+export default function Pill({ type = "primary", size = "md", onClick, children, ...props }) {
+  return (
+    <button type="button" className={`${styles.pill} ${styles[type]} ${styles[size]}`} onClick={onClick} {...props}>
+      {children}
+    </button>
+  );
+}
+```
+
+`components/PillDisclosure.js`:
+
+```jsx
+"use client";
+
+import { useId, useState } from "react";
+import { flushSync } from "react-dom";
+import Pill from "./Pill";
+import styles from "./PillDisclosure.module.css";
+
+// Figma: the variants Closed and Open with "Change to" and Smart Animate.
+// The pill opens where it is and makes room. The rest of the page can still be used,
+// so it is not a modal: the pill is a button with aria-expanded, and there is no <dialog>.
+export default function PillDisclosure({ type, size, label, text, showSeparator = true }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const id = useId();
+
+  // The View Transitions API takes a picture before and after the change and animates between them.
+  // flushSync makes React update the page right away, so the "after" picture is correct.
+  function handleClick() {
+    if (!document.startViewTransition) {
+      setIsOpen(!isOpen);
+      return;
+    }
+    document.startViewTransition(() => {
+      flushSync(() => setIsOpen(!isOpen));
+    });
+  }
+
+  // Each element that should animate on its own needs a unique view-transition-name
+  return (
+    <div className={`${styles.item} ${isOpen ? styles.open : ""}`} style={{ viewTransitionName: `item${id}` }}>
+      <Pill
+        type={type}
+        size={size}
+        onClick={handleClick}
+        aria-expanded={isOpen}
+        style={{ viewTransitionName: `pill${id}` }}
+      >
+        {label}
+      </Pill>
+      {isOpen && (
+        <div className={styles.content}>
+          {showSeparator && <hr className={styles.separator} />}
+          <p className={styles.text}>{text}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+`components/PillDisclosure.module.css`:
+
+```css
+/* Figma: the variant Open. Closed, the item is only the pill. Open, it becomes a card around the pill.
+   align-self keeps the item at the top, so the other pills do not move down when a card opens. */
+.item {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  align-items: flex-start;
+  gap: var(--gaps-md);
+}
+
+/* The card gets the same border as the pill, so the pill looks like it grows into the card */
+.open {
+  width: 500px;
+  max-width: 100%;
+  padding: var(--paddings-lg);
+  border: 1px solid var(--color-neutral-grey-200);
+  border-radius: var(--border-radius-md);
+  background: var(--color-neutral-white);
+}
+
+/* The same content as in the modal */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gaps-md);
+}
+
+/* .separator and .text are the same as in Modal.module.css */
+```
+
+`app/globals.css` – nederst:
+
+```css
+/* View transitions (extra 3b): Smart Animate, ease out, 300ms */
+::view-transition-group(*) {
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
+}
+```
+
+`app/page.js` – de samme love, men med `PillDisclosure`:
+
+```jsx
+<h2>På stedet</h2>
+<div className={styles.pills}>
+  {laws.map((law) => (
+    <PillDisclosure
+      key={law.title}
+      type={law.type}
+      size={law.size}
+      label={law.title}
+      text={law.text}
+      showSeparator={law.showSeparator}
+    />
+  ))}
+</div>
+```
+
+</details>
+
+**Starterrepo:** [Ekstra 3b: Fold ud på stedet](https://github.com/cederdorff/nextjs-figma-pill-modal/commit/c47af8d)
+
+### Ekstra 4: Fra kode til Figma
+
+Figma MCP virker begge veje. Agenten kan også skrive til din Figma-fil, så designet følger med, når du ændrer koden.
+
+1. Ret noget i koden, fx `--border-radius-md` i `app/globals.css` eller hover-farven på pillen.
+2. Kopiér et link til din frame i Figma, og send prompten nedenfor til agenten.
+3. Tjek i Figma: Har agenten rettet den eksisterende variable og komponent, eller har den lavet nye?
+
+```text
+Jeg har ændret designet i koden: <beskriv ændringen, fx --border-radius-md er nu 16px i app/globals.css>
+
+Opdatér mit Figma-design, så det matcher koden: <indsæt dit link>
+- Ret den eksisterende variable i stedet for at lave en ny.
+- Ret de eksisterende komponenter Pill og Modal. Lav ikke nye komponenter.
+- Fortæl bagefter, hvad du har ændret i Figma.
+```
+
+Agenten skriver til Figma med værktøjet `use_figma`. Det kræver, at du kan redigere filen, og det virker bedst med Figma's skills, som følger med Figma-pluginnet til din agent. Arbejd gerne i en kopi af din fil. Du kan altid gå tilbage i Figma's versionshistorik.
+
+[Slide: Begge veje](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/mcp-begge-veje) · [Slide: Ekstraopgaver](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/ekstra)
 
 <hr style="margin: 2rem 0;">
 
@@ -857,39 +1254,18 @@ Dev Mode kræver et Full- eller Dev-seat, og det har du på Education-planen. Fi
 
 <a id="opsaetning"></a>
 
-### Opsætning af Figma MCP
+### Opsætning af Figma MCP i VS Code
 
-Du bruger Figma's **remote MCP-server** på `https://mcp.figma.com/mcp`. Den kræver ikke Figma-appen. Første gang logger du ind med din Figma-konto i browseren og klikker **Allow access**. Vælg den agent, du plejer at bruge.
+Vi bruger VS Code med en AI-extension. Vælg én af de tre nedenfor. Har du allerede et andet setup med en agent, der kan bruge MCP, så brug det, og følg [Figma's guide](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/) til din agent.
 
-**Claude Code**
+Alle tre bruger Figma's **remote MCP-server** på `https://mcp.figma.com/mcp`. Den kræver ikke Figma-appen. Første gang logger du ind med din Figma-konto i browseren og klikker **Allow access**.
 
-Installér Figma-pluginnet i terminalen, og genstart Claude Code:
+**GitHub Copilot**
 
-```bash
-claude plugin install figma@claude-plugins-official
-```
+Copilot er indbygget i VS Code.
 
-Skriv `/plugin` i Claude Code, vælg fanen **Installed**, vælg `figma`, og tryk <kbd>Enter</kbd> for at logge ind. Skriv `/plugin` igen, og tjek, at `figma` står som forbundet.
-
-Virker pluginnet ikke, så tilføj serveren manuelt, start en ny session, skriv `/mcp`, vælg **figma** og **Authenticate**:
-
-```bash
-claude mcp add --scope user --transport http figma https://mcp.figma.com/mcp
-```
-
-**Codex**
-
-I Codex-appen: Klik **Plugins** øverst til venstre, klik **+** ved Figma og **Install Figma**, og giv adgang med **Allow access**.
-
-I Codex CLI eller Codex i VS Code: Kør kommandoen, og log ind, når du bliver bedt om det:
-
-```bash
-codex mcp add figma --url https://mcp.figma.com/mcp
-```
-
-**GitHub Copilot i VS Code**
-
-Åbn kommandopaletten (<kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> eller <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>), og vælg **MCP: Open User Configuration**. Indsæt serveren i `mcp.json`, og gem:
+1. Åbn kommandopaletten (<kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> eller <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>), og vælg **MCP: Open User Configuration**.
+2. Indsæt serveren i `mcp.json`, og gem:
 
 ```json
 {
@@ -903,25 +1279,31 @@ codex mcp add figma --url https://mcp.figma.com/mcp
 }
 ```
 
-Klik **Start** over `figma` i filen, og giv adgang med **Allow access**. Brug **Agent**-tilstand i Copilot Chat, ellers kan Copilot ikke bruge MCP-værktøjerne.
+3. Klik **Start** over `figma` i filen, og giv adgang med **Allow access**.
+4. Vælg **Agent** i Copilot Chat. Ellers kan Copilot ikke bruge MCP-værktøjerne.
 
-**Cursor**
+**Codex**
 
-Åbn chatten, skriv `/add-plugin figma`, og klik **Add Plugin**. Åbn derefter **Cursor Settings** → **Tools & MCP**, klik **Connect** ved Figma, og giv adgang med **Allow access**.
+1. Installér Codex-extensionen fra OpenAI i VS Code, og log ind.
+2. Klik på tandhjulet i Codex-panelet, og vælg **MCP servers** → **Add server**.
+3. Skriv `figma` som navn, vælg **Streamable HTTP**, og indsæt `https://mcp.figma.com/mcp` som URL.
+4. Gem, og vælg **Restart extension**. Klik **Authenticate**, når Codex beder dig logge ind.
 
-Virker pluginnet ikke, så tilføj en custom MCP-server under **Tools & MCP** med denne konfiguration, og klik **Connect**:
+Codex-extensionen deler opsætning med Codex CLI. Bruger du terminalen, så kør `codex mcp add figma --url https://mcp.figma.com/mcp` og derefter `codex mcp login figma`.
 
-```json
-{
-  "mcpServers": {
-    "figma": {
-      "url": "https://mcp.figma.com/mcp"
-    }
-  }
-}
+**Claude Code**
+
+1. Installér Claude Code-extensionen fra Anthropic i VS Code, og log ind.
+2. Skriv `/plugins` i Claude Code-panelet, og installér `figma` fra den officielle marketplace. Pluginnet indeholder også Figma's skills.
+3. Skriv `/mcp`, vælg **figma**, og log ind. Klik **Allow access** i browseren.
+
+Finder du ikke pluginnet, så tilføj serveren i `/mcp`-dialogen med navnet `figma`, typen HTTP og URL'en `https://mcp.figma.com/mcp`. Du kan også køre kommandoen i terminalen i VS Code og derefter logge ind med `/mcp`:
+
+```bash
+claude mcp add --scope user --transport http figma https://mcp.figma.com/mcp
 ```
 
-Kilde: [Figma: Remote server installation](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/), tjekket 28. oktober 2026.
+Kilder, tjekket 28. oktober 2026: [Figma: Remote server installation](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/) · [OpenAI: Codex og MCP](https://learn.chatgpt.com/docs/extend/mcp) · [Claude Code: VS Code](https://code.claude.com/docs/en/vs-code)
 
 [Slide: Opsætning](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opsaetning)
 
@@ -935,6 +1317,8 @@ Bed agenten: _Kør whoami fra Figma MCP._ Svaret viser din e-mail, dine planer o
 | -------------------------------------------- | ------------------------------------ |
 | Education                                    | 200 pr. dag og 10 pr. minut          |
 | Starter, eller View- og Collab-seat          | 20 pr. måned                         |
+
+Værktøjer, der skriver til Figma, og `whoami` tæller ikke med i grænserne.
 
 Kilde: [Figma: Rate limits & access](https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/), tjekket 28. oktober 2026. Figma kan ændre grænserne.
 
@@ -1005,9 +1389,15 @@ Opdatér de eksisterende komponenter i components/Pill.js, components/Modal.js o
 - [Figma: Guide to Dev Mode](https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode)
 - [Figma: Guide to the Figma MCP server](https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server)
 - [Figma: Remote server installation](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/)
+- [Figma: Tools and prompts](https://developers.figma.com/docs/figma-mcp-server/tools-and-prompts/) – værktøjerne, der læser fra og skriver til Figma
 - [Figma: Rate limits & access](https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/)
 - [React: Passing props to a component](https://react.dev/learn/passing-props-to-a-component)
 - [React: Conditional rendering](https://react.dev/learn/conditional-rendering)
 - [React: State: a component's memory](https://react.dev/learn/state-a-components-memory)
 - [MDN: The dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog)
 - [MDN: @starting-style](https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style)
+- [MDN: getBoundingClientRect()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
+- [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+- [MDN: View Transition API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API)
+- [React: flushSync](https://react.dev/reference/react-dom/flushSync)
+- [WAI-ARIA: Disclosure pattern](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/)
