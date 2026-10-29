@@ -299,11 +299,6 @@
   grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.55fr);
 }
 
-/* Pause */
-.pause-slide h2 {
-  font-size: 96px;
-}
-
 /* Afslutning · formlen i fire trin */
 .dui-closing .closing-formula span {
   white-space: nowrap;
