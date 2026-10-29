@@ -244,7 +244,7 @@ Giv formularen `action={signUp}`. Når brugeren klikker på knappen, kører `sig
 
 Åbn browserens udviklerværktøjer. Gå til _Application_ (Chrome) eller _Storage_ (Safari og Firefox), og kig under **Cookies**.
 
-**Tjek:** Der står en cookie, der slutter med `-auth-token`. Det er din session. Commit og push.
+**Tjek:** Der står en cookie, der slutter med `-auth-token`. Det er din session.
 
 [Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
 
@@ -254,7 +254,7 @@ Opret den samme bruger igen. Der sker ingenting, fordi fejlen forsvinder på ser
 
 `searchParams` er det, der står efter `?` i URL'en. Next.js giver det til siden som en prop. Det er et Promise, så siden skal være `async` og bruge `await`.
 
-**Tjek:** Den samme e-mail to gange giver din fejlbesked. Commit og push.
+**Tjek:** Den samme e-mail to gange giver din fejlbesked.
 
 <details>
 <summary><strong>Hint</strong></summary>
@@ -409,7 +409,7 @@ Ret Server Action'en:
 - [ ] Formularen: `action={signIn}`
 - [ ] Har du lavet 2.5: `redirect("/login?error=true")` ved fejl
 
-**Tjek:** Log ind med den bruger, du oprettede i opgave 2. Du lander på forsiden. Commit og push.
+**Tjek:** Log ind med den bruger, du oprettede i opgave 2. Du lander på forsiden.
 
 [Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-action)
 
@@ -447,7 +447,7 @@ Og i formularen: `<form action={signIn} className="auth-form">`.
 
 ### 3.3 Test fejlen · valgfri
 
-Har du lavet fejlbeskeden i 2.5? Prøv med en forkert adgangskode og med en e-mail, der ikke findes. Commit og push.
+Har du lavet fejlbeskeden i 2.5? Prøv med en forkert adgangskode og med en e-mail, der ikke findes.
 
 **Tjek:** Begge giver _Wrong email or password._ Supabase siger med vilje ikke, hvad der var forkert, så ingen kan bruge login-siden til at finde ud af, hvem der har en bruger.
 
@@ -634,7 +634,7 @@ Skriv en Server Action, `signOut`, i `app/profile/page.js`. Den kalder `supabase
 
 Ret til sidst `redirect("/")` til `redirect("/profile")` i `signUp` og `signIn`. Så ser brugeren med det samme, at det virkede.
 
-**Tjek:** Log ind, og du lander på profilen. Klik på _Log out_. Cookien er væk, og `/profile` sender dig til `/login`. Commit og push.
+**Tjek:** Log ind, og du lander på profilen. Klik på _Log out_. Cookien er væk, og `/profile` sender dig til `/login`.
 
 <details>
 <summary><strong>Hint</strong></summary>
@@ -819,7 +819,7 @@ I `components/Header.js`:
 
 Er man allerede logget ind, giver `/login` og `/signup` ingen mening. Tjek brugeren på begge sider, og send til `/profile`, hvis der **er** en.
 
-**Tjek:** Logget ind sender `/login` og `/signup` dig til profilen. Logget ud ser du formularerne. Commit og push.
+**Tjek:** Logget ind sender `/login` og `/signup` dig til profilen. Logget ud ser du formularerne.
 
 <details>
 <summary><strong>Hint</strong></summary>
@@ -1000,7 +1000,7 @@ export default function Header() {
 
 Kør `npm run build` – som i [Static eller dynamic?](#static-dynamic). Nu er alle routes ƒ – også `/`. Headeren står i layoutet og læser cookien, så hver side afhænger af, hvem der spørger.
 
-**Tjek:** Alle routes er ƒ. Commit og push.
+**Tjek:** Alle routes er ƒ.
 
 **Sidder du fast?**
 
