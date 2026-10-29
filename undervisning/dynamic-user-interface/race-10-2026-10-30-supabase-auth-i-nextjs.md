@@ -4,13 +4,13 @@
 
 I dag tilføjer vi brugere til Next.js-appen med Supabase Auth. I Product optimization brugte vi Supabase via REST for at forstå fetch, HTTP og JSON. Nu skifter vi til Supabase SDK'et, som også håndterer auth og sessioner.
 
-Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der kun kan ses af brugere, der er logget ind. Inden kick-off på mandag skal du også have en idé om, hvorvidt jeres produkt har brug for brugere.
+Målet er, at du bygger en lille Next.js-app med sign up, log ind, log ud og en profilside, der kun kan ses af brugere, der er logget ind. Bagefter overfører du det til din headless WordPress-app. Inden kick-off på mandag skal du også have en idé om, hvorvidt jeres produkt har brug for brugere.
 
 <hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
-- Sørg for, at din Next.js-app kører lokalt med indhold fra WordPress.
+- Sørg for, at din Next.js-app fra 26. oktober kører lokalt med indhold fra WordPress. Du skal bruge den til sidst.
 - Opret et nyt Supabase-projekt til Next.js-appen, eller genoptag et eksisterende (resume project).
 - Genbesøg gerne slidet om REST og SDK fra [Product optimization 01](https://cederdorff.com/mdu-e25ixd/slides/product-optimization-01/#/supabase-rest-og-sdk).
 
@@ -40,10 +40,11 @@ Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der k
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Supabase-klienten og proxy.js</strong></summary>
+<summary><strong>3. Startprojektet: Supabase-klienten og proxy.js</strong></summary>
 <ul>
-<li>Opret klienten til server components og Server Actions, som beskrevet i Supabase' guide til Next.js. Den læser sessionen fra cookies i requesten.</li>
-<li>Tilføj filen, der fornyer sessionen ved hver request (<code>proxy.js</code>, tidligere <code>middleware.js</code>).</li>
+<li>Hent startprojektet <code>nextjs-supabase-auth</code>, hvor klienten og <code>proxy.js</code> allerede er sat op, og forbind det til dit Supabase-projekt.</li>
+<li>Klienten til server components og Server Actions læser sessionen fra cookies i requesten, som beskrevet i Supabase' guide til Next.js.</li>
+<li><code>proxy.js</code> – tidligere <code>middleware.js</code> – fornyer sessionen ved hver request.</li>
 <li>Supabase har også en klient til browseren. I dag kører al Supabase-kode på serveren, så den har vi ikke brug for.</li>
 </ul>
 </details>
@@ -51,10 +52,10 @@ Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der k
 <details style="margin-left: 1.5rem;">
 <summary><strong>4. Sign up, sign in og sign out</strong></summary>
 <ul>
-<li>Byg en side til sign up og en til login – hver med en formular, labels og en fejlbesked.</li>
+<li>Opret routes til sign up og login – hver med en formular, labels og en fejlbesked.</li>
 <li>Formularerne kalder en Server Action, der taler med Supabase på serveren.</li>
 <li>Slå e-mailbekræftelse fra under udviklingen, og test flowet fra start til slut.</li>
-<li>Vis, om brugeren er logget ind, i layoutet, og tilføj en knap til at logge ud.</li>
+<li>Tilføj en knap til at logge ud. Ekstra: Vis, om brugeren er logget ind, i headeren.</li>
 </ul>
 </details>
 
@@ -63,7 +64,7 @@ Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der k
 <ul>
 <li>Opret en profilside, fx <code>app/profile/page.js</code>, som kun kan ses af brugere, der er logget ind.</li>
 <li>Tjek brugeren på serveren med <code>supabase.auth.getClaims()</code>, og send brugere, der ikke er logget ind, videre med <code>redirect()</code>. Supabase anbefaler <code>getClaims()</code>, fordi den tjekker, at token'et er ægte.</li>
-<li>Lås detaljesiderne, så kun brugere, der er logget ind, kan læse en hel post.</li>
+<li>Ekstra: Beskyt flere routes, og send brugere, der er logget ind, fra login til profilen.</li>
 <li>Test siderne både logget ind, logget ud og i et privat browservindue.</li>
 </ul>
 </details>
@@ -71,7 +72,7 @@ Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der k
 <details style="margin-left: 1.5rem;">
 <summary><strong>6. Arbejd videre og overfør til jeres projekt</strong></summary>
 <ul>
-<li>Gør login-flowet færdigt, og test det i et privat browservindue.</li>
+<li>Overfør login til din headless WordPress-app, og lås detaljesiderne, så kun brugere, der er logget ind, kan læse en hel post.</li>
 <li>Overvej jeres projektidé: Skal produktet have brugere? Hvad kan en bruger, der er logget ind, som andre ikke kan?</li>
 <li>Har produktet brugere, stiller eksamen også krav til it-sikkerhed. Notér, hvilke data der skal beskyttes.</li>
 <li>Commit og push dit arbejde.</li>
@@ -87,8 +88,11 @@ Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der k
   - [PDF-version: Supabase Auth i Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/?print-pdf)
 - **Opgaver:**
   - [Overblik i slides](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/opgaver)
-  - [Opgaver med ekstra hjælp og løsninger](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md) – trin for trin, fejlfinding og den fulde løsning
-- **Referencerepo:** [nextjs-headless-wordpress, branchen `supabase-auth`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/supabase-auth) – ét commit pr. opgave
+  - [Next.js og Supabase Auth](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md) – dagens opgave med startprojekt, hints og løsninger
+  - [Supabase Auth i din headless WordPress-app](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md) – overfør login til appen fra 26. oktober
+- **Løsningsrepoer:**
+  - [nextjs-supabase-auth](https://github.com/cederdorff/nextjs-supabase-auth) – template med startprojektet på `main` og én løsningsbranch pr. opgave
+  - [nextjs-headless-wordpress, branchen `supabase-auth`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/supabase-auth) – auth i WordPress-appen
 - **Supabase:**
   - [Setting up Server-Side Auth for Next.js](https://supabase.com/docs/guides/auth/server-side/nextjs)
   - [Creating a Supabase client for SSR](https://supabase.com/docs/guides/auth/server-side/creating-a-client)

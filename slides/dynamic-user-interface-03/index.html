@@ -47,13 +47,13 @@
 
         <section class="po-slide" id="maal">
           <span class="eyebrow">Dagens mål</span>
-          <h2>Samme app — nu med brugere</h2>
+          <h2>Fire routes — én kræver login</h2>
           <div class="au-goal">
             <div class="au-browser" aria-label="Skitse af appen med login-status i headeren">
               <div class="au-browser-bar"><i></i><i></i><i></i><span>localhost:3000/profile</span></div>
               <div class="au-app-header">
-                <b>Headless WordPress</b>
-                <span>Home</span><span>Posts</span><span>About</span>
+                <b>Supabase Auth</b>
+                <span>Home</span><span>Profile</span>
                 <em>dig@eaaa.dk</em><u>Log out</u>
               </div>
               <div class="au-app-body">
@@ -68,16 +68,16 @@
             </div>
             <div class="goal-points">
               <article>
+                <span>Routes</span><strong>Forside, sign up, log ind og profil</strong
+                ><small><code>/</code> · <code>/signup</code> · <code>/login</code> · <code>/profile</code></small>
+              </article>
+              <article>
                 <span>Brugere</span><strong>Sign up, log ind og log ud</strong
-                ><small>to sider med en formular og en fejlbesked</small>
+                ><small>formularer, der kalder en Server Action</small>
               </article>
               <article>
-                <span>Status</span><strong>Headeren ved, hvem du er</strong
-                ><small>e-mail og <em>Log out</em> — eller <em>Log in</em></small>
-              </article>
-              <article>
-                <span>Adgang</span><strong>Profil og posts kræver login</strong
-                ><small><code>/profile</code> og <code>/posts/[slug]</code> sender dig til login</small>
+                <span>Adgang</span><strong>Kun <code>/profile</code> kræver login</strong
+                ><small>alle andre sendes til <code>/login</code> · bagefter din WordPress-app</small>
               </article>
             </div>
           </div>
@@ -283,6 +283,38 @@ const session = await response.json();
           <p class="dui-lead-note">
             <strong>De to nederste lag er grunden til, at vi skifter nu.</strong> Med <code>fetch</code> skulle I selv
             gemme og forny sessionen.
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-1">
+          <span class="eyebrow">Opgave 1 · Arbejd individuelt</span>
+          <h2>Hent startprojektet</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Dit repository</h3>
+              <p><em>Use this template</em> → <em>Create a new repository</em>. Klon det, og kør <code>npm install</code>.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth" target="_blank" rel="noreferrer">Template</a></p>
+            </article>
+            <article>
+              <h3>Supabase</h3>
+              <p>Slå <b>Confirm email</b> fra under <em>Authentication → Sign In / Providers</em>, og gem.</p>
+              <p class="step-links"><a href="#/hvad-kan-auth">Hvad kan det?</a></p>
+            </article>
+            <article>
+              <h3><code>.env.local</code></h3>
+              <p>Kopiér <code>.env.example</code> til <code>.env.local</code> med URL og key fra <em>Connect</em>. Kør <code>npm run dev</code>.</p>
+              <p class="step-links"><a href="#/noegler">To nøgler</a></p>
+            </article>
+            <article>
+              <h3>Kig</h3>
+              <p>Find <code>lib/supabase/server.js</code> og <code>proxy.js</code>. De er sat op — dem ændrer du ikke.</p>
+              <p class="step-links"><a href="#/server-klient">Klienten</a><a href="#/proxy"><code>proxy.js</code></a></p>
+            </article>
+          </div>
+          <p class="work-if-stuck"><strong><em>Paused</em>?</strong> Klik på <em>Resume project</em>. <strong><em>URL and Key are required</em>?</strong> Tjek <code>.env.local</code>, og genstart <code>npm run dev</code>.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Appen kører, og dit repository ligger på GitHub. <code>/signup</code> giver <em>Page not found</em> — den laver du nu.</p>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-1" target="_blank" rel="noreferrer">Opgavefil: opgave 1 ↗</a>
           </p>
         </section>
 
@@ -601,18 +633,78 @@ export async function signIn(formData) {
           </p>
         </section>
 
+        <section class="po-slide mode-work" id="opgave-2">
+          <span class="eyebrow">Opgave 2 · Arbejd individuelt</span>
+          <h2>Sign up</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Routen</h3>
+              <p>Opret <code>app/signup/page.js</code> med en <code>&lt;h1&gt;</code>. Mappen er URL'en.</p>
+            </article>
+            <article>
+              <h3>Formularen</h3>
+              <p><code>&lt;form className="auth-form"&gt;</code> med en <code>&lt;label&gt;</code> og en <code>name</code> til e-mail og adgangskode. CSS'en findes allerede.</p>
+            </article>
+            <article>
+              <h3>Server Action</h3>
+              <p>Opret <code>signUp</code> i <code>lib/actions.js</code>, og giv formularen <code>action={signUp}</code>. Find cookien under <em>Application</em>.</p>
+              <p class="step-links"><a href="#/sekvens">Flowet</a><a href="#/server-action">Server Action</a><a href="#/storage">Cookies</a></p>
+            </article>
+            <article>
+              <h3>Fejlen</h3>
+              <p>Send til <code>/signup?error=true</code> ved fejl, og vis en besked, når <code>searchParams</code> har <code>error</code>.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/main...opgave-02-sign-up" target="_blank" rel="noreferrer">Løsning</a></p>
+            </article>
+          </div>
+          <p class="work-if-stuck"><strong>Ingen <code>-auth-token</code>-cookie?</strong> Slå <em>Confirm email</em> fra, og opret brugeren igen. <strong>Altid fejl?</strong> Log <code>error.message</code> i terminalen.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Din bruger står i Supabase, og den samme e-mail to gange giver en fejlbesked.</p>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-2" target="_blank" rel="noreferrer">Opgavefil: opgave 2 med hints ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-3">
+          <span class="eyebrow">Opgave 3 · Arbejd individuelt</span>
+          <h2>Log ind</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Kopiér</h3>
+              <p>Kopiér mappen <code>app/signup/</code> til <code>app/login/</code>.</p>
+            </article>
+            <article>
+              <h3>Ret til</h3>
+              <p>Overskrift og knap: <em>Log in</em>. Fejlbesked: <em>Wrong email or password.</em></p>
+            </article>
+            <article>
+              <h3><code>signIn</code></h3>
+              <p>Ligner <code>signUp</code>, men kalder <code>signInWithPassword</code>. Ved fejl: <code>/login?error=true</code>.</p>
+              <p class="step-links"><a href="#/server-action">Server Action</a><a href="#/sdk-samme-kald">SDK'et</a></p>
+            </article>
+            <article>
+              <h3>Test</h3>
+              <p>Log ind med din bruger. Prøv også en forkert adgangskode og en e-mail, der ikke findes.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-02-sign-up...opgave-03-log-ind" target="_blank" rel="noreferrer">Løsning</a></p>
+            </article>
+          </div>
+          <p class="work-if-stuck"><strong>Intet nyt efter login?</strong> Det er rigtigt nok — det ser du på profilen i opgave 4.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Du kan logge ind, og en forkert adgangskode giver en fejlbesked.</p>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-3" target="_blank" rel="noreferrer">Opgavefil: opgave 3 med hints ↗</a>
+          </p>
+        </section>
+
         <section class="chapter po-chapter po-slide" id="kap-beskyt">
           <span class="chapter-index">05</span>
           <span class="eyebrow">Beskyttede sider</span>
           <h2>Tjek på serveren —<br />før HTML'en sendes</h2>
-          <p class="kicker">Profilen og alle posts kræver login.</p>
+          <p class="kicker">Kun profilen kræver login — resten er offentligt.</p>
         </section>
 
         <section class="po-slide" id="beskyt-flow">
           <span class="eyebrow">Beskyttede sider · flowet</span>
           <h2>Én <code>if</code> på serveren afgør det</h2>
           <div class="au-guard">
-            <p class="au-guard-start"><span>Request</span><code>GET /posts/en-post</code></p>
+            <p class="au-guard-start"><span>Request</span><code>GET /profile</code></p>
             <i aria-hidden="true">↓</i>
             <p class="au-guard-check"><span>På serveren</span><code>await getCurrentUser()</code></p>
             <i aria-hidden="true">↓</i>
@@ -621,7 +713,7 @@ export async function signIn(formData) {
               <article class="is-yes">
                 <span>Ja</span>
                 <h3>Vis siden</h3>
-                <p>Hent posten, og byg HTML'en.</p>
+                <p>Byg profilen med brugerens e-mail.</p>
               </article>
               <article class="is-no">
                 <span>Nej · <code>null</code></span>
@@ -679,26 +771,35 @@ export async function signIn(formData) {
           </p>
         </section>
 
-        <section class="po-slide" id="suspense">
-          <span class="eyebrow">Beskyttede sider · login-status i headeren</span>
-          <h2>Headeren venter nu på cookien</h2>
-          <div class="au-header-mock" aria-label="Headeren delt i en del, der bygges på forhånd, og en del, der venter på requesten">
-            <p class="is-static">
-              <span>Bygges på forhånd</span><b>Headless WordPress</b><em>Home · Posts · About</em>
-            </p>
-            <p class="is-dynamic">
-              <span><code>&lt;Suspense&gt;</code> · venter på requesten</span><b>dig@eaaa.dk</b><em>Log out</em>
-            </p>
+        <section class="po-slide mode-work" id="opgave-4">
+          <span class="eyebrow">Opgave 4 · Arbejd individuelt</span>
+          <h2>Profilen — den beskyttede route</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Hvem er logget ind?</h3>
+              <p>Opret <code>lib/auth.js</code> med <code>getCurrentUser()</code>.</p>
+              <p class="step-links"><a href="#/beskyt-kode">Koden</a></p>
+            </article>
+            <article>
+              <h3>Profilen</h3>
+              <p>Opret <code>app/profile/page.js</code>, og vis <code>user.email</code> og <code>user.sub</code>. Åbn den i et privat vindue.</p>
+            </article>
+            <article>
+              <h3>Beskyt den</h3>
+              <p><code>if (!user)</code> → <code>redirect("/login")</code> øverst i komponenten. Test i det private vindue igen.</p>
+              <p class="step-links"><a href="#/beskyt-flow">Én <code>if</code></a></p>
+            </article>
+            <article>
+              <h3>Log ud</h3>
+              <p>Tilføj <code>signOut</code> og en <em>Log out</em>-knap på profilen. Send <code>signUp</code> og <code>signIn</code> til <code>/profile</code>.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-03-log-ind...opgave-04-profil" target="_blank" rel="noreferrer">Løsning</a></p>
+            </article>
           </div>
-          <div class="au-suspense">
-            <pre class="po-code"><code class="language-jsx">&lt;Suspense fallback={null}&gt;
-  &lt;AuthStatus /&gt;
-&lt;/Suspense&gt;</code></pre>
-            <div class="explain-list">
-              <p><b>Hvorfor?</b>Cookies findes først, når en bruger sender en request. Uden <code>&lt;Suspense&gt;</code> fejler <code>npm run build</code>.</p>
-              <p><b>Samme idé som <code>loading.js</code></b>Den del, der venter, får sin egen grænse. Resten vises med det samme.</p>
-            </div>
-          </div>
+          <p class="work-if-stuck"><strong>Fejler profilen i det private vindue?</strong> <code>user</code> er <code>null</code> — det løser tjekket. <strong>Redirect-loop?</strong> Tjek aldrig på <code>/login</code>.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> <code>/profile</code> viser din e-mail, når du er logget ind, og sender dig til <code>/login</code>, når du ikke er.</p>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-4" target="_blank" rel="noreferrer">Opgavefil: opgave 4 med hints ↗</a>
+          </p>
         </section>
 
         <section class="po-slide" id="skjul-ikke">
@@ -792,47 +893,104 @@ export async function signIn(formData) {
           </p>
         </section>
 
+        <section class="po-slide mode-work" id="ekstra">
+          <span class="eyebrow">Ekstraopgaver · når du er færdig</span>
+          <h2>Flere routes — og WordPress</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3><code>/members</code></h3>
+              <p>Endnu en beskyttet route med det samme tjek. Tilføj den i headeren.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/commit/70c5481" target="_blank" rel="noreferrer">Ekstra 5.1</a></p>
+            </article>
+            <article>
+              <h3>Den anden vej</h3>
+              <p>Logget ind? Send fra <code>/login</code> og <code>/signup</code> til <code>/profile</code> med <code>if (user)</code>.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/commit/6516793" target="_blank" rel="noreferrer">Ekstra 5.2</a></p>
+            </article>
+            <article>
+              <h3>Login-status</h3>
+              <p><code>AuthStatus</code> viser e-mail og <em>Log out</em> — eller <em>Log in</em> — i headeren.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-05-flere-routes...opgave-06-header" target="_blank" rel="noreferrer">Ekstra 6</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/blob/opgave-06-header/components/AuthStatus.module.css" target="_blank" rel="noreferrer">CSS</a></p>
+            </article>
+            <article>
+              <h3>WordPress-appen</h3>
+              <p>Byg login ind i appen fra 26. oktober, og lås detaljesiderne for posts.</p>
+              <p class="step-links"><a href="#/suspense"><code>&lt;Suspense&gt;</code></a><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md" target="_blank" rel="noreferrer">Opgaven</a></p>
+            </article>
+          </div>
+          <p class="work-if-stuck"><strong><em>async Client Component</em>?</strong> Fjern <code>"use client"</code> fra <code>AuthStatus</code>. <strong>Build fejler i WordPress-appen?</strong> Se <a href="#/suspense"><code>&lt;Suspense&gt;</code></a>.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Din ekstraopgave virker logget ind, logget ud og i et privat vindue.</p>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-5" target="_blank" rel="noreferrer">Opgavefil: ekstraopgaver med hints ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="suspense">
+          <span class="eyebrow">Videre · login-status i din WordPress-app</span>
+          <h2>Headeren venter nu på cookien</h2>
+          <div class="au-header-mock" aria-label="Headeren delt i en del, der bygges på forhånd, og en del, der venter på requesten">
+            <p class="is-static">
+              <span>Bygges på forhånd</span><b>Headless WordPress</b><em>Home · Posts · About</em>
+            </p>
+            <p class="is-dynamic">
+              <span><code>&lt;Suspense&gt;</code> · venter på requesten</span><b>dig@eaaa.dk</b><em>Log out</em>
+            </p>
+          </div>
+          <div class="au-suspense">
+            <pre class="po-code"><code class="language-jsx">&lt;Suspense fallback={null}&gt;
+  &lt;AuthStatus /&gt;
+&lt;/Suspense&gt;</code></pre>
+            <div class="explain-list">
+              <p><b>Hvorfor?</b>Cookies findes først, når en bruger sender en request. Med Cache Components fejler <code>npm run build</code> uden <code>&lt;Suspense&gt;</code>.</p>
+              <p><b>Samme idé som <code>loading.js</code></b>Den del, der venter, får sin egen grænse. Dagens app har ikke Cache Components, så der virker den uden.</p>
+            </div>
+          </div>
+        </section>
+
         <section class="po-slide po-agenda dui-agenda" id="opgaver">
           <span class="eyebrow">Opgaver · hver opgave bygger videre på den forrige</span>
-          <h2>Seks opgaver — appen får brugere</h2>
+          <h2>Fire opgaver — fire routes</h2>
           <ol class="agenda-list">
             <li>
-              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-1" target="_blank" rel="noreferrer"
-                ><b>Supabase i projektet</b><small>Confirm email fra · SDK'et · <code>.env.local</code></small></a
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-1" target="_blank" rel="noreferrer"
+                ><b>Hent startprojektet</b><small>Confirm email fra · <code>.env.local</code> · klienten og <code>proxy.js</code></small></a
               >
             </li>
             <li>
-              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-2" target="_blank" rel="noreferrer"
-                ><b>Klienten og <code>proxy.js</code></b><small>Kopiér, forstå og byg</small></a
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-2" target="_blank" rel="noreferrer"
+                ><b>Sign up</b><small><code>/signup</code> · Server Action · fejlbesked med <code>?error=true</code></small></a
               >
             </li>
             <li>
-              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-3" target="_blank" rel="noreferrer"
-                ><b>Sign up</b><small>Formular · Server Action · fejlbesked med <code>?error=true</code></small></a
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-3" target="_blank" rel="noreferrer"
+                ><b>Log ind</b><small><code>/login</code> · <code>signInWithPassword</code></small></a
               >
             </li>
             <li>
-              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-4" target="_blank" rel="noreferrer"
-                ><b>Log ind</b><small><code>signInWithPassword</code> · <code>/login</code></small></a
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-4" target="_blank" rel="noreferrer"
+                ><b>Profilen</b><small><code>/profile</code> · <code>getCurrentUser()</code> · <code>redirect("/login")</code> · log ud</small></a
               >
             </li>
             <li>
-              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-5" target="_blank" rel="noreferrer"
-                ><b>Login-status og log ud</b><small><code>getCurrentUser()</code> · <code>AuthStatus</code> · <code>&lt;Suspense&gt;</code></small></a
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-5" target="_blank" rel="noreferrer"
+                ><b>Ekstra</b><small><code>/members</code> · den anden vej · login-status i headeren</small></a
               >
             </li>
             <li>
-              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-6" target="_blank" rel="noreferrer"
-                ><b>Beskyttede sider</b><small><code>/profile</code> og posts · <code>redirect("/login")</code></small></a
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#videre" target="_blank" rel="noreferrer"
+                ><b>Videre</b><small>Login i din headless WordPress-app</small></a
               >
             </li>
           </ol>
           <p class="au-task-links">
-            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md" target="_blank" rel="noreferrer"
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md" target="_blank" rel="noreferrer"
               >Opgaverne trin for trin ↗</a
             >
-            <a href="https://github.com/cederdorff/nextjs-headless-wordpress/tree/supabase-auth" target="_blank" rel="noreferrer"
-              >Referencerepo · branchen <code>supabase-auth</code> ↗</a
+            <a href="https://github.com/cederdorff/nextjs-supabase-auth" target="_blank" rel="noreferrer"
+              >Template · startprojektet ↗</a
+            >
+            <a href="https://github.com/cederdorff/nextjs-supabase-auth#løsninger" target="_blank" rel="noreferrer"
+              >Løsninger · én branch pr. opgave ↗</a
             >
           </p>
         </section>
@@ -872,8 +1030,8 @@ export async function signIn(formData) {
           </div>
           <p class="lead">Næste gang: Kick-off på projektet. 10. november: roller og beskyttelse af data med RLS.</p>
           <div class="closing-links">
-            <a href="https://github.com/cederdorff/nextjs-headless-wordpress/tree/supabase-auth" target="_blank" rel="noreferrer"
-              >Referencerepo ↗</a
+            <a href="https://github.com/cederdorff/nextjs-supabase-auth" target="_blank" rel="noreferrer"
+              >Template og løsninger ↗</a
             >
             <a href="#/agenda">Tilbage til agenda</a>
             <a href="#/opgaver">Opgaveoversigt</a>

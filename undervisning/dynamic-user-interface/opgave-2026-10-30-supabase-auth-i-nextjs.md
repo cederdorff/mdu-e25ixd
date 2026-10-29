@@ -1,8 +1,8 @@
-# Opgave: Supabase Auth i Next.js - 30-10-2026
+# Opgave: Supabase Auth i din headless WordPress-app - 30-10-2026
 
 ## Formål
 
-Her er dagens opgaver samlet ét sted. De giver din Next.js-app fra 26. oktober brugere: sign up, log ind, log ud, login-status i headeren, en profilside og posts, som kun kan læses af brugere, der er logget ind.
+Her bygger du login ind i din Next.js-app fra 26. oktober. Lav [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md) først – så kender du flowet, og det meste her er genkendeligt. Appen får sign up, log ind, log ud, login-status i headeren, en profilside og posts, som kun kan læses af brugere, der er logget ind.
 
 Slides forklarer teorien. Her står, hvad du skal gøre, trin for trin. Hvert trin linker til det slide, det bygger på. Under hver opgave kan du folde den fulde løsning ud. Koden er den samme som på branchen [`supabase-auth`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/supabase-auth) i referencerepoet, hvor hver opgave har sit eget commit.
 
@@ -63,7 +63,7 @@ Du gør et Supabase-projekt klar til login, installerer SDK'et og gemmer URL og 
 
 ### 1.1 Gør Supabase-projektet klar
 
-Genbrug dit projekt fra Product optimization, eller opret et nyt i [dashboardet](https://supabase.com/dashboard).
+Brug det samme Supabase-projekt som i [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md#opgave-1) – så virker dine brugere fra i dag også her.
 
 Gå til _Authentication → Sign In / Providers_, slå **Confirm email** fra, og gem. Så kan du logge ind, så snart du har oprettet en bruger – uden at skulle bekræfte en e-mail først.
 
@@ -133,7 +133,7 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_your-key
 
 ## Opgave 2: Klienten og proxy.js
 
-Du opretter to filer, som du kopierer fra løsningen nedenfor. Du skal ikke kunne skrive dem selv, men du skal kunne forklare, hvad de gør.
+Du kopierer de to filer fra dit projekt fra [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md) – eller fra løsningen nedenfor. Du skal ikke kunne skrive dem selv, men du skal kunne forklare, hvad de gør.
 
 **Du er klar, når:** `lib/supabase/server.js` og `proxy.js` findes, `npm run build` går igennem, og arbejdet er pushet.
 
