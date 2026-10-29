@@ -22,9 +22,9 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Design en pill, der bliver til en modal, i Figma</strong></summary>
 <ul>
-<li>Byg en pill ved brug af auto-layout. byg 2 versioner med hver sin hover variant.</li>
+<li>Byg en pill ved brug af auto-layout. Byg 2 versioner med hver sin hover variant.</li>
 <li>Lav et 'component set' der indeholder de 2 typer af pills med hver sin hover variant</li>
-<li>Sørg for at lave en variant-property med navnet "type" og navngiv så de 2 versioner af din pill under denne property. Sørg også for at lave variant-property med navnet "state" og tildel derefter stadierne "default" og "hover" til de relevante udgaver af dine pill's</li>
+<li>Sørg for at lave en variant-property med navnet <code>Type</code> og navngiv så de 2 versioner af din pill under denne property, fx <code>Primary</code> og <code>Secondary</code>. Sørg også for at lave en variant-property med navnet <code>State</code> og tildel derefter stadierne <code>Default</code> og <code>Hover</code> til de relevante udgaver af dine pills.</li>
 <li>Sørg for at gøre din pill interaktiv med en hover interaktion.</li>
 <li>Byg et modal komponent med separator, rubrik og text. Lav en boolean-property med navnet <code>showSeparator</code>, der hhv. viser og skjuler separatoren</li>
 <li>Opsæt variabler med udgangspunkt i dit design – brug number variabel til variabler med numeriske værdier, string variable til variabler med tekstværdier og brug color variable til variabler med hex-koder. Sørg for at lave logiske grupperinger ved at bruge '/' som gruppe-divider</li>
