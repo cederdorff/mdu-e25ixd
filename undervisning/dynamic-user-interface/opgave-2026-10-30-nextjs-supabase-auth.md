@@ -49,6 +49,7 @@ Bagefter overfører du det til din headless WordPress-app i [den næste opgave](
 ## Sådan bruger du opgaven
 
 - Slut hvert trin med **Tjek**, så du ved, at det virker, før du går videre.
+- Trin mærket **valgfri** kan du springe over og tage til sidst. Så kommer du hurtigere frem til et login, der virker.
 - Prøv selv først. Sidder du fast, så fold et **Hint** ud. Fold først **den fulde løsning** ud, når du har prøvet.
 - Commit og push efter hver opgave med Source Control i VS Code eller GitHub Desktop.
 - CSS'en til formularerne ligger allerede i `app/globals.css`. Du skal bare bruge `className="auth-form"`.
@@ -63,7 +64,7 @@ Bagefter overfører du det til din headless WordPress-app i [den næste opgave](
 3. [Log ind](#opgave-3)
 4. [Profilen – den beskyttede route](#opgave-4)
 
-**Ekstra:** [5. Flere beskyttede routes](#opgave-5) · [6. Login-status i headeren](#opgave-6)
+**Ekstra:** [Static eller dynamic?](#static-dynamic) · [5. Flere beskyttede routes](#opgave-5) · [6. Login-status i headeren](#opgave-6)
 
 **Videre:** [Auth i din headless WordPress-app](#videre) · [Skal jeres produkt have brugere?](#refleksion) · [Fejlfinding](#fejlfinding)
 
@@ -93,9 +94,21 @@ Du laver dit eget repository ud fra startprojektet og forbinder det til dit Supa
 
 ### 1.2 Gør Supabase klar
 
-Genbrug dit projekt fra Product optimization, eller opret et nyt i [dashboardet](https://supabase.com/dashboard). Gå til _Authentication → Sign In / Providers_, slå **Confirm email** fra, og gem. Så kan du logge ind med det samme – uden at bekræfte en e-mail først.
+Genbrug dit projekt fra Product optimization, eller opret et nyt i [dashboardet](https://supabase.com/dashboard). Gå til _Authentication → Sign In / Providers_, slå **Confirm email** fra, og klik på _Save changes_. Så kan du logge ind med det samme – uden at bekræfte en e-mail først.
 
-Kopiér `.env.example` til en ny fil, `.env.local`, i roden. Klik på **Connect** øverst i Supabase, og indsæt projektets URL og din **publishable key**:
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/supabase-confirm-email.webp" alt="Authentication, Sign In / Providers i Supabase. Under User Signups er Confirm email slået fra og markeret, og knappen Save changes står nederst." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
+
+Kopiér `.env.example` til en ny fil, `.env.local`, i roden. Klik på **Connect** øverst i Supabase:
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/supabase-connect-button.webp" alt="Toppen af et Supabase-projekt med knappen Connect markeret til højre for projektets navn." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
+
+Vælg _Framework_, _Next.js_ og _App Router_. Under fanen `.env.local` står projektets URL og din **publishable key** klar. Kopiér de to linjer ind i din `.env.local`:
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/supabase-connect-env-local.webp" alt="Panelet Connect to your project med Framework, Next.js og App Router valgt. Under Add files er fanen .env.local åben med NEXT_PUBLIC_SUPABASE_URL og NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
+
+Panelet viser også `npm install` og filer som `utils/supabase/server.ts`. Dem skal du **ikke** bruge – startprojektet har allerede pakkerne og `lib/supabase/server.js`. Du skal kun bruge `.env.local`.
+
+Sådan ser din `.env.local` ud:
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://<dit-projekt>.supabase.co
@@ -130,6 +143,7 @@ Det meste er det samme som i din WordPress-app: `app/layout.js`, `components/Hea
 - **Står dit projekt som _Paused_?** Klik på _Resume project_, og vent et par minutter.
 - **_Your project's URL and Key are required_?** Tjek navnene i `.env.local`, og genstart `npm run dev`.
 - **Finder du ingen publishable key?** Se under _Project Settings → API Keys_. Brug aldrig en nøgle, der starter med `sb_secret_`.
+- **Har du fået `utils/supabase/` eller `.ts`-filer med fra _Connect_?** Slet dem. Startprojektet bruger `lib/supabase/server.js`.
 
 **Startprojektet:** [`main`](https://github.com/cederdorff/nextjs-supabase-auth/tree/main)
 
@@ -141,7 +155,7 @@ Det meste er det samme som i din WordPress-app: `app/layout.js`, `components/Hea
 
 Du laver routen `/signup` med en formular, der opretter en bruger i Supabase.
 
-**Resultat:** Du kan oprette en bruger på `/signup`, brugeren står i Supabase, en fejl giver en besked, og arbejdet er pushet.
+**Resultat:** Du kan oprette en bruger på `/signup`, brugeren står i Supabase, og arbejdet er pushet.
 
 ### 2.1 Opret routen
 
@@ -207,7 +221,9 @@ async function signUp(formData) {
 
 Giv formularen `action={signUp}`. Når brugeren klikker på knappen, sender Next.js formularen som en `POST`-request og kører `signUp` på serveren med felterne i `formData`. `formData.get("email")` henter feltet med `name="email"`. Hele routen står nu i én fil: siden, formularen og funktionen, der kører, når formularen sendes.
 
-**Tjek:** Opret en bruger. Du lander på forsiden, og under _Authentication → Users_ i Supabase står din nye bruger.
+**Tjek:** Opret en bruger. Du lander på forsiden, og under _Authentication → Users_ i Supabase står din nye bruger. Klik på genindlæs-knappen over tabellen, hvis den ikke er kommet endnu.
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/supabase-auth-users.webp" alt="Authentication, Users i Supabase med en tabel over brugere. Hver række har et UID, en e-mail og Email som provider." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
 
 [Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens) · [Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-action)
 
@@ -215,13 +231,13 @@ Giv formularen `action={signUp}`. Når brugeren klikker på knappen, sender Next
 
 Åbn browserens udviklerværktøjer. Gå til _Application_ (Chrome) eller _Storage_ (Safari og Firefox), og kig under **Cookies**.
 
-**Tjek:** Der står en cookie, der slutter med `-auth-token`. Det er din session.
+**Tjek:** Der står en cookie, der slutter med `-auth-token`. Det er din session. Commit og push.
 
 [Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
 
-### 2.5 Vis en fejl
+### 2.5 Vis en fejl · valgfri
 
-Opret den samme bruger igen. Der sker ingenting – fejlen forsvinder på serveren. Send brugeren tilbage til `/signup?error=true`, når Supabase svarer med en fejl, og vis en besked på siden, når `error` står i URL'en.
+Virker sign up? Så gør formularen bedre. Opret den samme bruger igen. Der sker ingenting – fejlen forsvinder på serveren. Send brugeren tilbage til `/signup?error=true`, når Supabase svarer med en fejl, og vis en besked på siden, når `error` står i URL'en.
 
 `searchParams` er det, der står efter `?` i URL'en. Next.js giver det til siden som en prop – ligesom `params` på detaljesiden 26. oktober. Det er et Promise, så siden skal være `async` og bruge `await`.
 
@@ -350,19 +366,30 @@ export default async function SignUpPage({ searchParams }) {
 
 Login-siden er næsten en kopi af sign up-siden. Kun Server Action'en og teksterne er nye.
 
-**Resultat:** Du kan logge ind på `/login`, en forkert adgangskode giver en fejlbesked, og arbejdet er pushet.
+**Resultat:** Du kan logge ind på `/login` med din bruger fra opgave 2, og arbejdet er pushet.
 
 ### 3.1 Kopiér routen
 
-Kopiér mappen `app/signup/` til `app/login/`. Ret `metadata`, overskriften og knappen til _Log in_, fejlbeskeden til _Wrong email or password._ og linket nederst til `/signup`. Skift `placeholder` på adgangskoden til _Your password_ og `autoComplete` til `current-password`.
+Kopiér mappen `app/signup/` til `app/login/`, og ret i `app/login/page.js`:
+
+- [ ] `metadata`, `<h1>` og knappen: _Log in_
+- [ ] Komponenten: `LoginPage`
+- [ ] Adgangskoden: `placeholder="Your password"` og `autoComplete="current-password"`. Fjern `minLength`.
+- [ ] Linket nederst: _No account yet?_ og `/signup`
+- [ ] Har du lavet 2.5: fejlbeskeden _Wrong email or password._
 
 **Tjek:** [http://localhost:3000/login](http://localhost:3000/login) viser din login-side.
 
 ### 3.2 signIn
 
-Omdøb den kopierede `signUp` til `signIn`. Den skal kalde `signInWithPassword` og sende til `/login?error=true` ved fejl. Ret formularen til `action={signIn}`.
+Ret Server Action'en:
 
-**Tjek:** Log ind med den bruger, du oprettede i opgave 2. Du lander på forsiden.
+- [ ] `signUp` hedder nu `signIn`
+- [ ] `supabase.auth.signUp` er nu `supabase.auth.signInWithPassword`
+- [ ] Formularen: `action={signIn}`
+- [ ] Har du lavet 2.5: `redirect("/login?error=true")` ved fejl
+
+**Tjek:** Log ind med den bruger, du oprettede i opgave 2. Du lander på forsiden. Commit og push.
 
 [Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-action)
 
@@ -381,9 +408,9 @@ Resten af funktionen er som `signUp`.
 
 </details>
 
-### 3.3 Test fejlen
+### 3.3 Test fejlen · valgfri
 
-Prøv med en forkert adgangskode og med en e-mail, der ikke findes. Commit og push.
+Har du lavet fejlbeskeden i 2.5? Prøv med en forkert adgangskode og med en e-mail, der ikke findes. Commit og push.
 
 **Tjek:** Begge giver _Wrong email or password._ Supabase siger med vilje ikke, hvad der var forkert, så ingen kan bruge login-siden til at finde ud af, hvem der har en bruger.
 
@@ -526,24 +553,7 @@ Skriv en Server Action, `signOut`, i `app/profile/page.js`. Den kalder `supabase
 
 Ret til sidst `redirect("/")` til `redirect("/profile")` i `signUp` og `signIn`. Så ser brugeren med det samme, at det virkede.
 
-**Tjek:** Log ind, og du lander på profilen. Klik på _Log out_. Cookien er væk, og `/profile` sender dig til `/login`.
-
-### 4.5 Static eller dynamic?
-
-Stop `npm run dev`, og kør `npm run build`. Kig på listen over routes nederst i outputtet:
-
-```text
-┌ ○ /
-├ ○ /_not-found
-├ ƒ /login
-├ ƒ /profile
-└ ƒ /signup
-```
-
-- **○ Static:** Siden bygges én gang og er den samme for alle.
-- **ƒ Dynamic:** Siden bygges ved hver request. `/profile` læser cookien, og `/login` og `/signup` læser `searchParams`. Svaret afhænger af, hvem der spørger.
-
-**Tjek:** `/` er ○, og de tre andre er ƒ. Commit og push.
+**Tjek:** Log ind, og du lander på profilen. Klik på _Log out_. Cookien er væk, og `/profile` sender dig til `/login`. Commit og push.
 
 **Sidder du fast?**
 
@@ -616,6 +626,33 @@ I `signUp` og `signIn` står der nu `redirect("/profile")` i stedet for `redirec
 </details>
 
 **Løsning:** [Profilen og log ud](https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-03-log-ind...opgave-04-profil) · [branchen `opgave-04-profil`](https://github.com/cederdorff/nextjs-supabase-auth/tree/opgave-04-profil)
+
+<hr style="margin: 2rem 0;">
+
+<a id="static-dynamic"></a>
+
+## Ekstra: Static eller dynamic?
+
+Ingen ny kode – du kigger på, hvordan Next.js bygger dine routes.
+
+**Resultat:** Du kan forklare, hvorfor nogle routes er ○ og andre er ƒ.
+
+Stop `npm run dev`, og kør `npm run build`. Kig på listen over routes nederst i outputtet:
+
+```text
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /login
+├ ƒ /profile
+└ ƒ /signup
+```
+
+- **○ Static:** Siden bygges én gang og er den samme for alle.
+- **ƒ Dynamic:** Siden bygges ved hver request, fordi den læser noget fra requesten. `/profile` læser cookien, og `/login` og `/signup` læser `searchParams`. Svaret afhænger af, hvem der spørger.
+
+**Tjek:** `/` er ○, og `/profile` er ƒ. Har du sprunget fejlbeskederne over, er `/login` og `/signup` også ○ – de læser jo ikke noget fra requesten.
+
+[Slide: Static eller dynamic?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/static-dynamic)
 
 <hr style="margin: 2rem 0;">
 
@@ -760,7 +797,7 @@ Vis `<AuthStatus />` i `components/Header.js` efter `<ul>`, og fjern linkene til
 
 ### 6.4 Alt er nu dynamic
 
-Kør `npm run build` igen. Nu er alle routes ƒ – også `/`. Headeren står i layoutet og læser cookien, så hver side afhænger af, hvem der spørger.
+Kør `npm run build` – som i [Static eller dynamic?](#static-dynamic). Nu er alle routes ƒ – også `/`. Headeren står i layoutet og læser cookien, så hver side afhænger af, hvem der spørger.
 
 **Tjek:** Alle routes er ƒ. Commit og push.
 

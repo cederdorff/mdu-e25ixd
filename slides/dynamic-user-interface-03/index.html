@@ -328,12 +328,12 @@ const session = await response.json();
             <article>
               <h3>Supabase</h3>
               <p>Slå <b>Confirm email</b> fra under <em>Authentication → Sign In / Providers</em>, og gem.</p>
-              <p class="step-links"><a href="#/hvad-kan-auth">Hvad kan det?</a></p>
+              <p class="step-links"><a href="#/supabase-skaerme">Skærmbillede</a><a href="#/hvad-kan-auth">Hvad kan det?</a></p>
             </article>
             <article>
               <h3><code>.env.local</code></h3>
               <p>Kopiér <code>.env.example</code> til <code>.env.local</code> med URL og key fra <em>Connect</em>. Kør <code>npm run dev</code>.</p>
-              <p class="step-links"><a href="#/noegler">To nøgler</a></p>
+              <p class="step-links"><a href="#/supabase-skaerme">Skærmbillede</a><a href="#/noegler">To nøgler</a></p>
             </article>
             <article>
               <h3>Kig</h3>
@@ -346,6 +346,25 @@ const session = await response.json();
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-1" target="_blank" rel="noreferrer">Opgavefil: opgave 1 ↗</a>
           </p>
+        </section>
+
+        <section class="po-slide" id="supabase-skaerme">
+          <span class="eyebrow">Opgave 1 · sådan ser det ud i Supabase</span>
+          <h2>Tre steder i dashboardet</h2>
+          <div class="au-shots">
+            <figure>
+              <img src="../assets/supabase-confirm-email.webp" alt="Authentication, Sign In / Providers i Supabase. Under User Signups er Confirm email slået fra og markeret, og knappen Save changes står nederst." />
+              <figcaption><b>1</b><span><strong>Confirm email fra</strong> · <em>Authentication → Sign In / Providers</em> · <em>Save changes</em></span></figcaption>
+            </figure>
+            <figure class="is-tall">
+              <img src="../assets/supabase-connect-env-local.webp" alt="Panelet Connect to your project med Framework, Next.js og App Router valgt. Under Add files er fanen .env.local åben med de to miljøvariabler." />
+              <figcaption><b>2</b><span><strong><em>Connect</em> → <code>.env.local</code></strong> · kopiér kun de to linjer. Pakker og filer har du.</span></figcaption>
+            </figure>
+            <figure>
+              <img src="../assets/supabase-auth-users.webp" alt="Authentication, Users i Supabase med en tabel over brugere med UID, e-mail og Email som provider." />
+              <figcaption><b>3</b><span><strong>Opgave 2: din bruger</strong> · <em>Authentication → Users</em></span></figcaption>
+            </figure>
+          </div>
         </section>
 
         <section class="chapter po-chapter po-slide" id="kap-session">
@@ -716,13 +735,13 @@ export default async function LoginPage({ searchParams }) {
               <p class="step-links"><a href="#/sekvens">Flowet</a><a href="#/server-action">Server Action</a><a href="#/storage">Cookies</a></p>
             </article>
             <article>
-              <h3>Fejlen</h3>
+              <h3>Fejlen · valgfri</h3>
               <p>Send til <code>/signup?error=true</code> ved fejl, og vis en besked, når <code>searchParams</code> har <code>error</code>.</p>
               <p class="step-links"><a href="#/route-fil">Routen</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/main...opgave-02-sign-up" target="_blank" rel="noreferrer">Løsning</a></p>
             </article>
           </div>
           <p class="work-if-stuck"><strong>Ingen <code>-auth-token</code>-cookie?</strong> Slå <em>Confirm email</em> fra, og opret brugeren igen. <strong>Altid fejl?</strong> Log <code>error.message</code> i terminalen.</p>
-          <p class="done-when"><strong>Resultat:</strong> Din bruger står i Supabase, og den samme e-mail to gange giver en fejlbesked.</p>
+          <p class="done-when"><strong>Resultat:</strong> Din bruger står i Supabase, og du har en cookie, der slutter med <code>-auth-token</code>.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-2" target="_blank" rel="noreferrer">Opgavefil: opgave 2 med hints ↗</a>
           </p>
@@ -738,21 +757,21 @@ export default async function LoginPage({ searchParams }) {
             </article>
             <article>
               <h3>Ret til</h3>
-              <p>Overskrift og knap: <em>Log in</em>. Fejlbesked: <em>Wrong email or password.</em></p>
+              <p>Titel, overskrift og knap: <em>Log in</em>. Adgangskoden: <code>current-password</code>.</p>
             </article>
             <article>
               <h3><code>signIn</code></h3>
-              <p>Omdøb <code>signUp</code> til <code>signIn</code>. Den kalder <code>signInWithPassword</code>. Ved fejl: <code>/login?error=true</code>.</p>
+              <p>Omdøb <code>signUp</code> til <code>signIn</code>, og kald <code>signInWithPassword</code> i stedet.</p>
               <p class="step-links"><a href="#/server-action">Server Action</a><a href="#/sdk-samme-kald">SDK'et</a></p>
             </article>
             <article>
               <h3>Test</h3>
-              <p>Log ind med din bruger. Prøv også en forkert adgangskode og en e-mail, der ikke findes.</p>
+              <p>Log ind med din bruger fra opgave 2. Valgfri: Prøv en forkert adgangskode.</p>
               <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-02-sign-up...opgave-03-log-ind" target="_blank" rel="noreferrer">Løsning</a></p>
             </article>
           </div>
           <p class="work-if-stuck"><strong>Intet nyt efter login?</strong> Det er rigtigt nok — det ser du på profilen i opgave 4.</p>
-          <p class="done-when"><strong>Resultat:</strong> Du kan logge ind, og en forkert adgangskode giver en fejlbesked.</p>
+          <p class="done-when"><strong>Resultat:</strong> Du kan logge ind med din bruger fra opgave 2.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-3" target="_blank" rel="noreferrer">Opgavefil: opgave 3 med hints ↗</a>
           </p>
@@ -836,31 +855,6 @@ export default async function LoginPage({ searchParams }) {
           </p>
         </section>
 
-        <section class="po-slide" id="static-dynamic">
-          <span class="eyebrow">Beskyttede sider · <code>npm run build</code></span>
-          <h2>Static eller dynamic?</h2>
-          <div class="code-explain">
-            <div>
-              <span class="code-label">Outputtet efter opgave 4</span>
-              <pre class="po-code"><code class="language-plaintext">Route (app)
-┌ ○ /
-├ ○ /_not-found
-├ ƒ /login
-├ ƒ /profile
-└ ƒ /signup
-
-○  (Static)   prerendered as static content
-ƒ  (Dynamic)  server-rendered on demand</code></pre>
-            </div>
-            <div class="explain-list">
-              <p><b>○ Static</b>Bygges én gang og er den samme for alle — som forsiden.</p>
-              <p><b>ƒ Dynamic</b>Bygges ved hver request, fordi svaret afhænger af, hvem der spørger.</p>
-              <p><b>Hvad gør en side dynamic?</b>Den læser noget fra requesten: cookies som på <code>/profile</code> eller <code>searchParams</code> som på <code>/login</code>.</p>
-              <p><b>Headeren i layoutet?</b>Læser den cookien, bliver <em>alle</em> sider ƒ. Derfor <code>&lt;Suspense&gt;</code> i WordPress-appen.</p>
-            </div>
-          </div>
-        </section>
-
         <section class="po-slide mode-work" id="opgave-4">
           <span class="eyebrow">Opgave 4 · Arbejd individuelt</span>
           <h2>Profilen — den beskyttede route</h2>
@@ -877,7 +871,7 @@ export default async function LoginPage({ searchParams }) {
             <article>
               <h3>Beskyt den</h3>
               <p><code>if (!user)</code> → <code>redirect("/login")</code> øverst i komponenten. Test i det private vindue igen.</p>
-              <p class="step-links"><a href="#/beskyt-flow">Én <code>if</code></a><a href="#/static-dynamic">○ og ƒ</a></p>
+              <p class="step-links"><a href="#/beskyt-flow">Én <code>if</code></a></p>
             </article>
             <article>
               <h3>Log ud</h3>
@@ -886,7 +880,7 @@ export default async function LoginPage({ searchParams }) {
             </article>
           </div>
           <p class="work-if-stuck"><strong>Fejler profilen i det private vindue?</strong> <code>user</code> er <code>null</code> — det løser tjekket. <strong>Redirect-loop?</strong> Tjek aldrig på <code>/login</code>.</p>
-          <p class="done-when"><strong>Resultat:</strong> <code>/profile</code> viser din e-mail eller sender dig til <code>/login</code> — og er ƒ i <code>npm run build</code>.</p>
+          <p class="done-when"><strong>Resultat:</strong> <code>/profile</code> viser din e-mail, når du er logget ind, og sender dig til <code>/login</code>, når du ikke er.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-4" target="_blank" rel="noreferrer">Opgavefil: opgave 4 med hints ↗</a>
           </p>
@@ -983,6 +977,31 @@ export default async function LoginPage({ searchParams }) {
           </p>
         </section>
 
+        <section class="po-slide" id="static-dynamic">
+          <span class="eyebrow">Ekstra · <code>npm run build</code></span>
+          <h2>Static eller dynamic?</h2>
+          <div class="code-explain">
+            <div>
+              <span class="code-label">Outputtet efter opgave 4</span>
+              <pre class="po-code"><code class="language-plaintext">Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /login
+├ ƒ /profile
+└ ƒ /signup
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand</code></pre>
+            </div>
+            <div class="explain-list">
+              <p><b>○ Static</b>Bygges én gang og er den samme for alle — som forsiden.</p>
+              <p><b>ƒ Dynamic</b>Bygges ved hver request, fordi svaret afhænger af, hvem der spørger.</p>
+              <p><b>Hvad gør en side dynamic?</b>Den læser noget fra requesten: cookies som på <code>/profile</code> eller <code>searchParams</code> som på <code>/login</code>.</p>
+              <p><b>Headeren i layoutet?</b>Læser den cookien, bliver <em>alle</em> sider ƒ. Derfor <code>&lt;Suspense&gt;</code> i WordPress-appen.</p>
+            </div>
+          </div>
+        </section>
+
         <section class="po-slide mode-work" id="ekstra">
           <span class="eyebrow">Ekstraopgaver · når du er færdig</span>
           <h2>Flere routes — og WordPress</h2>
@@ -1000,7 +1019,7 @@ export default async function LoginPage({ searchParams }) {
             <article>
               <h3>Login-status</h3>
               <p>Flyt <code>signOut</code> til <code>lib/actions.js</code>. <code>AuthStatus</code> viser e-mail og <em>Log out</em> i headeren.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-05-flere-routes...opgave-06-header" target="_blank" rel="noreferrer">Ekstra 6</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/blob/opgave-06-header/components/AuthStatus.module.css" target="_blank" rel="noreferrer">CSS</a></p>
+              <p class="step-links"><a href="#/static-dynamic">○ og ƒ</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-05-flere-routes...opgave-06-header" target="_blank" rel="noreferrer">Ekstra 6</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/blob/opgave-06-header/components/AuthStatus.module.css" target="_blank" rel="noreferrer">CSS</a></p>
             </article>
             <article>
               <h3>WordPress-appen</h3>
@@ -1063,7 +1082,7 @@ export default async function LoginPage({ searchParams }) {
             </li>
             <li>
               <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-5" target="_blank" rel="noreferrer"
-                ><b>Ekstra</b><small><code>/members</code> · den anden vej · login-status i headeren</small></a
+                ><b>Ekstra</b><small>○ og ƒ · <code>/members</code> · den anden vej · login-status i headeren</small></a
               >
             </li>
             <li>
