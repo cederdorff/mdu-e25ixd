@@ -606,8 +606,7 @@ export default async function ProfilePage() {
               <pre class="po-code"><code class="language-jsx">export const metadata = { title: "Sign up" };
 
 async function signUp(formData) {
-  "use server";
-  // … Supabase, og redirect ved fejl
+  "use server"; // … Supabase og redirect
 }
 
 export default async function SignUpPage({ searchParams }) {
@@ -623,9 +622,9 @@ export default async function SignUpPage({ searchParams }) {
             </div>
             <div class="explain-list">
               <p><b><code>metadata</code></b>Bliver til <code>&lt;title&gt;</code> i fanen.</p>
-              <p><b>Server Action</b>Står over komponenten i samme fil. Den kører på serveren og sendes aldrig til browseren.</p>
-              <p><b><code>searchParams</code></b>Det efter <code>?</code> i URL'en. Et Promise, så <code>await</code>. Valgfri i opgave 2.</p>
-              <p><b>Server Component</b><code>SignUpPage</code> viser siden — med fejlbeskeden, når <code>?error=true</code>.</p>
+              <p><b>Server Action</b>Står over komponenten i samme fil.</p>
+              <p><b><code>searchParams</code></b>Det efter <code>?</code> i URL'en. Et Promise, så <code>await</code>.</p>
+              <p><b>Server Component</b><code>SignUpPage</code> viser siden og fejlen ved <code>?error=true</code>.</p>
             </div>
           </div>
           <p class="po-source-link">
@@ -1037,7 +1036,7 @@ export default async function SignUpPage({ searchParams }) {
             <article>
               <h3>WordPress-appen</h3>
               <p>Byg login ind i din WordPress-app, og lås detaljesiderne for posts.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md" target="_blank" rel="noreferrer">Opgaven</a></p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-headless-wordpress.md" target="_blank" rel="noreferrer">Opgaven</a></p>
             </article>
           </div>
           <p class="work-if-stuck"><strong><em>async Client Component</em>?</strong> Fjern <code>"use client"</code> fra <code>AuthStatus</code>. <strong>Build fejler i WordPress-appen?</strong> Pak <code>&lt;AuthStatus /&gt;</code> ind i <code>&lt;Suspense&gt;</code>.</p>

@@ -295,6 +295,8 @@ Opret den samme bruger igen. Der sker ingenting, fordi fejlen forsvinder på ser
 
 **Tjek:** Den samme e-mail to gange giver din fejlbesked.
 
+[Slide: Hele routen i én fil](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/route-fil)
+
 <details>
 <summary><strong>Hint</strong></summary>
 
@@ -1069,7 +1071,7 @@ Kør `npm run build` – som i [Static eller dynamic?](#static-dynamic). Nu er a
 
 ## Videre: Auth i din headless WordPress-app
 
-Nu kender du flowet. I [Supabase Auth i din headless WordPress-app](opgave-2026-10-30-supabase-auth-i-nextjs.md) bygger du det samme ind i din WordPress-app og låser detaljesiderne for posts. Fire ting er anderledes:
+Nu kender du flowet. I [Supabase Auth i din headless WordPress-app](opgave-2026-10-30-supabase-auth-i-headless-wordpress.md) bygger du det samme ind i din WordPress-app og låser detaljesiderne for posts. Fire ting er anderledes:
 
 - **Du kopierer selv** `lib/supabase/server.js` og `proxy.js` fra dit projekt fra i dag.
 - **Alle Server Actions ligger i `lib/actions.js`** – ligesom `signOut` i ekstraopgave 6.

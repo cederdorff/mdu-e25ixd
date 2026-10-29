@@ -285,7 +285,7 @@ Kopiér CSS'en til `.auth-form` og `.form-error` nederst i [`app/globals.css`](h
 
 **Tjek:** Opret en bruger på [http://localhost:3000/signup](http://localhost:3000/signup). Du lander på forsiden, og under _Authentication → Users_ i Supabase står din nye bruger.
 
-[Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens) · [Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action)
+[Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action) · [Slide: name bliver til formData](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/formdata) · [Slide: Login-flowet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sekvens)
 
 ### 3.2 Vis en fejl
 
@@ -326,7 +326,7 @@ Siden læser nu URL'en, så den skal have sin egen `app/signup/loading.js` – s
 
 **Tjek:** Under Cookies står en cookie, der slutter med `-auth-token`. Det er din session. Commit og push.
 
-[Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
+[Slide: Her ligger sessionen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/cookie-skaerm) · [Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
 
 **Sidder du fast?**
 
