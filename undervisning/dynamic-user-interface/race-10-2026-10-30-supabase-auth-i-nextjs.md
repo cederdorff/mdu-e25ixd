@@ -25,7 +25,7 @@ Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der k
 <ul>
 <li>Kort recap: Hvad gjorde vi med REST, og hvad abstraherer SDK'et?</li>
 <li>Installér <code>@supabase/supabase-js</code> og <code>@supabase/ssr</code>.</li>
-<li>Gem <code>NEXT_PUBLIC_SUPABASE_URL</code> og din publishable key i <code>.env.local</code>, og dokumentér dem i <code>.env.example</code>.</li>
+<li>Gem <code>NEXT_PUBLIC_SUPABASE_URL</code> og <code>NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY</code> i <code>.env.local</code>, og dokumentér dem i <code>.env.example</code>.</li>
 <li>Den publishable key må gerne være synlig i frontend. Beskyttelsen af data sker med Row Level Security, som vi arbejder med 10. november.</li>
 </ul>
 </details>
@@ -40,20 +40,20 @@ Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der k
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Supabase-klienter på server og client</strong></summary>
+<summary><strong>3. Supabase-klienten og proxy.js</strong></summary>
 <ul>
-<li>Opret én klient til server components og server actions og én til client components, som beskrevet i Supabase' guide til Next.js.</li>
+<li>Opret klienten til server components og Server Actions, som beskrevet i Supabase' guide til Next.js. Den læser sessionen fra cookies i requesten.</li>
 <li>Tilføj filen, der fornyer sessionen ved hver request (<code>proxy.js</code>, tidligere <code>middleware.js</code>).</li>
-<li>Forstå, hvorfor der skal være to klienter: Serveren læser cookies fra requesten, mens browseren læser dem direkte.</li>
+<li>Supabase har også en klient til browseren. I dag kører al Supabase-kode på serveren, så den har vi ikke brug for.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>4. Sign up, sign in og sign out</strong></summary>
 <ul>
-<li>Byg formularer til oprettelse og login med labels, fejlbeskeder og tydelig feedback.</li>
-<li>Håndtér loading-, fejl- og success-states, ligesom i Case 1.</li>
-<li>Beslut, om e-mailbekræftelse skal være slået til under udviklingen, og test flowet fra start til slut.</li>
+<li>Byg en side til sign up og en til login – hver med en formular, labels og en fejlbesked.</li>
+<li>Formularerne kalder en Server Action, der taler med Supabase på serveren.</li>
+<li>Slå e-mailbekræftelse fra under udviklingen, og test flowet fra start til slut.</li>
 <li>Vis, om brugeren er logget ind, i layoutet, og tilføj en knap til at logge ud.</li>
 </ul>
 </details>
@@ -61,16 +61,17 @@ Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der k
 <details style="margin-left: 1.5rem;">
 <summary><strong>5. Beskyttede sider</strong></summary>
 <ul>
-<li>Opret en side, fx <code>app/profil/page.js</code>, som kun kan ses af brugere, der er logget ind.</li>
-<li>Tjek brugeren på serveren med <code>supabase.auth.getUser()</code>, og send brugere, der ikke er logget ind, videre med <code>redirect()</code>.</li>
-<li>Test siden både logget ind, logget ud og i et privat browservindue.</li>
+<li>Opret en profilside, fx <code>app/profile/page.js</code>, som kun kan ses af brugere, der er logget ind.</li>
+<li>Tjek brugeren på serveren med <code>supabase.auth.getClaims()</code>, og send brugere, der ikke er logget ind, videre med <code>redirect()</code>. Supabase anbefaler <code>getClaims()</code>, fordi den tjekker, at token'et er ægte.</li>
+<li>Lås detaljesiderne, så kun brugere, der er logget ind, kan læse en hel post.</li>
+<li>Test siderne både logget ind, logget ud og i et privat browservindue.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>6. Arbejd videre og overfør til jeres projekt</strong></summary>
 <ul>
-<li>Gør login-flowet færdigt. Genbrug gerne din pill-modal fra torsdag, fx en pill, der åbner login i en modal.</li>
+<li>Gør login-flowet færdigt, og test det i et privat browservindue.</li>
 <li>Overvej jeres projektidé: Skal produktet have brugere? Hvad kan en bruger, der er logget ind, som andre ikke kan?</li>
 <li>Har produktet brugere, stiller eksamen også krav til it-sikkerhed. Notér, hvilke data der skal beskyttes.</li>
 <li>Commit og push dit arbejde.</li>
@@ -81,8 +82,13 @@ Målet er, at din Next.js-app har sign up, sign in og sign out og en side, der k
 
 ## Materialer
 
-- **Slides:** Vil blive tilgængelige her
-- **Opgaver:** Vil blive tilgængelige her
+- **Slides:**
+  - [Supabase Auth i Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/)
+  - [PDF-version: Supabase Auth i Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/?print-pdf)
+- **Opgaver:**
+  - [Overblik i slides](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/opgaver)
+  - [Opgaver med ekstra hjælp og løsninger](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md) – trin for trin, fejlfinding og den fulde løsning
+- **Referencerepo:** [nextjs-headless-wordpress, branchen `supabase-auth`](https://github.com/cederdorff/nextjs-headless-wordpress/tree/supabase-auth) – ét commit pr. opgave
 - **Supabase:**
   - [Setting up Server-Side Auth for Next.js](https://supabase.com/docs/guides/auth/server-side/nextjs)
   - [Creating a Supabase client for SSR](https://supabase.com/docs/guides/auth/server-side/creating-a-client)

@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RACE · Dynamic User Interface · Supabase Auth i Next.js · 30. oktober 2026."
+    />
+    <title>Supabase Auth i Next.js · RACE · 30.10.2026</title>
+    <link rel="stylesheet" href="../shared/theme.css" />
+    <link rel="stylesheet" href="../product-optimization-03/styles.css" />
+    <link rel="stylesheet" href="../dynamic-user-interface-01/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="po-slide po-title dui-title">
+          <span class="eyebrow">Dynamic User Interface · 3. semester</span>
+          <h1>Appen får<br /><span>brugere.</span></h1>
+          <p class="lead">Supabase Auth i Next.js · sign up, log ind og beskyttede sider</p>
+          <p class="date"><span>RACE</span><time datetime="2026-10-30">30. oktober 2026</time></p>
+        </section>
+
+        <section class="po-slide po-agenda dui-agenda" id="agenda">
+          <span class="eyebrow">Overblik · det er der i slides</span>
+          <h2>Fra anonym læser til bruger med en profil</h2>
+          <ol class="agenda-list">
+            <li>
+              <a href="#/kap-auth"><b>Authentication og authorization</b><small>Hvem er du — og hvad må du?</small></a>
+            </li>
+            <li>
+              <a href="#/supabase-auth"><b>Supabase Auth</b><small>Hvad er det, hvad kan det — og fra REST til SDK</small></a>
+            </li>
+            <li>
+              <a href="#/kap-session"><b>Hvor bor sessionen?</b><small>Cookies, <code>localStorage</code> og nøglekortet</small></a>
+            </li>
+            <li>
+              <a href="#/kap-flow"><b>Login-flowet</b><small>Formular → Server Action → cookie · <code>proxy.js</code></small></a>
+            </li>
+            <li>
+              <a href="#/kap-beskyt"><b>Beskyttede sider</b><small>Tjek på serveren → <code>redirect</code> · nøgler og RLS</small></a>
+            </li>
+          </ol>
+        </section>
+
+        <section class="po-slide" id="maal">
+          <span class="eyebrow">Dagens mål</span>
+          <h2>Samme app — nu med brugere</h2>
+          <div class="au-goal">
+            <div class="au-browser" aria-label="Skitse af appen med login-status i headeren">
+              <div class="au-browser-bar"><i></i><i></i><i></i><span>localhost:3000/profile</span></div>
+              <div class="au-app-header">
+                <b>Headless WordPress</b>
+                <span>Home</span><span>Posts</span><span>About</span>
+                <em>dig@eaaa.dk</em><u>Log out</u>
+              </div>
+              <div class="au-app-body">
+                <h3>Profile</h3>
+                <dl>
+                  <dt>Email</dt>
+                  <dd>dig@eaaa.dk</dd>
+                  <dt>User id</dt>
+                  <dd>7f3c9a2e-…</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="goal-points">
+              <article>
+                <span>Brugere</span><strong>Sign up, log ind og log ud</strong
+                ><small>to sider med en formular og en fejlbesked</small>
+              </article>
+              <article>
+                <span>Status</span><strong>Headeren ved, hvem du er</strong
+                ><small>e-mail og <em>Log out</em> — eller <em>Log in</em></small>
+              </article>
+              <article>
+                <span>Adgang</span><strong>Profil og posts kræver login</strong
+                ><small><code>/profile</code> og <code>/posts/[slug]</code> sender dig til login</small>
+              </article>
+            </div>
+          </div>
+          <div class="lab-path" aria-label="Next.js-appen bygges videre i de kommende undervisningsgange">
+            <p><b>26. oktober</b>Next.js og WordPress</p>
+            <p><b>29. oktober</b>Fra Figma til React/Next.js</p>
+            <p class="is-today"><b>I dag</b>Supabase Auth</p>
+            <p><b>2. november</b>Kick-off på projektet</p>
+            <p><b>10. november</b>Roller og beskyttet adgang</p>
+          </div>
+        </section>
+
+        <section class="chapter po-chapter po-slide" id="kap-auth">
+          <span class="chapter-index">01</span>
+          <span class="eyebrow">Authentication og authorization</span>
+          <h2>Hvem er du —<br />og hvad må du?</h2>
+          <p class="kicker">To spørgsmål, der lyder ens, men løses forskellige steder.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Authentication · AuthN</dt>
+              <dd>At <b>bevise, hvem du er</b> — fx med e-mail og adgangskode. Svaret er: Det er Rasmus.</dd>
+            </div>
+            <div>
+              <dt>Authorization · AuthZ</dt>
+              <dd>At <b>afgøre, hvad du må</b>, når vi ved, hvem du er. Svaret er: Rasmus må læse posts, men ikke slette dem.</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="po-slide" id="authn-authz">
+          <span class="eyebrow">Authentication og authorization · en model</span>
+          <h2>Først ID-tjek ved døren — så nøglekort til rummene</h2>
+          <div class="au-door">
+            <article class="is-authn">
+              <span>Authentication · i dag</span>
+              <h3>Receptionen</h3>
+              <p>Du viser ID. Receptionen tjekker, at du er den, du siger — og giver dig et <b>nøglekort</b>.</p>
+              <ul>
+                <li>Sign up og log ind</li>
+                <li>Sessionen husker dig</li>
+                <li>Log ud</li>
+              </ul>
+            </article>
+            <i class="au-door-arrow" aria-hidden="true">→</i>
+            <article class="is-authz">
+              <span>Authorization · 10. november</span>
+              <h3>Dørene</h3>
+              <p>Hver dør læser dit nøglekort og afgør, om <b>du</b> må komme ind i <b>netop det rum</b>.</p>
+              <ul>
+                <li>Kun logget ind må læse posts</li>
+                <li>Kun du må ændre din profil</li>
+                <li>Kun en admin må slette</li>
+              </ul>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>I dag laver vi receptionen og én simpel dør:</strong> Er du logget ind, må du læse posts og se din
+            profil. Roller og regler for data kommer 10. november.
+          </p>
+        </section>
+
+        <section class="chapter po-chapter po-slide" id="supabase-auth">
+          <span class="chapter-index">02</span>
+          <span class="eyebrow">Supabase Auth</span>
+          <h2>Login som en<br />færdig service</h2>
+          <p class="kicker">— så I ikke selv skal gemme adgangskoder.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Supabase Auth</dt>
+              <dd>
+                Den del af Supabase, der håndterer <b>brugere</b>: opretter dem, tjekker adgangskoder og udsteder en
+                <b>session</b>, der beviser, hvem brugeren er. Den hører til samme projekt som jeres database.
+              </dd>
+            </div>
+          </dl>
+          <p class="po-source-link">
+            <a href="https://supabase.com/docs/guides/auth" target="_blank" rel="noreferrer">Supabase: Auth ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="hvad-kan-auth">
+          <span class="eyebrow">Supabase Auth · hvad kan det?</span>
+          <h2>Mange måder at logge ind — én slags bruger</h2>
+          <div class="au-features">
+            <article class="is-today">
+              <em>I dag</em>
+              <h3>E-mail og adgangskode</h3>
+              <p>Brugeren vælger selv en adgangskode. Supabase gemmer den krypteret — aldrig i klartekst.</p>
+            </article>
+            <article>
+              <h3>Magic link og engangskode</h3>
+              <p>Ingen adgangskode. Brugeren får et link eller en kode på e-mail.</p>
+            </article>
+            <article>
+              <h3>Social login</h3>
+              <p>Log ind med Google, GitHub, Apple og andre konti, brugeren allerede har.</p>
+            </article>
+            <article class="is-today">
+              <em>I dag</em>
+              <h3>Brugere i dashboardet</h3>
+              <p>Alle brugere står under <i>Authentication → Users</i> — i tabellen <code>auth.users</code>.</p>
+            </article>
+            <article class="is-today">
+              <em>I dag</em>
+              <h3>Sessioner</h3>
+              <p>Efter login får brugeren et nøglekort, der bliver fornyet automatisk.</p>
+            </article>
+            <article class="is-next">
+              <em>10. november</em>
+              <h3>Spiller sammen med databasen</h3>
+              <p>Row Level Security kan spørge: Hvem er brugeren? Så kan I beskytte data pr. bruger.</p>
+            </article>
+          </div>
+          <p class="po-source-link">
+            <a href="https://supabase.com/docs/guides/auth" target="_blank" rel="noreferrer">Supabase: Auth ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="hvem-goer-hvad">
+          <span class="eyebrow">Supabase Auth · arbejdsdeling</span>
+          <h2>Hvem gør hvad?</h2>
+          <div class="compare-cols">
+            <article>
+              <span>Supabase Auth</span>
+              <h3>Det svære og farlige</h3>
+              <ul>
+                <li><b>Gemmer adgangskoder</b> sikkert — krypteret</li>
+                <li><b>Tjekker</b> e-mail og adgangskode ved login</li>
+                <li><b>Udsteder og fornyer</b> sessionen</li>
+                <li><b>Sender e-mails</b>, fx bekræftelse og nulstilling</li>
+              </ul>
+            </article>
+            <article class="is-new">
+              <span>Jeres Next.js-app</span>
+              <h3>Det, brugeren ser</h3>
+              <ul>
+                <li><b>Formularer</b> til sign up og login</li>
+                <li><b>Feedback:</b> fejl, loading og success</li>
+                <li><b>Login-status</b> i headeren</li>
+                <li><b>Hvilke sider</b> der kræver login</li>
+              </ul>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Byg aldrig jeres egen adgangskode-tabel.</strong> Det er let at gøre forkert og svært at opdage, før
+            det er for sent.
+          </p>
+        </section>
+
+        <section class="po-slide" id="sdk-samme-kald">
+          <span class="eyebrow">Supabase Auth · fra REST til SDK</span>
+          <h2>SDK'et sender den samme request for dig</h2>
+          <div class="au-code-pair">
+            <div>
+              <span class="code-label">REST · med <code>fetch</code></span>
+              <pre class="po-code"><code class="language-js">const response = await fetch(
+  `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+  {
+    method: "POST",
+    headers: {
+      apikey: PUBLISHABLE_KEY,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ email, password })
+  }
+);
+const session = await response.json();
+// … og gem selv sessionen et sted</code></pre>
+            </div>
+            <b class="au-equals" aria-hidden="true">=</b>
+            <div>
+              <span class="code-label is-sdk">SDK · med Supabase-klienten</span>
+              <pre class="po-code"><code class="language-js">const { error } =
+  await supabase.auth.signInWithPassword({
+    email,
+    password
+  });</code></pre>
+              <p class="au-pair-note">Samme <code>POST</code> til <code>/auth/v1/token</code> — og sessionen bliver gemt for dig.</p>
+            </div>
+          </div>
+          <p class="po-source-link">
+            <a href="https://supabase.com/docs/reference/javascript/auth-signinwithpassword" target="_blank" rel="noreferrer"
+              >Supabase: signInWithPassword ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="sdk-abstraherer">
+          <span class="eyebrow">Supabase Auth · hvad abstraherer SDK'et?</span>
+          <h2>Det, du ikke længere skriver selv</h2>
+          <div class="au-layers">
+            <p class="is-you"><span>Du skriver</span><code>supabase.auth.signInWithPassword({ email, password })</code></p>
+            <div class="au-layer-stack">
+              <p><b>URL og endpoint</b><span>Hvilken adresse skal requesten til?</span></p>
+              <p><b>Headers og nøgle</b><span><code>apikey</code>, <code>Content-Type</code> og brugerens token</span></p>
+              <p><b>JSON ind og ud</b><span><code>JSON.stringify</code> og <code>response.json()</code></span></p>
+              <p><b>Fejl</b><span>Altid <code>{ data, error }</code> — også når HTTP-status er 400</span></p>
+              <p class="is-new"><b>Sessionen</b><span>Gemmer nøglekortet — i cookies med <code>@supabase/ssr</code></span></p>
+              <p class="is-new"><b>Fornyelse</b><span>Henter et nyt access token, før det gamle udløber</span></p>
+            </div>
+            <p class="is-rest"><span>Nedenunder</span><code>HTTP-requests til Supabase' REST API</code></p>
+          </div>
+          <p class="dui-lead-note">
+            <strong>De to nederste lag er grunden til, at vi skifter nu.</strong> Med <code>fetch</code> skulle I selv
+            gemme og forny sessionen.
+          </p>
+        </section>
+
+        <section class="chapter po-chapter po-slide" id="kap-session">
+          <span class="chapter-index">03</span>
+          <span class="eyebrow">Hvor bor sessionen?</span>
+          <h2>HTTP har ingen<br />hukommelse</h2>
+          <p class="kicker">— hver request er en fremmed. Så hvordan husker appen, at du er logget ind?</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Session</dt>
+              <dd>
+                Beviset på, at du er logget ind. Du får det ved login, og browseren viser det frem, hver gang den
+                beder om noget.
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="po-slide" id="husker-dig">
+          <span class="eyebrow">Hvor bor sessionen? · uden og med</span>
+          <h2>Nøglekortet skal med på hver request</h2>
+          <div class="au-memory">
+            <article>
+              <span>Uden session</span>
+              <ol>
+                <li><b>Browser →</b> Her er min e-mail og adgangskode</li>
+                <li><b>← Server</b> Velkommen, Rasmus</li>
+                <li><b>Browser →</b> Vis min profil</li>
+                <li class="is-bad"><b>← Server</b> Hvem er du?</li>
+              </ol>
+            </article>
+            <article class="is-good">
+              <span>Med session</span>
+              <ol>
+                <li><b>Browser →</b> Her er min e-mail og adgangskode</li>
+                <li><b>← Server</b> Velkommen — her er dit nøglekort 🪪</li>
+                <li><b>Browser →</b> Vis min profil · 🪪</li>
+                <li class="is-ok"><b>← Server</b> Her er din profil, Rasmus</li>
+              </ol>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Spørgsmålet er nu:</strong> Hvor i browseren skal nøglekortet ligge, så det kommer med?
+          </p>
+        </section>
+
+        <section class="po-slide" id="storage">
+          <span class="eyebrow">Hvor bor sessionen? · tre steder i browseren</span>
+          <h2>Cookies, localStorage eller sessionStorage?</h2>
+          <div class="why-table au-storage" role="table" aria-label="Sammenligning af cookies, localStorage og sessionStorage">
+            <div class="why-row why-head" role="row">
+              <span></span><span>Hvem kan læse den?</span><span>Hvor længe lever den?</span><span>Sendes til serveren?</span>
+            </div>
+            <div class="why-row is-pick" role="row">
+              <b>Cookies</b><span>Browseren — og serveren</span><span>Til den udløber. Serveren bestemmer.</span
+              ><span class="is-yes">Ja, automatisk med hver request</span>
+            </div>
+            <div class="why-row" role="row">
+              <b><code>localStorage</code></b><span>JavaScript i browseren</span><span>Til den bliver slettet</span
+              ><span class="is-no">Nej</span>
+            </div>
+            <div class="why-row" role="row">
+              <b><code>sessionStorage</code></b><span>JavaScript i browseren · kun i fanen</span
+              ><span>Til fanen lukkes</span><span class="is-no">Nej</span>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>I en Vite-app</strong> gemmer Supabase sessionen i <code>localStorage</code>. Det virker, fordi al
+            koden kører i browseren. <strong>I Next.js</strong> skal serveren også kunne se den.
+          </p>
+          <p class="po-source-link">
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies" target="_blank" rel="noreferrer">MDN: Cookies ↗</a>
+            ·
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" target="_blank" rel="noreferrer">MDN: Web Storage ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="hvorfor-cookies">
+          <span class="eyebrow">Hvor bor sessionen? · Next.js</span>
+          <h2>Serveren bygger siden — så den skal kunne se dig</h2>
+          <div class="cs-model is-compact is-chain">
+            <article>
+              <span>Client</span>
+              <h3>Browseren</h3>
+              <small>gemmer nøglekortet i en cookie</small>
+            </article>
+            <div class="cs-arrows">
+              <p class="is-request"><b>Request →</b><code>GET /profile</code><code class="au-cookie">🍪 sb-…-auth-token</code></p>
+              <p class="is-response"><b>← Response</b><span>HTML med din profil</span></p>
+            </div>
+            <article class="is-server is-react">
+              <span>Server · Next.js</span>
+              <h3><code>page.js</code></h3>
+              <small>læser cookien og spørger: Hvem er det?</small>
+              <em class="react-badge">React kører her</em>
+            </article>
+            <div class="cs-arrows">
+              <p class="is-request"><b>Tjek →</b><code>getClaims()</code></p>
+              <p class="is-response"><b>← Svar</b><span>Det er dig@eaaa.dk</span></p>
+            </div>
+            <article class="is-server">
+              <span>Server · Auth</span>
+              <h3>Supabase</h3>
+              <small>har udstedt nøglekortet</small>
+            </article>
+          </div>
+          <ol class="flow-steps">
+            <li>Browseren sender cookien med automatisk — du skriver ingen kode til det.</li>
+            <li><code>page.js</code> kører på serveren og læser cookien fra requesten.</li>
+            <li>Nøglekortet tjekkes: Er det ægte, og er det stadig gyldigt?</li>
+            <li>Serveren bygger HTML'en til netop dig — før den sendes.</li>
+          </ol>
+          <p class="dui-lead-note">
+            <strong>Derfor cookies:</strong> Det er det eneste af de tre steder, serveren kan se.
+            <code>@supabase/ssr</code> sørger for, at sessionen havner dér.
+          </p>
+        </section>
+
+        <section class="po-slide" id="tokens">
+          <span class="eyebrow">Hvor bor sessionen? · hvad står der på nøglekortet?</span>
+          <h2>Nøglekortet udløber — og bliver fornyet</h2>
+          <div class="au-tokens">
+            <article class="is-access">
+              <span>Access token</span>
+              <h3>Nøglekortet</h3>
+              <p class="au-token-life"><b>≈ 1 time</b> og så udløber det</p>
+              <p>Viser, <b>hvem du er</b>. Det tjekkes, hver gang du beder om noget beskyttet.</p>
+              <code class="au-jwt">{ "sub": "7f3c…", "email": "dig@eaaa.dk", "exp": 1793361600 }</code>
+            </article>
+            <i class="au-door-arrow" aria-hidden="true">↻</i>
+            <article class="is-refresh">
+              <span>Refresh token</span>
+              <h3>Fornyelsen</h3>
+              <p class="au-token-life"><b>Lang levetid</b> men kan kun ét</p>
+              <p>Bruges til at hente et <b>nyt access token</b>, når det gamle er udløbet. Så slipper du for at logge ind igen.</p>
+            </article>
+          </div>
+          <dl class="term-row">
+            <div>
+              <dt>JWT · JSON Web Token</dt>
+              <dd>Formatet for access token'et: JSON med en <b>signatur</b>. Alle kan læse det — ingen kan ændre det uden at signaturen går i stykker.</dd>
+            </div>
+            <div>
+              <dt>Begge ligger i cookien</dt>
+              <dd>Derfor kan du være logget ind i dagevis, selvom nøglekortet kun lever en time.</dd>
+            </div>
+          </dl>
+          <p class="po-source-link">
+            <a href="https://supabase.com/docs/guides/auth/sessions" target="_blank" rel="noreferrer">Supabase: User sessions ↗</a>
+          </p>
+        </section>
+
+        <section class="chapter po-chapter po-slide" id="kap-flow">
+          <span class="chapter-index">04</span>
+          <span class="eyebrow">Login-flowet</span>
+          <h2>Fra formular<br />til cookie</h2>
+          <p class="kicker">Hvad sker der, fra brugeren klikker på <em>Log in</em>, til headeren viser deres e-mail?</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Server Action</dt>
+              <dd>
+                En funktion med <code>"use server"</code>, der <b>kører på serveren</b>, men som en formular i browseren
+                kan kalde. Next.js sender formularen som en <code>POST</code>-request.
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="po-slide au-seq-slide" id="sekvens">
+          <span class="eyebrow">Login-flowet · sekvensdiagram</span>
+          <h2>Fem skridt fra klik til login</h2>
+          <div class="au-seq" role="img" aria-label="Sekvensdiagram over login mellem browser, Next.js-server og Supabase Auth">
+            <p class="au-lane is-browser" style="grid-column: 1"><span>Client</span>Browseren</p>
+            <p class="au-lane is-next" style="grid-column: 3"><span>Server · Server Action</span>Next.js</p>
+            <p class="au-lane is-supa" style="grid-column: 5"><span>Server · Auth</span>Supabase</p>
+
+            <i class="au-life" style="grid-column: 1"></i>
+            <i class="au-life" style="grid-column: 3"></i>
+            <i class="au-life" style="grid-column: 5"></i>
+
+            <div class="au-msg is-right" style="grid-column: 2; grid-row: 2">
+              <b>1</b><span><code>POST</code> formularen · e-mail og adgangskode</span>
+            </div>
+            <div class="au-msg is-right" style="grid-column: 4; grid-row: 3">
+              <b>2</b><span><code>signInWithPassword()</code></span>
+            </div>
+            <p class="au-note" style="grid-column: 5; grid-row: 3">tjekker adgangskoden</p>
+            <div class="au-msg is-left" style="grid-column: 4; grid-row: 4">
+              <b>3</b><span>access token + refresh token</span>
+            </div>
+            <div class="au-msg is-left is-cookie" style="grid-column: 2; grid-row: 5">
+              <b>4</b><span><code>Set-Cookie: sb-…-auth-token</code> + <code>redirect("/")</code></span>
+            </div>
+            <p class="au-note" style="grid-column: 1; grid-row: 5">gemmer cookien</p>
+            <div class="au-msg is-right is-cookie" style="grid-column: 2; grid-row: 6">
+              <b>5</b><span><code>GET /</code> · 🍪 cookien kommer med</span>
+            </div>
+            <div class="au-msg is-left" style="grid-column: 2; grid-row: 7">
+              <b>✓</b><span>HTML med <em>dig@eaaa.dk · Log out</em></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="po-slide" id="server-action">
+          <span class="eyebrow">Login-flowet · trin 1–4 i koden</span>
+          <h2>Server Action'en er én funktion</h2>
+          <div class="code-explain">
+            <div>
+              <span class="code-label"><code>lib/actions.js</code></span>
+              <pre class="po-code"><code class="language-js">"use server";
+
+export async function signIn(formData) {
+  const email = formData.get("email");
+  const password = formData.get("password");
+
+  const supabase = await createClient();
+  const { error } = await supabase.auth
+    .signInWithPassword({ email, password });
+
+  if (error) {
+    redirect("/login?error=true");
+  }
+
+  redirect("/");
+}</code></pre>
+            </div>
+            <div class="explain-list">
+              <p><b><code>"use server"</code></b>Alt i filen kører på serveren — også når en formular kalder det.</p>
+              <p><b><code>formData.get("email")</code></b>Henter feltet med <code>name="email"</code> fra formularen.</p>
+              <p><b><code>?error=true</code></b>Gik det galt, sendes brugeren tilbage, og login-siden viser en fejlbesked.</p>
+              <p><b><code>redirect("/")</code></b>Gik det godt, ligger cookien klar, og brugeren sendes videre.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="po-slide" id="server-klient">
+          <span class="eyebrow">Login-flowet · <code>lib/supabase/server.js</code></span>
+          <h2>Klienten læser sessionen fra cookies</h2>
+          <div class="code-explain">
+            <div>
+              <span class="code-label"><code>lib/supabase/server.js</code> · forkortet</span>
+              <pre class="po-code"><code class="language-js">export async function createClient() {
+  const cookieStore = await cookies();
+
+  return createServerClient(URL, PUBLISHABLE_KEY, {
+    cookies: {
+      getAll() {
+        return cookieStore.getAll();
+      },
+      setAll(cookiesToSet) {
+        // Server Components can't write cookies
+      }
+    }
+  });
+}</code></pre>
+            </div>
+            <div class="explain-list">
+              <p><b><code>createClient()</code></b>En ny klient pr. request. Delt mellem requests kunne én bruger få en andens session.</p>
+              <p><b><code>getAll()</code></b>Læser cookies fra requesten. Sådan ved serveren, hvem der spørger.</p>
+              <p><b><code>setAll()</code></b>Skriver nye cookies — men det må en server component ikke. Det løser <code>proxy.js</code>.</p>
+              <p><b>Og browser-klienten?</b>Den findes også, men i dag taler kun serveren med Supabase.</p>
+            </div>
+          </div>
+          <p class="po-source-link">
+            <a href="https://supabase.com/docs/guides/auth/server-side/creating-a-client" target="_blank" rel="noreferrer"
+              >Supabase: Creating a client for SSR ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="proxy">
+          <span class="eyebrow">Login-flowet · <code>proxy.js</code> i roden</span>
+          <h2>Hvorfor <code>proxy.js</code>?</h2>
+          <div class="au-proxy">
+            <article>
+              <span>1 · Request</span>
+              <h3>Browseren</h3>
+              <p>sender et udløbet nøglekort 🪪 med</p>
+            </article>
+            <i aria-hidden="true">→</i>
+            <article class="is-proxy">
+              <span>2 · Før siden</span>
+              <h3><code>proxy.js</code></h3>
+              <p>kalder <code>getClaims()</code>. Udløbet? Så hentes et nyt med refresh token'et.</p>
+              <em>kan skrive cookies</em>
+            </article>
+            <i aria-hidden="true">→</i>
+            <article>
+              <span>3 · Siden</span>
+              <h3><code>page.js</code></h3>
+              <p>læser det nye nøglekort og ved, hvem du er</p>
+              <em class="is-muted">kan ikke skrive cookies</em>
+            </article>
+            <i aria-hidden="true">→</i>
+            <article>
+              <span>4 · Response</span>
+              <h3>Browseren</h3>
+              <p>gemmer det nye nøglekort 🍪 til næste gang</p>
+            </article>
+          </div>
+          <dl class="term-row">
+            <div>
+              <dt>Proxy · tidligere middleware</dt>
+              <dd>Kode, Next.js kører <b>før hver request</b>. Filen ligger i roden. Før Next.js 16 hed den <code>middleware.js</code>.</dd>
+            </div>
+            <div>
+              <dt>Uden <code>proxy.js</code></dt>
+              <dd>Ingen kan forny nøglekortet, og brugeren bliver logget ud, når det udløber.</dd>
+            </div>
+          </dl>
+          <p class="po-source-link">
+            <a href="https://nextjs.org/docs/app/getting-started/proxy" target="_blank" rel="noreferrer">Next.js: Proxy ↗</a>
+            ·
+            <a href="https://supabase.com/docs/guides/auth/server-side/nextjs" target="_blank" rel="noreferrer">Supabase: Server-Side Auth for Next.js ↗</a>
+          </p>
+        </section>
+
+        <section class="chapter po-chapter po-slide" id="kap-beskyt">
+          <span class="chapter-index">05</span>
+          <span class="eyebrow">Beskyttede sider</span>
+          <h2>Tjek på serveren —<br />før HTML'en sendes</h2>
+          <p class="kicker">Profilen og alle posts kræver login.</p>
+        </section>
+
+        <section class="po-slide" id="beskyt-flow">
+          <span class="eyebrow">Beskyttede sider · flowet</span>
+          <h2>Én <code>if</code> på serveren afgør det</h2>
+          <div class="au-guard">
+            <p class="au-guard-start"><span>Request</span><code>GET /posts/en-post</code></p>
+            <i aria-hidden="true">↓</i>
+            <p class="au-guard-check"><span>På serveren</span><code>await getCurrentUser()</code></p>
+            <i aria-hidden="true">↓</i>
+            <p class="au-guard-question">Er der en bruger?</p>
+            <div class="au-guard-branches">
+              <article class="is-yes">
+                <span>Ja</span>
+                <h3>Vis siden</h3>
+                <p>Hent posten, og byg HTML'en.</p>
+              </article>
+              <article class="is-no">
+                <span>Nej · <code>null</code></span>
+                <h3><code>redirect("/login")</code></h3>
+                <p>Indholdet bliver aldrig sendt.</p>
+              </article>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Det kender I:</strong> <code>notFound()</code> stoppede siden, når en post ikke fandtes.
+            <code>redirect()</code> stopper den, når brugeren ikke er logget ind.
+          </p>
+        </section>
+
+        <section class="po-slide" id="beskyt-kode">
+          <span class="eyebrow">Beskyttede sider · koden</span>
+          <h2>Hvem er logget ind? Spørg ét sted</h2>
+          <div class="au-code-pair is-stacked">
+            <div>
+              <span class="code-label"><code>lib/auth.js</code></span>
+              <pre class="po-code"><code class="language-js">export async function getCurrentUser() {
+  const supabase = await createClient();
+  const { data } = await supabase.auth.getClaims();
+
+  return data?.claims ?? null;
+}</code></pre>
+            </div>
+            <div>
+              <span class="code-label"><code>app/profile/page.js</code></span>
+              <pre class="po-code"><code class="language-jsx">export default async function ProfilePage() {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  return &lt;p&gt;{user.email}&lt;/p&gt;;
+}</code></pre>
+            </div>
+          </div>
+          <dl class="term-row">
+            <div>
+              <dt><code>getClaims()</code></dt>
+              <dd>Tjekker, at nøglekortet er <b>ægte</b>, og giver dig indholdet: <code>email</code> og id'et i <code>sub</code>.</dd>
+            </div>
+            <div>
+              <dt>Én regel</dt>
+              <dd>Brug <code>getClaims()</code>, når du beskytter noget på serveren. Supabase advarer mod <code>getSession()</code>, som ikke tjekker kortet.</dd>
+            </div>
+          </dl>
+          <p class="po-source-link">
+            <a href="https://supabase.com/docs/guides/auth/server-side/nextjs" target="_blank" rel="noreferrer"
+              >Supabase: Server-Side Auth for Next.js ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="suspense">
+          <span class="eyebrow">Beskyttede sider · login-status i headeren</span>
+          <h2>Headeren venter nu på cookien</h2>
+          <div class="au-header-mock" aria-label="Headeren delt i en del, der bygges på forhånd, og en del, der venter på requesten">
+            <p class="is-static">
+              <span>Bygges på forhånd</span><b>Headless WordPress</b><em>Home · Posts · About</em>
+            </p>
+            <p class="is-dynamic">
+              <span><code>&lt;Suspense&gt;</code> · venter på requesten</span><b>dig@eaaa.dk</b><em>Log out</em>
+            </p>
+          </div>
+          <div class="au-suspense">
+            <pre class="po-code"><code class="language-jsx">&lt;Suspense fallback={null}&gt;
+  &lt;AuthStatus /&gt;
+&lt;/Suspense&gt;</code></pre>
+            <div class="explain-list">
+              <p><b>Hvorfor?</b>Cookies findes først, når en bruger sender en request. Uden <code>&lt;Suspense&gt;</code> fejler <code>npm run build</code>.</p>
+              <p><b>Samme idé som <code>loading.js</code></b>Den del, der venter, får sin egen grænse. Resten vises med det samme.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="po-slide" id="skjul-ikke">
+          <span class="eyebrow">Beskyttede sider · hvad er egentlig beskyttet?</span>
+          <h2>Skjul ikke bare linket</h2>
+          <div class="au-levels">
+            <article class="is-weak">
+              <span>UI</span>
+              <h3>Skjul knappen</h3>
+              <p>Brugeren ser den ikke — men kan stadig skrive URL'en.</p>
+              <b>Ikke beskyttelse</b>
+            </article>
+            <article class="is-ok">
+              <span>Server · i dag</span>
+              <h3>Tjek på siden</h3>
+              <p><code>getCurrentUser()</code> og <code>redirect</code>. Siden sendes kun til brugere, der er logget ind.</p>
+              <b>Beskytter siden</b>
+            </article>
+            <article class="is-strong">
+              <span>Data · 10. november</span>
+              <h3>Tjek ved data</h3>
+              <p>Kilden selv afgør, hvem der må læse og ændre — Row Level Security i Supabase.</p>
+              <b>Beskytter data</b>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Prøv selv:</strong> Log ud, og åbn <code>/wp-json/wp/v2/posts</code> på din WordPress. Indholdet er
+            stadig offentligt. I har låst <em>siden</em> — ikke <em>data</em>.
+          </p>
+        </section>
+
+        <section class="po-slide" id="noegler">
+          <span class="eyebrow">Beskyttede sider · nøglerne</span>
+          <h2>To nøgler — to steder</h2>
+          <div class="au-keys">
+            <article class="is-public">
+              <span>Må ligge i browseren</span>
+              <h3>Publishable key</h3>
+              <code>sb_publishable_…</code>
+              <ul>
+                <li>Fortæller Supabase, <b>hvilket projekt</b></li>
+                <li>Giver rollen <code>anon</code> — eller <code>authenticated</code>, når brugeren er logget ind</li>
+                <li>Kan kun det, jeres regler tillader</li>
+              </ul>
+            </article>
+            <article class="is-secret">
+              <span>Kun på en server, I stoler på</span>
+              <h3>Secret key</h3>
+              <code>sb_secret_…</code>
+              <ul>
+                <li>Giver rollen <code>service_role</code></li>
+                <li><b>Omgår alle regler</b> — kan læse og slette alt</li>
+                <li>Afvises af Supabase, hvis den bruges i en browser</li>
+              </ul>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Har I set <code>anon</code> og <code>service_role</code>?</strong> Det er de gamle navne for de samme
+            to slags nøgler. De udfases, så brug de nye.
+          </p>
+          <p class="po-source-link">
+            <a href="https://supabase.com/docs/guides/api/api-keys" target="_blank" rel="noreferrer">Supabase: Understanding API keys ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="rls">
+          <span class="eyebrow">Beskyttede sider · teaser til 10. november</span>
+          <h2>Nøglen åbner hoveddøren — RLS bestemmer rummene</h2>
+          <div class="au-rls">
+            <p class="au-rls-key"><span>Publishable key</span>alle kan komme ind i bygningen</p>
+            <i aria-hidden="true">↓</i>
+            <div class="au-rls-rows">
+              <p><code>anon</code><span>ikke logget ind</span><b>må læse offentlige data</b></p>
+              <p><code>authenticated</code><span>logget ind som dig</span><b>må læse og ændre <em>dine</em> data</b></p>
+              <p class="is-no"><code>authenticated</code><span>logget ind som en anden</span><b>må ikke se dine data</b></p>
+            </div>
+          </div>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Row Level Security · RLS</dt>
+              <dd>
+                Regler i databasen, der afgør for <b>hver række</b>, hvem der må læse og ændre den. Det er den egentlige
+                beskyttelse — ikke nøglen.
+              </dd>
+            </div>
+          </dl>
+          <p class="po-source-link">
+            <a href="https://supabase.com/docs/guides/database/postgres/row-level-security" target="_blank" rel="noreferrer"
+              >Supabase: Row Level Security ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide po-agenda dui-agenda" id="opgaver">
+          <span class="eyebrow">Opgaver · hver opgave bygger videre på den forrige</span>
+          <h2>Seks opgaver — appen får brugere</h2>
+          <ol class="agenda-list">
+            <li>
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-1" target="_blank" rel="noreferrer"
+                ><b>Supabase i projektet</b><small>Confirm email fra · SDK'et · <code>.env.local</code></small></a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-2" target="_blank" rel="noreferrer"
+                ><b>Klienten og <code>proxy.js</code></b><small>Kopiér, forstå og byg</small></a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-3" target="_blank" rel="noreferrer"
+                ><b>Sign up</b><small>Formular · Server Action · fejlbesked med <code>?error=true</code></small></a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-4" target="_blank" rel="noreferrer"
+                ><b>Log ind</b><small><code>signInWithPassword</code> · <code>/login</code></small></a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-5" target="_blank" rel="noreferrer"
+                ><b>Login-status og log ud</b><small><code>getCurrentUser()</code> · <code>AuthStatus</code> · <code>&lt;Suspense&gt;</code></small></a
+              >
+            </li>
+            <li>
+              <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md#opgave-6" target="_blank" rel="noreferrer"
+                ><b>Beskyttede sider</b><small><code>/profile</code> og posts · <code>redirect("/login")</code></small></a
+              >
+            </li>
+          </ol>
+          <p class="au-task-links">
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-nextjs.md" target="_blank" rel="noreferrer"
+              >Opgaverne trin for trin ↗</a
+            >
+            <a href="https://github.com/cederdorff/nextjs-headless-wordpress/tree/supabase-auth" target="_blank" rel="noreferrer"
+              >Referencerepo · branchen <code>supabase-auth</code> ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="projekt">
+          <span class="eyebrow">Videre til gruppeprojektet · kick-off mandag</span>
+          <h2>Skal jeres produkt have brugere?</h2>
+          <div class="au-questions">
+            <article>
+              <b>1</b>
+              <h3>Hvad kan en bruger, der er logget ind?</h3>
+              <p>Gemme, skrive, bestille, se noget personligt? Eller er produktet bedst uden login?</p>
+            </article>
+            <article>
+              <b>2</b>
+              <h3>Hvilke data skal I gemme?</h3>
+              <p>Og hvilke kan I lade være med? Jo færre data, jo mindre skal I beskytte.</p>
+            </article>
+            <article>
+              <b>3</b>
+              <h3>Hvem må se og ændre hvad?</h3>
+              <p>Kun brugeren selv, alle brugere eller en admin? Det er grundlaget for 10. november.</p>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Har jeres produkt brugere,</strong> stiller eksamen også krav til it-sikkerhed. Skriv svarene ned —
+            de er starten på det afsnit.
+          </p>
+        </section>
+
+        <section class="po-slide po-closing dui-closing">
+          <span class="eyebrow">Dagens centrale pointe</span>
+          <h2>Supabase beviser, hvem brugeren er. Jeres server tjekker det — før siden sendes.</h2>
+          <div class="closing-formula">
+            <span>Formular</span><b>→</b><span>Server Action</span><b>→</b><span>🍪 cookie</span><b>→</b
+            ><span><code>getClaims()</code> på serveren</span><b>→</b><span>vis eller <code>redirect</code></span>
+          </div>
+          <p class="lead">Næste gang: Kick-off på projektet. 10. november: roller og beskyttelse af data med RLS.</p>
+          <div class="closing-links">
+            <a href="https://github.com/cederdorff/nextjs-headless-wordpress/tree/supabase-auth" target="_blank" rel="noreferrer"
+              >Referencerepo ↗</a
+            >
+            <a href="#/agenda">Tilbage til agenda</a>
+            <a href="#/opgaver">Opgaveoversigt</a>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="../shared/deck.js"></script>
+  </body>
+</html>
