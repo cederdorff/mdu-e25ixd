@@ -2,9 +2,7 @@
 
 ## Formål
 
-I dag tilføjer vi brugere til Next.js-appen med Supabase Auth. I Product optimization brugte vi Supabase via REST for at forstå fetch, HTTP og JSON. Nu skifter vi til Supabase SDK'et, som også håndterer auth og sessioner.
-
-Målet er, at du bygger en lille Next.js-app med sign up, log ind, log ud og en profilside, der kun kan ses af brugere, der er logget ind. Bagefter overfører du det til din headless WordPress-app.
+I dag får appen brugere. Med Supabase Auth bygger du sign up, log ind og en profil, som kun brugere, der er logget ind, kan se – først i en lille Next.js-app og derefter i din headless WordPress-app.
 
 <hr style="margin: 2rem 0;">
 
@@ -81,7 +79,7 @@ Målet er, at du bygger en lille Next.js-app med sign up, log ind, log ud og en 
 <ul>
 <li>Static eller dynamic? Kør <code>npm run build</code>, og forklar ○ og ƒ.</li>
 <li>Ekstra: <code>/members</code>, send brugere, der er logget ind, fra login til profilen, og vis login-status i headeren.</li>
-<li>Overfør login til din headless WordPress-app, og lås detaljesiderne for posts.</li>
+<li>Byg det samme ind i din headless WordPress-app i fem trin: projektet klar, sign up, log ind, profilen og låste posts, og login-status i headeren med <code>&lt;Suspense&gt;</code>.</li>
 </ul>
 </details>
 
@@ -94,7 +92,7 @@ Målet er, at du bygger en lille Next.js-app med sign up, log ind, log ud og en 
   - [PDF-version: Supabase Auth i Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/?print-pdf)
 - **Opgaver:**
   - [Next.js og Supabase Auth](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md) – dagens opgave med startprojekt, hints og løsninger
-  - [Supabase Auth i din headless WordPress-app](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-headless-wordpress.md) – overfør login til din headless WordPress-app
+  - [Supabase Auth i din headless WordPress-app](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-headless-wordpress.md) – det samme login i din egen WordPress-app, i samme rækkefølge
 - **Løsningsrepoer:**
   - [nextjs-supabase-auth](https://github.com/cederdorff/nextjs-supabase-auth) – template med startprojektet på `main` og én løsningsbranch pr. opgave
   - [nextjs-headless-wordpress](https://github.com/cederdorff/nextjs-headless-wordpress) – auth i WordPress-appen med én løsningsbranch pr. opgave, fra `auth-01-supabase` til `auth-05-header`
