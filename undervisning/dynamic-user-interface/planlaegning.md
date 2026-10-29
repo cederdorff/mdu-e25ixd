@@ -31,7 +31,7 @@ RACE-gangene dækker forløbets tekniske stack: Next.js, headless CMS, designsys
 | # | Dato | Tema | Indhold | Hovedoutput |
 | --- | --- | --- | --- | --- |
 | 08 | 26/10 | Next.js og intro til headless WordPress | App Router, layouts, server components, WordPress REST API (`/wp-json/wp/v2/posts`), liste- og detaljeside (`[slug]`) | En Next.js-app, der viser indhold fra deres egen WordPress |
-| 09 | 29/10 | Fra Figma til React/Next.js | **Figma (NKKR):** en pill, der bliver til en modal, med auto layout, variants, component properties og interaktion. **Kode (RACE):** Figma-begreber → React-begreber (component → komponent, properties → props, variants → state), pill og modal i Next.js, Figma MCP til at holde koden opdateret | En pill-modal-komponent i Figma og i Next.js-appen |
+| 09 | 29/10 | Fra Figma til React/Next.js | **Figma (NKKR):** en pill, der bliver til en modal, med auto layout, variants, component properties og interaktion. **Kode (RACE):** Figma-begreber → React-begreber (component → komponent, properties → props, variants → props eller CSS, prototype → state), pill og modal i Next.js, Figma MCP til at holde koden opdateret | En pill-modal-komponent i Figma og i Next.js |
 | 10 | 30/10 | Supabase Auth i Next.js | Fra REST til Supabase SDK, sign up, sign in og sign out, sessioner i cookies sammenlignet med `localStorage` og `sessionStorage`, Supabase-klient på server og client, beskyttede sider | Next.js-appen har login og en side, der kun kan ses af brugere, der er logget ind |
 
 ### Efter kick-off: projektet er i gang

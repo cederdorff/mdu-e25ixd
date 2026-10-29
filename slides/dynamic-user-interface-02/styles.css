@@ -329,8 +329,9 @@
   padding-block: 13px;
 }
 
-/* Lang CSS-blok på #modal-animation: tættere linjer, så den holder sig over sidetælleren */
-.reveal #modal-animation pre.po-code.code-sm code {
+/* Lange kodeblokke på #modal-animation og #paa-stedet: tættere linjer, så de holder sig over sidetælleren */
+.reveal #modal-animation pre.po-code.code-sm code,
+.reveal #paa-stedet pre.po-code.code-sm code {
   line-height: 1.25;
 }
 
