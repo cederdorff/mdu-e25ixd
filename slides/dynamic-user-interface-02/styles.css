@@ -324,6 +324,11 @@
   font-size: 22px;
 }
 
+/* Syv rækker på #mapping: lavere rækker, så tabellen holder sig over sidetælleren */
+#mapping .why-row:not(.why-head) {
+  padding-block: 13px;
+}
+
 .compare-cols.three article {
   min-height: 250px;
 }

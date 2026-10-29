@@ -46,26 +46,33 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Rul 1: Byg i hånden – den simpleste version først</strong></summary>
+<summary><strong>3. Kom i gang: starteren og Figma MCP</strong></summary>
+<ul>
+<li>Hent starteren med <b>Use this template</b>, klon den, og kør <code>npm i</code> og <code>npm run dev</code>. Det er et nyt projekt, ikke din WordPress-app.</li>
+<li>Forbind din egen AI-agent til Figma MCP-serveren, og tjek med <code>whoami</code>, at den bruger din Education-plan. Vi gør det sammen nu, så agenten er klar til rul 2. Det, der driller, løser vi, mens du bygger rul 1.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>4. Rul 1: Byg i hånden – den simpleste version først</strong></summary>
 <ul>
 <li>Byg <code>Pill</code> som en <code>&lt;button&gt;</code> og <code>Modal</code> som en <code>&lt;dialog&gt;</code> med <code>showModal()</code>, så fokus og <kbd>Esc</kbd> virker uden ekstra kode.</li>
 <li>Sæt dem sammen i <code>PillModal</code> med <code>"use client"</code> og <code>useState</code>. Nu virker den simpleste version. Kun komponenter, der selv bruger state, effects eller event handlers, skal være client components – siden forbliver en server component.</li>
 <li>Overfør dine variables til tokens i <code>globals.css</code>, og style komponenterne med CSS Modules og værdierne fra Dev Mode.</li>
 <li>Gør <code>Type</code> til en prop, hover til CSS og <code>showSeparator</code> til betinget rendering.</li>
-<li>Lav Smart Animate om til transitions, og test med tastaturet: Kan du åbne og lukke modalen, og er fokus synligt?</li>
-<li>Ekstra: Lad pillen folde sig ud, ligesom Smart Animate i din prototype – som overlay fra pillen eller på stedet, så resten af siden flytter sig.</li>
+<li>Lav hover om til en transition, og test med tastaturet: Kan du åbne og lukke modalen, og er fokus synligt?</li>
+<li>Ekstra: Lad modalen fade ind og ud, ligesom Smart Animate i din prototype – og fold den ud fra pillen som overlay eller på stedet, så resten af siden flytter sig.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>4. Rul 2: Byg igen med Figma MCP – i iterationer</strong></summary>
+<summary><strong>5. Rul 2: Byg igen med Figma MCP – i iterationer</strong></summary>
 <ul>
-<li>Forbind din egen AI-agent til Figma MCP-serveren, og giv den adgang til designet: filen i dit Education-team, et link til en node og et tjek med <code>whoami</code>.</li>
 <li>Send de faste regler først. De fortæller agenten det, den ikke kan se i Figma: JavaScript, tokens og CSS Modules, <code>&lt;button&gt;</code> og <code>&lt;dialog&gt;</code>.</li>
-<li>Byg i små iterationer: prompt → kør → validér → ret, og tag en runde mere, til det er rigtigt. Én iteration pr. komponent: <code>Pill</code> → <code>Modal</code> → <code>PillModal</code>.</li>
+<li>Byg <code>Pill</code> i små iterationer med et link til noden i Figma: prompt → kør → validér → ret, og tag en runde mere, til det er rigtigt. <code>Modal</code> og <code>PillModal</code>, hvis du når det.</li>
 <li>Ret designet i Figma, og bed agenten opdatere din eksisterende komponent. Læs diffen, før du committer.</li>
 <li>Du har ansvaret for at forstå, rette og forklare koden.</li>
-<li>Ekstra: MCP virker begge veje. Ændr noget i koden, og lad agenten opdatere designet i Figma.</li>
+<li>Ekstra: MCP virker begge veje. Ændr noget i koden, og lad agenten opdatere designet i Figma – og lav så noget vildt.</li>
 </ul>
 </details>
 
