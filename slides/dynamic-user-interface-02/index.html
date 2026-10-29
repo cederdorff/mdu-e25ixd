@@ -48,7 +48,7 @@
               >
             </li>
             <li>
-              <a href="#/rul-2"><b>Rul 2 · Figma MCP</b><small>Sådan virker det · adgang til designet · opsætning</small></a>
+              <a href="#/rul-2"><b>Rul 2 · 2.1</b><small>Sådan virker Figma MCP · adgang til designet · opsætning</small></a>
             </li>
             <li>
               <a href="#/iterationer"
@@ -212,7 +212,7 @@ npm run dev</code></pre>
             </article>
             <article>
               <h3>Figma-filen</h3>
-              <p>Læg din fil i dit Education-team, ikke i <i>Drafts</i>. Ingen færdig komponent? Duplikér demofilen.</p>
+              <p>Læg din fil i dit Education-team, ikke i <i>Drafts</i>. Ingen færdig komponent? Duplikér demofilen, og flyt kopien fra <i>Drafts</i>.</p>
             </article>
           </div>
           <p class="done-when">
@@ -299,8 +299,8 @@ npm run dev</code></pre>
             </li>
             <li>
               <img src="../assets/pillmodal-trin-1-5.png" alt="Trin 1.5: modalen er midt i at fade ind" />
-              <b>1.5 Animation</b>
-              <span>Smart Animate som <code>transition</code></span>
+              <b>1.5 Smart Animate</b>
+              <span>Animationen som <code>transition</code></span>
             </li>
           </ol>
           <div class="step-phases" aria-hidden="true">
@@ -351,7 +351,7 @@ npm run dev</code></pre>
     &lt;/dialog&gt;
   );
 }</code></pre>
-              <p><code>showModal()</code> giver fokus, <kbd>Esc</kbd> og en backdrop gratis. Det gør <code>open</code>-attributten ikke.</p>
+              <p><code>useRef</code> giver dig selve <code>&lt;dialog&gt;</code>. <code>useEffect</code> kalder <code>showModal()</code>, når <code>isOpen</code> skifter — så får du fokus, <kbd>Esc</kbd> og backdrop gratis.</p>
             </div>
           </div>
           <p class="po-source-link">
@@ -483,8 +483,8 @@ export default function PillModal({ label, title, text }) {
             <div class="explain-list">
               <p><b>Server components er standard</b><code>page.js</code> kører kun på serveren. Browseren får færdig HTML.</p>
               <p><b><code>"use client"</code> er en grænse</b>Komponenten og alt, den importerer, sendes også som JavaScript til browseren.</p>
-              <p><b>Kun dér, hvor den skal reagere</b>State, effects og events. Hold grænsen så langt nede i træet som muligt.</p>
-              <p><b><code>Pill</code> behøver det ikke</b>Den har ingen state, men kører i browseren, fordi <code>PillModal</code> importerer den.</p>
+              <p><b>Kun dér, hvor den skal reagere</b>State, effects og egne event handlers. Hold grænsen så langt nede i træet som muligt.</p>
+              <p><b><code>Pill</code> behøver det ikke</b>Den får kun <code>onClick</code> som prop og bruger ingen hooks. Den kører i browseren, fordi <code>PillModal</code> importerer den.</p>
             </div>
           </div>
           <p class="dui-lead-note">
@@ -518,7 +518,7 @@ export default function PillModal({ label, title, text }) {
             </article>
           </div>
           <p class="work-if-stuck"><strong>Åbner modalen kun første gang?</strong> <code>onClose</code> skal sætte <code>isOpen</code> til <code>false</code>. Ellers tror state, at den stadig er åben.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Et klik åbner modalen, <kbd>Esc</kbd> lukker den, og fokus kommer tilbage til pillen. Commit.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Et klik åbner modalen. Med <kbd>Tab</kbd>, <kbd>Enter</kbd> og <kbd>Esc</kbd> kan du åbne og lukke den, og fokus kommer tilbage til pillen. Commit.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/7fbde98" target="_blank" rel="noreferrer"
               >Starterrepo: 1.2 PillModal ↗</a
@@ -638,8 +638,8 @@ body {
             </article>
             <article>
               <h3>CSS</h3>
-              <p>Style <code>.pill</code>, <code>.modal</code>, <code>.content</code>, rubrik og tekst med værdierne fra <i>Inspect</i>.</p>
-              <p class="step-links"><a href="#/css">CSS</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/edef78e/components/Modal.module.css" target="_blank" rel="noreferrer"><code>Modal.module.css</code></a></p>
+              <p>Style <code>.pill</code>, <code>.modal</code>, <code>.content</code>, <code>::backdrop</code>, rubrik og tekst med værdierne fra <i>Inspect</i>.</p>
+              <p class="step-links"><a href="#/css">CSS</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/edef78e/components/Pill.module.css" target="_blank" rel="noreferrer"><code>Pill.module.css</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/edef78e/components/Modal.module.css" target="_blank" rel="noreferrer"><code>Modal.module.css</code></a></p>
             </article>
             <article>
               <h3>Klik udenfor</h3>
@@ -648,7 +648,7 @@ body {
             </article>
           </div>
           <p class="work-if-stuck"><strong>Virker et token ikke?</strong> Inspicér <code>&lt;html&gt;</code> i DevTools, og tjek stavningen under <code>:root</code>. <strong>Lukker modalen ved klik inde i den?</strong> Flyt <code>padding</code> fra <code>.modal</code> til <code>.content</code>.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Pill og modal ligner Figma, alle værdier kommer fra tokens, og klik udenfor lukker.</p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Pill og modal ligner Figma, værdierne fra dine variables kommer fra tokens, og klik udenfor lukker.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/edef78e" target="_blank" rel="noreferrer"
               >Starterrepo: 1.3 Tokens og CSS ↗</a
@@ -710,7 +710,7 @@ export default function Pill({ type = "primary", onClick, children }) {
               <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/blob/6fcc24c/components/Modal.js" target="_blank" rel="noreferrer"><code>Modal.js</code></a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Virker <code>styles[type]</code> ikke?</strong> Klassen skal hedde det samme som værdien: <code>.primary</code> til <code>type="primary"</code>. <strong>Separatoren er en grå streg?</strong> Sæt <code>border: none</code> og en <code>background</code> på <code>&lt;hr&gt;</code>.</p>
+          <p class="work-if-stuck"><strong>Virker <code>styles[type]</code> ikke?</strong> Klassen skal hedde det samme som værdien: <code>.primary</code> til <code>type="primary"</code>. <strong>Separatoren er usynlig eller grå?</strong> Giv <code>&lt;hr&gt;</code> <code>border: none</code>, en bredde, en højde og en <code>background</code>.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Begge typer ligner Figma, hover og fokus kan ses, og separatoren forsvinder med <code>false</code>.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/6fcc24c" target="_blank" rel="noreferrer"
@@ -751,7 +751,7 @@ export default function Pill({ type = "primary", onClick, children }) {
               <p><b>Varighed og easing</b>Find dem i din prototype, fx <i>Ease out, 300ms</i>.</p>
               <p><b><code>@starting-style</code></b>Hvor animationen starter, når modalen åbner.</p>
               <p><b><code>allow-discrete</code></b>Holder modalen synlig, mens den animerer ud. Firefox lukker uden animation.</p>
-              <p><b>Pillen</b><code>transition</code> på <code>border-color</code> og <code>color</code>.</p>
+              <p><b>Pillen og backdroppen</b><code>transition</code> på pillens farver og på <code>::backdrop</code>.</p>
             </div>
           </div>
           <p class="po-source-link">
@@ -779,11 +779,11 @@ export default function Pill({ type = "primary", onClick, children }) {
               <p>Med Source Control i VS Code eller GitHub Desktop.</p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong>Animerer modalen ikke ud?</strong> Du skal have både <code>overlay</code> og <code>display</code> med <code>allow-discrete</code>. <strong>Sidder du fast?</strong> Fold løsningen til rul 1 ud i opgavefilen.</p>
+          <p class="work-if-stuck"><strong>Animerer modalen ikke ud?</strong> Du skal have både <code>overlay</code> og <code>display</code> med <code>allow-discrete</code>. <strong>Sidder du fast?</strong> Fold <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#loesning-rul-1" target="_blank" rel="noreferrer">løsningen til rul 1</a> ud i opgavefilen.</p>
           <p class="done-when"><strong>Du er klar, når:</strong> Modalen fader ind og ud, du kan bruge den med tastaturet alene, og arbejdet er pushet.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/7be4bc9" target="_blank" rel="noreferrer"
-              >Starterrepo: 1.5 Transition ↗</a
+              >Starterrepo: 1.5 Smart Animate ↗</a
             >
           </p>
         </section>
@@ -866,7 +866,7 @@ export default function Pill({ type = "primary", onClick, children }) {
             </article>
             <article>
               <h3>Et link til en node</h3>
-              <p>Højreklik på din komponent i Figma → <b>Copy link to selection</b>.</p>
+              <p>En node er et lag, en komponent eller en frame. Højreklik på den → <b>Copy link to selection</b>.</p>
             </article>
             <article>
               <h3>Tjek med <code>whoami</code></h3>
@@ -924,8 +924,8 @@ export default function Pill({ type = "primary", onClick, children }) {
             </article>
           </div>
           <p class="dui-lead-note">
-            <strong>Andet setup?</strong> Det er fint. Brug samme URL, og følg Figma's guide til din agent. Trinene med
-            kode står i opgavefilen.
+            <strong>Andet setup?</strong> Det er fint. Brug samme URL, og følg Figma's guide til din agent.
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#opsaetning" target="_blank" rel="noreferrer">Trinene med kode står i opgavefilen</a>.
           </p>
           <p class="po-source-link">
             <a href="https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/" target="_blank" rel="noreferrer"
@@ -1119,29 +1119,30 @@ export default function Pill({ state = "Default", type = "Primary" }: PillProps)
         <section class="po-slide mode-work" id="opgave-2-2">
           <span class="eyebrow">Opgave 2.2</span>
           <h2>Byg igen i iterationer</h2>
-          <div class="assignment-flow three">
+          <div class="assignment-flow">
             <article>
               <h3>Regler</h3>
               <p>Start en ny chat, og send de faste regler først.</p>
-              <p class="step-links"><a href="#/prompt">Prompten</a></p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompt-regler" target="_blank" rel="noreferrer">Reglerne</a></p>
             </article>
             <article>
-              <h3>Pill</h3>
-              <p>Link til din <code>Pill</code>. Validér, og ret med præcise prompts, til den er rigtig.</p>
-              <p class="step-links"><a href="#/iterationer">Iterationer</a><a href="#/valider">Tjeklisten</a></p>
+              <h3><code>Pill</code></h3>
+              <p>Link til din <code>Pill</code>. Validér, og ret, til den er rigtig. Commit.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompt-pill" target="_blank" rel="noreferrer">Prompt</a><a href="#/valider">Tjekliste</a></p>
             </article>
             <article>
-              <h3>Modal og PillModal</h3>
-              <p>Næste iteration: <code>Modal</code>, så <code>PillModal</code>. Validér, og commit agentens version for sig.</p>
+              <h3><code>Modal</code></h3>
+              <p>Link til din <code>Modal</code>. Agenten viser den åben på <code>/agent</code>. Validér, ret og commit.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompt-modal" target="_blank" rel="noreferrer">Prompt</a></p>
+            </article>
+            <article>
+              <h3><code>PillModal</code></h3>
+              <p>Sæt dem sammen. Klik, <kbd>Esc</kbd> og klik udenfor skal virke. Validér og commit.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompt-pillmodal" target="_blank" rel="noreferrer">Prompt</a><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompt-ret" target="_blank" rel="noreferrer">Rettelse</a></p>
             </article>
           </div>
           <p class="work-if-stuck"><strong>TypeScript eller Tailwind?</strong> Henvis til reglerne. <strong>Ingen adgang?</strong> Tjek <code>whoami</code> og linket. <strong>Rate limit?</strong> Arbejd sammen med en, hvis MCP virker.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Agentens <code>PillModal</code> kører på <code>/agent</code>, du har rettet mindst én ting med en præcis prompt, og versionen er committet.</p>
-          <p class="po-source-link">
-            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompts" target="_blank" rel="noreferrer"
-              >Opgavefil: prompts til hver iteration ↗</a
-            >
-          </p>
+          <p class="done-when"><strong>Du er klar, når:</strong> Agentens <code>PillModal</code> kører på <code>/agent</code>, og hver iteration er valideret og committet. Notér én ting, der blev ens, én, du rettede, og én, du er i tvivl om.</p>
         </section>
 
         <section class="po-slide mode-work" id="opgave-2-3">
@@ -1150,12 +1151,12 @@ export default function Pill({ state = "Default", type = "Primary" }: PillProps)
           <div class="assignment-flow three">
             <article>
               <h3>Ret i Figma</h3>
-              <p>Giv en variable en ny værdi, og ændr noget i en komponent, fx en lukkeknap i modalen.</p>
+              <p>Giv en variable en ny værdi, og ændr noget i en komponent, fx en lukkeknap i modalen. Kopiér et link til komponenten.</p>
             </article>
             <article>
               <h3>Opdatér</h3>
-              <p><i>Opdatér de eksisterende filer. Ret tokens i globals.css. Byg ikke nyt. Forklar hver ændring.</i></p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/d5613c1" target="_blank" rel="noreferrer">Eksempel: lukkeknap</a></p>
+              <p>I samme chat: <i>Opdatér de eksisterende filer. Ret tokens i globals.css. Byg ikke nyt. Forklar hver ændring.</i></p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#prompt-opdater" target="_blank" rel="noreferrer">Prompt</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-figma-pill-modal/commit/d5613c1" target="_blank" rel="noreferrer">Eksempel: lukkeknap</a></p>
             </article>
             <article>
               <h3>Læs diffen</h3>
@@ -1262,7 +1263,7 @@ export default function Pill({ state = "Default", type = "Primary" }: PillProps)
             <article>
               <h3>Fra kode til Figma</h3>
               <p>Ret et token i <code>globals.css</code>, og bed agenten opdatere variablen og komponenten i Figma.</p>
-              <p class="step-links"><a href="#/mcp">Begge veje</a></p>
+              <p class="step-links"><a href="#/mcp">Begge veje</a><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#ekstra-4-fra-kode-til-figma" target="_blank" rel="noreferrer">Prompt</a></p>
             </article>
           </div>
           <p class="work-if-stuck"><strong>Ændrede de gamle pills sig?</strong> Giv <code>size</code> standardværdien <code>"md"</code>. <strong>Mangler <code>key</code>?</strong> Giv hver <code>PillModal</code> en <code>key</code> i <code>map</code>.</p>

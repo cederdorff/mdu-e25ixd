@@ -50,7 +50,7 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 <summary><strong>3. Rul 1: Byg i hånden – den simpleste version først</strong></summary>
 <ul>
 <li>Byg <code>Pill</code> som en <code>&lt;button&gt;</code> og <code>Modal</code> som en <code>&lt;dialog&gt;</code> med <code>showModal()</code>, så fokus og <kbd>Esc</kbd> virker uden ekstra kode.</li>
-<li>Sæt dem sammen i <code>PillModal</code> med <code>"use client"</code> og <code>useState</code>. Nu virker den simpleste version. Kun komponenter med state, effects eller events skal være client components – siden forbliver en server component.</li>
+<li>Sæt dem sammen i <code>PillModal</code> med <code>"use client"</code> og <code>useState</code>. Nu virker den simpleste version. Kun komponenter, der selv bruger state, effects eller event handlers, skal være client components – siden forbliver en server component.</li>
 <li>Overfør dine variables til tokens i <code>globals.css</code>, og style komponenterne med CSS Modules og værdierne fra Dev Mode.</li>
 <li>Gør <code>Type</code> til en prop, hover til CSS og <code>showSeparator</code> til betinget rendering.</li>
 <li>Lav Smart Animate om til transitions, og test med tastaturet: Kan du åbne og lukke modalen, og er fokus synligt?</li>
@@ -63,7 +63,7 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 <ul>
 <li>Forbind din egen AI-agent til Figma MCP-serveren, og giv den adgang til designet: filen i dit Education-team, et link til en node og et tjek med <code>whoami</code>.</li>
 <li>Send de faste regler først. De fortæller agenten det, den ikke kan se i Figma: JavaScript, tokens og CSS Modules, <code>&lt;button&gt;</code> og <code>&lt;dialog&gt;</code>.</li>
-<li>Byg i små iterationer: prompt → kør → validér → ret, og tag en runde mere, til det er rigtigt. <code>Pill</code> → <code>Modal</code> → <code>PillModal</code>.</li>
+<li>Byg i små iterationer: prompt → kør → validér → ret, og tag en runde mere, til det er rigtigt. Én iteration pr. komponent: <code>Pill</code> → <code>Modal</code> → <code>PillModal</code>.</li>
 <li>Ret designet i Figma, og bed agenten opdatere din eksisterende komponent. Læs diffen, før du committer.</li>
 <li>Du har ansvaret for at forstå, rette og forklare koden.</li>
 <li>Ekstra: MCP virker begge veje. Ændr noget i koden, og lad agenten opdatere designet i Figma.</li>
