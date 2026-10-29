@@ -10,9 +10,8 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 
 ## Forberedelse
 
-- Hent [starteren](https://github.com/cederdorff/nextjs-figma-pill-modal) med **Use this template**, klon dit nye repo med GitHub Desktop eller VS Code, og kør `npm i` og `npm run dev`. Det er et nyt projekt, ikke din WordPress-app.
-- Sæt Figma MCP op i VS Code med GitHub Copilot, Codex eller Claude Code. Har du et andet setup, der kan bruge MCP, er det også fint. Følg [tool-guiden i opgaven](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md#tool-guide). Vi tager opsætningen sammen i timen, hvis du ikke når det.
-- Læg din Figma-fil i dit Education-team, ikke i _Drafts_. Så har du Dev Mode og Education-planens grænser for Figma MCP.
+- Sørg for, at din Next.js-app fra 26. oktober kører lokalt.
+- Opdatér Figma, så du kan afprøve Figma MCP-serveren.
 
 <hr style="margin: 2rem 0;">
 
