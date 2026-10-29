@@ -13,6 +13,35 @@ Når du er færdig, har appen fire routes. Kun profilen kræver login:
 | `/login`   | `app/login/page.js`  | Alle              |
 | `/profile` | `app/profile/page.js` | Kun brugere, der er logget ind |
 
+Du bruger meget af det, du kender fra 26. oktober:
+
+| Fra 26. oktober | I dag |
+| --- | --- |
+| Mappen + `page.js` er routen | `/signup`, `/login` og `/profile` |
+| Server Components henter data, før HTML'en sendes | Siden tjekker login på serveren, før HTML'en sendes |
+| `params` på detaljesiden | `searchParams` til fejlbeskeden |
+| `notFound()` stopper siden | `redirect()` sender brugeren videre |
+| `metadata` og `Link` | Titler og links på de nye sider |
+
+Nyt i dag er **Server Actions** – funktioner på serveren, som en formular kan kalde – og forskellen på **static** og **dynamic** sider i `npm run build`.
+
+<details>
+<summary><strong>Next.js-begreberne kort forklaret</strong></summary>
+
+| Begreb | Hvad er det? | Hvor i dag? |
+| --- | --- | --- |
+| Route og `page.js` | En mappe i `app/` med en `page.js` bliver til en URL. `app/signup/page.js` er `/signup`. | Opgave 2–4 |
+| `layout.js` | Rammen om alle sider. Det, der står rundt om `{children}`, bliver stående, når du navigerer. | Headeren |
+| Server Component | En komponent, der kører på serveren. Den kan være `async`, læse cookies og vente på data, før HTML'en sendes. Alle komponenter er Server Components, indtil du skriver `"use client"`. | Alle sider |
+| Server Action | En `async` funktion med `"use server"`, som en `<form action={…}>` kan kalde. Next.js sender formularen som en `POST`-request og kører funktionen på serveren. | `signUp`, `signIn`, `signOut` |
+| `searchParams` | Det, der står efter `?` i URL'en. Next.js giver det til siden som en prop – et Promise, så du skal bruge `await`. | `?error=true` |
+| `redirect()` | Stopper siden eller Server Action'en og sender brugeren til en anden URL. Koden under den kører ikke. | Efter login og på `/profile` |
+| `metadata` | Et objekt, som Next.js laver om til `<title>` og beskrivelse i `<head>`. | Titlen i fanen |
+| `proxy.js` | Kode, Next.js kører før hver request. Tidligere hed den `middleware.js`. | Fornyer sessionen |
+| ○ og ƒ | ○ Static: bygges én gang og er ens for alle. ƒ Dynamic: bygges ved hver request, fordi den læser noget fra requesten. | `npm run build` |
+
+</details>
+
 Bagefter overfører du det til din headless WordPress-app i [den næste opgave](opgave-2026-10-30-supabase-auth-i-nextjs.md).
 
 <hr style="margin: 2rem 0;">
@@ -46,7 +75,7 @@ Bagefter overfører du det til din headless WordPress-app i [den næste opgave](
 
 Du laver dit eget repository ud fra startprojektet og forbinder det til dit Supabase-projekt.
 
-**Du er klar, når:** Appen kører lokalt med dine Supabase-nøgler, og projektet ligger på GitHub.
+**Resultat:** Appen kører lokalt med dine Supabase-nøgler, og projektet ligger på GitHub.
 
 ### 1.1 Dit eget repository
 
@@ -73,9 +102,11 @@ NEXT_PUBLIC_SUPABASE_URL=https://<dit-projekt>.supabase.co
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
 ```
 
+`NEXT_PUBLIC_` betyder, at variablen også må nå browseren. Det er i orden for en publishable key – aldrig for en secret key.
+
 Kør `npm run dev`, og åbn [http://localhost:3000](http://localhost:3000).
 
-**Tjek:** Forsiden viser tre routes. Et klik på `/signup` giver _Page not found_. Det er rigtigt nok – den route laver du i opgave 2. Source Control viser ikke `.env.local`. Den må ikke komme på GitHub.
+**Tjek:** Forsiden viser fire routes. Et klik på `/signup` giver _Page not found_. Det er rigtigt nok – den route laver du i opgave 2. Source Control viser ikke `.env.local`. Den må ikke komme på GitHub.
 
 [Slide: To nøgler](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/noegler)
 
@@ -110,17 +141,17 @@ Det meste er det samme som i din WordPress-app: `app/layout.js`, `components/Hea
 
 Du laver routen `/signup` med en formular, der opretter en bruger i Supabase.
 
-**Du er klar, når:** Du kan oprette en bruger på `/signup`, brugeren står i Supabase, en fejl giver en besked, og arbejdet er pushet.
+**Resultat:** Du kan oprette en bruger på `/signup`, brugeren står i Supabase, en fejl giver en besked, og arbejdet er pushet.
 
 ### 2.1 Opret routen
 
-Mappen er URL'en, og filen hedder altid `page.js` – ligesom 26. oktober. Opret `app/signup/page.js` med en `<h1>`.
+Mappen er URL'en, og filen hedder altid `page.js` – ligesom 26. oktober. Opret `app/signup/page.js` med en `<h1>`, og giv siden `metadata` med titlen _Sign up_. Next.js laver `metadata` om til `<title>` i `<head>`.
 
-**Tjek:** [http://localhost:3000/signup](http://localhost:3000/signup) viser din overskrift i stedet for _Page not found_.
+**Tjek:** [http://localhost:3000/signup](http://localhost:3000/signup) viser din overskrift i stedet for _Page not found_, og fanen viser din titel.
 
 ### 2.2 Formularen
 
-Tilføj en `<form className="auth-form">` med et felt til e-mail, et til adgangskode og en knap. Giv hvert felt en `<label>` og en `name`. Det er `name`, du bruger til at hente værdien på serveren.
+Tilføj en `<form className="auth-form">` med et felt til e-mail, et til adgangskode og en knap. Giv hvert felt en `<label>`, en `name` og en `placeholder`. Det er `name`, du bruger til at hente værdien på serveren.
 
 **Tjek:** Siden viser en pæn formular. Der sker ingenting, når du klikker på knappen – endnu.
 
@@ -130,30 +161,40 @@ Tilføj en `<form className="auth-form">` med et felt til e-mail, et til adgangs
 ```jsx
 <form className="auth-form">
   <label htmlFor="email">Email</label>
-  <input id="email" name="email" type="email" required />
+  <input id="email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
 
-  <label htmlFor="password">Password · at least 6 characters</label>
-  <input id="password" name="password" type="password" minLength={6} required />
+  <label htmlFor="password">Password</label>
+  <input
+    id="password"
+    name="password"
+    type="password"
+    placeholder="At least 6 characters"
+    autoComplete="new-password"
+    minLength={6}
+    required
+  />
 
   <button type="submit">Sign up</button>
 </form>
 ```
 
-`minLength={6}` får browseren til selv at sige til, hvis adgangskoden er for kort. Supabase kræver mindst 6 tegn.
+- `placeholder` viser et eksempel i det tomme felt. Den forsvinder, når brugeren skriver, så den erstatter ikke `<label>`.
+- `minLength={6}` får browseren til selv at sige til, hvis adgangskoden er for kort. Supabase kræver mindst 6 tegn.
+- `autoComplete` fortæller browseren og password-manageren, hvad feltet er. `new-password` foreslår en ny, stærk adgangskode.
 
 </details>
 
 ### 2.3 Server Action
 
-En **Server Action** er en funktion, der kører på serveren, men som en formular kan kalde. Opret `lib/actions.js`:
+En **Server Action** er en funktion, der kører på serveren, men som en formular kan kalde. `"use server"` øverst i funktionen gør den til en Server Action. Skriv den i `app/signup/page.js` – over komponenten:
 
-```js
-"use server";
-
+```jsx
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-export async function signUp(formData) {
+async function signUp(formData) {
+  "use server";
+
   const email = formData.get("email");
   const password = formData.get("password");
 
@@ -164,7 +205,7 @@ export async function signUp(formData) {
 }
 ```
 
-Importér `signUp` i `app/signup/page.js`, og giv formularen `action={signUp}`.
+Giv formularen `action={signUp}`. Når brugeren klikker på knappen, sender Next.js formularen som en `POST`-request og kører `signUp` på serveren med felterne i `formData`. `formData.get("email")` henter feltet med `name="email"`. Hele routen står nu i én fil: siden, formularen og funktionen, der kører, når formularen sendes.
 
 **Tjek:** Opret en bruger. Du lander på forsiden, og under _Authentication → Users_ i Supabase står din nye bruger.
 
@@ -181,6 +222,8 @@ Importér `signUp` i `app/signup/page.js`, og giv formularen `action={signUp}`.
 ### 2.5 Vis en fejl
 
 Opret den samme bruger igen. Der sker ingenting – fejlen forsvinder på serveren. Send brugeren tilbage til `/signup?error=true`, når Supabase svarer med en fejl, og vis en besked på siden, når `error` står i URL'en.
+
+`searchParams` er det, der står efter `?` i URL'en. Next.js giver det til siden som en prop – ligesom `params` på detaljesiden 26. oktober. Det er et Promise, så siden skal være `async` og bruge `await`.
 
 **Tjek:** Den samme e-mail to gange giver din fejlbesked. Commit og push.
 
@@ -200,7 +243,7 @@ if (error) {
 <details>
 <summary><strong>Hint: Fejlen på siden</strong></summary>
 
-Læs `searchParams` – ligesom du læste `params` på detaljesiden. Siden skal være `async`:
+Læs `searchParams` øverst i komponenten:
 
 ```jsx
 export default async function SignUpPage({ searchParams }) {
@@ -223,21 +266,27 @@ Vis beskeden over formularen:
 
 - **Står brugeren i Supabase, men er der ingen `-auth-token`-cookie?** _Confirm email_ er slået til. Slå det fra, slet brugeren under _Authentication → Users_, og prøv igen.
 - **Får du altid fejlbeskeden?** Log `error.message` med `console.log` i `signUp`, og kig i **terminalen** – ikke i browserens console.
+- **_Functions cannot be passed directly to Client Components_?** `"use server"` mangler øverst i `signUp`.
 
 <details>
 <summary><strong>Se den fulde løsning til opgave 2</strong></summary>
 
-`lib/actions.js`:
+`app/signup/page.js`:
 
-```js
-"use server";
-
-// Server Actions run on the server, even when a form in the browser calls them.
-
+```jsx
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-export async function signUp(formData) {
+export const metadata = {
+  title: "Sign up"
+};
+
+// A Server Action: "use server" makes it run on the server,
+// even though the form in the browser calls it
+async function signUp(formData) {
+  "use server";
+
   const email = formData.get("email");
   const password = formData.get("password");
 
@@ -251,17 +300,6 @@ export async function signUp(formData) {
 
   redirect("/");
 }
-```
-
-`app/signup/page.js`:
-
-```jsx
-import Link from "next/link";
-import { signUp } from "@/lib/actions";
-
-export const metadata = {
-  title: "Sign up"
-};
 
 export default async function SignUpPage({ searchParams }) {
   // ?error=true is set by signUp when Supabase says no
@@ -277,10 +315,18 @@ export default async function SignUpPage({ searchParams }) {
       )}
       <form action={signUp} className="auth-form">
         <label htmlFor="email">Email</label>
-        <input id="email" name="email" type="email" required />
+        <input id="email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
 
-        <label htmlFor="password">Password · at least 6 characters</label>
-        <input id="password" name="password" type="password" minLength={6} required />
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="At least 6 characters"
+          autoComplete="new-password"
+          minLength={6}
+          required
+        />
 
         <button type="submit">Sign up</button>
       </form>
@@ -302,19 +348,19 @@ export default async function SignUpPage({ searchParams }) {
 
 ## Opgave 3: Log ind
 
-Login-siden er næsten en kopi af sign up-siden. Kun funktionen og teksterne er nye.
+Login-siden er næsten en kopi af sign up-siden. Kun Server Action'en og teksterne er nye.
 
-**Du er klar, når:** Du kan logge ind på `/login`, en forkert adgangskode giver en fejlbesked, og arbejdet er pushet.
+**Resultat:** Du kan logge ind på `/login`, en forkert adgangskode giver en fejlbesked, og arbejdet er pushet.
 
 ### 3.1 Kopiér routen
 
-Kopiér mappen `app/signup/` til `app/login/`. Ret overskriften og knappen til _Log in_, fejlbeskeden til _Wrong email or password._, og linket nederst til `/signup`.
+Kopiér mappen `app/signup/` til `app/login/`. Ret `metadata`, overskriften og knappen til _Log in_, fejlbeskeden til _Wrong email or password._ og linket nederst til `/signup`. Skift `placeholder` på adgangskoden til _Your password_ og `autoComplete` til `current-password`.
 
 **Tjek:** [http://localhost:3000/login](http://localhost:3000/login) viser din login-side.
 
 ### 3.2 signIn
 
-Tilføj en `signIn`-funktion nederst i `lib/actions.js`. Den ligner `signUp`, men kalder `signInWithPassword` og sender til `/login?error=true` ved fejl. Brug den i formularen på login-siden.
+Omdøb den kopierede `signUp` til `signIn`. Den skal kalde `signInWithPassword` og sende til `/login?error=true` ved fejl. Ret formularen til `action={signIn}`.
 
 **Tjek:** Log ind med den bruger, du oprettede i opgave 2. Du lander på forsiden.
 
@@ -331,7 +377,7 @@ if (error) {
 }
 ```
 
-På siden: `import { signIn } from "@/lib/actions";` og `<form action={signIn} className="auth-form">`.
+Resten af funktionen er som `signUp`.
 
 </details>
 
@@ -348,10 +394,21 @@ Prøv med en forkert adgangskode og med en e-mail, der ikke findes. Commit og pu
 <details>
 <summary><strong>Se den fulde løsning til opgave 3</strong></summary>
 
-Nederst i `lib/actions.js`:
+`app/login/page.js`:
 
-```js
-export async function signIn(formData) {
+```jsx
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+
+export const metadata = {
+  title: "Log in"
+};
+
+// The same pattern as signUp, but with signInWithPassword
+async function signIn(formData) {
+  "use server";
+
   const email = formData.get("email");
   const password = formData.get("password");
 
@@ -364,17 +421,6 @@ export async function signIn(formData) {
 
   redirect("/");
 }
-```
-
-`app/login/page.js`:
-
-```jsx
-import Link from "next/link";
-import { signIn } from "@/lib/actions";
-
-export const metadata = {
-  title: "Log in"
-};
 
 export default async function LoginPage({ searchParams }) {
   // ?error=true is set by signIn when the email or password is wrong
@@ -390,10 +436,17 @@ export default async function LoginPage({ searchParams }) {
       )}
       <form action={signIn} className="auth-form">
         <label htmlFor="email">Email</label>
-        <input id="email" name="email" type="email" required />
+        <input id="email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
 
         <label htmlFor="password">Password</label>
-        <input id="password" name="password" type="password" required />
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Your password"
+          autoComplete="current-password"
+          required
+        />
 
         <button type="submit">Log in</button>
       </form>
@@ -417,7 +470,7 @@ export default async function LoginPage({ searchParams }) {
 
 Du laver `/profile`, som viser, hvem der er logget ind, og som sender alle andre til `/login`.
 
-**Du er klar, når:** `/profile` viser din e-mail, når du er logget ind, sender dig til `/login`, når du ikke er, du kan logge ud, og arbejdet er pushet.
+**Resultat:** `/profile` viser din e-mail, når du er logget ind, sender dig til `/login`, når du ikke er, du kan logge ud, og arbejdet er pushet.
 
 ### 4.1 Hvem er logget ind?
 
@@ -440,7 +493,7 @@ export async function getCurrentUser() {
 
 ### 4.2 Profilsiden
 
-Opret `app/profile/page.js`. Gør komponenten `async`, kald `await getCurrentUser()`, og vis `user.email` og `user.sub`.
+Opret `app/profile/page.js`. Siden er en **Server Component** – ligesom `PostsPage` 26. oktober. Den kører på serveren og kan derfor læse cookien, før HTML'en sendes. Gør komponenten `async`, kald `await getCurrentUser()`, og vis `user.email` og `user.sub`.
 
 **Tjek:** Logget ind viser `/profile` din e-mail og dit id. Åbn nu `/profile` i et **privat vindue**. Siden fejler, fordi `user` er `null`. Det løser du i næste trin.
 
@@ -463,17 +516,34 @@ if (!user) {
 }
 ```
 
-`redirect()` stopper siden. Koden under den kører kun, når der er en bruger.
+`redirect()` stopper siden og sender brugeren videre. Koden under den kører kun, når der er en bruger, så `user` er aldrig `null` længere nede.
 
 </details>
 
 ### 4.4 Log ud og send til profilen
 
-Tilføj `signOut` nederst i `lib/actions.js`. Den kalder `supabase.auth.signOut()` og sender brugeren til forsiden. Vis en `<form action={signOut} className="auth-form">` med en _Log out_-knap på profilen.
+Skriv en Server Action, `signOut`, i `app/profile/page.js`. Den kalder `supabase.auth.signOut()` og sender brugeren til forsiden. Vis en `<form action={signOut} className="auth-form">` med en _Log out_-knap på profilen.
 
 Ret til sidst `redirect("/")` til `redirect("/profile")` i `signUp` og `signIn`. Så ser brugeren med det samme, at det virkede.
 
-**Tjek:** Log ind, og du lander på profilen. Klik på _Log out_. Cookien er væk, og `/profile` sender dig til `/login`. Commit og push.
+**Tjek:** Log ind, og du lander på profilen. Klik på _Log out_. Cookien er væk, og `/profile` sender dig til `/login`.
+
+### 4.5 Static eller dynamic?
+
+Stop `npm run dev`, og kør `npm run build`. Kig på listen over routes nederst i outputtet:
+
+```text
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /login
+├ ƒ /profile
+└ ƒ /signup
+```
+
+- **○ Static:** Siden bygges én gang og er den samme for alle.
+- **ƒ Dynamic:** Siden bygges ved hver request. `/profile` læser cookien, og `/login` og `/signup` læser `searchParams`. Svaret afhænger af, hvem der spørger.
+
+**Tjek:** `/` er ○, og de tre andre er ƒ. Commit og push.
 
 **Sidder du fast?**
 
@@ -505,14 +575,23 @@ export async function getCurrentUser() {
 ```jsx
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
-import { signOut } from "@/lib/actions";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata = {
   title: "Profile"
 };
 
+async function signOut() {
+  "use server";
+
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+
+  redirect("/");
+}
+
 export default async function ProfilePage() {
-  // Check on the server, before anything is sent to the browser
+  // A Server Component: the check runs on the server, before any HTML is sent
   const user = await getCurrentUser();
 
   if (!user) {
@@ -532,16 +611,7 @@ export default async function ProfilePage() {
 }
 ```
 
-Nederst i `lib/actions.js` – og `redirect("/profile")` i stedet for `redirect("/")` i `signUp` og `signIn`:
-
-```js
-export async function signOut() {
-  const supabase = await createClient();
-  await supabase.auth.signOut();
-
-  redirect("/");
-}
-```
+I `signUp` og `signIn` står der nu `redirect("/profile")` i stedet for `redirect("/")`.
 
 </details>
 
@@ -555,13 +625,15 @@ export async function signOut() {
 
 Det samme tjek kan beskytte så mange routes, du vil. Og det kan også gå den anden vej.
 
-**Du er klar, når:** `/members` kræver login, og en bruger, der er logget ind, bliver sendt fra `/login` og `/signup` til profilen.
+**Resultat:** `/members` kræver login, og en bruger, der er logget ind, bliver sendt fra `/login` og `/signup` til profilen.
 
 ### 5.1 /members
 
 Opret `app/members/page.js` med en tekst, som kun brugere, der er logget ind, må se. Brug det samme tjek som på profilen. Tilføj et link til `/members` i `components/Header.js`.
 
 **Tjek:** Logget ud sender `/members` dig til `/login`. Logget ind ser du siden.
+
+**Hvorfor ikke ét tjek i `layout.js`?** Et layout renderes ikke igen, når du navigerer mellem sider, så tjekket ville ikke køre hver gang. Next.js anbefaler at tjekke på hver side – tæt på det, der skal beskyttes.
 
 ### 5.2 Den anden vej
 
@@ -618,7 +690,9 @@ Starten af `app/login/page.js` – `app/signup/page.js` får det samme tjek:
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
-import { signIn } from "@/lib/actions";
+import { createClient } from "@/lib/supabase/server";
+
+// signIn and metadata are the same as before
 
 export default async function LoginPage({ searchParams }) {
   const { error } = await searchParams;
@@ -645,22 +719,52 @@ export default async function LoginPage({ searchParams }) {
 
 Headeren viser din e-mail og _Log out_, når du er logget ind – og _Log in_, når du ikke er.
 
-**Du er klar, når:** Headeren skifter, når du logger ind og ud, og arbejdet er pushet.
+**Resultat:** Headeren skifter, når du logger ind og ud, og arbejdet er pushet.
 
-### 6.1 AuthStatus
+### 6.1 Del signOut
 
-Lav en `async` komponent, `components/AuthStatus.js`, der kalder `getCurrentUser()`:
+`AuthStatus` skal også kunne logge ud. I stedet for at skrive `signOut` to gange flytter du den til `lib/actions.js` – med `"use server"` øverst i **filen**. Så er alle funktioner i filen Server Actions, og du kan importere dem, hvor du vil:
+
+```js
+"use server";
+
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+
+export async function signOut() {
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+
+  redirect("/");
+}
+```
+
+Slet `signOut` fra profilen, og importér den i stedet: `import { signOut } from "@/lib/actions";`.
+
+**Tjek:** _Log out_ på profilen virker stadig.
+
+### 6.2 AuthStatus
+
+Lav en `async` Server Component, `components/AuthStatus.js`, der kalder `getCurrentUser()`:
 
 - **Ingen bruger:** et `Link` til `/login`.
 - **Logget ind:** e-mailen som et `Link` til `/profile` og en `<form action={signOut}>` med en knap.
 
 Kopiér [`components/AuthStatus.module.css`](https://github.com/cederdorff/nextjs-supabase-auth/blob/opgave-06-header/components/AuthStatus.module.css).
 
-### 6.2 Vis den i headeren
+### 6.3 Vis den i headeren
 
 Vis `<AuthStatus />` i `components/Header.js` efter `<ul>`, og fjern linkene til _Sign up_ og _Log in_ fra listen.
 
-**Tjek:** Headeren viser din e-mail og _Log out_. Efter _Log out_ viser den _Log in_. Commit og push.
+**Tjek:** Headeren viser din e-mail og _Log out_. Efter _Log out_ viser den _Log in_ – uden at du genindlæser siden. Når en Server Action ændrer cookies, bygger Next.js siden og layoutet igen.
+
+### 6.4 Alt er nu dynamic
+
+Kør `npm run build` igen. Nu er alle routes ƒ – også `/`. Headeren står i layoutet og læser cookien, så hver side afhænger af, hvem der spørger.
+
+**Tjek:** Alle routes er ƒ. Commit og push.
+
+Det er grunden til, at `AuthStatus` skal pakkes ind i `<Suspense>` i din WordPress-app. Med Cache Components skal resten af siden kunne bygges på forhånd, mens kun headerens login-status venter på requesten.
 
 **Sidder du fast?**
 
@@ -668,6 +772,33 @@ Vis `<AuthStatus />` i `components/Header.js` efter `<ul>`, og fjern linkene til
 
 <details>
 <summary><strong>Se den fulde løsning til opgave 6</strong></summary>
+
+`lib/actions.js`:
+
+```js
+"use server";
+
+// "use server" at the top of the file: every exported function is a Server Action.
+// signOut lives here, because both the profile page and AuthStatus use it.
+
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+
+export async function signOut() {
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+
+  redirect("/");
+}
+```
+
+Starten af `app/profile/page.js` – `signOut` er slettet fra filen, og resten er som før:
+
+```jsx
+import { redirect } from "next/navigation";
+import { getCurrentUser } from "@/lib/auth";
+import { signOut } from "@/lib/actions";
+```
 
 `components/AuthStatus.js`:
 
@@ -749,6 +880,7 @@ export default function Header() {
 Nu kender du flowet. I [Supabase Auth i din headless WordPress-app](opgave-2026-10-30-supabase-auth-i-nextjs.md) bygger du det samme ind i appen fra 26. oktober og låser detaljesiderne for posts. Tre ting er anderledes:
 
 - **Du kopierer selv** `lib/supabase/server.js` og `proxy.js` fra dit projekt fra i dag.
+- **Alle Server Actions ligger i `lib/actions.js`** – ligesom `signOut` i ekstraopgave 6.
 - **Cache Components er slået til** i WordPress-appen. Sider, der læser cookies eller `searchParams`, skal have deres egen `loading.js`, og `AuthStatus` skal pakkes ind i `<Suspense>`.
 - **Indholdet i WordPress er stadig offentligt.** Du låser siden i din app – ikke data i WordPress.
 
@@ -779,6 +911,7 @@ På mandag starter gruppeprojektet. Tag stilling til tre spørgsmål i jeres gru
 | Brugeren oprettes, men der kommer ingen session | Slå _Confirm email_ fra, slet brugeren, og opret den igen |
 | _Email rate limit exceeded_ | Slå _Confirm email_ fra |
 | `/profile` sender dig altid til `/login` | `proxy.js` skal ligge i roden, og du skal skrive `await getCurrentUser()` |
+| _Functions cannot be passed directly to Client Components_ | `"use server"` mangler øverst i din Server Action |
 | Redirect-loop | Tjek kun på de sider, der skal beskyttes – aldrig på `/login` |
 | _fetch failed_ eller ingen forbindelse | Supabase-projektet er sat på pause. Klik på _Resume project_ |
 
@@ -789,4 +922,5 @@ På mandag starter gruppeprojektet. Tag stilling til tre spørgsmål i jeres gru
 - [Slides: Supabase Auth i Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/)
 - [nextjs-supabase-auth](https://github.com/cederdorff/nextjs-supabase-auth) – startprojektet på `main` og én løsningsbranch pr. opgave
 - [Supabase: Setting up Server-Side Auth for Next.js](https://supabase.com/docs/guides/auth/server-side/nextjs)
-- [Next.js: Mutating data](https://nextjs.org/docs/app/getting-started/mutating-data)
+- [Next.js: Mutating data](https://nextjs.org/docs/app/getting-started/mutating-data) – Server Actions
+- [Next.js: Authentication](https://nextjs.org/docs/app/guides/authentication) – fx hvorfor tjekket står på siden og ikke i layoutet

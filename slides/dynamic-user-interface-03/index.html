@@ -90,6 +90,36 @@
           </div>
         </section>
 
+        <section class="po-slide" id="next-begreber">
+          <span class="eyebrow">Next.js · det kender I — og det er nyt</span>
+          <h2>Samme Next.js som 26. oktober</h2>
+          <div class="compare-cols">
+            <article>
+              <span>Kender I</span>
+              <h3>Bruger vi igen</h3>
+              <ul>
+                <li><b>Mappe + <code>page.js</code></b> = route: <code>/signup</code>, <code>/login</code>, <code>/profile</code></li>
+                <li><b>Server Components</b> kører på serveren — nu tjekker de login</li>
+                <li><b><code>params</code></b> → <code>searchParams</code> efter <code>?</code> i URL'en</li>
+                <li><b><code>notFound()</code></b> → <code>redirect()</code> stopper siden og sender videre</li>
+              </ul>
+            </article>
+            <article class="is-new">
+              <span>Nyt i dag</span>
+              <h3>Tre nye ting</h3>
+              <ul>
+                <li><b>Server Action</b> · en funktion med <code>"use server"</code>, som en formular kalder</li>
+                <li><b><code>proxy.js</code></b> · kører før hver request og fornyer sessionen</li>
+                <li><b>○ og ƒ</b> · static eller dynamic i <code>npm run build</code></li>
+              </ul>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Alle komponenter er Server Components,</strong> indtil I skriver <code>"use client"</code>. I dag
+            skriver vi det ikke én eneste gang.
+          </p>
+        </section>
+
         <section class="chapter po-chapter po-slide" id="kap-auth">
           <span class="chapter-index">01</span>
           <span class="eyebrow">Authentication og authorization</span>
@@ -312,7 +342,7 @@ const session = await response.json();
             </article>
           </div>
           <p class="work-if-stuck"><strong><em>Paused</em>?</strong> Klik på <em>Resume project</em>. <strong><em>URL and Key are required</em>?</strong> Tjek <code>.env.local</code>, og genstart <code>npm run dev</code>.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Appen kører, og dit repository ligger på GitHub. <code>/signup</code> giver <em>Page not found</em> — den laver du nu.</p>
+          <p class="done-when"><strong>Resultat:</strong> Appen kører, og dit repository ligger på GitHub. <code>/signup</code> giver <em>Page not found</em> — den laver du nu.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-1" target="_blank" rel="noreferrer">Opgavefil: opgave 1 ↗</a>
           </p>
@@ -524,10 +554,10 @@ const session = await response.json();
           <h2>Server Action'en er én funktion</h2>
           <div class="code-explain">
             <div>
-              <span class="code-label"><code>lib/actions.js</code></span>
-              <pre class="po-code"><code class="language-js">"use server";
+              <span class="code-label"><code>app/login/page.js</code> · over komponenten</span>
+              <pre class="po-code"><code class="language-js">async function signIn(formData) {
+  "use server";
 
-export async function signIn(formData) {
   const email = formData.get("email");
   const password = formData.get("password");
 
@@ -543,12 +573,47 @@ export async function signIn(formData) {
 }</code></pre>
             </div>
             <div class="explain-list">
-              <p><b><code>"use server"</code></b>Alt i filen kører på serveren — også når en formular kalder det.</p>
+              <p><b><code>"use server"</code></b>Øverst i funktionen gør den til en Server Action. Den kører på serveren — også når formularen kalder den.</p>
               <p><b><code>formData.get("email")</code></b>Henter feltet med <code>name="email"</code> fra formularen.</p>
               <p><b><code>?error=true</code></b>Gik det galt, sendes brugeren tilbage, og login-siden viser en fejlbesked.</p>
               <p><b><code>redirect("/")</code></b>Gik det godt, ligger cookien klar, og brugeren sendes videre.</p>
             </div>
           </div>
+        </section>
+
+        <section class="po-slide" id="route-fil">
+          <span class="eyebrow">Login-flowet · <code>app/login/page.js</code></span>
+          <h2>Hele routen i én fil</h2>
+          <div class="code-explain">
+            <div>
+              <span class="code-label"><code>app/login/page.js</code> · forkortet</span>
+              <pre class="po-code"><code class="language-jsx">export const metadata = { title: "Log in" };
+
+async function signIn(formData) {
+  "use server"; // … som på forrige slide
+}
+
+export default async function LoginPage({ searchParams }) {
+  const { error } = await searchParams;
+
+  return (
+    &lt;main&gt;
+      {error &amp;&amp; &lt;p className="form-error"&gt;…&lt;/p&gt;}
+      &lt;form action={signIn}&gt;…&lt;/form&gt;
+    &lt;/main&gt;
+  );
+}</code></pre>
+            </div>
+            <div class="explain-list">
+              <p><b><code>metadata</code></b>Bliver til <code>&lt;title&gt;</code> i fanen.</p>
+              <p><b><code>"use server"</code></b>Server Action'en kører på serveren. Den sendes aldrig til browseren.</p>
+              <p><b><code>searchParams</code></b>Det efter <code>?</code> i URL'en — som <code>params</code>, et Promise, så <code>await</code>.</p>
+              <p><b><code>action={signIn}</code></b>Formularen sendes som en <code>POST</code>, og Next.js kører <code>signIn</code>.</p>
+            </div>
+          </div>
+          <p class="po-source-link">
+            <a href="https://nextjs.org/docs/app/getting-started/mutating-data" target="_blank" rel="noreferrer">Next.js: Mutating data ↗</a>
+          </p>
         </section>
 
         <section class="po-slide" id="server-klient">
@@ -647,17 +712,17 @@ export async function signIn(formData) {
             </article>
             <article>
               <h3>Server Action</h3>
-              <p>Opret <code>signUp</code> i <code>lib/actions.js</code>, og giv formularen <code>action={signUp}</code>. Find cookien under <em>Application</em>.</p>
+              <p>Skriv <code>signUp</code> med <code>"use server"</code> i samme fil, og giv formularen <code>action={signUp}</code>. Find cookien.</p>
               <p class="step-links"><a href="#/sekvens">Flowet</a><a href="#/server-action">Server Action</a><a href="#/storage">Cookies</a></p>
             </article>
             <article>
               <h3>Fejlen</h3>
               <p>Send til <code>/signup?error=true</code> ved fejl, og vis en besked, når <code>searchParams</code> har <code>error</code>.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/main...opgave-02-sign-up" target="_blank" rel="noreferrer">Løsning</a></p>
+              <p class="step-links"><a href="#/route-fil">Routen</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/main...opgave-02-sign-up" target="_blank" rel="noreferrer">Løsning</a></p>
             </article>
           </div>
           <p class="work-if-stuck"><strong>Ingen <code>-auth-token</code>-cookie?</strong> Slå <em>Confirm email</em> fra, og opret brugeren igen. <strong>Altid fejl?</strong> Log <code>error.message</code> i terminalen.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Din bruger står i Supabase, og den samme e-mail to gange giver en fejlbesked.</p>
+          <p class="done-when"><strong>Resultat:</strong> Din bruger står i Supabase, og den samme e-mail to gange giver en fejlbesked.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-2" target="_blank" rel="noreferrer">Opgavefil: opgave 2 med hints ↗</a>
           </p>
@@ -677,7 +742,7 @@ export async function signIn(formData) {
             </article>
             <article>
               <h3><code>signIn</code></h3>
-              <p>Ligner <code>signUp</code>, men kalder <code>signInWithPassword</code>. Ved fejl: <code>/login?error=true</code>.</p>
+              <p>Omdøb <code>signUp</code> til <code>signIn</code>. Den kalder <code>signInWithPassword</code>. Ved fejl: <code>/login?error=true</code>.</p>
               <p class="step-links"><a href="#/server-action">Server Action</a><a href="#/sdk-samme-kald">SDK'et</a></p>
             </article>
             <article>
@@ -687,7 +752,7 @@ export async function signIn(formData) {
             </article>
           </div>
           <p class="work-if-stuck"><strong>Intet nyt efter login?</strong> Det er rigtigt nok — det ser du på profilen i opgave 4.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Du kan logge ind, og en forkert adgangskode giver en fejlbesked.</p>
+          <p class="done-when"><strong>Resultat:</strong> Du kan logge ind, og en forkert adgangskode giver en fejlbesked.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-3" target="_blank" rel="noreferrer">Opgavefil: opgave 3 med hints ↗</a>
           </p>
@@ -771,6 +836,31 @@ export async function signIn(formData) {
           </p>
         </section>
 
+        <section class="po-slide" id="static-dynamic">
+          <span class="eyebrow">Beskyttede sider · <code>npm run build</code></span>
+          <h2>Static eller dynamic?</h2>
+          <div class="code-explain">
+            <div>
+              <span class="code-label">Outputtet efter opgave 4</span>
+              <pre class="po-code"><code class="language-plaintext">Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /login
+├ ƒ /profile
+└ ƒ /signup
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand</code></pre>
+            </div>
+            <div class="explain-list">
+              <p><b>○ Static</b>Bygges én gang og er den samme for alle — som forsiden.</p>
+              <p><b>ƒ Dynamic</b>Bygges ved hver request, fordi svaret afhænger af, hvem der spørger.</p>
+              <p><b>Hvad gør en side dynamic?</b>Den læser noget fra requesten: cookies som på <code>/profile</code> eller <code>searchParams</code> som på <code>/login</code>.</p>
+              <p><b>Headeren i layoutet?</b>Læser den cookien, bliver <em>alle</em> sider ƒ. Derfor <code>&lt;Suspense&gt;</code> i WordPress-appen.</p>
+            </div>
+          </div>
+        </section>
+
         <section class="po-slide mode-work" id="opgave-4">
           <span class="eyebrow">Opgave 4 · Arbejd individuelt</span>
           <h2>Profilen — den beskyttede route</h2>
@@ -787,7 +877,7 @@ export async function signIn(formData) {
             <article>
               <h3>Beskyt den</h3>
               <p><code>if (!user)</code> → <code>redirect("/login")</code> øverst i komponenten. Test i det private vindue igen.</p>
-              <p class="step-links"><a href="#/beskyt-flow">Én <code>if</code></a></p>
+              <p class="step-links"><a href="#/beskyt-flow">Én <code>if</code></a><a href="#/static-dynamic">○ og ƒ</a></p>
             </article>
             <article>
               <h3>Log ud</h3>
@@ -796,7 +886,7 @@ export async function signIn(formData) {
             </article>
           </div>
           <p class="work-if-stuck"><strong>Fejler profilen i det private vindue?</strong> <code>user</code> er <code>null</code> — det løser tjekket. <strong>Redirect-loop?</strong> Tjek aldrig på <code>/login</code>.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> <code>/profile</code> viser din e-mail, når du er logget ind, og sender dig til <code>/login</code>, når du ikke er.</p>
+          <p class="done-when"><strong>Resultat:</strong> <code>/profile</code> viser din e-mail eller sender dig til <code>/login</code> — og er ƒ i <code>npm run build</code>.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-4" target="_blank" rel="noreferrer">Opgavefil: opgave 4 med hints ↗</a>
           </p>
@@ -900,16 +990,16 @@ export async function signIn(formData) {
             <article>
               <h3><code>/members</code></h3>
               <p>Endnu en beskyttet route med det samme tjek. Tilføj den i headeren.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/commit/70c5481" target="_blank" rel="noreferrer">Ekstra 5.1</a></p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/commit/d9edd1d" target="_blank" rel="noreferrer">Ekstra 5.1</a></p>
             </article>
             <article>
               <h3>Den anden vej</h3>
               <p>Logget ind? Send fra <code>/login</code> og <code>/signup</code> til <code>/profile</code> med <code>if (user)</code>.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/commit/6516793" target="_blank" rel="noreferrer">Ekstra 5.2</a></p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/commit/1dc7859" target="_blank" rel="noreferrer">Ekstra 5.2</a></p>
             </article>
             <article>
               <h3>Login-status</h3>
-              <p><code>AuthStatus</code> viser e-mail og <em>Log out</em> — eller <em>Log in</em> — i headeren.</p>
+              <p>Flyt <code>signOut</code> til <code>lib/actions.js</code>. <code>AuthStatus</code> viser e-mail og <em>Log out</em> i headeren.</p>
               <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-05-flere-routes...opgave-06-header" target="_blank" rel="noreferrer">Ekstra 6</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/blob/opgave-06-header/components/AuthStatus.module.css" target="_blank" rel="noreferrer">CSS</a></p>
             </article>
             <article>
@@ -919,7 +1009,7 @@ export async function signIn(formData) {
             </article>
           </div>
           <p class="work-if-stuck"><strong><em>async Client Component</em>?</strong> Fjern <code>"use client"</code> fra <code>AuthStatus</code>. <strong>Build fejler i WordPress-appen?</strong> Se <a href="#/suspense"><code>&lt;Suspense&gt;</code></a>.</p>
-          <p class="done-when"><strong>Du er klar, når:</strong> Din ekstraopgave virker logget ind, logget ud og i et privat vindue.</p>
+          <p class="done-when"><strong>Resultat:</strong> Din ekstraopgave virker logget ind, logget ud og i et privat vindue.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-5" target="_blank" rel="noreferrer">Opgavefil: ekstraopgaver med hints ↗</a>
           </p>

@@ -10,7 +10,7 @@ Slides forklarer teorien. Her står, hvad du skal gøre, trin for trin. Hvert tr
 
 ## Sådan bruger du opgaven
 
-- Fortsæt fra den opgave, du nåede til. Er du i tvivl, så tjek dit projekt mod **Du er klar, når** øverst i de foregående opgaver.
+- Fortsæt fra den opgave, du nåede til. Er du i tvivl, så tjek dit projekt mod **Resultat** øverst i de foregående opgaver.
 - Slut hvert trin med **Tjek**, så du ved, at det virker, før du går videre.
 - Prøv selv først. Sidder du fast, så læs **Sidder du fast?**, og fold først **den fulde løsning** ud, når du har prøvet. Nederst står en samlet [fejlfinding](#fejlfinding).
 - Commit og push efter hver opgave med Source Control i VS Code eller GitHub Desktop.
@@ -59,7 +59,7 @@ Du skal bruge din Next.js-app fra [26. oktober](opgave-2026-10-26-nextjs-og-head
 
 Du gør et Supabase-projekt klar til login, installerer SDK'et og gemmer URL og nøgle i miljøvariabler.
 
-**Du er klar, når:** Begge Supabase-pakker står i `package.json`, `.env.local` har tre variabler, og arbejdet er pushet.
+**Resultat:** Begge Supabase-pakker står i `package.json`, `.env.local` har tre variabler, og arbejdet er pushet.
 
 ### 1.1 Gør Supabase-projektet klar
 
@@ -135,7 +135,7 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_your-key
 
 Du kopierer de to filer fra dit projekt fra [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md) – eller fra løsningen nedenfor. Du skal ikke kunne skrive dem selv, men du skal kunne forklare, hvad de gør.
 
-**Du er klar, når:** `lib/supabase/server.js` og `proxy.js` findes, `npm run build` går igennem, og arbejdet er pushet.
+**Resultat:** `lib/supabase/server.js` og `proxy.js` findes, `npm run build` går igennem, og arbejdet er pushet.
 
 ### 2.1 Klienten
 
@@ -256,7 +256,7 @@ Koden følger [Supabase' guide til Next.js](https://supabase.com/docs/guides/aut
 
 Du laver en side med en formular, hvor man kan oprette en bruger.
 
-**Du er klar, når:** Du kan oprette en bruger på `/signup`, brugeren står i Supabase, en fejl giver en besked, og arbejdet er pushet.
+**Resultat:** Du kan oprette en bruger på `/signup`, brugeren står i Supabase, en fejl giver en besked, og arbejdet er pushet.
 
 ### 3.1 Formular og Server Action
 
@@ -428,7 +428,7 @@ CSS: `.auth-form` og `.form-error` står nederst i [`app/globals.css`](https://g
 
 Login-siden er næsten en kopi af sign up-siden. Kun Server Action'en og teksterne er nye.
 
-**Du er klar, når:** Du kan logge ind på `/login`, en forkert adgangskode giver en fejlbesked, og arbejdet er pushet.
+**Resultat:** Du kan logge ind på `/login`, en forkert adgangskode giver en fejlbesked, og arbejdet er pushet.
 
 ### 4.1 signIn og /login
 
@@ -528,7 +528,7 @@ export default async function LoginPage({ searchParams }) {
 
 Headeren viser din e-mail og _Log out_, når du er logget ind – og _Log in_, når du ikke er.
 
-**Du er klar, når:** Headeren skifter, når du logger ind og ud, `npm run build` går igennem, og arbejdet er pushet.
+**Resultat:** Headeren skifter, når du logger ind og ud, `npm run build` går igennem, og arbejdet er pushet.
 
 ### 5.1 Hvem er logget ind?
 
@@ -695,7 +695,7 @@ export default function Header() {
 
 Profilsiden og alle posts kan kun ses af brugere, der er logget ind. Alle andre bliver sendt til `/login`.
 
-**Du er klar, når:** `/profile` og `/posts/<slug>` sender dig til `/login`, når du er logget ud, viser indholdet, når du er logget ind, og arbejdet er pushet.
+**Resultat:** `/profile` og `/posts/<slug>` sender dig til `/login`, når du er logget ud, viser indholdet, når du er logget ind, og arbejdet er pushet.
 
 ### 6.1 Profilsiden
 
