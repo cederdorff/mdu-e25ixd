@@ -59,8 +59,6 @@ Log out  -> signOut()        -> supabase.auth.signOut()            -> cookie sle
 
 ## Opgave 1: Hent startprojektet
 
-Du laver dit eget repository ud fra startprojektet og forbinder det til dit Supabase-projekt.
-
 **Resultat:** Appen kører lokalt med dine Supabase-nøgler, og projektet ligger på GitHub.
 
 ### 1.1 Dit eget repository
@@ -104,7 +102,7 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
 
 Kør `npm run dev`, og åbn [http://localhost:3000](http://localhost:3000).
 
-**Tjek:** Forsiden viser fire routes. Et klik på `/signup` giver _Page not found_. Det er rigtigt nok – den route laver du i opgave 2. Source Control viser ikke `.env.local`. Den må ikke komme på GitHub.
+**Tjek:** Forsiden viser fire routes. Et klik på `/signup` giver _Page not found_ – den route laver du i opgave 2. Source Control viser ikke `.env.local`. Den må ikke komme på GitHub.
 
 [Slide: To nøgler](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/noegler)
 
@@ -124,7 +122,6 @@ Det meste er det samme som i din WordPress-app: `app/layout.js`, `components/Hea
 **Sidder du fast?**
 
 - **Ingen _Use this template_-knap?** Log ind på GitHub først.
-
 - **Står dit projekt som _Paused_?** Klik på _Resume project_, og vent et par minutter.
 - **_Your project's URL and Key are required_?** Tjek navnene i `.env.local`, og genstart `npm run dev`.
 - **Finder du ingen publishable key?** Se under _Project Settings → API Keys_. Brug aldrig en nøgle, der starter med `sb_secret_`.
@@ -138,9 +135,7 @@ Det meste er det samme som i din WordPress-app: `app/layout.js`, `components/Hea
 
 ## Opgave 2: Sign up
 
-Du laver routen `/signup` med en formular, der opretter en bruger i Supabase.
-
-**Resultat:** Du kan oprette en bruger på `/signup`, brugeren står i Supabase, og arbejdet er pushet.
+**Resultat:** Du kan oprette en bruger på `/signup`, og brugeren står i Supabase.
 
 ### 2.1 Opret routen
 
@@ -237,18 +232,7 @@ async function signUp(formData) {
 }
 ```
 
-Giv formularen `action={signUp}`. Når brugeren klikker på knappen, sender Next.js formularen som en `POST`-request og kører `signUp` på serveren med felterne i `formData`. `formData.get("email")` henter feltet med `name="email"`. Hele routen står nu i én fil: siden, formularen og funktionen, der kører, når formularen sendes.
-
-<details>
-<summary><strong>Løsning</strong></summary>
-
-`signUp` står over komponenten, og formularen kalder den:
-
-```jsx
-<form action={signUp} className="auth-form">
-```
-
-</details>
+Giv formularen `action={signUp}`. Når brugeren klikker på knappen, kører `signUp` på serveren, og `formData.get("email")` henter feltet med `name="email"`.
 
 **Tjek:** Opret en bruger. Du lander på forsiden, og under _Authentication → Users_ i Supabase står din nye bruger. Klik på genindlæs-knappen over tabellen, hvis den ikke er kommet endnu.
 
@@ -266,7 +250,7 @@ Giv formularen `action={signUp}`. Når brugeren klikker på knappen, sender Next
 
 ### 2.5 Vis en fejl · valgfri
 
-Virker sign up? Så gør formularen bedre. Opret den samme bruger igen. Der sker ingenting – fejlen forsvinder på serveren. Send brugeren tilbage til `/signup?error=true`, når Supabase svarer med en fejl, og vis en besked på siden, når `error` står i URL'en.
+Opret den samme bruger igen. Der sker ingenting, fordi fejlen forsvinder på serveren. Send brugeren tilbage til `/signup?error=true`, når Supabase svarer med en fejl, og vis en besked på siden, når `error` står i URL'en.
 
 `searchParams` er det, der står efter `?` i URL'en. Next.js giver det til siden som en prop. Det er et Promise, så siden skal være `async` og bruge `await`.
 
@@ -402,13 +386,11 @@ export default async function SignUpPage({ searchParams }) {
 
 ## Opgave 3: Log ind
 
-Login-siden er næsten en kopi af sign up-siden. Kun Server Action'en og teksterne er nye.
-
-**Resultat:** Du kan logge ind på `/login` med din bruger fra opgave 2, og arbejdet er pushet.
+**Resultat:** Du kan logge ind på `/login` med din bruger fra opgave 2.
 
 ### 3.1 Kopiér routen
 
-Kopiér mappen `app/signup/` til `app/login/`, og ret i `app/login/page.js`:
+Login-siden er næsten en kopi af sign up-siden. Kopiér mappen `app/signup/` til `app/login/`, og ret i `app/login/page.js`:
 
 - [ ] `metadata`, `<h1>` og knappen: _Log in_
 - [ ] Komponenten: `LoginPage`
@@ -417,55 +399,6 @@ Kopiér mappen `app/signup/` til `app/login/`, og ret i `app/login/page.js`:
 - [ ] Har du lavet 2.5: fejlbeskeden _Wrong email or password._
 
 **Tjek:** [http://localhost:3000/login](http://localhost:3000/login) viser din login-side.
-
-<details>
-<summary><strong>Løsning</strong></summary>
-
-```jsx
-export const metadata = {
-  title: "Log in"
-};
-
-// signUp stays here until 3.2
-
-export default async function LoginPage({ searchParams }) {
-  const { error } = await searchParams;
-
-  return (
-    <main>
-      <h1>Log in</h1>
-      {error && (
-        <p className="form-error" role="alert">
-          Wrong email or password.
-        </p>
-      )}
-      <form action={signUp} className="auth-form">
-        <label htmlFor="email">Email</label>
-        <input id="email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
-
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Your password"
-          autoComplete="current-password"
-          required
-        />
-
-        <button type="submit">Log in</button>
-      </form>
-      <p>
-        No account yet? <Link href="/signup">Sign up</Link>
-      </p>
-    </main>
-  );
-}
-```
-
-Har du ikke lavet 2.5, har siden ingen `searchParams` og ingen fejlbesked.
-
-</details>
 
 ### 3.2 signIn
 
@@ -599,9 +532,7 @@ export default async function LoginPage({ searchParams }) {
 
 ## Opgave 4: Profilen – den beskyttede route
 
-Du laver `/profile`, som viser, hvem der er logget ind, og som sender alle andre til `/login`.
-
-**Resultat:** `/profile` viser din e-mail, når du er logget ind, sender dig til `/login`, når du ikke er, du kan logge ud, og arbejdet er pushet.
+**Resultat:** `/profile` viser din e-mail, når du er logget ind, og sender alle andre til `/login`. Du kan logge ud.
 
 ### 4.1 Hvem er logget ind?
 
@@ -749,22 +680,6 @@ I `signUp` og `signIn`: `redirect("/profile")` i stedet for `redirect("/")`.
 <details>
 <summary><strong>Se den fulde løsning til opgave 4</strong></summary>
 
-`lib/auth.js`:
-
-```js
-import { createClient } from "@/lib/supabase/server";
-
-// Returns the logged-in user, or null if no one is logged in.
-// getClaims() checks the access token in the cookie, so it's safe to use on the server.
-// The user's id is in user.sub, and the email is in user.email.
-export async function getCurrentUser() {
-  const supabase = await createClient();
-  const { data } = await supabase.auth.getClaims();
-
-  return data?.claims ?? null;
-}
-```
-
 `app/profile/page.js`:
 
 ```jsx
@@ -818,9 +733,7 @@ I `signUp` og `signIn` står der nu `redirect("/profile")` i stedet for `redirec
 
 ## Ekstra: Static eller dynamic?
 
-Ingen ny kode – du kigger på, hvordan Next.js bygger dine routes.
-
-**Resultat:** Du kan forklare, hvorfor nogle routes er ○ og andre er ƒ.
+Ingen ny kode. **Resultat:** Du kan forklare, hvorfor nogle routes er ○ og andre er ƒ.
 
 Stop `npm run dev`, og kør `npm run build`. Kig på listen over routes nederst i outputtet:
 
@@ -835,7 +748,7 @@ Stop `npm run dev`, og kør `npm run build`. Kig på listen over routes nederst 
 - **○ Static:** Siden bygges én gang og er den samme for alle.
 - **ƒ Dynamic:** Siden bygges ved hver request, fordi den læser noget fra requesten. `/profile` læser cookien, og `/login` og `/signup` læser `searchParams`. Svaret afhænger af, hvem der spørger.
 
-**Tjek:** `/` er ○, og `/profile` er ƒ. Har du sprunget fejlbeskederne over, er `/login` og `/signup` også ○ – de læser jo ikke noget fra requesten.
+**Tjek:** `/` er ○, og `/profile` er ƒ. Har du sprunget fejlbeskederne over, er `/login` og `/signup` også ○.
 
 [Slide: Static eller dynamic?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/static-dynamic)
 
@@ -844,8 +757,6 @@ Stop `npm run dev`, og kør `npm run build`. Kig på listen over routes nederst 
 <a id="opgave-5"></a>
 
 ## Ekstra – Opgave 5: Flere beskyttede routes
-
-Det samme tjek kan beskytte så mange routes, du vil. Og det kan også gå den anden vej.
 
 **Resultat:** `/members` kræver login, og en bruger, der er logget ind, bliver sendt fra `/login` og `/signup` til profilen.
 
@@ -953,9 +864,7 @@ export default async function LoginPage({ searchParams }) {
 
 ## Ekstra – Opgave 6: Login-status i headeren
 
-Headeren viser din e-mail og _Log out_, når du er logget ind – og _Log in_, når du ikke er.
-
-**Resultat:** Headeren skifter, når du logger ind og ud, og arbejdet er pushet.
+**Resultat:** Headeren viser din e-mail og _Log out_, når du er logget ind – og _Log in_, når du ikke er.
 
 ### 6.1 Del signOut
 
@@ -1092,8 +1001,6 @@ export default function Header() {
 Kør `npm run build` – som i [Static eller dynamic?](#static-dynamic). Nu er alle routes ƒ – også `/`. Headeren står i layoutet og læser cookien, så hver side afhænger af, hvem der spørger.
 
 **Tjek:** Alle routes er ƒ. Commit og push.
-
-Det er grunden til, at `AuthStatus` skal pakkes ind i `<Suspense>` i din WordPress-app. Med Cache Components skal resten af siden kunne bygges på forhånd, mens kun headerens login-status venter på requesten.
 
 **Sidder du fast?**
 
