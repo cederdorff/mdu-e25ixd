@@ -80,8 +80,7 @@ Du bygger komponenten to gange. Først oversætter du selv designet med Dev Mode
 - **Opgaver:**
   - [Overblik i slides](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-02/#/opgaver)
   - [Opgaver med ekstra hjælp og løsninger](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-29-fra-figma-til-react-nextjs.md) – trin for trin, opsætning og adgang, alle prompts og den fulde løsning
-- **Starterrepo:** [nextjs-figma-pill-modal](https://github.com/cederdorff/nextjs-figma-pill-modal) – branchen `solution` har ét commit pr. trin
-- **Demofil:** [Pill og Modal i Figma](https://www.figma.com/design/XTTxNnZjIIWPGyvq6Ya5Wj/Figma-%C3%98velse-IXD---Figma--%3E-React?node-id=9-61&m=dev)
+- **Starterrepo:** [nextjs-figma-pill-modal](https://github.com/cederdorff/nextjs-figma-pill-modal)
 - **Figma:**
   - [Guide to auto layout](https://help.figma.com/hc/en-us/articles/360040451373-Guide-to-auto-layout)
   - [Create and use variants](https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants)

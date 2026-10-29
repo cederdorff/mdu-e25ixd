@@ -330,6 +330,7 @@ npm run dev</code></pre>
   );
 }</code></pre>
               <p>Teksten bliver til <code>children</code>. <code>onClick</code> kommer fra den, der bruger pillen.</p>
+              <p><code>showModal()</code> giver fokus, <kbd>Esc</kbd> og backdrop gratis. Det gør <code>open</code>-attributten ikke.</p>
             </div>
             <div>
               <span class="code-label"><code>components/Modal.js</code> · uddrag</span>
@@ -351,7 +352,7 @@ npm run dev</code></pre>
     &lt;/dialog&gt;
   );
 }</code></pre>
-              <p><code>useRef</code> giver dig selve <code>&lt;dialog&gt;</code>. <code>useEffect</code> kalder <code>showModal()</code>, når <code>isOpen</code> skifter — så får du fokus, <kbd>Esc</kbd> og backdrop gratis.</p>
+              <p><code>useRef</code> giver dig selve <code>&lt;dialog&gt;</code>. <code>useEffect</code> kalder <code>showModal()</code>, når <code>isOpen</code> skifter.</p>
             </div>
           </div>
           <p class="po-source-link">
