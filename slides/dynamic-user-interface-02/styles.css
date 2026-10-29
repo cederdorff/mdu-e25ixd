@@ -329,6 +329,11 @@
   padding-block: 13px;
 }
 
+/* Lang CSS-blok på #modal-animation: tættere linjer, så den holder sig over sidetælleren */
+.reveal #modal-animation pre.po-code.code-sm code {
+  line-height: 1.25;
+}
+
 .compare-cols.three article {
   min-height: 250px;
 }
