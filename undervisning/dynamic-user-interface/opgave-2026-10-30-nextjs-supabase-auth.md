@@ -287,7 +287,7 @@ Giv formularen `action={signUp}`. Når brugeren klikker på knappen, kører `sig
 
 **Hvad står der i cookien?** Værdien starter med `base64-`. Den er ikke krypteret, bare kodet, så den kan stå i en cookie. Indeni ligger sessionen: dit access token – nøglekortet med din e-mail, som udløber efter en time – og et refresh token, der henter et nyt.
 
-Har du prøvet Supabase i en React-app uden server, lå den samme session i `localStorage`. I Next.js ligger den i en cookie, fordi cookies sendes med hver request – så serveren kan se, hvem du er, før den bygger siden.
+I din React Router-app fra Product optimization lå den samme session i `localStorage`. I Next.js ligger den i en cookie, fordi cookies sendes med hver request – så serveren kan se, hvem du er, før den bygger siden.
 
 [Slide: Her ligger sessionen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/cookie-skaerm) · [Slide: Nøglekortet udløber – og bliver fornyet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/tokens) · [Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
 

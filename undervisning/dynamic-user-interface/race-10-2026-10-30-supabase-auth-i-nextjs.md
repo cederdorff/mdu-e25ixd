@@ -42,7 +42,7 @@ I dag får appen brugere. Med Supabase Auth bygger du sign up, log ind og en pro
 <li>HTTP har ingen hukommelse – nøglekortet skal med på hver request.</li>
 <li>Cookies, <code>localStorage</code> og <code>sessionStorage</code>: Kun cookies sendes til serveren. Derfor bor sessionen i en cookie i Next.js.</li>
 <li>Her ligger sessionen: cookien <code>sb-…-auth-token</code> under <em>Application → Cookies</em> i DevTools.</li>
-<li>Access token beviser, hvem du er, og udløber efter en time. Refresh token henter et nyt, så du forbliver logget ind.</li>
+<li>Access token beviser, hvem du er, og udløber efter en time. Refresh token henter et nyt, så du forbliver logget ind. Hvorfor to? Et stjålet nøglekort virker højst en time, og refresh token'et spærres, når du logger ud.</li>
 </ul>
 </details>
 

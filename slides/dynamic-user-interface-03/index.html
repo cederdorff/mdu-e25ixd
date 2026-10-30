@@ -316,8 +316,8 @@
             </div>
           </div>
           <p class="dui-lead-note">
-            <strong>I en Vite-app</strong> gemmer Supabase sessionen i <code>localStorage</code>. Det virker, fordi al
-            koden kører i browseren. <strong>I Next.js</strong> skal serveren også kunne se den.
+            <strong>I jeres React Router-app</strong> fra Product optimization lå sessionen i <code>localStorage</code>.
+            Det virkede, fordi al koden kører i browseren. <strong>I Next.js</strong> skal serveren også kunne se den.
           </p>
           <p class="po-source-link">
             <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies" target="_blank" rel="noreferrer">MDN: Cookies ↗</a>
@@ -397,8 +397,8 @@
               <dd>Formatet for access token'et: JSON med en <b>signatur</b>. Alle kan læse det — ingen kan ændre det uden at signaturen går i stykker.</dd>
             </div>
             <div>
-              <dt>Begge ligger i cookien</dt>
-              <dd>Derfor kan du være logget ind i dagevis, selvom nøglekortet kun lever en time.</dd>
+              <dt>Hvorfor to tokens?</dt>
+              <dd>Et stjålet nøglekort virker <b>højst en time</b>. Refresh token'et gør, at du ikke mærker, når det udløber — og det spærres, når du logger ud.</dd>
             </div>
           </dl>
           <p class="po-source-link">
