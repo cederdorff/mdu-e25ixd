@@ -34,7 +34,7 @@
               <a href="#/supabase-auth"><b>Supabase Auth</b><small>Hvad er det, hvad kan det — og SDK'et</small></a>
             </li>
             <li>
-              <a href="#/kap-session"><b>Sessionen</b><small>Sådan husker appen dig — i en cookie</small></a>
+              <a href="#/kap-session"><b>Sessionen og tokens</b><small>Sådan husker appen dig — et nøglekort i en cookie</small></a>
             </li>
             <li>
               <a href="#/kap-next"><b>Next.js på serveren</b><small>Server Components og Server Actions — og hvorfor</small></a>
@@ -250,16 +250,17 @@
 
         <section class="chapter po-chapter po-slide" id="kap-session">
           <span class="chapter-index">03</span>
-          <span class="eyebrow">Sessionen</span>
+          <span class="eyebrow">Sessionen og tokens</span>
           <h2>Sådan husker<br />appen dig</h2>
           <p class="kicker">HTTP har ingen hukommelse — hver request er en fremmed.</p>
           <dl class="chapter-definition">
             <div>
               <dt>Session</dt>
-              <dd>
-                Beviset på, at du er logget ind. Du får det ved login, og browseren viser det frem, hver gang den
-                beder om noget.
-              </dd>
+              <dd>At du er <b>logget ind</b>. Den starter ved login, slutter ved log ud — og består af to tokens.</dd>
+            </div>
+            <div>
+              <dt>Token</dt>
+              <dd>Et <b>digitalt bevis</b>: en lang tekst, du får ved login, og som browseren viser frem i stedet for din adgangskode. Nøglekortet 🪪 er et token.</dd>
             </div>
           </dl>
         </section>
@@ -372,22 +373,22 @@
           </p>
         </section>
         <section class="po-slide" id="tokens">
-          <span class="eyebrow">Sessionen · hvad står der i cookien?</span>
+          <span class="eyebrow">Tokens · hvad står der i cookien?</span>
           <h2>Nøglekortet udløber — og bliver fornyet</h2>
           <div class="au-tokens">
             <article class="is-access">
               <span>Access token</span>
               <h3>Nøglekortet</h3>
               <p class="au-token-life"><b>≈ 1 time</b> og så udløber det</p>
-              <p>Viser, <b>hvem du er</b>. Det tjekkes, hver gang du beder om noget beskyttet.</p>
-              <code class="au-jwt">{ "sub": "7f3c…", "email": "dig@eaaa.dk", "exp": 1793361600 }</code>
+              <p>Det token, der <b>beviser, hvem du er</b>. Det sendes med og tjekkes, hver gang du beder om noget beskyttet.</p>
+              <code class="au-jwt">{ "sub": "7f3c…", "email": "dig@eaaa.dk" }</code>
             </article>
             <i class="au-door-arrow" aria-hidden="true">↻</i>
             <article class="is-refresh">
               <span>Refresh token</span>
               <h3>Fornyelsen</h3>
-              <p class="au-token-life"><b>Lang levetid</b> men kan kun ét</p>
-              <p>Bruges til at hente et <b>nyt access token</b>, når det gamle er udløbet. Så slipper du for at logge ind igen.</p>
+              <p class="au-token-life"><b>Lang levetid</b> men kan kun forny</p>
+              <p>Det token, der <b>henter et nyt access token</b>, når det gamle er udløbet. Så slipper du for at logge ind igen.</p>
             </article>
           </div>
           <dl class="term-row">
@@ -731,7 +732,7 @@ export default async function SignUpPage({ searchParams }) {
             <article>
               <h3>Server Action</h3>
               <p>Skriv <code>signUp</code> med <code>"use server"</code> i samme fil, og giv formularen <code>action={signUp}</code>. Find cookien.</p>
-              <p class="step-links"><a href="#/next-server-action">Server Action</a><a href="#/sekvens">Flowet</a><a href="#/cookie-skaerm">Cookien</a></p>
+              <p class="step-links"><a href="#/next-server-action">Server Action</a><a href="#/sekvens">Flowet</a><a href="#/cookie-skaerm">Cookien</a><a href="#/tokens">Tokens</a></p>
             </article>
             <article>
               <h3>Fejlen · valgfri</h3>
@@ -740,7 +741,7 @@ export default async function SignUpPage({ searchParams }) {
             </article>
           </div>
           <p class="work-if-stuck"><strong>Ingen <code>-auth-token</code>-cookie?</strong> Slå <em>Confirm email</em> fra, og opret brugeren igen. <strong>Altid fejl?</strong> Log <code>error.message</code> i terminalen.</p>
-          <p class="done-when"><strong>Resultat:</strong> Din bruger står i Supabase, og du har en cookie, der slutter med <code>-auth-token</code>.</p>
+          <p class="done-when"><strong>Resultat:</strong> Din bruger står i Supabase, og du har en cookie, der slutter med <code>-auth-token</code>. Indeni ligger dit access token og refresh token.</p>
           <p class="po-source-link">
             <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-2" target="_blank" rel="noreferrer">Opgavefil: opgave 2 med hints ↗</a>
           </p>

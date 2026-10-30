@@ -15,7 +15,7 @@ I dag får appen brugere. Med Supabase Auth bygger du sign up, log ind og en pro
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Authentication og Supabase Auth → opgave 1 → sessionen → Next.js på serveren → login-flowet → opgave 2 og 3 → beskyttede sider → opgave 4 → ekstra og WordPress-appen.
+**Dagens arbejdsrytme:** Authentication og Supabase Auth → opgave 1 → sessionen og tokens → Next.js på serveren → login-flowet → opgave 2 og 3 → beskyttede sider → opgave 4 → ekstra og WordPress-appen.
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Authentication og authorization</strong></summary>
@@ -36,12 +36,13 @@ I dag får appen brugere. Med Supabase Auth bygger du sign up, log ind og en pro
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Sessionen – sådan husker appen dig</strong></summary>
+<summary><strong>3. Sessionen og tokens – sådan husker appen dig</strong></summary>
 <ul>
+<li>Session: at du er logget ind. Token: et digitalt bevis, du får ved login, så browseren ikke skal sende din adgangskode igen. Nøglekortet er et token.</li>
 <li>HTTP har ingen hukommelse – nøglekortet skal med på hver request.</li>
 <li>Cookies, <code>localStorage</code> og <code>sessionStorage</code>: Kun cookies sendes til serveren. Derfor bor sessionen i en cookie i Next.js.</li>
 <li>Her ligger sessionen: cookien <code>sb-…-auth-token</code> under <em>Application → Cookies</em> i DevTools.</li>
-<li>Access token og refresh token: Nøglekortet udløber efter en time og bliver fornyet.</li>
+<li>Access token beviser, hvem du er, og udløber efter en time. Refresh token henter et nyt, så du forbliver logget ind.</li>
 </ul>
 </details>
 
