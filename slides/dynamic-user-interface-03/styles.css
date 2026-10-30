@@ -1088,184 +1088,36 @@
   font-size: inherit !important;
 }
 
-/* Agenda · dagens program som en rute */
-.reveal .au-program {
-  display: grid;
-  grid-template-columns: 110px minmax(0, 1fr) 110px;
-  gap: 14px;
-  align-items: start;
-  margin-top: 40px;
+/* Agenda · dagens program med opgaverne markeret */
+.reveal .au-agenda .agenda-list {
+  grid-template-rows: repeat(6, 1fr) !important;
+  margin-top: 30px !important;
 }
 
-.reveal .au-end {
-  display: grid;
-  justify-items: center;
-  gap: 4px;
-  margin: -32px 0 0 !important;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.2;
-  text-align: center;
+.reveal .au-agenda .agenda-list a {
+  grid-template-columns: 400px 1fr 420px;
 }
 
-.reveal .au-end span {
-  display: grid;
-  place-items: center;
-  width: 64px;
-  height: 64px;
-  border: 2px dashed var(--muted);
-  border-radius: 50%;
-  background: var(--bg);
-  font-size: 32px;
-}
-
-.reveal .au-end.is-goal span {
-  border: 2px solid var(--green);
-  background: var(--green-soft);
-}
-
-.reveal .au-end b {
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 850;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.reveal .au-end.is-goal b {
-  color: var(--green);
-}
-
-.reveal .au-route {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 14px;
-  margin: 0 !important;
-  padding: 0 !important;
-  list-style: none;
-}
-
-/* Ruten mellem stoppene */
-.reveal .au-route::before {
-  position: absolute;
-  top: 1px;
-  right: -76px;
-  left: -76px;
-  border-top: 3px solid var(--dui-line);
-  content: "";
-}
-
-.reveal .au-route li {
-  position: relative;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  gap: 12px;
-  margin: 0 !important;
-}
-
-.reveal .au-stop {
-  display: grid;
-  align-content: start;
-  gap: 6px;
-  padding: 0 18px 20px;
-  border-top: 5px solid var(--dui);
-  background: linear-gradient(180deg, var(--dui-soft), var(--surface) 60%);
-  color: var(--muted);
-  text-decoration: none;
-  transition: transform 160ms ease, background 160ms ease;
-}
-
-.reveal .au-stop:hover,
-.reveal .au-stop:focus-visible {
-  transform: translateY(-4px);
-  background: linear-gradient(180deg, rgb(185 162 255 / 24%), var(--surface) 70%);
-}
-
-.reveal .au-stop i {
-  justify-self: start;
-  margin-top: -21px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: var(--dui);
-  color: var(--bg-deep);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 850;
-  line-height: 1;
-}
-
-.reveal .au-stop em {
-  margin-top: 10px;
-  font-size: 40px;
-  font-style: normal;
-  line-height: 1;
-}
-
-.reveal .au-stop b {
-  margin-top: 6px;
-  color: var(--ink);
-  font-size: 22px;
-  line-height: 1.15;
-}
-
-.reveal .au-stop small {
-  font-size: 17px;
-  line-height: 1.32;
-}
-
-.reveal .au-tasks {
-  display: grid;
-  align-content: start;
-  gap: 8px;
-  min-height: 98px;
-  margin: 0 !important;
-}
-
-.reveal .au-task {
-  padding: 9px 14px;
-  border: 1px solid rgb(62 207 142 / 45%);
-  border-radius: 10px;
-  background: var(--green-soft);
-  color: var(--ink);
-  font-size: 16px;
-  text-decoration: none;
-}
-
-.reveal .au-task b {
-  color: var(--green);
-}
-
-.reveal .au-task:hover,
-.reveal .au-task:focus-visible {
-  border-color: var(--green);
-}
-
-.reveal .au-program-legend {
+.reveal .au-agenda-tasks {
   display: flex;
-  gap: 12px;
-  align-items: center;
-  margin: 26px 0 0 !important;
-  color: var(--muted);
-  font-size: 18px;
+  gap: 8px;
+  justify-content: flex-end;
 }
 
-.reveal .au-program-legend span {
-  padding: 4px 12px;
+.reveal .au-agenda-tasks em {
+  padding: 5px 12px;
+  border: 1px solid rgb(62 207 142 / 45%);
   border-radius: 999px;
-  font-size: 15px;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.reveal .au-program-legend .is-theory {
-  background: var(--dui-soft);
-  color: var(--dui);
-}
-
-.reveal .au-program-legend .is-work {
-  margin-left: 18px;
   background: var(--green-soft);
   color: var(--green);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.reveal .au-agenda-tasks em.is-extra {
+  border-style: dashed;
+  background: transparent;
+  color: var(--muted);
 }

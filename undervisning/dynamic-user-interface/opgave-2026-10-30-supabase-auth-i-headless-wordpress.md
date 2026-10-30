@@ -1,8 +1,8 @@
-# Opgave: Supabase Auth i din headless WordPress-app - 30-10-2026
+# Ekstraopgave: Supabase Auth i din headless WordPress-app - 30-10-2026
 
 ## Formål
 
-Du bygger det samme login ind i din headless WordPress-app fra 26. oktober: sign up, log ind, en profil og posts, som kun brugere, der er logget ind, kan læse. Lav [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md) først. Opgaverne her følger den samme rækkefølge, og koden er næsten den samme.
+En ekstraopgave til dig, der er færdig med [Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md). Du bygger det samme login ind i din headless WordPress-app fra 26. oktober: sign up, log ind, en profil og posts, som kun brugere, der er logget ind, kan læse. Opgaverne her følger den samme rækkefølge, og koden er næsten den samme.
 
 Det sker i koden, når du bruger siderne:
 
@@ -24,7 +24,7 @@ Log out       -> signOut()        -> supabase.auth.signOut()            -> cooki
 
 ## Sådan bruger du opgaven
 
-- Slut hvert trin med **Tjek**. Trin mærket **valgfri** kan du tage til sidst.
+- Slut hvert trin med **Tjek**.
 - Sidder du fast? Fold **Hint** ud – og **Løsning**, når du har prøvet selv.
 - Commit og push efter hver opgave med Source Control i VS Code eller GitHub Desktop.
 
@@ -380,7 +380,7 @@ Giv formularen `action={signUp}`.
 
 [Slide: Her ligger sessionen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/cookie-skaerm)
 
-### 2.5 Vis en fejl · valgfri
+### 2.5 Vis en fejl
 
 Opret den samme bruger igen. Send brugeren tilbage til `/signup?error=true`, når Supabase svarer med en fejl, og vis en besked på siden, når `error` står i URL'en – ligesom du læste `params` på detaljesiden.
 
@@ -507,7 +507,7 @@ Kopiér mappen `app/signup/` til `app/login/`, og ret i `app/login/page.js`:
 - [ ] Komponenten: `LoginPage`
 - [ ] Adgangskoden: `placeholder="Your password"` og `autoComplete="current-password"`. Fjern `minLength`.
 - [ ] Linket nederst: _No account yet?_ og `/signup`
-- [ ] Har du lavet 2.5: fejlbeskeden _Wrong email or password._
+- [ ] Fejlbeskeden: _Wrong email or password._
 
 `app/login/loading.js` kommer med, når du kopierer mappen.
 
@@ -520,15 +520,15 @@ Ret Server Action'en:
 - [ ] `signUp` hedder nu `signIn`
 - [ ] `supabase.auth.signUp` er nu `supabase.auth.signInWithPassword`
 - [ ] Formularen: `action={signIn}`
-- [ ] Har du lavet 2.5: `redirect("/login?error=true")` ved fejl
+- [ ] `redirect("/login?error=true")` ved fejl
 
 **Tjek:** Log ind med den bruger, du oprettede i opgave 2. Du lander på forsiden.
 
 [Slide: Server Action](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/next-server-action) · [Slide: Vi bruger Supabase' SDK](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/sdk)
 
-### 3.3 Test fejlen · valgfri
+### 3.3 Test fejlen
 
-Har du lavet fejlbeskeden i 2.5? Prøv med en forkert adgangskode og med en e-mail, der ikke findes.
+Prøv med en forkert adgangskode og med en e-mail, der ikke findes.
 
 **Tjek:** Begge giver _Wrong email or password._ Supabase siger med vilje ikke, hvad der var forkert, så ingen kan bruge login-siden til at finde ud af, hvem der har en bruger.
 
@@ -810,7 +810,7 @@ I `signUp` og `signIn` står der nu `redirect("/profile")` i stedet for `redirec
 
 **Resultat:** Headeren viser din e-mail og _Log out_, når du er logget ind – og _Log in_, når du ikke er.
 
-Det er den samme komponent som i [ekstraopgave 6 i Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md#opgave-6). Det nye er `<Suspense>` i 5.3.
+Det er den samme komponent som i [opgave 6 i Next.js og Supabase Auth](opgave-2026-10-30-nextjs-supabase-auth.md#opgave-6). Det nye er `<Suspense>` i 5.3.
 
 ### 5.1 Del signOut
 

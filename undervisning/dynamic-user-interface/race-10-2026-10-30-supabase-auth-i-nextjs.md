@@ -2,20 +2,20 @@
 
 ## Formål
 
-I dag får appen brugere. Med Supabase Auth bygger du sign up, log ind og en profil, som kun brugere, der er logget ind, kan se – først i en lille Next.js-app og derefter i din headless WordPress-app.
+I dag får appen brugere. Med Supabase Auth bygger du sign up, log ind og en profil, som kun brugere, der er logget ind, kan se – i en lille Next.js-app. Er du hurtigt færdig, bygger du det samme ind i din headless WordPress-app.
 
 <hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
-- Sørg for, at din headless WordPress-app kører lokalt. Du skal bruge den til sidst.
+- Sørg for, at din headless WordPress-app kører lokalt. Du skal bruge den til ekstraopgaven.
 - Genbrug dit Supabase-projekt fra Product optimization, eller opret et nyt. Står det som _Paused_, så klik på _Resume project_.
 
 <hr style="margin: 2rem 0;">
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Authentication og Supabase Auth → opgave 1 → sessionen og tokens → Next.js på serveren → login-flowet → opgave 2 og 3 → beskyttede sider → opgave 4 → ekstra og WordPress-appen.
+**Dagens arbejdsrytme:** Authentication og Supabase Auth → opgave 1 → sessionen og tokens → Next.js på serveren → login-flowet → opgave 2 og 3 → beskyttede sider → opgave 4, 5 og 6 → ekstra: WordPress-appen.
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Authentication og authorization</strong></summary>
@@ -61,26 +61,26 @@ I dag får appen brugere. Med Supabase Auth bygger du sign up, log ind og en pro
 <li>Fem skridt fra klik til login: formular → Server Action → Supabase → cookie → redirect.</li>
 <li><code>name</code> i formularen bliver til <code>formData</code> i Server Action'en.</li>
 <li>Hele routen i én fil: siden, formularen og Server Action'en. Klienten læser sessionen fra cookies, og <code>proxy.js</code> fornyer den.</li>
-<li><strong>Opgave 2:</strong> <code>/signup</code> med en formular og <code>signUp</code>. Find cookien under <em>Application</em> i udviklerværktøjerne. Valgfri: en fejlbesked med <code>searchParams</code>.</li>
+<li><strong>Opgave 2:</strong> <code>/signup</code> med en formular og <code>signUp</code>. Find cookien under <em>Application</em> i udviklerværktøjerne, og vis en fejlbesked med <code>searchParams</code>.</li>
 <li><strong>Opgave 3:</strong> <code>/login</code> med <code>signInWithPassword</code>.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>6. Beskyttede sider · opgave 4</strong></summary>
+<summary><strong>6. Beskyttede sider · opgave 4, 5 og 6</strong></summary>
 <ul>
 <li>Én <code>if</code> på serveren: <code>getCurrentUser()</code> med <code>getClaims()</code> – og <code>redirect("/login")</code>, hvis der ingen bruger er. Supabase anbefaler <code>getClaims()</code>, fordi den tjekker, at token'et er ægte.</li>
-<li><strong>Opgave 4:</strong> <code>/profile</code> viser din e-mail, sender alle andre til <code>/login</code> og har en knap til at logge ud. Test i et privat vindue.</li>
+<li><strong>Opgave 4:</strong> <code>/profile</code> viser din e-mail, sender alle andre til <code>/login</code> og har en knap til at logge ud. Test i et privat vindue, og forklar ○ og ƒ i <code>npm run build</code>.</li>
+<li><strong>Opgave 5:</strong> <code>/members</code> med det samme tjek – og den anden vej: Brugere, der er logget ind, sendes fra <code>/login</code> og <code>/signup</code> til profilen.</li>
+<li><strong>Opgave 6:</strong> Login-status i headeren med <code>AuthStatus</code> og <code>signOut</code> i <code>lib/actions.js</code>.</li>
 <li>Skjul ikke bare linket: I dag beskytter vi siden – ikke data. Row Level Security, der beskytter data, kommer 10. november.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>7. Ekstra og videre</strong></summary>
+<summary><strong>7. Ekstra: WordPress-appen</strong></summary>
 <ul>
-<li>Static eller dynamic? Kør <code>npm run build</code>, og forklar ○ og ƒ.</li>
-<li>Ekstra: <code>/members</code>, send brugere, der er logget ind, fra login til profilen, og vis login-status i headeren.</li>
-<li>Byg det samme ind i din headless WordPress-app i fem trin: projektet klar, sign up, log ind, profilen og låste posts, og login-status i headeren med <code>&lt;Suspense&gt;</code>.</li>
+<li>Ekstraopgave, når du er færdig: Byg det samme ind i din headless WordPress-app i fem trin: projektet klar, sign up, log ind, profilen og låste posts, og login-status i headeren med <code>&lt;Suspense&gt;</code>.</li>
 </ul>
 </details>
 
@@ -92,8 +92,8 @@ I dag får appen brugere. Med Supabase Auth bygger du sign up, log ind og en pro
   - [Supabase Auth i Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/)
   - [PDF-version: Supabase Auth i Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/?print-pdf)
 - **Opgaver:**
-  - [Next.js og Supabase Auth](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md) – dagens opgave med startprojekt, hints og løsninger
-  - [Supabase Auth i din headless WordPress-app](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-headless-wordpress.md) – det samme login i din egen WordPress-app, i samme rækkefølge
+  - [Next.js og Supabase Auth](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md) – dagens opgave med startprojekt, hints og løsninger · opgave 1–6
+  - [Supabase Auth i din headless WordPress-app](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-headless-wordpress.md) – ekstraopgave: det samme login i din egen WordPress-app, i samme rækkefølge
 - **Løsningsrepoer:**
   - [nextjs-supabase-auth](https://github.com/cederdorff/nextjs-supabase-auth) – template med startprojektet på `main` og én løsningsbranch pr. opgave
   - [nextjs-headless-wordpress](https://github.com/cederdorff/nextjs-headless-wordpress) – auth i WordPress-appen med én løsningsbranch pr. opgave, fra `auth-01-supabase` til `auth-05-header`

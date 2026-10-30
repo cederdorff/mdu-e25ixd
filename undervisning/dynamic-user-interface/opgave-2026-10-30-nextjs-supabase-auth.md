@@ -36,7 +36,7 @@ Log out  -> signOut()        -> supabase.auth.signOut()            -> cookie sle
 
 ## Sådan bruger du opgaven
 
-- Slut hvert trin med **Tjek**. Trin mærket **valgfri** kan du tage til sidst.
+- Slut hvert trin med **Tjek**.
 - Sidder du fast? Fold **Hint** ud – og **Løsning**, når du har prøvet selv.
 - Commit og push efter hver opgave med Source Control i VS Code eller GitHub Desktop.
 
@@ -48,14 +48,10 @@ Log out  -> signOut()        -> supabase.auth.signOut()            -> cookie sle
 2. [Sign up](#opgave-2)
 3. [Log ind](#opgave-3)
 4. [Profilen – den beskyttede route](#opgave-4)
+5. [Flere beskyttede routes](#opgave-5)
+6. [Login-status i headeren](#opgave-6)
 
-**Ekstra**
-
-- [Static eller dynamic?](#static-dynamic)
-- [Opgave 5: Flere beskyttede routes](#opgave-5)
-- [Opgave 6: Login-status i headeren](#opgave-6)
-
-**Videre:** [Auth i din headless WordPress-app](#videre)
+**Ekstra, når du er færdig:** [Auth i din headless WordPress-app](#ekstra)
 
 Sidder du fast? Se [Fejlfinding](#fejlfinding).
 
@@ -291,7 +287,7 @@ I din React Router-app fra Product optimization lå den samme session i `localSt
 
 [Slide: Her ligger sessionen](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/cookie-skaerm) · [Slide: Nøglekortet udløber – og bliver fornyet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/tokens) · [Slide: Cookies, localStorage eller sessionStorage?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/storage)
 
-### 2.5 Vis en fejl · valgfri
+### 2.5 Vis en fejl
 
 Opret den samme bruger igen. Der sker ingenting, fordi fejlen forsvinder på serveren. Send brugeren tilbage til `/signup?error=true`, når Supabase svarer med en fejl, og vis en besked på siden, når `error` står i URL'en.
 
@@ -441,7 +437,7 @@ Login-siden er næsten en kopi af sign up-siden. Kopiér mappen `app/signup/` ti
 - [ ] Komponenten: `LoginPage`
 - [ ] Adgangskoden: `placeholder="Your password"` og `autoComplete="current-password"`. Fjern `minLength`.
 - [ ] Linket nederst: _No account yet?_ og `/signup`
-- [ ] Har du lavet 2.5: fejlbeskeden _Wrong email or password._
+- [ ] Fejlbeskeden: _Wrong email or password._
 
 **Tjek:** [http://localhost:3000/login](http://localhost:3000/login) viser din login-side.
 
@@ -452,7 +448,7 @@ Ret Server Action'en:
 - [ ] `signUp` hedder nu `signIn`
 - [ ] `supabase.auth.signUp` er nu `supabase.auth.signInWithPassword`
 - [ ] Formularen: `action={signIn}`
-- [ ] Har du lavet 2.5: `redirect("/login?error=true")` ved fejl
+- [ ] `redirect("/login?error=true")` ved fejl
 
 **Tjek:** Log ind med den bruger, du oprettede i opgave 2. Du lander på forsiden.
 
@@ -490,9 +486,9 @@ Og i formularen: `<form action={signIn} className="auth-form">`.
 
 </details>
 
-### 3.3 Test fejlen · valgfri
+### 3.3 Test fejlen
 
-Har du lavet fejlbeskeden i 2.5? Prøv med en forkert adgangskode og med en e-mail, der ikke findes.
+Prøv med en forkert adgangskode og med en e-mail, der ikke findes.
 
 <img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/nextjs-supabase-auth-login-fejl.webp" alt="Siden Log in med fejlbeskeden Wrong email or password over formularen." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
 
@@ -579,7 +575,7 @@ export default async function LoginPage({ searchParams }) {
 
 ## Opgave 4: Profilen – den beskyttede route
 
-**Resultat:** `/profile` viser din e-mail, når du er logget ind, og sender alle andre til `/login`. Du kan logge ud.
+**Resultat:** `/profile` viser din e-mail, når du er logget ind, og sender alle andre til `/login`. Du kan logge ud og forklare ○ og ƒ.
 
 ### 4.1 Hvem er logget ind?
 
@@ -722,6 +718,27 @@ I `signUp` og `signIn`: `redirect("/profile")` i stedet for `redirect("/")`.
 
 </details>
 
+<a id="static-dynamic"></a>
+
+### 4.5 Static eller dynamic?
+
+Ingen ny kode. Stop `npm run dev`, og kør `npm run build`. Kig på listen over routes nederst i outputtet:
+
+```text
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /login
+├ ƒ /profile
+└ ƒ /signup
+```
+
+- **○ Static:** Siden bygges én gang og er den samme for alle.
+- **ƒ Dynamic:** Siden bygges ved hver request, fordi den læser noget fra requesten. `/profile` læser cookien, og `/login` og `/signup` læser `searchParams`. Svaret afhænger af, hvem der spørger.
+
+**Tjek:** `/` er ○, og `/profile`, `/login` og `/signup` er ƒ.
+
+[Slide: Static eller dynamic?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/static-dynamic)
+
 **Sidder du fast?**
 
 - **_redirect is not defined_?** `import { redirect } from "next/navigation";` øverst i filen.
@@ -780,34 +797,9 @@ I `signUp` og `signIn` står der nu `redirect("/profile")` i stedet for `redirec
 
 <hr style="margin: 2rem 0;">
 
-<a id="static-dynamic"></a>
-
-## Ekstra: Static eller dynamic?
-
-Ingen ny kode. **Resultat:** Du kan forklare, hvorfor nogle routes er ○ og andre er ƒ.
-
-Stop `npm run dev`, og kør `npm run build`. Kig på listen over routes nederst i outputtet:
-
-```text
-┌ ○ /
-├ ○ /_not-found
-├ ƒ /login
-├ ƒ /profile
-└ ƒ /signup
-```
-
-- **○ Static:** Siden bygges én gang og er den samme for alle.
-- **ƒ Dynamic:** Siden bygges ved hver request, fordi den læser noget fra requesten. `/profile` læser cookien, og `/login` og `/signup` læser `searchParams`. Svaret afhænger af, hvem der spørger.
-
-**Tjek:** `/` er ○, og `/profile` er ƒ. Har du sprunget fejlbeskederne over, er `/login` og `/signup` også ○.
-
-[Slide: Static eller dynamic?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/static-dynamic)
-
-<hr style="margin: 2rem 0;">
-
 <a id="opgave-5"></a>
 
-## Ekstra – Opgave 5: Flere beskyttede routes
+## Opgave 5: Flere beskyttede routes
 
 **Resultat:** `/members` kræver login, og en bruger, der er logget ind, bliver sendt fra `/login` og `/signup` til profilen.
 
@@ -923,7 +915,7 @@ export default async function LoginPage({ searchParams }) {
 
 <a id="opgave-6"></a>
 
-## Ekstra – Opgave 6: Login-status i headeren
+## Opgave 6: Login-status i headeren
 
 **Resultat:** Headeren viser din e-mail og _Log out_, når du er logget ind – og _Log in_, når du ikke er.
 
@@ -1059,7 +1051,7 @@ export default function Header() {
 
 ### 6.4 Alt er nu dynamic
 
-Kør `npm run build` – som i [Static eller dynamic?](#static-dynamic). Nu er alle routes ƒ – også `/`. Headeren står i layoutet og læser cookien, så hver side afhænger af, hvem der spørger.
+Kør `npm run build` – som i [4.5](#static-dynamic). Nu er alle routes ƒ – også `/`. Headeren står i layoutet og læser cookien, så hver side afhænger af, hvem der spørger.
 
 **Tjek:** Alle routes er ƒ.
 
@@ -1071,11 +1063,11 @@ Kør `npm run build` – som i [Static eller dynamic?](#static-dynamic). Nu er a
 
 <hr style="margin: 2rem 0;">
 
-<a id="videre"></a>
+<a id="ekstra"></a>
 
-## Videre: Auth i din headless WordPress-app
+## Ekstra: Auth i din headless WordPress-app
 
-Nu kender du flowet. I [Supabase Auth i din headless WordPress-app](opgave-2026-10-30-supabase-auth-i-headless-wordpress.md) bygger du det samme ind i din WordPress-app – i samme rækkefølge og med næsten den samme kode. Tre ting er anderledes:
+Er du færdig med opgave 1–6? I ekstraopgaven [Supabase Auth i din headless WordPress-app](opgave-2026-10-30-supabase-auth-i-headless-wordpress.md) bygger du det samme ind i din WordPress-app – i samme rækkefølge og med næsten den samme kode. Tre ting er anderledes:
 
 - **Supabase er ikke sat op.** Du installerer SDK'et og kopierer `lib/supabase/server.js`, `proxy.js` og CSS'en fra dit projekt fra i dag.
 - **Cache Components er slået til** i WordPress-appen. Sider, der læser cookies eller `searchParams`, skal have deres egen `loading.js`, og `AuthStatus` skal pakkes ind i `<Suspense>`.

@@ -43,40 +43,29 @@
           </div>
         </section>
 
-        <section class="po-slide po-agenda dui-agenda" id="agenda">
+        <section class="po-slide po-agenda dui-agenda au-agenda" id="agenda">
           <span class="eyebrow">Agenda · fra anonym læser til bruger med en profil</span>
           <h2>Dagens program</h2>
-          <div class="au-program">
-            <p class="au-end is-start"><span aria-hidden="true">👤</span><b>Start</b>anonym læser</p>
-            <ol class="au-route">
+          <ol class="agenda-list">
             <li>
-              <a class="au-stop" href="#/kap-auth"><i>01</i><em aria-hidden="true">🛎️</em><b>Authentication og authorization</b><small>Hvem er du — og hvad må du?</small></a>
-              <p class="au-tasks"></p>
+              <a href="#/kap-auth"><b>Authentication og authorization</b><small>Hvem er du — og hvad må du?</small><span class="au-agenda-tasks"></span></a>
             </li>
             <li>
-              <a class="au-stop" href="#/supabase-auth"><i>02</i><em aria-hidden="true">🧰</em><b>Supabase Auth</b><small>Hvad er det, hvad kan det — og SDK'et</small></a>
-              <p class="au-tasks"><a class="au-task" href="#/opgave-1"><b>Opgave 1</b> Startprojektet</a></p>
+              <a href="#/supabase-auth"><b>Supabase Auth</b><small>Hvad er det, hvad kan det — og SDK'et</small><span class="au-agenda-tasks"><em>Opgave 1</em></span></a>
             </li>
             <li>
-              <a class="au-stop" href="#/kap-session"><i>03</i><em aria-hidden="true">🍪</em><b>Sessionen og tokens</b><small>Sådan husker appen dig — et nøglekort i en cookie</small></a>
-              <p class="au-tasks"></p>
+              <a href="#/kap-session"><b>Sessionen og tokens</b><small>Sådan husker appen dig — et nøglekort i en cookie</small><span class="au-agenda-tasks"></span></a>
             </li>
             <li>
-              <a class="au-stop" href="#/kap-next"><i>04</i><em aria-hidden="true">🖥️</em><b>Next.js på serveren</b><small>Server Components og Server Actions — og hvorfor</small></a>
-              <p class="au-tasks"></p>
+              <a href="#/kap-next"><b>Next.js på serveren</b><small>Server Components og Server Actions — og hvorfor</small><span class="au-agenda-tasks"></span></a>
             </li>
             <li>
-              <a class="au-stop" href="#/kap-flow"><i>05</i><em aria-hidden="true">🔁</em><b>Login-flowet</b><small>Formular → Server Action → cookie · <code>proxy.js</code></small></a>
-              <p class="au-tasks"><a class="au-task" href="#/opgave-2"><b>Opgave 2</b> Sign up</a><a class="au-task" href="#/opgave-3"><b>Opgave 3</b> Log ind</a></p>
+              <a href="#/kap-flow"><b>Login-flowet</b><small>Formular → Server Action → cookie · <code>proxy.js</code></small><span class="au-agenda-tasks"><em>Opgave 2</em><em>Opgave 3</em></span></a>
             </li>
             <li>
-              <a class="au-stop" href="#/kap-beskyt"><i>06</i><em aria-hidden="true">🔒</em><b>Beskyttede sider</b><small>Tjek på serveren → <code>redirect</code> · siden, ikke data</small></a>
-              <p class="au-tasks"><a class="au-task" href="#/opgave-4"><b>Opgave 4</b> Profilen</a><a class="au-task" href="#/ekstra"><b>Ekstra</b> WordPress</a></p>
+              <a href="#/kap-beskyt"><b>Beskyttede sider</b><small>Tjek på serveren → <code>redirect</code> · siden, ikke data</small><span class="au-agenda-tasks"><em>Opgave 4</em><em>Opgave 5</em><em>Opgave 6</em><em class="is-extra">Ekstra</em></span></a>
             </li>
-            </ol>
-            <p class="au-end is-goal"><span aria-hidden="true">🪪</span><b>Mål</b>bruger med en profil</p>
-          </div>
-          <p class="au-program-legend"><span class="is-theory">Teori</span> i seks korte kapitler <span class="is-work">Opgaver</span> du bygger undervejs</p>
+          </ol>
         </section>
 
         <section class="po-slide" id="maal">
@@ -117,14 +106,14 @@
                 <p>••••••••</p>
                 <b>Log in</b>
               </div>
-              <p class="au-two-result">✓ Det er dig — du får et nøglekort 🪪</p>
+              <p class="au-two-result">✓ Det er dig — du får et nøglekort</p>
               <footer><em>Én gang · ved login</em><code>signInWithPassword()</code></footer>
             </article>
             <i aria-hidden="true">→</i>
             <article class="is-authz">
               <span>Authorization · Må du se siden?</span>
               <div class="au-access" role="table" aria-label="Hvilke sider du må se, når du er logget ud og logget ind">
-                <p class="is-head" role="row"><span>Siden</span><span>Logget ud</span><span>Logget ind 🪪</span></p>
+                <p class="is-head" role="row"><span>Siden</span><span>Logget ud</span><span>Logget ind</span></p>
                 <p role="row"><code>/</code><b class="is-yes">✓</b><b class="is-yes">✓</b></p>
                 <p role="row"><code>/login</code><b class="is-yes">✓</b><b class="is-yes">✓</b></p>
                 <p role="row"><code>/profile</code><b class="is-no">✗ → <code>/login</code></b><b class="is-yes">✓</b></p>
@@ -291,7 +280,7 @@
             </div>
             <div>
               <dt>Token</dt>
-              <dd>Et <b>digitalt bevis</b>: en lang tekst, du får ved login, og som browseren viser frem i stedet for din adgangskode. Nøglekortet 🪪 er et token.</dd>
+              <dd>Et <b>digitalt bevis</b>: en lang tekst, du får ved login, og som browseren viser frem i stedet for din adgangskode. Nøglekortet er et token.</dd>
             </div>
           </dl>
         </section>
@@ -315,8 +304,8 @@
               <div class="au-mseq">
                 <p class="au-mseq-lanes"><b>Browser</b><b>Server</b></p>
                 <p class="is-right"><span>1 · e-mail og adgangskode</span></p>
-                <p class="is-left is-card"><span>2 · ✓ Velkommen — her er dit nøglekort <i>🪪</i></span></p>
-                <p class="is-right is-card"><span>3 · Vis min profil <i>🪪</i></span></p>
+                <p class="is-left is-card"><span>2 · ✓ Velkommen — her er dit <i>nøglekort</i></span></p>
+                <p class="is-right is-card"><span>3 · Vis min profil + <i>nøglekort</i></span></p>
                 <p class="is-left is-yes"><span>4 · ✓ Her er din profil</span></p>
               </div>
             </article>
@@ -367,7 +356,7 @@
               <small>gemmer nøglekortet i en cookie</small>
             </article>
             <div class="cs-arrows">
-              <p class="is-request"><b>Request →</b><code>GET /profile</code><code class="au-cookie">🍪 sb-…-auth-token</code></p>
+              <p class="is-request"><b>Request →</b><code>GET /profile</code><code class="au-cookie">cookie: sb-…-auth-token</code></p>
               <p class="is-response"><b>← Response</b><span>HTML med din profil</span></p>
             </div>
             <article class="is-server is-react">
@@ -593,7 +582,7 @@ export default async function ProfilePage() {
             </div>
             <p class="au-note" style="grid-column: 1; grid-row: 5">gemmer cookien</p>
             <div class="au-msg is-right is-cookie" style="grid-column: 2; grid-row: 6">
-              <b>5</b><span><code>GET /profile</code> · 🍪 cookien kommer med</span>
+              <b>5</b><span><code>GET /profile</code> · cookien kommer med</span>
             </div>
             <div class="au-msg is-left" style="grid-column: 2; grid-row: 7">
               <b>✓</b><span>HTML med <em>Email: dig@eaaa.dk · Log out</em></span>
@@ -711,8 +700,8 @@ export default async function SignUpPage({ searchParams }) {
               <small>har et nøglekort, der er udløbet</small>
             </article>
             <div class="cs-arrows">
-              <p class="is-request"><b>Request →</b><code>GET /profile</code><code class="au-cookie">🍪 udløbet nøglekort</code></p>
-              <p class="is-response"><b>← Response</b><code class="au-cookie">🍪 nyt nøglekort</code><span>HTML med din profil</span></p>
+              <p class="is-request"><b>Request →</b><code>GET /profile</code><code class="au-cookie">udløbet nøglekort</code></p>
+              <p class="is-response"><b>← Response</b><code class="au-cookie">nyt nøglekort</code><span>HTML med din profil</span></p>
             </div>
             <article class="is-server is-proxy">
               <span>Server · kører først</span>
@@ -768,7 +757,7 @@ export default async function SignUpPage({ searchParams }) {
               <p class="step-links"><a href="#/next-server-action">Server Action</a><a href="#/sekvens">Flowet</a><a href="#/cookie-skaerm">Cookien</a><a href="#/tokens">Tokens</a></p>
             </article>
             <article>
-              <h3>Fejlen · valgfri</h3>
+              <h3>Fejlen</h3>
               <p>Send til <code>/signup?error=true</code> ved fejl, og vis en besked, når <code>searchParams</code> har <code>error</code>.</p>
               <p class="step-links"><a href="#/route-fil">Routen</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/main...opgave-02-sign-up" target="_blank" rel="noreferrer">Løsning</a></p>
             </article>
@@ -799,7 +788,7 @@ export default async function SignUpPage({ searchParams }) {
             </article>
             <article>
               <h3>Test</h3>
-              <p>Log ind med din bruger fra opgave 2. Valgfri: Prøv en forkert adgangskode.</p>
+              <p>Log ind med din bruger fra opgave 2. Prøv også en forkert adgangskode.</p>
               <p class="step-links"><a href="#/app-skaerme">Skærmbillede</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-02-sign-up...opgave-03-log-ind" target="_blank" rel="noreferrer">Løsning</a></p>
             </article>
           </div>
@@ -820,7 +809,7 @@ export default async function SignUpPage({ searchParams }) {
             </figure>
             <figure>
               <img src="../assets/nextjs-supabase-auth-login-fejl.webp" alt="Siden Log in i appen med fejlbeskeden Wrong email or password over formularen." />
-              <figcaption><b>3</b><span><strong><code>/login?error=true</code></strong> · fejlbeskeden · valgfri</span></figcaption>
+              <figcaption><b>3</b><span><strong><code>/login?error=true</code></strong> · fejlbeskeden</span></figcaption>
             </figure>
           </div>
         </section>
@@ -910,7 +899,7 @@ export default async function SignUpPage({ searchParams }) {
             <article>
               <h3>Log ud</h3>
               <p>Tilføj <code>signOut</code> og en <em>Log out</em>-knap på profilen. Send <code>signUp</code> og <code>signIn</code> til <code>/profile</code>.</p>
-              <p class="step-links"><a href="#/sdk"><code>signOut</code></a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-03-log-ind...opgave-04-profil" target="_blank" rel="noreferrer">Løsning</a></p>
+              <p class="step-links"><a href="#/sdk"><code>signOut</code></a><a href="#/static-dynamic">○ og ƒ</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-03-log-ind...opgave-04-profil" target="_blank" rel="noreferrer">Løsning</a></p>
             </article>
           </div>
           <p class="work-if-stuck"><strong>Fejler profilen i det private vindue?</strong> <code>user</code> er <code>null</code> — det løser tjekket. <strong>Redirect-loop?</strong> Tjek aldrig på <code>/login</code>.</p>
@@ -962,7 +951,7 @@ export default async function SignUpPage({ searchParams }) {
         </section>
 
         <section class="po-slide" id="static-dynamic">
-          <span class="eyebrow">Ekstra · <code>npm run build</code></span>
+          <span class="eyebrow">Opgave 4 og 6 · <code>npm run build</code></span>
           <h2>Static eller dynamic?</h2>
           <div class="code-explain">
             <div>
@@ -986,35 +975,67 @@ export default async function SignUpPage({ searchParams }) {
           </div>
         </section>
 
-        <section class="po-slide mode-work" id="ekstra">
-          <span class="eyebrow">Ekstraopgaver · når du er færdig</span>
-          <h2>Flere routes — og WordPress</h2>
+        <section class="po-slide mode-work" id="opgave-5">
+          <span class="eyebrow">Opgave 5 · Arbejd individuelt</span>
+          <h2>Flere beskyttede routes</h2>
           <div class="assignment-flow">
             <article>
               <h3><code>/members</code></h3>
-              <p>Endnu en beskyttet route med det samme tjek. Tilføj den i headeren.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/commit/d9edd1d" target="_blank" rel="noreferrer">Ekstra 5.1</a></p>
+              <p>Opret <code>app/members/page.js</code> med det samme tjek som på profilen.</p>
+              <p class="step-links"><a href="#/beskyt-kode">Tjekket</a></p>
+            </article>
+            <article>
+              <h3>Links</h3>
+              <p>Tilføj <code>/members</code> i <code>components/Header.js</code> og i listen over routes på forsiden.</p>
             </article>
             <article>
               <h3>Den anden vej</h3>
               <p>Logget ind? Send fra <code>/login</code> og <code>/signup</code> til <code>/profile</code> med <code>if (user)</code>.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/commit/1dc7859" target="_blank" rel="noreferrer">Ekstra 5.2</a></p>
+              <p class="step-links"><a href="#/beskyt-flow">Én <code>if</code></a></p>
             </article>
             <article>
-              <h3>Login-status</h3>
-              <p>Flyt <code>signOut</code> til <code>lib/actions.js</code>. <code>AuthStatus</code> viser e-mail og <em>Log out</em> i headeren.</p>
-              <p class="step-links"><a href="#/static-dynamic">○ og ƒ</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-05-flere-routes...opgave-06-header" target="_blank" rel="noreferrer">Ekstra 6</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/blob/opgave-06-header/components/AuthStatus.module.css" target="_blank" rel="noreferrer">CSS</a></p>
-            </article>
-            <article>
-              <h3>WordPress-appen</h3>
-              <p>Byg login ind i din WordPress-app, og lås detaljesiderne for posts.</p>
-              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-headless-wordpress.md" target="_blank" rel="noreferrer">Opgaven</a></p>
+              <h3>Test</h3>
+              <p>Prøv alle routes logget ud, logget ind og i et privat vindue.</p>
+              <p class="step-links"><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-04-profil...opgave-05-flere-routes" target="_blank" rel="noreferrer">Løsning</a></p>
             </article>
           </div>
-          <p class="work-if-stuck"><strong><em>async Client Component</em>?</strong> Fjern <code>"use client"</code> fra <code>AuthStatus</code>. <strong>Build fejler i WordPress-appen?</strong> Pak <code>&lt;AuthStatus /&gt;</code> ind i <code>&lt;Suspense&gt;</code>.</p>
-          <p class="done-when"><strong>Resultat:</strong> Din ekstraopgave virker logget ind, logget ud og i et privat vindue.</p>
+          <p class="work-if-stuck"><strong>Redirect-loop?</strong> <code>if (!user)</code> hører til de beskyttede sider — <code>if (user)</code> til <code>/login</code> og <code>/signup</code>.</p>
+          <p class="done-when"><strong>Resultat:</strong> <code>/members</code> kræver login, og en bruger, der er logget ind, bliver sendt fra <code>/login</code> og <code>/signup</code> til profilen.</p>
           <p class="po-source-link">
-            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-5" target="_blank" rel="noreferrer">Opgavefil: ekstraopgaver med hints ↗</a>
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-5" target="_blank" rel="noreferrer">Opgavefil: opgave 5 med hints ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide mode-work" id="opgave-6">
+          <span class="eyebrow">Opgave 6 · Arbejd individuelt</span>
+          <h2>Login-status i headeren</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Del <code>signOut</code></h3>
+              <p>Flyt <code>signOut</code> til <code>lib/actions.js</code> med <code>"use server"</code> øverst i filen.</p>
+              <p class="step-links"><a href="#/next-server-action">Server Action</a></p>
+            </article>
+            <article>
+              <h3><code>AuthStatus</code></h3>
+              <p>En <code>async</code> Server Component: <em>Log in</em> — eller din e-mail og <em>Log out</em>.</p>
+              <p class="step-links"><a href="#/next-server-component">Server Component</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/blob/opgave-06-header/components/AuthStatus.module.css" target="_blank" rel="noreferrer">CSS</a></p>
+            </article>
+            <article>
+              <h3>I headeren</h3>
+              <p>Vis <code>&lt;AuthStatus /&gt;</code> efter <code>&lt;ul&gt;</code>, og fjern linkene til <em>Sign up</em> og <em>Log in</em>.</p>
+            </article>
+            <article>
+              <h3>Alt er dynamic</h3>
+              <p>Kør <code>npm run build</code>. Headeren læser cookien, så alle routes er ƒ.</p>
+              <p class="step-links"><a href="#/static-dynamic">○ og ƒ</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-auth/compare/opgave-05-flere-routes...opgave-06-header" target="_blank" rel="noreferrer">Løsning</a></p>
+            </article>
+          </div>
+          <p class="work-if-stuck"><strong><em>async Client Component</em>?</strong> Fjern <code>"use client"</code> fra <code>AuthStatus</code>.</p>
+          <p class="done-when"><strong>Resultat:</strong> Headeren viser din e-mail og <em>Log out</em>, når du er logget ind — og <em>Log in</em>, når du ikke er. Færdig? Tag ekstraopgaven.</p>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-nextjs-supabase-auth.md#opgave-6" target="_blank" rel="noreferrer">Opgavefil: opgave 6 med hints ↗</a>
+            ·
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-10-30-supabase-auth-i-headless-wordpress.md" target="_blank" rel="noreferrer">Ekstraopgave: auth i din WordPress-app ↗</a>
           </p>
         </section>
       </div>
