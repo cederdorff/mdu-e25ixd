@@ -110,7 +110,7 @@ Kør `npm run dev`, og åbn [http://localhost:3000](http://localhost:3000).
 
 **Tjek:** Forsiden viser fire routes. Et klik på `/signup` giver _Page not found_ – den route laver du i opgave 2. Source Control viser ikke `.env.local`. Den må ikke komme på GitHub.
 
-[Slide: To nøgler](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/noegler)
+[Slide: Tre steder i dashboardet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/supabase-skaerme)
 
 ### 1.3 Kig i startprojektet
 
@@ -144,7 +144,7 @@ Før du skriver kode, så kig projektet igennem. Det meste kender du fra din Wor
 
 </details>
 
-[Slide: Klienten læser cookies](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-klient) · [Slide: Hvorfor proxy.js?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/proxy)
+[Slide: Supabase-klienten og cookies](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-klient) · [Slide: page.js kan ikke skrive cookies – det kan proxy.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/proxy)
 
 **Sidder du fast?**
 

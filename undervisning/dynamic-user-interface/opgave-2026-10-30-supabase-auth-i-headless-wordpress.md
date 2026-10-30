@@ -106,7 +106,7 @@ Tilføj de to variabler – uden dine rigtige værdier – i `.env.example`, og 
 
 **Tjek:** Source Control viser `package.json`, `package-lock.json` og `.env.example` – men ikke `.env.local`.
 
-[Slide: To nøgler](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/noegler)
+[Slide: Tre steder i dashboardet](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/supabase-skaerme)
 
 ### 1.3 Klienten og proxy.js
 
@@ -117,7 +117,7 @@ Kopiér de to filer fra dit projekt fra i dag – eller fra løsningen nedenfor.
 
 **Tjek:** Stop `npm run dev`, og kør `npm run build`. Nederst i outputtet står `ƒ Proxy (Middleware)`.
 
-[Slide: Klienten læser cookies](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-klient) · [Slide: Hvorfor proxy.js?](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/proxy)
+[Slide: Supabase-klienten og cookies](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/server-klient) · [Slide: page.js kan ikke skrive cookies – det kan proxy.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-03/#/proxy)
 
 ### 1.4 CSS og links i headeren
 

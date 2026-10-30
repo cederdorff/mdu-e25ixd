@@ -71,7 +71,7 @@ I dag får appen brugere. Med Supabase Auth bygger du sign up, log ind og en pro
 <ul>
 <li>Én <code>if</code> på serveren: <code>getCurrentUser()</code> med <code>getClaims()</code> – og <code>redirect("/login")</code>, hvis der ingen bruger er. Supabase anbefaler <code>getClaims()</code>, fordi den tjekker, at token'et er ægte.</li>
 <li><strong>Opgave 4:</strong> <code>/profile</code> viser din e-mail, sender alle andre til <code>/login</code> og har en knap til at logge ud. Test i et privat vindue.</li>
-<li>Skjul ikke bare linket: I dag beskytter vi siden – ikke data. To nøgler, og hvordan Row Level Security beskytter data 10. november.</li>
+<li>Skjul ikke bare linket: I dag beskytter vi siden – ikke data. Row Level Security, der beskytter data, kommer 10. november.</li>
 </ul>
 </details>
 

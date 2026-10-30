@@ -21,6 +21,26 @@
           <h1>Appen får<br /><span>brugere.</span></h1>
           <p class="lead">Supabase Auth i Next.js · sign up, log ind og beskyttede sider</p>
           <p class="date"><span>RACE</span><time datetime="2026-10-30">30. oktober 2026</time></p>
+          <div class="au-hero" aria-hidden="true">
+            <div class="au-hero-window">
+              <div class="au-hero-bar"><i></i><i></i><i></i><span>localhost:3000/login</span></div>
+              <div class="au-hero-form">
+                <b>Log ind</b>
+                <label>E-mail<span>dig@eaaa.dk</span></label>
+                <label>Adgangskode<span class="is-secret">••••••••••</span></label>
+                <span class="au-hero-button">Log ind</span>
+              </div>
+            </div>
+            <div class="au-hero-chip is-cookie">
+              <small>Cookie</small>
+              <code>sb-…-auth-token</code>
+            </div>
+            <div class="au-hero-chip is-route">
+              <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
+              <code>/profile</code>
+              <span>Velkommen!</span>
+            </div>
+          </div>
         </section>
 
         <section class="po-slide po-agenda dui-agenda" id="agenda">
@@ -43,7 +63,7 @@
               <a href="#/kap-flow"><b>Login-flowet</b><small>Formular → Server Action → cookie · <code>proxy.js</code></small></a>
             </li>
             <li>
-              <a href="#/kap-beskyt"><b>Beskyttede sider</b><small>Tjek på serveren → <code>redirect</code> · nøgler og RLS</small></a>
+              <a href="#/kap-beskyt"><b>Beskyttede sider</b><small>Tjek på serveren → <code>redirect</code> · siden, ikke data</small></a>
             </li>
           </ol>
         </section>
@@ -214,7 +234,7 @@
             <article>
               <h3><code>.env.local</code></h3>
               <p>Kopiér <code>.env.example</code> til <code>.env.local</code> med URL og key fra <em>Connect</em>. Kør <code>npm run dev</code>.</p>
-              <p class="step-links"><a href="#/supabase-skaerme">Skærmbillede</a><a href="#/noegler">To nøgler</a></p>
+              <p class="step-links"><a href="#/supabase-skaerme">Skærmbillede</a></p>
             </article>
             <article>
               <h3>Kig</h3>
@@ -532,7 +552,7 @@ export default async function ProfilePage() {
           <span class="chapter-index">05</span>
           <span class="eyebrow">Login-flowet</span>
           <h2>Fra formular<br />til cookie</h2>
-          <p class="kicker">Hvad sker der, fra brugeren klikker på <em>Log in</em>, til profilen viser deres e-mail?</p>
+          <p class="kicker">Hvad sker der, fra brugeren klikker på <em>Sign up</em> eller <em>Log in</em>, til profilen viser deres e-mail?</p>
         </section>
 
         <section class="po-slide au-seq-slide" id="sekvens">
@@ -635,29 +655,31 @@ export default async function SignUpPage({ searchParams }) {
 
         <section class="po-slide" id="server-klient">
           <span class="eyebrow">Login-flowet · <code>lib/supabase/server.js</code></span>
-          <h2>Klienten læser cookies</h2>
+          <h2>Supabase-klienten og cookies</h2>
           <div class="code-explain">
             <div>
               <span class="code-label"><code>lib/supabase/server.js</code> · forkortet</span>
               <pre class="po-code"><code class="language-js">export async function createClient() {
   const cookieStore = await cookies();
-
   return createServerClient(URL, PUBLISHABLE_KEY, {
     cookies: {
-      getAll() {
-        return cookieStore.getAll();
-      },
+      getAll: () =&gt; cookieStore.getAll(),
       setAll(cookiesToSet) {
-        // Server Components can't write cookies
+        try {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            cookieStore.set(name, value, options));
+        } catch {
+          // Server Components can't write cookies
+        }
       }
     }
   });
 }</code></pre>
             </div>
             <div class="explain-list">
-              <p><b><code>createClient()</code></b>En ny klient pr. request. Delt mellem requests kunne én bruger få en andens session.</p>
+              <p><b><code>createClient()</code></b>Laver Supabase-klienten — objektet bag <code>supabase.auth.…</code>, ikke browseren. En ny pr. request, så brugere ikke deler session.</p>
               <p><b><code>getAll()</code></b>Læser cookies fra requesten. Sådan ved serveren, hvem der spørger.</p>
-              <p><b><code>setAll()</code></b>Skriver nye cookies — men det må en server component ikke. Det løser <code>proxy.js</code>.</p>
+              <p><b><code>setAll()</code></b>Skriver cookies. Virker i en Server Action — sådan bliver du logget ind. Ikke i en Server Component. Det løser <code>proxy.js</code>.</p>
               <p><b>Og browser-klienten?</b>Den findes også, men i dag taler kun serveren med Supabase.</p>
             </div>
           </div>
@@ -669,33 +691,33 @@ export default async function SignUpPage({ searchParams }) {
         </section>
 
         <section class="po-slide" id="proxy">
-          <span class="eyebrow">Login-flowet · <code>proxy.js</code> i roden</span>
-          <h2>Hvorfor <code>proxy.js</code>?</h2>
-          <div class="au-proxy">
+          <span class="eyebrow">Login-flowet · hvorfor <code>proxy.js</code>?</span>
+          <h2><code>page.js</code> kan ikke skrive cookies — det kan <code>proxy.js</code></h2>
+          <div class="cs-model is-compact is-chain">
             <article>
-              <span>1 · Request</span>
+              <span>Client</span>
               <h3>Browseren</h3>
-              <p>sender et udløbet nøglekort 🪪 med</p>
+              <small>har et nøglekort, der er udløbet</small>
             </article>
-            <i aria-hidden="true">→</i>
-            <article class="is-proxy">
-              <span>2 · Før siden</span>
+            <div class="cs-arrows">
+              <p class="is-request"><b>Request →</b><code>GET /profile</code><code class="au-cookie">🍪 udløbet nøglekort</code></p>
+              <p class="is-response"><b>← Response</b><code class="au-cookie">🍪 nyt nøglekort</code><span>HTML med din profil</span></p>
+            </div>
+            <article class="is-server is-proxy">
+              <span>Server · kører først</span>
               <h3><code>proxy.js</code></h3>
-              <p>kalder <code>getClaims()</code>. Udløbet? Så hentes et nyt med refresh token'et.</p>
-              <em>kan skrive cookies</em>
+              <small>henter et nyt nøglekort hos Supabase med refresh token'et</small>
+              <em class="react-badge">kan skrive cookies</em>
             </article>
-            <i aria-hidden="true">→</i>
-            <article>
-              <span>3 · Siden</span>
+            <div class="cs-arrows">
+              <p class="is-request"><b>Videre →</b><span>med det nye nøglekort</span></p>
+              <p class="is-response"><b>← HTML</b><span>siden er bygget</span></p>
+            </div>
+            <article class="is-server is-react">
+              <span>Server · bagefter</span>
               <h3><code>page.js</code></h3>
-              <p>læser det nye nøglekort og ved, hvem du er</p>
-              <em class="is-muted">kan ikke skrive cookies</em>
-            </article>
-            <i aria-hidden="true">→</i>
-            <article>
-              <span>4 · Response</span>
-              <h3>Browseren</h3>
-              <p>gemmer det nye nøglekort 🍪 til næste gang</p>
+              <small>læser nøglekortet og bygger siden</small>
+              <em class="react-badge is-muted">kan ikke skrive cookies</em>
             </article>
           </div>
           <dl class="term-row">
@@ -705,7 +727,7 @@ export default async function SignUpPage({ searchParams }) {
             </div>
             <div>
               <dt>Uden <code>proxy.js</code></dt>
-              <dd>Ingen kan forny nøglekortet, og brugeren bliver logget ud, når det udløber.</dd>
+              <dd>Ingen kan gemme det nye nøglekort i cookien, og brugeren bliver logget ud, når det gamle udløber.</dd>
             </div>
           </dl>
           <p class="po-source-link">
@@ -925,68 +947,6 @@ export default async function SignUpPage({ searchParams }) {
           <p class="dui-lead-note">
             <strong>Prøv selv:</strong> Log ud, og åbn <code>/wp-json/wp/v2/posts</code> på din WordPress. Indholdet er
             stadig offentligt. I har låst <em>siden</em> — ikke <em>data</em>.
-          </p>
-        </section>
-
-        <section class="po-slide" id="noegler">
-          <span class="eyebrow">Beskyttede sider · nøglerne</span>
-          <h2>To nøgler — to steder</h2>
-          <div class="au-keys">
-            <article class="is-public">
-              <span>Må ligge i browseren</span>
-              <h3>Publishable key</h3>
-              <code>sb_publishable_…</code>
-              <ul>
-                <li>Fortæller Supabase, <b>hvilket projekt</b></li>
-                <li>Giver rollen <code>anon</code> — eller <code>authenticated</code>, når brugeren er logget ind</li>
-                <li>Kan kun det, jeres regler tillader</li>
-              </ul>
-            </article>
-            <article class="is-secret">
-              <span>Kun på en server, I stoler på</span>
-              <h3>Secret key</h3>
-              <code>sb_secret_…</code>
-              <ul>
-                <li>Giver rollen <code>service_role</code></li>
-                <li><b>Omgår alle regler</b> — kan læse og slette alt</li>
-                <li>Afvises af Supabase, hvis den bruges i en browser</li>
-              </ul>
-            </article>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Har I set <code>anon</code> og <code>service_role</code>?</strong> Det er de gamle navne for de samme
-            to slags nøgler. De udfases, så brug de nye.
-          </p>
-          <p class="po-source-link">
-            <a href="https://supabase.com/docs/guides/api/api-keys" target="_blank" rel="noreferrer">Supabase: Understanding API keys ↗</a>
-          </p>
-        </section>
-
-        <section class="po-slide" id="rls">
-          <span class="eyebrow">Beskyttede sider · teaser til 10. november</span>
-          <h2>Nøglen åbner hoveddøren — RLS bestemmer rummene</h2>
-          <div class="au-rls">
-            <p class="au-rls-key"><span>Publishable key</span>alle kan komme ind i bygningen</p>
-            <i aria-hidden="true">↓</i>
-            <div class="au-rls-rows">
-              <p><code>anon</code><span>ikke logget ind</span><b>må læse offentlige data</b></p>
-              <p><code>authenticated</code><span>logget ind som dig</span><b>må læse og ændre <em>dine</em> data</b></p>
-              <p class="is-no"><code>authenticated</code><span>logget ind som en anden</span><b>må ikke se dine data</b></p>
-            </div>
-          </div>
-          <dl class="chapter-definition">
-            <div>
-              <dt>Row Level Security · RLS</dt>
-              <dd>
-                Regler i databasen, der afgør for <b>hver række</b>, hvem der må læse og ændre den. Det er den egentlige
-                beskyttelse — ikke nøglen.
-              </dd>
-            </div>
-          </dl>
-          <p class="po-source-link">
-            <a href="https://supabase.com/docs/guides/database/postgres/row-level-security" target="_blank" rel="noreferrer"
-              >Supabase: Row Level Security ↗</a
-            >
           </p>
         </section>
 
