@@ -30,6 +30,11 @@
   height: 486px;
 }
 
+/* Screenshots må ikke strækkes, når de er bredere end pladsen */
+.reveal .au-figure.is-shot {
+  align-items: center;
+}
+
 .reveal .au-figure.is-shot img {
   border: 1px solid var(--line);
   border-radius: 12px;
