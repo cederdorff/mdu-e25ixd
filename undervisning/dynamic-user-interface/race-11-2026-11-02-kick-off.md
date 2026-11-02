@@ -22,10 +22,9 @@ Lad jer inspirere af produkteksemplerne [Not Boring Software](https://notbor.ing
 
 ## Agenda
 
-1. **Projektet:** Make it memorable – but don't break it. Æstetik + UX, inspiration og projektets fem trin: vælg, analysér, hypotese, udforsk spektret og byg.
-2. **Eksamen:** Det skriftlige materiale, den mundtlige prøve og bedømmelse.
-3. **Frem mod eksamen:** Kvalificering 3. november, aflevering 24. november kl. 12.00, Pitch Day 27. november og mundtlig eksamen 9.-11. december.
-4. **Grupper og kom i gang:** Alle er i en gruppe. Gruppen gør sig klar til kvalificeringen i morgen med en produktidé, et udsnit og et kerneflow og en kort begrundelse.
+1. **Eksamensprojektet:** Make it memorable – but don't break it. Projektets fem trin – vælg, analysér, hypotese, udforsk spektret og byg – samt det skriftlige materiale, den mundtlige prøve og bedømmelse.
+2. **Vigtige datoer:** Kvalificering 3. november, aflevering 24. november kl. 12.00, Pitch Day 27. november og mundtlig eksamen 9.-11. december.
+3. **Grupper og kom i gang:** Alle er i en gruppe. Gruppen gør sig klar til kvalificeringen i morgen med en produktidé, et udsnit og et kerneflow og en kort begrundelse.
 
 <hr style="margin: 2rem 0;">
 
