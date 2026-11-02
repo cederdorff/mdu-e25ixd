@@ -1,0 +1,1171 @@
+/* Kick-off · Dynamic User Interface. Bygger på dynamic-user-interface-01/styles.css. */
+
+:root {
+  --ko-pink: #ff7eb6;
+  --ko-pink-soft: rgb(255 126 182 / 12%);
+}
+
+/* Flex-slides fylder slidehøjden */
+.reveal .slides section#ligning,
+.reveal .slides section#flow,
+.reveal .slides section#afgraens,
+.reveal .slides section#hypotese,
+.reveal .slides section#spektret,
+.reveal .slides section#produkt,
+.reveal .slides section#aflevering,
+.reveal .slides section#mundtlig,
+.reveal .slides section#bedoemmelse,
+.reveal .slides section#tidslinje,
+.reveal .slides section#gruppedannelse,
+.reveal .slides section#inspiration {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.reveal .slides section h2 + * {
+  margin-top: 34px;
+}
+
+/* Titel · spektret A, B, C som knapper */
+.reveal .ko-title h1 {
+  max-width: 900px;
+  font-size: 84px;
+}
+
+.reveal .ko-title .lead {
+  margin-top: 30px;
+}
+
+.reveal .ko-hero {
+  position: absolute;
+  top: 50%;
+  right: 112px;
+  display: grid;
+  gap: 22px;
+  width: 400px;
+  transform: translateY(-46%);
+}
+
+.reveal .ko-hero-card {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  padding: 22px 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+}
+
+.reveal .ko-hero-card small {
+  justify-self: start;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reveal .ko-btn {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 14px 30px;
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.reveal .is-a .ko-btn {
+  border: 1px solid rgb(255 255 255 / 22%);
+  background: rgb(255 255 255 / 8%);
+  color: var(--ink);
+}
+
+.reveal .is-b {
+  border-color: var(--dui-line);
+}
+
+.reveal .is-b .ko-btn {
+  border-radius: 999px;
+  background: var(--dui);
+  box-shadow: 0 8px 28px rgb(185 162 255 / 34%);
+  color: #17112c;
+}
+
+.reveal .is-b .ko-btn svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.reveal .ko-hero .is-c {
+  gap: 30px;
+  padding-bottom: 32px;
+  border-color: rgb(255 126 182 / 50%);
+  background: radial-gradient(circle at 50% 70%, rgb(255 126 182 / 20%), transparent 70%), var(--surface);
+}
+
+.reveal .is-c .ko-btn {
+  display: inline-flex;
+  position: relative;
+  z-index: 1;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--yellow), var(--ko-pink));
+  box-shadow: 0 10px 34px rgb(255 126 182 / 40%);
+  color: #2a0d1a;
+  font-size: 26px;
+  transform: rotate(-4deg);
+  animation: ko-wiggle 2.4s ease-in-out infinite;
+}
+
+/* Konfetti rundt om C-knappen */
+.reveal .ko-btn-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.reveal .ko-burst {
+  position: absolute;
+  inset: 0;
+}
+
+.reveal .ko-burst i {
+  position: absolute;
+  width: 6px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--yellow);
+}
+
+.reveal .ko-burst i:nth-child(even) {
+  background: var(--ko-pink);
+}
+
+.reveal .ko-burst i:nth-child(1) { top: -6px; left: -22px; transform: rotate(-50deg); }
+.reveal .ko-burst i:nth-child(2) { top: -26px; left: 26%; transform: rotate(-15deg); }
+.reveal .ko-burst i:nth-child(3) { top: -30px; left: 64%; transform: rotate(20deg); }
+.reveal .ko-burst i:nth-child(4) { top: -4px; right: -22px; transform: rotate(55deg); }
+.reveal .ko-burst i:nth-child(5) { bottom: -18px; left: -12px; transform: rotate(40deg); }
+.reveal .ko-burst i:nth-child(6) { right: -10px; bottom: -20px; transform: rotate(-40deg); }
+
+@keyframes ko-wiggle {
+  0%,
+  70%,
+  100% {
+    transform: rotate(-4deg) scale(1);
+  }
+
+  78% {
+    transform: rotate(3deg) scale(1.08);
+  }
+
+  86% {
+    transform: rotate(-6deg) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal .is-c .ko-btn {
+  display: inline-flex;
+    animation: none;
+  }
+}
+
+/* Agenda med fire punkter */
+.reveal .ko-agenda .agenda-list {
+  grid-template-rows: repeat(4, 1fr) !important;
+}
+
+.reveal .ko-agenda .agenda-list a {
+  grid-template-columns: 460px 1fr;
+}
+
+.reveal .ko-agenda .agenda-list b {
+  font-size: 34px;
+}
+
+.reveal .ko-agenda .agenda-list small {
+  font-size: 22px;
+}
+
+/* Fælles kortlook */
+.reveal .ko-equation article,
+.reveal .ko-zoom article,
+.reveal .ko-spectrum article,
+.reveal .ko-reqs article,
+.reveal .ko-pdf-side article,
+.reveal .ko-exam-bar article,
+.reveal .ko-groups article,
+.reveal .ko-inspo > * {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgb(255 255 255 / 3%);
+}
+
+.reveal .ko-equation small,
+.reveal .ko-zoom small,
+.reveal .ko-pdf-side small,
+.reveal .ko-exam-bar small,
+.reveal .ko-groups small,
+.reveal .ko-inspo small {
+  display: block;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reveal [class^="ko-"] strong {
+  color: var(--ink);
+}
+
+/* Æstetik + UX = mindeværdigt */
+.reveal .ko-equation {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 1fr 60px 1fr 60px 1fr;
+  align-items: stretch;
+}
+
+.reveal .ko-equation > b {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 64px;
+  font-weight: 300;
+}
+
+.reveal .ko-equation article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 32px;
+}
+
+.reveal .ko-equation strong {
+  margin: 10px 0 14px;
+  font-size: 40px;
+  line-height: 1.1;
+}
+
+.reveal .ko-equation p {
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.reveal .ko-equation .is-aesthetic {
+  border-top: 5px solid var(--ko-pink);
+}
+
+.reveal .ko-equation .is-ux {
+  border-top: 5px solid var(--dui-blue);
+}
+
+.reveal .ko-equation .is-result {
+  border-color: var(--dui-line);
+  border-top: 5px solid var(--dui);
+  background: linear-gradient(180deg, var(--dui-soft), transparent);
+}
+
+.reveal .ko-equation .is-aesthetic strong {
+  color: var(--ko-pink);
+}
+
+.reveal .ko-equation .is-ux strong {
+  color: var(--dui-blue);
+}
+
+.reveal .ko-equation .is-result strong {
+  color: var(--dui);
+}
+
+.reveal .ko-risks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 26px;
+  font-size: 22px;
+}
+
+.reveal .ko-risks span {
+  margin-right: 8px;
+  color: var(--muted);
+}
+
+.reveal .ko-risks em,
+.reveal .ko-group-tip em {
+  padding: 6px 16px;
+  border: 1px solid rgb(240 143 115 / 45%);
+  border-radius: 999px;
+  background: rgb(240 143 115 / 10%);
+  color: var(--coral);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Inspiration */
+.reveal .ko-inspo {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 1fr 1fr 0.8fr;
+  gap: 24px;
+}
+
+.reveal .ko-inspo > * {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 32px 34px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.reveal .ko-inspo .is-feature {
+  border-top: 5px solid var(--yellow);
+  background: linear-gradient(180deg, var(--dui-yellow-soft), transparent 70%);
+}
+
+.reveal .ko-inspo .is-talk {
+  border-top-color: var(--dui);
+  background: linear-gradient(180deg, var(--dui-soft), transparent 70%);
+}
+
+.reveal .ko-inspo strong {
+  margin: 16px 0;
+  font-size: 50px;
+  line-height: 1.08;
+}
+
+.reveal .ko-inspo p {
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.reveal .ko-inspo .is-feature > span,
+.reveal .ko-inspo-more a {
+  margin-top: auto;
+  color: var(--yellow);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.reveal .ko-inspo .is-talk > span {
+  color: var(--dui);
+}
+
+.reveal .ko-inspo-more p {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.reveal .ko-inspo-more b {
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 5%);
+  color: var(--ink);
+  font-size: 26px;
+}
+
+.reveal .ko-inspo-more a {
+  color: var(--muted);
+}
+
+/* Fem trin */
+.reveal .ko-flow {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .ko-flow li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 34px 30px 30px;
+  border-top: 5px solid var(--dui-line);
+  background: linear-gradient(180deg, rgb(255 255 255 / 4%), transparent 80%);
+}
+
+.reveal .ko-flow li + li {
+  border-left: 1px solid var(--line);
+}
+
+.reveal .ko-flow li.is-wide {
+  border-top-color: var(--ko-pink);
+  background: linear-gradient(180deg, var(--ko-pink-soft), transparent 80%);
+}
+
+.reveal .ko-flow li:last-child {
+  border-top-color: var(--dui);
+}
+
+.reveal .ko-flow span {
+  color: rgb(185 162 255 / 40%);
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.reveal .ko-flow strong {
+  margin: 26px 0 16px;
+  font-size: 40px;
+  line-height: 1.1;
+}
+
+.reveal .ko-flow p {
+  color: var(--muted);
+  font-size: 25px;
+  line-height: 1.4;
+}
+
+.reveal .ko-flow-loop {
+  position: relative;
+  margin-top: 18px !important;
+  padding-top: 18px;
+  text-align: center;
+}
+
+.reveal .ko-flow-loop::before {
+  position: absolute;
+  top: 0;
+  right: 10%;
+  left: 10%;
+  height: 26px;
+  border: 2px dashed var(--dui-line);
+  border-top: 0;
+  border-radius: 0 0 22px 22px;
+  content: "";
+}
+
+.reveal .ko-flow-loop span {
+  position: relative;
+  top: 14px;
+  padding: 4px 18px;
+  background: var(--bg);
+  color: var(--dui);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Produkt → udsnit → kerneflow */
+.reveal .ko-zoom {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 1.15fr 60px 1fr 60px 0.85fr;
+  align-items: center;
+}
+
+.reveal .ko-zoom > i {
+  color: var(--muted);
+  font-size: 44px;
+  font-style: normal;
+  text-align: center;
+}
+
+.reveal .ko-zoom article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px;
+}
+
+.reveal .ko-zoom article:nth-of-type(1) {
+  height: 100%;
+}
+
+.reveal .ko-zoom article:nth-of-type(2) {
+  height: 82%;
+}
+
+.reveal .ko-zoom article.is-core {
+  height: 64%;
+  border-color: var(--dui-line);
+  border-top: 5px solid var(--dui);
+  background: linear-gradient(180deg, var(--dui-soft), transparent);
+}
+
+.reveal .ko-zoom strong {
+  margin: 10px 0 12px;
+  font-size: 32px;
+  line-height: 1.12;
+}
+
+.reveal .ko-zoom .is-core strong {
+  color: var(--dui);
+}
+
+.reveal .ko-zoom p {
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.reveal .ko-tomorrow {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 26px;
+  padding: 20px 26px;
+  border-left: 5px solid var(--yellow);
+  background: linear-gradient(90deg, var(--dui-yellow-soft), transparent 90%);
+}
+
+.reveal .ko-tomorrow p {
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.reveal .ko-tomorrow p b {
+  display: block;
+  color: var(--yellow);
+  font-size: 24px;
+}
+
+.reveal .ko-tomorrow ul {
+  display: flex;
+  flex-shrink: 0;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .ko-tomorrow li {
+  padding: 8px 18px;
+  border: 1px solid rgb(244 201 93 / 40%);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Hypotese-skabelon */
+.reveal .ko-hypothesis {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding: 0 64px;
+  border-left: 6px solid var(--dui);
+  background: linear-gradient(90deg, var(--dui-soft), transparent 90%);
+}
+
+.reveal .ko-hypothesis p {
+  color: var(--ink);
+  font-size: 48px;
+  line-height: 1.5;
+}
+
+.reveal .ko-hypothesis b {
+  padding: 0 8px;
+  border-radius: 8px;
+  background: rgb(255 126 182 / 16%);
+  color: var(--ko-pink);
+  white-space: nowrap;
+}
+
+.reveal .ko-hypothesis b.is-ux {
+  background: var(--dui-blue-soft);
+  color: var(--dui-blue);
+}
+
+.reveal .ko-hypothesis b.is-proof {
+  background: rgb(62 207 142 / 14%);
+  color: var(--green);
+}
+
+.reveal .ko-hypo-legend {
+  display: flex;
+  gap: 36px;
+  margin-top: 26px;
+  color: var(--muted);
+  font-size: 22px;
+}
+
+.reveal .ko-hypo-legend span {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.reveal .ko-hypo-legend i {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: var(--ko-pink);
+}
+
+.reveal .ko-hypo-legend .is-ux i {
+  background: var(--dui-blue);
+}
+
+.reveal .ko-hypo-legend .is-proof i {
+  background: var(--green);
+}
+
+/* Spektret A, B, C */
+.reveal #spektret h2 {
+  max-width: 1300px;
+  font-size: 60px;
+}
+
+.reveal .ko-spectrum {
+  position: relative;
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.reveal .ko-spectrum article {
+  display: flex;
+  flex-direction: column;
+  padding: 26px 30px;
+}
+
+.reveal .ko-demo {
+  display: grid;
+  flex: 1;
+  place-items: center;
+  font-style: normal;
+}
+
+.reveal .ko-demo em {
+  font-style: normal;
+}
+
+.reveal .ko-demo .ko-btn {
+  font-size: 22px;
+}
+
+.reveal .ko-demo.is-c .ko-btn {
+  font-size: 24px;
+}
+
+.reveal .ko-spectrum article:nth-child(1) {
+  border-top: 5px solid rgb(255 255 255 / 30%);
+}
+
+.reveal .ko-spectrum article:nth-child(2) {
+  border-top: 5px solid var(--dui);
+  background: linear-gradient(180deg, var(--dui-soft), transparent);
+}
+
+.reveal .ko-spectrum article:nth-child(3) {
+  border-top: 5px solid var(--ko-pink);
+  background: linear-gradient(180deg, var(--ko-pink-soft), transparent);
+}
+
+.reveal .ko-spectrum > article > span {
+  color: rgb(255 255 255 / 22%);
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.reveal .ko-spectrum article:nth-child(2) > span {
+  color: var(--dui);
+}
+
+.reveal .ko-spectrum article:nth-child(3) > span {
+  color: var(--ko-pink);
+  transform: rotate(-8deg);
+  transform-origin: left bottom;
+}
+
+.reveal .ko-spectrum strong {
+  margin: 14px 0 8px;
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+.reveal .ko-spectrum p {
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.reveal .ko-measure {
+  display: flex;
+  gap: 48px;
+  margin-top: 22px;
+}
+
+.reveal .ko-measure p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  font-size: 20px;
+}
+
+.reveal .ko-measure b {
+  margin-right: 6px;
+  color: var(--dui-blue);
+}
+
+.reveal .ko-measure span {
+  padding: 5px 14px;
+  border: 1px solid rgb(101 167 255 / 40%);
+  border-radius: 999px;
+  background: var(--dui-blue-soft);
+}
+
+.reveal .ko-measure .is-xp b {
+  color: var(--ko-pink);
+}
+
+.reveal .ko-measure .is-xp span {
+  border-color: rgb(255 126 182 / 40%);
+  background: var(--ko-pink-soft);
+}
+
+.reveal #spektret .dui-lead-note {
+  margin-top: 22px !important;
+}
+
+/* Krav til produktet */
+.reveal .ko-reqs {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.reveal .ko-reqs article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 14px 26px;
+}
+
+.reveal .ko-reqs article.is-dui {
+  border-color: var(--dui-line);
+  background: linear-gradient(135deg, var(--dui-soft), transparent);
+}
+
+.reveal .ko-reqs strong {
+  font-size: 30px;
+}
+
+.reveal .ko-reqs .is-dui strong {
+  color: var(--dui);
+}
+
+.reveal .ko-reqs p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+/* Det skriftlige materiale */
+.reveal .ko-pdf {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
+}
+
+.reveal .ko-sections {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .ko-sections li {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 0;
+  padding: 0 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 3%);
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.reveal .ko-sections span {
+  width: 30px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.reveal .ko-sections .is-priority {
+  border-color: var(--dui-line);
+  background: linear-gradient(90deg, var(--dui-soft), transparent);
+}
+
+.reveal .ko-sections .is-priority span {
+  color: var(--dui);
+}
+
+.reveal .ko-sections em {
+  margin-left: auto;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--dui);
+  color: #17112c;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.reveal .ko-pdf-side {
+  display: grid;
+  grid-template-rows: 1.3fr 1fr 1fr;
+  gap: 14px;
+}
+
+.reveal .ko-pdf-side article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px 26px;
+}
+
+.reveal .ko-pdf-side article.is-deadline {
+  border-color: rgb(244 201 93 / 45%);
+  background: linear-gradient(135deg, var(--dui-yellow-soft), transparent);
+}
+
+.reveal .ko-pdf-side strong {
+  margin-top: 8px;
+  color: var(--yellow);
+  font-size: 36px;
+  line-height: 1.15;
+}
+
+.reveal .ko-pdf-side p {
+  margin-top: 8px;
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.reveal .ko-pdf-side small code {
+  font-size: 1em;
+  text-transform: none;
+}
+
+.reveal #aflevering .dui-lead-note {
+  margin-top: 22px !important;
+}
+
+/* Den mundtlige prøve */
+.reveal .ko-exam-bar {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 15fr 22fr 10fr;
+  gap: 14px;
+}
+
+.reveal .ko-exam-bar article {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+}
+
+.reveal .ko-exam-bar .is-pitch {
+  border-top: 6px solid var(--dui);
+  background: linear-gradient(180deg, var(--dui-soft), transparent);
+}
+
+.reveal .ko-exam-bar .is-exam {
+  border-top: 6px solid var(--dui-blue);
+  background: linear-gradient(180deg, var(--dui-blue-soft), transparent);
+}
+
+.reveal .ko-exam-bar .is-vote {
+  border-top: 6px solid rgb(255 255 255 / 30%);
+}
+
+.reveal .ko-exam-bar .ko-min {
+  margin-bottom: auto;
+  color: rgb(255 255 255 / 85%);
+  font-size: 120px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.reveal .ko-exam-bar .is-pitch .ko-min {
+  color: var(--dui);
+}
+
+.reveal .ko-exam-bar .is-exam .ko-min {
+  color: var(--dui-blue);
+}
+
+.reveal .ko-exam-bar .is-vote .ko-min {
+  color: var(--muted);
+}
+
+.reveal .ko-exam-bar strong {
+  margin: 10px 0 8px;
+  font-size: 34px;
+  line-height: 1.1;
+}
+
+.reveal .ko-exam-bar p {
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.reveal .ko-exam-rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.reveal .ko-exam-rules p {
+  padding: 18px 24px;
+  border-left: 5px solid var(--dui);
+  background: linear-gradient(90deg, var(--dui-soft), transparent 90%);
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.reveal .ko-exam-rules b {
+  display: block;
+  color: var(--ink);
+  font-size: 26px;
+}
+
+/* Bedømmelse */
+.reveal .ko-criteria {
+  display: grid;
+  flex: 1;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 14px 28px;
+  margin-bottom: 40px;
+}
+
+.reveal .ko-criteria p {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--line);
+  font-size: 26px;
+  line-height: 1.25;
+}
+
+.reveal .ko-criteria span {
+  flex-shrink: 0;
+  color: rgb(185 162 255 / 50%);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.reveal .ko-criteria .is-key {
+  border-bottom-color: var(--dui-line);
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(0deg, var(--dui-soft), transparent);
+}
+
+.reveal .ko-criteria .is-key span {
+  color: var(--dui);
+}
+
+/* Tidslinje */
+.reveal .ko-timeline {
+  position: relative;
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 0;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .ko-timeline::before {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--dui), var(--dui-blue) 60%, var(--yellow));
+  content: "";
+}
+
+.reveal .ko-timeline li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 76px 12px 0 22px;
+  border-left: 1px solid var(--line);
+  background: linear-gradient(180deg, rgb(255 255 255 / 3%), transparent 70%);
+  font-size: 20px;
+}
+
+.reveal .ko-timeline li::before {
+  position: absolute;
+  top: 26px;
+  left: -12px;
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--dui);
+  border-radius: 50%;
+  background: var(--bg);
+  content: "";
+}
+
+.reveal .ko-timeline time {
+  color: var(--muted);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.reveal .ko-timeline strong {
+  margin-top: 10px;
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.reveal .ko-timeline small {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.reveal .ko-timeline .is-today::before {
+  background: var(--dui);
+  box-shadow: 0 0 0 8px var(--dui-soft);
+}
+
+.reveal .ko-timeline .is-today strong,
+.reveal .ko-timeline .is-today time {
+  color: var(--dui);
+}
+
+.reveal .ko-timeline .is-key::before {
+  border-color: var(--dui-blue);
+}
+
+.reveal .ko-timeline .is-key strong {
+  color: var(--dui-blue);
+}
+
+.reveal .ko-timeline .is-deadline::before,
+.reveal .ko-timeline .is-exam::before {
+  border-color: var(--yellow);
+  background: var(--yellow);
+}
+
+.reveal .ko-timeline .is-deadline strong,
+.reveal .ko-timeline .is-exam strong {
+  color: var(--yellow);
+}
+
+.reveal .ko-phases {
+  display: grid;
+  grid-template-columns: 5fr 2fr 1fr;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.reveal .ko-phases span {
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--dui-soft);
+  color: var(--dui);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.reveal .ko-phases .is-after {
+  background: var(--dui-blue-soft);
+  color: var(--dui-blue);
+}
+
+.reveal .ko-phases .is-exam {
+  background: var(--dui-yellow-soft);
+  color: var(--yellow);
+}
+
+/* Gruppedannelse */
+.reveal .ko-groups {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.reveal .ko-groups article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 36px 40px;
+}
+
+.reveal .ko-groups .is-have {
+  border-top: 5px solid var(--dui);
+  background: linear-gradient(180deg, var(--dui-soft), transparent);
+}
+
+.reveal .ko-groups .is-need {
+  border-top: 5px solid var(--yellow);
+  background: linear-gradient(180deg, var(--dui-yellow-soft), transparent);
+}
+
+.reveal .ko-groups strong {
+  margin: 16px 0;
+  font-size: 52px;
+  line-height: 1.05;
+}
+
+.reveal .ko-groups p {
+  color: var(--muted);
+  font-size: 26px;
+  line-height: 1.4;
+}
+
+.reveal .ko-group-tip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 26px;
+  font-size: 22px;
+}
+
+.reveal .ko-group-tip span {
+  margin-right: 8px;
+  color: var(--muted);
+}
+
+.reveal .ko-group-tip em {
+  border-color: var(--dui-line);
+  background: var(--dui-soft);
+  color: var(--ink);
+}

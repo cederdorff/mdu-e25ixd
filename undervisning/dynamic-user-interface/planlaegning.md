@@ -43,8 +43,8 @@ RACE-gangene dækker forløbets tekniske stack: Next.js, headless CMS, designsys
 
 ### Beslutninger
 
-- **JavaScript, ikke TypeScript:** De studerende vælger *No* til TypeScript i `create-next-app`. shadcn/ui sættes op med `"tsx": false` i `components.json`, så komponenterne genereres som JSX.
-- **Eget Next.js-projekt fra start:** I gang 08 opretter de studerende selv Next.js-appen med `create-next-app` (TypeScript: No, Tailwind: No, App Router: Yes) og gennemgår den genererede struktur. Tailwind tilføjes først i gang 09, så gang 08 kan fokusere på Next.js. Det forbereder dem på at sætte gruppeprojektet op.
+- **JavaScript, ikke TypeScript:** De studerende vælger *No* til TypeScript i `create-next-app`.
+- **Eget Next.js-projekt fra start:** I gang 08 opretter de studerende selv Next.js-appen med `create-next-app` (TypeScript: No, Tailwind: No, App Router: Yes) og gennemgår den genererede struktur. Styling sker med almindelig CSS, CSS Modules og tokens – ikke Tailwind. Det forbereder dem på at sætte gruppeprojektet op.
 - **Referencerepo i stedet for starter-repo:** RACE laver et referencerepo med den færdige Next.js-app fra gang 08, som bruges som facit og fallback. WordPress-URL'en ligger i en environment variable, så repoet kan pege på enhver WP-side.
 - **De studerendes egen WordPress som datakilde:** De studerende fetcher fra den WordPress-løsning, de selv har sat op på Simply.com ugen før. Der er ikke brug for en fælles demo-WP.
 
@@ -71,7 +71,7 @@ Hvor kravene i [eksamensbeskrivelsen](eksamensbeskrivelse.md) bliver dækket. Kr
 
 | Krav i eksamensbeskrivelsen | Dækkes | Ansvar |
 | --- | --- | --- |
-| Bygget i React, fx Next.js, Tailwind og shadcn/ui | 08, 09 | RACE |
+| Bygget i React, fx Next.js | 08, 09 | RACE |
 | Indholdet i kerneflowet hentes fra mindst én datakilde | 08 (WordPress), 10 (Supabase) | RACE |
 | Designsystem med tokens og genbrugelige komponenter i Figma og kode | 09 (farve, typografi, spacing), 13 (motion, timing, easing) | RACE/NKKR |
 | Motion og microinteractions | 13 | RACE/NKKR/BKI |

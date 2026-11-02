@@ -63,7 +63,7 @@ Produktet skal være en fungerende, deployet løsning, der:
 - bruger virkemidler som motion, microinteractions, feedback, lyd, illustration, tone of voice eller gamification med en tydelig begrundelse
 - opbygger virkemidlerne systematisk i et designsystem, fx med tokens for motion, timing og easing samt genbrugelige komponenter i Figma og kode
 - er tilgængelig, fx med respekt for `prefers-reduced-motion`, tastaturbetjening, kontrast og mulighed for at slå lyd fra – lyd og animation må ikke være eneste bærer af information
-- er bygget i React – fx med Next.js, Tailwind og shadcn/ui
+- er bygget i React – fx med Next.js
 - henter indholdet i kerneflowet fra mindst én datakilde, fx et API, et headless CMS eller Supabase
 - tager højde for performance
 - tager højde for it-sikkerhed, fx ved at holde hemmelige nøgler ude af klienten og – hvis løsningen har login eller gemmer brugerdata – beskytte adgangen med fx Row Level Security

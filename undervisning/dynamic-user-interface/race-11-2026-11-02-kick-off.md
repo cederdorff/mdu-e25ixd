@@ -18,10 +18,24 @@ Lyt podcast med ham - **Make your designs memorable** [https://www.youtube.com/w
 
 Lad jer inspirere af produkteksemplerne [Not Boring Software](https://notbor.ing/)
 
+<hr style="margin: 2rem 0;">
+
 ## Agenda
+
+1. **Projektet:** Make it memorable – but don't break it. Æstetik + UX, inspiration og projektets fem trin: vælg, analysér, hypotese, udforsk spektret og byg.
+2. **Eksamen:** Det skriftlige materiale, den mundtlige prøve og bedømmelse.
+3. **Frem mod eksamen:** Kvalificering 3. november, aflevering 24. november kl. 12.00, Pitch Day 27. november og mundtlig eksamen 9.-11. december.
+4. **Grupper og kom i gang:** Alle er i en gruppe. Gruppen gør sig klar til kvalificeringen i morgen med en produktidé, et udsnit og et kerneflow og en kort begrundelse.
+
+<hr style="margin: 2rem 0;">
 
 ## Materialer
 
-- **Slides:** Vil blive tilgængelige her
-- **Opgaver:** Vil blive tilgængelige her
-- **Links:** Vil blive tilgængelige her
+- **Slides:**
+  - [Kick-off](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-04/)
+  - [PDF-version: Kick-off](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-04/?print-pdf)
+- **Eksamensbeskrivelse:**
+  - [Dynamic User Interface – Eksamensbeskrivelse](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/eksamensbeskrivelse.md)
+- **Links:**
+  - [Not Boring Software](https://notbor.ing/)
+  - [Rafa Conde](https://rafa.design/) · [Make your designs memorable](https://www.youtube.com/watch?v=3rnhlZj25iY)

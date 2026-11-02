@@ -12,7 +12,7 @@ Et kort, selvstændigt forløb om CMS, domæner og hosting, indholdsstruktur sam
 
 ## Dynamic User Interface
 
-Et gruppeprojekt, hvor research, UI-design og programmering udvikles i tæt samspil. Der arbejdes med Figma, designsystemer, Next.js og React, Tailwind og shadcn/ui, headless CMS og API'er samt Supabase til datamodellering, authentication, brugerroller og beskyttet adgang. Figma MCP og AI-tools bruges på tværs af design, implementering og review.
+Et gruppeprojekt, hvor research, UI-design og programmering udvikles i tæt samspil. Der arbejdes med Figma, designsystemer, Next.js og React, motion og microinteractions, headless CMS og API'er samt Supabase til datamodellering, authentication, brugerroller og beskyttet adgang. Figma MCP og AI-tools bruges på tværs af design, implementering og review.
 
 **Eksamen:** Mundtlig gruppeprøve med præsentation og eksamination om produkt, proces og faglige refleksioner.
 
