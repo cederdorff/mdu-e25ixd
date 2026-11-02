@@ -16,7 +16,7 @@ Mange digitale produkter er brugervenlige, men kedelige. I dette projekt tager I
 
 ### Inspiration
 
-Lad jer inspirere af fx [Not Boring Software](https://notbor.ing/), der gør helt almindelige værktøjer som vejr, lommeregner og timer til sjove og mindeværdige oplevelser, eller af Duolingo, Spotify Wrapped og Things 3. Fagligt kan I bl.a. læne jer op ad Dan Saffers _Microinteractions_ og Aaron Walters _Designing for Emotion_.
+Lad jer inspirere af fx [Not Boring Software](https://notbor.ing/), der gør helt almindelige værktøjer som vejr, lommeregner og timer til sjove og mindeværdige oplevelser, eller af Duolingo, Spotify Wrapped og Things 3.
 
 <hr style="margin: 2rem 0;">
 
@@ -40,23 +40,23 @@ Formulér én eller flere hypoteser om, hvordan jeres virkemidler gør kerneflow
 
 > Vi tror, at **[virkemiddel]** i **[interaktion]** vil få **[brugeren]** til at **[opleve eller gøre noget]**, uden at **[usability-mål]** forringes. Det ved vi, når **[målbart resultat]**.
 
-### 4. Udforsk spektret – fra funktionel til ekspressiv
+### 4. Udforsk spektret - fra funktionel til ekspressiv
 
-Udforsk en eller flere nøgleinteraktioner i kerneflowet i tre niveauer, før I lægger jer fast – i Figma, Rive, kode eller en kombination:
+Opgaven giver anledning til at tænke kreativt. Brug kreativitet og associationer til at generere muligheder og brug jeres smag og kritisk stillingtagen til at vælge mellem dem. Gå åbent til processen og åbn én eller flere nøgleinteraktioner i jeres valgte kerneflow op, før I lægger jer fast. I kan bruge de tre nedenstående retninger som inspiration til at afsøge flere niveauer af idéer.
 
-- **A – Minimal og funktionel:** Løser opgaven uden ekstra virkemidler.
-- **B – Moderat og personlig:** Udvalgte microinteractions, motion og personlighed.
-- **C – Ekstrem og ekspressiv:** Må gerne være næsten absurd.
+- A – Minimal og funktionel: Løser opgaven uden ekstra virkemidler.
+- B – Moderat og personlig: Udvalgte microinteractions, motion og personlighed.
+- C – Ekstrem og ekspressiv: Må gerne være næsten absurd.
 
-Alle tre versioner skal kunne afprøves af testpersoner, fx som klikbare prototyper eller i kode. De behøver ikke være færdige.
+Arbejd iterativt på tværs af retningerne og husk at I skal igennem de umiddelbare idéer og bruge dem som springbræt til de rigtige gode idéer - tag jer derfor god tid og hav et åbent sind til denne første del af projektet. Sørg også for at reflektere over, hvilken værdi hver idé bidrager med for hhv. brugeren og brandet. Altså, konstater ikke blot, at noget virker eller føles godt, men beskriv hvorfor – F.eks. med begreber som timing, rytme, feedback, hierarki, form og kontrast.
 
-### 5. Test og iterér
-
-Test de tre versioner med brugere – og test igen, efterhånden som jeres løsning tager form. Mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder det mindeværdige at skade usability – og kan vi måle det?**
+Undervejs skal jeres idéer afprøves af personer uden for processen, f.eks. som løse idéer, klikbare prototyper eller i kode. De behøver ikke være færdige. Brug dem som indsigt til at komme af med darlings og finde blinde vinkler. Mål både usability og oplevelse, fx tid, fejl, forståelse, tilfredshed, oplevet personlighed og en "for meget"-score. Det centrale spørgsmål er: **Hvornår begynder det mindeværdige at skade usability – og kan vi måle det?**
 
 Begrund testmetode og antal testpersoner, og vurdér kritisk, hvor sikre resultaterne er.
 
-### 6. Byg det endelige produkt
+Afslut med at koge udforskningen ind til én retning – det må gerne være en kombination af flere idéer. Brug testene til at blive klogere, men lad jeres egen smag træffe valget, og stå ved det med en klar begrundelse for dette valg.
+
+### 5. Byg det endelige produkt
 
 Produktet skal være en fungerende, deployet løsning, der:
 
@@ -100,7 +100,7 @@ PDF-dokumentet afleveres **tirsdag 24. november 2026 kl. 12.00 via WISEflow**.
 - **Forside:** Projekttitel, det oprindelige produkt, gruppens navne, hold og uddannelse, antal anslag samt klikbare links til den deployede løsning, GitHub-repositoryet og Figma-filen.
 - **Omfang:** Maksimalt fem normalsider svarende til 12.000 anslag inklusive mellemrum. Kun brødteksten tæller. Illustrationer tæller som ét anslag, medmindre det er teksttunge figurer eller tabeller – så tæller teksten i dem med. Forside, indholdsfortegnelse, litteraturliste og bilag tæller ikke med. Bilag indgår ikke i bedømmelsen.
 - **Adgang:** Den deployede løsning, repositoryet og Figma-filen skal være tilgængelige via linkene, indtil bedømmelsen er færdig. GitHub-repositoryet skal være offentligt, og Figma-filen skal kunne åbnes af alle med linket. Test linkene i et privat browservindue.
-- **`main` er jeres aflevering:** Den deployede løsning skal være bygget fra `main`, og `main` må ikke ændres efter afleveringsfristen, før bedømmelsen er færdig.
+- **`main`-branch er jeres aflevering:** Den deployede løsning skal være bygget fra `main`, og `main` må ikke ændres efter afleveringsfristen, før bedømmelsen er færdig.
 
 ### Efter afleveringen
 
@@ -109,7 +109,7 @@ PDF-dokumentet afleveres **tirsdag 24. november 2026 kl. 12.00 via WISEflow**.
 - **Uge 49:** Optimering og eksamensforberedelse
 - **9.-11. december:** Mundtlige eksamener
 
-I uge 49 optimerer I produktet ud fra fx feedback fra Pitch Day eller nye tests. Vælg få, velbegrundede optimeringer frem for mange små – fx et virkemiddel, I justerer eller fjerner – og vær klar til at vise, hvad I har ændret, hvorfor, og hvad det har betydet for oplevelsen. Optimeringerne udvikles på separate branches, der ikke må merges ind i `main`. Vis dem til eksamen fx via en preview-deployment.
+I uge 49 optimerer I produktet ud fra fx feedback fra Pitch Day eller nye tests. Vælg få, velbegrundede optimeringer frem for mange små – fx et virkemiddel, I justerer eller fjerner – og vær klar til at vise, hvad I har ændret, hvorfor, og hvad det har betydet for oplevelsen. Optimeringerne udvikles på separate branches, der ikke må merges ind i `main`.
 
 <hr style="margin: 2rem 0;">
 
