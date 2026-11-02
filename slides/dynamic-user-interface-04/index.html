@@ -18,24 +18,34 @@
       <div class="slides">
         <section class="po-slide po-title dui-title ko-title">
           <span class="eyebrow">Dynamic User Interface · Eksamensprojekt</span>
-          <h1>Make it memorable —<br /><span>but don't break it.</span></h1>
+          <h1 aria-label="Make it memorable — but don't break it.">
+            <span class="ko-line" aria-hidden="true">Make it <span class="ko-wave"><i style="--i: 0">m</i><i style="--i: 1">e</i><i style="--i: 2">m</i><i style="--i: 3">o</i><i style="--i: 4">r</i><i style="--i: 5">a</i><i style="--i: 6">b</i><i style="--i: 7">l</i><i style="--i: 8">e</i></span> —</span>
+            <span class="ko-line is-break" aria-hidden="true">but don't <span class="ko-crack"><b>bre</b><b>ak</b></span> it.</span>
+          </h1>
           <p class="lead">Kick-off · projektet, eksamen og grupper</p>
           <p class="date"><span>BKI · NKKR · RACE</span><time datetime="2026-11-02">2. november 2026</time></p>
-          <div class="ko-hero" aria-hidden="true">
-            <div class="ko-hero-card is-a">
-              <small>A · Minimal</small>
-              <span class="ko-btn">Fuldført</span>
+          <div class="ko-stage" aria-hidden="true">
+            <div class="ko-phone">
+              <div class="ko-phone-head">
+                <small>Mandag 2. november</small>
+                <b>I dag</b>
+                <span class="ko-progress"><i></i></span>
+              </div>
+              <ul class="ko-todo">
+                <li class="is-done"><span class="ko-check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span><p>Læs beskrivelsen</p></li>
+                <li class="is-done"><span class="ko-check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span><p>Find en gruppe</p></li>
+                <li class="is-live">
+                  <span class="ko-check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg><span class="ko-pop"><i></i><i></i><i></i><i></i><i></i><i></i></span></span>
+                  <p>Vælg et produkt</p>
+                </li>
+                <li><span class="ko-check"></span><p>Gør det mindeværdigt</p></li>
+              </ul>
+              <div class="ko-toast">Godt gået! 3 af 4 klaret</div>
             </div>
-            <div class="ko-hero-card is-b">
-              <small>B · Personlig</small>
-              <span class="ko-btn"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>Godt gået</span>
-            </div>
-            <div class="ko-hero-card is-c">
-              <small>C · Ekspressiv</small>
-              <span class="ko-btn-wrap">
-                <span class="ko-burst"><i></i><i></i><i></i><i></i><i></i><i></i></span>
-                <span class="ko-btn">Du er en maskine!</span>
-              </span>
+            <div class="ko-dial">
+              <span>Funktionel</span>
+              <div class="ko-track"><i class="ko-zone"></i><b class="ko-knob"></b></div>
+              <span>Ekspressiv</span>
             </div>
           </div>
         </section>
@@ -332,7 +342,7 @@
             <li><time>4. nov</time><strong>Student Day</strong></li>
             <li><time>17. nov</time><strong>Attender&shy;prøve</strong></li>
             <li class="is-deadline"><time>24. nov</time><strong>Aflevering</strong><small>Kl. 12.00 · PDF i WISEflow</small></li>
-            <li class="is-key"><time>27. nov</time><strong>Pitch Day</strong></li>
+            <li class="is-key"><time>27. nov</time><strong>Pitch Day</strong><small>Forbered pitchen fra 24. nov</small></li>
             <li><time>Uge 49</time><strong>Optimering</strong><small>På branches — ikke i <code>main</code></small></li>
             <li class="is-exam"><time>9.–11. dec</time><strong>Mundtlig eksamen</strong></li>
           </ol>
@@ -342,8 +352,8 @@
             <span class="is-exam">Eksamen</span>
           </div>
           <p class="dui-lead-note">
-            <strong>Undervisning og vejledning undervejs</strong> — fx user management og roller (10/11), motion i kode
-            (12/11) og faciliteret vejledning (16/11 og 23/11).
+            <strong>Faciliteret vejledning</strong> 16/11, 18/11, 20/11 og 23/11 · <strong>Optimering</strong> 1/12, 3/12
+            og 4/12. Alle undervisningsdage står i Canvas-modulerne.
           </p>
         </section>
 
@@ -365,15 +375,9 @@
             </article>
             <article class="is-need">
               <small>Mangler du en gruppe — eller mangler I en?</small>
-              <strong>Ræk hånden op</strong>
-              <p>Vi samler jer her i lokalet. Ingen går herfra uden en gruppe.</p>
+              <strong>Sig til os</strong>
+              <p>Vi hjælper jer sammen her i lokalet. Ingen går herfra uden en gruppe.</p>
             </article>
-          </div>
-          <div class="ko-group-tip">
-            <span>Snak om, når I er samlet</span>
-            <em>Hvem er stærk i design og kode?</em>
-            <em>Hvornår arbejder vi?</em>
-            <em>Hvad vil vi lære?</em>
           </div>
         </section>
 
