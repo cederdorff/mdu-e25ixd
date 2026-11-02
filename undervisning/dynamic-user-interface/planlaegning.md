@@ -38,7 +38,7 @@ RACE-gangene dækker forløbets tekniske stack: Next.js, headless CMS, designsys
 
 | # | Dato | Tema | Indhold | Hovedoutput |
 | --- | --- | --- | --- | --- |
-| 12 | 10/11 | User management, roller og beskyttet adgang | `profiles`-tabel koblet til `auth.users`, brugerroller, Row Level Security, beskyttelse af routes og data, kombination af WordPress-indhold og Supabase-brugerdata | Next.js-appen har roller, og data er beskyttet med RLS |
+| 12 | 10/11 | User management, roller og beskyttet adgang | `profiles`-tabel koblet til `auth.users`, brugerroller, Row Level Security, beskyttelse af routes og data, brugerne opretter posts | Next.js-appen har profiler, posts og roller, og data er beskyttet med RLS |
 | 13 | 12/11 | Motion i kode | Motion (Framer Motion), motion-tokens for duration og easing, microinteractions i React-komponenter, `"use client"` til animerede komponenter, `prefers-reduced-motion`, lyd med mute, animationer med god performance (transform/opacity), varianter A/B/C styret af tokens til test | En microinteraction i projektet, som bruger tokens og respekterer reduced motion |
 
 ### Beslutninger
