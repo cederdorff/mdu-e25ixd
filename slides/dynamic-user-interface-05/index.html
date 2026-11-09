@@ -34,7 +34,7 @@
             </div>
             <div class="au-hero-chip um-hero-chip is-rls">
               <small>Row Level Security</small>
-              <code>auth.uid() = "userId"</code>
+              <code>profile.id === post.userId</code>
             </div>
             <div class="au-hero-chip um-hero-chip is-role">
               <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z" /></svg>
@@ -61,20 +61,20 @@
               </li>
               <li>
                 <a href="#/kap-users"
-                  ><b>Users koblet til auth.users</b
-                  ><small>To tabeller med navnet <code>users</code> · samme <code>id</code> · <code>userId</code> fra sessionen</small
+                  ><b>Posts får en ejer</b
+                  ><small>Hvem er logget ind? · profil · <code>userId</code></small
                   ><span class="au-agenda-tasks"><em class="is-demo">Demo 1</em><em class="is-demo">Demo 2</em></span></a
                 >
               </li>
               <li>
                 <a href="#/kap-rls"
-                  ><b>Kun dine egne posts og RLS</b><small>UI, server og data · policies · publishable key</small
+                  ><b>Kun ejeren kan rette og slette</b><small>UI, server og database · RLS med ét klik</small
                   ><span class="au-agenda-tasks"><em class="is-demo">Demo 3</em><em class="is-demo">Demo 4</em></span></a
                 >
               </li>
               <li>
                 <a href="#/kap-roller"
-                  ><b>Roller: user og admin</b><small><code>role</code> · grants · en policy til admins</small
+                  ><b>Ekstra: user og admin</b><small><code>role</code> i <code>users</code> · <em>Delete</em> for admins · <code>/admin</code></small
                   ><span class="au-agenda-tasks"><em class="is-demo">Demo 5</em></span></a
                 >
               </li>
@@ -226,7 +226,7 @@
 
         <section class="chapter po-chapter po-slide" id="kap-users">
           <span class="chapter-index">02</span>
-          <span class="eyebrow">Users koblet til auth.users</span>
+          <span class="eyebrow">Posts får en ejer</span>
           <h2>Login og data<br />hænger ikke sammen</h2>
           <p class="kicker">Startprojektet har login fra 30. oktober og posts fra Post App — men ved ikke, hvem der skrev hvad.</p>
           <dl class="chapter-definition">
@@ -239,28 +239,28 @@
 
         <section class="po-slide" id="maal">
           <span class="eyebrow">Dagens mål · datamodellen</span>
-          <h2>Fra <code>auth.users</code> til dine posts</h2>
-          <div class="um-model" role="img" aria-label="Samme kolonner som i Post App. auth.users er koblet til users med en trigger og samme id. posts.userId peger på users.id. users har en kolonne role med user eller admin. Row Level Security er slået til på users og posts.">
+          <h2>Fra login til dine posts</h2>
+          <div class="um-model" role="img" aria-label="Login i Supabase har samme id som rækken i users. posts.userId peger på users.id, ligesom i Post App. users har en kolonne role med user eller admin.">
             <article class="is-auth">
               <span>Supabase Auth</span>
-              <h3>auth.users</h3>
+              <h3>Login</h3>
               <p><code>id</code><small>uuid</small></p>
               <p><code>email</code><small>text</small></p>
-              <p class="is-muted"><code>encrypted_password</code><small>…</small></p>
-              <footer>Ejes af Supabase · kan ikke læses fra appen</footer>
+              <p class="is-muted"><code>password</code><small>krypteret</small></p>
+              <footer>Authentication → Users</footer>
             </article>
             <div class="um-link">
-              <b>trigger</b>
+              <b>samme id</b>
               <i aria-hidden="true">→</i>
-              <small>samme <code>id</code></small>
+              <small>automatisk</small>
             </div>
             <article class="is-users">
-              <span>Din tabel</span>
+              <span>Fra Post App</span>
               <h3>users</h3>
-              <p class="is-new"><code>id</code><small>uuid · samme som auth.users</small></p>
+              <p class="is-new"><code>id</code><small>samme som login</small></p>
               <p><code>name</code> · <code>title</code> · <code>image</code><small>text</small></p>
-              <p class="is-new"><code>role</code><small>user | admin</small></p>
-              <footer class="is-rls">RLS · alle læser, du retter din egen</footer>
+              <p><code>role</code><small>user | admin</small></p>
+              <footer class="is-rls">Alle læser · du retter din egen</footer>
             </article>
             <div class="um-link is-back">
               <b>relation</b>
@@ -268,17 +268,17 @@
               <small><code>userId</code> → <code>id</code></small>
             </div>
             <article class="is-posts">
-              <span>Din tabel</span>
+              <span>Fra Post App</span>
               <h3>posts</h3>
-              <p><code>id</code><small>uuid · PK</small></p>
+              <p><code>id</code><small>uuid</small></p>
               <p><code>caption</code> · <code>image</code><small>text</small></p>
-              <p class="is-new"><code>userId</code><small>uuid · fra sessionen</small></p>
-              <footer class="is-rls">RLS · alle læser, ejeren ændrer</footer>
+              <p class="is-new"><code>userId</code><small>den, der er logget ind</small></p>
+              <footer class="is-rls">Alle læser · ejeren ændrer</footer>
             </article>
           </div>
           <p class="dui-lead-note">
-            <strong>Samme kolonner som i Post App:</strong> <code>posts.userId</code> peger på <code>users.id</code>.
-            Det nye: Alle id'er er <code>uuid</code>, og <code>users.id</code> er id'et fra <code>auth.users</code>.
+            <strong>Det kender I fra Post App:</strong> Et post er lavet af én user. <strong>Det nye:</strong> Den, der er logget
+            ind, er en række i <code>users</code> — med samme <code>id</code>.
           </p>
         </section>
 
@@ -288,92 +288,60 @@
           <div class="um-demo">
             <aside class="um-demo-setup">
               <span>Branch</span><code>main</code>
-              <span>SQL</span><code>setup.sql</code>
+              <span>Supabase</span><code>setup.sql</code>
               <a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts" target="_blank" rel="noreferrer">nextjs-supabase-posts ↗</a>
             </aside>
             <ol class="um-demo-steps">
+              <li><b>Kør <code>setup.sql</code> i SQL Editor</b><span>Én fil sætter hele databasen op — ingen SQL at skrive</span></li>
+              <li><b>Find mig i <em>Authentication → Users</em> og i <code>users</code></b><span>Samme <code>id</code> begge steder</span></li>
               <li><b>Log ind som en anden, og opret et post</b><span>Forfatteren er altid den samme — det faste <code>CURRENT_USER_ID</code></span></li>
               <li><b>Log ud, åbn et post, og klik på <em>Edit</em></b><span>Alle kan rette og slette alt — også uden login</span></li>
-              <li><b>Åbn <em>Table Editor</em> i Supabase</b><span><code>users</code> og <code>posts</code> står som <em>UNRESTRICTED</em></span></li>
-              <li><b>Åbn <code>/profile</code></b><span>Kun din e-mail fra login — ikke navn, titel og billede fra <code>users</code></span></li>
             </ol>
           </div>
         </section>
 
-        <section class="po-slide" id="to-users">
-          <span class="eyebrow">Users · to tabeller med samme navn</span>
-          <h2><code>auth.users</code> er Supabases — <code>users</code> er din</h2>
-          <div class="why-table um-tables" role="table" aria-label="Forskellen på auth.users og users">
-            <div class="why-row why-head" role="row">
-              <span></span><span><code>auth.users</code></span><span><code>users</code> · <code>public.users</code></span>
-            </div>
-            <div class="why-row" role="row"><b>Hvem ejer den?</b><span>Supabase Auth</span><span class="is-next">Dig</span></div>
-            <div class="why-row" role="row">
-              <b>Hvad står der?</b><span>E-mail, adgangskode (krypteret), sidste login</span
-              ><span class="is-next">Navn, titel, billede — det, appen viser</span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Hvor ser du den?</b><span><em>Authentication → Users</em></span><span class="is-next"><em>Table Editor</em></span>
-            </div>
-            <div class="why-row" role="row"><b>Kan appen læse den?</b><span>Nej</span><span class="is-next">Ja</span></div>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Koblingen: samme <code>id</code> i begge tabeller.</strong> Appen kan ikke hente andre brugeres navne
-            fra <code>auth.users</code> — derfor gemmer vi dem i <code>users</code>.
-          </p>
-          <p class="po-source-link">
-            <a href="https://supabase.com/docs/guides/auth/managing-user-data" target="_blank" rel="noreferrer">Supabase: User Management ↗</a>
-          </p>
-        </section>
-
-        <section class="po-slide" id="trigger">
-          <span class="eyebrow">Users · en trigger opretter rækken</span>
-          <h2>Databasen opretter rækken selv</h2>
+        <section class="po-slide" id="profil">
+          <span class="eyebrow">Posts får en ejer · hvem er logget ind?</span>
+          <h2>Din række i <code>users</code></h2>
           <div class="code-explain">
             <div>
-              <span class="code-label"><code>supabase/setup.sql</code> · uddrag</span>
-              <pre class="po-code code-sm"><code class="language-sql">CREATE FUNCTION public.handle_new_user()
-RETURNS TRIGGER LANGUAGE plpgsql
-SECURITY DEFINER SET search_path = ''
-AS $$
-BEGIN
-  INSERT INTO public.users (id, name, mail)
-  VALUES (
-    NEW.id,
-    NEW.raw_user_meta_data -&gt;&gt; 'name',
-    NEW.email
-  );
-  RETURN NEW;
-END;
-$$;
-CREATE TRIGGER on_auth_user_created
-  AFTER INSERT ON auth.users
-  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();</code></pre>
+              <span class="code-label"><code>lib/auth.js</code></span>
+              <pre class="po-code"><code class="language-js">export async function getCurrentProfile() {
+  const user = await getCurrentUser();
+  if (!user) {
+    return null;
+  }
+
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("users")
+    .select("*")
+    .eq("id", user.sub)
+    .maybeSingle();
+
+  return data;
+}</code></pre>
             </div>
             <div class="explain-list">
-              <p><b><code>AFTER INSERT ON auth.users</code></b>Kører, hver gang nogen laver en bruger — uanset hvordan.</p>
-              <p><b><code>NEW.id</code></b>Den nye bruger i <code>auth.users</code>. Id'et bliver til <code>users.id</code>.</p>
-              <p><b><code>raw_user_meta_data</code></b>Det, appen sender med i <code>signUp({ …, options: { data: { name } } })</code>.</p>
-              <p><b><code>SECURITY DEFINER</code></b>Kører med databasens rettigheder — også når RLS er slået til.</p>
+              <p><b><code>getCurrentUser()</code></b>Login'et fra 30. oktober. Id'et står i <code>user.sub</code>.</p>
+              <p><b><code>.eq("id", user.sub)</code></b>Samme id i <code>users</code> — et helt almindeligt <code>select</code>.</p>
+              <p><b><code>profile</code></b>Din række: <code>id</code>, <code>name</code>, <code>title</code>, <code>image</code> og <code>role</code>.</p>
+              <p><b>Brug den overalt</b>Resten af dagen spørger vi <code>getCurrentProfile()</code>: Hvem er logget ind?</p>
             </div>
           </div>
-          <p class="dui-lead-note">
-            <strong>Triggeren ligger i <code>setup.sql</code>.</strong> Den skal ikke skrives — men det er den, der kobler
-            login og data.
-          </p>
         </section>
 
         <section class="po-slide" id="user-id">
-          <span class="eyebrow">Users · posts får en ejer</span>
-          <h2><code>userId</code> kommer fra sessionen</h2>
+          <span class="eyebrow">Posts får en ejer · væk med CURRENT_USER_ID</span>
+          <h2><code>userId</code> er den, der er logget ind</h2>
           <div class="code-explain">
             <div>
               <span class="code-label"><code>app/create/page.js</code> · Server Action</span>
               <pre class="po-code code-sm"><code class="language-js">async function createPost(formData) {
   "use server";
 
-  const user = await getCurrentUser();
-  if (!user) {
+  const profile = await getCurrentProfile();
+  if (!profile) {
     redirect("/login");
   }
 
@@ -381,7 +349,7 @@ CREATE TRIGGER on_auth_user_created
   await supabase.from("posts").insert({
     caption: formData.get("caption"),
     image: formData.get("image"),
-    userId: user.sub
+    userId: profile.id
   });
 
   redirect("/");
@@ -389,42 +357,42 @@ CREATE TRIGGER on_auth_user_created
             </div>
             <div class="explain-list">
               <p><b>Væk med <code>CURRENT_USER_ID</code></b>Det faste id fra Post App bliver erstattet af den, der er logget ind.</p>
-              <p><b><code>getCurrentUser()</code> igen</b>En Server Action er sin egen request. Spørg igen — stol ikke på siden.</p>
-              <p><b><code>user.sub</code></b>Id'et fra sessionen — det samme som <code>auth.users.id</code> og <code>users.id</code>.</p>
-              <p><b>Aldrig fra formularen</b>Et skjult felt med id'et kan alle ændre. Sessionen kan ingen forfalske.</p>
+              <p><b><code>getCurrentProfile()</code> igen</b>En Server Action er sin egen request. Spørg igen — stol ikke på siden.</p>
+              <p><b><code>profile.id</code></b>Samme relation som i Post App: <code>posts.userId</code> peger på <code>users.id</code>.</p>
+              <p><b>Aldrig fra formularen</b>Et skjult felt med id'et kan alle ændre. Login'et kan ingen forfalske.</p>
             </div>
           </div>
         </section>
 
         <section class="po-slide um-demo-slide" id="demo-2">
-          <span class="eyebrow">Demo 2 · users koblet til auth.users</span>
-          <h2>Nye brugere får en række — og posts en ejer</h2>
+          <span class="eyebrow">Demo 2 · posts får en ejer</span>
+          <h2>Min profil — og mine posts</h2>
           <div class="um-demo">
             <aside class="um-demo-setup">
-              <span>Branches</span><code>opgave-02-kobl-users</code><code>opgave-03-profil</code><code>opgave-04-opret-posts</code>
+              <span>Branches</span><code>opgave-02-profil</code><code>opgave-03-ejer</code>
             </aside>
             <ol class="um-demo-steps">
-              <li><b>Sammenlign <em>Authentication → Users</em> og <code>users</code></b><span>Samme brugere — med samme <code>id</code></span></li>
-              <li><b>Opret en bruger med navn på <code>/signup</code></b><span>Triggeren laver en ny række i <code>users</code> — med samme <code>id</code></span></li>
-              <li><b>Ret navn og titel på <code>/profile</code></b><span>Rækken i <code>users</code> ændres. <code>id</code> kommer fra sessionen</span></li>
-              <li><b>Opret et post — og ret dit navn igen</b><span>Dit navn står på post'et og skifter på alle dine posts</span></li>
+              <li><b>Åbn <code>/profile</code></b><span>Mit navn, min titel og mit billede fra <code>users</code></span></li>
+              <li><b>Ret mit navn</b><span>Kun min egen række ændres — <code>id</code> kommer fra login'et</span></li>
+              <li><b>Opret et post</b><span>Mit navn står på det. <code>userId</code> er mig</span></li>
+              <li><b>Ret mit navn igen</b><span>Det skifter på alle mine posts — samme relation som i Post App</span></li>
             </ol>
           </div>
         </section>
 
         <section class="chapter po-chapter po-slide" id="kap-rls">
           <span class="chapter-index">03</span>
-          <span class="eyebrow">Kun dine egne posts og Row Level Security</span>
+          <span class="eyebrow">Kun ejeren kan rette og slette</span>
           <h2>Skjul ikke<br />bare knappen</h2>
           <p class="kicker">Det, brugeren ikke må, skal afvises på serveren — og i databasen.</p>
           <dl class="chapter-definition">
             <div>
               <dt>Row Level Security · RLS</dt>
-              <dd>Regler <b>i databasen</b>, der for hver række afgør, hvem der må læse og ændre den.</dd>
+              <dd>Regler <b>i databasen</b>, der afgør, hvem der må læse og ændre hvad.</dd>
             </div>
             <div>
               <dt>Policy</dt>
-              <dd>Én regel for <b>én handling</b>: <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code> eller <code>DELETE</code>.</dd>
+              <dd>Én regel for <b>én handling</b> — fx: Kun ejeren må slette.</dd>
             </div>
           </dl>
         </section>
@@ -444,14 +412,14 @@ CREATE TRIGGER on_auth_user_created
               <span>Server</span>
               <h3>Tjek i siden og Server Action'en</h3>
               <p>Den, der ikke ejer post'et, bliver sendt væk.</p>
-              <code>if (user?.sub !== post.userId)</code>
+              <code>if (profile?.id !== post.userId)</code>
               <b>Beskytter appen</b>
             </article>
             <article class="is-strong">
               <span>Data · RLS</span>
-              <h3>Policy i databasen</h3>
+              <h3>Regler i databasen</h3>
               <p>Gælder for alle requests — også dem uden om appen.</p>
-              <code>auth.uid() = "userId"</code>
+              <code>Owners can delete their posts</code>
               <b>Beskytter data</b>
             </article>
           </div>
@@ -461,13 +429,13 @@ CREATE TRIGGER on_auth_user_created
         </section>
 
         <section class="po-slide" id="ejer-kode">
-          <span class="eyebrow">Kun dine egne posts · UI og server</span>
+          <span class="eyebrow">Kun ejeren · UI og server</span>
           <h2>Samme tjek — to steder</h2>
           <div class="au-code-pair is-stacked">
             <div>
               <span class="code-label"><code>app/posts/[id]/page.js</code> · knapperne</span>
-              <pre class="po-code"><code class="language-jsx">const user = await getCurrentUser();
-const isOwner = user?.sub === post.userId;
+              <pre class="po-code"><code class="language-jsx">const profile = await getCurrentProfile();
+const isOwner = profile?.id === post.userId;
 
 {isOwner &amp;&amp; (
   &lt;form action={deletePost}&gt;
@@ -483,9 +451,9 @@ const isOwner = user?.sub === post.userId;
               <pre class="po-code"><code class="language-js">async function deletePost() {
   "use server";
 
-  const user = await getCurrentUser();
+  const profile = await getCurrentProfile();
 
-  if (user?.sub !== post.userId) {
+  if (profile?.id !== post.userId) {
     redirect(`/posts/${id}`);
   }
 
@@ -495,7 +463,7 @@ const isOwner = user?.sub === post.userId;
           <dl class="term-row">
             <div>
               <dt><code>?.</code></dt>
-              <dd>Giver <code>undefined</code> i stedet for en fejl, når ingen er logget ind og <code>user</code> er <code>null</code>.</dd>
+              <dd>Giver <code>undefined</code> i stedet for en fejl, når ingen er logget ind og <code>profile</code> er <code>null</code>.</dd>
             </div>
             <div>
               <dt>Hvorfor begge steder?</dt>
@@ -505,11 +473,11 @@ const isOwner = user?.sub === post.userId;
         </section>
 
         <section class="po-slide um-demo-slide" id="demo-3">
-          <span class="eyebrow">Demo 3 · kun dine egne posts</span>
+          <span class="eyebrow">Demo 3 · kun ejeren</span>
           <h2>Er data nu beskyttet?</h2>
           <div class="um-demo has-code">
             <aside class="um-demo-setup">
-              <span>Branch</span><code>opgave-05-egne-posts</code>
+              <span>Branch</span><code>opgave-04-kun-ejeren</code>
             </aside>
             <ol class="um-demo-steps">
               <li><b>Log ind som en anden bruger</b><span><em>Edit</em> og <em>Delete</em> er væk på mine posts</span></li>
@@ -531,24 +499,26 @@ const isOwner = user?.sub === post.userId;
         </section>
 
         <section class="po-slide" id="rls">
-          <span class="eyebrow">Row Level Security · starter lukket</span>
-          <h2>Uden policies må ingen noget</h2>
+          <span class="eyebrow">Row Level Security · ét klik</span>
+          <h2>Reglerne ligger klar — du tænder dem</h2>
           <div class="code-explain">
             <div>
-              <span class="code-label">Supabase · <em>Authentication → Policies</em> · <em>Create policy</em></span>
+              <span class="code-label">Supabase · <em>Authentication → Policies</em></span>
               <div class="um-policy">
-                <header>Skabelon · Enable read access for all users</header>
-                <p><span>Table</span><code>posts</code></p>
-                <p><span>Policy command</span><code>SELECT</code></p>
-                <p><span>Target roles</span><code>public</code></p>
-                <p class="is-rule"><span>Reglen · using</span><code>true</code></p>
+                <header>posts · fra setup.sql</header>
+                <p><span>Læs</span><code>Everyone can read posts</code></p>
+                <p><span>Opret</span><code>Users can create posts as themselves</code></p>
+                <p><span>Ret</span><code>Owners can update their posts</code></p>
+                <p><span>Slet</span><code>Owners can delete their posts</code></p>
+                <p><span>Slet</span><code>Admins can delete all posts</code></p>
+                <p class="is-rule"><span>Knappen</span><code>Enable RLS</code></p>
               </div>
             </div>
             <div class="explain-list">
-              <p><b><em>Enable RLS</em></b>Et klik pr. tabel. Forsiden viser 0 posts — uden fejl.</p>
-              <p><b>Policy</b>Én regel for én handling: <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code> eller <code>DELETE</code>.</p>
-              <p><b>Target roles</b><code>anon</code> er ikke logget ind. <code>authenticated</code> er. <code>public</code> er begge.</p>
-              <p><b><code>true</code></b>Alle rækker. Alle må se posts — også uden login.</p>
+              <p><b>Reglerne ligger klar</b><code>setup.sql</code> har lavet dem. Du skal ikke skrive dem.</p>
+              <p><b>Policy</b>Én regel for én handling — læs, opret, ret eller slet.</p>
+              <p><b><em>Enable RLS</em></b>Ét klik pr. tabel. Først nu gælder reglerne.</p>
+              <p><b>For alle requests</b>Fra appen, fra <em>Console</em> — og fra alle med din publishable key.</p>
             </div>
           </div>
           <p class="po-source-link">
@@ -558,41 +528,17 @@ const isOwner = user?.sub === post.userId;
           </p>
         </section>
 
-        <section class="po-slide" id="rls-egne">
-          <span class="eyebrow">Row Level Security · kun dine egne</span>
-          <h2>Reglen: <code>auth.uid() = "userId"</code></h2>
-          <div class="code-explain">
-            <div>
-              <span class="code-label">Supabase · <em>Create policy</em> · uden skabelon</span>
-              <div class="um-policy">
-                <header>Users can update their own posts</header>
-                <p><span>Table</span><code>posts</code></p>
-                <p><span>Policy command</span><code>UPDATE</code></p>
-                <p><span>Target roles</span><code>authenticated</code></p>
-                <p class="is-rule"><span>Reglen · using</span><code>(select auth.uid()) = "userId"</code></p>
-                <p class="is-rule"><span>with check</span><code>(select auth.uid()) = "userId"</code></p>
-              </div>
-            </div>
-            <div class="explain-list">
-              <p><b><code>auth.uid()</code></b>Id'et på den, der sender requesten — det samme som <code>user.sub</code>.</p>
-              <p><b><code>= "userId"</code></b>Kun posts, hvor <code>userId</code> er dit id. Anførselstegn pga. det store <code>I</code>.</p>
-              <p><b><code>using</code></b>Hvilke posts du må ramme: kun dine egne.</p>
-              <p><b><code>with check</code></b>Hvordan post'et skal se ud bagefter: stadig dit.</p>
-            </div>
-          </div>
-        </section>
-
         <section class="po-slide" id="hvem-maa">
-          <span class="eyebrow">Row Level Security · alle policies</span>
+          <span class="eyebrow">Row Level Security · alle reglerne</span>
           <h2>Hvem må hvad?</h2>
           <div class="um-access" role="table" aria-label="Hvem der må læse, oprette, rette og slette posts og users, når RLS er slået til">
-            <p class="is-head" role="row"><span>Tabel · handling</span><span>Ikke logget ind</span><span>Logget ind</span><span>Reglen i policy'en</span></p>
-            <p role="row"><span><code>posts</code> · <code>SELECT</code></span><b class="is-yes">✓</b><b class="is-yes">✓</b><code>true</code></p>
-            <p role="row"><span><code>posts</code> · <code>INSERT</code></span><b class="is-no">✗</b><b class="is-yes">✓ som dig selv</b><code>auth.uid() = "userId"</code></p>
-            <p role="row"><span><code>posts</code> · <code>UPDATE</code></span><b class="is-no">✗</b><b class="is-yes">✓ kun egne</b><code>auth.uid() = "userId"</code></p>
-            <p role="row"><span><code>posts</code> · <code>DELETE</code></span><b class="is-no">✗</b><b class="is-yes">✓ kun egne</b><code>auth.uid() = "userId"</code></p>
-            <p role="row"><span><code>users</code> · <code>SELECT</code></span><b class="is-yes">✓</b><b class="is-yes">✓</b><code>true</code></p>
-            <p role="row"><span><code>users</code> · <code>UPDATE</code></span><b class="is-no">✗</b><b class="is-yes">✓ kun din egen</b><code>auth.uid() = id</code></p>
+            <p class="is-head" role="row"><span>Tabel · handling</span><span>Ikke logget ind</span><span>Logget ind</span><span>Reglen</span></p>
+            <p role="row"><span><code>posts</code> · læs</span><b class="is-yes">✓</b><b class="is-yes">✓</b><span class="is-rule">Alle</span></p>
+            <p role="row"><span><code>posts</code> · opret</span><b class="is-no">✗</b><b class="is-yes">✓</b><span class="is-rule">Kun med dig selv som <code>userId</code></span></p>
+            <p role="row"><span><code>posts</code> · ret</span><b class="is-no">✗</b><b class="is-yes">✓</b><span class="is-rule">Kun ejeren</span></p>
+            <p role="row"><span><code>posts</code> · slet</span><b class="is-no">✗</b><b class="is-yes">✓</b><span class="is-rule">Ejeren — eller en admin</span></p>
+            <p role="row"><span><code>users</code> · læs</span><b class="is-yes">✓</b><b class="is-yes">✓</b><span class="is-rule">Alle</span></p>
+            <p role="row"><span><code>users</code> · ret</span><b class="is-no">✗</b><b class="is-yes">✓</b><span class="is-rule">Kun din egen profil</span></p>
           </div>
           <p class="dui-lead-note">
             <strong>Derfor må den publishable key ligge i browseren</strong>, når RLS er slået til. En
@@ -604,81 +550,45 @@ const isOwner = user?.sub === post.userId;
         </section>
 
         <section class="po-slide um-demo-slide" id="demo-4">
-          <span class="eyebrow">Demo 4 · Row Level Security</span>
+          <span class="eyebrow">Demo 4 · beskyt databasen</span>
           <h2>Appen siger ja — databasen siger nej</h2>
           <div class="um-demo">
             <aside class="um-demo-setup">
               <span>Supabase</span><code>Authentication → Policies</code>
             </aside>
             <ol class="um-demo-steps">
-              <li><b>Klik på <em>Enable RLS</em> ved <code>posts</code> og <code>users</code></b><span>Forsiden er tom, men der kommer ingen fejl</span></li>
-              <li><b>Lav policies — skabelon og regler</b><span>Posts er tilbage. <em>Table Editor</em> siger ikke længere <em>UNRESTRICTED</em></span></li>
-              <li class="is-safe"><b>Kør koden fra demo 3 igen</b><span>Svaret er <code>[]</code> — post 1 er uændret</span></li>
-              <li class="is-safe"><b>Fjern tjekket i <code>deletePost</code>, og slet en andens post</b><span>Appen lod dig — databasen sagde nej. Post'et er der stadig</span></li>
+              <li><b>Find reglerne fra <code>setup.sql</code></b><span>7 policies — men RLS er slået fra</span></li>
+              <li><b>Klik på <em>Enable RLS</em> ved <code>posts</code> og <code>users</code></b><span>Appen virker som før. <em>UNRESTRICTED</em> er væk</span></li>
+              <li class="is-safe"><b>Kør koden fra demo 3 igen</b><span>Svaret er <code>[]</code> — post'et er uændret</span></li>
+              <li class="is-safe"><b>Fjern tjekket i <code>deletePost</code>, og slet en andens post</b><span>Appen lod mig — databasen sagde nej</span></li>
             </ol>
           </div>
         </section>
 
         <section class="chapter po-chapter po-slide" id="kap-roller">
           <span class="chapter-index">04</span>
-          <span class="eyebrow">Roller</span>
+          <span class="eyebrow">Ekstra · roller</span>
           <h2><code>user</code> eller<br /><code>admin</code>?</h2>
-          <p class="kicker">En admin må mere — men ingen må gøre sig selv til admin.</p>
+          <p class="kicker">En admin må mere — men ingen kan gøre sig selv til admin.</p>
           <dl class="chapter-definition">
             <div>
               <dt>Rolle</dt>
-              <dd>En kolonne på brugeren, som <b>policies og appen</b> kan spørge på: Er du admin?</dd>
-            </div>
-            <div>
-              <dt>Grant</dt>
-              <dd>En rettighed i databasen til en tabel — eller til <b>bestemte kolonner</b>.</dd>
+              <dd>En kolonne i <code>users</code>, som <b>appen og reglerne</b> kan spørge på: Er du admin?</dd>
             </div>
           </dl>
         </section>
 
-        <section class="po-slide" id="rolle">
-          <span class="eyebrow">Roller · rollen og låsen</span>
-          <h2>RLS styrer rækker — grants kolonner</h2>
-          <div class="au-levels um-levels">
-            <article class="is-ok">
-              <span>Kolonnen</span>
-              <h3>En rolle på brugeren</h3>
-              <p>Kolonnen findes allerede i users fra setup.sql. Alle starter som user.</p>
-              <code>user | admin</code>
-              <b>Kun to værdier</b>
-            </article>
-            <article class="is-weak">
-              <span>Problemet</span>
-              <h3>Ret din egen række</h3>
-              <p>Policy'en lader dig rette din egen række. Så kunne du også gøre dig selv til admin?</p>
-              <code>auth.uid() = id</code>
-              <b>RLS styrer rækker</b>
-            </article>
-            <article class="is-strong">
-              <span>Låsen · grant</span>
-              <h3>Kun tre kolonner</h3>
-              <p>Appen må kun rette navn, titel og billede. Rollen ændres i <em>Table Editor</em>.</p>
-              <code>name, title, image</code>
-              <b>Grants styrer kolonner</b>
-            </article>
-          </div>
-          <p class="po-source-link">
-            <a href="https://www.postgresql.org/docs/current/sql-grant.html" target="_blank" rel="noreferrer">PostgreSQL: GRANT ↗</a>
-          </p>
-        </section>
-
         <section class="po-slide" id="admin-policy">
           <span class="eyebrow">Roller · admins kan slette alle posts</span>
-          <h2>Én policy siger ja — så må du</h2>
+          <h2>Rollen står i <code>users</code></h2>
           <div class="au-code-pair is-stacked">
             <div>
-              <span class="code-label">Supabase · <em>Create policy</em></span>
+              <span class="code-label">Supabase · <em>Table Editor → users</em></span>
               <div class="um-policy">
-                <header>Admins can delete all posts</header>
-                <p><span>Table</span><code>posts</code></p>
-                <p><span>Policy command</span><code>DELETE</code></p>
-                <p><span>Target roles</span><code>authenticated</code></p>
-                <p class="is-rule"><span>Reglen · using</span><code>is_admin()</code></p>
+                <header>Din række</header>
+                <p><span>name</span><code>Rasmus Cederdorff</code></p>
+                <p><span>title</span><code>Senior Lecturer</code></p>
+                <p class="is-rule"><span>role</span><code>admin</code></p>
               </div>
             </div>
             <div>
@@ -696,13 +606,8 @@ const isAdmin = profile?.role === "admin";
             </div>
           </div>
           <p class="dui-lead-note">
-            <strong><code>is_admin()</code> kommer fra <code>setup.sql</code>.</strong> Flere policies til samme handling:
-            Du må slette et post, hvis det er dit — eller hvis du er admin.
-          </p>
-          <p class="po-source-link">
-            <a href="https://supabase.com/docs/guides/database/postgres/custom-claims-and-role-based-access-control-rbac" target="_blank" rel="noreferrer"
-              >Supabase: Role-based Access Control ↗</a
-            >
+            <strong>Reglen til admins ligger klar i <code>setup.sql</code>.</strong> Rollen kan kun ændres i
+            <em>Table Editor</em> — ikke fra appen.
           </p>
         </section>
 
@@ -711,13 +616,13 @@ const isAdmin = profile?.role === "admin";
           <h2>En admin må mere</h2>
           <div class="um-demo">
             <aside class="um-demo-setup">
-              <span>Branches</span><code>opgave-07-roller</code><code>ekstra-admin</code>
-              <span>Supabase</span><code>Table Editor</code><code>Policies</code>
+              <span>Branch</span><code>ekstra-admin</code>
+              <span>Supabase</span><code>Table Editor</code>
             </aside>
             <ol class="um-demo-steps">
-              <li><b>Gør mig til admin, og lav policy'en <code>is_admin()</code></b><span><em>Table Editor → users</em>: <code>role</code> = <code>admin</code> på min række</span></li>
-              <li><b>Slet en anden brugers post</b><span>Kun en admin kan — ejeren selv kan også</span></li>
-              <li><b>Ret navnet på <code>/profile</code></b><span>Virker stadig. <code>role</code> kan ingen bruger selv ændre</span></li>
+              <li><b>Gør mig til admin</b><span><em>Table Editor → users</em>: <code>role</code> = <code>admin</code> på min række</span></li>
+              <li><b>Slet en anden brugers post</b><span>Kun ejeren og en admin kan</span></li>
+              <li><b>Ret navnet på <code>/profile</code></b><span>Virker stadig. Rollen kan ingen bruger selv ændre</span></li>
               <li><b>Åbn <code>/admin</code> logget ud, som user og som admin</b><span><code>unauthorized.js</code> (401) · <code>forbidden.js</code> (403) · alle posts</span></li>
             </ol>
           </div>
@@ -729,8 +634,8 @@ const isAdmin = profile?.role === "admin";
           <div class="assignment-flow">
             <article>
               <h3>Datamodel</h3>
-              <p>Hvilke tabeller, relationer og roller har I brug for? Hvilken tabel kobles til <code>auth.users</code>?</p>
-              <p class="step-links"><a href="#/maal">Datamodellen</a><a href="#/to-users">To users</a></p>
+              <p>Hvilke tabeller, relationer og roller har I brug for? Hvilke data ejer brugeren?</p>
+              <p class="step-links"><a href="#/maal">Datamodellen</a></p>
             </article>
             <article>
               <h3>Hvem må hvad?</h3>
@@ -739,8 +644,8 @@ const isAdmin = profile?.role === "admin";
             </article>
             <article>
               <h3>Byg</h3>
-              <p>I en feature branch: <code>users</code> med samme <code>id</code> og trigger, <code>userId</code> fra sessionen, tjek på serveren, RLS — og roller, hvis I har brug for dem.</p>
-              <p class="step-links"><a href="#/trigger">Trigger</a><a href="#/user-id"><code>userId</code></a><a href="#/rls-egne">RLS</a><a href="#/admin-policy">Admin</a></p>
+              <p>I en feature branch: <code>getCurrentProfile()</code>, <code>userId</code> fra den, der er logget ind, tjek på serveren, RLS — og roller, hvis I har brug for dem.</p>
+              <p class="step-links"><a href="#/profil">Profil</a><a href="#/user-id"><code>userId</code></a><a href="#/rls">RLS</a><a href="#/admin-policy">Admin</a></p>
             </article>
             <article>
               <h3>Test</h3>
@@ -753,26 +658,24 @@ const isAdmin = profile?.role === "admin";
           </p>
           <p class="done-when"><strong>Resultat:</strong> Jeres data har en ejer, og databasen afviser det, brugerne ikke må.</p>
           <p class="po-source-link">
-            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md" target="_blank" rel="noreferrer">Guiden: opgave 1–7 ↗</a>
+            <a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md" target="_blank" rel="noreferrer">Guiden: opgave 1–5 ↗</a>
           </p>
         </section>
 
         <section class="po-slide mode-work" id="guide">
           <span class="eyebrow">Guiden · når I har brug for den</span>
           <h2>Hele opsætningen trin for trin</h2>
-          <div class="um-guide" role="table" aria-label="Guidens syv opgaver med links til opgavefilen og løsningerne">
-            <p role="row"><b>1</b><span>Hent startprojektet</span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-1" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts" target="_blank" rel="noreferrer">Template</a></span></p>
-            <p role="row"><b>2</b><span><code>users</code> og <code>auth.users</code></span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-2" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/compare/main...opgave-02-kobl-users" target="_blank" rel="noreferrer">Løsning</a></span></p>
-            <p role="row"><b>3</b><span>Din profil fra <code>users</code></span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-3" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-02-kobl-users...opgave-03-profil" target="_blank" rel="noreferrer">Løsning</a></span></p>
-            <p role="row"><b>4</b><span>Opret posts som dig selv</span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-4" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-03-profil...opgave-04-opret-posts" target="_blank" rel="noreferrer">Løsning</a></span></p>
-            <p role="row"><b>5</b><span>Kun dine egne posts</span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-5" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-04-opret-posts...opgave-05-egne-posts" target="_blank" rel="noreferrer">Løsning</a></span></p>
-            <p role="row"><b>6</b><span>Row Level Security</span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-6" target="_blank" rel="noreferrer">Opgave</a></span></p>
-            <p role="row"><b>7</b><span>Roller: <code>user</code> og <code>admin</code></span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-7" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-05-egne-posts...opgave-07-roller" target="_blank" rel="noreferrer">Løsning</a></span></p>
-            <p role="row" class="is-extra"><b>+</b><span><code>/admin</code> med <code>unauthorized()</code> og <code>forbidden()</code></span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#ekstra" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-07-roller...ekstra-admin" target="_blank" rel="noreferrer">Løsning</a></span></p>
+          <div class="um-guide" role="table" aria-label="Guidens fem opgaver og ekstraopgaven med links til opgavefilen og løsningerne">
+            <p role="row"><b>1</b><span>Kom i gang</span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-1" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts" target="_blank" rel="noreferrer">Template</a></span></p>
+            <p role="row"><b>2</b><span>Din profil</span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-2" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/compare/main...opgave-02-profil" target="_blank" rel="noreferrer">Løsning</a></span></p>
+            <p role="row"><b>3</b><span>Posts får en ejer</span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-3" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-02-profil...opgave-03-ejer" target="_blank" rel="noreferrer">Løsning</a></span></p>
+            <p role="row"><b>4</b><span>Kun ejeren kan rette og slette</span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-4" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-03-ejer...opgave-04-kun-ejeren" target="_blank" rel="noreferrer">Løsning</a></span></p>
+            <p role="row"><b>5</b><span>Beskyt databasen</span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#opgave-5" target="_blank" rel="noreferrer">Opgave</a></span></p>
+            <p role="row" class="is-extra"><b>+</b><span>Admin: <code>role</code>, <em>Delete</em> for admins og <code>/admin</code></span><span class="step-links"><a href="https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md#ekstra" target="_blank" rel="noreferrer">Opgave</a><a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-04-kun-ejeren...ekstra-admin" target="_blank" rel="noreferrer">Løsning</a></span></p>
           </div>
           <p class="work-if-stuck">
             <strong>0 posts efter <code>setup.sql</code>?</strong> Opret en bruger, og kør filen igen.
-            <strong>Tom forside efter RLS?</strong> Policy'en til <code>SELECT</code> mangler.
+            <strong><em>Could not create the post</em>?</strong> Indsæt din User UID i <code>lib/current-user.js</code>.
             <strong>Intet sker, når du sletter?</strong> RLS afviser uden fejl.
           </p>
           <p class="po-source-link">

@@ -721,3 +721,8 @@
 .reveal .um-policy p.is-rule > code {
   color: var(--green);
 }
+
+.reveal .um-access p > .is-rule {
+  color: var(--green);
+  font-weight: 750;
+}
