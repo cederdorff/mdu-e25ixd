@@ -148,7 +148,6 @@
 /* Hvorfor Next.js · fælles
    Farver: server blå · browser/client gul · route grøn · layout violet · UI-state koral */
 .reveal .nx-two > article > span,
-.reveal .nx-tree article > span,
 .reveal .nx-sc-defs span,
 .reveal .nx-cs-head span {
   color: var(--muted);
@@ -159,7 +158,6 @@
 }
 
 .reveal .nx-two > article > span code,
-.reveal .nx-tree article > span code,
 .reveal .nx-sc-defs span code {
   font-size: 17px;
   letter-spacing: 0;
@@ -280,16 +278,16 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: repeat(3, 1fr);
-  gap: 14px;
-  height: 460px;
+  gap: 16px;
+  height: 470px;
   margin-top: 30px;
 }
 
 .reveal .nx-toolbox > * {
   display: grid;
   align-content: center;
-  gap: 5px;
-  padding: 12px 22px;
+  gap: 8px;
+  padding: 14px 26px;
   border-top: 4px solid var(--line-strong);
   background: var(--surface);
   color: var(--ink);
@@ -301,37 +299,24 @@
 }
 
 .reveal .nx-toolbox b {
-  margin-bottom: 2px;
   color: var(--ink);
-  font-size: 23px;
+  font-size: 27px;
 }
 
 .reveal .nx-toolbox span {
-  color: var(--muted);
-  font-size: 17px;
+  color: var(--ink);
+  font-size: 21px;
   line-height: 1.3;
 }
 
-.reveal .nx-toolbox span.is-now {
-  color: var(--ink);
-  font-size: 18px;
+.reveal .nx-toolbox s {
+  color: var(--muted);
+  text-decoration-color: var(--coral);
+  text-decoration-thickness: 2px;
 }
 
-.reveal .nx-toolbox span.is-before::before,
-.reveal .nx-toolbox span.is-now::before {
-  display: inline-block;
-  width: 38px;
-  color: var(--coral);
-  font-size: 12px;
-  font-weight: 850;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  content: "Før";
-}
-
-.reveal .nx-toolbox span.is-now::before {
-  color: var(--green);
-  content: "Nu";
+.reveal .nx-toolbox s code {
+  color: var(--muted);
 }
 
 .reveal .nx-toolbox .nx-react {
@@ -350,69 +335,47 @@
 
 .reveal .nx-toolbox .nx-react span {
   color: var(--ink);
-  font-size: 18px;
+  font-size: 20px;
 }
 
-/* Projektstruktur */
-.reveal .nx-tree {
+/* Projektstruktur · fire steder */
+.reveal .nx-folders {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 24px;
-  height: 450px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, 1fr);
+  gap: 22px;
+  height: 470px;
   margin-top: 30px;
 }
 
-.reveal .nx-tree article {
-  display: flex;
-  flex-direction: column;
-  padding: 18px 24px;
-  border-top: 5px solid var(--dui);
+.reveal .nx-folders article {
+  --c: var(--dui);
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  padding: 24px 32px;
+  border-left: 6px solid var(--c);
   background: var(--surface);
 }
 
-.reveal .nx-tree article:nth-child(2) {
-  border-color: var(--line-strong);
-}
+.reveal .nx-folders .is-components { --c: var(--dui-yellow); }
+.reveal .nx-folders .is-lib { --c: var(--dui-blue); }
+.reveal .nx-folders .is-root { --c: var(--muted); }
 
-.reveal .nx-tree ul {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-around;
-  margin: 10px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.reveal .nx-tree li {
-  --c: var(--green);
-  display: flex;
-  gap: 16px;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 5px 0 5px 14px;
-  border-left: 4px solid var(--c);
-}
-
-.reveal .nx-tree li.is-layout { --c: var(--dui); }
-.reveal .nx-tree li.is-state { --c: var(--coral); }
-.reveal .nx-tree li.is-server { --c: var(--dui-blue); }
-.reveal .nx-tree li.is-client { --c: var(--dui-yellow); }
-.reveal .nx-tree li.is-secret { --c: var(--muted); }
-
-.reveal .nx-tree li > code {
-  color: var(--ink);
-  font-size: 19px;
-}
-
-.reveal .nx-tree li small {
-  color: var(--muted);
-  font-size: 17px;
-  text-align: right;
-}
-
-.reveal .nx-tree li small code {
+.reveal .nx-folders article > code {
   color: var(--c);
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.reveal .nx-folders b {
+  color: var(--ink);
+  font-size: 28px;
+}
+
+.reveal .nx-folders small {
+  color: var(--muted);
+  font-size: 20px;
 }
 
 /* To kolonner · før og nu */
@@ -458,9 +421,12 @@
   height: 560px;
 }
 
-.reveal #data .nx-two pre.po-code code,
-.reveal #routing .nx-two pre.po-code code {
+.reveal #data .nx-two pre.po-code code {
   font-size: 17px;
+}
+
+.reveal #routing .nx-two pre.po-code code {
+  font-size: 18px;
 }
 
 .reveal .nx-two > article,
@@ -474,7 +440,7 @@
   display: grid;
   flex: 1;
   align-content: center;
-  gap: 10px;
+  gap: 14px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -482,21 +448,21 @@
 
 .reveal .nx-map li {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 34px 200px;
+  grid-template-columns: minmax(0, 1fr) 40px 170px;
   align-items: center;
-  padding: 11px 16px;
+  padding: 18px 20px;
   border-left: 4px solid var(--green);
   background: rgb(255 255 255 / 3%);
 }
 
 .reveal .nx-map li > code:first-child {
   color: var(--ink);
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .reveal .nx-map li > code:last-child {
   color: var(--green);
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 800;
 }
 
@@ -518,21 +484,15 @@
   color: var(--coral);
 }
 
-.reveal .nx-points {
-  display: grid;
-  gap: 6px;
-  margin: 0;
-  padding-left: 22px;
-}
-
-.reveal .nx-points li {
-  color: var(--muted);
-  font-size: 19px;
-  line-height: 1.3;
-}
-
-.reveal .nx-points b {
+.reveal .nx-verdict {
+  margin: 0 !important;
   color: var(--ink);
+  font-size: 22px;
+  font-weight: 750;
+}
+
+.reveal .nx-verdict code {
+  font-size: 20px;
 }
 
 /* Layouts · rammen står, siden skifter */
@@ -614,11 +574,11 @@
   gap: 14px;
   align-items: center;
   margin: 0 !important;
-  padding: 0 16px;
+  padding: 0 18px;
   border-left: 4px solid var(--green);
   background: var(--surface);
   color: var(--ink);
-  font-size: 19px;
+  font-size: 22px;
 }
 
 .reveal .nx-pages p code {
@@ -629,8 +589,6 @@
 .reveal .nx-layout-code {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto 1fr;
-  gap: 16px;
 }
 
 .reveal .nx-layout-code pre.po-code,
@@ -642,16 +600,7 @@
 }
 
 .reveal .nx-layout-code pre.po-code code {
-  font-size: 18px;
-}
-
-.reveal .nx-layout-code .explain-list {
-  align-content: end;
-}
-
-.reveal .nx-layout-code .explain-list b {
-  display: inline;
-  margin-right: 10px;
+  font-size: 20px;
 }
 
 /* Server og client · komponenttræet */
@@ -676,8 +625,8 @@
   display: flex;
   gap: 14px;
   align-items: baseline;
-  margin: 0 0 0 calc(var(--d) * 44px) !important;
-  padding: 10px 18px;
+  margin: 0 0 0 calc(var(--d) * 50px) !important;
+  padding: 16px 22px;
   border-left: 5px solid var(--c);
   background: rgb(255 255 255 / 3%);
 }
@@ -689,13 +638,13 @@
 
 .reveal .nx-sc-tree p > code {
   color: var(--ink);
-  font-size: 21px;
+  font-size: 24px;
   font-weight: 700;
 }
 
 .reveal .nx-sc-tree small {
   color: var(--muted);
-  font-size: 17px;
+  font-size: 19px;
 }
 
 .reveal .nx-sc-tree small code {
@@ -710,7 +659,7 @@
 
 .reveal .nx-sc-defs article {
   --c: var(--dui-blue);
-  padding: 20px 24px;
+  padding: 28px 30px;
   border-top: 5px solid var(--c);
   background: var(--surface);
 }
@@ -725,9 +674,9 @@
 }
 
 .reveal .nx-sc-defs p {
-  margin: 8px 0 0 !important;
+  margin: 10px 0 0 !important;
   color: var(--ink);
-  font-size: 21px;
+  font-size: 26px;
   line-height: 1.35;
 }
 
@@ -737,13 +686,46 @@
 }
 
 .reveal .nx-meta pre.po-code code {
-  font-size: 18px;
+  font-size: 19px;
+}
+
+/* UI-states · farverne følger boksene */
+.reveal #filer .explain-list {
+  gap: 22px;
+}
+
+.reveal #filer .explain-list p {
+  padding: 22px 24px;
+  font-size: 22px;
+}
+
+.reveal #filer .explain-list p b {
+  font-size: 26px;
+}
+
+.reveal #filer .explain-list p:nth-child(1) { border-color: var(--coral); }
+.reveal #filer .explain-list p:nth-child(2) { border-color: var(--dui-yellow); }
+.reveal #filer .explain-list p:nth-child(3) { border-color: var(--dui-blue); }
+
+/* Fejlhåndtering · tabellen fylder højden */
+.reveal #funktioner .why-table {
+  grid-template-rows: auto repeat(3, 1fr);
+  height: 450px;
+  margin-top: 30px;
+}
+
+.reveal #funktioner .why-row:not(.why-head) {
+  font-size: 25px;
+}
+
+.reveal #funktioner .why-row b {
+  font-size: 27px;
 }
 
 .reveal .nx-meta-out {
   display: grid;
   align-content: center;
-  gap: 18px;
+  gap: 28px;
 }
 
 .reveal .nx-tab {
@@ -757,10 +739,10 @@
 }
 
 .reveal .nx-tab span {
-  padding: 10px 20px;
+  padding: 14px 26px;
   border-radius: 10px 10px 0 0;
   color: var(--muted);
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .reveal .nx-tab span.is-active {
@@ -772,8 +754,8 @@
 
 .reveal .nx-serp {
   display: grid;
-  gap: 4px;
-  padding: 18px 22px;
+  gap: 8px;
+  padding: 26px 28px;
   border-left: 4px solid var(--dui-blue);
   background: var(--surface);
 }
@@ -788,12 +770,12 @@
 
 .reveal .nx-serp b {
   color: var(--dui-blue);
-  font-size: 24px;
+  font-size: 30px;
 }
 
 .reveal .nx-serp span {
   color: var(--muted);
-  font-size: 18px;
+  font-size: 21px;
 }
 
 .reveal .nx-meta-out pre.po-code {
