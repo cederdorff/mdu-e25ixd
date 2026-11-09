@@ -387,6 +387,40 @@ Prefer: return=representation
           </figure>
         </section>
 
+        <section class="po-slide" id="fetch-sdk">
+          <span class="eyebrow">Posts får en ejer · fra fetch til SDK</span>
+          <h2>Samme request — skrevet på to måder</h2>
+          <div class="au-code-pair">
+            <div>
+              <span class="code-label">Post App · <code>fetch</code></span>
+              <pre class="po-code code-sm"><code class="language-js">const query =
+  "?select=*,user:users(*)&amp;order=createdAt.desc";
+
+const response = await fetch(`${url}/posts${query}`, {
+  headers: { apikey: key }
+});
+const posts = await response.json();</code></pre>
+            </div>
+            <div>
+              <span class="code-label">Startprojektet · Supabase SDK</span>
+              <pre class="po-code code-sm"><code class="language-js">const supabase = await createClient();
+
+
+const { data: posts } = await supabase
+  .from("posts")
+  .select("*, user:users(*)")
+  .order("createdAt", { ascending: false });</code></pre>
+            </div>
+          </div>
+          <div class="why-table um-fetch-map" role="table" aria-label="Delene i fetch-requesten og det tilsvarende i Supabase SDK">
+            <div class="why-row" role="row"><b>Tabel</b><span><code>/posts</code></span><span class="is-next"><code>.from("posts")</code></span></div>
+            <div class="why-row" role="row"><b>Med user</b><span><code>?select=*,user:users(*)</code></span><span class="is-next"><code>.select("*, user:users(*)")</code></span></div>
+            <div class="why-row" role="row"><b>Nyeste først</b><span><code>&amp;order=createdAt.desc</code></span><span class="is-next"><code>.order("createdAt", { ascending: false })</code></span></div>
+            <div class="why-row" role="row"><b>Key og login</b><span><code>headers: { apikey }</code></span><span class="is-next"><code>createClient()</code> · key fra <code>.env.local</code>, login fra cookien</span></div>
+            <div class="why-row" role="row"><b>Svaret</b><span><code>await response.json()</code></span><span class="is-next"><code>{ data }</code> · allerede JSON</span></div>
+          </div>
+        </section>
+
         <section class="po-slide" id="sdk">
           <span class="eyebrow">Posts får en ejer · fra fetch til SDK</span>
           <h2>Som <code>fetch</code> — bare kortere</h2>

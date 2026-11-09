@@ -982,3 +982,19 @@
 .reveal .um-tc-panel.is-safe > footer {
   color: var(--green);
 }
+
+/* Fra fetch til SDK · samme request */
+.reveal #fetch-sdk .au-code-pair {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-top: 26px;
+}
+
+.reveal .um-fetch-map {
+  margin-top: 22px;
+}
+
+.reveal .um-fetch-map .why-row {
+  grid-template-columns: 200px 1fr 1.25fr;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
