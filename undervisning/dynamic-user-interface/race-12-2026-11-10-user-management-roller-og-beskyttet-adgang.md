@@ -4,7 +4,7 @@
 
 I dag får I så meget tid som muligt til jeres projekt. Dagen er delt i to: Først et oplæg med demo, derefter vejledning og projektarbejde.
 
-I oplægget zoomer vi først ud: Hvorfor Next.js – hvad får du forærende, når du bruger et framework? Derefter viser jeg den færdige app i én samlet demo: Posts har en ejer, kun ejeren kan rette og slette – i appen og i databasen – og en admin kan mere end en almindelig bruger. Bagefter kigger vi på mønstrene bag. Relationen kender I fra Post App: Et post er lavet af én user. Det nye er, at den, der er logget ind, er en række i `users`.
+I oplægget zoomer vi først ud: Hvorfor Next.js – hvad får du forærende, når du bruger et framework? Derefter viser jeg den færdige app i én samlet demo: Posts har en ejer, kun ejeren kan rette og slette – i appen og i databasen – og en admin kan mere end en almindelig bruger. Bagefter kigger vi på mønstrene bag som fire spørgsmål: Hvem er logget ind? Hvem ejer post'et? Må de rette det? Er de admin? Relationen kender I fra Post App: Et post er lavet af én user. Det nye er, at den, der er logget ind, er en række i `users`.
 
 <img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-datamodel.webp" alt="Tre tabeller: Login i Supabase Auth, users og posts fra Post App. Login og users har samme id. posts.userId peger på users.id." style="max-width: 100%; margin: 0.75rem 0;">
 
@@ -24,7 +24,7 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er. Overvej, om I kan b
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Del 1: Oplæg og demo · hvorfor Next.js → den færdige app → mønstrene: posts får en ejer, kun ejeren kan rette og slette, roller. Del 2: Vejledning og projektarbejde.
+**Dagens arbejdsrytme:** Del 1: Oplæg og demo · hvorfor Next.js → den færdige app → fire spørgsmål: hvem er logget ind, hvem ejer post'et, må de rette det, er de admin. Del 2: Vejledning og projektarbejde.
 
 ### Del 1 · Oplæg og demo
 
@@ -50,18 +50,24 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er. Overvej, om I kan b
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Mønstret: Posts får en ejer</strong></summary>
+<summary><strong>3. Hvem er logget ind?</strong></summary>
 <ul>
 <li>Fra <code>fetch</code> til Supabase SDK: <code>supabase.from("posts").select()</code> er det samme som jeres <code>fetch</code> fra Post App – bare kortere. SDK'et sender login'et med.</li>
-<li>Startprojektet i guiden har to problemer: Nye posts får et fast <code>CURRENT_USER_ID</code>, og alle kan rette og slette alt.</li>
 <li>Den, der er logget ind, er en række i <code>users</code> – med samme <code>id</code> som i login. Ved sign up opretter appen både login'et og rækken i <code>users</code> – et helt almindeligt <code>insert</code>.</li>
-<li>Færdigt i startprojektet: Sign up opretter din række, og <code>getCurrentProfile()</code> henter den – navn, titel, billede og rolle.</li>
+<li>Færdigt i startprojektet: <code>getCurrentProfile()</code> henter din række – navn, titel, billede og rolle.</li>
+</ul>
+</details>
+
+<details style="margin-left: 1.5rem;">
+<summary><strong>4. Hvem ejer post'et?</strong></summary>
+<ul>
+<li>Startprojektet i guiden giver alle nye posts et fast <code>CURRENT_USER_ID</code>.</li>
 <li>Nye posts får <code>userId: profile.id</code> – den, der er logget ind, aldrig et id fra formularen.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>4. Mønstret: Kun ejeren kan rette og slette</strong></summary>
+<summary><strong>5. Må de rette det?</strong></summary>
 <ul>
 <li>Skjul ikke bare knapper. Det, brugeren ikke må, skal også afvises på serveren – og i databasen.</li>
 <li>Kun ejeren ser <em>Edit</em> og <em>Delete</em>, og siden og Server Actions tjekker det. Alligevel kan alle rette et post direkte med den publishable key fra Thunder Client – uden om alle tjek.</li>
@@ -71,7 +77,7 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er. Overvej, om I kan b
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>5. Mønstret: Roller – user og admin</strong></summary>
+<summary><strong>6. Er de admin?</strong></summary>
 <ul>
 <li><code>users</code> har en kolonne, <code>role</code>, med <code>user</code> eller <code>admin</code>. Den kan kun ændres i <em>Table Editor</em> – ikke fra appen.</li>
 <li>Admins ser <em>Edit</em> og <em>Delete</em> på alle posts – samme tjek i UI'et og på serveren, nu med <code>|| isAdmin</code>.</li>
@@ -82,10 +88,10 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er. Overvej, om I kan b
 ### Del 2 · Vejledning og projektarbejde
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>6. Arbejd videre med jeres projekt</strong></summary>
+<summary><strong>7. Arbejd videre med jeres projekt</strong></summary>
 <ul>
 <li>Arbejd videre, der hvor I er i jeres projekt.</li>
-<li>Overvej, om I kan bruge noget fra i dag: Har jeres data en ejer? Hvem må se og ændre hvad? Det kan I også bruge i afsnittet om it-sikkerhed.</li>
+<li>Overvej, om I kan bruge noget fra i dag: Stil de fire spørgsmål til jeres eget projekt. Svarene kan I også bruge i afsnittet om it-sikkerhed.</li>
 <li>Vil I prøve det af? Følg opgaven trin for trin i startprojektet <code>nextjs-supabase-posts</code> – hver opgave har en løsningsbranch.</li>
 <li>Vejledning i grupperne undervejs.</li>
 </ul>

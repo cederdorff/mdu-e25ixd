@@ -49,7 +49,7 @@
           <h2>Dagens program</h2>
           <div class="agenda-phased">
             <div class="agenda-phases" aria-hidden="true">
-              <p class="span-5"><span>Del 1</span><b>Oplæg og demo</b></p>
+              <p class="span-6"><span>Del 1</span><b>Oplæg og demo</b></p>
               <p class="span-1"><span>Del 2</span><b>Jeres projekt</b></p>
             </div>
             <ol class="agenda-list">
@@ -67,20 +67,25 @@
               </li>
               <li>
                 <a href="#/kap-users"
-                  ><b>Posts får en ejer</b
-                  ><small>Fra <code>fetch</code> til SDK · hvem er logget ind? · <code>userId</code></small
+                  ><b>Hvem er logget ind?</b><small>Fra <code>fetch</code> til SDK · din række i <code>users</code></small
+                  ><span class="au-agenda-tasks"></span></a
+                >
+              </li>
+              <li>
+                <a href="#/kap-ejer"
+                  ><b>Hvem ejer post'et?</b><small><code>userId</code> er den, der er logget ind</small
                   ><span class="au-agenda-tasks"></span></a
                 >
               </li>
               <li>
                 <a href="#/kap-rls"
-                  ><b>Kun ejeren kan rette og slette</b><small>UI, server og database · RLS med ét klik</small
+                  ><b>Må de rette det?</b><small>UI, server og database · RLS med ét klik</small
                   ><span class="au-agenda-tasks"></span></a
                 >
               </li>
               <li>
                 <a href="#/kap-roller"
-                  ><b>Roller: user og admin</b><small><code>role</code> i <code>users</code> · <em>Edit</em> og <em>Delete</em> for admins</small
+                  ><b>Er de admin?</b><small><code>role</code> i <code>users</code> · <em>Edit</em> og <em>Delete</em> på alle posts</small
                   ><span class="au-agenda-tasks"></span></a
                 >
               </li>
@@ -311,15 +316,50 @@ Prefer: return=representation
           </div>
         </section>
 
+        <section class="po-slide" id="fire-spoergsmaal">
+          <span class="eyebrow">Mønstrene bag demoen</span>
+          <h2>Fire spørgsmål</h2>
+          <div class="assignment-flow">
+            <article>
+              <h3>Hvem er logget ind?</h3>
+              <p>Din række i <code>users</code> — med samme id som login'et.</p>
+              <p class="um-answer"><code>getCurrentProfile()</code></p>
+              <p class="step-links"><a href="#/kap-users">Kapitel 3</a></p>
+            </article>
+            <article>
+              <h3>Hvem ejer post'et?</h3>
+              <p>Den, der var logget ind, da post'et blev oprettet.</p>
+              <p class="um-answer"><code>userId: profile.id</code></p>
+              <p class="step-links"><a href="#/kap-ejer">Kapitel 4</a></p>
+            </article>
+            <article>
+              <h3>Må de rette det?</h3>
+              <p>Kun ejeren — tjekket i UI'et, på serveren og i databasen.</p>
+              <p class="um-answer"><code>isOwner</code> · RLS</p>
+              <p class="step-links"><a href="#/kap-rls">Kapitel 5</a></p>
+            </article>
+            <article>
+              <h3>Er de admin?</h3>
+              <p>Så må de rette og slette alle posts.</p>
+              <p class="um-answer"><code>role === "admin"</code></p>
+              <p class="step-links"><a href="#/kap-roller">Kapitel 6</a></p>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Spørg hvem der er logget ind — og tjek det tre steder.</strong> Koden skal I ikke huske. Den ligger i
+            startprojektet.
+          </p>
+        </section>
+
         <section class="chapter po-chapter po-slide" id="kap-users">
           <span class="chapter-index">03</span>
-          <span class="eyebrow">Mønstret · posts får en ejer</span>
-          <h2>Den, der er logget ind,<br />er en række i <code>users</code></h2>
-          <p class="kicker">Relationen kender I fra Post App. Det nye er koblingen til login'et.</p>
+          <span class="eyebrow">Spørgsmål 1</span>
+          <h2>Hvem er<br />logget ind?</h2>
+          <p class="kicker">Den, der er logget ind, er en række i <code>users</code> — med samme id som login'et.</p>
           <dl class="chapter-definition">
             <div>
-              <dt>Ejer</dt>
-              <dd>Den user, et post peger på med <code>userId</code> — altid <b>den, der er logget ind</b>, når post'et bliver oprettet.</dd>
+              <dt><code>getCurrentProfile()</code></dt>
+              <dd>Henter <b>din række</b> i <code>users</code> — eller <code>null</code>, når ingen er logget ind.</dd>
             </div>
           </dl>
         </section>
@@ -369,7 +409,7 @@ Prefer: return=representation
           </p>
         </section>
 
-        <section class="po-slide" id="schema">
+        <section class="po-slide is-reference" id="schema">
           <span class="eyebrow">Dagens mål · sådan ser det ud i Supabase</span>
           <h2><em>Database → Schema Visualizer</em></h2>
           <figure class="um-shot">
@@ -388,7 +428,7 @@ Prefer: return=representation
         </section>
 
         <section class="po-slide" id="fetch-sdk">
-          <span class="eyebrow">Posts får en ejer · fra fetch til SDK</span>
+          <span class="eyebrow">Hvem er logget ind? · fra fetch til SDK</span>
           <h2>Samme request — skrevet på to måder</h2>
           <div class="au-code-pair">
             <div>
@@ -422,7 +462,7 @@ const { data: posts } = await supabase
         </section>
 
         <section class="po-slide" id="sdk">
-          <span class="eyebrow">Posts får en ejer · fra fetch til SDK</span>
+          <span class="eyebrow">Hvem er logget ind? · SDK'et sender login'et med</span>
           <h2>Som <code>fetch</code> — bare kortere</h2>
           <div class="why-table um-tables" role="table" aria-label="Post App med fetch sammenlignet med Supabase SDK">
             <div class="why-row why-head" role="row">
@@ -439,8 +479,8 @@ const { data: posts } = await supabase
           </p>
         </section>
 
-        <section class="po-slide" id="signup">
-          <span class="eyebrow">Færdigt i startprojektet · sign up</span>
+        <section class="po-slide is-reference" id="signup">
+          <span class="eyebrow">Hvem er logget ind? · sign up</span>
           <h2>Opret login'et — og din række</h2>
           <div class="code-explain">
             <div>
@@ -465,8 +505,8 @@ await supabase.from("users").insert({
           </div>
         </section>
 
-        <section class="po-slide" id="profil">
-          <span class="eyebrow">Færdigt i startprojektet · hvem er logget ind?</span>
+        <section class="po-slide is-reference" id="profil">
+          <span class="eyebrow">Hvem er logget ind? · færdigt i startprojektet</span>
           <h2>Din række i <code>users</code></h2>
           <div class="code-explain">
             <div>
@@ -524,8 +564,21 @@ await supabase.from("users").insert({
           </p>
         </section>
 
+        <section class="chapter po-chapter po-slide" id="kap-ejer">
+          <span class="chapter-index">04</span>
+          <span class="eyebrow">Spørgsmål 2</span>
+          <h2>Hvem ejer<br />post'et?</h2>
+          <p class="kicker">Den, der opretter post'et — aldrig et id fra formularen.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Ejer</dt>
+              <dd>Den user, et post peger på med <code>userId</code> — altid <b>den, der er logget ind</b>, når post'et bliver oprettet.</dd>
+            </div>
+          </dl>
+        </section>
+
         <section class="po-slide" id="user-id">
-          <span class="eyebrow">Opgave 2 · væk med CURRENT_USER_ID</span>
+          <span class="eyebrow">Hvem ejer post'et? · væk med CURRENT_USER_ID</span>
           <h2><code>userId</code> er den, der er logget ind</h2>
           <div class="code-explain">
             <div>
@@ -558,7 +611,7 @@ await supabase.from("users").insert({
         </section>
 
         <section class="po-slide" id="nyt-post">
-          <span class="eyebrow">Posts får en ejer · resultatet</span>
+          <span class="eyebrow">Hvem ejer post'et? · resultatet</span>
           <h2>Mit post — med mit navn</h2>
           <figure class="um-shot is-app">
             <img src="../assets/user-management-app-nyt-post.webp" alt="Forsiden efter Maria har oprettet et nyt post. Det nye post ligger øverst med Maria Louise Bendixen som forfatter." />
@@ -567,10 +620,10 @@ await supabase.from("users").insert({
         </section>
 
         <section class="chapter po-chapter po-slide" id="kap-rls">
-          <span class="chapter-index">04</span>
-          <span class="eyebrow">Mønstret · kun ejeren kan rette og slette</span>
-          <h2>Skjul ikke<br />bare knappen</h2>
-          <p class="kicker">Det, brugeren ikke må, skal afvises på serveren — og i databasen.</p>
+          <span class="chapter-index">05</span>
+          <span class="eyebrow">Spørgsmål 3</span>
+          <h2>Må de<br />rette det?</h2>
+          <p class="kicker">Kun ejeren. Skjul ikke bare knappen — afvis det på serveren og i databasen.</p>
           <dl class="chapter-definition">
             <div>
               <dt>Row Level Security · RLS</dt>
@@ -584,7 +637,7 @@ await supabase.from("users").insert({
         </section>
 
         <section class="po-slide" id="tre-lag">
-          <span class="eyebrow">Beskyttet adgang · tre lag</span>
+          <span class="eyebrow">Må de rette det? · tre lag</span>
           <h2>Tjek i UI'et, på serveren og i databasen</h2>
           <div class="au-levels um-levels">
             <article class="is-weak">
@@ -615,7 +668,7 @@ await supabase.from("users").insert({
         </section>
 
         <section class="po-slide" id="to-posts">
-          <span class="eyebrow">Kun ejeren · samme side, to posts</span>
+          <span class="eyebrow">Må de rette det? · samme side, to posts</span>
           <h2>Knapperne — kun på egne posts</h2>
           <div class="um-shot-pair">
             <figure class="um-shot">
@@ -632,8 +685,8 @@ await supabase.from("users").insert({
           </p>
         </section>
 
-        <section class="po-slide" id="ejer-kode">
-          <span class="eyebrow">Kun ejeren · UI og server</span>
+        <section class="po-slide is-reference" id="ejer-kode">
+          <span class="eyebrow">Må de rette det? · UI og server</span>
           <h2>Samme tjek — to steder</h2>
           <div class="au-code-pair is-stacked">
             <div>
@@ -677,7 +730,7 @@ const isOwner = profile?.id === post.userId;
         </section>
 
         <section class="po-slide" id="samme-request">
-          <span class="eyebrow">Uden om appen · Thunder Client</span>
+          <span class="eyebrow">Må de rette det? · uden om appen</span>
           <h2>Samme request — med og uden RLS</h2>
           <div class="um-tc">
             <div class="um-tc-bar">
@@ -719,7 +772,7 @@ Prefer: return=representation</code></pre>
         </section>
 
         <section class="po-slide" id="rls">
-          <span class="eyebrow">Row Level Security · ét klik</span>
+          <span class="eyebrow">Må de rette det? · Row Level Security</span>
           <h2>Reglerne ligger klar — du tænder dem</h2>
           <span class="code-label">Supabase · <em>Database → Policies</em></span>
           <figure class="um-shot is-policies">
@@ -740,7 +793,7 @@ Prefer: return=representation</code></pre>
         </section>
 
         <section class="po-slide" id="hvem-maa">
-          <span class="eyebrow">Row Level Security · alle reglerne</span>
+          <span class="eyebrow">Må de rette det? · alle reglerne</span>
           <h2>Hvem må hvad?</h2>
           <div class="um-access" role="table" aria-label="Hvem der må læse, oprette, rette og slette posts og users, når RLS er slået til">
             <p class="is-head" role="row"><span>Tabel · handling</span><span>Ikke logget ind</span><span>Logget ind</span><span>Reglen</span></p>
@@ -761,9 +814,9 @@ Prefer: return=representation</code></pre>
         </section>
 
         <section class="chapter po-chapter po-slide" id="kap-roller">
-          <span class="chapter-index">05</span>
-          <span class="eyebrow">Mønstret · roller</span>
-          <h2><code>user</code> eller<br /><code>admin</code>?</h2>
+          <span class="chapter-index">06</span>
+          <span class="eyebrow">Spørgsmål 4</span>
+          <h2>Er de<br />admin?</h2>
           <p class="kicker">En admin må mere — men ingen kan gøre sig selv til admin.</p>
           <dl class="chapter-definition">
             <div>
@@ -774,7 +827,7 @@ Prefer: return=representation</code></pre>
         </section>
 
         <section class="po-slide" id="admin-policy">
-          <span class="eyebrow">Roller · admins kan rette og slette alle posts</span>
+          <span class="eyebrow">Er de admin? · rollen i <code>users</code></span>
           <h2>Rollen står i <code>users</code></h2>
           <div class="au-code-pair is-stacked">
             <div>
@@ -808,7 +861,7 @@ const canEdit = isOwner || isAdmin;
         </section>
 
         <section class="po-slide" id="admin-posts">
-          <span class="eyebrow">Roller · samme post, to roller</span>
+          <span class="eyebrow">Er de admin? · samme post, to roller</span>
           <h2>Maria som <code>user</code> — og som <code>admin</code></h2>
           <div class="um-shot-pair">
             <figure class="um-shot">
@@ -825,8 +878,8 @@ const canEdit = isOwner || isAdmin;
           </p>
         </section>
 
-        <section class="po-slide" id="admin-server">
-          <span class="eyebrow">Roller · på serveren og i databasen</span>
+        <section class="po-slide is-reference" id="admin-server">
+          <span class="eyebrow">Er de admin? · på serveren og i databasen</span>
           <h2>Ejeren — eller en admin</h2>
           <div class="code-explain">
             <div>
@@ -859,8 +912,8 @@ if (
             </article>
             <article>
               <h3>Kan I bruge noget fra i dag?</h3>
-              <p>Har jeres data en ejer? Hvem må se og ændre hvad? Det kan I også bruge i afsnittet om it-sikkerhed.</p>
-              <p class="step-links"><a href="#/maal">Datamodellen</a><a href="#/hvem-maa">Hvem må hvad?</a></p>
+              <p>Stil de fire spørgsmål til jeres eget projekt. Svarene kan I også bruge i afsnittet om it-sikkerhed.</p>
+              <p class="step-links"><a href="#/fire-spoergsmaal">Fire spørgsmål</a><a href="#/hvem-maa">Hvem må hvad?</a></p>
             </article>
             <article>
               <h3>Vil I prøve det af?</h3>
