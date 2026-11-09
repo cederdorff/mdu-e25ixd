@@ -41,9 +41,10 @@ Bagefter bygger I det ind i jeres eget projekt. Har I brug for at prøve det af 
 <summary><strong>2. Posts får en ejer · demo</strong></summary>
 <ul>
 <li>Startprojektet: Login fra 30. oktober plus <code>users</code> og <code>posts</code> med de samme kolonner som i Post App. Hele databasen kommer fra én fil, <code>setup.sql</code> – ingen SQL at skrive.</li>
-<li>Tre problemer: Nye posts får et fast <code>CURRENT_USER_ID</code>, profilsiden viser kun din e-mail, og alle kan rette og slette alt.</li>
-<li>Den, der er logget ind, er en række i <code>users</code> – med samme <code>id</code> som i login. <code>setup.sql</code> sørger for, at nye brugere automatisk kommer i <code>users</code>.</li>
-<li><code>getCurrentProfile()</code> henter din række i <code>users</code>: navn, titel, billede og rolle.</li>
+<li>Fra <code>fetch</code> til Supabase SDK: <code>supabase.from("posts").select()</code> er det samme som jeres <code>fetch</code> fra Post App – bare kortere. SDK'et sender login'et med.</li>
+<li>To problemer: Nye posts får et fast <code>CURRENT_USER_ID</code>, og alle kan rette og slette alt.</li>
+<li>Den, der er logget ind, er en række i <code>users</code> – med samme <code>id</code> som i login. Ved sign up opretter appen både login'et og rækken i <code>users</code> – et helt almindeligt <code>insert</code>.</li>
+<li>Færdigt i startprojektet: Sign up opretter din række, og <code>getCurrentProfile()</code> henter den – navn, titel, billede og rolle.</li>
 <li>Nye posts får <code>userId: profile.id</code> – den, der er logget ind, aldrig et id fra formularen.</li>
 </ul>
 </details>
@@ -88,7 +89,7 @@ Bagefter bygger I det ind i jeres eget projekt. Har I brug for at prøve det af 
   - [User management, roller og beskyttet adgang](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-05/)
   - [PDF-version: User management, roller og beskyttet adgang](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-05/?print-pdf)
 - **Guide:**
-  - [User management og beskyttet adgang](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md) – trin for trin i et startprojekt, med hints og løsninger · opgave 1–5 og ekstra
+  - [User management og beskyttet adgang](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/opgave-2026-11-10-user-management-roller-og-rls.md) – trin for trin i et startprojekt, med hints og løsninger · opgave 1–4 og ekstra
 - **Løsningsrepo:**
   - [nextjs-supabase-posts](https://github.com/cederdorff/nextjs-supabase-posts) – template med startprojektet på `main` og én løsningsbranch pr. opgave
 - **Next.js:**
