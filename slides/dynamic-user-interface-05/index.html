@@ -525,18 +525,16 @@ const isOwner = profile?.id === post.userId;
             <ol class="um-demo-steps">
               <li><b>Log ind som en anden bruger</b><span><em>Edit</em> og <em>Delete</em> er væk på mine posts</span></li>
               <li><b>Tilføj <code>/update</code> til URL'en på mit post</b><span>Siden sender dig tilbage til post'et</span></li>
-              <li class="is-alert"><b>Log ud, og kør koden i <em>Console</em></b><span>Post'et hedder nu <em>Hacked</em>. Din app er ikke den eneste vej til databasen</span></li>
+              <li class="is-alert"><b>Send en <code>PATCH</code> fra Thunder Client</b><span>Post'et hedder nu <em>Hacked</em>. Din app er ikke den eneste vej til databasen</span></li>
             </ol>
             <div class="um-demo-code">
-              <span class="code-label"><em>Console</em> · URL og key fra <code>.env.local</code> · id fra URL'en</span>
-              <pre class="po-code code-sm"><code class="language-js">await fetch(`${URL}/rest/v1/posts?id=eq.${id}`, {
-  method: "PATCH",
-  headers: {
-    apikey: "sb_publishable_…",
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({ caption: "Hacked" })
-});</code></pre>
+              <span class="code-label">Thunder Client · URL og key fra <code>.env.local</code> · id fra URL'en</span>
+              <pre class="po-code code-sm"><code class="language-http">PATCH …/rest/v1/posts?id=eq.&lt;post-id&gt;
+
+apikey: sb_publishable_…
+Prefer: return=representation
+
+{ "caption": "Hacked" }</code></pre>
             </div>
           </div>
         </section>
@@ -561,7 +559,7 @@ const isOwner = profile?.id === post.userId;
               <p><b>Reglerne ligger klar</b><code>setup.sql</code> har lavet dem. Du skal ikke skrive dem.</p>
               <p><b>Policy</b>Én regel for én handling — læs, opret, ret eller slet.</p>
               <p><b><em>Enable RLS</em></b>Ét klik pr. tabel. Først nu gælder reglerne.</p>
-              <p><b>For alle requests</b>Fra appen, fra <em>Console</em> — og fra alle med din publishable key.</p>
+              <p><b>For alle requests</b>Fra appen, fra Thunder Client — og fra alle med din publishable key.</p>
             </div>
           </div>
           <p class="po-source-link">
@@ -602,7 +600,7 @@ const isOwner = profile?.id === post.userId;
             <ol class="um-demo-steps">
               <li><b>Find reglerne fra <code>setup.sql</code></b><span>8 policies — men RLS er slået fra</span></li>
               <li><b>Klik på <em>Enable RLS</em> ved <code>posts</code> og <code>users</code></b><span>Appen virker som før. <em>UNRESTRICTED</em> er væk</span></li>
-              <li class="is-safe"><b>Kør koden fra demo 3 igen</b><span>Svaret er <code>[]</code> — post'et er uændret</span></li>
+              <li class="is-safe"><b>Send requesten fra demo 3 igen</b><span>Svaret er <code>[]</code> — post'et er uændret</span></li>
               <li class="is-safe"><b>Fjern tjekket i <code>deletePost</code>, og slet en andens post</b><span>Appen lod mig — databasen sagde nej</span></li>
             </ol>
           </div>
@@ -692,7 +690,7 @@ const isAdmin = profile?.role === "admin";
             </article>
             <article>
               <h3>Test</h3>
-              <p>Som ikke logget ind, som dig selv og som en anden — og med <code>fetch</code> fra <em>Console</em>.</p>
+              <p>Som ikke logget ind, som dig selv og som en anden — og med en request fra Thunder Client.</p>
               <p class="step-links"><a href="#/demo-3">Koden</a><a href="#/demo-4">Demo 4</a></p>
             </article>
           </div>

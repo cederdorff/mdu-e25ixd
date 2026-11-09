@@ -55,7 +55,7 @@ Bagefter bygger I det ind i jeres eget projekt. Har I brug for at prøve det af 
 <summary><strong>3. Kun ejeren kan rette og slette · demo</strong></summary>
 <ul>
 <li>Skjul ikke bare knapper. Det, brugeren ikke må, skal også afvises på serveren – og i databasen.</li>
-<li>Kun ejeren ser <em>Edit</em> og <em>Delete</em>, og siden og Server Actions tjekker det. Alligevel kan alle rette et post direkte med den publishable key fra <em>Console</em> – uden om alle tjek.</li>
+<li>Kun ejeren ser <em>Edit</em> og <em>Delete</em>, og siden og Server Actions tjekker det. Alligevel kan alle rette et post direkte med den publishable key fra Thunder Client – uden om alle tjek.</li>
 <li>Row Level Security: Reglerne (policies) ligger klar fra <code>setup.sql</code> – fx "kun ejeren må slette". Du slår dem til med ét klik: <em>Enable RLS</em>.</li>
 <li>Derfor må den publishable key ligge i frontend, når RLS beskytter data – og derfor må en secret key aldrig.</li>
 </ul>

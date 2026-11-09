@@ -187,7 +187,7 @@ export default async function CreatePage({ searchParams }) {
 
 **Resultat:** Kun den, der har lavet et post, ser _Edit_ og _Delete_ og kan rette og slette det.
 
-<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-tre-lag.webp" alt="Tre lag: Requests fra appen går gennem UI, server og database. En fetch fra Console med den publishable key går uden om appen direkte til databasen. Kun databasen ser alle requests." style="max-width: 100%; margin: 0.75rem 0;">
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-tre-lag.webp" alt="Tre lag: Requests fra appen går gennem UI, server og database. En request fra Thunder Client med den publishable key går uden om appen direkte til databasen. Kun databasen ser alle requests." style="max-width: 100%; margin: 0.75rem 0;">
 
 ### 3.1 Skjul knapperne
 
@@ -247,25 +247,22 @@ Knapperne på detaljesiden:
 
 ### 3.3 Er data nu beskyttet?
 
-Din app er ikke den eneste vej til databasen. Din publishable key er offentlig – den ligger i browseren. Åbn et post, og kopiér id'et fra URL'en. Åbn udviklerværktøjerne, og kør i _Console_ – med din URL og key fra `.env.local`:
+Din app er ikke den eneste vej til databasen. Din publishable key er offentlig – den ligger i browseren, så alle kan finde den. Prøv selv med Thunder Client, ligesom i Post App.
 
-```js
-const response = await fetch("https://<dit-projekt>.supabase.co/rest/v1/posts?id=eq.<post-id>", {
-  method: "PATCH",
-  headers: {
-    apikey: "sb_publishable_...",
-    "Content-Type": "application/json",
-    Prefer: "return=representation"
-  },
-  body: JSON.stringify({ caption: "Hacked" })
-});
+1. Åbn et post i appen, og kopiér id'et fra URL'en.
+2. Lav en ny request i Thunder Client:
+   - **Metode:** `PATCH`
+   - **URL:** `https://<dit-projekt>.supabase.co/rest/v1/posts?id=eq.<post-id>`
+   - **Headers:** `apikey` = din publishable key fra `.env.local` og `Prefer` = `return=representation`
+   - **Body → JSON:**
 
-await response.json();
-```
+     ```json
+     { "caption": "Hacked" }
+     ```
 
-Det er den samme `fetch` som i Post App.
+3. Klik på _Send_.
 
-**Tjek:** Post'et hedder nu _Hacked_ – uden login og uden om alle dine tjek. Gem koden, så du kan køre den igen i opgave 4.
+**Tjek:** Svaret viser post'et, og på forsiden hedder det nu _Hacked_ – uden login og uden om alle dine tjek. Gem requesten, så du kan sende den igen i opgave 4.
 
 **Løsning:** [Kun ejeren](https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-02-ejer...opgave-03-kun-ejeren) · [branchen `opgave-03-kun-ejeren`](https://github.com/cederdorff/nextjs-supabase-posts/tree/opgave-03-kun-ejeren)
 
@@ -302,9 +299,9 @@ Klik på _Enable RLS_ ved `posts` og ved `users`.
 
 ### 4.3 Prøv igen
 
-<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-rls.webp" alt="Den samme fetch fra Console. Med RLS slået fra hedder post'et nu Hacked. Med RLS slået til er svaret en tom liste, og post'et er uændret." style="max-width: 100%; margin: 0.75rem 0;">
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-rls.webp" alt="Den samme request fra Thunder Client. Med RLS slået fra hedder post'et nu Hacked. Med RLS slået til er svaret en tom liste, og post'et er uændret." style="max-width: 100%; margin: 0.75rem 0;">
 
-1. **Ikke logget ind:** Kør `fetch`-koden fra 3.3 igen med `"Hacked again"`. Svaret er `[]`, og post'et er uændret. Databasen sagde nej.
+1. **Uden login:** Send requesten fra 3.3 i Thunder Client igen med `"Hacked again"`. Svaret er `[]`, og post'et er uændret. Databasen sagde nej.
 2. **Logget ind:** Fjern midlertidigt `if`'en i `deletePost`, og vis knapperne for alle (`{true && (...)}`). Prøv at slette et post, du ikke ejer. Det er der stadig – appen lod dig, men databasen sagde nej. Sæt koden tilbage bagefter.
 
 **Tjek:** Du kan forklare, hvorfor du både har tjek i appen og regler i databasen.
@@ -312,7 +309,7 @@ Klik på _Enable RLS_ ved `posts` og ved `users`.
 <details>
 <summary><strong>Løsning</strong></summary>
 
-Tjekket i appen giver en god oplevelse: Knapper, du ikke kan bruge, vises ikke. Reglerne i databasen beskytter data: De gælder for alle requests – fra din app, fra _Console_ og fra alle andre med din publishable key. Derfor må den publishable key gerne være offentlig, når RLS er slået til. En `sb_secret_`-key springer RLS over og må aldrig ligge i browseren eller på GitHub.
+Tjekket i appen giver en god oplevelse: Knapper, du ikke kan bruge, vises ikke. Reglerne i databasen beskytter data: De gælder for alle requests – fra din app, fra Thunder Client og fra alle andre med din publishable key. Derfor må den publishable key gerne være offentlig, når RLS er slået til. En `sb_secret_`-key springer RLS over og må aldrig ligge i browseren eller på GitHub.
 
 </details>
 
