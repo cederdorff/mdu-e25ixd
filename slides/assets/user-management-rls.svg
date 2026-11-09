@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 280" width="880" height="280" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Den samme fetch fra Console: Med RLS slået fra hedder post'et nu Hacked. Med RLS slået til er svaret en tom liste, og post'et er uændret.</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <style>
+      .card { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+      .panel { fill: #f3f4f6; stroke: #d1d5db; stroke-width: 1.5; }
+      .ok { fill: #eef7f0; stroke: #a7d7b4; stroke-width: 1.5; }
+      .bad { fill: #fdf1e7; stroke: #f2bf94; stroke-width: 1.5; }
+      .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #6b7280; }
+      .kicker-ok { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #1f6b3a; }
+      .kicker-bad { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #9a3412; }
+      .title { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 20px; font-weight: 700; fill: #0d0d0d; }
+      .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; font-weight: 700; fill: #0d0d0d; }
+      .code-sm { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; fill: #374151; }
+      .q { font-size: 16px; font-weight: 700; fill: #0d0d0d; }
+      .desc { font-size: 13px; fill: #4b5563; }
+      .type { font-size: 12px; fill: #6b7280; text-anchor: end; }
+      .label { font-size: 12px; font-weight: 700; fill: #374151; text-anchor: middle; }
+      .flow { stroke: #6b7280; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .line { stroke: #e5e7eb; stroke-width: 1; }
+      .mid { text-anchor: middle; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="880" height="280" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+  <rect class="card" x="290" y="24" width="300" height="44" rx="8"/>
+  <text class="code-sm mid" x="440" y="51">PATCH …/posts · caption: "Hacked"</text>
+  <path class="flow" d="M380 70 L230 108"/>
+  <path class="flow" d="M500 70 L650 108"/>
+
+  <rect class="bad" x="30" y="112" width="395" height="140" rx="14"/>
+  <text class="kicker-bad" x="54" y="144">RLS SLÅET FRA · OPGAVE 3.3</text>
+  <text class="q" x="54" y="178">Post'et hedder nu Hacked</text>
+  <text class="desc" x="54" y="204">Alle med din publishable key kan ændre alt.</text>
+  <text class="desc" x="54" y="226">Table Editor: UNRESTRICTED</text>
+
+  <rect class="ok" x="455" y="112" width="395" height="140" rx="14"/>
+  <text class="kicker-ok" x="479" y="144">RLS SLÅET TIL · OPGAVE 4</text>
+  <text class="q" x="479" y="178">Svar: []  – post'et er uændret</text>
+  <text class="desc" x="479" y="204">Reglerne fra setup.sql gælder nu.</text>
+  <text class="desc" x="479" y="226">Kun ejeren må rette og slette.</text>
+</svg>

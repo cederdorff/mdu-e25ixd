@@ -6,6 +6,8 @@ I dag får I så meget tid som muligt til jeres projekt. Dagen er delt i to: Fø
 
 I oplægget zoomer vi først ud: Hvorfor Next.js – hvad får du forærende, når du bruger et framework? Derefter viser jeg i en demo, hvordan login og data kommer til at hænge sammen. Relationen kender I fra Post App: Et post er lavet af én user. Det nye er, at den, der er logget ind, er en række i `users`. Så får posts en ejer, og kun ejeren kan rette og slette – i appen og i databasen. Til sidst, som ekstra: En admin kan mere end en almindelig bruger.
 
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-datamodel.webp" alt="Tre tabeller: Login i Supabase Auth, users og posts fra Post App. Login og users har samme id. posts.userId peger på users.id." style="max-width: 100%; margin: 0.75rem 0;">
+
 Bagefter bygger I det ind i jeres eget projekt. Har I brug for at prøve det af først, guider opgaven jer igennem hele opsætningen trin for trin i et startprojekt.
 
 <hr style="margin: 2rem 0;">

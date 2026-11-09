@@ -4,15 +4,7 @@
 
 Du kender relationen fra Post App: Et post er lavet af én user, og en user kan lave mange posts. I dag kobler du den til login: Nye posts skal tilhøre den, der er logget ind, og kun ejeren må rette og slette dem – i appen og i databasen.
 
-```text
-Login                      users                   posts
-(Authentication → Users)   id     uuid  <------    userId     uuid
-id     uuid  ---------->   name   text             id         uuid
-email  text   samme id     mail   text             createdAt  timestamptz
-                           title  text             caption    text
-                           image  text             image      text
-                           role   text
-```
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-datamodel.webp" alt="Tre tabeller: Login i Supabase Auth, users og posts fra Post App. Login og users har samme id. posts.userId peger på users.id." style="max-width: 100%; margin: 0.75rem 0;">
 
 **Det nye i dag:** Den, der er logget ind, er en række i `users` – med samme `id` som login'et.
 
@@ -74,12 +66,7 @@ Brug dit Supabase-projekt fra 30. oktober. Står det som _Paused_, så klik på 
 
 I Post App hentede og gemte du data med `fetch`. Startprojektet bruger **Supabase SDK'et** – det er det samme, bare kortere. Åbn `app/page.js`, `app/create/page.js` og `app/posts/[id]/page.js`. Over hvert kald står, hvordan det så ud med `fetch`.
 
-| | Post App med `fetch` | Supabase SDK |
-| --- | --- | --- |
-| Hent | `GET .../posts?select=*` | `supabase.from("posts").select("*")` |
-| Opret | `POST .../posts` | `supabase.from("posts").insert(post)` |
-| Ret | `PATCH .../posts?id=eq.123` | `supabase.from("posts").update(post).eq("id", id)` |
-| Slet | `DELETE .../posts?id=eq.123` | `supabase.from("posts").delete().eq("id", id)` |
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-fetch-sdk.webp" alt="Fra fetch til Supabase SDK. GET …/posts?select=* svarer til .from(posts).select(*). POST svarer til insert, PATCH til update().eq(id) og DELETE til delete().eq(id)." style="max-width: 100%; margin: 0.75rem 0;">
 
 Hvorfor SDK'et? Det sender automatisk login'et med. Så kan databasen se, hvem du er – det får du brug for i opgave 4.
 
@@ -88,6 +75,8 @@ Hvorfor SDK'et? Det sender automatisk login'et med. Så kan databasen se, hvem d
 ### 1.4 Den, der er logget ind, er en række i users
 
 Det er allerede bygget. Læs koden, og prøv det:
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-signup.webp" alt="Sign up: Formularen sender navn, e-mail og adgangskode til serveren. Først opretter signUp login'et i Authentication. Derefter opretter insert en række i users. Begge har samme id." style="max-width: 100%; margin: 0.75rem 0;">
 
 - `app/signup/page.js`: Når nogen opretter en bruger, laver appen både login'et og en række i `users` – med samme `id`.
 - `lib/auth.js`: `getCurrentProfile()` henter din række i `users`. Den bruger du resten af dagen, når du skal vide, hvem der er logget ind.
@@ -122,6 +111,8 @@ Det retter du i opgave 2–4.
 ## Opgave 2: Posts får en ejer
 
 **Resultat:** Nye posts tilhører den, der er logget ind, og kun brugere, der er logget ind, kan oprette posts.
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-ejer.webp" alt="Før: userId er CURRENT_USER_ID, så alle nye posts får Rasmus Cederdorff, uanset hvem der er logget ind. Efter opgave 2: userId er profile.id, så post'et får den, der er logget ind." style="max-width: 100%; margin: 0.75rem 0;">
 
 ### 2.1 Væk med CURRENT_USER_ID
 
@@ -195,6 +186,8 @@ export default async function CreatePage({ searchParams }) {
 ## Opgave 3: Kun ejeren kan rette og slette
 
 **Resultat:** Kun den, der har lavet et post, ser _Edit_ og _Delete_ og kan rette og slette det.
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-tre-lag.webp" alt="Tre lag: Requests fra appen går gennem UI, server og database. En fetch fra Console med den publishable key går uden om appen direkte til databasen. Kun databasen ser alle requests." style="max-width: 100%; margin: 0.75rem 0;">
 
 ### 3.1 Skjul knapperne
 
@@ -308,6 +301,8 @@ Klik på _Enable RLS_ ved `posts` og ved `users`.
 **Tjek:** Appen virker som før. _Table Editor_ viser ikke længere **UNRESTRICTED**.
 
 ### 4.3 Prøv igen
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-rls.webp" alt="Den samme fetch fra Console. Med RLS slået fra hedder post'et nu Hacked. Med RLS slået til er svaret en tom liste, og post'et er uændret." style="max-width: 100%; margin: 0.75rem 0;">
 
 1. **Ikke logget ind:** Kør `fetch`-koden fra 3.3 igen med `"Hacked again"`. Svaret er `[]`, og post'et er uændret. Databasen sagde nej.
 2. **Logget ind:** Fjern midlertidigt `if`'en i `deletePost`, og vis knapperne for alle (`{true && (...)}`). Prøv at slette et post, du ikke ejer. Det er der stadig – appen lod dig, men databasen sagde nej. Sæt koden tilbage bagefter.

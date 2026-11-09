@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" width="880" height="380" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Login, users og posts: Login og users har samme id. posts.userId peger på users.id, ligesom i Post App.</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <style>
+      .card { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+      .panel { fill: #f3f4f6; stroke: #d1d5db; stroke-width: 1.5; }
+      .ok { fill: #eef7f0; stroke: #a7d7b4; stroke-width: 1.5; }
+      .bad { fill: #fdf1e7; stroke: #f2bf94; stroke-width: 1.5; }
+      .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #6b7280; }
+      .kicker-ok { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #1f6b3a; }
+      .kicker-bad { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #9a3412; }
+      .title { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 20px; font-weight: 700; fill: #0d0d0d; }
+      .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; font-weight: 700; fill: #0d0d0d; }
+      .code-sm { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; fill: #374151; }
+      .q { font-size: 16px; font-weight: 700; fill: #0d0d0d; }
+      .desc { font-size: 13px; fill: #4b5563; }
+      .type { font-size: 12px; fill: #6b7280; text-anchor: end; }
+      .label { font-size: 12px; font-weight: 700; fill: #374151; text-anchor: middle; }
+      .flow { stroke: #6b7280; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .line { stroke: #e5e7eb; stroke-width: 1; }
+      .mid { text-anchor: middle; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="880" height="380" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+
+  <!-- Login -->
+  <rect class="panel" x="30" y="30" width="230" height="160" rx="12"/>
+  <text class="kicker" x="50" y="58">SUPABASE AUTH</text>
+  <text class="title" x="50" y="86">Login</text>
+  <rect class="ok" x="40" y="102" width="210" height="28" rx="6"/>
+  <text class="code" x="52" y="121">id</text><text class="type" x="238" y="121">uuid</text>
+  <text class="code" x="52" y="153">email</text><text class="type" x="238" y="153">text</text>
+  <text class="code" x="52" y="180" style="fill:#6b7280">password</text><text class="type" x="238" y="180">krypteret</text>
+  <text class="desc" x="40" y="214">Authentication → Users</text>
+
+  <!-- users -->
+  <rect class="card" x="325" y="30" width="230" height="250" rx="12"/>
+  <text class="kicker" x="345" y="58">FRA POST APP</text>
+  <text class="title" x="345" y="86">users</text>
+  <rect class="ok" x="335" y="102" width="210" height="28" rx="6"/>
+  <text class="code" x="347" y="121">id</text><text class="type" x="533" y="121">uuid</text>
+  <text class="code" x="347" y="153">name</text><text class="type" x="533" y="153">text</text>
+  <text class="code" x="347" y="180">mail</text><text class="type" x="533" y="180">text</text>
+  <text class="code" x="347" y="207">title</text><text class="type" x="533" y="207">text</text>
+  <text class="code" x="347" y="234">image</text><text class="type" x="533" y="234">text</text>
+  <text class="code" x="347" y="261">role</text><text class="type" x="533" y="261">user | admin</text>
+
+  <!-- posts -->
+  <rect class="card" x="620" y="30" width="230" height="223" rx="12"/>
+  <text class="kicker" x="640" y="58">FRA POST APP</text>
+  <text class="title" x="640" y="86">posts</text>
+  <text class="code" x="642" y="121">id</text><text class="type" x="828" y="121">uuid</text>
+  <text class="code" x="642" y="153">createdAt</text><text class="type" x="828" y="153">timestamptz</text>
+  <text class="code" x="642" y="180">caption</text><text class="type" x="828" y="180">text</text>
+  <text class="code" x="642" y="207">image</text><text class="type" x="828" y="207">text</text>
+  <rect class="bad" x="630" y="217" width="210" height="28" rx="6"/>
+  <text class="code" x="642" y="236">userId</text><text class="type" x="828" y="236">uuid</text>
+
+  <!-- samme id -->
+  <line class="flow" x1="252" y1="116" x2="333" y2="116"/>
+  <text class="label" x="292" y="104">samme id</text>
+
+  <!-- relation -->
+  <path class="flow" d="M628 231 L588 231 L588 116 L547 116"/>
+  <text class="label" x="735" y="276">userId peger på users.id</text>
+
+  <text class="q" x="30" y="335">Det kender I fra Post App:</text>
+  <text class="desc" x="30" y="358" style="font-size:15px">Et post er lavet af én user. Det nye: Den, der er logget ind, er en række i users – med samme id.</text>
+</svg>

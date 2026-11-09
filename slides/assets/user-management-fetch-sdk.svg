@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 330" width="880" height="330" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>Fra fetch til Supabase SDK: GET, POST, PATCH og DELETE i Post App svarer til select, insert, update og delete med SDK'et.</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+    <style>
+      .card { fill: #ffffff; stroke: #d1d5db; stroke-width: 1.5; }
+      .panel { fill: #f3f4f6; stroke: #d1d5db; stroke-width: 1.5; }
+      .ok { fill: #eef7f0; stroke: #a7d7b4; stroke-width: 1.5; }
+      .bad { fill: #fdf1e7; stroke: #f2bf94; stroke-width: 1.5; }
+      .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #6b7280; }
+      .kicker-ok { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #1f6b3a; }
+      .kicker-bad { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; fill: #9a3412; }
+      .title { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 20px; font-weight: 700; fill: #0d0d0d; }
+      .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; font-weight: 700; fill: #0d0d0d; }
+      .code-sm { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; fill: #374151; }
+      .q { font-size: 16px; font-weight: 700; fill: #0d0d0d; }
+      .desc { font-size: 13px; fill: #4b5563; }
+      .type { font-size: 12px; fill: #6b7280; text-anchor: end; }
+      .label { font-size: 12px; font-weight: 700; fill: #374151; text-anchor: middle; }
+      .flow { stroke: #6b7280; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .line { stroke: #e5e7eb; stroke-width: 1; }
+      .mid { text-anchor: middle; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="880" height="330" rx="16" fill="#ffffff" stroke="#e5e5e5"/>
+  <text class="kicker" x="150" y="44">POST APP · FETCH</text>
+  <text class="kicker" x="520" y="44">STARTPROJEKTET · SUPABASE SDK</text>
+
+  <g>
+    <text class="q" x="40" y="94">Hent</text>
+    <rect class="panel" x="140" y="68" width="300" height="40" rx="8"/><text class="code-sm" x="156" y="93">GET …/posts?select=*</text>
+    <line class="flow" x1="448" y1="88" x2="502" y2="88"/>
+    <rect class="ok" x="510" y="68" width="330" height="40" rx="8"/><text class="code-sm" x="526" y="93">.from("posts").select("*")</text>
+  </g>
+  <g>
+    <text class="q" x="40" y="154">Opret</text>
+    <rect class="panel" x="140" y="128" width="300" height="40" rx="8"/><text class="code-sm" x="156" y="153">POST …/posts</text>
+    <line class="flow" x1="448" y1="148" x2="502" y2="148"/>
+    <rect class="ok" x="510" y="128" width="330" height="40" rx="8"/><text class="code-sm" x="526" y="153">.from("posts").insert(post)</text>
+  </g>
+  <g>
+    <text class="q" x="40" y="214">Ret</text>
+    <rect class="panel" x="140" y="188" width="300" height="40" rx="8"/><text class="code-sm" x="156" y="213">PATCH …/posts?id=eq.123</text>
+    <line class="flow" x1="448" y1="208" x2="502" y2="208"/>
+    <rect class="ok" x="510" y="188" width="330" height="40" rx="8"/><text class="code-sm" x="526" y="213">.update(post).eq("id", id)</text>
+  </g>
+  <g>
+    <text class="q" x="40" y="274">Slet</text>
+    <rect class="panel" x="140" y="248" width="300" height="40" rx="8"/><text class="code-sm" x="156" y="273">DELETE …/posts?id=eq.123</text>
+    <line class="flow" x1="448" y1="268" x2="502" y2="268"/>
+    <rect class="ok" x="510" y="248" width="330" height="40" rx="8"/><text class="code-sm" x="526" y="273">.delete().eq("id", id)</text>
+  </g>
+  <text class="desc" x="40" y="314">SDK'et sender login'et med – så ved databasen, hvem du er.</text>
+</svg>
