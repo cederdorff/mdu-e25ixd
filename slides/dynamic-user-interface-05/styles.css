@@ -145,10 +145,659 @@
   color: var(--dui-yellow);
 }
 
-/* Hvorfor Next.js · tabellerne */
-.reveal .um-why .why-row {
-  padding-top: 12px;
-  padding-bottom: 12px;
+/* Hvorfor Next.js · fælles
+   Farver: server blå · browser/client gul · route grøn · layout violet · UI-state koral */
+.reveal .nx-two > article > span,
+.reveal .nx-tree article > span,
+.reveal .nx-sc-defs span,
+.reveal .nx-cs-head span {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reveal .nx-two > article > span code,
+.reveal .nx-tree article > span code,
+.reveal .nx-sc-defs span code {
+  font-size: 17px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Client og server · hvem bygger HTML'en? */
+.reveal .nx-cs {
+  display: grid;
+  grid-template-rows: auto 1fr 1fr;
+  gap: 18px;
+  height: 450px;
+  margin-top: 30px;
+}
+
+.reveal .nx-cs-head,
+.reveal .nx-cs-lane {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 220px minmax(0, 1fr);
+  gap: 22px;
+}
+
+.reveal .nx-cs-head span:nth-child(3) {
+  text-align: center;
+}
+
+.reveal .nx-cs-head .is-server { color: var(--dui-blue); }
+.reveal .nx-cs-head .is-client { color: var(--dui-yellow); }
+
+.reveal .nx-cs-label {
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  margin: 0 !important;
+}
+
+.reveal .nx-cs-label b {
+  color: var(--ink);
+  font-size: 28px;
+}
+
+.reveal .nx-cs-lane.is-next .nx-cs-label b {
+  color: var(--dui);
+}
+
+.reveal .nx-cs-label small {
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.reveal .nx-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: center;
+  padding: 18px 20px;
+  border-top: 5px solid var(--dui-blue);
+  background: var(--surface);
+}
+
+.reveal .nx-box.is-client {
+  border-color: var(--dui-yellow);
+}
+
+.reveal .nx-box i {
+  padding: 8px 14px;
+  border: 1px solid var(--dui-line);
+  border-radius: 999px;
+  background: var(--dui-soft);
+  color: var(--ink);
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 750;
+}
+
+.reveal .nx-box i.is-idle {
+  border-style: dashed;
+  border-color: var(--line);
+  background: transparent;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.reveal .nx-box em {
+  flex-basis: 100%;
+  color: var(--coral);
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 750;
+}
+
+.reveal .nx-payload {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 2px;
+  text-align: center;
+}
+
+.reveal .nx-payload span {
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.reveal .nx-payload span b {
+  color: var(--ink);
+}
+
+.reveal .nx-payload > b {
+  color: var(--muted);
+  font-size: 40px;
+  line-height: 1;
+}
+
+/* Det, der var bøvlet i React · før og nu rundt om React */
+.reveal .nx-toolbox {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, 1fr);
+  gap: 14px;
+  height: 460px;
+  margin-top: 30px;
+}
+
+.reveal .nx-toolbox > * {
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  padding: 12px 22px;
+  border-top: 4px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.reveal .nx-toolbox > a:hover {
+  border-color: var(--dui);
+}
+
+.reveal .nx-toolbox b {
+  margin-bottom: 2px;
+  color: var(--ink);
+  font-size: 23px;
+}
+
+.reveal .nx-toolbox span {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.reveal .nx-toolbox span.is-now {
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.reveal .nx-toolbox span.is-before::before,
+.reveal .nx-toolbox span.is-now::before {
+  display: inline-block;
+  width: 38px;
+  color: var(--coral);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  content: "Før";
+}
+
+.reveal .nx-toolbox span.is-now::before {
+  color: var(--green);
+  content: "Nu";
+}
+
+.reveal .nx-toolbox .nx-react {
+  grid-row: 2;
+  grid-column: 2;
+  justify-items: center;
+  border: 2px solid var(--dui);
+  background: radial-gradient(circle at 50% 30%, rgb(185 162 255 / 24%), var(--surface) 75%);
+  text-align: center;
+}
+
+.reveal .nx-toolbox .nx-react b {
+  color: var(--dui);
+  font-size: 44px;
+}
+
+.reveal .nx-toolbox .nx-react span {
+  color: var(--ink);
+  font-size: 18px;
+}
+
+/* Projektstruktur */
+.reveal .nx-tree {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  height: 450px;
+  margin-top: 30px;
+}
+
+.reveal .nx-tree article {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 24px;
+  border-top: 5px solid var(--dui);
+  background: var(--surface);
+}
+
+.reveal .nx-tree article:nth-child(2) {
+  border-color: var(--line-strong);
+}
+
+.reveal .nx-tree ul {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .nx-tree li {
+  --c: var(--green);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 5px 0 5px 14px;
+  border-left: 4px solid var(--c);
+}
+
+.reveal .nx-tree li.is-layout { --c: var(--dui); }
+.reveal .nx-tree li.is-state { --c: var(--coral); }
+.reveal .nx-tree li.is-server { --c: var(--dui-blue); }
+.reveal .nx-tree li.is-client { --c: var(--dui-yellow); }
+.reveal .nx-tree li.is-secret { --c: var(--muted); }
+
+.reveal .nx-tree li > code {
+  color: var(--ink);
+  font-size: 19px;
+}
+
+.reveal .nx-tree li small {
+  color: var(--muted);
+  font-size: 17px;
+  text-align: right;
+}
+
+.reveal .nx-tree li small code {
+  color: var(--c);
+}
+
+/* To kolonner · før og nu */
+.reveal .nx-two {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  height: 450px;
+  margin-top: 30px;
+}
+
+.reveal .nx-two > article {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding: 20px 26px;
+  border-top: 5px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.reveal .nx-two > article.is-new {
+  border-color: var(--dui);
+  background: linear-gradient(180deg, var(--dui-soft), var(--surface) 60%);
+}
+
+.reveal .nx-two > article.is-new > span {
+  color: var(--dui);
+}
+
+.reveal .nx-two pre.po-code {
+  flex: 1;
+  margin: 0;
+}
+
+.reveal .nx-two > article > small {
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.reveal #data .nx-two {
+  height: 560px;
+}
+
+.reveal #data .nx-two pre.po-code code,
+.reveal #routing .nx-two pre.po-code code {
+  font-size: 17px;
+}
+
+.reveal .nx-two > article,
+.reveal .nx-layout > *,
+.reveal .nx-meta-out {
+  min-width: 0;
+  min-height: 0;
+}
+
+.reveal .nx-map {
+  display: grid;
+  flex: 1;
+  align-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .nx-map li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px 200px;
+  align-items: center;
+  padding: 11px 16px;
+  border-left: 4px solid var(--green);
+  background: rgb(255 255 255 / 3%);
+}
+
+.reveal .nx-map li > code:first-child {
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.reveal .nx-map li > code:last-child {
+  color: var(--green);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.reveal .nx-map b {
+  color: var(--muted);
+}
+
+.reveal .nx-map li.is-miss {
+  border-color: var(--coral);
+}
+
+.reveal .nx-map li.is-miss span {
+  color: var(--muted);
+  font-size: 19px;
+  font-style: italic;
+}
+
+.reveal .nx-map li.is-miss > code:last-child {
+  color: var(--coral);
+}
+
+.reveal .nx-points {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 22px;
+}
+
+.reveal .nx-points li {
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.reveal .nx-points b {
+  color: var(--ink);
+}
+
+/* Layouts · rammen står, siden skifter */
+.reveal .nx-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 36px;
+  height: 450px;
+  margin-top: 30px;
+}
+
+.reveal .nx-frame {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-deep);
+}
+
+.reveal .nx-frame-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 32px;
+  padding: 0 14px;
+  background: var(--surface);
+}
+
+.reveal .nx-frame-bar i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.reveal .nx-frame-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  background: var(--dui);
+  color: var(--bg);
+}
+
+.reveal .nx-frame-header b {
+  font-size: 24px;
+}
+
+.reveal .nx-frame-header small,
+.reveal .nx-frame-header small code {
+  color: var(--bg);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.reveal .nx-frame-children {
+  display: grid;
+  flex: 1;
+  grid-template-rows: auto 1fr;
+  gap: 12px;
+  margin: 18px;
+  padding: 14px 16px;
+  border: 2px dashed var(--dui-line);
+  border-radius: 10px;
+}
+
+.reveal .nx-frame-children > code {
+  font-size: 18px;
+}
+
+.reveal .nx-pages {
+  display: grid;
+  gap: 10px;
+}
+
+.reveal .nx-pages p {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin: 0 !important;
+  padding: 0 16px;
+  border-left: 4px solid var(--green);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 19px;
+}
+
+.reveal .nx-pages p code {
+  min-width: 100px;
+  color: var(--green);
+}
+
+.reveal .nx-layout-code {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+}
+
+.reveal .nx-layout-code pre.po-code,
+.reveal .nx-two pre.po-code,
+.reveal .nx-meta-out pre.po-code {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 !important;
+}
+
+.reveal .nx-layout-code pre.po-code code {
+  font-size: 18px;
+}
+
+.reveal .nx-layout-code .explain-list {
+  align-content: end;
+}
+
+.reveal .nx-layout-code .explain-list b {
+  display: inline;
+  margin-right: 10px;
+}
+
+/* Server og client · komponenttræet */
+.reveal .nx-sc {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 36px;
+  height: 450px;
+  margin-top: 30px;
+}
+
+.reveal .nx-sc-tree {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  padding: 22px 26px;
+  background: var(--surface);
+}
+
+.reveal .nx-sc-tree p {
+  --c: var(--dui-blue);
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  margin: 0 0 0 calc(var(--d) * 44px) !important;
+  padding: 10px 18px;
+  border-left: 5px solid var(--c);
+  background: rgb(255 255 255 / 3%);
+}
+
+.reveal .nx-sc-tree p.is-client {
+  --c: var(--dui-yellow);
+  background: var(--dui-yellow-soft);
+}
+
+.reveal .nx-sc-tree p > code {
+  color: var(--ink);
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.reveal .nx-sc-tree small {
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.reveal .nx-sc-tree small code {
+  color: var(--c);
+}
+
+.reveal .nx-sc-defs {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+}
+
+.reveal .nx-sc-defs article {
+  --c: var(--dui-blue);
+  padding: 20px 24px;
+  border-top: 5px solid var(--c);
+  background: var(--surface);
+}
+
+.reveal .nx-sc-defs article.is-client {
+  --c: var(--dui-yellow);
+}
+
+.reveal .nx-sc-defs span,
+.reveal .nx-sc-defs span code {
+  color: var(--c);
+}
+
+.reveal .nx-sc-defs p {
+  margin: 8px 0 0 !important;
+  color: var(--ink);
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+/* Metadata · fra kode til fane og søgeresultat */
+.reveal .nx-meta {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.reveal .nx-meta pre.po-code code {
+  font-size: 18px;
+}
+
+.reveal .nx-meta-out {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+}
+
+.reveal .nx-tab {
+  display: flex;
+  gap: 4px;
+  padding: 10px 10px 0;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+  background: var(--bg-deep);
+}
+
+.reveal .nx-tab span {
+  padding: 10px 20px;
+  border-radius: 10px 10px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.reveal .nx-tab span.is-active {
+  border-top: 3px solid var(--dui);
+  background: var(--surface-strong);
+  color: var(--ink);
+  font-weight: 750;
+}
+
+.reveal .nx-serp {
+  display: grid;
+  gap: 4px;
+  padding: 18px 22px;
+  border-left: 4px solid var(--dui-blue);
+  background: var(--surface);
+}
+
+.reveal .nx-serp small {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reveal .nx-serp b {
+  color: var(--dui-blue);
+  font-size: 24px;
+}
+
+.reveal .nx-serp span {
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.reveal .nx-meta-out pre.po-code {
+  margin: 0;
 }
 
 .reveal .um-fn .why-row {

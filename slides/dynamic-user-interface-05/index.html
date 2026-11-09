@@ -55,7 +55,7 @@
             <ol class="agenda-list">
               <li>
                 <a href="#/kap-next"
-                  ><b>Hvorfor Next.js?</b><small>Det, et framework giver dig · filer og funktioner</small
+                  ><b>Hvorfor Next.js?</b><small>Det, der var bøvlet i React · struktur, data og metadata</small
                   ><span class="au-agenda-tasks"></span
                 ></a>
               </li>
@@ -102,16 +102,16 @@
         <section class="chapter po-chapter po-slide" id="kap-next">
           <span class="chapter-index">01</span>
           <span class="eyebrow">Hvorfor Next.js?</span>
-          <h2>Et framework<br />giver dig rammen</h2>
-          <p class="kicker">Du har bygget i Next.js i to uger. Hvad har du egentlig fået forærende?</p>
+          <h2>Fra komponenter<br />til komplette løsninger</h2>
+          <p class="kicker">Det meste af tiden skriver vi stadig bare React — men meget af det bøvlede er løst.</p>
           <dl class="chapter-definition">
             <div>
-              <dt>Library · React i Vite</dt>
-              <dd>Kode, <b>du kalder</b>. Du bestemmer selv, hvordan routing, data og fejl hænger sammen.</dd>
+              <dt>Library · React</dt>
+              <dd>Lærer os at bygge <b>brugergrænseflader</b> af komponenter, props og state. Det er kode, du kalder.</dd>
             </div>
             <div>
               <dt>Framework · Next.js</dt>
-              <dd>En ramme, der <b>kalder din kode</b> — med routing, server og UI-states, der allerede virker.</dd>
+              <dd>Giver os <b>værktøjerne omkring React</b> til at bygge komplette løsninger. Det er en ramme, der kalder din kode.</dd>
             </div>
           </dl>
           <p class="po-source-link">
@@ -121,46 +121,286 @@
           </p>
         </section>
 
-        <section class="po-slide" id="foraerende">
-          <span class="eyebrow">Hvorfor Next.js? · det, du ellers selv skulle bygge</span>
-          <h2>En mappe, en fil eller en funktion</h2>
-          <div class="why-table um-why" role="table" aria-label="Hvad du selv skulle bygge i React og Vite, og hvad Next.js giver dig">
-            <div class="why-row why-head" role="row">
-              <span></span><span>React og Vite · selv</span><span>Next.js · forærende</span>
+        <section class="po-slide" id="faerdig-html">
+          <span class="eyebrow">Hvorfor Next.js? · client og server</span>
+          <h2>Browseren får færdig HTML</h2>
+          <div class="nx-cs">
+            <div class="nx-cs-head" aria-hidden="true">
+              <span></span><span class="is-server">Server</span><span>Response</span><span class="is-client">Browser</span>
             </div>
-            <div class="why-row" role="row">
-              <b>Routing</b><span>Installér React Router, og kobl komponenter til URL'er</span
-              ><span class="is-next">Mapper i <code>app/</code> bliver til routes</span>
+            <div class="nx-cs-lane">
+              <p class="nx-cs-label"><b>React og Vite</b><small>GitHub Pages</small></p>
+              <div class="nx-box is-server">
+                <i class="is-idle">Sender bare filerne</i>
+              </div>
+              <div class="nx-payload"><span>tom <code>index.html</code><br />+ al JavaScript</span><b aria-hidden="true">→</b></div>
+              <div class="nx-box is-client">
+                <i>Kør React</i><i>Find route</i><i>Hent data</i><i>Byg HTML</i>
+                <em>Først nu ser brugeren noget</em>
+              </div>
             </div>
-            <div class="why-row" role="row">
-              <b>Loading</b><span><code>useState</code> og <code>useEffect</code> i hver komponent</span
-              ><span class="is-next"><code>loading.js</code></span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Fejl og 404</b><span>Error boundary og en catch-all-route</span
-              ><span class="is-next"><code>error.js</code> og <code>not-found.js</code></span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Server</b><span>En separat backend til hemmelige nøgler</span
-              ><span class="is-next">Server Components og Server Actions</span>
-            </div>
-            <div class="why-row" role="row">
-              <b>Login</b><span>Sessionen i <code>localStorage</code> — kun browseren kender den</span
-              ><span class="is-next">Sessionen i en cookie, som serveren kan læse</span>
-            </div>
-            <div class="why-row" role="row">
-              <b>SEO</b><span>En tom side, som browseren selv bygger</span
-              ><span class="is-next">Færdig HTML og <code>metadata</code></span>
+            <div class="nx-cs-lane is-next">
+              <p class="nx-cs-label"><b>Next.js</b><small>Node.js · Vercel</small></p>
+              <div class="nx-box is-server">
+                <i>Kør React</i><i>Find route</i><i>Hent data</i><i>Byg HTML</i>
+              </div>
+              <div class="nx-payload"><span><b>færdig HTML</b><br />+ JavaScript til det interaktive</span><b aria-hidden="true">→</b></div>
+              <div class="nx-box is-client">
+                <i class="is-idle">Viser siden med det samme</i><i class="is-idle">Gør knapperne levende</i>
+              </div>
             </div>
           </div>
           <p class="dui-lead-note">
-            <strong>Prisen: frameworkets regler.</strong> Filnavne, mapper og grænsen mellem server og client er
-            bestemt på forhånd — til gengæld ser alle Next.js-projekter ens ud.
+            <strong>Browseren skal ikke sætte det hele op.</strong> Brugeren ser indholdet med det samme — og Google og
+            link previews kan læse det.
+          </p>
+        </section>
+
+        <section class="po-slide" id="foraerende">
+          <span class="eyebrow">Hvorfor Next.js? · værktøjerne omkring React</span>
+          <h2>Det, der var bøvlet i React</h2>
+          <div class="nx-toolbox">
+            <article class="nx-react">
+              <b>React</b>
+              <span>Komponenter, JSX, props, state og events — det skriver du stadig</span>
+            </article>
+            <a href="#/struktur"
+              ><b>Projektstruktur</b><span class="is-before">Hvert projekt har sin egen struktur</span
+              ><span class="is-now">Samme mapper i alle projekter</span></a
+            >
+            <a href="#/routing"
+              ><b>Routing</b><span class="is-before">Installér React Router, og tilføj hver route</span
+              ><span class="is-now">En mappe med en <code>page.js</code></span></a
+            >
+            <a href="#/layouts"
+              ><b>Layouts</b><span class="is-before"><code>&lt;Navbar /&gt;</code> uden for <code>&lt;Routes&gt;</code></span
+              ><span class="is-now"><code>layout.js</code> i mappen</span></a
+            >
+            <a href="#/data"
+              ><b>Data loading</b><span class="is-before"><code>useState</code>, <code>useEffect</code> og en tom liste</span
+              ><span class="is-now"><code>await fetch</code> i komponenten</span></a
+            >
+            <a href="#/server-client"
+              ><b>Server og client</b><span class="is-before"><code>VITE_</code>-nøgler ender i browseren</span
+              ><span class="is-now">Koden bliver på serveren</span></a
+            >
+            <a href="#/filer"
+              ><b>UI-states</b><span class="is-before"><code>isLoading</code> i hver komponent</span
+              ><span class="is-now"><code>loading.js</code> og <code>not-found.js</code></span></a
+            >
+            <a href="#/funktioner"
+              ><b>Fejlhåndtering</b><span class="is-before">Error-state og en catch-all-route</span
+              ><span class="is-now"><code>error.js</code> og <code>notFound()</code></span></a
+            >
+            <a href="#/metadata"
+              ><b>Metadata</b><span class="is-before">Én <code>&lt;title&gt;</code> i <code>index.html</code> til alle sider</span
+              ><span class="is-now"><code>metadata</code> på hver side</span></a
+            >
+          </div>
+          <p class="dui-lead-note">
+            <strong>Prisen: frameworkets regler.</strong> Filnavne, mapper og server/client er bestemt — til gengæld
+            ligner alle projekter hinanden.
+          </p>
+        </section>
+
+        <section class="po-slide" id="struktur">
+          <span class="eyebrow">Hvorfor Next.js? · projektstruktur</span>
+          <h2>Mappen fortæller, hvad appen gør</h2>
+          <div class="nx-tree">
+            <article>
+              <span><code>app/</code> · det, brugeren ser</span>
+              <ul>
+                <li class="is-layout"><code>layout.js</code><small>Rammen om alle sider</small></li>
+                <li class="is-route"><code>page.js</code><small><code>/</code></small></li>
+                <li class="is-route"><code>login/page.js</code><small><code>/login</code></small></li>
+                <li class="is-route"><code>profile/page.js</code><small><code>/profile</code></small></li>
+                <li class="is-route"><code>create/page.js</code><small><code>/create</code></small></li>
+                <li class="is-route"><code>posts/[id]/page.js</code><small><code>/posts/42</code></small></li>
+                <li class="is-route"><code>posts/[id]/update/page.js</code><small><code>/posts/42/update</code></small></li>
+                <li class="is-state"><code>not-found.js</code><small>404 · UI-state</small></li>
+              </ul>
+            </article>
+            <article>
+              <span>Resten · det, siderne bruger</span>
+              <ul>
+                <li class="is-server"><code>components/Header.js</code><small>Server component</small></li>
+                <li class="is-client"><code>components/DeleteButton.js</code><small><code>"use client"</code></small></li>
+                <li class="is-server"><code>lib/supabase/server.js</code><small>Supabase på serveren</small></li>
+                <li class="is-server"><code>lib/actions.js</code><small>Server Actions</small></li>
+                <li class="is-server"><code>proxy.js</code><small>Kører før hver request</small></li>
+                <li class="is-secret"><code>.env.local</code><small>Nøgler, browseren ikke ser</small></li>
+              </ul>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Åbn en kammerats projekt — og find rundt med det samme.</strong> Navnene er ikke en smagssag, de er
+            frameworkets regler.
+          </p>
+        </section>
+
+        <section class="po-slide" id="routing">
+          <span class="eyebrow">Hvorfor Next.js? · routing</span>
+          <h2>Mapper bliver til URL'er</h2>
+          <div class="nx-two">
+            <article>
+              <span>React Router · du skriver kortet</span>
+              <pre class="po-code"><code class="language-jsx">// src/App.jsx
+&lt;Navbar /&gt;
+&lt;Routes&gt;
+  &lt;Route path="/" element={&lt;HomePage /&gt;} /&gt;
+  &lt;Route path="/posts" element={&lt;PostsPage /&gt;} /&gt;
+  &lt;Route path="/about" element={&lt;AboutPage /&gt;} /&gt;
+  &lt;Route path="*" element={&lt;NotFoundPage /&gt;} /&gt;
+&lt;/Routes&gt;</code></pre>
+              <small>Ny side: lav komponenten, importér den, og tilføj en <code>&lt;Route&gt;</code>.</small>
+            </article>
+            <article class="is-new">
+              <span>Next.js · mappen er kortet</span>
+              <ul class="nx-map">
+                <li><code>app/page.js</code><b aria-hidden="true">→</b><code>/</code></li>
+                <li><code>app/profile/page.js</code><b aria-hidden="true">→</b><code>/profile</code></li>
+                <li><code>app/posts/[id]/page.js</code><b aria-hidden="true">→</b><code>/posts/42</code></li>
+                <li><code>app/posts/[id]/update/page.js</code><b aria-hidden="true">→</b><code>/posts/42/update</code></li>
+                <li class="is-miss"><span>ingen fil</span><b aria-hidden="true">→</b><code>not-found.js</code></li>
+              </ul>
+              <small>Ny side: lav en mappe med en <code>page.js</code>. Det er det hele.</small>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong><code>[id]</code> er et dynamisk segment.</strong> Én fil viser alle posts — Next.js giver dig værdien
+            i <code>params</code>.
+          </p>
+          <p class="po-source-link">
+            <a href="https://nextjs.org/docs/app/getting-started/layouts-and-pages" target="_blank" rel="noreferrer"
+              >Next.js: Layouts and Pages ↗</a
+            >
+          </p>
+        </section>
+
+        <section class="po-slide" id="layouts">
+          <span class="eyebrow">Hvorfor Next.js? · layouts</span>
+          <h2>Layoutet bliver stående — siden skifter</h2>
+          <div class="nx-layout">
+            <div class="nx-frame" role="img" aria-label="Headeren fra layout.js står fast, mens siden i children skifter mellem forsiden, et post og profilen">
+              <div class="nx-frame-bar"><i></i><i></i><i></i></div>
+              <div class="nx-frame-header"><b>Header</b><small>fra <code>layout.js</code> · renderes én gang</small></div>
+              <div class="nx-frame-children">
+                <code>{children}</code>
+                <div class="nx-pages">
+                  <p><code>/</code>Explore the latest posts</p>
+                  <p><code>/posts/42</code>Et enkelt post</p>
+                  <p><code>/profile</code>Din profil</p>
+                </div>
+              </div>
+            </div>
+            <div class="nx-layout-code">
+              <pre class="po-code"><code class="language-jsx">// app/layout.js
+export default function RootLayout({ children }) {
+  return (
+    &lt;html lang="en"&gt;
+      &lt;body&gt;
+        &lt;Header /&gt;
+        {children}
+      &lt;/body&gt;
+    &lt;/html&gt;
+  );
+}</code></pre>
+              <div class="explain-list">
+                <p><b><code>children</code></b>er den side, URL'en peger på.</p>
+              </div>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Layouts kan nestes:</strong> En <code>app/posts/layout.js</code> ville kun gælde for posts. I React
+            Router lå <code>&lt;Navbar /&gt;</code> bare uden for <code>&lt;Routes&gt;</code>.
+          </p>
+        </section>
+
+        <section class="po-slide" id="data">
+          <span class="eyebrow">Hvorfor Next.js? · data loading</span>
+          <h2>Hent data direkte i komponenten</h2>
+          <div class="nx-two">
+            <article>
+              <span>React og Vite · <code>PostsPage.jsx</code></span>
+              <pre class="po-code"><code class="language-jsx">export default function PostsPage() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() =&gt; {
+    async function getPosts() {
+      const response = await fetch(URL, { headers });
+      const data = await response.json();
+      setPosts(data);
+    }
+    getPosts();
+  }, []);
+
+  return posts.map((post) =&gt; (
+    &lt;PostCard key={post.id} post={post} /&gt;
+  ));
+}</code></pre>
+              <ul class="nx-points">
+                <li>Første render er en <b>tom liste</b></li>
+                <li><code>VITE_</code>-nøglen ender i browseren</li>
+              </ul>
+            </article>
+            <article class="is-new">
+              <span>Next.js · <code>app/posts/page.js</code></span>
+              <pre class="po-code"><code class="language-jsx">export default async function PostsPage() {
+  const response = await fetch(URL, { headers });
+  const posts = await response.json();
+
+  return posts.map((post) =&gt; (
+    &lt;PostCard key={post.id} post={post} /&gt;
+  ));
+}</code></pre>
+              <ul class="nx-points">
+                <li>Samme <code>fetch</code> — uden <code>useState</code> og <code>useEffect</code></li>
+                <li>Kører på serveren — <b>HTML'en har posts</b></li>
+                <li>Nøglen bliver på serveren</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="po-slide" id="server-client">
+          <span class="eyebrow">Hvorfor Next.js? · server og client components</span>
+          <h2>Server er standard — client ved klik</h2>
+          <div class="nx-sc">
+            <div class="nx-sc-tree" role="img" aria-label="Komponenttræet for /posts/42: layout, Header, AuthStatus, page og UserBadge er server components. Kun DeleteButton er en client component.">
+              <p class="is-server" style="--d: 0"><code>layout.js</code></p>
+              <p class="is-server" style="--d: 1"><code>Header</code></p>
+              <p class="is-server" style="--d: 2"><code>AuthStatus</code><small>læser login-cookien</small></p>
+              <p class="is-server" style="--d: 1"><code>page.js</code><small><code>/posts/42</code> · henter post'et</small></p>
+              <p class="is-server" style="--d: 2"><code>UserBadge</code></p>
+              <p class="is-client" style="--d: 2"><code>DeleteButton</code><small><code>"use client"</code></small></p>
+            </div>
+            <div class="nx-sc-defs">
+              <article class="is-server">
+                <span>Server component · standard</span>
+                <p>Kan være <code>async</code> og hente data. Koden bliver på serveren — browseren får kun HTML'en.</p>
+              </article>
+              <article class="is-client">
+                <span>Client component · <code>"use client"</code></span>
+                <p><code>onClick</code>, <code>useState</code> og browser-API'er som <code>window.confirm</code>.</p>
+              </article>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Kun <code>DeleteButton</code> har <code>"use client"</code></strong> — fordi
+            <code>window.confirm</code> kun findes i browseren. Koden i resten sendes aldrig til browseren.
+          </p>
+          <p class="po-source-link">
+            <a
+              href="https://nextjs.org/docs/app/getting-started/server-and-client-components"
+              target="_blank"
+              rel="noreferrer"
+              >Next.js: Server and Client Components ↗</a
+            >
           </p>
         </section>
 
         <section class="po-slide" id="filer">
-          <span class="eyebrow">Hvorfor Next.js? · filkonventioner i <code>app/</code></span>
+          <span class="eyebrow">Hvorfor Next.js? · filkonventioner og UI-states</span>
           <h2>Next.js pakker filerne ind i hinanden</h2>
           <div class="um-files">
             <div class="um-nest" role="img" aria-label="layout.js omslutter error.js, som omslutter loading.js, som omslutter not-found.js, som omslutter page.js">
@@ -197,7 +437,7 @@
         </section>
 
         <section class="po-slide" id="funktioner">
-          <span class="eyebrow">Hvorfor Next.js? · funktionerne til filerne</span>
+          <span class="eyebrow">Hvorfor Next.js? · fejlhåndtering og adgang</span>
           <h2>Kald en funktion — få en fil</h2>
           <div class="why-table um-fn" role="table" aria-label="Funktioner i Next.js og de filer, de viser">
             <div class="why-row why-head" role="row">
@@ -224,6 +464,49 @@
             <a href="https://nextjs.org/docs/app/getting-started/error-handling" target="_blank" rel="noreferrer">Next.js: Error handling ↗</a>
             ·
             <a href="https://nextjs.org/docs/app/api-reference/functions/redirect" target="_blank" rel="noreferrer">redirect ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="metadata">
+          <span class="eyebrow">Hvorfor Next.js? · metadata</span>
+          <h2>Hver side får sin egen titel</h2>
+          <div class="nx-two nx-meta">
+            <article class="is-new">
+              <span>Du skriver · i <code>layout.js</code> eller <code>page.js</code></span>
+              <pre class="po-code"><code class="language-jsx">// app/layout.js — gælder for alle sider
+export const metadata = {
+  title: "Post App",
+  description: "A Next.js app with posts …",
+};
+
+// app/profile/page.js — overskriver titlen
+export const metadata = {
+  title: "Profile",
+};</code></pre>
+            </article>
+            <div class="nx-meta-out">
+              <div class="nx-tab" aria-hidden="true">
+                <span class="is-active">Profile</span><span>Post App</span>
+              </div>
+              <div class="nx-serp">
+                <small>Søgeresultat · forsiden</small>
+                <b>Post App</b>
+                <span>A Next.js app with posts, users and Supabase Auth</span>
+              </div>
+              <pre class="po-code code-sm"><code class="language-html">&lt;head&gt;
+  &lt;title&gt;Profile&lt;/title&gt;
+  &lt;meta name="description" content="…"&gt;
+&lt;/head&gt;</code></pre>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Det står i HTML'en fra serveren.</strong> I React og Vite fik alle sider den samme
+            <code>&lt;title&gt;</code> fra <code>index.html</code>.
+          </p>
+          <p class="po-source-link">
+            <a href="https://nextjs.org/docs/app/getting-started/metadata-and-og-images" target="_blank" rel="noreferrer"
+              >Next.js: Metadata ↗</a
+            >
           </p>
         </section>
 

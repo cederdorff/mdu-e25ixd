@@ -4,7 +4,7 @@
 
 I dag får I så meget tid som muligt til jeres projekt. Dagen er delt i to: Først et oplæg med demo, derefter vejledning og projektarbejde.
 
-I oplægget zoomer vi først ud: Hvorfor Next.js – hvad får du forærende, når du bruger et framework? Derefter viser jeg den færdige app i én samlet demo: Posts har en ejer, kun ejeren kan rette og slette – i appen og i databasen – og en admin kan mere end en almindelig bruger. Bagefter kigger vi på mønstrene bag som fire spørgsmål: Hvem er logget ind? Hvem ejer post'et? Må de rette det? Er de admin? Relationen kender I fra Post App: Et post er lavet af én user. Det nye er, at den, der er logget ind, er en række i `users`.
+I oplægget zoomer vi først ud: Hvorfor Next.js – hvad var bøvlet i React, og hvad løser frameworket for dig? Derefter viser jeg den færdige app i én samlet demo: Posts har en ejer, kun ejeren kan rette og slette – i appen og i databasen – og en admin kan mere end en almindelig bruger. Bagefter kigger vi på mønstrene bag som fire spørgsmål: Hvem er logget ind? Hvem ejer post'et? Må de rette det? Er de admin? Relationen kender I fra Post App: Et post er lavet af én user. Det nye er, at den, der er logget ind, er en række i `users`.
 
 <img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-datamodel.webp" alt="Tre tabeller: Login i Supabase Auth, users og posts fra Post App. Login og users har samme id. posts.userId peger på users.id." style="max-width: 100%; margin: 0.75rem 0;">
 
@@ -29,13 +29,15 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er. Overvej, om I kan b
 ### Del 1 · Oplæg og demo
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>1. Hvorfor Next.js? Det, et framework giver dig</strong></summary>
+<summary><strong>1. Hvorfor Next.js? Fra komponenter til komplette løsninger</strong></summary>
 <ul>
-<li>Et framework er ikke bare kode, du kalder. Det kommer med funktionalitet, der allerede virker, og kalder selv din kode på de rigtige tidspunkter – <em>inversion of control</em> fra 26. oktober.</li>
-<li>Hvad skulle du selv bygge i React og Vite? Routing med React Router, loading-state med <code>useState</code> og <code>useEffect</code>, fejlhåndtering, en 404-side, en server til hemmelige nøgler og login og HTML, som søgemaskiner kan læse. I Next.js er det en mappe, en fil eller en funktion.</li>
-<li>Filkonventionerne i <code>app/</code>: <code>page.js</code>, <code>layout.js</code>, <code>loading.js</code>, <code>error.js</code> og <code>not-found.js</code>. Next.js pakker dem ind i hinanden, så header og footer står, når siden loader eller fejler.</li>
-<li>Funktionerne, der passer til filerne: <code>notFound()</code> viser <code>not-found.js</code>, en fejl, du kaster, viser <code>error.js</code>, og <code>redirect()</code> sender brugeren videre. I dag bruger vi <code>redirect()</code>, når brugeren ikke må se en side.</li>
-<li>Prisen: Du skal følge frameworkets regler. Til gengæld ser alle Next.js-projekter ens ud.</li>
+<li>React lærer os at bygge brugergrænseflader. Next.js giver os værktøjerne omkring React til at bygge komplette løsninger – og det meste af tiden skriver vi stadig bare React. Frameworket kalder selv din kode på de rigtige tidspunkter – <em>inversion of control</em> fra 26. oktober.</li>
+<li>Client og server: I React og Vite får browseren en tom <code>index.html</code> og skal selv køre React, finde routen, hente data og bygge HTML'en. I Next.js gør serveren det, og browseren får færdig HTML.</li>
+<li>Det, der var bøvlet i React: projektstruktur, routing med React Router, layouts, data med <code>useState</code> og <code>useEffect</code>, nøgler i browseren, loading- og fejl-states og én <code>&lt;title&gt;</code> til alle sider. I Next.js er det en mappe, en fil eller en funktion.</li>
+<li>Mapper i <code>app/</code> bliver til URL'er, <code>layout.js</code> bliver stående, når siden skifter, og <code>await fetch</code> virker direkte i komponenten. Server components er standard – kun det interaktive får <code>"use client"</code>.</li>
+<li>Filkonventionerne <code>loading.js</code>, <code>error.js</code> og <code>not-found.js</code> pakkes ind i hinanden. <code>notFound()</code> og <code>redirect()</code> viser den rigtige fil eller sender brugeren videre – i dag bruger vi <code>redirect()</code>, når brugeren ikke må se en side.</li>
+<li><code>metadata</code> giver hver side sin egen titel og beskrivelse i HTML'en.</li>
+<li>Prisen: Du skal følge frameworkets regler. Til gengæld ligner alle Next.js-projekter hinanden.</li>
 </ul>
 </details>
 
