@@ -95,6 +95,10 @@ Opret en ny bruger med dit navn på `/signup`, og åbn `/profile`.
 
 **Tjek:** `/profile` viser dit navn. I Supabase har du samme id under _Authentication → Users_ og i _Table Editor → users_.
 
+Åbn _Database → Schema Visualizer_ i Supabase. Linjerne viser relationerne: `posts.userId` peger på `users.id`, og `users.id` peger på login'et i `auth.users`.
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/supabase-schema-visualizer-users-posts.webp" alt="Schema Visualizer i Supabase. posts.userId er forbundet til users.id, og users.id er forbundet til auth.users.id." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
+
 ### 1.5 Find det, der mangler
 
 Appen virker – men den er ikke sikker. Prøv selv:
