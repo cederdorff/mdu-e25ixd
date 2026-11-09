@@ -645,26 +645,16 @@ const isOwner = profile?.id === post.userId;
         <section class="po-slide" id="rls">
           <span class="eyebrow">Row Level Security · ét klik</span>
           <h2>Reglerne ligger klar — du tænder dem</h2>
-          <div class="code-explain">
-            <div>
-              <span class="code-label">Supabase · <em>Authentication → Policies</em></span>
-              <div class="um-policy">
-                <header>posts · fra setup.sql</header>
-                <p><span>Læs</span><code>Everyone can read posts</code></p>
-                <p><span>Opret</span><code>Users can create posts as themselves</code></p>
-                <p><span>Ret</span><code>Owners can update their posts</code></p>
-                <p><span>Ret</span><code>Admins can update all posts</code></p>
-                <p><span>Slet</span><code>Owners can delete their posts</code></p>
-                <p><span>Slet</span><code>Admins can delete all posts</code></p>
-                <p class="is-rule"><span>Knappen</span><code>Enable RLS</code></p>
-              </div>
-            </div>
-            <div class="explain-list">
-              <p><b>Reglerne ligger klar</b><code>setup.sql</code> har lavet dem. Du skal ikke skrive dem.</p>
-              <p><b>Policy</b>Én regel for én handling — læs, opret, ret eller slet.</p>
-              <p><b><em>Enable RLS</em></b>Ét klik pr. tabel. Først nu gælder reglerne.</p>
-              <p><b>For alle requests</b>Fra appen, fra Thunder Client — og fra alle med din publishable key.</p>
-            </div>
+          <span class="code-label">Supabase · <em>Database → Policies</em></span>
+          <figure class="um-shot is-policies">
+            <img src="../assets/supabase-policies-posts.webp" alt="Database, Policies i Supabase. Tabellen posts med seks policies: Admins can delete all posts, Admins can update all posts, Everyone can read posts, Owners can delete their posts, Owners can update their posts og Users can create posts as themselves. Øverst til højre står knappen Disable RLS, fordi RLS er slået til." />
+            <figcaption>RLS er slået til — derfor står der <em>Disable RLS</em></figcaption>
+          </figure>
+          <div class="explain-list um-explain-row">
+            <p><b>Reglerne ligger klar</b><code>setup.sql</code> har lavet dem. Du skal ikke skrive dem.</p>
+            <p><b>Policy</b>Én regel for én handling — læs, opret, ret eller slet.</p>
+            <p><b><em>Enable RLS</em></b>Ét klik pr. tabel. Først nu gælder reglerne.</p>
+            <p><b>For alle requests</b>Fra appen, fra Thunder Client — og fra alle med din publishable key.</p>
           </div>
           <p class="po-source-link">
             <a href="https://supabase.com/docs/guides/database/postgres/row-level-security" target="_blank" rel="noreferrer"
@@ -738,6 +728,24 @@ const canEdit = isOwner || isAdmin;
           <p class="dui-lead-note">
             <strong>Reglerne til admins ligger klar i <code>setup.sql</code>.</strong> Rollen kan kun ændres i
             <em>Table Editor</em> — ikke fra appen.
+          </p>
+        </section>
+
+        <section class="po-slide" id="admin-posts">
+          <span class="eyebrow">Roller · samme post, to roller</span>
+          <h2>Maria som <code>user</code> — og som <code>admin</code></h2>
+          <div class="um-shot-pair">
+            <figure class="um-shot">
+              <img src="../assets/user-management-app-andens-post.webp" alt="Rasmus' post, logget ind som Maria med rollen user. Ingen Edit- eller Delete-knapper." />
+              <figcaption><b class="is-no"><code>role</code>: user</b> · ikke ejeren · ingen knapper</figcaption>
+            </figure>
+            <figure class="um-shot">
+              <img src="../assets/user-management-app-admin-post.webp" alt="Rasmus' post, logget ind som Maria med rollen admin. Under teksten står knapperne Edit og Delete." />
+              <figcaption><b class="is-yes"><code>role</code>: admin</b> · <code>canEdit</code> er <code>true</code> · <em>Edit</em> og <em>Delete</em></figcaption>
+            </figure>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Samme side, samme post.</strong> Kun <code>role</code> i Marias række i <code>users</code> er ændret.
           </p>
         </section>
 

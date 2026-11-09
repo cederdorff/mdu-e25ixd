@@ -846,3 +846,24 @@
 .reveal #kap-demo .chapter-definition {
   margin-top: 0 !important;
 }
+
+.reveal .um-shot.is-policies {
+  margin: 0;
+}
+
+#rls > .code-label {
+  display: block;
+  margin-top: 26px;
+}
+
+#rls .um-shot.is-policies {
+  max-width: 1100px;
+  margin: 8px 0 0;
+}
+
+.reveal .explain-list.um-explain-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}

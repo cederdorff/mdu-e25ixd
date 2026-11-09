@@ -291,7 +291,7 @@ Din app er ikke den eneste vej til databasen. Din publishable key er offentlig �
 
 Databasen kan selv have regler for, hvem der må hvad. Det hedder **Row Level Security** (RLS), og hver regel er en **policy**. `setup.sql` har allerede lavet reglerne – de er bare ikke slået til.
 
-Åbn _Authentication → Policies_ i Supabase, og find dem:
+Åbn _Database → Policies_ i Supabase, og find dem:
 
 | Tabel | Policy | Betyder |
 | --- | --- | --- |
@@ -310,6 +310,8 @@ Databasen kan selv have regler for, hvem der må hvad. Det hedder **Row Level Se
 Klik på _Enable RLS_ ved `posts` og ved `users`.
 
 **Tjek:** Appen virker som før. _Table Editor_ viser ikke længere **UNRESTRICTED**.
+
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/supabase-policies-posts.webp" alt="Database, Policies i Supabase. Tabellen posts med seks policies og knappen Disable RLS, fordi RLS er slået til." style="max-width: 100%; margin: 0.75rem 0; border: 1px solid #ddd; border-radius: 6px;">
 
 ### 4.3 Prøv igen
 
