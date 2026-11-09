@@ -289,12 +289,13 @@
             <aside class="um-demo-setup">
               <span>Branch</span><code>main</code>
               <span>Supabase</span><code>setup.sql</code>
+              <span>Login</span><code>maria@example.com</code><code>postapp123</code>
               <a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts" target="_blank" rel="noreferrer">nextjs-supabase-posts ↗</a>
             </aside>
             <ol class="um-demo-steps">
               <li><b>Kør <code>setup.sql</code> i SQL Editor</b><span>Én fil sætter hele databasen op — ingen SQL at skrive</span></li>
               <li><b>Opret en bruger med navn på <code>/signup</code></b><span>Den kommer i <em>Authentication</em> og i <code>users</code> — med samme <code>id</code></span></li>
-              <li><b>Log ind som en anden, og opret et post</b><span>Forfatteren er altid den samme — det faste <code>CURRENT_USER_ID</code></span></li>
+              <li><b>Log ind som Maria, og opret et post</b><span>Forfatteren er altid den samme — det faste <code>CURRENT_USER_ID</code></span></li>
               <li><b>Log ud, åbn et post, og klik på <em>Edit</em></b><span>Alle kan rette og slette alt — også uden login</span></li>
             </ol>
           </div>
@@ -523,8 +524,8 @@ const isOwner = profile?.id === post.userId;
               <span>Branch</span><code>opgave-03-kun-ejeren</code>
             </aside>
             <ol class="um-demo-steps">
-              <li><b>Log ind som en anden bruger</b><span><em>Edit</em> og <em>Delete</em> er væk på mine posts</span></li>
-              <li><b>Tilføj <code>/update</code> til URL'en på mit post</b><span>Siden sender dig tilbage til post'et</span></li>
+              <li><b>Log ind som Maria</b><span><em>Edit</em> og <em>Delete</em> kun på Marias posts</span></li>
+              <li><b>Tilføj <code>/update</code> til URL'en på et af Rasmus' posts</b><span>Siden sender dig tilbage til post'et</span></li>
               <li class="is-alert"><b>Send en <code>PATCH</code> fra Thunder Client</b><span>Post'et hedder nu <em>Hacked</em>. Din app er ikke den eneste vej til databasen</span></li>
             </ol>
             <div class="um-demo-code">

@@ -62,6 +62,16 @@ Brug dit Supabase-projekt fra 30. oktober. Står det som _Paused_, så klik på 
 
 **Tjek:** Forsiden viser de 10 posts fra Post App med billede og navn.
 
+De 5 brugere fra Post App har et login, så du kan logge ind som dem og teste, hvem der må hvad:
+
+| Bruger | E-mail | Adgangskode |
+| --- | --- | --- |
+| Rasmus Cederdorff | `rasmus@example.com` | `postapp123` |
+| Maria Louise Bendixen | `maria@example.com` | `postapp123` |
+| Birgitte Kirk Iversen | `birgitte@example.com` | `postapp123` |
+| Lars Bøge Eskildsen | `lars@example.com` | `postapp123` |
+| Nikolaj Krogh Kjær-Rasmussen | `nikolaj@example.com` | `postapp123` |
+
 ### 1.3 Fra fetch til Supabase SDK
 
 I Post App hentede og gemte du data med `fetch`. Startprojektet bruger **Supabase SDK'et** – det er det samme, bare kortere. Åbn `app/page.js`, `app/create/page.js` og `app/posts/[id]/page.js`. Over hvert kald står, hvordan det så ud med `fetch`.
@@ -193,7 +203,7 @@ export default async function CreatePage({ searchParams }) {
 
 I `app/posts/[id]/page.js`: Hent profilen, og sammenlign `profile.id` med `post.userId`. Vis kun _Edit_ og _Delete_, når de er ens.
 
-**Tjek:** På dine egne posts ser du knapperne. På de andres – og når du er logget ud – gør du ikke.
+**Tjek:** Log ind som `maria@example.com`. På Marias posts ser du knapperne. På Rasmus' posts – og når du er logget ud – gør du ikke.
 
 <details>
 <summary><strong>Hint</strong></summary>
@@ -209,7 +219,7 @@ const isOwner = profile?.id === post.userId;
 
 ### 3.2 Tjek på serveren
 
-En skjult knap stopper ingen. Åbn et post, du ikke ejer, og tilføj `/update` til URL'en – siden virker stadig. Tilføj samme tjek tre steder:
+En skjult knap stopper ingen. Log ind som Maria, åbn et af Rasmus' posts, og tilføj `/update` til URL'en – siden virker stadig. Tilføj samme tjek tre steder:
 
 1. Øverst på `app/posts/[id]/update/page.js`
 2. I Server Action'en `updatePost`
@@ -302,7 +312,7 @@ Klik på _Enable RLS_ ved `posts` og ved `users`.
 <img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-rls.webp" alt="Den samme request fra Thunder Client. Med RLS slået fra hedder post'et nu Hacked. Med RLS slået til er svaret en tom liste, og post'et er uændret." style="max-width: 100%; margin: 0.75rem 0;">
 
 1. **Uden login:** Send requesten fra 3.3 i Thunder Client igen med `"Hacked again"`. Svaret er `[]`, og post'et er uændret. Databasen sagde nej.
-2. **Logget ind:** Fjern midlertidigt `if`'en i `deletePost`, og vis knapperne for alle (`{true && (...)}`). Prøv at slette et post, du ikke ejer. Det er der stadig – appen lod dig, men databasen sagde nej. Sæt koden tilbage bagefter.
+2. **Logget ind:** Fjern midlertidigt `if`'en i `deletePost`, og vis knapperne for alle (`{true && (...)}`). Log ind som Maria, og prøv at slette et af Rasmus' posts. Det er der stadig – appen lod dig, men databasen sagde nej. Sæt koden tilbage bagefter.
 
 **Tjek:** Du kan forklare, hvorfor du både har tjek i appen og regler i databasen.
 

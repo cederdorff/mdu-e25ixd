@@ -42,7 +42,7 @@ Bagefter bygger I det ind i jeres eget projekt. Har I brug for at prøve det af 
 <details style="margin-left: 1.5rem;">
 <summary><strong>2. Posts får en ejer · demo</strong></summary>
 <ul>
-<li>Startprojektet: Login fra 30. oktober plus <code>users</code> og <code>posts</code> med de samme kolonner som i Post App. Hele databasen kommer fra én fil, <code>setup.sql</code> – ingen SQL at skrive.</li>
+<li>Startprojektet: Login fra 30. oktober plus <code>users</code> og <code>posts</code> med de samme kolonner som i Post App. Hele databasen kommer fra én fil, <code>setup.sql</code> – ingen SQL at skrive. De 5 brugere fra Post App kan logge ind, fx <code>maria@example.com</code> med <code>postapp123</code>.</li>
 <li>Fra <code>fetch</code> til Supabase SDK: <code>supabase.from("posts").select()</code> er det samme som jeres <code>fetch</code> fra Post App – bare kortere. SDK'et sender login'et med.</li>
 <li>To problemer: Nye posts får et fast <code>CURRENT_USER_ID</code>, og alle kan rette og slette alt.</li>
 <li>Den, der er logget ind, er en række i <code>users</code> – med samme <code>id</code> som i login. Ved sign up opretter appen både login'et og rækken i <code>users</code> – et helt almindeligt <code>insert</code>.</li>
