@@ -276,7 +276,7 @@
           <div class="um-demo has-code">
             <aside class="um-demo-setup">
               <span>Værktøj</span><code>Thunder Client</code>
-              <span>Supabase</span><code>Table Editor</code>
+              <span>Supabase</span><code>Database → Policies</code>
             </aside>
             <ol class="um-demo-steps">
               <li class="is-safe"><b>Send en <code>PATCH</code> uden login</b><span>Svaret er <code>[]</code> — post'et er uændret</span></li>
@@ -305,7 +305,7 @@ Prefer: return=representation
             <ol class="um-demo-steps">
               <li><b>Gør mig til admin</b><span><code>role</code> = <code>admin</code> på min række</span></li>
               <li><b>Ret og slet et af de 10 posts fra Post App</b><span><em>Edit</em> og <em>Delete</em> på alle posts</span></li>
-              <li><b>Ret navnet på <code>/profile</code></b><span>Virker. Rollen kan ingen bruger selv ændre</span></li>
+              <li><b>Ret navnet på <code>/profile</code></b><span>Formularen har navn, titel og billede — ikke rolle</span></li>
               <li><b>Log ind som Maria igen</b><span>Hun er <code>user</code> — knapperne kun på sine egne posts</span></li>
             </ol>
           </div>
@@ -360,7 +360,7 @@ Prefer: return=representation
               <p><code>id</code><small>uuid</small></p>
               <p><code>caption</code> · <code>image</code><small>text</small></p>
               <p class="is-new"><code>userId</code><small>den, der er logget ind</small></p>
-              <footer class="is-rls">Alle læser · ejeren ændrer</footer>
+              <footer class="is-rls">Alle læser · ejeren eller en admin ændrer</footer>
             </article>
           </div>
           <p class="dui-lead-note">
@@ -456,7 +456,7 @@ await supabase.from("users").insert({
             <div class="explain-list">
               <p><b><code>getCurrentUser()</code></b>Login'et fra 30. oktober. Id'et står i <code>user.sub</code>.</p>
               <p><b><code>.eq("id", user.sub)</code></b>Samme id i <code>users</code> — et helt almindeligt <code>select</code>.</p>
-              <p><b><code>profile</code></b>Din række: <code>id</code>, <code>name</code>, <code>title</code>, <code>image</code> og <code>role</code>.</p>
+              <p><b><code>profile</code></b>Din række: <code>id</code>, <code>name</code>, <code>mail</code>, <code>title</code>, <code>image</code> og <code>role</code>.</p>
               <p><b>Brug den overalt</b>Resten af dagen spørger vi <code>getCurrentProfile()</code>: Hvem er logget ind?</p>
             </div>
           </div>
@@ -518,7 +518,7 @@ await supabase.from("users").insert({
               <p><b>Væk med <code>CURRENT_USER_ID</code></b>Det faste id fra Post App bliver erstattet af den, der er logget ind.</p>
               <p><b><code>getCurrentProfile()</code> igen</b>En Server Action er sin egen request. Spørg igen — stol ikke på siden.</p>
               <p><b><code>profile.id</code></b>Samme relation som i Post App: <code>posts.userId</code> peger på <code>users.id</code>.</p>
-              <p><b>Aldrig fra formularen</b>Et skjult felt med id'et kan alle ændre. Login'et kan ingen forfalske.</p>
+              <p><b>Aldrig fra formularen</b>Et skjult felt kan alle ændre. <code>profile.id</code> kommer fra login'et i cookien.</p>
             </div>
           </div>
         </section>
@@ -746,9 +746,9 @@ Prefer: return=representation</code></pre>
             <div>
               <span class="code-label">Supabase · <em>Table Editor → users</em></span>
               <div class="um-policy">
-                <header>Din række</header>
-                <p><span>name</span><code>Dig</code></p>
-                <p><span>title</span><code>Student</code></p>
+                <header>Marias række</header>
+                <p><span>name</span><code>Maria Louise Bendixen</code></p>
+                <p><span>title</span><code>Senior Lecturer</code></p>
                 <p class="is-rule"><span>role</span><code>admin</code></p>
               </div>
             </div>
@@ -768,8 +768,8 @@ const canEdit = isOwner || isAdmin;
             </div>
           </div>
           <p class="dui-lead-note">
-            <strong>Reglerne til admins ligger klar i <code>setup.sql</code>.</strong> Rollen kan kun ændres i
-            <em>Table Editor</em> — ikke fra appen.
+            <strong>Rollen kan kun ændres i <em>Table Editor</em>.</strong> <code>setup.sql</code> lader brugerne
+            rette <code>name</code>, <code>title</code> og <code>image</code> — ikke <code>role</code>.
           </p>
         </section>
 
