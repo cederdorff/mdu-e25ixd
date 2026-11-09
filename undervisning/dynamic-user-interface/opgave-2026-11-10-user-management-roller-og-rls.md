@@ -2,35 +2,44 @@
 
 ## Formål
 
-Du bygger videre på login fra 30. oktober i en Next.js-app, der allerede viser posts og users fra Supabase. Login og data hænger bare ikke sammen endnu. Du kobler `users` til `auth.users`, så posts tilhører den bruger, der er logget ind. Derefter beskytter du data, så brugere kun kan ændre deres egne posts, og giver en admin lov til mere.
+Opgaven er en guide til det, du så i demoen. Du bygger videre på login fra 30. oktober i en Next.js-app, der allerede viser posts og users fra Supabase – med de samme kolonner som i Post App. Login og data hænger bare ikke sammen i appen endnu. Du sørger for, at posts tilhører den bruger, der er logget ind. Derefter beskytter du data, så brugere kun kan ændre deres egne posts, og giver en admin lov til mere.
 
-Sådan ser datamodellen ud, når du er færdig:
+Sådan ser datamodellen ud:
 
 ```text
 auth.users                users                          posts
-(Supabase Auth)           id     uuid  PK  <-----------  user_id     uuid  FK
-id     uuid   -------->   name   text                    id          bigint PK
-email  text   trigger     mail   text                    caption     text
-                          title  text                    image       text
-                          image  text                    created_at  timestamptz
+(Supabase Auth)           id     uuid  PK  <-----------  userId     uuid  FK
+id     uuid   -------->   name   text                    id         uuid  PK
+email  text   trigger     mail   text                    createdAt  timestamptz
+                          title  text                    caption    text
+                          image  text                    image      text
                           role   text  (user | admin)
 ```
+
+Kolonnerne er de samme som i Post App. Det nye er, at alle id'er er `uuid`, og at `users.id` er **det samme id** som brugerens login i `auth.users`.
 
 <hr style="margin: 2rem 0;">
 
 ## Sådan bruger du opgaven
 
+Brug guiden, når du har brug for den. Der er to veje:
+
+- **Direkte i jeres projekt:** Følg trinene i jeres egen app, og brug startprojektet som opslag. Opgave 3–7 virker på samme måde, uanset om jeres tabel hedder `posts`, `bookings` eller noget helt tredje.
+- **I startprojektet først:** Vil du se det virke i et lille projekt, før I bygger det ind i jeres eget, så start med opgave 1. Brug dit Supabase-projekt fra 30. oktober – ikke jeres gruppeprojekt, for `setup.sql` sletter og opretter tabellerne `users` og `posts`.
+
+Undervejs:
+
 - Slut hvert trin med **Tjek**.
 - Sidder du fast? Fold **Hint** ud – og **Løsning**, når du har prøvet selv.
 - Commit og push efter hver opgave med Source Control i VS Code eller GitHub Desktop.
-- SQL kører du i **SQL Editor** i Supabase: Indsæt koden, og klik på _Run_.
+- Du skal ikke skrive SQL. Databasen sættes op med én fil, `supabase/setup.sql`, og Row Level Security klikker du sammen i Supabase.
 
 <hr style="margin: 2rem 0;">
 
 ## Oversigt
 
 1. [Hent startprojektet](#opgave-1)
-2. [Kobl users til auth.users](#opgave-2)
+2. [Users og auth.users](#opgave-2)
 3. [Din profil fra users](#opgave-3)
 4. [Opret posts som dig selv](#opgave-4)
 5. [Kun dine egne posts](#opgave-5)
@@ -47,7 +56,7 @@ Sidder du fast? Se [Fejlfinding](#fejlfinding).
 
 ## Opgave 1: Hent startprojektet
 
-**Resultat:** Appen viser 10 posts med deres bruger, og du har fundet de tre ting, der er galt.
+**Resultat:** Appen viser 10 posts med deres bruger, og du har fundet de fire ting, der mangler.
 
 ### 1.1 Dit eget repository
 
@@ -61,32 +70,35 @@ Sidder du fast? Se [Fejlfinding](#fejlfinding).
 
 ### 1.2 Gør Supabase klar
 
-Brug dit Supabase-projekt fra 30. oktober. Så har du allerede brugere i `auth.users`, og _Confirm email_ er slået fra. Står projektet som _Paused_, så klik på _Resume project_.
+Brug dit Supabase-projekt fra 30. oktober. Så har du allerede brugere under _Authentication → Users_, og _Confirm email_ er slået fra. Står projektet som _Paused_, så klik på _Resume project_.
 
 1. Kopiér `.env.example` til `.env.local`, og indsæt URL og publishable key fra **Connect** – ligesom sidst. Du kan også kopiere `.env.local` fra dit projekt fra 30. oktober.
-2. Åbn **SQL Editor** i Supabase. Indsæt hele indholdet af [`supabase/setup.sql`](https://github.com/cederdorff/nextjs-supabase-posts/blob/main/supabase/setup.sql), og klik på _Run_. Spørger Supabase om en _destructive operation_, så klik på _Run this query_. Filen sletter og opretter tabellerne `users` og `posts`.
-3. Kør `npm run dev`, og åbn [http://localhost:3000](http://localhost:3000).
+2. Åbn **SQL Editor** i Supabase. Indsæt hele indholdet af [`supabase/setup.sql`](https://github.com/cederdorff/nextjs-supabase-posts/blob/main/supabase/setup.sql), og klik på _Run_. Spørger Supabase om en _destructive operation_, så klik på _Run this query_. Foreslår Supabase at slå Row Level Security til, så lad være – det gør du selv i opgave 6.
+3. Åbn _Authentication → Users_, og kopiér _User UID_ på en af dine brugere. Indsæt den i `lib/current-user.js` i stedet for `paste-a-user-uid-here`.
+4. Kør `npm run dev`, og åbn [http://localhost:3000](http://localhost:3000).
 
-**Tjek:** Forsiden viser 10 posts med billede, navn og titel. Under _Table Editor_ i Supabase findes `users` og `posts`.
+`setup.sql` sletter og opretter `users` og `posts`, giver alle dine brugere en række i `users` og giver de 10 posts fra Post App til den bruger, der blev oprettet først. Du kan køre den igen, hvis du vil starte forfra.
 
-### 1.3 Find de tre problemer
+**Tjek:** Forsiden viser 10 posts med billede og navn. Under _Table Editor_ i Supabase findes `users` og `posts`.
+
+### 1.3 Find de fire problemer
 
 Appen virker – men den er ikke sikker. Prøv det selv, og svar på spørgsmålene:
 
-1. **Log ind**, og opret et post på `/create`. Hvem står som forfatter? Find svaret i `lib/current-user.js`.
+1. **Log ind** som en anden bruger end den i `lib/current-user.js` – eller opret en ny på `/signup`. Opret et post på `/create`. Hvem står som forfatter?
 2. **Log ud**, åbn et post, og klik på _Edit_. Kan du rette det? Kan du slette det?
 3. **Åbn _Table Editor_** i Supabase. Hvad står der ved `users` og `posts`?
-4. Åbn _Authentication → Users_ og _Table Editor → users_. Findes din egen bruger begge steder?
+4. **Log ind**, og åbn `/profile`. Hvad viser siden – og hvad viser den ikke?
 
 **Tjek:** Du kan svare på de fire spørgsmål.
 
 <details>
 <summary><strong>Løsning</strong></summary>
 
-1. Rasmus Cederdorff – uanset hvem der er logget ind. Alle nye posts får det faste `CURRENT_USER_ID`, ligesom i Post App.
+1. Brugeren i `lib/current-user.js` – uanset hvem der er logget ind. Alle nye posts får det faste `CURRENT_USER_ID`, ligesom i Post App.
 2. Ja. Alle kan rette og slette alle posts, også uden at være logget ind.
 3. **UNRESTRICTED**. Row Level Security er slået fra, så alle med din publishable key kan læse og ændre alt.
-4. Nej. Din bruger findes i `auth.users`, men ikke i `users`. De to tabeller ved ikke noget om hinanden.
+4. Kun din e-mail fra login. Dit navn, din titel og dit billede står i `users`, men profilsiden henter dem ikke.
 
 Det retter du i opgave 2–7.
 
@@ -95,7 +107,8 @@ Det retter du i opgave 2–7.
 **Sidder du fast?**
 
 - **_relation "users" does not exist_ eller tom forside?** Kør hele `supabase/setup.sql` i SQL Editor.
-- **_column posts.created_at does not exist_?** Dit projekt har en gammel `posts`-tabel fra Post App. Kør `supabase/setup.sql`. Den sletter den gamle tabel.
+- **0 posts på forsiden?** Du havde ingen brugere, da du kørte `setup.sql`. Opret en bruger på `/signup`, og kør `setup.sql` igen.
+- **_Could not create the post_?** `lib/current-user.js` mangler en rigtig _User UID_.
 
 **Startprojektet:** [`main`](https://github.com/cederdorff/nextjs-supabase-posts/tree/main)
 
@@ -103,9 +116,9 @@ Det retter du i opgave 2–7.
 
 <a id="opgave-2"></a>
 
-## Opgave 2: Kobl users til auth.users
+## Opgave 2: Users og auth.users
 
-**Resultat:** Når nogen opretter en bruger, får de automatisk en række i `users` med samme `id` som i `auth.users`.
+**Resultat:** Du ved, hvordan `users` hænger sammen med `auth.users`, og nye brugere får deres navn med fra sign up.
 
 ### 2.1 To tabeller med navnet users
 
@@ -114,17 +127,24 @@ Supabase har to tabeller med samme navn i hvert sit _schema_:
 | | `auth.users` | `users` (`public.users`) |
 | --- | --- | --- |
 | Hvem ejer den? | Supabase Auth | Dig |
-| Hvad står der? | E-mail, adgangskode (krypteret), sidste login | Navn, titel, billede – det, appen viser |
+| Hvad står der? | E-mail, adgangskode (krypteret), sidste login | Navn, titel, billede, rolle – det, appen viser |
 | Hvor ser du den? | _Authentication → Users_ | _Table Editor_ |
 | Kan appen læse den? | Nej | Ja |
 
-Appen kan ikke hente andre brugeres navne fra `auth.users`. Derfor gemmer vi dem i `users`. Koblingen er, at en bruger har **samme `id`** i begge tabeller.
+Appen kan ikke hente andre brugeres navne fra `auth.users`. Derfor gemmer vi dem i `users`. Koblingen er, at en bruger har **samme `id`** i begge tabeller. I appen står id'et i `user.sub`.
 
-**Tjek:** Find din egen bruger under _Authentication → Users_, og kopiér dens _User UID_. Den findes ikke i `users` endnu.
+**Tjek:** Find din egen bruger under _Authentication → Users_. Find så rækken i _Table Editor → users_ med det samme `id`.
 
 ### 2.2 En trigger opretter rækken
 
-En **trigger** er kode, som databasen selv kører, når noget sker. Vi vil have: Når en række oprettes i `auth.users`, så opret en række i `users` med samme `id`. Kør i SQL Editor:
+Hvordan kommer nye brugere ind i `users`? `setup.sql` har lavet en **trigger**: kode, som databasen selv kører, når noget sker. Hver gang nogen opretter en bruger, opretter triggeren en række i `users` med samme `id`, navnet fra sign up og e-mailen som `mail`.
+
+Du skal ikke skrive den – den findes allerede. Den virker, uanset om brugeren bliver oprettet fra din app eller i Supabase.
+
+**Tjek:** Opret en ny bruger på `/signup`. Under _Table Editor → users_ står der nu en ny række, og dens `id` er det samme som _User UID_ under _Authentication → Users_.
+
+<details>
+<summary><strong>Se triggeren i setup.sql</strong></summary>
 
 ```sql
 CREATE FUNCTION public.handle_new_user()
@@ -148,21 +168,15 @@ CREATE TRIGGER on_auth_user_created
     FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 ```
 
-<details>
-<summary><strong>Sådan læser du SQL'en</strong></summary>
-
-- `CREATE FUNCTION` laver en funktion i databasen. `CREATE TRIGGER` kører den `AFTER INSERT ON auth.users` – efter hver ny bruger.
-- `NEW` er den nye række i `auth.users`. `NEW.id` bliver til `users.id`, og `NEW.email` bliver til `mail`.
-- `raw_user_meta_data ->> 'name'` er det navn, appen sender med ved sign up (2.3). `COALESCE` bruger det første, der ikke er tomt: navnet – eller delen af e-mailen før `@`.
-- `SECURITY DEFINER` betyder, at funktionen kører med databasens rettigheder. Den må altså oprette rækken, selv når Row Level Security er slået til i opgave 6.
+- `AFTER INSERT ON auth.users`: Kør efter hver ny bruger.
+- `NEW` er den nye bruger. `NEW.id` bliver til `users.id`, og `NEW.email` bliver til `mail`.
+- `raw_user_meta_data ->> 'name'` er det navn, appen sender med ved sign up (2.3). Mangler det, bruges delen af e-mailen før `@`.
 
 </details>
 
-**Tjek:** Opret en ny bruger på `/signup`. Under _Table Editor → users_ står der nu en ny række, og dens `id` er det samme som _User UID_ under _Authentication → Users_.
-
 ### 2.3 Navn ved sign up
 
-Lige nu får nye brugere delen af e-mailen før `@` som navn. Tilføj et felt til navnet i formularen på `/signup`, og send det med til Supabase. Alt i `options.data` bliver gemt som `raw_user_meta_data` på brugeren – og det er der, triggeren læser navnet.
+Lige nu får nye brugere delen af e-mailen før `@` som navn. Tilføj et felt til navnet i formularen på `/signup`, og send det med til Supabase. Alt i `options.data` bliver gemt på brugeren i `auth.users` – og det er der, triggeren læser navnet.
 
 **Tjek:** Opret endnu en bruger med et navn. Navnet står i `users`.
 
@@ -200,27 +214,7 @@ const { error } = await supabase.auth.signUp({ email, password, options: { data:
 
 </details>
 
-### 2.4 Brugerne fra før triggeren
-
-Triggeren kører kun for **nye** brugere. Dem, du oprettede 30. oktober, har stadig ingen række i `users`. Kopiér dem én gang:
-
-```sql
-INSERT INTO public.users (id, name, mail)
-SELECT id, split_part(email, '@', 1), email
-FROM auth.users
-ON CONFLICT (id) DO NOTHING;
-```
-
-`ON CONFLICT (id) DO NOTHING` springer de brugere over, der allerede har en række.
-
-**Tjek:** Alle brugere under _Authentication → Users_ har nu en række i `users` med samme `id`. De 5 brugere fra startprojektet ligger der stadig. De findes ikke i `auth.users`, så ingen kan logge ind som dem.
-
-**Sidder du fast?**
-
-- **_function public.handle_new_user already exists_?** Du har kørt SQL'en før. Triggeren findes altså allerede.
-- **_Database error saving new user_ ved sign up?** Triggeren fejler. Tjek, at tabellen `users` findes, og at du har kørt hele SQL'en fra 2.2.
-
-**Løsning:** [Kobl users til auth.users](https://github.com/cederdorff/nextjs-supabase-posts/compare/main...opgave-02-kobl-users) · [branchen `opgave-02-kobl-users`](https://github.com/cederdorff/nextjs-supabase-posts/tree/opgave-02-kobl-users)
+**Løsning:** [Navn ved sign up](https://github.com/cederdorff/nextjs-supabase-posts/compare/main...opgave-02-kobl-users) · [branchen `opgave-02-kobl-users`](https://github.com/cederdorff/nextjs-supabase-posts/tree/opgave-02-kobl-users)
 
 <hr style="margin: 2rem 0;">
 
@@ -232,7 +226,7 @@ ON CONFLICT (id) DO NOTHING;
 
 ### 3.1 Hent din række i users
 
-`getCurrentUser()` giver dig brugeren fra sessionen. Id'et står i `user.sub`. Tilføj en ny funktion i `lib/auth.js`, `getCurrentProfile()`, der henter rækken i `users` med det id.
+`getCurrentUser()` giver dig brugeren fra sessionen. Id'et står i `user.sub` – og det er det samme som `id` i `users`. Tilføj en ny funktion i `lib/auth.js`, `getCurrentProfile()`, der henter rækken i `users` med det id.
 
 <details>
 <summary><strong>Hint</strong></summary>
@@ -259,16 +253,16 @@ export async function getCurrentProfile() {
   const supabase = await createClient();
   const { data } = await supabase.from("users").select("*").eq("id", user.sub).maybeSingle();
 
-  // Logged in, but no row in users: the user signed up before the trigger existed
+  // Logged in, but no row in users: the user signed up before setup.sql was run
   if (!data) {
-    throw new Error(`No row in users with id ${user.sub}. Copy the existing users from auth.users (task 2.4).`);
+    throw new Error(`No row in users with id ${user.sub}. Run supabase/setup.sql again.`);
   }
 
   return data;
 }
 ```
 
-Fejlen hjælper dig, hvis du har sprunget 2.4 over. Uden den ville `/profile` sende dig til `/login`, og `/login` sende dig tilbage igen.
+Fejlen hjælper dig, hvis din bruger mangler en række i `users`. Uden den ville `/profile` sende dig til `/login`, og `/login` sende dig tilbage igen.
 
 </details>
 
@@ -372,9 +366,9 @@ export default async function ProfilePage() {
 
 ### 4.1 Væk med CURRENT_USER_ID
 
-Slet `lib/current-user.js`. I `app/create/page.js` henter Server Action'en i stedet brugeren med `getCurrentUser()` og bruger `user.sub` som `user_id`.
+Slet `lib/current-user.js`. I `app/create/page.js` henter Server Action'en i stedet brugeren med `getCurrentUser()` og bruger `user.sub` som `userId`.
 
-**Tjek:** Opret et post. Dit navn står på det på forsiden. Ret dit navn på `/profile`, og se det skifte på alle dine posts – samme relation som i Case 1.
+**Tjek:** Opret et post. Dit navn står på det på forsiden. Ret dit navn på `/profile`, og se det skifte på alle dine posts – samme relation som i Post App.
 
 ### 4.2 Kræv login
 
@@ -403,7 +397,7 @@ async function createPost(formData) {
   const { error } = await supabase.from("posts").insert({
     caption: formData.get("caption").trim(),
     image: formData.get("image").trim(),
-    user_id: user.sub,
+    userId: user.sub,
   });
 
   if (error) {
@@ -431,7 +425,6 @@ export default async function CreatePage({ searchParams }) {
 **Sidder du fast?**
 
 - **_Module not found: @/lib/current-user_?** Fjern importen af `CURRENT_USER_ID` øverst i `app/create/page.js`.
-- **_insert or update on table "posts" violates foreign key constraint_?** Din bruger har ingen række i `users`. Kør SQL'en fra 2.4.
 
 **Løsning:** [Opret posts som dig selv](https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-03-profil...opgave-04-opret-posts) · [branchen `opgave-04-opret-posts`](https://github.com/cederdorff/nextjs-supabase-posts/tree/opgave-04-opret-posts)
 
@@ -445,7 +438,7 @@ export default async function CreatePage({ searchParams }) {
 
 ### 5.1 Skjul knapperne
 
-I `app/posts/[id]/page.js`: Hent brugeren, og sammenlign `user.sub` med `post.user_id`. Vis kun formularen med _Edit_ og _Delete_, når de er ens.
+I `app/posts/[id]/page.js`: Hent brugeren, og sammenlign `user.sub` med `post.userId`. Vis kun formularen med _Edit_ og _Delete_, når de er ens.
 
 **Tjek:** På dine egne posts ser du knapperne. På de andres – og når du er logget ud – gør du ikke.
 
@@ -454,7 +447,7 @@ I `app/posts/[id]/page.js`: Hent brugeren, og sammenlign `user.sub` med `post.us
 
 ```jsx
 const user = await getCurrentUser();
-const isOwner = user?.sub === post.user_id;
+const isOwner = user?.sub === post.userId;
 ```
 
 `?.` giver `undefined` i stedet for en fejl, når `user` er `null`. Pak formularen ind i `{isOwner && (...)}`.
@@ -463,13 +456,13 @@ const isOwner = user?.sub === post.user_id;
 
 ### 5.2 Tjek på serveren
 
-En skjult knap stopper ingen. Kopiér URL'en til `/posts/1/update`, og åbn den – den virker stadig. Tilføj samme tjek tre steder:
+En skjult knap stopper ingen. Log ind som en bruger, der ikke ejer et post. Åbn post'et, og tilføj `/update` til URL'en – siden virker stadig. Tilføj samme tjek tre steder:
 
 1. Øverst på `app/posts/[id]/update/page.js`: Send til `/posts/[id]`, hvis brugeren ikke ejer post'et.
 2. I Server Action'en `updatePost`.
 3. I Server Action'en `deletePost`.
 
-**Tjek:** `/posts/1/update` sender dig tilbage til post'et. Dine egne posts kan du stadig rette og slette.
+**Tjek:** `/update` på et post, du ikke ejer, sender dig tilbage til post'et. Dine egne posts kan du stadig rette og slette.
 
 <details>
 <summary><strong>Løsning</strong></summary>
@@ -479,7 +472,7 @@ I `deletePost` og `updatePost` – og øverst på update-siden:
 ```js
 const user = await getCurrentUser();
 
-if (user?.sub !== post.user_id) {
+if (user?.sub !== post.userId) {
   redirect(`/posts/${id}`);
 }
 ```
@@ -501,10 +494,10 @@ Knappen på detaljesiden:
 
 ### 5.3 Er data nu beskyttet?
 
-Din app tjekker brugeren – men din app er ikke den eneste vej til databasen. Din publishable key er offentlig: Den må gerne ligge i browseren. Prøv selv. Åbn udviklerværktøjerne på [http://localhost:3000](http://localhost:3000), og kør i _Console_ – med din egen URL og key fra `.env.local`:
+Din app tjekker brugeren – men din app er ikke den eneste vej til databasen. Din publishable key er offentlig: Den må gerne ligge i browseren. Prøv selv. Åbn et post, og kopiér id'et fra URL'en. Åbn udviklerværktøjerne, og kør i _Console_ – med din egen URL og key fra `.env.local` og id'et på post'et:
 
 ```js
-const response = await fetch("https://<dit-projekt>.supabase.co/rest/v1/posts?id=eq.1", {
+const response = await fetch("https://<dit-projekt>.supabase.co/rest/v1/posts?id=eq.<post-id>", {
   method: "PATCH",
   headers: {
     apikey: "sb_publishable_...",
@@ -517,7 +510,7 @@ const response = await fetch("https://<dit-projekt>.supabase.co/rest/v1/posts?id
 await response.json();
 ```
 
-**Tjek:** Post 1 hedder nu _Hacked_ på forsiden – uden login og uden om alle dine tjek. Det løser du i opgave 6. Gem koden i _Console_, så du kan køre den igen.
+**Tjek:** Post'et hedder nu _Hacked_ på forsiden – uden login og uden om alle dine tjek. Det løser du i opgave 6. Gem koden i _Console_, så du kan køre den igen.
 
 **Løsning:** [Kun dine egne posts](https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-04-opret-posts...opgave-05-egne-posts) · [branchen `opgave-05-egne-posts`](https://github.com/cederdorff/nextjs-supabase-posts/tree/opgave-05-egne-posts)
 
@@ -529,12 +522,11 @@ await response.json();
 
 **Resultat:** Databasen afviser alt, en bruger ikke må – uanset hvor requesten kommer fra.
 
+Row Level Security (RLS) er regler i databasen. Du laver dem med klik i Supabase – ingen kode i appen.
+
 ### 6.1 Slå RLS til
 
-```sql
-ALTER TABLE users ENABLE ROW LEVEL SECURITY;
-ALTER TABLE posts ENABLE ROW LEVEL SECURITY;
-```
+Åbn _Authentication → Policies_ i Supabase. Klik på _Enable RLS_ ved `posts` og ved `users`.
 
 **Tjek:** Genindlæs forsiden. Hvad sker der – og hvorfor kommer der ingen fejl?
 
@@ -545,89 +537,40 @@ Forsiden viser 0 posts. Med RLS slået til og ingen **policies** må ingen læse
 
 </details>
 
-### 6.2 Policies til at læse
+### 6.2 Alle må læse
 
-En policy er en regel for én handling: `SELECT`, `INSERT`, `UPDATE` eller `DELETE`. Alle må se posts og brugernes navne – også uden login:
+En **policy** er en regel for én handling: `SELECT` (læs), `INSERT` (opret), `UPDATE` (ret) eller `DELETE` (slet). Alle må se posts og brugernes navne – også uden login.
 
-```sql
-CREATE POLICY "Everyone can read users"
-ON users FOR SELECT
-TO anon, authenticated
-USING (true);
-
-CREATE POLICY "Everyone can read posts"
-ON posts FOR SELECT
-TO anon, authenticated
-USING (true);
-```
-
-`anon` er den, der ikke er logget ind. `authenticated` er den, der er. `USING (true)` betyder: alle rækker.
+1. Klik på _Create policy_ ved `posts`.
+2. Vælg skabelonen _Enable read access for all users_. Den giver `SELECT` til alle med reglen `true`.
+3. Klik på _Save policy_.
+4. Gør det samme ved `users`.
 
 **Tjek:** Forsiden viser posts igen. Prøv at oprette et post. Det fejler, for der er ingen policy til `INSERT`.
 
-### 6.3 Policies til at ændre
+### 6.3 Kun dine egne
 
-`auth.uid()` er id'et på den bruger, der sender requesten – det samme som `user.sub` i din app. Skriv selv de fire policies:
+Nu skal de, der er logget ind, kunne oprette, rette og slette **deres egne** posts og rette **deres egen** profil. Lav en policy for hver række i tabellen: Klik på _Create policy_, giv den et navn, vælg handlingen under _Policy command_ og `authenticated` under _Target roles_, og skriv reglen.
 
-| Tabel | Handling | Hvem | Regel |
+| Tabel | Policy command | Target roles | Reglen |
 | --- | --- | --- | --- |
-| `posts` | `INSERT` | `authenticated` | `user_id` er din egen |
-| `posts` | `UPDATE` | `authenticated` | `user_id` er din egen |
-| `posts` | `DELETE` | `authenticated` | `user_id` er din egen |
-| `users` | `UPDATE` | `authenticated` | `id` er din egen |
+| `posts` | `INSERT` | `authenticated` | `(select auth.uid()) = "userId"` |
+| `posts` | `UPDATE` | `authenticated` | `(select auth.uid()) = "userId"` |
+| `posts` | `DELETE` | `authenticated` | `(select auth.uid()) = "userId"` |
+| `users` | `UPDATE` | `authenticated` | `(select auth.uid()) = id` |
 
-`USING` bestemmer, hvilke **eksisterende** rækker du må ramme. `WITH CHECK` bestemmer, hvordan en **ny eller ændret** række skal se ud. `INSERT` har kun `WITH CHECK`, `DELETE` kun `USING`, og `UPDATE` har begge.
+Sådan læser du reglen:
 
-<details>
-<summary><strong>Hint</strong></summary>
-
-```sql
-CREATE POLICY "Users can create their own posts"
-ON posts FOR INSERT
-TO authenticated
-WITH CHECK (user_id = (SELECT auth.uid()));
-```
-
-Supabase anbefaler `(SELECT auth.uid())` frem for `auth.uid()`. Så bliver den kun beregnet én gang pr. request.
-
-</details>
-
-<details>
-<summary><strong>Løsning</strong></summary>
-
-```sql
-CREATE POLICY "Users can create their own posts"
-ON posts FOR INSERT
-TO authenticated
-WITH CHECK (user_id = (SELECT auth.uid()));
-
-CREATE POLICY "Users can update their own posts"
-ON posts FOR UPDATE
-TO authenticated
-USING (user_id = (SELECT auth.uid()))
-WITH CHECK (user_id = (SELECT auth.uid()));
-
-CREATE POLICY "Users can delete their own posts"
-ON posts FOR DELETE
-TO authenticated
-USING (user_id = (SELECT auth.uid()));
-
-CREATE POLICY "Users can update their own row"
-ON users FOR UPDATE
-TO authenticated
-USING (id = (SELECT auth.uid()))
-WITH CHECK (id = (SELECT auth.uid()));
-```
-
-Der er ingen policy til `INSERT` og `DELETE` på `users`. Rækkerne kommer fra triggeren, som må alt, fordi den er `SECURITY DEFINER`.
-
-</details>
+- `auth.uid()` er id'et på den bruger, der sender requesten – det samme som `user.sub` i din app.
+- `= "userId"`: Reglen gælder kun posts, hvor `userId` er dit id. `"userId"` står i anførselstegn, fordi navnet har et stort bogstav.
+- `authenticated` er den, der er logget ind. `anon` er den, der ikke er.
+- Ved `UPDATE` er der to felter: `USING` (hvilke posts du må rette) og `WITH CHECK` (hvordan post'et skal se ud bagefter). Skriv den samme regel i begge.
 
 **Tjek:** Du kan oprette, rette og slette dine egne posts og rette din profil. _Table Editor_ viser ikke længere **UNRESTRICTED**.
 
 ### 6.4 Test som tre brugere
 
-1. **Ikke logget ind:** Kør `fetch`-koden fra 5.3 igen med `"Hacked again"`. Svaret er `[]`, og post 1 er uændret. Policy'en til `UPDATE` gælder kun `authenticated`.
+1. **Ikke logget ind:** Kør `fetch`-koden fra 5.3 igen med `"Hacked again"`. Svaret er `[]`, og post'et er uændret. Policy'en til `UPDATE` gælder kun `authenticated`.
 2. **Logget ind som dig selv:** Opret, ret og slet et af dine egne posts.
 3. **Logget ind som en anden:** Fjern midlertidigt `if`'en i `deletePost`, og vis knapperne for alle (`{true && (...)}`). Log ind som en anden bruger, og slet et af dine posts. Post'et er der stadig – appen lod dig, men databasen sagde nej. Sæt koden tilbage bagefter.
 
@@ -644,11 +587,11 @@ Tjekket i appen giver brugeren en god oplevelse: Knapper, de ikke kan bruge, vis
 
 **Sidder du fast?**
 
-- **_new row violates row-level security policy_?** Policy'en til `INSERT` mangler, eller `user_id` er ikke din egen. Tjek, at `createPost` bruger `user.sub`.
+- **_new row violates row-level security policy_?** Policy'en til `INSERT` mangler, eller `userId` er ikke dit id. Tjek, at `createPost` bruger `user.sub`.
+- **_column "userid" does not exist_?** Du mangler anførselstegn: Skriv `"userId"`.
 - **Sletter eller retter du, men intet sker?** Det er RLS. `UPDATE` og `DELETE` giver ingen fejl, når 0 rækker må rammes. Tjek dine policies under _Authentication → Policies_.
-- **_policy already exists_?** Du har kørt den før. Slet den under _Authentication → Policies_, eller spring den over.
 
-**Løsning:** [Row Level Security](https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-05-egne-posts...opgave-06-rls) · [branchen `opgave-06-rls`](https://github.com/cederdorff/nextjs-supabase-posts/tree/opgave-06-rls) – SQL'en ligger i `supabase/06-row-level-security.sql`
+**Løsning:** Opgave 6 har ingen kodeændringer – alt sker i Supabase. Dine policies skal se ud som i tabellerne i 6.2 og 6.3.
 
 <hr style="margin: 2rem 0;">
 
@@ -656,79 +599,44 @@ Tjekket i appen giver brugeren en god oplevelse: Knapper, de ikke kan bruge, vis
 
 ## Opgave 7: Roller: user og admin
 
-**Resultat:** En admin kan slette alle posts – også dem fra startprojektet – og ingen kan gøre sig selv til admin.
+**Resultat:** En admin kan slette alle posts, og ingen kan gøre sig selv til admin.
 
-### 7.1 En rolle på brugeren
+### 7.1 Gør dig selv til admin
 
-```sql
-ALTER TABLE users
-ADD COLUMN role TEXT NOT NULL DEFAULT 'user' CHECK (role IN ('user', 'admin'));
-```
-
-Alle brugere får rollen `user`. `CHECK` sørger for, at rollen kun kan være `user` eller `admin`. Gør dig selv til admin: Åbn _Table Editor → users_, og ret `role` til `admin` på din egen række.
+`users` har allerede kolonnen `role` fra `setup.sql`. Alle brugere har rollen `user`, og den kan kun være `user` eller `admin`. Åbn _Table Editor → users_, og ret `role` til `admin` på din egen række.
 
 **Tjek:** Din række har rollen `admin`, alle andre har `user`.
 
-### 7.2 Lås rollen
+### 7.2 Rollen er låst
 
-Policy'en fra 6.3 lader dig rette din egen række – også `role`. Så kunne alle gøre sig selv til admin. RLS bestemmer rækkerne, men **rettigheder** (_grants_) bestemmer kolonnerne:
+Policy'en fra 6.3 lader dig rette din egen række. Kunne du så ikke bare rette din egen `role` til `admin`? Nej: `setup.sql` giver kun appen lov til at rette `name`, `title` og `image`. RLS bestemmer, hvilke **rækker** du må ændre – rettigheder (_grants_) bestemmer, hvilke **kolonner**.
 
-```sql
-REVOKE UPDATE ON users FROM anon, authenticated;
-GRANT UPDATE (name, title, image) ON users TO authenticated;
-```
-
-**Tjek:** Ret dit navn på `/profile`. Det virker stadig. `role` kan kun ændres i _Table Editor_ eller SQL Editor.
+**Tjek:** Ret dit navn på `/profile`. Det virker stadig. `role` kan kun ændres i _Table Editor_.
 
 ### 7.3 Admins kan slette alle posts
 
-Skriv en policy til `DELETE` på `posts`, der giver lov, når brugeren, der sender requesten, har rollen `admin` i `users`. Har en handling flere policies, er det nok, at én af dem siger ja: Du må slette et post, hvis det er dit – **eller** hvis du er admin.
+Lav en policy mere på `posts`:
 
-<details>
-<summary><strong>Hint</strong></summary>
+| Tabel | Policy command | Target roles | Reglen |
+| --- | --- | --- | --- |
+| `posts` | `DELETE` | `authenticated` | `is_admin()` |
 
-Brug `EXISTS` til at spørge: Findes der en række i `users` med mit id og rollen `admin`?
+`is_admin()` er en funktion fra `setup.sql`. Den svarer `true`, når den, der sender requesten, har rollen `admin` i `users`.
 
-```sql
-USING (
-    EXISTS (
-        SELECT 1 FROM users
-        WHERE ...
-    )
-)
-```
-
-</details>
-
-<details>
-<summary><strong>Løsning</strong></summary>
-
-```sql
-CREATE POLICY "Admins can delete all posts"
-ON posts FOR DELETE
-TO authenticated
-USING (
-    EXISTS (
-        SELECT 1 FROM users
-        WHERE id = (SELECT auth.uid()) AND role = 'admin'
-    )
-);
-```
-
-</details>
+Nu har `DELETE` to policies. Det er nok, at én af dem siger ja: Du må slette et post, hvis det er dit – **eller** hvis du er admin.
 
 ### 7.4 Vis Delete for admins
 
 Nu skal detaljesiden bruge rollen. Skift `getCurrentUser()` ud med `getCurrentProfile()` i `app/posts/[id]/page.js` – rækken fra `users` har både `id` og `role`. Vis _Delete_ for ejeren og for admins, men _Edit_ kun for ejeren. Husk tjekket i `deletePost`.
 
-**Tjek:** Som admin kan du slette et af de 10 posts fra startprojektet. Som almindelig bruger kan du ikke.
+**Tjek:** Som admin kan du slette en anden brugers post. Som almindelig bruger kan du ikke.
 
 <details>
 <summary><strong>Løsning</strong></summary>
 
 ```jsx
 const profile = await getCurrentProfile();
-const isOwner = profile?.id === post.user_id;
+const isOwner = profile?.id === post.userId;
 const isAdmin = profile?.role === "admin";
 
 async function deletePost() {
@@ -736,7 +644,7 @@ async function deletePost() {
 
   const profile = await getCurrentProfile();
 
-  if (profile?.id !== post.user_id && profile?.role !== "admin") {
+  if (profile?.id !== post.userId && profile?.role !== "admin") {
     redirect(`/posts/${id}`);
   }
 
@@ -767,7 +675,7 @@ async function deletePost() {
 - **Kan du ikke slette som admin?** Tjek, at `role` er præcis `admin` med små bogstaver, og at policy'en fra 7.3 findes under _Authentication → Policies_.
 - **_permission denied for table users_, når du gemmer din profil?** `updateProfile` sender en kolonne, du ikke har lov til at ændre. Den må kun sende `name`, `title` og `image`.
 
-**Løsning:** [Roller](https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-06-rls...opgave-07-roller) · [branchen `opgave-07-roller`](https://github.com/cederdorff/nextjs-supabase-posts/tree/opgave-07-roller) – SQL'en ligger i `supabase/07-roles.sql`
+**Løsning:** [Roller](https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-05-egne-posts...opgave-07-roller) · [branchen `opgave-07-roller`](https://github.com/cederdorff/nextjs-supabase-posts/tree/opgave-07-roller)
 
 <hr style="margin: 2rem 0;">
 
@@ -795,24 +703,24 @@ De er stadig eksperimentelle og kræver `experimental: { authInterrupts: true }`
 | Problem | Løsning |
 | --- | --- |
 | _relation "users" does not exist_ | Kør hele `supabase/setup.sql` i SQL Editor |
-| _column posts.created_at does not exist_ | Du har en gammel `posts`-tabel fra Post App. Kør `supabase/setup.sql` |
-| _No row in users with id …_ | Din bruger blev oprettet før triggeren. Kør SQL'en fra 2.4 |
-| _Database error saving new user_ | Triggeren fejler. Tjek, at `users` findes, og kør SQL'en fra 2.2 igen |
+| 0 posts efter `setup.sql` | Du havde ingen brugere. Opret en på `/signup`, og kør `setup.sql` igen |
+| _Could not create the post_ i opgave 1 | Indsæt en rigtig _User UID_ i `lib/current-user.js` |
+| _No row in users with id …_ | Din bruger mangler en række i `users`. Kør `setup.sql` igen |
 | Forsiden er tom efter 6.1 | Policies til `SELECT` mangler. Se 6.2 |
-| _new row violates row-level security policy_ | Policy'en til `INSERT` mangler, eller `user_id` er ikke `user.sub` |
+| _new row violates row-level security policy_ | Policy'en til `INSERT` mangler, eller `userId` er ikke `user.sub` |
+| _column "userid" does not exist_ | Anførselstegn mangler i reglen. Skriv `"userId"` |
 | Du retter eller sletter, men intet sker | RLS afviser uden fejl. Tjek dine policies under _Authentication → Policies_ |
-| _permission denied for table users_ | Du prøver at ændre en kolonne uden grant, fx `role`. Se 7.2 |
-| Du har kørt `setup.sql` igen, og din profil er væk | Filen sletter `users`. Kør SQL'en fra 2.4 igen. Triggeren findes stadig |
+| _permission denied for table users_ | Du prøver at ændre en kolonne, appen ikke må ændre, fx `role`. Se 7.2 |
+| Du har kørt `setup.sql` igen, og dine policies er væk | Filen starter helt forfra med RLS slået fra. Lav policies fra opgave 6 og 7 igen |
 | _fetch failed_ eller ingen forbindelse | Supabase-projektet er sat på pause. Klik på _Resume project_ |
 
 <hr style="margin: 2rem 0;">
 
 ## Materialer
 
-- [nextjs-supabase-posts](https://github.com/cederdorff/nextjs-supabase-posts) – startprojektet på `main` og én løsningsbranch pr. opgave
+- [nextjs-supabase-posts](https://github.com/cederdorff/nextjs-supabase-posts) – startprojektet på `main` og én løsningsbranch pr. opgave. Hele databasen står i `supabase/setup.sql`
 - [Supabase: User Management](https://supabase.com/docs/guides/auth/managing-user-data) – `users` koblet til `auth.users` med en trigger
 - [Supabase: Row Level Security](https://supabase.com/docs/guides/database/postgres/row-level-security)
 - [Supabase: Understanding API keys](https://supabase.com/docs/guides/api/api-keys) – publishable og secret keys
 - [Supabase: JavaScript – Fetch data](https://supabase.com/docs/reference/javascript/select) og [Update data](https://supabase.com/docs/reference/javascript/update)
-- [PostgreSQL: GRANT](https://www.postgresql.org/docs/current/sql-grant.html) – rettigheder til bestemte kolonner
 - [Next.js: forbidden](https://nextjs.org/docs/app/api-reference/functions/forbidden) og [unauthorized](https://nextjs.org/docs/app/api-reference/functions/unauthorized)
