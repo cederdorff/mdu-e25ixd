@@ -826,40 +826,6 @@ Prefer: return=representation</code></pre>
           </dl>
         </section>
 
-        <section class="po-slide" id="admin-policy">
-          <span class="eyebrow">Er de admin? · rollen i <code>users</code></span>
-          <h2>Rollen står i <code>users</code></h2>
-          <div class="au-code-pair is-stacked">
-            <div>
-              <span class="code-label">Supabase · <em>Table Editor → users</em></span>
-              <div class="um-policy">
-                <header>Marias række</header>
-                <p><span>name</span><code>Maria Louise Bendixen</code></p>
-                <p><span>title</span><code>Senior Lecturer</code></p>
-                <p class="is-rule"><span>role</span><code>admin</code></p>
-              </div>
-            </div>
-            <div>
-              <span class="code-label">Appen · <code>app/posts/[id]/page.js</code></span>
-              <pre class="po-code"><code class="language-jsx">const profile = await getCurrentProfile();
-const isOwner = profile?.id === post.userId;
-const isAdmin = profile?.role === "admin";
-const canEdit = isOwner || isAdmin;
-
-{canEdit &amp;&amp; (
-  &lt;form action={deletePost}&gt;
-    &lt;Link …&gt;Edit&lt;/Link&gt;
-    &lt;DeleteButton /&gt;
-  &lt;/form&gt;
-)}</code></pre>
-            </div>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Rollen kan kun ændres i <em>Table Editor</em>.</strong> <code>setup.sql</code> lader brugerne
-            rette <code>name</code>, <code>title</code> og <code>image</code> — ikke <code>role</code>.
-          </p>
-        </section>
-
         <section class="po-slide" id="admin-posts">
           <span class="eyebrow">Er de admin? · samme post, to roller</span>
           <h2>Maria som <code>user</code> — og som <code>admin</code></h2>
@@ -878,10 +844,23 @@ const canEdit = isOwner || isAdmin;
           </p>
         </section>
 
-        <section class="po-slide is-reference" id="admin-server">
-          <span class="eyebrow">Er de admin? · på serveren og i databasen</span>
-          <h2>Ejeren — eller en admin</h2>
-          <div class="code-explain">
+        <section class="po-slide is-reference" id="admin-kode">
+          <span class="eyebrow">Er de admin? · i koden</span>
+          <h2>Samme tjek — nu med admin</h2>
+          <div class="au-code-pair is-stacked">
+            <div>
+              <span class="code-label"><code>app/posts/[id]/page.js</code> · knapperne</span>
+              <pre class="po-code"><code class="language-jsx">const isOwner = profile?.id === post.userId;
+const isAdmin = profile?.role === "admin";
+const canEdit = isOwner || isAdmin;
+
+{canEdit &amp;&amp; (
+  &lt;form action={deletePost}&gt;
+    &lt;Link …&gt;Edit&lt;/Link&gt;
+    &lt;DeleteButton /&gt;
+  &lt;/form&gt;
+)}</code></pre>
+            </div>
             <div>
               <span class="code-label"><code>deletePost</code> · <code>updatePost</code> · øverst på update-siden</span>
               <pre class="po-code"><code class="language-js">const profile = await getCurrentProfile();
@@ -893,13 +872,17 @@ if (
   redirect(`/posts/${id}`);
 }</code></pre>
             </div>
-            <div class="explain-list">
-              <p><b>Samme tre steder</b>Tjekket fra <em>kun ejeren</em> — nu med en undtagelse for admins.</p>
-              <p><b><code>&amp;&amp;</code></b>Du bliver sendt væk, hvis du hverken er ejeren eller admin.</p>
-              <p><b><code>profile.role</code></b>Kommer fra din række i <code>users</code> — aldrig fra formularen.</p>
-              <p><b>Databasen siger det samme</b><em>Admins can update all posts</em> og <em>Admins can delete all posts</em>.</p>
-            </div>
           </div>
+          <dl class="term-row">
+            <div>
+              <dt><code>role</code></dt>
+              <dd>Står i din række i <code>users</code>. Kan kun ændres i <em>Table Editor</em> — brugerne må kun rette <code>name</code>, <code>title</code> og <code>image</code>.</dd>
+            </div>
+            <div>
+              <dt>Databasen siger det samme</dt>
+              <dd><em>Admins can update all posts</em> og <em>Admins can delete all posts</em> ligger klar i <code>setup.sql</code>.</dd>
+            </div>
+          </dl>
         </section>
 
         <section class="po-slide mode-work" id="projekt">
