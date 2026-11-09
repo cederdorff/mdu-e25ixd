@@ -2,7 +2,7 @@
 
 ## Formål
 
-Du kender relationen fra Post App: Et post er lavet af én user, og en user kan lave mange posts. I dag kobler du den til login: Nye posts skal tilhøre den, der er logget ind, og kun ejeren må rette og slette dem – i appen og i databasen.
+Du kender relationen fra Post App: Et post er lavet af én user, og en user kan lave mange posts. I dag kobler du den til login: Nye posts skal tilhøre den, der er logget ind, og kun ejeren må rette og slette dem – i appen og i databasen. Til sidst må en admin mere end en almindelig bruger.
 
 <img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-datamodel.webp" alt="Tre tabeller: Login i Supabase Auth, users og posts fra Post App. Login og users har samme id. posts.userId peger på users.id." style="max-width: 100%; margin: 0.75rem 0;">
 
@@ -29,8 +29,7 @@ Undervejs:
 2. [Posts får en ejer](#opgave-2)
 3. [Kun ejeren kan rette og slette](#opgave-3)
 4. [Beskyt databasen](#opgave-4)
-
-**Ekstra, når du er færdig:** [Ret din profil og admin](#ekstra)
+5. [Profil og roller](#opgave-5)
 
 Sidder du fast? Se [Fejlfinding](#fejlfinding).
 
@@ -300,7 +299,8 @@ Databasen kan selv have regler for, hvem der må hvad. Det hedder **Row Level Se
 | `posts` | _Users can create posts as themselves_ | Du må kun oprette posts med dig selv som `userId` |
 | `posts` | _Owners can update their posts_ | Kun ejeren må rette |
 | `posts` | _Owners can delete their posts_ | Kun ejeren må slette |
-| `posts` | _Admins can delete all posts_ | En admin må slette alle posts (se Ekstra) |
+| `posts` | _Admins can update all posts_ | En admin må rette alle posts (se opgave 5) |
+| `posts` | _Admins can delete all posts_ | En admin må slette alle posts (se opgave 5) |
 | `users` | _Everyone can read users_ | Alle må se navne og billeder |
 | `users` | _Users can create their own profile_ | Du må kun oprette din egen række |
 | `users` | _Users can update their own profile_ | Du må kun rette din egen række |
@@ -333,29 +333,58 @@ Tjekket i appen giver en god oplevelse: Knapper, du ikke kan bruge, vises ikke. 
 
 <hr style="margin: 2rem 0;">
 
-<a id="ekstra"></a>
+<a id="opgave-5"></a>
 
-## Ekstra: Ret din profil og admin
+## Opgave 5: Profil og roller
 
-### E.1 Ret din profil
+**Resultat:** Du kan rette din egen profil, og en admin kan rette og slette alle posts.
+
+### 5.1 Ret din profil
 
 Lav en formular på `/profile` med navn, titel og billede-URL og en Server Action, der gemmer dem med `update`. Ret kun din egen række: `.eq("id", profile.id)`.
 
 **Tjek:** Ret dit navn, og se det skifte på alle dine posts – samme relation som i Post App.
 
-### E.2 Admins kan slette alle posts
+### 5.2 Admins kan rette og slette alle posts
 
 Åbn _Table Editor → users_, og ret `role` til `admin` på din egen række. Rollen kan kun ændres i _Table Editor_ – ikke fra appen.
 
-Vis så _Delete_ for ejeren **og** for admins i `app/posts/[id]/page.js`. Brug `profile.role === "admin"`, og husk tjekket i `deletePost`. Reglen i databasen ligger klar: _Admins can delete all posts_.
+Udvid så tjekket fra opgave 3, så det gælder for ejeren **og** for admins:
 
-**Tjek:** Som admin kan du slette et af de 10 posts fra Post App.
+1. `app/posts/[id]/page.js`: Vis _Edit_ og _Delete_, og tjek i `deletePost`
+2. `app/posts/[id]/update/page.js`: Tjek øverst på siden og i `updatePost`
 
-### E.3 En admin-side
+Reglerne i databasen ligger klar: _Admins can update all posts_ og _Admins can delete all posts_.
 
-Lav `/admin`, der viser alle posts med en _Delete_-knap ved hver. Brug `unauthorized()`, når ingen er logget ind, og `forbidden()`, når brugeren ikke er admin. De kræver `experimental: { authInterrupts: true }` i `next.config.mjs`.
+**Tjek:** Som admin kan du rette og slette et af de 10 posts fra Post App. Som almindelig bruger kan du stadig kun dine egne.
 
-**Løsning:** [Profil og admin](https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-03-kun-ejeren...ekstra) · [branchen `ekstra`](https://github.com/cederdorff/nextjs-supabase-posts/tree/ekstra)
+<details>
+<summary><strong>Løsning</strong></summary>
+
+Knapperne på detaljesiden:
+
+```jsx
+const profile = await getCurrentProfile();
+const isOwner = profile?.id === post.userId;
+const isAdmin = profile?.role === "admin";
+const canEdit = isOwner || isAdmin;
+
+{canEdit && (
+  // ... Edit og Delete som før
+)}
+```
+
+De tre tjek på serveren:
+
+```js
+if (profile?.id !== post.userId && profile?.role !== "admin") {
+  redirect(`/posts/${id}`);
+}
+```
+
+</details>
+
+**Løsning:** [Profil og roller](https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-03-kun-ejeren...opgave-05-roller) · [branchen `opgave-05-roller`](https://github.com/cederdorff/nextjs-supabase-posts/tree/opgave-05-roller)
 
 <hr style="margin: 2rem 0;">
 
@@ -367,6 +396,7 @@ Lav `/admin`, der viser alle posts med en _Delete_-knap ved hver. Brug `unauthor
 | --- | --- |
 | _relation "users" does not exist_ | Kør hele `supabase/setup.sql` i SQL Editor |
 | _No row in users with id …_ | Din bruger har ingen række i `users`. Opret en ny bruger på `/signup` – eller kør `setup.sql` igen |
+| Du er ikke logget ind efter sign up | _Confirm email_ er slået til. Slå det fra under _Authentication → Sign In / Providers_ – som 30. oktober |
 | _Module not found: @/lib/current-user_ | Fjern importen af `CURRENT_USER_ID` i `app/create/page.js` |
 | Du retter eller sletter, men intet sker | RLS afviser uden fejl. Er du logget ind som ejeren? |
 | Du har kørt `setup.sql` igen, og RLS er slået fra | Filen starter forfra. Slå RLS til igen (4.2) |
@@ -380,4 +410,3 @@ Lav `/admin`, der viser alle posts med en _Delete_-knap ved hver. Brug `unauthor
 - [Supabase: JavaScript – Fetch data](https://supabase.com/docs/reference/javascript/select), [Insert](https://supabase.com/docs/reference/javascript/insert), [Update](https://supabase.com/docs/reference/javascript/update) og [Delete](https://supabase.com/docs/reference/javascript/delete)
 - [Supabase: Row Level Security](https://supabase.com/docs/guides/database/postgres/row-level-security)
 - [Supabase: Understanding API keys](https://supabase.com/docs/guides/api/api-keys)
-- [Next.js: forbidden](https://nextjs.org/docs/app/api-reference/functions/forbidden) og [unauthorized](https://nextjs.org/docs/app/api-reference/functions/unauthorized)
