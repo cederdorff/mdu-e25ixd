@@ -24,8 +24,6 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er. Overvej, om I kan b
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Del 1: Oplæg og demo · hvorfor Next.js → den færdige app → fire spørgsmål: hvem er logget ind, hvem ejer post'et, må de rette det, er de admin. Del 2: Vejledning og projektarbejde.
-
 ### Del 1 · Oplæg og demo
 
 <details style="margin-left: 1.5rem;">
