@@ -1615,21 +1615,6 @@
   font-size: 20px;
 }
 
-/* Opslag · kode-slides, man kan klikke forbi */
-.reveal .po-slide.is-reference::after {
-  position: absolute;
-  top: 44px;
-  right: 70px;
-  padding: 6px 14px;
-  border: 1px dashed var(--line-strong);
-  border-radius: 999px;
-  color: var(--muted);
-  content: "Opslag · koden ligger i startprojektet";
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
 /* Fire spørgsmål · fyld højden */
 .reveal #fire-spoergsmaal .assignment-flow {
   gap: 36px;
