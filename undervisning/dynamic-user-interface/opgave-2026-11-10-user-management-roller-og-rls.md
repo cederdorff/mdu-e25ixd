@@ -125,11 +125,11 @@ Det retter du i opgave 2–4.
 
 **Resultat:** Nye posts tilhører den, der er logget ind, og kun brugere, der er logget ind, kan oprette posts.
 
-<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-ejer.webp" alt="Før: userId er CURRENT_USER_ID, så alle nye posts får Rasmus Cederdorff, uanset hvem der er logget ind. Efter opgave 2: userId er profile.id, så post'et får den, der er logget ind." style="max-width: 100%; margin: 0.75rem 0;">
+<img src="https://raw.githubusercontent.com/cederdorff/mdu-e25ixd/main/slides/assets/user-management-ejer.webp" alt="Før: userId er CURRENT_USER_ID, så alle nye posts får Rasmus Cederdorff, uanset hvem der er logget ind. Efter opgave 2: userId er currentUser.id, så post'et får den, der er logget ind." style="max-width: 100%; margin: 0.75rem 0;">
 
 ### 2.1 Væk med CURRENT_USER_ID
 
-I `app/create/page.js`: Hent profilen med `getCurrentProfile()` i Server Action'en, og brug `profile.id` som `userId` i stedet for `CURRENT_USER_ID`. Slet så `lib/current-user.js`.
+I `app/create/page.js`: Hent den, der er logget ind, med `getCurrentProfile()` i Server Action'en, og brug `currentUser.id` som `userId` i stedet for `CURRENT_USER_ID`. Slet så `lib/current-user.js`.
 
 **Tjek:** Opret et post. Dit navn står på det på forsiden.
 
@@ -137,16 +137,16 @@ I `app/create/page.js`: Hent profilen med `getCurrentProfile()` i Server Action'
 <summary><strong>Hint</strong></summary>
 
 ```js
-const profile = await getCurrentProfile();
+const currentUser = await getCurrentProfile();
 ```
 
-Importér `getCurrentProfile` fra `@/lib/auth`, og skriv `userId: profile.id`.
+Importér `getCurrentProfile` fra `@/lib/auth`, og skriv `userId: currentUser.id`.
 
 </details>
 
 ### 2.2 Kræv login
 
-Er ingen logget ind, er `profile` `null`. Send dem til `/login` – både på siden og i Server Action'en. Siden bestemmer, hvem der **ser** formularen. Server Action'en er en request, som alle kan sende – også uden at åbne siden.
+Er ingen logget ind, er `currentUser` `null`. Send dem til `/login` – både på siden og i Server Action'en. Siden bestemmer, hvem der **ser** formularen. Server Action'en er en request, som alle kan sende – også uden at åbne siden.
 
 **Tjek:** Logget ud sender `/create` dig til `/login`.
 
@@ -159,9 +159,9 @@ import { getCurrentProfile } from "@/lib/auth";
 async function createPost(formData) {
   "use server";
 
-  const profile = await getCurrentProfile();
+  const currentUser = await getCurrentProfile();
 
-  if (!profile) {
+  if (!currentUser) {
     redirect("/login");
   }
 
@@ -169,7 +169,7 @@ async function createPost(formData) {
   const { error } = await supabase.from("posts").insert({
     caption: formData.get("caption").trim(),
     image: formData.get("image").trim(),
-    userId: profile.id,
+    userId: currentUser.id,
   });
 
   // ... som før
@@ -178,9 +178,9 @@ async function createPost(formData) {
 export default async function CreatePage({ searchParams }) {
   const { error } = await searchParams;
 
-  const profile = await getCurrentProfile();
+  const currentUser = await getCurrentProfile();
 
-  if (!profile) {
+  if (!currentUser) {
     redirect("/login");
   }
 
@@ -204,7 +204,7 @@ export default async function CreatePage({ searchParams }) {
 
 ### 3.1 Skjul knapperne
 
-I `app/posts/[id]/page.js`: Hent profilen, og sammenlign `profile.id` med `post.userId`. Vis kun _Edit_ og _Delete_, når de er ens.
+I `app/posts/[id]/page.js`: Hent den, der er logget ind, og sammenlign `currentUser.id` med `post.userId`. Vis kun _Edit_ og _Delete_, når de er ens.
 
 **Tjek:** Log ind som `maria@example.com`. På Marias posts ser du knapperne. På Rasmus' posts – og når du er logget ud – gør du ikke.
 
@@ -212,8 +212,8 @@ I `app/posts/[id]/page.js`: Hent profilen, og sammenlign `profile.id` med `post.
 <summary><strong>Hint</strong></summary>
 
 ```jsx
-const profile = await getCurrentProfile();
-const isOwner = profile?.id === post.userId;
+const currentUser = await getCurrentProfile();
+const isOwner = currentUser?.id === post.userId;
 ```
 
 `?.` giver `undefined` i stedet for en fejl, når ingen er logget ind. Pak formularen ind i `{isOwner && (...)}`.
@@ -236,9 +236,9 @@ En skjult knap stopper ingen. Log ind som Maria, åbn et af Rasmus' posts, og ti
 De tre steder:
 
 ```js
-const profile = await getCurrentProfile();
+const currentUser = await getCurrentProfile();
 
-if (profile?.id !== post.userId) {
+if (currentUser?.id !== post.userId) {
   redirect(`/posts/${id}`);
 }
 ```
@@ -343,7 +343,7 @@ Tjekket i appen giver en god oplevelse: Knapper, du ikke kan bruge, vises ikke. 
 
 ### 5.1 Ret din profil
 
-Lav en formular på `/profile` med navn, titel og billede-URL og en Server Action, der gemmer dem med `update`. Ret kun din egen række: `.eq("id", profile.id)`.
+Lav en formular på `/profile` med navn, titel og billede-URL og en Server Action, der gemmer dem med `update`. Ret kun din egen række: `.eq("id", currentUser.id)`.
 
 **Tjek:** Ret dit navn, og se det skifte på alle dine posts – samme relation som i Post App.
 
@@ -366,9 +366,9 @@ Reglerne i databasen ligger klar: _Admins can update all posts_ og _Admins can d
 Knapperne på detaljesiden:
 
 ```jsx
-const profile = await getCurrentProfile();
-const isOwner = profile?.id === post.userId;
-const isAdmin = profile?.role === "admin";
+const currentUser = await getCurrentProfile();
+const isOwner = currentUser?.id === post.userId;
+const isAdmin = currentUser?.role === "admin";
 const canEdit = isOwner || isAdmin;
 
 {canEdit && (
@@ -379,7 +379,7 @@ const canEdit = isOwner || isAdmin;
 De tre tjek på serveren:
 
 ```js
-if (profile?.id !== post.userId && profile?.role !== "admin") {
+if (currentUser?.id !== post.userId && currentUser?.role !== "admin") {
   redirect(`/posts/${id}`);
 }
 ```

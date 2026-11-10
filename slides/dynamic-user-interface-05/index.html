@@ -37,7 +37,7 @@
             </div>
             <div class="au-hero-chip um-hero-chip is-rls">
               <small>Kun ejeren</small>
-              <code>profile.id === post.userId</code>
+              <code>currentUser.id === post.userId</code>
             </div>
             <div class="au-hero-chip um-hero-chip is-role">
               <svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z" /></svg>
@@ -447,8 +447,8 @@ export default function RootLayout({ children }) {
     notFound();
   }
 
-  const profile = await getCurrentProfile();
-  if (profile?.id !== post.userId) {
+  const currentUser = await getCurrentProfile();
+  if (currentUser?.id !== post.userId) {
     redirect(`/posts/${id}`);
   }
 }</code></pre>
@@ -559,26 +559,45 @@ export const metadata = { title: "Profile" };</code></pre>
         <section class="po-slide um-demo-slide" id="demo-rls">
           <span class="eyebrow">Demo · den færdige app · 2 af 3</span>
           <h2>Databasen siger nej</h2>
-          <div class="um-demo has-code">
-            <aside class="um-demo-setup">
-              <span>Værktøj</span><code>Thunder Client</code>
-              <span>Supabase</span><code>Database → Policies</code>
-            </aside>
-            <ol class="um-demo-steps">
-              <li class="is-safe"><b>Send en <code>PATCH</code> uden login</b><span>Svaret er <code>[]</code> — post'et er uændret</span></li>
-              <li class="is-alert"><b>Slå RLS fra på <code>posts</code>, og send igen</b><span>Post'et hedder nu <em>Hacked</em>. Appen er ikke den eneste vej til databasen</span></li>
-              <li class="is-safe"><b>Slå RLS til igen</b><span>Reglerne gælder for alle requests</span></li>
-            </ol>
-            <div class="um-demo-code">
-              <span class="code-label">Thunder Client · URL og key fra <code>.env.local</code> · id fra URL'en</span>
-              <pre class="po-code code-sm"><code class="language-http">PATCH …/rest/v1/posts?id=eq.&lt;post-id&gt;
-
-apikey: sb_publishable_…
-Prefer: return=representation
-
-{ "caption": "Hacked" }</code></pre>
+          <span class="code-label um-tc-setup">Thunder Client · URL og key fra <code>.env.local</code> · Supabase: <em>Database → Policies</em></span>
+          <div class="um-tc">
+            <div class="um-tc-bar">
+              <b class="um-tc-method">PATCH</b>
+              <code>https://&lt;projekt&gt;.supabase.co/rest/v1/posts?id=eq.c7b81561-…</code>
+              <span class="um-tc-send">Send</span>
+            </div>
+            <div class="um-tc-grid">
+              <div class="um-tc-panel">
+                <header>Request · intet login</header>
+                <p class="um-tc-label">Headers</p>
+                <pre class="po-code code-sm"><code class="language-http">apikey: sb_publishable_…
+Prefer: return=representation</code></pre>
+                <p class="um-tc-label">Body · JSON</p>
+                <pre class="po-code code-sm"><code class="language-json">{ "caption": "Hacked" }</code></pre>
+              </div>
+              <div class="um-tc-panel is-safe">
+                <header>1 · RLS slået til <span class="um-tc-status">200 OK</span></header>
+                <pre class="po-code code-sm"><code class="language-json">[]</code></pre>
+                <footer>Ingen rækker, du må rette — post'et er uændret</footer>
+              </div>
+              <div class="um-tc-panel is-open">
+                <header>2 · RLS slået fra <span class="um-tc-status">200 OK</span></header>
+                <pre class="po-code code-sm"><code class="language-json">[
+  {
+    "id": "c7b81561-…",
+    "caption": "Hacked",
+    "image": "https://images.unsplash…",
+    "userId": "…0001"
+  }
+]</code></pre>
+                <footer>Rasmus' post er ændret — uden login og uden om alle tjek i appen</footer>
+              </div>
             </div>
           </div>
+          <p class="dui-lead-note">
+            <strong>3 · Slå RLS til igen.</strong> Den publishable key er offentlig — alle kan sende requesten, kun
+            reglerne i databasen kan sige nej.
+          </p>
         </section>
 
         <section class="po-slide um-demo-slide" id="demo-admin">
@@ -610,7 +629,7 @@ Prefer: return=representation
             <article>
               <h3>Hvem ejer post'et?</h3>
               <p>Den, der var logget ind, da post'et blev oprettet.</p>
-              <p class="um-answer"><code>userId: profile.id</code></p>
+              <p class="um-answer"><code>userId: currentUser.id</code></p>
               <p class="step-links"><a class="is-forward" href="#/kap-ejer">Kapitel 4</a></p>
             </article>
             <article>
@@ -717,9 +736,10 @@ Prefer: return=representation
               <pre class="po-code code-sm"><code class="language-js">const query =
   "?select=*,user:users(*)&amp;order=createdAt.desc";
 
-const response = await fetch(`${url}/posts${query}`, {
-  headers: { apikey: key }
-});
+const response = await fetch(
+  `${url}/posts${query}`,
+  { headers: { apikey: key } }
+);
 const posts = await response.json();</code></pre>
             </div>
             <div>
@@ -733,13 +753,10 @@ const { data: posts } = await supabase
   .order("createdAt", { ascending: false });</code></pre>
             </div>
           </div>
-          <div class="why-table um-fetch-map" role="table" aria-label="Delene i fetch-requesten og det tilsvarende i Supabase SDK">
-            <div class="why-row" role="row"><b>Tabel</b><span><code>/posts</code></span><span class="is-next"><code>.from("posts")</code></span></div>
-            <div class="why-row" role="row"><b>Med user</b><span><code>?select=*,user:users(*)</code></span><span class="is-next"><code>.select("*, user:users(*)")</code></span></div>
-            <div class="why-row" role="row"><b>Nyeste først</b><span><code>&amp;order=createdAt.desc</code></span><span class="is-next"><code>.order("createdAt", { ascending: false })</code></span></div>
-            <div class="why-row" role="row"><b>Key og login</b><span><code>headers: { apikey }</code></span><span class="is-next"><code>createClient()</code> · key fra <code>.env.local</code>, login fra cookien</span></div>
-            <div class="why-row" role="row"><b>Svaret</b><span><code>await response.json()</code></span><span class="is-next"><code>{ data }</code> · allerede JSON</span></div>
-          </div>
+          <p class="dui-lead-note">
+            <strong>Samme request.</strong> <code>.from()</code> er tabellen, <code>.select()</code> er
+            <code>?select=</code>, og <code>.order()</code> er <code>&amp;order=</code>. Login'et sender SDK'et med fra cookien.
+          </p>
         </section>
 
         <section class="po-slide" id="sdk">
@@ -811,7 +828,7 @@ await supabase.from("users").insert({
             <div class="explain-list">
               <p><b><code>getCurrentUser()</code></b>Login'et fra 30. oktober. Id'et står i <code>user.sub</code>.</p>
               <p><b><code>.eq("id", user.sub)</code></b>Samme id i <code>users</code> — et helt almindeligt <code>select</code>.</p>
-              <p><b><code>profile</code></b>Din række: <code>id</code>, <code>name</code>, <code>mail</code>, <code>title</code>, <code>image</code> og <code>role</code>.</p>
+              <p><b><code>currentUser</code></b>Det, du får tilbage — din række: <code>id</code>, <code>name</code>, <code>mail</code>, <code>title</code>, <code>image</code> og <code>role</code>.</p>
               <p><b>Brug den overalt</b>Resten af dagen spørger vi <code>getCurrentProfile()</code>: Hvem er logget ind?</p>
             </div>
           </div>
@@ -867,8 +884,8 @@ await supabase.from("users").insert({
               <pre class="po-code code-sm"><code class="language-js">async function createPost(formData) {
   "use server";
 
-  const profile = await getCurrentProfile();
-  if (!profile) {
+  const currentUser = await getCurrentProfile();
+  if (!currentUser) {
     redirect("/login");
   }
 
@@ -876,19 +893,21 @@ await supabase.from("users").insert({
   await supabase.from("posts").insert({
     caption: formData.get("caption"),
     image: formData.get("image"),
-    userId: profile.id
+    userId: currentUser.id
   });
 
   redirect("/");
 }</code></pre>
             </div>
             <div class="explain-list">
-              <p><b>Væk med <code>CURRENT_USER_ID</code></b>Det faste id fra Post App bliver erstattet af den, der er logget ind.</p>
               <p><b><code>getCurrentProfile()</code> igen</b>En Server Action er sin egen request. Spørg igen — stol ikke på siden.</p>
-              <p><b><code>profile.id</code></b>Samme relation som i Post App: <code>posts.userId</code> peger på <code>users.id</code>.</p>
-              <p><b>Aldrig fra formularen</b>Et skjult felt kan alle ændre. <code>profile.id</code> kommer fra login'et i cookien.</p>
+              <p><b>Aldrig fra formularen</b>Et skjult felt kan alle ændre. <code>currentUser.id</code> kommer fra login'et i cookien.</p>
             </div>
           </div>
+          <p class="dui-lead-note">
+            <strong>Væk med <code>CURRENT_USER_ID</code>:</strong> <code>userId</code> er nu <code>currentUser.id</code> — samme
+            relation som i Post App.
+          </p>
         </section>
 
         <section class="po-slide" id="nyt-post">
@@ -896,7 +915,7 @@ await supabase.from("users").insert({
           <h2>Mit post — med mit navn</h2>
           <figure class="um-shot is-app">
             <img src="../assets/user-management-app-nyt-post.webp" alt="Forsiden efter Maria har oprettet et nyt post. Det nye post ligger øverst med Maria Louise Bendixen som forfatter." />
-            <figcaption>Logget ind som Maria · nyt post øverst · <code>userId: profile.id</code> → Marias navn og billede</figcaption>
+            <figcaption>Logget ind som Maria · nyt post øverst · <code>userId: currentUser.id</code> → Marias navn og billede</figcaption>
           </figure>
         </section>
 
@@ -932,7 +951,7 @@ await supabase.from("users").insert({
               <span>Server</span>
               <h3>Tjek i siden og Server Action'en</h3>
               <p>Den, der ikke ejer post'et, bliver sendt væk.</p>
-              <code>if (profile?.id !== post.userId)</code>
+              <code>if (currentUser?.id !== post.userId)</code>
               <b>Beskytter appen</b>
             </article>
             <article class="is-strong">
@@ -944,7 +963,8 @@ await supabase.from("users").insert({
             </article>
           </div>
           <p class="dui-lead-note">
-            <strong>30. oktober beskyttede vi siden.</strong> I dag beskytter vi data.
+            <strong>Hvorfor tre lag?</strong> UI'et kan omgås, og serveren beskytter kun appen — databasen siger nej til
+            alle requests.<br />30. oktober beskyttede vi siden. I dag beskytter vi data.
           </p>
         </section>
 
@@ -972,8 +992,8 @@ await supabase.from("users").insert({
           <div class="au-code-pair is-stacked">
             <div>
               <span class="code-label"><code>app/posts/[id]/page.js</code> · knapperne</span>
-              <pre class="po-code"><code class="language-jsx">const profile = await getCurrentProfile();
-const isOwner = profile?.id === post.userId;
+              <pre class="po-code"><code class="language-jsx">const currentUser = await getCurrentProfile();
+const isOwner = currentUser?.id === post.userId;
 
 {isOwner &amp;&amp; (
   &lt;form action={deletePost}&gt;
@@ -989,66 +1009,18 @@ const isOwner = profile?.id === post.userId;
               <pre class="po-code"><code class="language-js">async function deletePost() {
   "use server";
 
-  const profile = await getCurrentProfile();
+  const currentUser = await getCurrentProfile();
 
-  if (profile?.id !== post.userId) {
+  if (currentUser?.id !== post.userId) {
     redirect(`/posts/${id}`);
   }
 
   // … delete</code></pre>
             </div>
           </div>
-          <dl class="term-row">
-            <div>
-              <dt><code>?.</code></dt>
-              <dd>Giver <code>undefined</code> i stedet for en fejl, når ingen er logget ind og <code>profile</code> er <code>null</code>.</dd>
-            </div>
-            <div>
-              <dt>Hvorfor begge steder?</dt>
-              <dd>En Server Action er en <code>POST</code>-request, som <b>alle kan sende</b> — også uden at se knappen.</dd>
-            </div>
-          </dl>
-        </section>
-
-        <section class="po-slide" id="samme-request">
-          <span class="eyebrow">Må de rette det? · uden om appen</span>
-          <h2>Samme request — med og uden RLS</h2>
-          <div class="um-tc">
-            <div class="um-tc-bar">
-              <b class="um-tc-method">PATCH</b>
-              <code>https://&lt;projekt&gt;.supabase.co/rest/v1/posts?id=eq.c7b81561-…</code>
-              <span class="um-tc-send">Send</span>
-            </div>
-            <div class="um-tc-grid">
-              <div class="um-tc-panel">
-                <header>Request · intet login</header>
-                <p class="um-tc-label">Headers</p>
-                <pre class="po-code code-sm"><code class="language-http">apikey: sb_publishable_…
-Prefer: return=representation</code></pre>
-                <p class="um-tc-label">Body · JSON</p>
-                <pre class="po-code code-sm"><code class="language-json">{ "caption": "Hacked" }</code></pre>
-              </div>
-              <div class="um-tc-panel is-open">
-                <header>RLS slået fra <span class="um-tc-status">200 OK</span></header>
-                <pre class="po-code code-sm"><code class="language-json">[
-  {
-    "id": "c7b81561-…",
-    "caption": "Hacked",
-    "image": "https://images.unsplash…",
-    "userId": "…0001"
-  }
-]</code></pre>
-                <footer>Rasmus' post er ændret — uden login og uden om alle tjek i appen</footer>
-              </div>
-              <div class="um-tc-panel is-safe">
-                <header>RLS slået til <span class="um-tc-status">200 OK</span></header>
-                <pre class="po-code code-sm"><code class="language-json">[]</code></pre>
-                <footer>Ingen rækker, du må rette — post'et er uændret</footer>
-              </div>
-            </div>
-          </div>
           <p class="dui-lead-note">
-            <strong>Den publishable key er offentlig.</strong> Alle kan sende requesten — kun reglerne i databasen kan sige nej.
+            <strong>Hvorfor begge steder?</strong> Knappen er for oplevelsen.<br />En Server Action er en
+            <code>POST</code>-request, som alle kan sende — også uden at se knappen.
           </p>
         </section>
 
@@ -1060,12 +1032,10 @@ Prefer: return=representation</code></pre>
             <img src="../assets/supabase-policies-posts.webp" alt="Database, Policies i Supabase. Tabellen posts med seks policies: Admins can delete all posts, Admins can update all posts, Everyone can read posts, Owners can delete their posts, Owners can update their posts og Users can create posts as themselves. Øverst til højre står knappen Disable RLS, fordi RLS er slået til." />
             <figcaption>RLS er slået til — derfor står der <em>Disable RLS</em></figcaption>
           </figure>
-          <div class="explain-list um-explain-row">
-            <p><b>Reglerne ligger klar</b><code>setup.sql</code> har lavet dem. Du skal ikke skrive dem.</p>
-            <p><b>Policy</b>Én regel for én handling — læs, opret, ret eller slet.</p>
-            <p><b><em>Enable RLS</em></b>Ét klik pr. tabel. Først nu gælder reglerne.</p>
-            <p><b>For alle requests</b>Fra appen, fra Thunder Client — og fra alle med din publishable key.</p>
-          </div>
+          <p class="dui-lead-note">
+            <strong><code>setup.sql</code> har lavet reglerne</strong> — én policy pr. handling. <em>Enable RLS</em> er ét
+            klik pr. tabel, og så gælder de for alle requests.
+          </p>
           <p class="po-source-link">
             <a href="https://supabase.com/docs/guides/database/postgres/row-level-security" target="_blank" rel="noreferrer"
               >Supabase: Row Level Security ↗</a
@@ -1086,7 +1056,7 @@ Prefer: return=representation</code></pre>
             <p role="row"><span><code>users</code> · opret og ret</span><b class="is-no">✗</b><b class="is-yes">✓</b><span class="is-rule">Kun din egen række</span></p>
           </div>
           <p class="dui-lead-note">
-            <strong>Derfor må den publishable key ligge i browseren</strong>, når RLS er slået til. En
+            <strong>Hvorfor det er vigtigt:</strong> Med RLS må den publishable key ligge i browseren.<br />En
             <code>sb_secret_</code>-key springer RLS over — den må aldrig ligge i browseren eller på GitHub.
           </p>
           <p class="po-source-link">
@@ -1131,8 +1101,8 @@ Prefer: return=representation</code></pre>
           <div class="au-code-pair is-stacked">
             <div>
               <span class="code-label"><code>app/posts/[id]/page.js</code> · knapperne</span>
-              <pre class="po-code"><code class="language-jsx">const isOwner = profile?.id === post.userId;
-const isAdmin = profile?.role === "admin";
+              <pre class="po-code"><code class="language-jsx">const isOwner = currentUser?.id === post.userId;
+const isAdmin = currentUser?.role === "admin";
 const canEdit = isOwner || isAdmin;
 
 {canEdit &amp;&amp; (
@@ -1144,11 +1114,11 @@ const canEdit = isOwner || isAdmin;
             </div>
             <div>
               <span class="code-label"><code>deletePost</code> · <code>updatePost</code> · øverst på update-siden</span>
-              <pre class="po-code"><code class="language-js">const profile = await getCurrentProfile();
+              <pre class="po-code"><code class="language-js">const currentUser = await getCurrentProfile();
 
 if (
-  profile?.id !== post.userId &amp;&amp;
-  profile?.role !== "admin"
+  currentUser?.id !== post.userId &amp;&amp;
+  currentUser?.role !== "admin"
 ) {
   redirect(`/posts/${id}`);
 }</code></pre>
@@ -1166,6 +1136,40 @@ if (
           </dl>
         </section>
 
+        <section class="po-slide" id="reference">
+          <span class="eyebrow">Opsamling · hvordan kan du bruge det her?</span>
+          <h2>Brug projektet som reference</h2>
+          <div class="nx-ref">
+            <ol class="nx-ref-steps">
+              <li>
+                <b>Kør det</b>
+                <span>Startprojektet med din egen Supabase og <code>setup.sql</code> — så kan du altid prøve det af.</span>
+              </li>
+              <li>
+                <b>Forstå mønstrene</b>
+                <span>De fire spørgsmål: Hvem er logget ind? Hvem ejer det? Må de rette det? Er de admin?</span>
+              </li>
+              <li>
+                <b>Genbrug dem</b>
+                <span>Dit projekt har andre tabeller — men de samme spørgsmål. Kopiér mønstret, ikke koden.</span>
+              </li>
+            </ol>
+            <figure class="nx-prompt">
+              <figcaption>Fx med Claude · giv projektet som kontekst</figcaption>
+              <blockquote>
+                <p>Brug <code>nextjs-supabase-posts</code> som reference. I mit projekt skal kun den, der har oprettet et
+                  event, kunne rette og slette det.</p>
+                <p>Brug samme mønster: <code>getCurrentProfile()</code>, tjek i siden og i Server Action'en, og en RLS-policy.</p>
+                <p>Forklar, hvilke filer du ændrer og hvorfor.</p>
+              </blockquote>
+              <p class="nx-prompt-check">Tjek bagefter: Virker det i UI'et, på serveren <em>og</em> i databasen?</p>
+            </figure>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Når du forstår mønstret, kan du stille de rigtige spørgsmål</strong> — og vurdere, om svaret er rigtigt.
+          </p>
+        </section>
+
         <section class="po-slide mode-work" id="projekt">
           <span class="eyebrow">Del 2 · vejledning og projektarbejde</span>
           <h2>Arbejd videre med jeres projekt</h2>
@@ -1177,7 +1181,7 @@ if (
             <article>
               <h3>Kan I bruge noget fra i dag?</h3>
               <p>Stil de fire spørgsmål til jeres eget projekt. Svarene kan I også bruge i afsnittet om it-sikkerhed.</p>
-              <p class="step-links"><a href="#/fire-spoergsmaal">Fire spørgsmål</a><a href="#/hvem-maa">Hvem må hvad?</a></p>
+              <p class="step-links"><a href="#/fire-spoergsmaal">Fire spørgsmål</a><a href="#/reference">Brug som reference</a></p>
             </article>
             <article>
               <h3>Vil I prøve det af?</h3>

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 280" width="880" height="280" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
-  <title>Før: userId er CURRENT_USER_ID, så alle posts får Rasmus. Efter: userId er profile.id, så post'et får den, der er logget ind.</title>
+  <title>Før: userId er CURRENT_USER_ID, så alle posts får Rasmus. Efter: userId er currentUser.id, så post'et får den, der er logget ind.</title>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
@@ -39,7 +39,7 @@
   <rect class="ok" x="455" y="30" width="395" height="220" rx="14"/>
   <text class="kicker-ok" x="479" y="62">EFTER · OPGAVE 2</text>
   <rect class="card" x="479" y="78" width="347" height="40" rx="8"/>
-  <text class="code-sm" x="495" y="103">userId: profile.id</text>
+  <text class="code-sm" x="495" y="103">userId: currentUser.id</text>
   <line class="flow" x1="652" y1="122" x2="652" y2="148"/>
   <rect class="card" x="479" y="152" width="347" height="76" rx="10"/>
   <circle cx="513" cy="190" r="18" fill="#a7d7b4"/>

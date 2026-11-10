@@ -1475,16 +1475,10 @@
 }
 
 #rls .um-shot.is-policies {
-  max-width: 1100px;
+  max-width: 1376px;
   margin: 8px 0 0;
 }
 
-.reveal .explain-list.um-explain-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 24px;
-}
 
 /* Thunder Client · samme request, to svar */
 .reveal .um-tc {
@@ -1605,16 +1599,6 @@
 .reveal #fetch-sdk .au-code-pair {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   margin-top: 26px;
-}
-
-.reveal .um-fetch-map {
-  margin-top: 22px;
-}
-
-.reveal .um-fetch-map .why-row {
-  grid-template-columns: 200px 1fr 1.25fr;
-  padding-top: 9px;
-  padding-bottom: 9px;
 }
 
 /* Fire spørgsmål · svaret i kode */
@@ -1781,4 +1765,160 @@
   margin: 2px 0 4px;
   color: var(--ink);
   font-size: 24px;
+}
+
+/* Fra fetch til SDK · koden fylder højden */
+.reveal #fetch-sdk .au-code-pair {
+  align-items: stretch;
+  height: 420px;
+}
+
+.reveal #fetch-sdk .au-code-pair > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.reveal #fetch-sdk .au-code-pair .po-code {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.reveal #fetch-sdk pre.po-code.code-sm code {
+  width: 100%;
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+/* userId · to bokse med plads */
+.reveal #user-id .explain-list p {
+  padding: 22px 24px;
+  font-size: 22px;
+}
+
+.reveal #user-id .explain-list p b {
+  font-size: 26px;
+}
+
+/* Demo 2 · Thunder Client med og uden RLS */
+.reveal .um-tc-setup {
+  margin-top: 26px;
+}
+
+.reveal #demo-rls .um-tc {
+  margin-top: 0;
+}
+
+.reveal #demo-rls .um-tc-grid {
+  min-height: 400px;
+}
+
+/* Opsamling · brug projektet som reference */
+.reveal .nx-ref {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 36px;
+  height: 450px;
+  margin-top: 30px;
+}
+
+.reveal .nx-ref-steps {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: ref;
+}
+
+.reveal .nx-ref-steps li {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  column-gap: 18px;
+  align-content: center;
+  padding: 16px 22px;
+  background: var(--surface);
+  counter-increment: ref;
+}
+
+.reveal .nx-ref-steps li::before {
+  display: grid;
+  grid-row: span 2;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--dui);
+  color: var(--bg);
+  content: counter(ref);
+  font-size: 22px;
+  font-weight: 850;
+}
+
+.reveal .nx-ref-steps b {
+  color: var(--ink);
+  font-size: 27px;
+}
+
+.reveal .nx-ref-steps span {
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.32;
+}
+
+.reveal .nx-prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 24px 28px;
+  border: 1px solid var(--dui-line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--dui-soft), var(--surface) 70%);
+}
+
+.reveal .nx-prompt figcaption {
+  color: var(--dui);
+  font-size: 15px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reveal .nx-prompt blockquote {
+  display: grid;
+  flex: 1;
+  align-content: center;
+  gap: 12px;
+  width: auto;
+  margin: 0;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-deep);
+  box-shadow: none;
+  font-style: normal;
+  text-align: left;
+}
+
+.reveal .nx-prompt blockquote p {
+  margin: 0 !important;
+  color: var(--ink);
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+.reveal .nx-prompt-check {
+  margin: 0 !important;
+  padding-left: 16px;
+  border-left: 4px solid var(--green);
+  color: var(--ink);
+  font-size: 19px;
+}
+
+/* Fire spørgsmål · svaret på én linje */
+.reveal #fire-spoergsmaal .um-answer code {
+  font-size: 18px;
+  white-space: nowrap;
 }

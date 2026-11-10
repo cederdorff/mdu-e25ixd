@@ -64,7 +64,7 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er. Overvej, om I kan b
 <summary><strong>4. Hvem ejer post'et?</strong></summary>
 <ul>
 <li>Startprojektet i guiden giver alle nye posts et fast <code>CURRENT_USER_ID</code>.</li>
-<li>Nye posts får <code>userId: profile.id</code> – den, der er logget ind, aldrig et id fra formularen.</li>
+<li>Nye posts får <code>userId: currentUser.id</code> – den, der er logget ind, aldrig et id fra formularen.</li>
 </ul>
 </details>
 
@@ -84,6 +84,7 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er. Overvej, om I kan b
 <li><code>users</code> har en kolonne, <code>role</code>, med <code>user</code> eller <code>admin</code>. Den kan kun ændres i <em>Table Editor</em> – ikke fra appen.</li>
 <li>Admins ser <em>Edit</em> og <em>Delete</em> på alle posts – samme tjek i UI'et og på serveren, nu med <code>|| isAdmin</code>.</li>
 <li>Reglerne i databasen ligger klar fra <code>setup.sql</code>: <em>Admins can update all posts</em> og <em>Admins can delete all posts</em>.</li>
+<li>Opsamling: Brug projektet som reference. Kør det, forstå de fire mønstre, og genbrug dem i dit eget projekt – fx ved at give projektet som kontekst til Claude og bede om en forklaring. Tjek bagefter, at det virker i UI'et, på serveren og i databasen.</li>
 </ul>
 </details>
 
