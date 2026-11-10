@@ -1,0 +1,647 @@
+/* Motion og microinteractions i kode · bygger på dynamic-user-interface-01, -03 og -05 */
+
+/* Titel · et post-card fra branchen motion, der løfter sig (og står stille med reduced motion) */
+.reveal .mo-title h1 {
+  font-size: 82px;
+}
+
+.reveal .mo-hero .au-hero-window {
+  top: 60px;
+  width: 440px;
+}
+
+.reveal .mo-hero-app {
+  display: grid;
+  place-items: center;
+  height: 470px;
+  background: #ffffff;
+}
+
+.reveal .mo-hero-card {
+  width: 330px;
+  animation: mo-lift 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.reveal .mo-hero-card img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border-radius: 12px;
+  box-shadow: 0 14px 30px rgb(0 0 0 / 14%);
+}
+
+@keyframes mo-lift {
+  0%,
+  35%,
+  100% {
+    transform: translateY(6px);
+  }
+
+  50%,
+  85% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal .mo-hero-card {
+    animation: none;
+  }
+}
+
+.reveal .mo-hero-chip {
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.reveal .mo-hero-chip small {
+  font-size: 14px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reveal .mo-hero-chip code {
+  color: var(--ink);
+}
+
+.reveal .mo-hero-chip.is-hover {
+  top: 0;
+  right: -50px;
+  border-color: var(--dui-line);
+  transform: rotate(3deg);
+}
+
+.reveal .mo-hero-chip.is-hover small {
+  color: var(--dui);
+}
+
+.reveal .mo-hero-chip.is-reduced {
+  right: -40px;
+  bottom: 30px;
+  border-color: rgb(62 207 142 / 45%);
+  transform: rotate(-2deg);
+}
+
+.reveal .mo-hero-chip.is-reduced small {
+  color: var(--green);
+}
+
+/* Agenda · fire punkter, tre i del 1 */
+.reveal .um-agenda .agenda-phased {
+  height: 600px;
+}
+
+.reveal .um-agenda .agenda-phased .agenda-list,
+.reveal .um-agenda .agenda-phases {
+  grid-template-rows: repeat(4, minmax(0, 1fr)) !important;
+}
+
+/* Fire grunde · fyld højden */
+.reveal .mo-purposes {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 80px;
+  margin-bottom: 60px;
+}
+
+.reveal .mo-purposes article {
+  min-height: 330px;
+}
+
+.reveal .mo-purposes h3 {
+  margin-top: 24px;
+  font-size: 38px;
+  line-height: 1.15;
+}
+
+.reveal .mo-purposes p {
+  font-size: 24px;
+}
+
+.reveal .mo-purposes .um-answer code {
+  font-size: 21px;
+}
+
+/* Saffers model · fire trin på Delete */
+.reveal .mo-saffer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin: 60px 0 50px;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .mo-saffer li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 420px;
+  margin: 0;
+  padding: 34px 30px;
+  border-top: 5px solid var(--dui);
+  background: var(--surface);
+}
+
+.reveal .mo-saffer li:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: -21px;
+  z-index: 1;
+  color: var(--dui);
+  content: "→";
+  font-size: 30px;
+  font-weight: 800;
+  transform: translateY(-50%);
+}
+
+.reveal .mo-saffer span {
+  color: var(--dui);
+  font-size: 16px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reveal .mo-saffer b {
+  color: var(--ink);
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.reveal .mo-saffer small {
+  margin-top: auto;
+  color: var(--muted);
+  font-size: 20px;
+}
+
+/* Tre trin · installér, client, motion. */
+.reveal .mo-steps {
+  display: grid;
+  grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.4fr) minmax(0, 0.95fr);
+  gap: 28px;
+  margin: 60px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .mo-steps li {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 400px;
+  margin: 0;
+  padding: 26px;
+  border-top: 5px solid var(--dui);
+  background: var(--surface);
+}
+
+.reveal .mo-steps span {
+  color: var(--dui);
+  font-size: 22px;
+  font-weight: 850;
+}
+
+.reveal .mo-steps pre.po-code {
+  flex: 1;
+  margin: 0;
+}
+
+.reveal .mo-steps pre.po-code code {
+  font-size: 19px;
+}
+
+/* Fem props */
+.reveal .mo-props {
+  margin-top: 40px;
+}
+
+.reveal .mo-props .why-row.why-head span:last-child {
+  padding-left: 0;
+  color: var(--muted);
+}
+
+.reveal .mo-props .why-row {
+  grid-template-columns: 300px 420px 1fr;
+  padding: 18px 24px;
+}
+
+.reveal .mo-props .why-row span {
+  font-size: 23px;
+}
+
+.reveal .mo-props .why-row code {
+  font-size: 22px;
+}
+
+/* Eksempel · skærmbillede og kode side om side */
+.reveal .mo-example {
+  display: grid;
+  grid-template-columns: 520px minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+  height: 480px;
+  margin-top: 26px;
+}
+
+.reveal .mo-shot {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  margin: 0;
+  padding: 30px;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.reveal .mo-shot img {
+  display: block;
+  max-width: 100%;
+  max-height: 360px;
+  margin: 0;
+}
+
+.reveal .mo-shot figcaption {
+  color: #555555;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.reveal .mo-example-code {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.reveal .mo-example-code pre.po-code {
+  margin: 0 0 12px;
+}
+
+.reveal .mo-example-code pre.po-code code {
+  font-size: 18px;
+}
+
+/* Før og nu · Delete */
+.reveal .mo-before-after {
+  height: 480px;
+}
+
+.reveal .mo-before-after > article {
+  padding-bottom: 24px;
+}
+
+.reveal .mo-before-after img {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.reveal .mo-before-after .nx-verdict {
+  margin-top: auto !important;
+}
+
+/* Delete i koden */
+.reveal .mo-code-pair {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+}
+
+.reveal .mo-code-pair pre.po-code code {
+  font-size: 18px;
+}
+
+.reveal .mo-code-notes {
+  display: grid;
+  gap: 16px;
+}
+
+.reveal .mo-code-notes p {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 18px 22px;
+  border-left: 4px solid var(--dui);
+  background: var(--surface);
+}
+
+.reveal .mo-code-notes code {
+  color: var(--dui);
+  font-size: 22px;
+}
+
+.reveal .mo-code-notes span {
+  color: var(--ink);
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.reveal .mo-code-notes span code {
+  color: var(--ink);
+  font-size: 19px;
+}
+
+/* Kapitel 3 · fire ting */
+.reveal .mo-ready {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 50px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .mo-ready li {
+  margin: 0;
+}
+
+.reveal .mo-ready a {
+  display: grid;
+  gap: 8px;
+  height: 100%;
+  padding: 24px;
+  border-left: 4px solid var(--dui);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.reveal .mo-ready b {
+  font-size: 28px;
+}
+
+.reveal .mo-ready span {
+  color: var(--muted);
+  font-size: 20px;
+}
+
+/* Tokens · Figma, CSS og Motion */
+.reveal .mo-tokens {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  height: 470px;
+  margin-top: 36px;
+}
+
+.reveal .mo-tokens article {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 24px;
+  border-top: 5px solid var(--dui);
+  background: var(--surface);
+}
+
+.reveal .mo-tokens article.is-figma {
+  border-color: var(--dui-yellow);
+}
+
+.reveal .mo-tokens article.is-css {
+  border-color: var(--dui-blue);
+}
+
+.reveal .mo-tokens article > span {
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .mo-tokens article > span code {
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.reveal .mo-tokens .is-figma p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 18px 20px;
+  border-radius: 10px;
+  background: var(--dui-yellow-soft);
+}
+
+.reveal .mo-tokens .is-figma b {
+  font-size: 23px;
+}
+
+.reveal .mo-tokens .is-figma code {
+  color: var(--dui-yellow);
+  font-size: 20px;
+}
+
+.reveal .mo-tokens pre.po-code {
+  flex: 1;
+  margin: 0;
+}
+
+.reveal .mo-tokens pre.po-code code {
+  font-size: 21px;
+}
+
+/* Reduced motion */
+.reveal .mo-reduced {
+  height: 420px;
+  margin-top: 24px;
+}
+
+.reveal .mo-reduced pre.po-code code {
+  font-size: 18px;
+}
+
+.reveal .mo-reduced .nx-verdict {
+  margin-top: auto !important;
+}
+
+.reveal .mo-test {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 22px;
+}
+
+.reveal .mo-test p {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 18px 22px;
+  border-left: 4px solid var(--green);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 19px;
+}
+
+.reveal .mo-test b {
+  color: var(--green);
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Performance */
+.reveal .mo-perf {
+  height: 470px;
+}
+
+.reveal .mo-props-list {
+  display: grid;
+  gap: 16px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .mo-props-list li {
+  margin: 0;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background: var(--dui-soft);
+  color: var(--ink);
+  font-size: 24px;
+}
+
+.reveal .mo-props-list.is-slow li {
+  background: rgb(240 143 115 / 10%);
+}
+
+.reveal .mo-props-list code {
+  font-size: 24px;
+}
+
+.reveal .mo-perf .nx-verdict {
+  margin-top: auto !important;
+}
+
+/* A, B og C */
+.reveal .mo-variants {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-top: 30px;
+}
+
+.reveal .mo-variants figure {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+
+.reveal .mo-variants img {
+  display: block;
+  width: 100%;
+  height: 400px;
+  margin: 0;
+  object-fit: contain;
+  padding: 22px;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.reveal .mo-variants figcaption {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 14px;
+  align-items: baseline;
+}
+
+.reveal .mo-variants figcaption code {
+  grid-row: span 2;
+  color: var(--dui);
+  font-size: 21px;
+}
+
+.reveal .mo-variants figcaption b {
+  color: var(--ink);
+  font-size: 26px;
+}
+
+.reveal .mo-variants figcaption span {
+  color: var(--muted);
+  font-size: 19px;
+}
+
+
+/* Motion eller Rive */
+.reveal .mo-rive {
+  height: 500px;
+}
+
+.reveal .mo-rive h3 {
+  margin: 0;
+  font-size: 34px;
+}
+
+.reveal .mo-rive .nx-verdict {
+  margin-top: auto !important;
+}
+
+.reveal .mo-rive-flow {
+  display: grid;
+  gap: 12px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .mo-rive-flow li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin: 0;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: var(--dui-soft);
+}
+
+.reveal .mo-rive-flow b {
+  color: var(--dui);
+  font-size: 22px;
+}
+
+.reveal .mo-rive-flow span {
+  color: var(--ink);
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.reveal .mo-rive-flow code {
+  font-size: 19px;
+}
+
+.reveal #rive-kode .mo-code-pair {
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+}
+
+.reveal #rive-kode .mo-code-pair pre.po-code code {
+  font-size: 17px;
+}
+
+.reveal .mo-code-notes p.is-warning {
+  border-color: var(--dui-yellow);
+}
+
+.reveal .mo-code-notes p.is-warning > code {
+  color: var(--dui-yellow);
+}
+
+.reveal #rive-kode .mo-code-notes {
+  gap: 10px;
+}
+
+.reveal #rive-kode .mo-code-notes p {
+  padding: 12px 20px;
+}
+
+.reveal #rive-kode .mo-code-notes span {
+  font-size: 19px;
+}

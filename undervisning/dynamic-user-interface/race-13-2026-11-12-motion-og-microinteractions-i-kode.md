@@ -2,87 +2,66 @@
 
 ## Formål
 
-I dag implementerer vi motion og microinteractions i kode. I har udforsket jeres interaktioner fra minimal til ekspressiv. Nu skal de bygges, så de føles rigtige, er tilgængelige og ikke går ud over performance.
+I dag får I igen så meget tid som muligt til jeres projekt. Dagen er delt i to: Først et kort oplæg med demo, derefter vejledning og projektarbejde.
 
-Projektets regel gælder også i koden: **Hvis en effekt ikke kan forklares ud fra brugerens oplevelse, skal den fjernes.**
+I oplægget ser vi på, hvordan I kommer i gang med motion og microinteractions i kode, når jeres projekt er klar til det – måske ikke i dag, men på et tidspunkt. Vi starter med formålet: Hvad skal motion gøre for brugeren? Derefter viser jeg [Motion for React](https://motion.dev/docs/react) i Next.js med tre små eksempler i Post App fra 10. november, og hvad der skal til, før en animation er klar til et rigtigt produkt.
 
-Målet er en microinteraction i jeres projekt, som bruger motion-tokens fra jeres designsystem og respekterer `prefers-reduced-motion`.
+Bagefter arbejder I videre med jeres projekt, der hvor I er.
 
 <hr style="margin: 2rem 0;">
 
 ## Forberedelse
 
-- Vælg den interaktion fra jeres projekt, I vil implementere i dag, og hav jeres A/B/C-udforskning klar.
-- Sørg for, at jeres projekt kører lokalt.
-- Kig gerne i [Motion for React](https://motion.dev/docs/react) for at se, hvad biblioteket kan.
+- Arbejd videre med jeres projekt.
 
 <hr style="margin: 2rem 0;">
 
 ## Agenda
 
-**Dagens arbejdsrytme:** Formål før effekt → motion-tokens → byg microinteractionen → tilgængelighed og lyd → performance → varianter til test.
+### Del 1 · Oplæg og demo
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>1. Motion med et formål</strong></summary>
 <ul>
-<li>Brug Dan Saffers model til at beskrive interaktionen: trigger → rules → feedback → loops og modes.</li>
-<li>Hvad skal motion gøre for brugeren her? Give feedback, vise en sammenhæng, lede opmærksomheden eller give personlighed?</li>
-<li>Formulér det kort, før I skriver kode. Det er også grundlaget for jeres begrundelse i rapporten.</li>
+<li>En microinteraction er et lille, afgrænset øjeblik med ét formål – fx at gemme, like eller slette. Motion er bevægelse, der forklarer, hvad der sker.</li>
+<li>Fire grunde til at noget bevæger sig: feedback (jeg har gjort noget), status (der sker noget), sammenhæng (hvor kom det fra?) og personlighed (sådan er vi).</li>
+<li>Brug Dan Saffers model til at beskrive interaktionen, før I koder den: trigger → rules → feedback → loops og modes. Én sætning pr. del – det er også jeres begrundelse i rapporten.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>2. Motion i Next.js</strong></summary>
+<summary><strong>2. Kom i gang med Motion · demo</strong></summary>
 <ul>
-<li>Installér <code>motion</code>, og importér fra <code>motion/react</code>.</li>
-<li>Animationer kører i browseren, så animerede komponenter skal have <code>"use client"</code>.</li>
-<li>Hold de animerede komponenter små, så resten af siden kan forblive server components.</li>
+<li>Tre trin: <code>npm install motion</code>, <code>"use client"</code> og <code>import { motion } from "motion/react"</code>, og sæt <code>motion.</code> foran elementet, fx <code>&lt;motion.div&gt;</code>.</li>
+<li>Animationer kører i browseren, så animerede komponenter skal være client components. Hold dem små, så resten af siden kan blive på serveren.</li>
+<li>Fem props dækker det meste: <code>whileHover</code>, <code>whileTap</code>, <code>initial</code> → <code>animate</code>, <code>AnimatePresence</code> med <code>exit</code> og <code>layout</code>.</li>
+<li>Feedback: Post-cards løfter sig ved hover og focus og trykkes ned ved klik – <code>AnimatedCard</code> er client, indholdet renderes stadig på serveren.</li>
+<li>Status: <em>Save</em> skifter til <em>Saving …</em>, mens Server Action'en kører – <code>useFormStatus</code> og <code>AnimatePresence</code>. Teksten bærer informationen, motion viser skiftet.</li>
+<li>Bekræftelse: <code>window.confirm</code> er skiftet ud med <em>Delete this post?</em>, der glider ind, hvor brugeren klikkede. Med tastatur lander fokus på <em>Cancel</em>.</li>
+<li>Fra Rive til React: Motion til UI-elementer, Rive til illustrationer og figurer, som designeren animerer. Eksportér en <code>.riv</code>-fil, og vis den med <code>useRive</code> fra <code>@rive-app/react-webgl2</code>. React ændrer en property i Rive-filens view model, fx <code>isLiked</code>, og Rive animerer resten. Navnene skal matche Rive-filen præcis. Ældre guides bruger <code>useStateMachineInput</code> – det er afløst af data binding.</li>
 </ul>
 </details>
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>3. Motion-tokens i designsystemet</strong></summary>
+<summary><strong>3. Klar til jeres projekt</strong></summary>
 <ul>
-<li>Udvid designsystemet med tokens for duration og easing, fx <code>--duration-fast</code> og <code>--ease-out</code>.</li>
-<li>Brug de samme tokens i CSS-transitions og i Motion, så timingen er ens i hele produktet.</li>
-<li>Gør tokens til en del af jeres Figma-fil, så design og kode taler om samme timing.</li>
+<li>Motion-tokens: Samme navne og værdier i Figma, CSS (<code>--duration-fast: 150ms</code>) og Motion (<code>duration.fast: 0.15</code>). CSS bruger millisekunder, Motion bruger sekunder.</li>
+<li>Reduced motion er ikke ingen motion: <code>MotionConfig reducedMotion="user"</code> fjerner bevægelse, men beholder fades. Med <code>useReducedMotion</code> kan I selv vælge et alternativ, fx variant A.</li>
+<li>Lyd skal kunne slås fra og må aldrig være eneste bærer af information.</li>
+<li>Performance: Animér <code>transform</code> og <code>opacity</code> – ikke <code>width</code>, <code>height</code> eller <code>top</code>. Hold feedback kort (150–250 ms), så animationen aldrig venter på brugeren.</li>
+<li>Varianter til test: <code>?variant=a</code>, <code>b</code> eller <code>c</code> i URL'en og værdierne i <code>lib/motion.js</code>. Så kan I teste, hvornår delight begynder at gå ud over usability.</li>
 </ul>
 </details>
 
-<details style="margin-left: 1.5rem;">
-<summary><strong>4. Byg microinteractionen</strong></summary>
-<ul>
-<li>Brug fx <code>whileHover</code> og <code>whileTap</code> til direkte feedback, <code>AnimatePresence</code> til elementer, der kommer og går, og <code>layout</code> til elementer, der flytter sig.</li>
-<li>Kobl motion til UI-states som loading, success og error, så animationen fortæller, hvad der sker.</li>
-<li>Test interaktionen med mus, touch og tastatur.</li>
-</ul>
-</details>
+### Del 2 · Vejledning og projektarbejde
 
 <details style="margin-left: 1.5rem;">
-<summary><strong>5. Tilgængelighed og lyd</strong></summary>
+<summary><strong>4. Vejledning og projektarbejde</strong></summary>
 <ul>
-<li>Respektér <code>prefers-reduced-motion</code>, fx med <code>MotionConfig reducedMotion="user"</code> eller <code>useReducedMotion</code>.</li>
-<li>Reduced motion betyder ikke nødvendigvis ingen motion. Erstat fx bevægelse med en fade.</li>
-<li>Bruger I lyd, skal den kunne slås fra, og den må ikke være eneste bærer af information.</li>
-<li>Test med reduced motion slået til i styresystemet eller i browserens udviklerværktøjer.</li>
-</ul>
-</details>
-
-<details style="margin-left: 1.5rem;">
-<summary><strong>6. Performance</strong></summary>
-<ul>
-<li>Animér helst <code>transform</code> og <code>opacity</code>. Egenskaber som <code>width</code>, <code>height</code> og <code>top</code> får browseren til at beregne layoutet igen.</li>
-<li>Undersøg animationen i Performance-panelet, og se efter tabte frames og lange tasks.</li>
-<li>Vær opmærksom på, at animationer ikke forsinker brugerens næste handling.</li>
-</ul>
-</details>
-
-<details style="margin-left: 1.5rem;">
-<summary><strong>7. Varianter til test</strong></summary>
-<ul>
-<li>Byg interaktionen, så I kan skifte mellem variant A, B og C, fx via tokens eller en URL-parameter som <code>?variant=b</code>.</li>
-<li>Så kan I teste versionerne med brugere og måle, hvornår delight begynder at skade usability.</li>
-<li>Commit jeres arbejde i en feature branch, og lav en pull request.</li>
+<li>Arbejd videre, der hvor I er i jeres projekt.</li>
+<li>Overvej, om I kan bruge noget fra i dag: Hvad skal motion gøre for brugeren i jeres produkt? Svaret kan I også bruge i rapporten.</li>
+<li>Vil I prøve det af? Kør branchen <code>motion</code> i <code>nextjs-supabase-posts</code>, og brug den som reference – fx ved at give den som kontekst til Claude.</li>
+<li>Vejledning i grupperne undervejs.</li>
 </ul>
 </details>
 
@@ -90,11 +69,21 @@ Målet er en microinteraction i jeres projekt, som bruger motion-tokens fra jere
 
 ## Materialer
 
-- **Slides:** Vil blive tilgængelige her
-- **Opgaver:** Vil blive tilgængelige her
+- **Slides:**
+  - [Motion og microinteractions i kode](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-06/)
+  - [PDF-version: Motion og microinteractions i kode](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-06/?print-pdf)
+- **Løsningsrepo:**
+  - [nextjs-supabase-posts · branch `motion`](https://github.com/cederdorff/nextjs-supabase-posts/tree/motion) – Post App fra 10. november med tre microinteractions
+  - [Alt det nye i branchen `motion`](https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-05-roller...motion)
 - **Motion:**
   - [Motion for React](https://motion.dev/docs/react)
+  - [AnimatePresence](https://motion.dev/docs/react-animate-presence)
   - [Accessibility](https://motion.dev/docs/react-accessibility)
+- **Rive:**
+  - [Rive: React](https://rive.app/docs/runtimes/react/react)
+  - [Rive: Data binding i React](https://rive.app/docs/runtimes/react/data-binding)
+- **React:**
+  - [useFormStatus](https://react.dev/reference/react-dom/hooks/useFormStatus)
 - **Tilgængelighed og performance:**
   - [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
   - [web.dev: Animations and performance](https://web.dev/articles/animations-and-performance)
