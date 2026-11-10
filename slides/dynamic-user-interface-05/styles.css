@@ -1,78 +1,100 @@
 /* User management, roller og beskyttet adgang · bygger på dynamic-user-interface-01 og -03 */
 
-/* Titel · et post med en ejer, RLS og en rolle */
+/* Titel · længere overskrift, så den får sin egen størrelse */
+.reveal .um-title h1 {
+  font-size: 80px;
+  line-height: 1.04;
+}
+
+/* Titel · Marias eget post fra løsningen (lyst tema som appen), med ejer og rolle
+   Foto og avatar er beskåret fra user-management-app-eget-post.webp (1400 × 723) */
 .reveal .um-hero .au-hero-window {
-  top: 70px;
+  top: 40px;
   width: 440px;
+}
+
+.reveal .um-hero-app {
+  background: #fafafa;
+}
+
+.reveal .um-hero-app b,
+.reveal .um-hero-app p,
+.reveal .um-hero-app span {
+  color: #171717;
+}
+
+.reveal .um-hero-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 !important;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 15px;
+}
+
+.reveal .um-hero-nav span {
+  font-weight: 700;
 }
 
 .reveal .um-hero-post {
   display: grid;
-  gap: 14px;
-  padding: 0 0 28px;
+  gap: 12px;
+  padding: 20px 20px 24px;
 }
 
 .reveal .um-hero-image {
-  height: 210px;
-  background:
-    radial-gradient(circle at 30% 35%, rgb(244 201 93 / 55%), transparent 38%),
-    radial-gradient(circle at 75% 70%, rgb(185 162 255 / 55%), transparent 42%),
-    linear-gradient(135deg, #1f2a25, #2a2340);
+  height: 299px;
+  border-radius: 10px;
+  background: url("../assets/user-management-app-eget-post.webp") -21.3px -104.6px / 804.6px auto no-repeat;
 }
 
 .reveal .um-hero-user {
   display: grid;
-  grid-template-columns: 44px 1fr;
-  column-gap: 14px;
+  grid-template-columns: 46px 1fr;
+  column-gap: 12px;
   align-items: center;
-  margin: 6px 28px 0 !important;
+  margin: 4px 0 0 !important;
 }
 
 .reveal .um-hero-user i {
   grid-row: span 2;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--dui), var(--dui-blue));
+  background: url("../assets/user-management-app-eget-post.webp") -580.9px -135px / 1038.7px auto no-repeat;
 }
 
 .reveal .um-hero-user b {
-  font-size: 22px;
-  line-height: 1.1;
+  font-size: 19px;
+  line-height: 1.15;
 }
 
-.reveal .um-hero-user small {
-  color: var(--muted);
-  font-size: 16px;
+.reveal .um-hero-app .um-hero-user small {
+  color: #666;
+  font-size: 15px;
 }
 
 .reveal .um-hero-caption {
-  margin: 0 28px !important;
+  margin: 0 !important;
   font-size: 20px;
 }
 
 .reveal .um-hero-actions {
   display: flex;
   gap: 10px;
-  margin: 4px 28px 0 !important;
+  margin: 2px 0 0 !important;
 }
 
 .reveal .um-hero-actions span {
-  padding: 9px 20px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  font-size: 17px;
-  font-weight: 800;
-}
-
-.reveal .um-hero-actions .is-delete {
-  border-color: rgb(240 143 115 / 50%);
-  color: var(--coral);
+  padding: 7px 20px;
+  border: 1px solid #d4d4d4;
+  border-radius: 999px;
+  font-size: 16px;
 }
 
 .reveal .um-hero-chip.is-rls {
-  top: 0;
-  right: -20px;
+  top: -24px;
+  right: -40px;
   flex-direction: column;
   gap: 4px;
   align-items: flex-start;
@@ -89,8 +111,8 @@
 }
 
 .reveal .um-hero-chip.is-role {
-  right: -30px;
-  bottom: 70px;
+  right: -40px;
+  bottom: 10px;
   border-color: rgb(244 201 93 / 45%);
   transform: rotate(-2deg);
 }
@@ -168,7 +190,7 @@
 .reveal .nx-cs {
   display: grid;
   grid-template-rows: auto 1fr 1fr;
-  gap: 18px;
+  gap: 22px;
   height: 450px;
   margin-top: 30px;
 }
@@ -178,6 +200,37 @@
   display: grid;
   grid-template-columns: 190px minmax(0, 1fr) 220px minmax(0, 1fr);
   gap: 22px;
+}
+
+.reveal .nx-cs-head {
+  padding: 0 20px 0 30px;
+}
+
+/* To adskilte blokke: React og Vite neutral · Next.js violet */
+.reveal .nx-cs-lane {
+  padding: 16px 20px 16px 24px;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--muted);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 2%);
+}
+
+.reveal .nx-cs-lane.is-next {
+  border-color: var(--dui-line);
+  border-left-color: var(--dui);
+  background: linear-gradient(90deg, var(--dui-soft), rgb(185 162 255 / 4%) 70%);
+}
+
+.reveal .nx-cs-label span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.reveal .nx-cs-lane.is-next .nx-cs-label span {
+  color: var(--dui);
 }
 
 .reveal .nx-cs-head span:nth-child(3) {
@@ -196,7 +249,7 @@
 
 .reveal .nx-cs-label b {
   color: var(--ink);
-  font-size: 28px;
+  font-size: 30px;
 }
 
 .reveal .nx-cs-lane.is-next .nx-cs-label b {
@@ -486,9 +539,17 @@
 
 .reveal .nx-verdict {
   margin: 0 !important;
+  padding: 16px 20px;
+  border-left: 5px solid var(--coral);
+  background: linear-gradient(90deg, rgb(240 143 115 / 12%), transparent 85%);
   color: var(--ink);
   font-size: 22px;
   font-weight: 750;
+}
+
+.reveal .nx-verdict.is-now {
+  border-color: var(--dui);
+  background: linear-gradient(90deg, var(--dui-soft), transparent 85%);
 }
 
 .reveal .nx-verdict code {
@@ -1677,4 +1738,14 @@
 .reveal #fire-spoergsmaal .dui-lead-note {
   margin-top: 64px;
   font-size: 24px;
+}
+
+/* Links frem i decket får en pil frem */
+.reveal .step-links a.is-forward::before {
+  content: "→ ";
+}
+
+/* UI-states · samme højde som de andre slides, så lead-noten flugter */
+.reveal #filer .um-files {
+  height: 450px;
 }

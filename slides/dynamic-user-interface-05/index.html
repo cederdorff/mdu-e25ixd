@@ -17,19 +17,22 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section class="po-slide po-title dui-title">
+        <section class="po-slide po-title dui-title um-title">
           <span class="eyebrow">Dynamic User Interface · 3. semester</span>
-          <h1>Data får<br /><span>en ejer.</span></h1>
-          <p class="lead">Hvorfor Next.js · user management, roller og Row Level Security</p>
+          <h1>User management,<br />roller og <span>beskyttet<br />adgang.</span></h1>
+          <p class="lead">Hvorfor Next.js · ejere, admin og Row&nbsp;Level&nbsp;Security</p>
           <p class="date"><span>RACE</span><time datetime="2026-11-10">10. november 2026</time></p>
           <div class="au-hero um-hero" aria-hidden="true">
             <div class="au-hero-window">
-              <div class="au-hero-bar"><i></i><i></i><i></i><span>localhost:3000/posts/11</span></div>
-              <div class="um-hero-post">
-                <div class="um-hero-image"></div>
-                <p class="um-hero-user"><i></i><b>Dig</b><small>Student</small></p>
-                <p class="um-hero-caption">Mit første post som mig selv</p>
-                <p class="um-hero-actions"><span>Edit</span><span class="is-delete">Delete</span></p>
+              <div class="au-hero-bar"><i></i><i></i><i></i><span>localhost:3000/posts/1</span></div>
+              <div class="um-hero-app">
+                <p class="um-hero-nav"><b>Post App</b><span>maria@example.com</span></p>
+                <div class="um-hero-post">
+                  <div class="um-hero-image"></div>
+                  <p class="um-hero-user"><i></i><b>Maria Louise Bendixen</b><small>Senior Lecturer</small></p>
+                  <p class="um-hero-caption">A summer afternoon in Aarhus.</p>
+                  <p class="um-hero-actions"><span>Edit</span><span>Delete</span></p>
+                </div>
               </div>
             </div>
             <div class="au-hero-chip um-hero-chip is-rls">
@@ -129,7 +132,7 @@
               <span></span><span class="is-server">Server</span><span>Response</span><span class="is-client">Browser</span>
             </div>
             <div class="nx-cs-lane">
-              <p class="nx-cs-label"><b>React og Vite</b><small>GitHub Pages</small></p>
+              <p class="nx-cs-label"><span>Det I kender</span><b>React og Vite</b><small>GitHub Pages</small></p>
               <div class="nx-box is-server">
                 <i class="is-idle">Sender bare filerne</i>
               </div>
@@ -140,7 +143,7 @@
               </div>
             </div>
             <div class="nx-cs-lane is-next">
-              <p class="nx-cs-label"><b>Next.js</b><small>Node.js · Vercel</small></p>
+              <p class="nx-cs-label"><span>Nu</span><b>Next.js</b><small>Node.js · Vercel</small></p>
               <div class="nx-box is-server">
                 <i>Kør React</i><i>Find route</i><i>Hent data</i><i>Byg HTML</i>
               </div>
@@ -204,7 +207,7 @@
             </article>
           </div>
           <p class="dui-lead-note">
-            <strong>Åbn en kammerats projekt — og find rundt med det samme.</strong>
+            <strong>Åbn et hvilket som helst Next.js-projekt — og find rundt med det samme.</strong>
           </p>
         </section>
 
@@ -214,7 +217,13 @@
           <div class="nx-two">
             <article>
               <span>React Router · du skriver kortet</span>
-              <pre class="po-code"><code class="language-jsx">&lt;Routes&gt;
+              <pre class="po-code"><code class="language-jsx">// src/App.jsx
+import HomePage from "./pages/HomePage";
+import PostsPage from "./pages/PostsPage";
+import AboutPage from "./pages/AboutPage";
+import NotFoundPage from "./pages/NotFoundPage";
+
+&lt;Routes&gt;
   &lt;Route path="/" element={&lt;HomePage /&gt;} /&gt;
   &lt;Route path="/posts" element={&lt;PostsPage /&gt;} /&gt;
   &lt;Route path="/about" element={&lt;AboutPage /&gt;} /&gt;
@@ -294,12 +303,11 @@ export default function RootLayout({ children }) {
     }
     getPosts();
   }, []);
-
   return posts.map((post) =&gt; (
     &lt;PostCard key={post.id} post={post} /&gt;
   ));
 }</code></pre>
-              <p class="nx-verdict">Tom liste først — data kommer bagefter</p>
+              <p class="nx-verdict is-before">Tom liste først — data kommer bagefter</p>
             </article>
             <article class="is-new">
               <span>Next.js · på serveren</span>
@@ -311,7 +319,7 @@ export default function RootLayout({ children }) {
     &lt;PostCard key={post.id} post={post} /&gt;
   ));
 }</code></pre>
-              <p class="nx-verdict">Samme <code>fetch</code> — HTML'en har posts fra start</p>
+              <p class="nx-verdict is-now">Samme <code>fetch</code> — HTML'en har posts fra start</p>
             </article>
           </div>
         </section>
@@ -548,25 +556,25 @@ Prefer: return=representation
               <h3>Hvem er logget ind?</h3>
               <p>Din række i <code>users</code> — med samme id som login'et.</p>
               <p class="um-answer"><code>getCurrentProfile()</code></p>
-              <p class="step-links"><a href="#/kap-users">Kapitel 3</a></p>
+              <p class="step-links"><a class="is-forward" href="#/kap-users">Kapitel 3</a></p>
             </article>
             <article>
               <h3>Hvem ejer post'et?</h3>
               <p>Den, der var logget ind, da post'et blev oprettet.</p>
               <p class="um-answer"><code>userId: profile.id</code></p>
-              <p class="step-links"><a href="#/kap-ejer">Kapitel 4</a></p>
+              <p class="step-links"><a class="is-forward" href="#/kap-ejer">Kapitel 4</a></p>
             </article>
             <article>
               <h3>Må de rette det?</h3>
               <p>Kun ejeren — tjekket i UI'et, på serveren og i databasen.</p>
               <p class="um-answer"><code>isOwner</code> · RLS</p>
-              <p class="step-links"><a href="#/kap-rls">Kapitel 5</a></p>
+              <p class="step-links"><a class="is-forward" href="#/kap-rls">Kapitel 5</a></p>
             </article>
             <article>
               <h3>Er de admin?</h3>
               <p>Så må de rette og slette alle posts.</p>
               <p class="um-answer"><code>role === "admin"</code></p>
-              <p class="step-links"><a href="#/kap-roller">Kapitel 6</a></p>
+              <p class="step-links"><a class="is-forward" href="#/kap-roller">Kapitel 6</a></p>
             </article>
           </div>
           <p class="dui-lead-note">
@@ -1125,7 +1133,7 @@ if (
             <article>
               <h3>Vil I prøve det af?</h3>
               <p>Guiden tager jer trin for trin gennem det hele i et startprojekt — med en løsning pr. opgave.</p>
-              <p class="step-links"><a href="#/guide">Guiden</a></p>
+              <p class="step-links"><a class="is-forward" href="#/guide">Guiden</a></p>
             </article>
           </div>
           <p class="po-source-link">
