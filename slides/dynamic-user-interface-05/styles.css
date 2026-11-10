@@ -139,18 +139,14 @@
   font-weight: 800;
 }
 
-/* Agenda · to dele: oplæg og demo, derefter projektet */
+/* Agenda · tre punkter i to dele: oplæg og demo, derefter projektet */
 .reveal .um-agenda .agenda-phased {
-  height: 566px;
+  height: 520px;
 }
 
 .reveal .um-agenda .agenda-phased .agenda-list,
 .reveal .um-agenda .agenda-phases {
-  grid-template-rows: repeat(7, minmax(0, 1fr)) !important;
-}
-
-.reveal .um-agenda .agenda-phases .span-6 {
-  grid-row: span 6;
+  grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
 }
 
 .reveal .um-agenda .agenda-phases p:nth-child(2) {
@@ -158,7 +154,16 @@
 }
 
 .reveal .um-agenda .agenda-phased .agenda-list a {
-  grid-template-columns: 400px 1fr 220px;
+  grid-template-columns: 450px minmax(0, 1fr) auto;
+}
+
+.reveal .um-agenda .agenda-phased .agenda-list b {
+  font-size: 30px;
+}
+
+.reveal .um-agenda .agenda-phased .agenda-list small {
+  font-size: 20px;
+  line-height: 1.35;
 }
 
 .reveal .au-agenda-tasks em.is-demo {
@@ -1921,4 +1926,22 @@
 .reveal #fire-spoergsmaal .um-answer code {
   font-size: 18px;
   white-space: nowrap;
+}
+
+/* Fire spørgsmål · fagtermen som etiket */
+.reveal #fire-spoergsmaal .um-term {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 4px 12px;
+  border: 1px solid var(--dui-line);
+  border-radius: 999px;
+  background: var(--dui-soft);
+  color: var(--dui);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.reveal #fire-spoergsmaal .um-term + h3 {
+  margin-top: 10px;
 }

@@ -52,49 +52,25 @@
           <h2>Dagens program</h2>
           <div class="agenda-phased">
             <div class="agenda-phases" aria-hidden="true">
-              <p class="span-6"><span>Del 1</span><b>Oplæg og demo</b></p>
+              <p class="span-2"><span>Del 1</span><b>Oplæg og demo</b></p>
               <p class="span-1"><span>Del 2</span><b>Jeres projekt</b></p>
             </div>
             <ol class="agenda-list">
               <li>
                 <a href="#/kap-next"
-                  ><b>Hvorfor Next.js?</b><small>Det, der var bøvlet i React · struktur, data og metadata</small
+                  ><b>Hvorfor Next.js?</b><small>Det, der var bøvlet i React<br />— og hvad Next.js løser</small
                   ><span class="au-agenda-tasks"></span
                 ></a>
               </li>
               <li>
                 <a href="#/kap-demo"
-                  ><b>Den færdige app</b><small>Ejer · kun ejeren · RLS · admin — det hele virker</small
+                  ><b>Fire mønstre</b><small>Authentication · ownership<br />authorization · roles</small
                   ><span class="au-agenda-tasks"><em class="is-demo">Demo</em></span></a
                 >
               </li>
               <li>
-                <a href="#/kap-users"
-                  ><b>Hvem er logget ind?</b><small>Fra <code>fetch</code> til SDK · din række i <code>users</code></small
-                  ><span class="au-agenda-tasks"></span></a
-                >
-              </li>
-              <li>
-                <a href="#/kap-ejer"
-                  ><b>Hvem ejer post'et?</b><small><code>userId</code> er den, der er logget ind</small
-                  ><span class="au-agenda-tasks"></span></a
-                >
-              </li>
-              <li>
-                <a href="#/kap-rls"
-                  ><b>Må de rette det?</b><small>UI, server og database · RLS med ét klik</small
-                  ><span class="au-agenda-tasks"></span></a
-                >
-              </li>
-              <li>
-                <a href="#/kap-roller"
-                  ><b>Er de admin?</b><small><code>role</code> i <code>users</code> · <em>Edit</em> og <em>Delete</em> på alle posts</small
-                  ><span class="au-agenda-tasks"></span></a
-                >
-              </li>
-              <li>
                 <a href="#/projekt"
-                  ><b>Vejledning og projektarbejde</b><small>Der, hvor I er · brug det fra i dag, hvis det giver mening</small
+                  ><b>Vejledning og projektarbejde</b><small>Der, hvor I er<br />— brug mønstrene i jeres projekt</small
                   ><span class="au-agenda-tasks"><em>Projekt</em></span></a
                 >
               </li>
@@ -621,24 +597,28 @@ Prefer: return=representation</code></pre>
           <h2>Fire spørgsmål</h2>
           <div class="assignment-flow">
             <article>
+              <span class="um-term">Authentication · current user</span>
               <h3>Hvem er logget ind?</h3>
               <p>Din række i <code>users</code> — med samme id som login'et.</p>
               <p class="um-answer"><code>getCurrentProfile()</code></p>
               <p class="step-links"><a class="is-forward" href="#/kap-users">Kapitel 3</a></p>
             </article>
             <article>
+              <span class="um-term">Ownership</span>
               <h3>Hvem ejer post'et?</h3>
               <p>Den, der var logget ind, da post'et blev oprettet.</p>
               <p class="um-answer"><code>userId: currentUser.id</code></p>
               <p class="step-links"><a class="is-forward" href="#/kap-ejer">Kapitel 4</a></p>
             </article>
             <article>
+              <span class="um-term">Authorization</span>
               <h3>Må de rette det?</h3>
               <p>Kun ejeren — tjekket i UI'et, på serveren og i databasen.</p>
               <p class="um-answer"><code>isOwner</code> · RLS</p>
               <p class="step-links"><a class="is-forward" href="#/kap-rls">Kapitel 5</a></p>
             </article>
             <article>
+              <span class="um-term">Role-based access control</span>
               <h3>Er de admin?</h3>
               <p>Så må de rette og slette alle posts.</p>
               <p class="um-answer"><code>role === "admin"</code></p>
@@ -653,7 +633,7 @@ Prefer: return=representation</code></pre>
 
         <section class="chapter po-chapter po-slide" id="kap-users">
           <span class="chapter-index">03</span>
-          <span class="eyebrow">Spørgsmål 1</span>
+          <span class="eyebrow">Spørgsmål 1 · Authentication · current user</span>
           <h2>Hvem er<br />logget ind?</h2>
           <p class="kicker">Den, der er logget ind, er en række i <code>users</code> — med samme id som login'et.</p>
           <dl class="chapter-definition">
@@ -864,7 +844,7 @@ await supabase.from("users").insert({
 
         <section class="chapter po-chapter po-slide" id="kap-ejer">
           <span class="chapter-index">04</span>
-          <span class="eyebrow">Spørgsmål 2</span>
+          <span class="eyebrow">Spørgsmål 2 · Ownership</span>
           <h2>Hvem ejer<br />post'et?</h2>
           <p class="kicker">Den, der opretter post'et — aldrig et id fra formularen.</p>
           <dl class="chapter-definition">
@@ -921,7 +901,7 @@ await supabase.from("users").insert({
 
         <section class="chapter po-chapter po-slide" id="kap-rls">
           <span class="chapter-index">05</span>
-          <span class="eyebrow">Spørgsmål 3</span>
+          <span class="eyebrow">Spørgsmål 3 · Authorization</span>
           <h2>Må de<br />rette det?</h2>
           <p class="kicker">Kun ejeren. Skjul ikke bare knappen — afvis det på serveren og i databasen.</p>
           <dl class="chapter-definition">
@@ -1066,7 +1046,7 @@ const isOwner = currentUser?.id === post.userId;
 
         <section class="chapter po-chapter po-slide" id="kap-roller">
           <span class="chapter-index">06</span>
-          <span class="eyebrow">Spørgsmål 4</span>
+          <span class="eyebrow">Spørgsmål 4 · Role-based access control · RBAC</span>
           <h2>Er de<br />admin?</h2>
           <p class="kicker">En admin må mere — men ingen kan gøre sig selv til admin.</p>
           <dl class="chapter-definition">
