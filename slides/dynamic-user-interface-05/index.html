@@ -282,7 +282,8 @@ export default function RootLayout({ children }) {
             </div>
           </div>
           <p class="dui-lead-note">
-            <strong>Headeren renderes én gang</strong> — kun <code>{children}</code> skifter, når brugeren klikker.
+            <strong>Headeren renderes én gang</strong> — kun <code>{children}</code> skifter, når brugeren klikker.<br />En
+            <code>layout.js</code> i en mappe gælder automatisk for alle sider i den.
           </p>
         </section>
 
@@ -294,7 +295,6 @@ export default function RootLayout({ children }) {
               <span>React og Vite · i browseren</span>
               <pre class="po-code"><code class="language-jsx">export default function PostsPage() {
   const [posts, setPosts] = useState([]);
-
   useEffect(() =&gt; {
     async function getPosts() {
       const response = await fetch(URL, { headers });
@@ -303,9 +303,13 @@ export default function RootLayout({ children }) {
     }
     getPosts();
   }, []);
-  return posts.map((post) =&gt; (
-    &lt;PostCard key={post.id} post={post} /&gt;
-  ));
+  return (
+    &lt;section&gt;
+      {posts.map((post) =&gt; (
+        &lt;PostCard key={post.id} post={post} /&gt;
+      ))}
+    &lt;/section&gt;
+  );
 }</code></pre>
               <p class="nx-verdict is-before">Tom liste først — data kommer bagefter</p>
             </article>
@@ -315,9 +319,13 @@ export default function RootLayout({ children }) {
   const response = await fetch(URL, { headers });
   const posts = await response.json();
 
-  return posts.map((post) =&gt; (
-    &lt;PostCard key={post.id} post={post} /&gt;
-  ));
+  return (
+    &lt;section&gt;
+      {posts.map((post) =&gt; (
+        &lt;PostCard key={post.id} post={post} /&gt;
+      ))}
+    &lt;/section&gt;
+  );
 }</code></pre>
               <p class="nx-verdict is-now">Samme <code>fetch</code> — HTML'en har posts fra start</p>
             </article>
@@ -327,27 +335,31 @@ export default function RootLayout({ children }) {
         <section class="po-slide" id="server-client">
           <span class="eyebrow">Hvorfor Next.js? · server og client components</span>
           <h2>Server er standard — client ved klik</h2>
-          <div class="nx-sc">
-            <div class="nx-sc-tree" role="img" aria-label="Komponenttræet for /posts/42: layout, Header, page og UserBadge er server components. Kun DeleteButton er en client component.">
-              <p class="is-server" style="--d: 0"><code>layout.js</code></p>
-              <p class="is-server" style="--d: 1"><code>Header</code></p>
-              <p class="is-server" style="--d: 1"><code>page.js</code><small>henter post'et</small></p>
-              <p class="is-server" style="--d: 2"><code>UserBadge</code></p>
-              <p class="is-client" style="--d: 2"><code>DeleteButton</code><small><code>"use client"</code></small></p>
-            </div>
-            <div class="nx-sc-defs">
-              <article class="is-server">
-                <span>Server component · standard</span>
-                <p>Henter data. Koden bliver på serveren.</p>
-              </article>
-              <article class="is-client">
-                <span>Client component · <code>"use client"</code></span>
-                <p>Klik, state og browser-API'er.</p>
-              </article>
-            </div>
+          <div class="nx-sc-cards">
+            <article class="is-server">
+              <span>Server component · standard</span>
+              <h3>Kører på serveren</h3>
+              <ul>
+                <li>Kan <code>await</code> data direkte</li>
+                <li>Nøgler og kode bliver på serveren</li>
+                <li>Browseren får kun færdig HTML</li>
+              </ul>
+              <p>I startprojektet: <code>page.js</code> · <code>Header</code> · <code>PostCard</code></p>
+            </article>
+            <article class="is-client">
+              <span>Client component · <code>"use client"</code></span>
+              <h3>Kører også i browseren</h3>
+              <ul>
+                <li>Klik og events som <code>onClick</code></li>
+                <li>State med <code>useState</code></li>
+                <li>Browser-API'er som <code>window.confirm</code></li>
+              </ul>
+              <p>I startprojektet: <code>DeleteButton</code></p>
+            </article>
           </div>
           <p class="dui-lead-note">
-            <strong><code>DeleteButton</code> er client</strong> — fordi <code>window.confirm</code> kun findes i browseren.
+            <strong>Hvorfor smart?</strong> Mindre JavaScript til browseren og hemmelige nøgler på serveren — client kun
+            dér, hvor brugeren interagerer.
           </p>
           <p class="po-source-link">
             <a
@@ -361,32 +373,41 @@ export default function RootLayout({ children }) {
 
         <section class="po-slide" id="filer">
           <span class="eyebrow">Hvorfor Next.js? · UI-states</span>
-          <h2>Next.js pakker filerne ind i hinanden</h2>
-          <div class="um-files">
-            <div class="um-nest" role="img" aria-label="layout.js omslutter error.js, som omslutter loading.js, som omslutter not-found.js, som omslutter page.js">
-              <div class="is-layout">
-                <code>layout.js</code>
-                <div class="is-error">
-                  <code>error.js</code>
-                  <div class="is-loading">
-                    <code>loading.js</code>
-                    <div class="is-notfound">
-                      <code>not-found.js</code>
-                      <div class="is-page"><code>page.js</code></div>
-                    </div>
-                  </div>
+          <h2>Én fil per tilstand — headeren står</h2>
+          <div class="nx-states">
+            <article class="is-loading">
+              <div class="nx-mini" aria-hidden="true">
+                <p class="nx-mini-header"><b>Post App</b><span>layout.js</span></p>
+                <div class="nx-mini-body">
+                  <i></i><i></i><i></i>
                 </div>
               </div>
-            </div>
-            <div class="explain-list">
-              <p><b><code>error.js</code> · noget fejler</b>Headeren står stadig.</p>
-              <p><b><code>loading.js</code> · data hentes</b>Vises, mens <code>page.js</code> venter.</p>
-              <p><b><code>not-found.js</code> · findes ikke</b>Vises ved 404 eller <code>notFound()</code>.</p>
-            </div>
+              <p class="nx-state-text"><code>loading.js</code><b>Data hentes</b>Vises, mens <code>page.js</code> venter.</p>
+            </article>
+            <article class="is-error">
+              <div class="nx-mini" aria-hidden="true">
+                <p class="nx-mini-header"><b>Post App</b><span>layout.js</span></p>
+                <div class="nx-mini-body">
+                  <strong>Something went wrong</strong>
+                  <em>Try again</em>
+                </div>
+              </div>
+              <p class="nx-state-text"><code>error.js</code><b>Noget fejler</b>Fx når Supabase ikke svarer.</p>
+            </article>
+            <article class="is-notfound">
+              <div class="nx-mini" aria-hidden="true">
+                <p class="nx-mini-header"><b>Post App</b><span>layout.js</span></p>
+                <div class="nx-mini-body">
+                  <strong>Page not found</strong>
+                  <em>Go to the home page</em>
+                </div>
+              </div>
+              <p class="nx-state-text"><code>not-found.js</code><b>Findes ikke</b>Forkert URL — eller du kalder <code>notFound()</code>.</p>
+            </article>
           </div>
           <p class="dui-lead-note">
-            <strong>Ingen <code>isLoading</code>-state.</strong> Læg filen i mappen — Next.js viser den på det rigtige
-            tidspunkt.
+            <strong>Hvorfor smart?</strong> I React skrev du <code>isLoading</code>, <code>error</code> og
+            <code>if</code> i hver komponent.<br />Her laver du filen én gang — og den gælder for alle sider i mappen.
           </p>
           <p class="po-source-link">
             <a href="https://nextjs.org/docs/app/getting-started/project-structure" target="_blank" rel="noreferrer"
@@ -397,23 +418,46 @@ export default function RootLayout({ children }) {
 
         <section class="po-slide" id="funktioner">
           <span class="eyebrow">Hvorfor Next.js? · fejlhåndtering og adgang</span>
-          <h2>Kald en funktion — få en fil</h2>
-          <div class="why-table um-fn" role="table" aria-label="Funktioner i Next.js og det, de viser">
-            <div class="why-row why-head" role="row">
-              <span>Du kalder</span><span>Next.js viser</span><span>Når</span>
-            </div>
-            <div class="why-row" role="row">
-              <b><code>notFound()</code></b><span><code>not-found.js</code></span><span>Post'et findes ikke</span>
-            </div>
-            <div class="why-row" role="row">
-              <b><code>throw new Error()</code></b><span><code>error.js</code></span><span>Supabase svarer ikke</span>
-            </div>
-            <div class="why-row is-today" role="row">
-              <b><code>redirect("/login")</code></b><span>en anden route</span><span>Du er ikke logget ind</span>
-            </div>
+          <h2>Stop siden, før den bliver sendt</h2>
+          <div class="nx-two">
+            <article>
+              <span>React Router · i browseren</span>
+              <pre class="po-code"><code class="language-jsx">export default function UpdatePage() {
+  const navigate = useNavigate();
+  const [post, setPost] = useState(null);
+
+  useEffect(() =&gt; {
+    // hent post'et i browseren …
+    if (post &amp;&amp; user?.id !== post.userId) {
+      navigate(`/posts/${post.id}`);
+    }
+  }, [post]);
+
+  if (!post) return &lt;p&gt;Loading …&lt;/p&gt;;
+}</code></pre>
+              <p class="nx-verdict is-before">Siden er sendt — tjekket sker bagefter</p>
+            </article>
+            <article class="is-new">
+              <span>Next.js · <code>app/posts/[id]/update/page.js</code></span>
+              <pre class="po-code"><code class="language-jsx">export default async function UpdatePage({ params }) {
+  const { id } = await params;
+  const post = await getPost(id);
+
+  if (!post) {
+    notFound();
+  }
+
+  const profile = await getCurrentProfile();
+  if (profile?.id !== post.userId) {
+    redirect(`/posts/${id}`);
+  }
+}</code></pre>
+              <p class="nx-verdict is-now">Tjekket sker på serveren — før siden sendes</p>
+            </article>
           </div>
           <p class="dui-lead-note">
-            <strong>I dag:</strong> <code>redirect()</code> sender brugeren videre, når de ikke må se eller rette noget.
+            <strong>Hvorfor smart?</strong> Brugeren får aldrig en side, de ikke må se — og tjekket kan ikke omgås i
+            browseren.<br />Én linje i stedet for state og <code>useEffect</code>. I dag bruger vi <code>redirect()</code> til adgang.
           </p>
           <p class="po-source-link">
             <a href="https://nextjs.org/docs/app/getting-started/error-handling" target="_blank" rel="noreferrer">Next.js: Error handling ↗</a>
@@ -426,31 +470,36 @@ export default function RootLayout({ children }) {
           <span class="eyebrow">Hvorfor Next.js? · metadata</span>
           <h2>Hver side får sin egen titel</h2>
           <div class="nx-two nx-meta">
+            <article>
+              <span>React og Vite · <code>index.html</code></span>
+              <pre class="po-code"><code class="language-html">&lt;head&gt;
+  &lt;title&gt;Post App&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+              <div class="nx-tabs" aria-label="Tre faner, alle med titlen Post App">
+                <span><b>Post App</b><small>/</small></span>
+                <span><b>Post App</b><small>/profile</small></span>
+                <span><b>Post App</b><small>/login</small></span>
+              </div>
+              <p class="nx-verdict is-before">Samme titel på alle sider</p>
+            </article>
             <article class="is-new">
-              <span>Du skriver · i <code>page.js</code> eller <code>layout.js</code></span>
+              <span>Next.js · <code>metadata</code></span>
               <pre class="po-code"><code class="language-jsx">// app/layout.js — alle sider
-export const metadata = {
-  title: "Post App",
-  description: "A Next.js app with posts …",
-};
+export const metadata = { title: "Post App" };
 
 // app/profile/page.js — kun profilen
 export const metadata = { title: "Profile" };</code></pre>
+              <div class="nx-tabs is-now" aria-label="Tre faner med titlerne Post App, Profile og Log in">
+                <span><b>Post App</b><small>/</small></span>
+                <span><b>Profile</b><small>/profile</small></span>
+                <span><b>Log in</b><small>/login</small></span>
+              </div>
+              <p class="nx-verdict is-now">Hver side sin titel — i HTML'en fra serveren</p>
             </article>
-            <div class="nx-meta-out">
-              <div class="nx-tab" aria-hidden="true">
-                <span class="is-active">Profile</span><span>Post App</span>
-              </div>
-              <div class="nx-serp">
-                <small>Søgeresultat · forsiden</small>
-                <b>Post App</b>
-                <span>A Next.js app with posts, users and Supabase Auth</span>
-              </div>
-            </div>
           </div>
           <p class="dui-lead-note">
-            <strong>Det står i HTML'en fra serveren.</strong> I React og Vite fik alle sider samme
-            <code>&lt;title&gt;</code>.
+            <strong>Hvorfor smart?</strong> Brugeren kan kende fanerne fra hinanden, og Google og link previews læser
+            titel og beskrivelse direkte i HTML'en.
           </p>
           <p class="po-source-link">
             <a href="https://nextjs.org/docs/app/getting-started/metadata-and-og-images" target="_blank" rel="noreferrer"
