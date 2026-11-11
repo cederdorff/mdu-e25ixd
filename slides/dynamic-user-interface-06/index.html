@@ -206,6 +206,9 @@ export default function Eyes() {
             <strong>Hvorfor smart?</strong> <span class="mo-key is-same">Lilla</span> er de samme tre værdier som i
             guiden. <span class="mo-key is-gone">Koral</span> klarer hooken — og musen og blinket klarer Rive selv.
           </p>
+          <p class="po-source-link">
+            <a href="https://rive.app/docs/runtimes/react/parameters-and-return-values" target="_blank" rel="noreferrer">Rive: useRive ↗</a>
+          </p>
         </section>
 
         <section class="po-slide" id="rive-nextjs">
@@ -249,6 +252,11 @@ export default function Home() {
             <strong>Siden kan blive på serveren.</strong> Kun <code>Eyes</code> er client. Giv forælderen en højde,
             ellers bliver øjnene 0 px høje.
           </p>
+          <p class="po-source-link">
+            <a href="https://rive.app/docs/runtimes/react/react" target="_blank" rel="noreferrer">Rive: React ↗</a>
+            ·
+            <a href="https://nextjs.org/docs/app/api-reference/directives/use-client" target="_blank" rel="noreferrer">Next.js: "use client" ↗</a>
+          </p>
         </section>
 
         <section class="po-slide" id="rive-fejl">
@@ -263,6 +271,13 @@ export default function Home() {
           </div>
           <p class="dui-lead-note">
             <strong>Touch har ingen hover.</strong> Øjnene er pynt — det er i orden, at de står stille på mobilen.
+          </p>
+          <p class="po-source-link">
+            <a href="https://rive.app/docs/runtimes/layout" target="_blank" rel="noreferrer">Rive: Layout ↗</a>
+            ·
+            <a href="https://rive.app/docs/runtimes/state-machines" target="_blank" rel="noreferrer">Rive: State machines ↗</a>
+            ·
+            <a href="https://nextjs.org/docs/app/api-reference/file-conventions/public-folder" target="_blank" rel="noreferrer">Next.js: public ↗</a>
           </p>
         </section>
 
@@ -345,6 +360,11 @@ import { motion } from "motion/react";</code></pre>
             <strong>Hvorfor <code>"use client"</code>?</strong> Hover og klik sker i browseren. Hold de animerede
             komponenter små — ligesom <code>Eyes</code>.
           </p>
+          <p class="po-source-link">
+            <a href="https://motion.dev/docs/react-installation" target="_blank" rel="noreferrer">Motion: Installation ↗</a>
+            ·
+            <a href="https://nextjs.org/docs/app/api-reference/directives/use-client" target="_blank" rel="noreferrer">Next.js: "use client" ↗</a>
+          </p>
         </section>
 
         <section class="po-slide" id="props">
@@ -361,6 +381,15 @@ import { motion } from "motion/react";</code></pre>
           <p class="dui-lead-note">
             <strong>Fem props dækker det meste.</strong> Animér <code>x</code>, <code>y</code>, <code>scale</code> og
             <code>opacity</code> — så kører det glat, også på mobilen.
+          </p>
+          <p class="po-source-link">
+            <a href="https://motion.dev/docs/react-gestures" target="_blank" rel="noreferrer">Motion: Gestures ↗</a>
+            ·
+            <a href="https://motion.dev/docs/react-animation" target="_blank" rel="noreferrer">Animation ↗</a>
+            ·
+            <a href="https://motion.dev/docs/react-animate-presence" target="_blank" rel="noreferrer">AnimatePresence ↗</a>
+            ·
+            <a href="https://motion.dev/docs/react-layout-animations" target="_blank" rel="noreferrer">Layout ↗</a>
           </p>
         </section>
 
@@ -400,6 +429,11 @@ export default function LiftCard({ children }) {
           <p class="dui-lead-note">
             <strong>Hvorfor smart?</strong> Kun kortet er client — indholdet og siden renderes stadig på serveren.
           </p>
+          <p class="po-source-link">
+            <a href="https://motion.dev/docs/react-gestures" target="_blank" rel="noreferrer">Motion: Gestures ↗</a>
+            ·
+            <a href="https://motion.dev/docs/react-transitions" target="_blank" rel="noreferrer">Transitions ↗</a>
+          </p>
         </section>
 
         <section class="po-slide" id="besked">
@@ -435,6 +469,9 @@ export default function LiftCard({ children }) {
             <strong>Uden <code>AnimatePresence</code> forsvinder beskeden med det samme</strong> — React fjerner den,
             før <code>exit</code> kan køre.
           </p>
+          <p class="po-source-link">
+            <a href="https://motion.dev/docs/react-animate-presence" target="_blank" rel="noreferrer">Motion: AnimatePresence ↗</a>
+          </p>
         </section>
 
         <section class="po-slide" id="reduced-motion">
@@ -450,14 +487,14 @@ export default function LiftCard({ children }) {
 
 // app/layout.js
 &lt;MotionProvider&gt;{children}&lt;/MotionProvider&gt;</code></pre>
-              <p class="nx-verdict is-now">Motion følger brugerens indstilling</p>
+              <p class="nx-verdict is-now"><code>"user"</code> = følg brugerens indstilling i styresystemet</p>
             </article>
             <article class="is-new">
-              <span>Det sker med beskeden</span>
+              <span>Det sker i demoen</span>
               <ul class="mo-props-list">
-                <li>Normalt: glider 8 px og fader ind</li>
-                <li>Reduced motion: fader kun ind</li>
-                <li>Rive følger det ikke selv — tjek med <code>useReducedMotion</code></li>
+                <li>Normalt: beskeden glider 8 px og fader ind</li>
+                <li>Reduced motion: beskeden fader kun ind</li>
+                <li>Reduced motion: kortet løfter sig ikke</li>
               </ul>
               <p class="nx-verdict is-now">Ingen bevægelse — fades og farver bliver</p>
             </article>
@@ -467,6 +504,46 @@ export default function LiftCard({ children }) {
           </div>
           <p class="po-source-link">
             <a href="https://motion.dev/docs/react-accessibility" target="_blank" rel="noreferrer">Motion: Accessibility ↗</a>
+            ·
+            <a href="https://motion.dev/docs/react-motion-config" target="_blank" rel="noreferrer">MotionConfig ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="post-app">
+          <span class="eyebrow">Større eksempel · nextjs-supabase-posts</span>
+          <h2>Samme props — i Post App</h2>
+          <div class="mo-app-shots">
+            <figure>
+              <div class="mo-app-shot"><img src="../assets/motion-post-app-kort-hover.webp" alt="Et post-card med Maria Louise og billedet fra Aarhus, løftet med blå kant, fordi musen er over." /></div>
+              <figcaption>
+                <b>Post-cardet løfter sig</b>
+                <span><code>whileHover</code> og <code>whileTap</code> — som kortet</span>
+                <a href="https://github.com/cederdorff/nextjs-supabase-posts/blob/motion/components/PostCard.js" target="_blank" rel="noreferrer">PostCard.js ↗</a>
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="mo-app-shot"><img src="../assets/motion-save-pending.webp" alt="Formularen Create post, hvor knappen Save er skiftet til Saving …" /></div>
+              <figcaption>
+                <b><em>Save</em> skifter til <em>Saving …</em></b>
+                <span><code>whileTap</code> og <code>useFormStatus</code> fra React</span>
+                <a href="https://github.com/cederdorff/nextjs-supabase-posts/blob/motion/components/SubmitButton.js" target="_blank" rel="noreferrer">SubmitButton.js ↗</a>
+              </figcaption>
+            </figure>
+            <figure>
+              <div class="mo-app-shot"><img src="../assets/motion-post-app-delete-bekraeft.webp" alt="En post med knapperne Edit og Delete og under dem spørgsmålet Delete this post? med Yes, delete og Cancel." /></div>
+              <figcaption>
+                <b><em>Delete this post?</em> glider ind</b>
+                <span><code>AnimatePresence</code> og <code>exit</code> — som beskeden</span>
+                <a href="https://github.com/cederdorff/nextjs-supabase-posts/blob/motion/components/DeleteButton.js" target="_blank" rel="noreferrer">DeleteButton.js ↗</a>
+              </figcaption>
+            </figure>
+          </div>
+          <p class="po-source-link">
+            <a href="https://github.com/cederdorff/nextjs-supabase-posts/tree/motion" target="_blank" rel="noreferrer">Branch: motion ↗</a>
+            ·
+            <a href="https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-05-roller...motion" target="_blank" rel="noreferrer">Se alt det nye ↗</a>
+            ·
+            <a href="https://react.dev/reference/react-dom/hooks/useFormStatus" target="_blank" rel="noreferrer">React: useFormStatus ↗</a>
           </p>
         </section>
 
@@ -482,13 +559,13 @@ export default function LiftCard({ children }) {
               <h3>Rive i jeres app?</h3>
               <p>Læg <code>.riv</code>-filen i <code>public/</code>, lav en lille client component med
                 <code>useRive</code>, og brug den i en side.</p>
-              <p class="step-links"><a href="#/rive-nextjs">Tre trin</a><a href="#/rive-fejl">Ingen øjne?</a></p>
+              <p class="step-links"><a href="#/rive-nextjs">Tre trin</a><a href="#/rive-fejl">Ingen øjne?</a><a class="is-repo" href="https://rive.app/docs/runtimes/react/react" target="_blank" rel="noreferrer">Rive-docs</a></p>
             </article>
             <article>
               <h3>Motion i jeres app?</h3>
               <p>Vælg én interaktion, der giver brugeren feedback. Start med <code>whileHover</code> og
                 <code>whileTap</code>.</p>
-              <p class="step-links"><a href="#/installer">Kom i gang</a><a href="#/props">Fem props</a><a href="#/reduced-motion">Reduced motion</a></p>
+              <p class="step-links"><a href="#/installer">Kom i gang</a><a href="#/props">Fem props</a><a href="#/reduced-motion">Reduced motion</a><a href="#/post-app">Post App</a><a class="is-repo" href="https://motion.dev/docs/react" target="_blank" rel="noreferrer">Motion-docs</a></p>
             </article>
           </div>
           <p class="po-source-link">

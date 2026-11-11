@@ -37,6 +37,7 @@ Først ser vi, hvordan I får en Rive-animation over i React og Next.js – med 
 <li>Eksempel 1: Et kort, der løfter sig ved hover og trykkes ned ved klik.</li>
 <li>Eksempel 2: En besked, der glider ind og ud igen med <code>AnimatePresence</code>.</li>
 <li>Reduced motion: <code>MotionConfig reducedMotion="user"</code> omkring hele appen fjerner bevægelse, men beholder fades.</li>
+<li>Større eksempel: De samme props i Post App – post-cards løfter sig, <em>Save</em> skifter til <em>Saving …</em>, og <em>Delete this post?</em> glider ind som beskeden.</li>
 </ul>
 </details>
 
@@ -64,11 +65,18 @@ Først ser vi, hvordan I får en Rive-animation over i React og Next.js – med 
   - [nextjs-supabase-posts · branch `motion`](https://github.com/cederdorff/nextjs-supabase-posts/tree/motion) – større eksempel: Post App med tre microinteractions
 - **Motion:**
   - [Motion for React](https://motion.dev/docs/react)
+  - [Installation](https://motion.dev/docs/react-installation)
+  - [Gestures](https://motion.dev/docs/react-gestures) – `whileHover` og `whileTap`
   - [AnimatePresence](https://motion.dev/docs/react-animate-presence)
+  - [Layout animations](https://motion.dev/docs/react-layout-animations)
   - [Accessibility](https://motion.dev/docs/react-accessibility)
 - **Rive:**
   - [Guide: Lav øjne der bevæger og blinker vha. cursor](https://eaaa.instructure.com/courses/30922/pages/guide-lav-ojne-der-bevaeger-og-blinker-vha-cursor) – NKKRs øvelse
   - [Rive: React](https://rive.app/docs/runtimes/react/react)
+  - [Rive: useRive](https://rive.app/docs/runtimes/react/parameters-and-return-values)
+  - [Rive: Layout](https://rive.app/docs/runtimes/layout)
+- **Next.js:**
+  - [`"use client"`](https://nextjs.org/docs/app/api-reference/directives/use-client)
 - **Tilgængelighed:**
   - [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
 - **Litteratur:**

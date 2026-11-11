@@ -821,3 +821,62 @@
   }
 }
 
+
+/* Post App · tre skærmbilleder med fil-link */
+.reveal .mo-app-shots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  height: 470px;
+  margin-top: 26px;
+}
+
+.reveal .mo-app-shots figure {
+  display: grid;
+  grid-template-rows: 340px auto;
+  gap: 16px;
+  min-height: 0;
+  margin: 0;
+}
+
+.reveal .mo-app-shot {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 20px;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.reveal .mo-app-shot img {
+  display: block;
+  max-width: 100%;
+  max-height: 300px;
+  margin: 0;
+  object-fit: contain;
+}
+
+.reveal .mo-app-shots figcaption {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+
+.reveal .mo-app-shots figcaption b {
+  font-size: 23px;
+}
+
+.reveal .mo-app-shots figcaption span {
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+.reveal .mo-app-shots figcaption code {
+  font-size: 18px;
+}
+
+.reveal .mo-app-shots figcaption a {
+  font-size: 18px;
+  font-weight: 700;
+}
