@@ -368,7 +368,7 @@
   line-height: 1.4;
 }
 
-/* Lilla = samme tre værdier · koral = det, hooken overtager */
+/* Lilla = de tre værdier, der flytter med · koral = det, hooken overtager */
 .reveal #rive-ojne .hljs table,
 .reveal #rive-nextjs .hljs table {
   width: 100%;
@@ -398,22 +398,6 @@
 
 .reveal #rive-ojne article:not(.is-new) tr:is(:nth-child(3), :nth-child(6), :nth-child(9), :nth-child(10), :nth-child(11)) .hljs-ln-code {
   box-shadow: inset 4px 0 0 var(--coral);
-  background: rgb(240 143 115 / 14%);
-}
-
-.reveal .mo-key {
-  padding: 2px 10px;
-  border-radius: 999px;
-  font-weight: 800;
-}
-
-.reveal .mo-key.is-same {
-  color: var(--dui);
-  background: var(--dui-soft);
-}
-
-.reveal .mo-key.is-gone {
-  color: var(--coral);
   background: rgb(240 143 115 / 14%);
 }
 

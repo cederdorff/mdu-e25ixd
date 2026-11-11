@@ -211,12 +211,12 @@ export default function Eyes() {
 
   return &lt;RiveComponent aria-hidden="true" /&gt;;
 }</code></pre>
-              <p class="nx-verdict is-now">Hooken laver canvas, følger størrelsen og rydder op</p>
+              <p class="nx-verdict is-now">Kun de tre værdier fra guiden er tilbage</p>
             </article>
           </div>
           <p class="dui-lead-note">
-            <strong>Hvorfor smart?</strong> <span class="mo-key is-same">Lilla</span> er de samme tre værdier som i
-            guiden. <span class="mo-key is-gone">Koral</span> klarer hooken — og musen og blinket klarer Rive selv.
+            <strong>Hvorfor smart?</strong> <code>useRive</code> laver canvas, følger størrelsen og rydder op — og musen
+            og blinket klarer Rive selv.
           </p>
           <p class="po-source-link">
             <a href="https://rive.app/docs/runtimes/react/parameters-and-return-values" target="_blank" rel="noreferrer">Rive: useRive ↗</a>
@@ -349,7 +349,7 @@ export default function Home() {
         </section>
 
         <section class="po-slide" id="installer">
-          <span class="eyebrow">Kom i gang med Motion · tre trin</span>
+          <span class="eyebrow">Kom i gang med Motion · trin 1–3</span>
           <h2>Fra <code>div</code> til <code>motion.div</code></h2>
           <ol class="mo-steps">
             <li>
@@ -377,6 +377,32 @@ import { motion } from "motion/react";</code></pre>
             <a href="https://motion.dev/docs/react-installation" target="_blank" rel="noreferrer">Motion: Installation ↗</a>
             ·
             <a href="https://nextjs.org/docs/app/api-reference/directives/use-client" target="_blank" rel="noreferrer">Next.js: "use client" ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="reduced-motion">
+          <span class="eyebrow">Kom i gang med Motion · trin 4 · reduced motion</span>
+          <h2>Én gang i hele appen</h2>
+          <div class="mo-reduced">
+            <div>
+              <span class="code-label"><code>components/MotionProvider.js</code> · client</span>
+              <pre class="po-code"><code class="language-jsx">&lt;MotionConfig reducedMotion="user"&gt;
+  {children}
+&lt;/MotionConfig&gt;</code></pre>
+              <span class="code-label"><code>app/layout.js</code></span>
+              <pre class="po-code"><code class="language-jsx">&lt;MotionProvider&gt;{children}&lt;/MotionProvider&gt;</code></pre>
+            </div>
+            <div class="mo-reduced-notes">
+              <p><code>"user"</code><span>Følg brugerens indstilling i styresystemet</span></p>
+              <p><b>Bevægelse slås fra</b><span>Beskeden glider ikke — kortet løfter sig ikke</span></p>
+              <p><b>Fades og farver bliver</b><span>Feedbacken er der stadig</span></p>
+            </div>
+          </div>
+          <p class="mo-reduced-test"><b>Test det</b> DevTools → <em>Rendering</em> → <em>prefers-reduced-motion</em></p>
+          <p class="po-source-link">
+            <a href="https://motion.dev/docs/react-accessibility" target="_blank" rel="noreferrer">Motion: Accessibility ↗</a>
+            ·
+            <a href="https://motion.dev/docs/react-motion-config" target="_blank" rel="noreferrer">MotionConfig ↗</a>
           </p>
         </section>
 
@@ -480,32 +506,6 @@ export default function LiftCard({ children }) {
           </div>
           <p class="po-source-link">
             <a href="https://motion.dev/docs/react-animate-presence" target="_blank" rel="noreferrer">Motion: AnimatePresence ↗</a>
-          </p>
-        </section>
-
-        <section class="po-slide" id="reduced-motion">
-          <span class="eyebrow">Kom i gang med Motion · tilgængelighed</span>
-          <h2>Reduced motion i hele appen</h2>
-          <div class="mo-reduced">
-            <div>
-              <span class="code-label"><code>components/MotionProvider.js</code> · client</span>
-              <pre class="po-code"><code class="language-jsx">&lt;MotionConfig reducedMotion="user"&gt;
-  {children}
-&lt;/MotionConfig&gt;</code></pre>
-              <span class="code-label"><code>app/layout.js</code></span>
-              <pre class="po-code"><code class="language-jsx">&lt;MotionProvider&gt;{children}&lt;/MotionProvider&gt;</code></pre>
-            </div>
-            <div class="mo-reduced-notes">
-              <p><code>"user"</code><span>Følg brugerens indstilling i styresystemet</span></p>
-              <p><b>Bevægelse slås fra</b><span>Beskeden glider ikke — kortet løfter sig ikke</span></p>
-              <p><b>Fades og farver bliver</b><span>Feedbacken er der stadig</span></p>
-            </div>
-          </div>
-          <p class="mo-reduced-test"><b>Test det</b> DevTools → <em>Rendering</em> → <em>prefers-reduced-motion</em></p>
-          <p class="po-source-link">
-            <a href="https://motion.dev/docs/react-accessibility" target="_blank" rel="noreferrer">Motion: Accessibility ↗</a>
-            ·
-            <a href="https://motion.dev/docs/react-motion-config" target="_blank" rel="noreferrer">MotionConfig ↗</a>
           </p>
         </section>
 
