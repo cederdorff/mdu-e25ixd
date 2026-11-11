@@ -395,32 +395,157 @@
 }
 
 /* Øjnene · fra index.html til komponent */
-.reveal .mo-rive-port {
-  height: auto;
+.reveal #rive-ojne .mo-rive-port {
+  height: 496px;
 }
 
 .reveal #rive-ojne pre.po-code {
+  display: flex;
   margin: 0;
 }
 
 .reveal #rive-ojne pre.po-code code {
+  flex: 1;
   font-size: 16px;
+  line-height: 1.4;
 }
 
-.reveal .mo-rive-port .nx-verdict {
-  margin-top: auto !important;
+/* Lilla = samme tre værdier · koral = det, hooken overtager */
+.reveal #rive-ojne .hljs table,
+.reveal #rive-nextjs .hljs table {
+  width: 100%;
 }
 
-/* Øjnene · tre trin i Next.js */
+.reveal #rive-ojne .hljs-ln-code,
+.reveal #rive-nextjs .hljs-ln-code {
+  padding-left: 12px;
+}
+
+.reveal #rive-ojne .hljs-ln-numbers,
+.reveal #rive-nextjs .hljs-ln-numbers {
+  display: none;
+}
+
+.reveal #rive-ojne .hljs.has-highlights tr:not(.highlight-line),
+.reveal #rive-nextjs .hljs.has-highlights tr:not(.highlight-line) {
+  opacity: 0.45;
+}
+
+.reveal #rive-ojne .is-new .highlight-line .hljs-ln-code,
+.reveal #rive-ojne article:not(.is-new) tr:is(:nth-child(2), :nth-child(4), :nth-child(5)) .hljs-ln-code,
+.reveal #rive-nextjs .highlight-line .hljs-ln-code {
+  box-shadow: inset 4px 0 0 var(--dui);
+  background: var(--dui-soft);
+}
+
+.reveal #rive-ojne article:not(.is-new) tr:is(:nth-child(3), :nth-child(6), :nth-child(9), :nth-child(10), :nth-child(11)) .hljs-ln-code {
+  box-shadow: inset 4px 0 0 var(--coral);
+  background: rgb(240 143 115 / 14%);
+}
+
+.reveal .mo-key {
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+.reveal .mo-key.is-same {
+  color: var(--dui);
+  background: var(--dui-soft);
+}
+
+.reveal .mo-key.is-gone {
+  color: var(--coral);
+  background: rgb(240 143 115 / 14%);
+}
+
+/* Øjnene · tre trin og resultatet */
+.reveal .mo-rive-setup {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 28px;
+  height: 480px;
+  margin-top: 32px;
+}
+
 .reveal .mo-rive-steps {
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 1.5fr);
-  margin-top: 36px;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas:
+    "install install"
+    "files page";
+  gap: 20px 24px;
+  height: 100%;
+  margin: 0;
 }
 
 .reveal .mo-rive-steps li {
+  gap: 12px;
   min-height: 0;
+  padding: 18px 22px;
 }
 
+.reveal .mo-rive-steps span code {
+  font-size: 0.95em;
+}
+
+.reveal .mo-rive-steps .is-install {
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+  grid-area: install;
+}
+
+.reveal .mo-rive-steps .is-install span {
+  white-space: nowrap;
+}
+
+.reveal .mo-rive-steps .is-files {
+  grid-area: files;
+}
+
+.reveal .mo-rive-steps .is-page {
+  grid-area: page;
+}
+
+.reveal .mo-rive-steps pre.po-code code,
+.reveal .mo-rive-steps pre.po-code code.hljs {
+  padding: 14px 14px 14px 18px;
+  font-size: 17px !important;
+  line-height: 1.35;
+}
+
+.reveal .mo-rive-result {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  margin: 0;
+}
+
+.reveal .mo-rive-result .mo-window {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  background: #ffffff;
+}
+
+.reveal .mo-rive-result img {
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+  object-fit: contain;
+}
+
+.reveal .mo-rive-result figcaption {
+  color: var(--muted, #b9b6c8);
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
 
 /* Øjnene · fejlfinding */
 .reveal .mo-rive-debug {

@@ -172,7 +172,7 @@
           <div class="nx-two mo-rive-port">
             <article>
               <span>Før · <code>index.html</code> fra guiden</span>
-              <pre class="po-code"><code class="language-js">const r = new rive.Rive({
+              <pre class="po-code"><code class="language-js" data-line-numbers="2-6,9-11">const r = new rive.Rive({
   src: "eyes.riv",
   canvas: document.getElementById("rive-canvas"),
   stateMachine: "State Machine",
@@ -187,7 +187,7 @@ window.addEventListener("resize", () =&gt;
             </article>
             <article class="is-new">
               <span>Nu · <code>components/Eyes.js</code></span>
-              <pre class="po-code"><code class="language-jsx">"use client";
+              <pre class="po-code"><code class="language-jsx" data-line-numbers="6-8">"use client";
 import { useRive } from "@rive-app/react-webgl2";
 
 export default function Eyes() {
@@ -203,31 +203,30 @@ export default function Eyes() {
             </article>
           </div>
           <p class="dui-lead-note">
-            <strong>Hvorfor smart?</strong> Samme tre værdier som i guiden. Musen og blinket klarer Rive selv med
-            listeners — React skal bare vise filen.
+            <strong>Hvorfor smart?</strong> <span class="mo-key is-same">Lilla</span> er de samme tre værdier som i
+            guiden. <span class="mo-key is-gone">Koral</span> klarer hooken — og musen og blinket klarer Rive selv.
           </p>
         </section>
 
         <section class="po-slide" id="rive-nextjs">
           <span class="eyebrow">Fra Rive til Next.js · tre trin</span>
           <h2>Øjnene på en side i tre trin</h2>
-          <ol class="mo-steps mo-rive-steps">
-            <li>
-              <span>1 · Installér</span>
-              <pre class="po-code"><code class="language-bash">npm install \
-  @rive-app/react-webgl2</code></pre>
-            </li>
-            <li>
-              <span>2 · Fil og komponent</span>
-              <pre class="po-code"><code class="language-bash">public/
+          <div class="mo-rive-setup">
+            <ol class="mo-steps mo-rive-steps">
+              <li class="is-install">
+                <span>1 · Installér</span>
+                <pre class="po-code"><code class="language-bash">npm install @rive-app/react-webgl2</code></pre>
+              </li>
+              <li class="is-files">
+                <span>2 · Fil og komponent</span>
+                <pre class="po-code"><code class="language-bash">public/
   eyes.riv
 components/
   Eyes.js</code></pre>
-            </li>
-            <li>
-              <span>3 · Brug den i en side</span>
-              <pre class="po-code"><code class="language-jsx">// app/page.js
-import Eyes from "@/components/Eyes";
+              </li>
+              <li class="is-page">
+                <span>3 · Brug den i <code>app/page.js</code></span>
+                <pre class="po-code"><code class="language-jsx" data-line-numbers="5-7">import Eyes from "@/components/Eyes";
 
 export default function Home() {
   return (
@@ -236,8 +235,16 @@ export default function Home() {
     &lt;/div&gt;
   );
 }</code></pre>
-            </li>
-          </ol>
+              </li>
+            </ol>
+            <figure class="mo-rive-result">
+              <div class="mo-window">
+                <div class="mo-window-bar"><i></i><i></i><i></i><span>localhost:3000</span></div>
+                <img src="../assets/rive-demo-ojne.webp" alt="To tegnede øjne med øjenvipper, der kigger ned mod højre efter musen." />
+              </div>
+              <figcaption>Resultat · øjnene følger musen</figcaption>
+            </figure>
+          </div>
           <p class="dui-lead-note">
             <strong>Siden kan blive på serveren.</strong> Kun <code>Eyes</code> er client. Giv forælderen en højde,
             ellers bliver øjnene 0 px høje.
