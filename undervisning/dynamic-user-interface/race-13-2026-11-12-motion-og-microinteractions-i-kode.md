@@ -38,7 +38,9 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er.
 <li>Feedback: Post-cards løfter sig ved hover og focus og trykkes ned ved klik – <code>AnimatedCard</code> er client, indholdet renderes stadig på serveren.</li>
 <li>Status: <em>Save</em> skifter til <em>Saving …</em>, mens Server Action'en kører – <code>useFormStatus</code> og <code>AnimatePresence</code>. Teksten bærer informationen, motion viser skiftet.</li>
 <li>Bekræftelse: <code>window.confirm</code> er skiftet ud med <em>Delete this post?</em>, der glider ind, hvor brugeren klikkede. Med tastatur lander fokus på <em>Cancel</em>.</li>
-<li>Fra Rive til React: Motion til UI-elementer, Rive til illustrationer og figurer, som designeren animerer. Eksportér en <code>.riv</code>-fil, og vis den med <code>useRive</code> fra <code>@rive-app/react-webgl2</code>. React ændrer en property i Rive-filens view model, fx <code>isLiked</code>, og Rive animerer resten. Navnene skal matche Rive-filen præcis. Ældre guides bruger <code>useStateMachineInput</code> – det er afløst af data binding.</li>
+<li>Fra Rive til React: Motion til UI-elementer, Rive til illustrationer og figurer, som designeren animerer. Eksportér en <code>.riv</code>-fil, og vis den med <code>useRive</code> fra <code>@rive-app/react-webgl2</code>.</li>
+<li>Øjnene fra NKKRs Rive-øvelse i Next.js: Læg <code>ojne.riv</code> i <code>public/</code>, lav en lille client component med <code>useRive</code> og samme tre værdier som i guidens <code>index.html</code> (<code>src</code>, <code>stateMachine</code>, <code>autoplay</code>), og brug den i en side. Musen og blinket klarer Rive selv med listeners. Giv forælderen en højde, og kopiér navnet på state machine præcis fra Rive.</li>
+<li>Skal React styre animationen, fx lukke øjnene, når kodeordsfeltet har fokus, ændrer React en property i Rive-filens view model, fx <code>isLiked</code>, og Rive animerer resten. Guiden bruger inputs (<code>left isHover</code>) – i React er de afløst af data binding, og <code>useStateMachineInput</code> er markeret som forældet.</li>
 </ul>
 </details>
 
@@ -60,7 +62,7 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er.
 <ul>
 <li>Arbejd videre, der hvor I er i jeres projekt.</li>
 <li>Overvej, om I kan bruge noget fra i dag: Hvad skal motion gøre for brugeren i jeres produkt? Svaret kan I også bruge i rapporten.</li>
-<li>Vil I prøve det af? Kør branchen <code>motion</code> i <code>nextjs-supabase-posts</code>, og brug den som reference – fx ved at give den som kontekst til Claude.</li>
+<li>Vil I prøve det af? Kør branchen <code>motion</code> i <code>nextjs-supabase-posts</code>, og brug den som reference – fx ved at give den som kontekst til Claude. Eller sæt øjnene fra NKKRs Rive-øvelse ind i jeres app.</li>
 <li>Vejledning i grupperne undervejs.</li>
 </ul>
 </details>
@@ -80,6 +82,7 @@ Bagefter arbejder I videre med jeres projekt, der hvor I er.
   - [AnimatePresence](https://motion.dev/docs/react-animate-presence)
   - [Accessibility](https://motion.dev/docs/react-accessibility)
 - **Rive:**
+  - [Guide: Lav øjne der bevæger og blinker vha. cursor](https://eaaa.instructure.com/courses/30922/pages/guide-lav-ojne-der-bevaeger-og-blinker-vha-cursor) – NKKRs øvelse
   - [Rive: React](https://rive.app/docs/runtimes/react/react)
   - [Rive: Data binding i React](https://rive.app/docs/runtimes/react/data-binding)
 - **React:**

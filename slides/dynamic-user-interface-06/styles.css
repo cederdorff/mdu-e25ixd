@@ -618,6 +618,47 @@
   font-size: 19px;
 }
 
+/* Øjnene · fra index.html til komponent */
+.reveal .mo-rive-port {
+  height: auto;
+}
+
+.reveal #rive-ojne pre.po-code {
+  margin: 0;
+}
+
+.reveal #rive-ojne pre.po-code code {
+  font-size: 16px;
+}
+
+.reveal .mo-rive-port .nx-verdict {
+  margin-top: auto !important;
+}
+
+/* Øjnene · tre trin i Next.js */
+.reveal .mo-rive-steps {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 0.75fr) minmax(0, 1.4fr);
+  margin-top: 36px;
+}
+
+.reveal .mo-rive-steps li {
+  min-height: 0;
+}
+
+.reveal #rive-nextjs pre.po-code code {
+  font-size: 16px;
+}
+
+/* Øjnene · fejlfinding */
+.reveal .mo-rive-debug {
+  margin-top: 40px;
+}
+
+.reveal .mo-rive-debug .why-row {
+  grid-template-columns: 300px 1fr 1fr;
+  padding: 18px 24px;
+}
+
 .reveal #rive-kode .mo-code-pair {
   grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
 }

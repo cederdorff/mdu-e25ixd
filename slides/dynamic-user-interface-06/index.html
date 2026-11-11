@@ -384,9 +384,9 @@ import { motion } from "motion/react";</code></pre>
               <span>Rive · designeren laver animationen</span>
               <h3>Illustrationer og figurer</h3>
               <ol class="mo-rive-flow">
-                <li><b>Rive</b><span>Animation, state machine og en view model med fx <code>isLiked</code></span></li>
-                <li><b>Export</b><span><code>like.riv</code> i <code>public/</code></span></li>
-                <li><b>React</b><span>Sætter <code>isLiked</code> — Rive afspiller resten</span></li>
+                <li><b>Rive</b><span>Animation og state machine — fx øjnene fra NKKRs øvelse</span></li>
+                <li><b>Export</b><span><code>ojne.riv</code> i <code>public/</code></span></li>
+                <li><b>React</b><span>Viser filen — og kan styre den, når det er nødvendigt</span></li>
               </ol>
               <p class="nx-verdict is-now">Personlighed, der er svær at kode</p>
             </article>
@@ -397,8 +397,101 @@ import { motion } from "motion/react";</code></pre>
           </p>
         </section>
 
+        <section class="po-slide" id="rive-ojne">
+          <span class="eyebrow">Fra Rive til React · øjnene fra NKKRs øvelse</span>
+          <h2>Fra <code>index.html</code> til en komponent</h2>
+          <div class="nx-two mo-rive-port">
+            <article>
+              <span>Før · <code>index.html</code> fra guiden</span>
+              <pre class="po-code"><code class="language-js">const r = new rive.Rive({
+  src: "ojne.riv",
+  canvas: document.getElementById("rive-canvas"),
+  stateMachine: "State Machine",
+  autoplay: true,
+  onLoad: () =&gt; r.resizeDrawingSurfaceToCanvas(),
+});
+
+window.addEventListener("resize", () =&gt;
+  r.resizeDrawingSurfaceToCanvas()
+);</code></pre>
+              <p class="nx-verdict is-before">I finder selv canvas og holder styr på størrelsen</p>
+            </article>
+            <article class="is-new">
+              <span>Nu · <code>components/Eyes.js</code></span>
+              <pre class="po-code"><code class="language-jsx">"use client";
+import { useRive } from "@rive-app/react-webgl2";
+
+export default function Eyes() {
+  const { RiveComponent } = useRive({
+    src: "/ojne.riv",
+    stateMachine: "State Machine",
+    autoplay: true,
+  });
+
+  return &lt;RiveComponent aria-hidden="true" /&gt;;
+}</code></pre>
+              <p class="nx-verdict is-now">Hooken laver canvas, følger størrelsen og rydder op</p>
+            </article>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Hvorfor smart?</strong> Samme tre værdier som i guiden. Musen og blinket klarer Rive selv med
+            listeners — React skal bare vise filen.
+          </p>
+        </section>
+
+        <section class="po-slide" id="rive-nextjs">
+          <span class="eyebrow">Fra Rive til React · ind i Next.js</span>
+          <h2>Øjnene på en side i tre trin</h2>
+          <ol class="mo-steps mo-rive-steps">
+            <li>
+              <span>1 · Installér</span>
+              <pre class="po-code"><code class="language-bash">npm install \
+  @rive-app/react-webgl2</code></pre>
+            </li>
+            <li>
+              <span>2 · Filen og komponenten</span>
+              <pre class="po-code"><code class="language-bash">public/
+  ojne.riv
+components/
+  Eyes.js</code></pre>
+            </li>
+            <li>
+              <span>3 · Brug den i en side</span>
+              <pre class="po-code"><code class="language-jsx">// app/login/page.js
+import Eyes from "@/components/Eyes";
+
+export default function LoginPage() {
+  return (
+    &lt;div style={{ height: 240 }}&gt;
+      &lt;Eyes /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            </li>
+          </ol>
+          <p class="dui-lead-note">
+            <strong>Siden kan blive på serveren.</strong> Kun <code>Eyes</code> er client — ligesom
+            <code>AnimatedCard</code>. Giv forælderen en højde, ellers bliver øjnene 0 px høje.
+          </p>
+        </section>
+
+        <section class="po-slide" id="rive-fejl">
+          <span class="eyebrow">Fra Rive til React · fejlfinding</span>
+          <h2>Ingen øjne?</h2>
+          <div class="why-table mo-rive-debug" role="table" aria-label="Fejl, årsag og løsning, når Rive-filen ikke vises">
+            <div class="why-row why-head" role="row"><span>Det sker</span><span>Derfor</span><span class="is-next">Gør sådan</span></div>
+            <div class="why-row" role="row"><b>Tom flade</b><span>Forælderen har ingen højde</span><span class="is-next">Giv den en højde, fx <code>240</code></span></div>
+            <div class="why-row" role="row"><b>404 på <code>ojne.riv</code></b><span>Filen ligger ikke i <code>public/</code></span><span class="is-next">Flyt den — og start <code>src</code> med <code>/</code></span></div>
+            <div class="why-row" role="row"><b>Øjnene står stille</b><span>Navnet på state machine passer ikke</span><span class="is-next">Kopiér navnet præcis fra Rive</span></div>
+            <div class="why-row" role="row"><b>Følger ikke musen helt</b><span>Listeners virker kun over canvas</span><span class="is-next">Gør komponenten større</span></div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Touch har ingen hover.</strong> Øjnene er pynt — det er i orden, at de står stille på mobilen.
+          </p>
+        </section>
+
         <section class="po-slide" id="rive-kode">
-          <span class="eyebrow">Fra Rive til React · i koden</span>
+          <span class="eyebrow">Fra Rive til React · når React skal styre</span>
           <h2>React styrer — Rive animerer</h2>
           <div class="au-code-pair is-stacked mo-code-pair">
             <div>
@@ -629,8 +722,9 @@ const chosen = shouldReduceMotion
             </article>
             <article>
               <h3>Vil I prøve det af?</h3>
-              <p>Kør branchen <code>motion</code> i startprojektet, og brug den som reference.</p>
-              <p class="step-links"><a href="#/demo">Demo</a><a href="#/reference">Brug som reference</a></p>
+              <p>Kør branchen <code>motion</code> i startprojektet, og brug den som reference. Eller sæt øjnene fra
+                NKKRs Rive-øvelse ind i jeres app.</p>
+              <p class="step-links"><a href="#/demo">Demo</a><a href="#/reference">Brug som reference</a><a href="#/rive-nextjs">Øjnene i Next.js</a></p>
             </article>
           </div>
           <p class="po-source-link">
