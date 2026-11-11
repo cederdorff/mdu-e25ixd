@@ -33,11 +33,11 @@ Først ser vi, hvordan I får en Rive-animation over i React og Next.js – med 
 <ul>
 <li>Motion for React (tidligere Framer Motion) animerer direkte på elementet med få props.</li>
 <li>Tre trin: <code>npm install motion</code>, <code>"use client"</code> og <code>import { motion } from "motion/react"</code>, og sæt <code>motion.</code> foran elementet, fx <code>&lt;motion.div&gt;</code>.</li>
-<li>Fem props dækker det meste: <code>whileHover</code>, <code>whileTap</code>, <code>initial</code> → <code>animate</code>, <code>AnimatePresence</code> med <code>exit</code> og <code>layout</code>.</li>
+<li>Fem værktøjer dækker det meste: <code>whileHover</code>, <code>whileTap</code>, <code>initial</code> → <code>animate</code>, <code>AnimatePresence</code> med <code>exit</code> og <code>layout</code>.</li>
 <li>Eksempel 1: Et kort, der løfter sig ved hover og trykkes ned ved klik.</li>
 <li>Eksempel 2: En besked, der glider ind og ud igen med <code>AnimatePresence</code>.</li>
-<li>Reduced motion: <code>MotionConfig reducedMotion="user"</code> omkring hele appen fjerner bevægelse, men beholder fades.</li>
-<li>Større eksempel: De samme props i Post App – post-cards løfter sig, <em>Save</em> skifter til <em>Saving …</em>, og <em>Delete this post?</em> glider ind som beskeden.</li>
+<li>Reduced motion: <code>MotionConfig reducedMotion="user"</code> én gang omkring hele appen følger brugerens indstilling – bevægelse slås fra, men fades bliver.</li>
+<li>Større eksempel: De samme værktøjer i Post App – post-cards løfter sig, <em>Save</em> skifter til <em>Saving …</em>, og <em>Delete this post?</em> glider ind som beskeden.</li>
 </ul>
 </details>
 
