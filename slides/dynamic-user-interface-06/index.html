@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="RACE · Dynamic User Interface · Motion og microinteractions i kode · 12. november 2026."
+      content="RACE · Dynamic User Interface · Rive og Motion i Next.js · 12. november 2026."
     />
-    <title>Motion og microinteractions i kode · RACE · 12.11.2026</title>
+    <title>Rive og Motion i Next.js · RACE · 12.11.2026</title>
     <link rel="stylesheet" href="../shared/theme.css" />
     <link rel="stylesheet" href="../product-optimization-03/styles.css" />
     <link rel="stylesheet" href="../dynamic-user-interface-01/styles.css" />
@@ -20,25 +20,26 @@
       <div class="slides">
         <section class="po-slide po-title dui-title um-title mo-title">
           <span class="eyebrow">Dynamic User Interface · 3. semester</span>
-          <h1>Motion og<br />microinteractions <span>i&nbsp;kode.</span></h1>
-          <p class="lead">Motion for React · tokens · reduced motion · A/B/C</p>
+          <h1>Rive og Motion<br />i <span>Next.js.</span></h1>
+          <p class="lead">Fra <code>.riv</code> til komponent · kom i gang med Motion</p>
           <p class="date"><span>RACE</span><time datetime="2026-11-12">12. november 2026</time></p>
           <div class="au-hero mo-hero" aria-hidden="true">
             <div class="au-hero-window">
-              <div class="au-hero-bar"><i></i><i></i><i></i><span>localhost:3000/?variant=b</span></div>
+              <div class="au-hero-bar"><i></i><i></i><i></i><span>localhost:3000/motion</span></div>
               <div class="mo-hero-app">
                 <div class="mo-hero-card">
-                  <img src="../assets/motion-card-variant-b.webp" alt="" />
+                  <b>Hold musen over mig</b>
+                  <span>Jeg løfter mig 4 px.</span>
                 </div>
               </div>
             </div>
             <div class="au-hero-chip mo-hero-chip is-hover">
-              <small>Hover</small>
+              <small>Motion</small>
               <code>whileHover={{ y: -4 }}</code>
             </div>
-            <div class="au-hero-chip mo-hero-chip is-reduced">
-              <small>Respektér brugeren</small>
-              <code>reducedMotion="user"</code>
+            <div class="au-hero-chip mo-hero-chip is-rive">
+              <small>Rive</small>
+              <code>useRive({ src: "/ojne.riv" })</code>
             </div>
           </div>
         </section>
@@ -48,31 +49,25 @@
           <h2>Dagens program</h2>
           <div class="agenda-phased">
             <div class="agenda-phases" aria-hidden="true">
-              <p class="span-3"><span>Del 1</span><b>Oplæg og demo</b></p>
+              <p class="span-2"><span>Del 1</span><b>Oplæg og demo</b></p>
               <p class="span-1"><span>Del 2</span><b>Jeres projekt</b></p>
             </div>
             <ol class="agenda-list">
               <li>
-                <a href="#/kap-formaal"
-                  ><b>Motion med et formål</b><small>Hvad skal den gøre for brugeren?<br />— før vi skriver kode</small
-                  ><span class="au-agenda-tasks"></span
-                ></a>
-              </li>
-              <li>
-                <a href="#/kap-motion"
-                  ><b>Kom i gang med Motion</b><small>Tre microinteractions i Post App<br />— og fra Rive til React</small
+                <a href="#/kap-rive"
+                  ><b>Fra Rive til Next.js</b><small>Øjnene fra NKKRs øvelse<br />— i en React-komponent</small
                   ><span class="au-agenda-tasks"><em class="is-demo">Demo</em></span></a
                 >
               </li>
               <li>
-                <a href="#/kap-klar"
-                  ><b>Klar til jeres projekt</b><small>Tokens · reduced motion<br />performance · A/B/C</small
-                  ><span class="au-agenda-tasks"></span
-                ></a>
+                <a href="#/kap-motion"
+                  ><b>Kom i gang med Motion</b><small>motion.dev — hover, tap<br />og noget, der vises og forsvinder</small
+                  ><span class="au-agenda-tasks"><em class="is-demo">Demo</em></span></a
+                >
               </li>
               <li>
                 <a href="#/projekt"
-                  ><b>Vejledning og projektarbejde</b><small>Der, hvor I er<br />— brug motion i jeres projekt</small
+                  ><b>Vejledning og projektarbejde</b><small>Der, hvor I er<br />— brug Rive eller Motion i jeres projekt</small
                   ><span class="au-agenda-tasks"><em>Projekt</em></span></a
                 >
               </li>
@@ -80,294 +75,8 @@
           </div>
         </section>
 
-        <!-- 01 · Formål -->
-        <section class="chapter po-chapter po-slide" id="kap-formaal">
-          <span class="chapter-index">01</span>
-          <span class="eyebrow">Motion med et formål</span>
-          <h2>Hvad skal den gøre<br />for brugeren?</h2>
-          <p class="kicker">Når I skal bygge jeres interaktioner — i dag eller senere — starter det her.</p>
-          <dl class="chapter-definition">
-            <div>
-              <dt>Microinteraction</dt>
-              <dd>Et lille, afgrænset øjeblik med <b>ét formål</b> — fx at gemme, like eller slette.</dd>
-            </div>
-            <div>
-              <dt>Motion</dt>
-              <dd>Bevægelse, der <b>forklarer</b>, hvad der sker — ikke pynt.</dd>
-            </div>
-          </dl>
-          <p class="po-source-link">Dan Saffer: <em>Microinteractions</em> · Aaron Walter: <em>Designing for Emotion</em></p>
-        </section>
-
-        <section class="po-slide" id="fire-formaal">
-          <span class="eyebrow">Motion med et formål · fire grunde</span>
-          <h2>Hvorfor bevæger det sig?</h2>
-          <div class="assignment-flow mo-purposes">
-            <article>
-              <span class="um-term">Feedback</span>
-              <h3>Jeg har gjort noget</h3>
-              <p>Kortet løfter sig, knappen trykkes ned.</p>
-              <p class="um-answer"><code>whileHover</code> · <code>whileTap</code></p>
-            </article>
-            <article>
-              <span class="um-term">Status</span>
-              <h3>Der sker noget</h3>
-              <p>Knappen skifter til <em>Saving …</em>, mens data gemmes.</p>
-              <p class="um-answer"><code>pending</code></p>
-            </article>
-            <article>
-              <span class="um-term">Sammenhæng</span>
-              <h3>Hvor kom det fra?</h3>
-              <p>Bekræftelsen glider ind, hvor du klikkede — og ud igen.</p>
-              <p class="um-answer"><code>AnimatePresence</code></p>
-            </article>
-            <article>
-              <span class="um-term">Personlighed</span>
-              <h3>Sådan er vi</h3>
-              <p>En fjedrende spring siger noget andet end en rolig fade.</p>
-              <p class="um-answer"><code>type: "spring"</code></p>
-            </article>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Projektets regel:</strong> Hvis en effekt ikke kan forklares ud fra brugerens oplevelse, skal den fjernes.
-          </p>
-        </section>
-
-        <section class="po-slide" id="saffer">
-          <span class="eyebrow">Motion med et formål · Dan Saffers model</span>
-          <h2>Beskriv den, før I koder den</h2>
-          <ol class="mo-saffer" aria-label="Saffers fire dele brugt på Delete i Post App">
-            <li>
-              <span>Trigger</span>
-              <b>Klik på <em>Delete</em></b>
-              <small>Det, der starter den</small>
-            </li>
-            <li>
-              <span>Rules</span>
-              <b>Slet først efter et ja</b>
-              <small>Det, der må ske</small>
-            </li>
-            <li>
-              <span>Feedback</span>
-              <b><em>Delete this post?</em> glider ind</b>
-              <small>Det, brugeren ser</small>
-            </li>
-            <li>
-              <span>Loops og modes</span>
-              <b><em>Cancel</em> — tilbage til start</b>
-              <small>Det, der sker bagefter</small>
-            </li>
-          </ol>
-          <p class="dui-lead-note">
-            <strong>Skriv det i én sætning pr. del.</strong> Så ved I, hvad koden skal gøre — og I har jeres begrundelse
-            til rapporten.
-          </p>
-        </section>
-
-        <!-- 02 · Kom i gang -->
-        <section class="chapter po-chapter po-slide" id="kap-motion">
-          <span class="chapter-index">02</span>
-          <span class="eyebrow">Kom i gang med Motion</span>
-          <h2>Tre microinteractions<br />i Post App</h2>
-          <p class="kicker">Samme app som 10. november — nu med Motion.</p>
-          <dl class="chapter-definition">
-            <div>
-              <dt>Motion for React</dt>
-              <dd>Et library til animation i React — tidligere <b>Framer Motion</b>. Det skriver CSS-animationen for dig.</dd>
-            </div>
-          </dl>
-          <p class="po-source-link">
-            <a href="https://motion.dev/docs/react" target="_blank" rel="noreferrer">Motion for React ↗</a>
-          </p>
-        </section>
-
-        <section class="po-slide um-demo-slide" id="demo">
-          <span class="eyebrow">Demo · branchen motion</span>
-          <h2>Tre steder, det bevæger sig</h2>
-          <div class="um-demo">
-            <aside class="um-demo-setup">
-              <span>Branch</span><code>motion</code>
-              <span>Installér</span><code>npm install</code>
-              <span>Login</span><code>maria@example.com</code><code>postapp123</code>
-              <a class="is-repo" href="https://github.com/cederdorff/nextjs-supabase-posts/tree/motion" target="_blank" rel="noreferrer">nextjs-supabase-posts ↗</a>
-            </aside>
-            <ol class="um-demo-steps">
-              <li><b>Hold musen over et post</b><span>Kortet løfter sig — feedback</span></li>
-              <li><b>Opret et post, og klik på <em>Save</em></b><span>Knappen viser <em>Saving …</em> — status</span></li>
-              <li><b>Klik på <em>Delete</em> på et af Marias posts</b><span>Bekræftelsen glider ind — og ud igen med <em>Cancel</em></span></li>
-              <li><b>Slå reduced motion til, og prøv igen</b><span>Samme feedback — uden bevægelse</span></li>
-            </ol>
-          </div>
-        </section>
-
-        <section class="po-slide" id="installer">
-          <span class="eyebrow">Kom i gang med Motion · tre trin</span>
-          <h2>Fra <code>div</code> til <code>motion.div</code></h2>
-          <ol class="mo-steps">
-            <li>
-              <span>1 · Installér</span>
-              <pre class="po-code"><code class="language-bash">npm install motion</code></pre>
-            </li>
-            <li>
-              <span>2 · Client component</span>
-              <pre class="po-code"><code class="language-jsx">"use client";
-
-import { motion } from "motion/react";</code></pre>
-            </li>
-            <li>
-              <span>3 · Sæt <code>motion.</code> foran</span>
-              <pre class="po-code"><code class="language-jsx">&lt;motion.div
-  whileHover={{ y: -4 }}
-&gt;
-  …
-&lt;/motion.div&gt;</code></pre>
-            </li>
-          </ol>
-          <p class="dui-lead-note">
-            <strong>Hvorfor <code>"use client"</code>?</strong> Hover og klik sker i browseren. Hold de animerede
-            komponenter små — så kan resten af siden blive på serveren.
-          </p>
-        </section>
-
-        <section class="po-slide" id="props">
-          <span class="eyebrow">Kom i gang med Motion · hvad skal ske?</span>
-          <h2>Ét spørgsmål — én prop</h2>
-          <div class="why-table mo-props" role="table" aria-label="Hvad der skal ske, og hvilken Motion-prop der gør det">
-            <div class="why-row why-head" role="row"><span>Hvornår?</span><span class="is-next">Motion</span><span>I Post App</span></div>
-            <div class="why-row" role="row"><b>Musen er over</b><span class="is-next"><code>whileHover</code></span><span>Kortet løfter sig</span></div>
-            <div class="why-row" role="row"><b>Der trykkes</b><span class="is-next"><code>whileTap</code></span><span>Kort og knapper trykkes ned</span></div>
-            <div class="why-row" role="row"><b>Noget vises</b><span class="is-next"><code>initial</code> → <code>animate</code></span><span>Bekræftelsen glider ind</span></div>
-            <div class="why-row" role="row"><b>Noget forsvinder</b><span class="is-next"><code>AnimatePresence</code> + <code>exit</code></span><span>… og ud igen</span></div>
-            <div class="why-row" role="row"><b>Noget flytter sig</b><span class="is-next"><code>layout</code></span><span>Fx en liste, der sorteres</span></div>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Fem props dækker det meste.</strong> Det svære er ikke koden — det er at vælge, hvad der skal bevæge sig.
-          </p>
-        </section>
-
-        <section class="po-slide" id="kort">
-          <span class="eyebrow">Microinteraction 1 · feedback</span>
-          <h2>Kan jeg klikke på det?</h2>
-          <div class="mo-example">
-            <figure class="mo-shot is-card">
-              <img src="../assets/motion-card-variant-b.webp" alt="Et post-card på forsiden, der er løftet 4 pixels op, mens musen er over det." />
-              <figcaption>Musen over · løftet 4 px</figcaption>
-            </figure>
-            <div class="mo-example-code">
-              <span class="code-label"><code>components/AnimatedCard.js</code> · client</span>
-              <pre class="po-code"><code class="language-jsx">const MotionLink = motion.create(Link);
-
-&lt;MotionLink
-  href={href}
-  whileHover={{ y: -4 }}
-  whileFocus={{ y: -4 }}
-  whileTap={{ scale: 0.98 }}
-&gt;
-  {children}
-&lt;/MotionLink&gt;</code></pre>
-              <span class="code-label"><code>components/PostCard.js</code> · server</span>
-              <pre class="po-code"><code class="language-jsx">&lt;AnimatedCard href={`/posts/${post.id}`}&gt;
-  &lt;UserBadge user={post.user} /&gt; …
-&lt;/AnimatedCard&gt;</code></pre>
-            </div>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Hvorfor smart?</strong> Kun kortets ramme er client — indholdet renderes stadig på serveren.
-            <code>whileFocus</code> giver samme feedback med tastatur.
-          </p>
-        </section>
-
-        <section class="po-slide" id="gem">
-          <span class="eyebrow">Microinteraction 2 · status</span>
-          <h2>Sker der noget?</h2>
-          <div class="mo-example">
-            <figure class="mo-shot is-form">
-              <img src="../assets/motion-save-pending.webp" alt="Create post-formularen, hvor knappen viser Saving … og er nedtonet, mens post'et gemmes." />
-              <figcaption>Mens Server Action'en kører</figcaption>
-            </figure>
-            <div class="mo-example-code">
-              <span class="code-label"><code>components/SubmitButton.js</code> · client</span>
-              <pre class="po-code"><code class="language-jsx">const { pending } = useFormStatus();
-
-&lt;motion.button disabled={pending} whileTap={{ scale: 0.97 }}&gt;
-  &lt;AnimatePresence mode="wait" initial={false}&gt;
-    &lt;motion.span
-      key={pending ? "pending" : "idle"}
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -6 }}
-    &gt;
-      {pending ? "Saving …" : "Save"}
-    &lt;/motion.span&gt;
-  &lt;/AnimatePresence&gt;
-&lt;/motion.button&gt;</code></pre>
-            </div>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Motion fortæller, at tilstanden skifter — teksten fortæller hvilken.</strong> Animationen er aldrig
-            eneste bærer af information.
-          </p>
-        </section>
-
-        <section class="po-slide" id="slet">
-          <span class="eyebrow">Microinteraction 3 · bekræftelse</span>
-          <h2>Er du sikker?</h2>
-          <div class="nx-two mo-before-after">
-            <article>
-              <span>Før · <code>window.confirm</code></span>
-              <img src="../assets/motion-delete-start.webp" alt="Marias post med knapperne Edit og Delete." />
-              <p class="nx-verdict is-before">Browserens dialog — ude af sammenhæng med siden</p>
-            </article>
-            <article class="is-new">
-              <span>Nu · <code>AnimatePresence</code></span>
-              <img src="../assets/motion-delete-bekraeft.webp" alt="Samme post, hvor Delete er skiftet ud med Delete this post?, en rød Delete-knap og Cancel." />
-              <p class="nx-verdict is-now">Bekræftelsen glider ind, hvor du klikkede</p>
-            </article>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Hvorfor smart?</strong> Brugeren bliver, hvor de er. Med tastatur lander fokus på <em>Cancel</em> —
-            det sikre valg.
-          </p>
-        </section>
-
-        <section class="po-slide" id="slet-kode">
-          <span class="eyebrow">Microinteraction 3 · i koden</span>
-          <h2>Ét element ud — et andet ind</h2>
-          <div class="au-code-pair is-stacked mo-code-pair">
-            <div>
-              <span class="code-label"><code>components/DeleteButton.js</code> · client</span>
-              <pre class="po-code"><code class="language-jsx">const [confirming, setConfirming] = useState(false);
-
-&lt;AnimatePresence mode="wait" initial={false}&gt;
-  {confirming ? (
-    &lt;motion.div
-      key="confirm"
-      initial={{ opacity: 0, x: 12 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 12 }}
-    &gt;
-      Delete this post? …
-    &lt;/motion.div&gt;
-  ) : (
-    &lt;motion.button key="delete" …&gt;Delete&lt;/motion.button&gt;
-  )}
-&lt;/AnimatePresence&gt;</code></pre>
-            </div>
-            <div class="mo-code-notes">
-              <p><code>AnimatePresence</code><span>Venter med at fjerne elementet, til <code>exit</code> er færdig.</span></p>
-              <p><code>key</code><span>Fortæller Motion, at det er et nyt element.</span></p>
-              <p><code>mode="wait"</code><span>Det gamle går ud, før det nye kommer ind.</span></p>
-              <p><code>initial={false}</code><span>Ingen animation, når siden indlæses.</span></p>
-            </div>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Uden <code>AnimatePresence</code> forsvinder elementet med det samme</strong> — React fjerner det, før
-            <code>exit</code> kan køre.
-          </p>
-        </section>
-
         <section class="po-slide" id="rive">
-          <span class="eyebrow">Fra Rive til React · hvornår hvad?</span>
+          <span class="eyebrow">Rive og Motion · hvornår hvad?</span>
           <h2>Motion eller Rive?</h2>
           <div class="nx-two mo-rive">
             <article>
@@ -375,7 +84,7 @@ import { motion } from "motion/react";</code></pre>
               <h3>UI-elementer</h3>
               <ul class="mo-props-list">
                 <li>Kort, knapper og lister</li>
-                <li>Bekræftelser, der kommer og går</li>
+                <li>Beskeder, der kommer og går</li>
                 <li>Hover, tap og status</li>
               </ul>
               <p class="nx-verdict is-now">Feedback på det, der allerede er i jeres UI</p>
@@ -392,13 +101,50 @@ import { motion } from "motion/react";</code></pre>
             </article>
           </div>
           <p class="dui-lead-note">
-            <strong>Aftal navnene med designeren.</strong> State machine og properties i Rive skal hedde præcis det samme
-            i koden.
+            <strong>Begge dele er bevægelse med et formål.</strong> Kan en effekt ikke forklares ud fra brugerens
+            oplevelse, skal den ud.
           </p>
         </section>
 
+        <!-- 01 · Rive -->
+        <section class="chapter po-chapter po-slide" id="kap-rive">
+          <span class="chapter-index">01</span>
+          <span class="eyebrow">Fra Rive til Next.js</span>
+          <h2>Øjnene fra Rive<br />i en Next.js-side</h2>
+          <p class="kicker">Samme <code>.riv</code>-fil som i NKKRs øvelse — nu i en React-komponent.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Rive runtime</dt>
+              <dd>Et library, der <b>afspiller</b> <code>.riv</code>-filen i browseren. Til React:
+                <code>@rive-app/react-webgl2</code>.</dd>
+            </div>
+          </dl>
+          <p class="po-source-link">
+            <a href="https://rive.app/docs/runtimes/react/react" target="_blank" rel="noreferrer">Rive: React ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide um-demo-slide" id="rive-demo">
+          <span class="eyebrow">Demo · siden /rive</span>
+          <h2>Øjnene i Next.js</h2>
+          <div class="um-demo">
+            <aside class="um-demo-setup">
+              <span>Installér</span><code>npm install</code>
+              <span>Rive-filen</span><code>public/ojne.riv</code>
+              <span>Start</span><code>npm run dev</code>
+              <a class="is-repo" href="https://github.com/cederdorff/nextjs-rive-motion" target="_blank" rel="noreferrer">nextjs-rive-motion ↗</a>
+            </aside>
+            <ol class="um-demo-steps">
+              <li><b>Åbn <code>/rive</code>, og flyt musen</b><span>Øjnene følger med og blinker</span></li>
+              <li><b>Åbn <code>components/Eyes.js</code></b><span>Én hook og tre værdier</span></li>
+              <li class="is-alert"><b>Stav navnet på state machine forkert</b><span>Øjnene står stille</span></li>
+              <li class="is-alert"><b>Fjern højden på forælderen</b><span>Øjnene forsvinder</span></li>
+            </ol>
+          </div>
+        </section>
+
         <section class="po-slide" id="rive-ojne">
-          <span class="eyebrow">Fra Rive til React · øjnene fra NKKRs øvelse</span>
+          <span class="eyebrow">Fra Rive til Next.js · øjnene fra NKKRs øvelse</span>
           <h2>Fra <code>index.html</code> til en komponent</h2>
           <div class="nx-two mo-rive-port">
             <article>
@@ -440,7 +186,7 @@ export default function Eyes() {
         </section>
 
         <section class="po-slide" id="rive-nextjs">
-          <span class="eyebrow">Fra Rive til React · ind i Next.js</span>
+          <span class="eyebrow">Fra Rive til Next.js · tre trin</span>
           <h2>Øjnene på en side i tre trin</h2>
           <ol class="mo-steps mo-rive-steps">
             <li>
@@ -457,10 +203,10 @@ components/
             </li>
             <li>
               <span>3 · Brug den i en side</span>
-              <pre class="po-code"><code class="language-jsx">// app/login/page.js
+              <pre class="po-code"><code class="language-jsx">// app/rive/page.js
 import Eyes from "@/components/Eyes";
 
-export default function LoginPage() {
+export default function RivePage() {
   return (
     &lt;div style={{ height: 240 }}&gt;
       &lt;Eyes /&gt;
@@ -470,13 +216,13 @@ export default function LoginPage() {
             </li>
           </ol>
           <p class="dui-lead-note">
-            <strong>Siden kan blive på serveren.</strong> Kun <code>Eyes</code> er client — ligesom
-            <code>AnimatedCard</code>. Giv forælderen en højde, ellers bliver øjnene 0 px høje.
+            <strong>Siden kan blive på serveren.</strong> Kun <code>Eyes</code> er client. Giv forælderen en højde,
+            ellers bliver øjnene 0 px høje.
           </p>
         </section>
 
         <section class="po-slide" id="rive-fejl">
-          <span class="eyebrow">Fra Rive til React · fejlfinding</span>
+          <span class="eyebrow">Fra Rive til Next.js · fejlfinding</span>
           <h2>Ingen øjne?</h2>
           <div class="why-table mo-rive-debug" role="table" aria-label="Fejl, årsag og løsning, når Rive-filen ikke vises">
             <div class="why-row why-head" role="row"><span>Det sker</span><span>Derfor</span><span class="is-next">Gør sådan</span></div>
@@ -491,11 +237,11 @@ export default function LoginPage() {
         </section>
 
         <section class="po-slide" id="rive-kode">
-          <span class="eyebrow">Fra Rive til React · når React skal styre</span>
+          <span class="eyebrow">Fra Rive til Next.js · næste skridt</span>
           <h2>React styrer — Rive animerer</h2>
           <div class="au-code-pair is-stacked mo-code-pair">
             <div>
-              <span class="code-label"><code>npm install @rive-app/react-webgl2</code></span>
+              <span class="code-label"><code>components/LikeButton.js</code> · client</span>
               <pre class="po-code"><code class="language-jsx">"use client";
 import { useRive, useViewModelInstanceBoolean } from "@rive-app/react-webgl2";
 
@@ -518,193 +264,202 @@ export default function LikeButton() {
 }</code></pre>
             </div>
             <div class="mo-code-notes">
-              <p><code>src</code><span>Filen fra Rive — læg den i <code>public/</code>.</span></p>
-              <p><code>stateMachine</code><span>Navnet på state machine i Rive.</span></p>
               <p><code>autoBind</code><span>Bruger view model'en fra Rive-filen.</span></p>
               <p><code>"isLiked"</code><span>Samme navn som property'en i Rive. Ændr værdien — Rive animerer.</span></p>
+              <p><code>Aftal navnene</code><span>State machine og properties skal hedde præcis det samme i Rive og i koden.</span></p>
               <p class="is-warning"><code>Reduced motion</code><span>Rive følger det ikke selv — tjek med <code>useReducedMotion</code>.</span></p>
             </div>
           </div>
           <p class="po-source-link">
-            <a href="https://rive.app/docs/runtimes/react/react" target="_blank" rel="noreferrer">Rive: React ↗</a>
-            ·
             <a href="https://rive.app/docs/runtimes/react/data-binding" target="_blank" rel="noreferrer">Rive: Data binding i React ↗</a>
           </p>
         </section>
 
-        <!-- 03 · Klar til projektet -->
-        <section class="chapter po-chapter po-slide" id="kap-klar">
-          <span class="chapter-index">03</span>
-          <span class="eyebrow">Klar til jeres projekt</span>
-          <h2>Ens, tilgængelig<br />og hurtig</h2>
-          <p class="kicker">Fire ting, der gør en animation klar til et rigtigt produkt.</p>
-          <ol class="mo-ready">
-            <li><a href="#/tokens"><b>Tokens</b><span>Samme timing overalt</span></a></li>
-            <li><a href="#/reduced-motion"><b>Reduced motion</b><span>Respektér brugerens valg</span></a></li>
-            <li><a href="#/performance"><b>Performance</b><span><code>transform</code> og <code>opacity</code></span></a></li>
-            <li><a href="#/varianter"><b>A/B/C</b><span>Varianter til test</span></a></li>
-          </ol>
+        <!-- 02 · Motion -->
+        <section class="chapter po-chapter po-slide" id="kap-motion">
+          <span class="chapter-index">02</span>
+          <span class="eyebrow">Kom i gang med Motion</span>
+          <h2>Animation i React<br />med få props</h2>
+          <p class="kicker">Det, I skrev som CSS-animation — nu direkte på elementet.</p>
+          <dl class="chapter-definition">
+            <div>
+              <dt>Motion for React</dt>
+              <dd>Et library til animation i React — tidligere <b>Framer Motion</b>. Det skriver animationen for dig.</dd>
+            </div>
+          </dl>
+          <p class="po-source-link">
+            <a href="https://motion.dev/docs/react" target="_blank" rel="noreferrer">motion.dev: Motion for React ↗</a>
+          </p>
         </section>
 
-        <section class="po-slide" id="tokens">
-          <span class="eyebrow">Klar til jeres projekt · motion-tokens</span>
-          <h2>Samme timing i Figma og kode</h2>
-          <div class="mo-tokens">
-            <article class="is-figma">
-              <span>Figma · variables</span>
-              <p><b>duration/fast</b><code>150 ms</code></p>
-              <p><b>duration/base</b><code>250 ms</code></p>
-              <p><b>ease/out</b><code>0.22, 1, 0.36, 1</code></p>
-            </article>
-            <article class="is-css">
-              <span>CSS · <code>app/globals.css</code></span>
-              <pre class="po-code"><code class="language-css">:root {
-  --duration-fast: 150ms;
-  --duration-base: 250ms;
-  --ease-out: cubic-bezier(
-    0.22, 1, 0.36, 1
-  );
-}</code></pre>
-            </article>
-            <article class="is-js">
-              <span>Motion · <code>lib/motion.js</code></span>
-              <pre class="po-code"><code class="language-js">export const duration = {
-  fast: 0.15,
-  base: 0.25,
-};
+        <section class="po-slide um-demo-slide" id="motion-demo">
+          <span class="eyebrow">Demo · siden /motion</span>
+          <h2>Kortet og beskeden</h2>
+          <div class="um-demo">
+            <aside class="um-demo-setup">
+              <span>Samme projekt</span><code>npm run dev</code>
+              <span>Side</span><code>/motion</code>
+              <a class="is-repo" href="https://github.com/cederdorff/nextjs-rive-motion" target="_blank" rel="noreferrer">nextjs-rive-motion ↗</a>
+            </aside>
+            <ol class="um-demo-steps">
+              <li><b>Hold musen over kortet, og klik</b><span>Det løfter sig — og trykkes ned</span></li>
+              <li><b>Klik på <em>Vis besked</em> og <em>Skjul besked</em></b><span>Beskeden glider ind — og ud igen</span></li>
+              <li class="is-alert"><b>Fjern <code>AnimatePresence</code></b><span>Beskeden forsvinder med det samme</span></li>
+              <li class="is-safe"><b>Slå reduced motion til, og prøv igen</b><span>Beskeden fader — men glider ikke</span></li>
+            </ol>
+          </div>
+        </section>
 
-export const ease = {
-  out: [0.22, 1, 0.36, 1],
-};</code></pre>
-            </article>
+        <section class="po-slide" id="installer">
+          <span class="eyebrow">Kom i gang med Motion · tre trin</span>
+          <h2>Fra <code>div</code> til <code>motion.div</code></h2>
+          <ol class="mo-steps">
+            <li>
+              <span>1 · Installér</span>
+              <pre class="po-code"><code class="language-bash">npm install motion</code></pre>
+            </li>
+            <li>
+              <span>2 · Client component</span>
+              <pre class="po-code"><code class="language-jsx">"use client";
+
+import { motion } from "motion/react";</code></pre>
+            </li>
+            <li>
+              <span>3 · Sæt <code>motion.</code> foran</span>
+              <pre class="po-code"><code class="language-jsx">&lt;motion.div
+  whileHover={{ y: -4 }}
+&gt;
+  …
+&lt;/motion.div&gt;</code></pre>
+            </li>
+          </ol>
+          <p class="dui-lead-note">
+            <strong>Hvorfor <code>"use client"</code>?</strong> Hover og klik sker i browseren. Hold de animerede
+            komponenter små — ligesom <code>Eyes</code>.
+          </p>
+        </section>
+
+        <section class="po-slide" id="props">
+          <span class="eyebrow">Kom i gang med Motion · hvad skal ske?</span>
+          <h2>Ét spørgsmål — én prop</h2>
+          <div class="why-table mo-props" role="table" aria-label="Hvad der skal ske, og hvilken Motion-prop der gør det">
+            <div class="why-row why-head" role="row"><span>Hvornår?</span><span class="is-next">Motion</span><span>I demoen</span></div>
+            <div class="why-row" role="row"><b>Musen er over</b><span class="is-next"><code>whileHover</code></span><span>Kortet løfter sig</span></div>
+            <div class="why-row" role="row"><b>Der trykkes</b><span class="is-next"><code>whileTap</code></span><span>Kortet trykkes ned</span></div>
+            <div class="why-row" role="row"><b>Noget vises</b><span class="is-next"><code>initial</code> → <code>animate</code></span><span>Beskeden glider ind</span></div>
+            <div class="why-row" role="row"><b>Noget forsvinder</b><span class="is-next"><code>AnimatePresence</code> + <code>exit</code></span><span>… og ud igen</span></div>
+            <div class="why-row" role="row"><b>Noget flytter sig</b><span class="is-next"><code>layout</code></span><span>Fx en liste, der sorteres</span></div>
           </div>
           <p class="dui-lead-note">
-            <strong>Hvorfor smart?</strong> Ret timingen ét sted, og hele produktet følger med.<br />Pas på enheden:
-            CSS bruger millisekunder, Motion bruger sekunder.
+            <strong>Fem props dækker det meste.</strong> Animér <code>x</code>, <code>y</code>, <code>scale</code> og
+            <code>opacity</code> — så kører det glat, også på mobilen.
+          </p>
+        </section>
+
+        <section class="po-slide" id="kort">
+          <span class="eyebrow">Eksempel 1 · feedback</span>
+          <h2>Kortet løfter sig</h2>
+          <div class="mo-example mo-example-card">
+            <figure class="mo-shot is-card">
+              <img src="../assets/motion-demo-kort-hover.webp" alt="Et hvidt kort med teksten Hold musen over mig, løftet 4 pixels med en blød skygge." />
+              <figcaption>Musen over · løftet 4 px</figcaption>
+            </figure>
+            <div class="mo-example-code is-side">
+              <span class="code-label"><code>app/motion/page.js</code> · server</span>
+              <pre class="po-code"><code class="language-jsx">&lt;LiftCard&gt;
+  &lt;h3&gt;Hold musen over mig&lt;/h3&gt; …
+&lt;/LiftCard&gt;</code></pre>
+            </div>
+            <div class="mo-example-code">
+              <span class="code-label"><code>components/LiftCard.js</code> · client</span>
+              <pre class="po-code"><code class="language-jsx">"use client";
+import { motion } from "motion/react";
+
+export default function LiftCard({ children }) {
+  return (
+    &lt;motion.div
+      className="card"
+      whileHover={{ y: -4 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.15 }}
+    &gt;
+      {children}
+    &lt;/motion.div&gt;
+  );
+}</code></pre>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Hvorfor smart?</strong> Kun kortet er client — indholdet og siden renderes stadig på serveren.
+          </p>
+        </section>
+
+        <section class="po-slide" id="besked">
+          <span class="eyebrow">Eksempel 2 · vises og forsvinder</span>
+          <h2>Beskeden glider ind — og ud igen</h2>
+          <div class="au-code-pair is-stacked mo-code-pair">
+            <div>
+              <span class="code-label"><code>components/Message.js</code> · client</span>
+              <pre class="po-code"><code class="language-jsx">const [isOpen, setIsOpen] = useState(false);
+
+&lt;button onClick={() =&gt; setIsOpen(!isOpen)}&gt;…&lt;/button&gt;
+
+&lt;AnimatePresence&gt;
+  {isOpen &amp;&amp; (
+    &lt;motion.p
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 8 }}
+    &gt;
+      Hej! Jeg glider ind – og ud igen.
+    &lt;/motion.p&gt;
+  )}
+&lt;/AnimatePresence&gt;</code></pre>
+            </div>
+            <div class="mo-code-notes">
+              <img class="mo-notes-shot" src="../assets/motion-demo-besked.webp" alt="Knappen Skjul besked og en lilla boks med teksten Hej! Jeg glider ind – og ud igen." />
+              <p><code>initial → animate</code><span>Fra → til, når beskeden vises.</span></p>
+              <p><code>exit</code><span>Sådan forsvinder den igen.</span></p>
+              <p><code>AnimatePresence</code><span>Venter med at fjerne beskeden, til <code>exit</code> er færdig.</span></p>
+            </div>
+          </div>
+          <p class="dui-lead-note">
+            <strong>Uden <code>AnimatePresence</code> forsvinder beskeden med det samme</strong> — React fjerner den,
+            før <code>exit</code> kan køre.
           </p>
         </section>
 
         <section class="po-slide" id="reduced-motion">
-          <span class="eyebrow">Klar til jeres projekt · tilgængelighed</span>
+          <span class="eyebrow">Kom i gang med Motion · tilgængelighed</span>
           <h2>Reduced motion er ikke ingen motion</h2>
           <div class="nx-two mo-reduced">
             <article>
-              <span>Hele appen · <code>MotionConfig</code></span>
+              <span>Én gang · omkring hele appen</span>
               <pre class="po-code"><code class="language-jsx">// components/MotionProvider.js · client
 &lt;MotionConfig reducedMotion="user"&gt;
   {children}
 &lt;/MotionConfig&gt;
 
-// app/layout.js · omkring hele appen
+// app/layout.js
 &lt;MotionProvider&gt;{children}&lt;/MotionProvider&gt;</code></pre>
-              <p class="nx-verdict is-now">Ingen bevægelse — fades og farver bliver</p>
+              <p class="nx-verdict is-now">Motion følger brugerens indstilling</p>
             </article>
             <article class="is-new">
-              <span>Én komponent · <code>useReducedMotion</code></span>
-              <pre class="po-code"><code class="language-jsx">const shouldReduceMotion = useReducedMotion();
-
-// Reduced motion? Så variant A
-const chosen = shouldReduceMotion
-  ? "a"
-  : variant;</code></pre>
-              <p class="nx-verdict is-now">Vælg selv et alternativ — her variant A</p>
+              <span>Det sker med beskeden</span>
+              <ul class="mo-props-list">
+                <li>Normalt: glider 8 px og fader ind</li>
+                <li>Reduced motion: fader kun ind</li>
+                <li>Rive følger det ikke selv — tjek med <code>useReducedMotion</code></li>
+              </ul>
+              <p class="nx-verdict is-now">Ingen bevægelse — fades og farver bliver</p>
             </article>
           </div>
           <div class="mo-test">
             <p><b>Test det</b><span>DevTools → <em>Rendering</em> → <em>Emulate CSS media feature prefers-reduced-motion</em></span></p>
-            <p><b>Lyd</b><span>Skal kunne slås fra — og må aldrig være eneste bærer af information</span></p>
           </div>
           <p class="po-source-link">
             <a href="https://motion.dev/docs/react-accessibility" target="_blank" rel="noreferrer">Motion: Accessibility ↗</a>
-            ·
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion" target="_blank" rel="noreferrer">MDN: prefers-reduced-motion ↗</a>
           </p>
-        </section>
-
-        <section class="po-slide" id="performance">
-          <span class="eyebrow">Klar til jeres projekt · performance</span>
-          <h2>Animér <code>transform</code> og <code>opacity</code></h2>
-          <div class="nx-two mo-perf">
-            <article>
-              <span>Dyrt · browseren beregner layoutet igen</span>
-              <ul class="mo-props-list is-slow">
-                <li><code>width</code> · <code>height</code></li>
-                <li><code>top</code> · <code>left</code></li>
-                <li><code>margin</code> · <code>padding</code></li>
-              </ul>
-              <p class="nx-verdict is-before">Kan hakke — især på mobilen</p>
-            </article>
-            <article class="is-new">
-              <span>Billigt · kun det, der allerede er tegnet, flyttes</span>
-              <ul class="mo-props-list">
-                <li><code>x</code> · <code>y</code> · <code>scale</code> · <code>rotate</code></li>
-                <li><code>opacity</code></li>
-                <li><code>layout</code> — Motion bruger <code>transform</code> for dig</li>
-              </ul>
-              <p class="nx-verdict is-now">Glat — browseren springer layout over</p>
-            </article>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Kort og hurtig:</strong> 150–250 ms til feedback, så animationen aldrig venter på brugeren. Tjek i
-            DevTools → <em>Performance</em>.
-          </p>
-          <p class="po-source-link">
-            <a href="https://web.dev/articles/animations-and-performance" target="_blank" rel="noreferrer">web.dev: Animations and performance ↗</a>
-          </p>
-        </section>
-
-        <section class="po-slide" id="varianter">
-          <span class="eyebrow">Klar til jeres projekt · varianter til test</span>
-          <h2>A, B og C — samme kort</h2>
-          <div class="mo-variants">
-            <figure>
-              <img src="../assets/motion-card-variant-a.webp" alt="Variant A: kortet står stille, kun kanten skifter farve." />
-              <figcaption><code>?variant=a</code><b>Minimal</b><span>Kun kanten skifter farve</span></figcaption>
-            </figure>
-            <figure class="is-default">
-              <img src="../assets/motion-card-variant-b.webp" alt="Variant B: kortet er løftet 4 pixels." />
-              <figcaption><code>?variant=b</code><b>Balanceret</b><span>Løfter sig 4 px</span></figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/motion-card-variant-c.webp" alt="Variant C: kortet er løftet 8 pixels og drejet en grad med en fjedrende spring." />
-              <figcaption><code>?variant=c</code><b>Ekspressiv</b><span>8 px, drejer, fjedrer</span></figcaption>
-            </figure>
-          </div>
-          <p class="dui-lead-note">
-            <strong>Variant i URL'en, værdier i <code>lib/motion.js</code>.</strong> Så kan I teste med brugere: Hvornår
-            begynder delight at gå ud over usability?
-          </p>
-        </section>
-
-        <section class="po-slide" id="reference">
-          <span class="eyebrow">Opsamling · hvordan kan I bruge det her?</span>
-          <h2>Brug branchen som reference</h2>
-          <div class="nx-ref">
-            <ol class="nx-ref-steps">
-              <li>
-                <b>Formål først</b>
-                <span>Vælg én interaktion. Beskriv trigger, rules, feedback og loops — i én sætning hver.</span>
-              </li>
-              <li>
-                <b>Byg den</b>
-                <span>Lille client component, tokens fra jeres designsystem og <code>MotionConfig</code> omkring appen.</span>
-              </li>
-              <li>
-                <b>Tjek den</b>
-                <span>Mus, touch og tastatur · reduced motion · <code>transform</code> og <code>opacity</code>.</span>
-              </li>
-            </ol>
-            <figure class="nx-prompt">
-              <figcaption>Fx med Claude · giv branchen som kontekst</figcaption>
-              <blockquote>
-                <p>Brug branchen <code>motion</code> i <code>nextjs-supabase-posts</code> som reference. I vores app skal
-                  knappen <em>Book tid</em> give feedback, når man trykker, og vise status, mens bookingen gemmes.</p>
-                <p>Brug vores motion-tokens og samme mønster: lille client component og <code>reducedMotion="user"</code>.</p>
-                <p>Forklar, hvilke filer du ændrer og hvorfor.</p>
-              </blockquote>
-              <p class="nx-prompt-check">Tjek bagefter: Kan I forklare effekten ud fra brugerens oplevelse?</p>
-            </figure>
-          </div>
         </section>
 
         <section class="po-slide mode-work" id="projekt">
@@ -716,19 +471,22 @@ const chosen = shouldReduceMotion
               <p>Fortsæt med det, I er i gang med. Vejledning i grupperne undervejs.</p>
             </article>
             <article>
-              <h3>Kan I bruge noget fra i dag?</h3>
-              <p>Hvad skal motion gøre for brugeren i jeres produkt? Svaret kan I også bruge i rapporten.</p>
-              <p class="step-links"><a href="#/fire-formaal">Fire grunde</a><a href="#/kap-klar">Klar til projektet</a></p>
+              <h3>Rive i jeres app?</h3>
+              <p>Læg <code>.riv</code>-filen i <code>public/</code>, lav en lille client component med
+                <code>useRive</code>, og brug den i en side.</p>
+              <p class="step-links"><a href="#/rive-nextjs">Tre trin</a><a href="#/rive-fejl">Ingen øjne?</a></p>
             </article>
             <article>
-              <h3>Vil I prøve det af?</h3>
-              <p>Kør branchen <code>motion</code> i startprojektet, og brug den som reference. Eller sæt øjnene fra
-                NKKRs Rive-øvelse ind i jeres app.</p>
-              <p class="step-links"><a href="#/demo">Demo</a><a href="#/reference">Brug som reference</a><a href="#/rive-nextjs">Øjnene i Next.js</a></p>
+              <h3>Motion i jeres app?</h3>
+              <p>Vælg én interaktion, der giver brugeren feedback. Start med <code>whileHover</code> og
+                <code>whileTap</code>.</p>
+              <p class="step-links"><a href="#/installer">Kom i gang</a><a href="#/props">Fem props</a><a href="#/reduced-motion">Reduced motion</a></p>
             </article>
           </div>
           <p class="po-source-link">
-            <a href="https://github.com/cederdorff/nextjs-supabase-posts/compare/opgave-05-roller...motion" target="_blank" rel="noreferrer">Alt det nye i branchen motion ↗</a>
+            <a href="https://github.com/cederdorff/nextjs-rive-motion" target="_blank" rel="noreferrer">Demo: nextjs-rive-motion ↗</a>
+            ·
+            <a href="https://github.com/cederdorff/nextjs-supabase-posts/tree/motion" target="_blank" rel="noreferrer">Større eksempel: Post App med Motion ↗</a>
           </p>
         </section>
       </div>
