@@ -12,7 +12,9 @@
 
 .reveal .mo-hero-app {
   display: grid;
-  place-items: center;
+  place-content: center;
+  justify-items: center;
+  gap: 34px;
   height: 470px;
   background: #f6f5fb;
 }
@@ -139,8 +141,16 @@
   margin: 0;
 }
 
-.reveal .mo-steps pre.po-code code {
-  font-size: 19px;
+.reveal .mo-steps pre.po-code code,
+.reveal .mo-steps pre.po-code code.hljs {
+  padding: 24px 16px 24px 22px;
+  font-size: 20px !important;
+  line-height: 1.5;
+}
+
+/* Installér · plads til hele npm-kommandoen og importen */
+.reveal #installer .mo-steps {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.45fr) minmax(0, 1fr);
 }
 
 /* Fem props */
@@ -403,7 +413,7 @@
 
 /* Øjnene · tre trin i Next.js */
 .reveal .mo-rive-steps {
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 0.75fr) minmax(0, 1.4fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 1.5fr);
   margin-top: 36px;
 }
 
@@ -411,9 +421,6 @@
   min-height: 0;
 }
 
-.reveal #rive-nextjs pre.po-code code {
-  font-size: 16px;
-}
 
 /* Øjnene · fejlfinding */
 .reveal .mo-rive-debug {
@@ -459,4 +466,266 @@
   width: 100%;
   margin: 0;
   border-radius: 12px;
+}
+
+/* Øjnene · gennemgående illustration (titel, kapitel 01 og demo) */
+.reveal .mo-eyes {
+  display: block;
+  width: 200px;
+  height: auto;
+  overflow: visible;
+}
+
+.reveal .mo-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mo-blink 5s ease-in-out infinite;
+}
+
+.reveal .mo-eye ellipse {
+  fill: #ffffff;
+  stroke: #1d1b2e;
+  stroke-width: 5;
+}
+
+.reveal .mo-pupil {
+  fill: #1d1b2e;
+  animation: mo-look 4s ease-in-out infinite alternate;
+}
+
+.reveal .mo-cursor {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  animation: mo-cursor 4s ease-in-out infinite alternate;
+}
+
+.reveal .mo-cursor path {
+  fill: #1d1b2e;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+@keyframes mo-blink {
+  0%,
+  44%,
+  50%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  47% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes mo-look {
+  0%,
+  15% {
+    transform: translate(-16px, 4px);
+  }
+
+  85%,
+  100% {
+    transform: translate(16px, 4px);
+  }
+}
+
+@keyframes mo-cursor {
+  0%,
+  15% {
+    transform: translateX(-150px);
+  }
+
+  85%,
+  100% {
+    transform: translateX(150px);
+  }
+}
+
+/* Kapitel · illustration til højre */
+.reveal .mo-chapter-visual {
+  position: absolute;
+  top: 270px;
+  right: 120px;
+  display: grid;
+  place-items: center;
+  width: 420px;
+  height: 280px;
+}
+
+.reveal .mo-chapter-visual .mo-eyes {
+  width: 340px;
+}
+
+.reveal .mo-chapter-visual.is-rive .mo-cursor {
+  bottom: 0;
+  left: calc(50% - 17px);
+  width: 44px;
+  height: 44px;
+}
+
+.reveal .mo-chapter-visual.is-motion .mo-cursor {
+  right: 70px;
+  bottom: 40px;
+  width: 44px;
+  height: 44px;
+  animation: none;
+}
+
+.reveal .mo-chapter-visual .mo-cursor path {
+  fill: #ffffff;
+  stroke: #1d1b2e;
+}
+
+/* Demo · setup og et lille vindue med siden */
+.reveal .mo-demo-side {
+  display: grid;
+  gap: 22px;
+}
+
+.reveal .mo-window {
+  overflow: hidden;
+  border: 1px solid var(--dui-line);
+  border-radius: 14px;
+  background: #f6f5fb;
+  box-shadow: 0 18px 40px rgb(0 0 0 / 35%);
+}
+
+.reveal .mo-window-bar {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 10px 12px;
+  background: #1c1b24;
+}
+
+.reveal .mo-window-bar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 25%);
+}
+
+.reveal .mo-window-bar span {
+  margin-left: 8px;
+  color: rgb(255 255 255 / 60%);
+  font-family: var(--font-mono, monospace);
+  font-size: 14px;
+}
+
+.reveal .mo-window-body {
+  position: relative;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  height: 200px;
+  color: #1d1b2e;
+}
+
+.reveal .mo-window-body.is-rive .mo-eyes {
+  width: 150px;
+}
+
+.reveal .mo-window-body.is-rive .mo-cursor {
+  bottom: 14px;
+  left: calc(50% - 12px);
+  width: 24px;
+  height: 24px;
+  animation-name: mo-cursor-small;
+}
+
+@keyframes mo-cursor-small {
+  0%,
+  15% {
+    transform: translateX(-100px);
+  }
+
+  85%,
+  100% {
+    transform: translateX(100px);
+  }
+}
+
+.reveal .mo-window-body.is-motion {
+  gap: 10px;
+  justify-items: start;
+  padding: 0 22px;
+  place-content: center stretch;
+}
+
+.reveal .mo-mini-card {
+  display: grid;
+  gap: 2px;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ddd8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgb(0 0 0 / 10%);
+  animation: mo-lift 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.reveal .mo-mini-card b {
+  font-size: 16px;
+}
+
+.reveal .mo-mini-card span {
+  font-size: 13px;
+}
+
+.reveal .mo-mini-button {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #5b3fd6;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.reveal .mo-mini-message {
+  width: 100%;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #e8e3fb;
+  font-size: 13px;
+  animation: mo-message 3.2s ease-out infinite;
+}
+
+@keyframes mo-message {
+  0%,
+  10% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  25%,
+  70% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  85%,
+  100% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal .mo-eye,
+  .reveal .mo-pupil,
+  .reveal .mo-cursor,
+  .reveal .mo-mini-card,
+  .reveal .mo-mini-message {
+    animation: none;
+  }
+}
+
+/* React styrer · den lange import skal kunne være der */
+.reveal #rive-kode .mo-code-pair pre.po-code code.hljs {
+  padding-right: 16px;
+  font-size: 16px;
 }

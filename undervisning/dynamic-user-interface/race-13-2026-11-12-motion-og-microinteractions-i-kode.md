@@ -4,7 +4,7 @@
 
 I dag får I igen så meget tid som muligt til jeres projekt. Dagen starter med et kort oplæg med to demoer, derefter vejledning og projektarbejde.
 
-Først ser vi, hvordan I får en Rive-animation over i React og Next.js – med øjnene fra NKKRs Rive-øvelse som eksempel. Derefter får I en kort introduktion til [Motion for React](https://motion.dev/docs/react), og hvordan I kommer i gang. Begge demoer ligger i et lille Next.js-projekt, I kan køre selv.
+Først ser vi, hvordan I får en Rive-animation over i React og Next.js – med øjnene fra NKKRs Rive-øvelse som eksempel. Derefter får I en kort introduktion til [Motion for React](https://motion.dev/docs/react), og hvordan I kommer i gang. Hver demo ligger i sit eget lille Next.js-projekt, I kan køre selv.
 
 <hr style="margin: 2rem 0;">
 
@@ -23,7 +23,7 @@ Først ser vi, hvordan I får en Rive-animation over i React og Next.js – med 
 <ul>
 <li>Motion til UI-elementer, I selv koder. Rive til illustrationer og figurer, som designeren animerer.</li>
 <li>Rive runtime: Et library, der afspiller <code>.riv</code>-filen i browseren. Til React: <code>@rive-app/react-webgl2</code>.</li>
-<li>Tre trin: Installér pakken, læg <code>ojne.riv</code> i <code>public/</code>, og lav en lille client component med <code>useRive</code> og samme tre værdier som i guidens <code>index.html</code> (<code>src</code>, <code>stateMachine</code>, <code>autoplay</code>). Brug den i en side.</li>
+<li>Tre trin: Installér pakken, læg <code>eyes.riv</code> i <code>public/</code>, og lav en lille client component med <code>useRive</code> og samme tre værdier som i guidens <code>index.html</code> (<code>src</code>, <code>stateMachine</code>, <code>autoplay</code>). Brug den i en side.</li>
 <li>Musen og blinket klarer Rive selv med listeners. Giv forælderen en højde, og kopiér navnet på state machine præcis fra Rive.</li>
 <li>Næste skridt: Skal React styre animationen, ændrer React en property i Rive-filens view model, fx <code>isLiked</code>, og Rive animerer resten.</li>
 </ul>
@@ -47,7 +47,7 @@ Først ser vi, hvordan I får en Rive-animation over i React og Next.js – med 
 <summary><strong>3. Vejledning og projektarbejde</strong></summary>
 <ul>
 <li>Arbejd videre, der hvor I er i jeres projekt.</li>
-<li>Vil I prøve det af? Sæt øjnene eller jeres egen Rive-animation ind i jeres app, eller giv én interaktion feedback med Motion. Brug demoen <code>nextjs-rive-motion</code> som reference.</li>
+<li>Vil I prøve det af? Sæt øjnene eller jeres egen Rive-animation ind i jeres app, eller giv én interaktion feedback med Motion. Brug demoerne <code>nextjs-rive</code> og <code>nextjs-motion</code> som reference.</li>
 <li>Vejledning i grupperne undervejs.</li>
 </ul>
 </details>
@@ -60,7 +60,8 @@ Først ser vi, hvordan I får en Rive-animation over i React og Next.js – med 
   - [Rive og Motion i Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-06/)
   - [PDF-version: Rive og Motion i Next.js](https://cederdorff.com/mdu-e25ixd/slides/dynamic-user-interface-06/?print-pdf)
 - **Demo:**
-  - [nextjs-rive-motion](https://github.com/cederdorff/nextjs-rive-motion) – `/rive` med øjnene og `/motion` med kortet og beskeden
+  - [nextjs-rive](https://github.com/cederdorff/nextjs-rive) – øjnene fra Rive i en React-komponent
+  - [nextjs-motion](https://github.com/cederdorff/nextjs-motion) – kortet og beskeden med Motion
   - [nextjs-supabase-posts · branch `motion`](https://github.com/cederdorff/nextjs-supabase-posts/tree/motion) – større eksempel: Post App med tre microinteractions
 - **Motion:**
   - [Motion for React](https://motion.dev/docs/react)

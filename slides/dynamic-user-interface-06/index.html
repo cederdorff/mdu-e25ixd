@@ -25,8 +25,12 @@
           <p class="date"><span>RACE</span><time datetime="2026-11-12">12. november 2026</time></p>
           <div class="au-hero mo-hero" aria-hidden="true">
             <div class="au-hero-window">
-              <div class="au-hero-bar"><i></i><i></i><i></i><span>localhost:3000/motion</span></div>
+              <div class="au-hero-bar"><i></i><i></i><i></i><span>localhost:3000</span></div>
               <div class="mo-hero-app">
+                <svg class="mo-eyes" viewBox="0 0 240 130" aria-hidden="true">
+                  <g class="mo-eye"><ellipse cx="62" cy="65" rx="52" ry="58" /><circle class="mo-pupil" cx="62" cy="72" r="20" /></g>
+                  <g class="mo-eye"><ellipse cx="178" cy="65" rx="52" ry="58" /><circle class="mo-pupil" cx="178" cy="72" r="20" /></g>
+                </svg>
                 <div class="mo-hero-card">
                   <b>Hold musen over mig</b>
                   <span>Jeg løfter mig 4 px.</span>
@@ -39,7 +43,7 @@
             </div>
             <div class="au-hero-chip mo-hero-chip is-rive">
               <small>Rive</small>
-              <code>useRive({ src: "/ojne.riv" })</code>
+              <code>useRive({ src: "/eyes.riv" })</code>
             </div>
           </div>
         </section>
@@ -94,7 +98,7 @@
               <h3>Illustrationer og figurer</h3>
               <ol class="mo-rive-flow">
                 <li><b>Rive</b><span>Animation og state machine — fx øjnene fra NKKRs øvelse</span></li>
-                <li><b>Export</b><span><code>ojne.riv</code> i <code>public/</code></span></li>
+                <li><b>Export</b><span><code>eyes.riv</code> i <code>public/</code></span></li>
                 <li><b>React</b><span>Viser filen — og kan styre den, når det er nødvendigt</span></li>
               </ol>
               <p class="nx-verdict is-now">Personlighed, der er svær at kode</p>
@@ -112,6 +116,13 @@
           <span class="eyebrow">Fra Rive til Next.js</span>
           <h2>Øjnene fra Rive<br />i en Next.js-side</h2>
           <p class="kicker">Samme <code>.riv</code>-fil som i NKKRs øvelse — nu i en React-komponent.</p>
+          <div class="mo-chapter-visual is-rive" aria-hidden="true">
+            <svg class="mo-eyes" viewBox="0 0 240 130" aria-hidden="true">
+              <g class="mo-eye"><ellipse cx="62" cy="65" rx="52" ry="58" /><circle class="mo-pupil" cx="62" cy="72" r="20" /></g>
+              <g class="mo-eye"><ellipse cx="178" cy="65" rx="52" ry="58" /><circle class="mo-pupil" cx="178" cy="72" r="20" /></g>
+            </svg>
+            <svg class="mo-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2v18l5-5 3 7 3-1-3-7h7z" /></svg>
+          </div>
           <dl class="chapter-definition">
             <div>
               <dt>Rive runtime</dt>
@@ -125,17 +136,29 @@
         </section>
 
         <section class="po-slide um-demo-slide" id="rive-demo">
-          <span class="eyebrow">Demo · siden /rive</span>
+          <span class="eyebrow">Demo · nextjs-rive</span>
           <h2>Øjnene i Next.js</h2>
           <div class="um-demo">
-            <aside class="um-demo-setup">
-              <span>Installér</span><code>npm install</code>
-              <span>Rive-filen</span><code>public/ojne.riv</code>
-              <span>Start</span><code>npm run dev</code>
-              <a class="is-repo" href="https://github.com/cederdorff/nextjs-rive-motion" target="_blank" rel="noreferrer">nextjs-rive-motion ↗</a>
-            </aside>
+            <div class="mo-demo-side">
+              <aside class="um-demo-setup">
+                <span>Installér</span><code>npm install</code>
+                <span>Rive-filen</span><code>public/eyes.riv</code>
+                <span>Start</span><code>npm run dev</code>
+                <a class="is-repo" href="https://github.com/cederdorff/nextjs-rive" target="_blank" rel="noreferrer">nextjs-rive ↗</a>
+              </aside>
+              <div class="mo-window" aria-hidden="true">
+                <div class="mo-window-bar"><i></i><i></i><i></i><span>localhost:3000</span></div>
+                <div class="mo-window-body is-rive">
+                  <svg class="mo-eyes" viewBox="0 0 240 130" aria-hidden="true">
+                    <g class="mo-eye"><ellipse cx="62" cy="65" rx="52" ry="58" /><circle class="mo-pupil" cx="62" cy="72" r="20" /></g>
+                    <g class="mo-eye"><ellipse cx="178" cy="65" rx="52" ry="58" /><circle class="mo-pupil" cx="178" cy="72" r="20" /></g>
+                  </svg>
+                  <svg class="mo-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2v18l5-5 3 7 3-1-3-7h7z" /></svg>
+                </div>
+              </div>
+            </div>
             <ol class="um-demo-steps">
-              <li><b>Åbn <code>/rive</code>, og flyt musen</b><span>Øjnene følger med og blinker</span></li>
+              <li><b>Åbn <code>localhost:3000</code>, og flyt musen</b><span>Øjnene følger med og blinker</span></li>
               <li><b>Åbn <code>components/Eyes.js</code></b><span>Én hook og tre værdier</span></li>
               <li class="is-alert"><b>Stav navnet på state machine forkert</b><span>Øjnene står stille</span></li>
               <li class="is-alert"><b>Fjern højden på forælderen</b><span>Øjnene forsvinder</span></li>
@@ -150,7 +173,7 @@
             <article>
               <span>Før · <code>index.html</code> fra guiden</span>
               <pre class="po-code"><code class="language-js">const r = new rive.Rive({
-  src: "ojne.riv",
+  src: "eyes.riv",
   canvas: document.getElementById("rive-canvas"),
   stateMachine: "State Machine",
   autoplay: true,
@@ -169,7 +192,7 @@ import { useRive } from "@rive-app/react-webgl2";
 
 export default function Eyes() {
   const { RiveComponent } = useRive({
-    src: "/ojne.riv",
+    src: "/eyes.riv",
     stateMachine: "State Machine",
     autoplay: true,
   });
@@ -195,18 +218,18 @@ export default function Eyes() {
   @rive-app/react-webgl2</code></pre>
             </li>
             <li>
-              <span>2 · Filen og komponenten</span>
+              <span>2 · Fil og komponent</span>
               <pre class="po-code"><code class="language-bash">public/
-  ojne.riv
+  eyes.riv
 components/
   Eyes.js</code></pre>
             </li>
             <li>
               <span>3 · Brug den i en side</span>
-              <pre class="po-code"><code class="language-jsx">// app/rive/page.js
+              <pre class="po-code"><code class="language-jsx">// app/page.js
 import Eyes from "@/components/Eyes";
 
-export default function RivePage() {
+export default function Home() {
   return (
     &lt;div style={{ height: 240 }}&gt;
       &lt;Eyes /&gt;
@@ -227,7 +250,7 @@ export default function RivePage() {
           <div class="why-table mo-rive-debug" role="table" aria-label="Fejl, årsag og løsning, når Rive-filen ikke vises">
             <div class="why-row why-head" role="row"><span>Det sker</span><span>Derfor</span><span class="is-next">Gør sådan</span></div>
             <div class="why-row" role="row"><b>Tom flade</b><span>Forælderen har ingen højde</span><span class="is-next">Giv den en højde, fx <code>240</code></span></div>
-            <div class="why-row" role="row"><b>404 på <code>ojne.riv</code></b><span>Filen ligger ikke i <code>public/</code></span><span class="is-next">Flyt den — og start <code>src</code> med <code>/</code></span></div>
+            <div class="why-row" role="row"><b>404 på <code>eyes.riv</code></b><span>Filen ligger ikke i <code>public/</code></span><span class="is-next">Flyt den — og start <code>src</code> med <code>/</code></span></div>
             <div class="why-row" role="row"><b>Øjnene står stille</b><span>Navnet på state machine passer ikke</span><span class="is-next">Kopiér navnet præcis fra Rive</span></div>
             <div class="why-row" role="row"><b>Følger ikke musen helt</b><span>Listeners virker kun over canvas</span><span class="is-next">Gør komponenten større</span></div>
           </div>
@@ -281,6 +304,13 @@ export default function LikeButton() {
           <span class="eyebrow">Kom i gang med Motion</span>
           <h2>Animation i React<br />med få props</h2>
           <p class="kicker">Det, I skrev som CSS-animation — nu direkte på elementet.</p>
+          <div class="mo-chapter-visual is-motion" aria-hidden="true">
+            <div class="mo-hero-card">
+              <b>Hold musen over mig</b>
+              <span>Jeg løfter mig 4 px.</span>
+            </div>
+            <svg class="mo-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2v18l5-5 3 7 3-1-3-7h7z" /></svg>
+          </div>
           <dl class="chapter-definition">
             <div>
               <dt>Motion for React</dt>
@@ -293,14 +323,24 @@ export default function LikeButton() {
         </section>
 
         <section class="po-slide um-demo-slide" id="motion-demo">
-          <span class="eyebrow">Demo · siden /motion</span>
+          <span class="eyebrow">Demo · nextjs-motion</span>
           <h2>Kortet og beskeden</h2>
           <div class="um-demo">
-            <aside class="um-demo-setup">
-              <span>Samme projekt</span><code>npm run dev</code>
-              <span>Side</span><code>/motion</code>
-              <a class="is-repo" href="https://github.com/cederdorff/nextjs-rive-motion" target="_blank" rel="noreferrer">nextjs-rive-motion ↗</a>
-            </aside>
+            <div class="mo-demo-side">
+              <aside class="um-demo-setup">
+                <span>Installér</span><code>npm install</code>
+                <span>Start</span><code>npm run dev</code>
+                <a class="is-repo" href="https://github.com/cederdorff/nextjs-motion" target="_blank" rel="noreferrer">nextjs-motion ↗</a>
+              </aside>
+              <div class="mo-window" aria-hidden="true">
+                <div class="mo-window-bar"><i></i><i></i><i></i><span>localhost:3000</span></div>
+                <div class="mo-window-body is-motion">
+                  <div class="mo-mini-card"><b>Hold musen over mig</b><span>Jeg løfter mig 4 px.</span></div>
+                  <span class="mo-mini-button">Vis besked</span>
+                  <p class="mo-mini-message">Hej! Jeg glider ind.</p>
+                </div>
+              </div>
+            </div>
             <ol class="um-demo-steps">
               <li><b>Hold musen over kortet, og klik</b><span>Det løfter sig — og trykkes ned</span></li>
               <li><b>Klik på <em>Vis besked</em> og <em>Skjul besked</em></b><span>Beskeden glider ind — og ud igen</span></li>
@@ -365,7 +405,7 @@ import { motion } from "motion/react";</code></pre>
               <figcaption>Musen over · løftet 4 px</figcaption>
             </figure>
             <div class="mo-example-code is-side">
-              <span class="code-label"><code>app/motion/page.js</code> · server</span>
+              <span class="code-label"><code>app/page.js</code> · server</span>
               <pre class="po-code"><code class="language-jsx">&lt;LiftCard&gt;
   &lt;h3&gt;Hold musen over mig&lt;/h3&gt; …
 &lt;/LiftCard&gt;</code></pre>
@@ -484,7 +524,9 @@ export default function LiftCard({ children }) {
             </article>
           </div>
           <p class="po-source-link">
-            <a href="https://github.com/cederdorff/nextjs-rive-motion" target="_blank" rel="noreferrer">Demo: nextjs-rive-motion ↗</a>
+            <a href="https://github.com/cederdorff/nextjs-rive" target="_blank" rel="noreferrer">Demo: nextjs-rive ↗</a>
+            ·
+            <a href="https://github.com/cederdorff/nextjs-motion" target="_blank" rel="noreferrer">Demo: nextjs-motion ↗</a>
             ·
             <a href="https://github.com/cederdorff/nextjs-supabase-posts/tree/motion" target="_blank" rel="noreferrer">Større eksempel: Post App med Motion ↗</a>
           </p>
