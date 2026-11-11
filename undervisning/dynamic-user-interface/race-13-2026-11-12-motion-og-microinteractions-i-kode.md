@@ -25,7 +25,6 @@ Først ser vi, hvordan I får en Rive-animation over i React og Next.js – med 
 <li>Rive runtime: Et library, der afspiller <code>.riv</code>-filen i browseren. Til React: <code>@rive-app/react-webgl2</code>.</li>
 <li>Tre trin: Installér pakken, læg <code>eyes.riv</code> i <code>public/</code>, og lav en lille client component med <code>useRive</code> og samme tre værdier som i guidens <code>index.html</code> (<code>src</code>, <code>stateMachine</code>, <code>autoplay</code>). Brug den i en side.</li>
 <li>Musen og blinket klarer Rive selv med listeners. Giv forælderen en højde, og kopiér navnet på state machine præcis fra Rive.</li>
-<li>Næste skridt: Skal React styre animationen, ændrer React en property i Rive-filens view model, fx <code>isLiked</code>, og Rive animerer resten.</li>
 </ul>
 </details>
 
@@ -70,7 +69,6 @@ Først ser vi, hvordan I får en Rive-animation over i React og Next.js – med 
 - **Rive:**
   - [Guide: Lav øjne der bevæger og blinker vha. cursor](https://eaaa.instructure.com/courses/30922/pages/guide-lav-ojne-der-bevaeger-og-blinker-vha-cursor) – NKKRs øvelse
   - [Rive: React](https://rive.app/docs/runtimes/react/react)
-  - [Rive: Data binding i React](https://rive.app/docs/runtimes/react/data-binding)
 - **Tilgængelighed:**
   - [MDN: prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
 - **Litteratur:**

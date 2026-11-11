@@ -259,45 +259,6 @@ export default function Home() {
           </p>
         </section>
 
-        <section class="po-slide" id="rive-kode">
-          <span class="eyebrow">Fra Rive til Next.js · næste skridt</span>
-          <h2>React styrer — Rive animerer</h2>
-          <div class="au-code-pair is-stacked mo-code-pair">
-            <div>
-              <span class="code-label"><code>components/LikeButton.js</code> · client</span>
-              <pre class="po-code"><code class="language-jsx">"use client";
-import { useRive, useViewModelInstanceBoolean } from "@rive-app/react-webgl2";
-
-export default function LikeButton() {
-  const { rive, RiveComponent } = useRive({
-    src: "/like.riv",
-    stateMachine: "State Machine 1",
-    autoplay: true,
-    autoBind: true,
-  });
-  const { value: isLiked, setValue: setIsLiked } =
-    useViewModelInstanceBoolean("isLiked", rive?.viewModelInstance);
-
-  return (
-    &lt;button onClick={() =&gt; setIsLiked(!isLiked)}&gt;
-      &lt;RiveComponent style={{ width: 48, height: 48 }} /&gt;
-      Like
-    &lt;/button&gt;
-  );
-}</code></pre>
-            </div>
-            <div class="mo-code-notes">
-              <p><code>autoBind</code><span>Bruger view model'en fra Rive-filen.</span></p>
-              <p><code>"isLiked"</code><span>Samme navn som property'en i Rive. Ændr værdien — Rive animerer.</span></p>
-              <p><code>Aftal navnene</code><span>State machine og properties skal hedde præcis det samme i Rive og i koden.</span></p>
-              <p class="is-warning"><code>Reduced motion</code><span>Rive følger det ikke selv — tjek med <code>useReducedMotion</code>.</span></p>
-            </div>
-          </div>
-          <p class="po-source-link">
-            <a href="https://rive.app/docs/runtimes/react/data-binding" target="_blank" rel="noreferrer">Rive: Data binding i React ↗</a>
-          </p>
-        </section>
-
         <!-- 02 · Motion -->
         <section class="chapter po-chapter po-slide" id="kap-motion">
           <span class="chapter-index">02</span>

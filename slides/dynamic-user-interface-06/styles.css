@@ -432,34 +432,6 @@
   padding: 18px 24px;
 }
 
-.reveal #rive-kode .mo-code-pair {
-  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-}
-
-.reveal #rive-kode .mo-code-pair pre.po-code code {
-  font-size: 17px;
-}
-
-.reveal .mo-code-notes p.is-warning {
-  border-color: var(--dui-yellow);
-}
-
-.reveal .mo-code-notes p.is-warning > code {
-  color: var(--dui-yellow);
-}
-
-.reveal #rive-kode .mo-code-notes {
-  gap: 10px;
-}
-
-.reveal #rive-kode .mo-code-notes p {
-  padding: 12px 20px;
-}
-
-.reveal #rive-kode .mo-code-notes span {
-  font-size: 19px;
-}
-
 /* Beskeden · skærmbillede over noterne */
 .reveal .mo-notes-shot {
   display: block;
@@ -724,8 +696,3 @@
   }
 }
 
-/* React styrer · den lange import skal kunne være der */
-.reveal #rive-kode .mo-code-pair pre.po-code code.hljs {
-  padding-right: 16px;
-  font-size: 16px;
-}
