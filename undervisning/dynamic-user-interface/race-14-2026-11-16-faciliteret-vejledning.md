@@ -1,4 +1,4 @@
-# NKKR/RACE - Dynamic User Interface: Faciliteret vejledning - 16-11-2026
+# RACE - Dynamic User Interface: Faciliteret vejledning – Samarbejde og deployment - 16-11-2026
 
 ## Formål
 
@@ -39,6 +39,7 @@ Dagen starter med et kort oplæg om tre ting, der gør resten af projektet nemme
 <li>Brug pull requests til at merge ind i <code>main</code>. I kender flowet fra Product Optimization: Hent seneste <code>main</code>, opret en branch, commit, publicér branchen, og opret en pull request på GitHub.</li>
 <li>Nyt i gruppen: En anden kigger pull requesten igennem og merger den. Så har mindst to set koden, før den lander i <code>main</code>.</li>
 <li>Små branches, der bliver merget hurtigt, giver langt færre merge conflicts. Hent <code>main</code> ofte, og slet branchen, når den er merget.</li>
+<li>Får I alligevel en merge conflict? Hent <code>main</code> ind i jeres branch, vælg de rigtige linjer i VS Code's merge editor, commit, og push igen. Pull requesten opdaterer sig selv.</li>
 <li>Det hele kan klares i Source Control i VS Code eller i GitHub Desktop.</li>
 </ul>
 </details>
@@ -51,7 +52,7 @@ Dagen starter med et kort oplæg om tre ting, der gør resten af projektet nemme
 <li>Hver gang I merger til <code>main</code>, deployer Vercel en ny version. Hver pull request får sit eget preview-link, som I kan teste, før I merger.</li>
 <li>Bruger I Supabase Auth? Tilføj jeres Vercel-URL under <em>Authentication → URL Configuration</em> (Site URL og Redirect URLs), ellers sender login jer tilbage til <code>localhost</code>.</li>
 <li>Fejler et deployment, så læs build-loggen. Kør <code>npm run build</code> lokalt for at finde de samme fejl, før I pusher.</li>
-<li>Vigtigt for grupper: Vercels gratis Hobby-plan understøtter ikke samarbejde på private repositories – kun commits fra ejeren af Vercel-projektet bliver deployet. Gør repoet public, eller lad Vercel-ejeren stå for at merge til <code>main</code>.</li>
+<li>Vigtigt for grupper: Vercels gratis Hobby-plan understøtter ikke samarbejde på private repositories – kun commits fra ejeren af Vercel-projektet bliver deployet. Gør derfor gruppens repository public, så alle får deployments og preview-links.</li>
 </ul>
 </details>
 

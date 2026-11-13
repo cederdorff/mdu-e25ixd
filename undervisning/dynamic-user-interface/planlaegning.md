@@ -12,7 +12,7 @@ Arbejdsdokument til RACE-undervisningen i Dynamic User Interface. De studenterre
 | 11 | 2. nov | Kick-off | BKI/NKKR/RACE |
 | 12 | 10. nov | Faglig undervisning | RACE |
 | 13 | 12. nov | Faglig undervisning | RACE |
-| 14 | 16. nov | Faciliteret vejledning + morgen-session | NKKR/RACE |
+| 14 | 16. nov | Faciliteret vejledning: Samarbejde og deployment | RACE |
 | 15 | 23. nov | Faciliteret vejledning + morgen-session | RACE |
 | 16 | 27. nov | Pitch Day | BKI/NKKR/RACE |
 | 17 | 1. dec | Optimering og eksamensforberedelse + morgen-session | RACE |
@@ -93,7 +93,7 @@ Korte, fælles oplæg om morgenen på vejlednings- og optimeringsdagene. Hver mo
 | --- | --- | --- | --- |
 | 16/11 | Projektet bygges, en uge før aflevering | **Deployment af Next.js på Vercel:** environment variables, Supabase redirect-URL'er og fejlfinding i build-loggen | **It-sikkerhed:** `service_role`-nøglen aldrig i klienten, tjek af RLS-politikker og brug af `NEXT_PUBLIC_`-variabler. **Performance i Next.js:** `next/image`, `next/font` og Lighthouse på den deployede løsning som dokumentation |
 | 23/11 | Dagen før aflevering | **Tjek før aflevering:** links i et privat vindue, deployment fra `main`, markering som studieprojekt og deklaration af kilder og AI | **Tilgængelighedstjek:** tastatur, kontrast, reduced motion og mute – lyd og animation må ikke være eneste bærer af information |
-| 1/12 | Optimering | **Branches og preview deployments** til optimeringer uden for `main` | **Code review på tværs af grupper** af pull requests med optimeringer. **Headless WordPress, del 2:** ACF, custom post types og revalidering for grupper med WP som datakilde. **Supabase Realtime** og **Supabase Storage** som mulige optimeringer |
+| 1/12 | Optimering | **Optimeringer i feature branches:** opfølgning på branches og pull requests fra 16/11 – én optimering pr. branch, testet på preview-linket før merge til `main` | **Code review på tværs af grupper** af pull requests med optimeringer. **Headless WordPress, del 2:** ACF, custom post types og revalidering for grupper med WP som datakilde. **Supabase Realtime** og **Supabase Storage** som mulige optimeringer |
 | 3/12 | Eksamensforberedelse | **Forklar koden:** hver studerende forklarer en fil eller et dataflow fra projektet for en studerende fra en anden gruppe. **Demo-drejebog:** produkt, kode og optimeringer vist live, plus en skærmoptagelse som backup | – |
 
 Prioritet: It-sikkerhed og performance 16/11 rammer bedømmelseskriterierne direkte og bør med, hvis tiden er knap. Performance ligger 16/11 frem for 23/11, så grupperne kan nå at rette og dokumentere før aflevering.
