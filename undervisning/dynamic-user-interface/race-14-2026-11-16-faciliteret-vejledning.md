@@ -47,7 +47,7 @@ Publicér derefter med <em>Publish Branch</em> i Source Control eller <em>Publis
 </ul>
 </li>
 <li><strong>Trin 2 · GitHub:</strong> Inviter gruppen under <em>Settings → Collaborators → Add people</em>. Slå <em>Automatically delete head branches</em> til under <em>Settings → General → Pull Requests</em>.</li>
-<li><strong>Trin 3 · Vercel:</strong> Importér repoet på vercel.com (<em>Add New… → Project → Import</em>). Production branch er <code>main</code>. Læg environment variables ind allerede i import-skærmen, før I trykker <em>Deploy</em>. Del produktions-URL'en (fx <code>jeres-app.vercel.app</code>) med gruppen og RACE. Den opdateres, hver gang I merger til <code>main</code>.</li>
+<li><strong>Trin 3 · Vercel:</strong> Importér repoet på vercel.com (<em>Add New… → Project → Import</em>). Production branch er <code>main</code>. Læg environment variables ind allerede i import-skærmen – indsæt indholdet af <code>.env.local</code> eller tryk <em>Import .env</em> – før I trykker <em>Deploy</em>. Del URL'en under <em>Domains</em> på projektets forside (fx <code>jeres-app.vercel.app</code>) med gruppen og RACE – ikke den lange URL under <em>Deployment</em>, som kun peger på én bestemt version. Den opdateres, hver gang I merger til <code>main</code>.</li>
 <li><strong>Fra merge til live:</strong> Vercel deployer, hver gang <code>main</code> får et nyt commit. I jeres flow sker det, når I merger en pull request – men et direkte push til <code>main</code> bliver også deployet, og derfor holder I <code>main</code> ren. Vercel henter koden, kører <code>npm install</code> og <code>npm run build</code> med de environment variables, der ligger på Vercel (ikke dem fra <code>.env.local</code>), og deployer. Lykkes buildet, er den nye version live. Fejler det, er den gamle version stadig live – læs build-loggen, ret i en ny branch, og merge igen.</li>
 </ul>
 </details>
@@ -71,7 +71,7 @@ Publicér derefter med <em>Publish Branch</em> i Source Control eller <em>Publis
 <tr><td>1. Hent nyeste <code>main</code></td><td><em>Current branch → main → Fetch origin → Pull origin</em></td><td>Klik på branch-navnet nederst til venstre → <em>main</em> → <em>… → Pull</em></td></tr>
 <tr><td>2. Lav en branch</td><td><em>Branch → New branch…</em>, fx <code>feature/login-form</code> → <em>Publish branch</em></td><td>Klik på branch-navnet → <em>Create new branch…</em> → <em>Publish Branch</em></td></tr>
 <tr><td>3. Commit og push i små skridt</td><td>Skriv en kort besked nederst til venstre → <em>Commit to …</em> → <em>Push origin</em></td><td>Skriv en besked i feltet → <em>Commit</em> → <em>Sync Changes</em></td></tr>
-<tr><td>4. Opret pull request</td><td><em>Create Pull Request</em> (åbner GitHub i browseren)</td><td>Gå til repoet på GitHub → <em>Compare &amp; pull request</em></td></tr>
+<tr><td>4. Opret pull request</td><td><em>Branch → Create pull request</em> (åbner GitHub i browseren)</td><td>Gå til repoet på GitHub → <em>Compare &amp; pull request</em></td></tr>
 <tr><td>5. Merge</td><td colspan="2">Ens for begge, på GitHub: Kig ændringerne igennem under <em>Files changed</em>, og tryk <em>Merge pull request</em></td></tr>
 <tr><td>6. Efter merge</td><td>Skift til <em>main</em> → <em>Pull origin</em></td><td>Skift til <em>main</em> → <em>Sync Changes</em></td></tr>
 </tbody>
@@ -94,6 +94,7 @@ Publicér derefter med <em>Publish Branch</em> i Source Control eller <em>Publis
 <ul>
 <li><strong>Branchen er bagud, eller pull requesten melder konflikt:</strong> Tryk <em>Update branch</em> på pull requesten på GitHub, eller vælg <em>Branch → Update from main</em> i GitHub Desktop. Løs konflikter i VS Code's merge editor.</li>
 <li><strong>Deploy fejler:</strong> Læs build-loggen på Vercel, og kør <code>npm run build</code> lokalt.</li>
+<li><strong>En fejl er kommet live:</strong> Buildet lykkedes, men koden har en fejl. Brug <em>Instant Rollback</em> på projektets forside på Vercel, og ret fejlen i en ny branch.</li>
 <li><strong>Login sender jer til <code>localhost</code>:</strong> Tilføj Vercel-URL'en under <em>Supabase → Authentication → URL Configuration</em>.</li>
 </ul>
 </details>

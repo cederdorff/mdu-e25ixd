@@ -428,17 +428,19 @@
                 <p class="gf-mock-head"><b>Environment Variables</b></p>
                 <p class="gf-mock-env"><code>NEXT_PUBLIC_SUPABASE_URL</code><span>https://…supabase.co</span></p>
                 <p class="gf-mock-env"><code>NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY</code><span>sb_publishable_…</span></p>
+                <p class="gf-mock-import"><span class="is-hl">Import .env</span><small>or paste the .env contents</small></p>
+                <span class="gf-deploy-btn">Deploy</span>
               </div>
-              <p>Læg variablerne ind allerede her — før I trykker <em>Deploy</em>. Next.js genkendes selv, og production branch er <code>main</code>.</p>
+              <p>Indsæt indholdet af jeres <code>.env.local</code> — før I trykker <em>Deploy</em>. Next.js og <code>main</code> vælges af sig selv.</p>
             </article>
             <article class="is-vercel">
-              <span>Jeres live-site</span>
-              <p class="gf-path"><em>Project</em><i>→</i><em>Domains</em></p>
-              <div class="gf-mock" aria-hidden="true">
+              <span>Jeres live-site · projektets forside</span>
+              <div class="gf-mock gf-overview" aria-hidden="true">
                 <p class="gf-mock-head"><b>Production Deployment</b><span class="gf-mock-status">Ready</span></p>
-                <p class="gf-mock-env"><code>jeres-app.vercel.app</code><span>main</span></p>
+                <p class="gf-ov-row is-dim"><small>Deployment</small><code>jeres-app-5lvcldc8-….vercel.app</code><em>kun denne version</em></p>
+                <p class="gf-ov-row is-hl"><small>Domains</small><code>jeres-app.vercel.app</code><em>del denne</em></p>
               </div>
-              <p>Del URL'en med gruppen og RACE. Den opdateres, hver gang I merger til <code>main</code>.</p>
+              <p>Del URL'en under <em>Domains</em> med gruppen og RACE. Den viser altid den nyeste <code>main</code>.</p>
             </article>
           </div>
           <p class="po-source-link">
@@ -529,25 +531,35 @@
             <figure class="gf-desktop">
               <figcaption>GitHub Desktop</figcaption>
               <div class="gf-app">
-                <p class="gf-menubar"><span>File</span><span>Edit</span><span>View</span><span>Repository</span><span class="is-hl">Branch <i class="gf-pin">2</i></span></p>
+                <p class="gf-menubar"><span>File</span><span>Edit</span><span>View</span><span>Repository</span><span class="is-hl is-open">Branch</span><span>Help</span></p>
+                <div class="gf-dropdown">
+                  <p class="gf-dropdown-head">Branch-menuen</p>
+                  <p class="is-hl"><span>New branch…</span><kbd>⇧⌘N</kbd><i class="gf-pin">2</i></p>
+                  <p><span>Update from main</span><kbd>⇧⌘U</kbd></p>
+                  <p class="is-hl"><span>Create pull request</span><kbd>⌘R</kbd><i class="gf-pin">4</i></p>
+                </div>
                 <div class="gf-toolbar">
-                  <p><small>Current repository</small>memory-app</p>
-                  <p class="is-hl"><small>Current branch</small>feature/login-form <i class="gf-pin">1</i><i class="gf-pin">6</i></p>
-                  <p class="is-hl"><small>Fetch · Pull · Push — samme knap</small>Push origin <i class="gf-pin">1</i><i class="gf-pin">3</i><i class="gf-pin">6</i></p>
+                  <p><small>Current repository</small>memory-app ▾</p>
+                  <p class="is-hl"><small>Current branch</small>feature/login-form ▾ <i class="gf-pin">1</i><i class="gf-pin">6</i></p>
+                  <p class="is-hl"><small>Fetch → Pull → Push · samme knap</small>Push origin <b class="gf-ahead">↑1</b> <i class="gf-pin">1</i><i class="gf-pin">3</i><i class="gf-pin">6</i></p>
                 </div>
                 <div class="gf-desktop-body">
                   <div class="gf-desktop-side">
-                    <p class="gf-tabs"><span class="is-on">Changes 2</span><span>History</span></p>
-                    <p class="gf-file">app/page.js</p>
-                    <p class="gf-file">components/LoginForm.js</p>
+                    <p class="gf-tabs"><span class="is-on">Changes <b>2</b></span><span>History</span></p>
+                    <p class="gf-file is-head"><i class="gf-check"></i>2 changed files</p>
+                    <p class="gf-file"><i class="gf-check"></i>app/page.js<small class="is-mod">●</small></p>
+                    <p class="gf-file"><i class="gf-check"></i>components/LoginForm.js<small class="is-new">+</small></p>
                     <div class="gf-commit">
                       <p class="gf-input">Add login form</p>
+                      <p class="gf-input is-placeholder">Description</p>
                       <span class="gf-merge is-blue is-hl">Commit to feature/login-form <i class="gf-pin">3</i></span>
                     </div>
                   </div>
-                  <div class="gf-desktop-main">
-                    <p>Create a pull request from your current branch</p>
-                    <span class="gf-merge is-blue is-hl">Create Pull Request <i class="gf-pin">4</i></span>
+                  <div class="gf-desktop-main gf-diff">
+                    <p class="gf-diff-head">app/page.js</p>
+                    <p class="is-del"><b>4</b><code>  return &lt;h1&gt;Hello&lt;/h1&gt;;</code></p>
+                    <p class="is-add"><b>4</b><code>  return &lt;LoginForm /&gt;;</code></p>
+                    <p><b>5</b><code>}</code></p>
                   </div>
                 </div>
               </div>
@@ -558,8 +570,8 @@
                 <p class="gf-panel-head">SOURCE CONTROL <span class="is-hl">⋯ <i class="gf-pin">1</i></span></p>
                 <div class="gf-vscode-body">
                   <p class="gf-input">Add login form</p>
-                  <span class="gf-merge is-blue is-hl">Commit <i class="gf-pin">3</i></span>
-                  <span class="gf-merge is-ghost is-hl">Sync Changes <i class="gf-pin">3</i><i class="gf-pin">6</i></span>
+                  <span class="gf-merge is-blue is-hl">✓ Commit <i class="gf-pin">3</i></span>
+                  <span class="gf-merge is-next is-hl"><small>efter commit bliver knappen til</small><span class="gf-next-row">Sync Changes ↑1 <i class="gf-pin">3</i><i class="gf-pin">6</i></span></span>
                   <p class="gf-tabs"><span class="is-on">Changes 2</span></p>
                   <p class="gf-file">page.js <small>M</small></p>
                   <p class="gf-file">LoginForm.js <small>U</small></p>
@@ -651,7 +663,7 @@
             <div class="gf-row gf-head" role="row"><span role="columnheader">Trin</span><span role="columnheader">GitHub Desktop</span><span role="columnheader">VS Code · Source Control</span></div>
             <div class="gf-row" role="row">
               <b role="rowheader"><i>4</i>Opret pull request</b>
-              <p role="cell" class="gf-clicks"><em>Create Pull Request</em><small>åbner GitHub</small></p>
+              <p role="cell" class="gf-clicks"><em>Branch</em><i>→</i><em>Create pull request</em><small>åbner GitHub</small></p>
               <p role="cell" class="gf-clicks"><em>Repoet på GitHub</em><i>→</i><em>Compare &amp; pull request</em></p>
             </div>
             <div class="gf-row is-shared" role="row">
@@ -746,6 +758,7 @@
               <p class="gf-mock-row is-bad"><i></i>Show error on failed login<span class="gf-status is-bad">Error</span></p>
               <p class="gf-mock-row is-current"><i></i>Add login form<span class="gf-status is-current">Current</span><span class="gf-status is-ok">Ready</span></p>
               <p class="gf-mock-row"><i></i>Fix navbar on mobile<span class="gf-status is-ok">Ready</span></p>
+              <p class="gf-mock-quote">“To update your Production Deployment, push to the <code>main</code> branch.”</p>
             </div>
             <div class="gf-outcomes">
               <p class="is-ok"><b>Buildet lykkes</b><span>Den nye version er live — I gør ingenting</span></p>
@@ -820,6 +833,7 @@
             <div class="why-row why-head" role="row"><span></span><span>Det sker</span><span>Derfor</span><span class="is-next">Gør sådan</span></div>
             <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><path class="gs-main" d="M6 54H114" /><path class="gs-branch" d="M22 54C22 26 32 16 50 16H80C94 16 100 30 100 46" /><g class="gw-conflict"><circle cx="100" cy="54" r="12" /><path d="M94 48L106 60M106 48L94 60" /></g></svg><b>Branchen er bagud, eller pull requesten melder konflikt</b><span><code>main</code> har ændret sig, siden I lavede branchen</span><span class="is-next"><em>Update branch</em> på pull requesten · eller <em>Branch → Update from main</em> i GitHub Desktop. Løs konflikter i VS Code's merge editor</span></div>
             <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-bad"><rect x="10" y="20" width="100" height="32" rx="16" /><text x="60" y="42">Error</text></g></svg><b>Deploy fejler</b><span>Appen kan ikke bygge — fx en manglende variabel</span><span class="is-next">Læs build-loggen på Vercel, og kør <code>npm run build</code> lokalt</span></div>
+            <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-rollback"><rect x="4" y="20" width="112" height="32" rx="16" /><text x="60" y="42">↺ rollback</text></g></svg><b>En fejl er kommet live</b><span>Buildet lykkedes, men koden har en fejl</span><span class="is-next"><em>Instant Rollback</em> på projektets forside på Vercel — og ret fejlen i en ny branch</span></div>
             <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-bad"><rect x="4" y="20" width="112" height="32" rx="16" /><text x="60" y="42">localhost</text></g></svg><b>Login sender jer til <code>localhost</code></b><span>Supabase kender ikke Vercel-URL'en</span><span class="is-next">Tilføj den under <em>Supabase → Authentication → URL Configuration</em></span></div>
           </div>
           <p class="po-source-link">
@@ -828,6 +842,8 @@
             <a href="https://code.visualstudio.com/docs/sourcecontrol/merge-conflicts" target="_blank" rel="noreferrer">VS Code: Merge conflicts ↗</a>
             ·
             <a href="https://vercel.com/docs/deployments/troubleshoot-a-build" target="_blank" rel="noreferrer">Vercel: Troubleshoot a build ↗</a>
+            ·
+            <a href="https://vercel.com/docs/instant-rollback" target="_blank" rel="noreferrer">Instant Rollback ↗</a>
             ·
             <a href="https://supabase.com/docs/guides/auth/redirect-urls" target="_blank" rel="noreferrer">Supabase: Redirect URLs ↗</a>
           </p>

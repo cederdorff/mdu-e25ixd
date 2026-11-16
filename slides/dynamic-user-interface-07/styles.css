@@ -2630,3 +2630,286 @@
 .reveal .gf-chapter-visual.is-loop {
   height: 280px;
 }
+
+/* Slide 13 · GitHub Desktop tættere på den rigtige app */
+.reveal .gf-desktop .gf-app {
+  position: relative;
+}
+
+.reveal .gf-menubar .is-open {
+  background: rgb(47 111 222 / 35%);
+}
+
+.reveal .gf-dropdown {
+  position: absolute;
+  top: 44px;
+  left: 300px;
+  z-index: 2;
+  display: grid;
+  gap: 4px;
+  width: 330px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-strong);
+  box-shadow: 0 18px 40px rgb(0 0 0 / 55%);
+}
+
+.reveal .gf-dropdown p {
+  display: flex !important;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.reveal .gf-dropdown span {
+  flex: 1;
+}
+
+.reveal .gf-dropdown kbd {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 14px;
+}
+
+.reveal .gf-ahead {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.reveal .gf-tabs b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  margin-left: 4px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 12%);
+  font-size: 13px;
+}
+
+.reveal .gf-file .gf-check {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  background: #2f6fde;
+}
+
+.reveal .gf-file.is-head {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.reveal .gf-file .is-mod {
+  color: var(--dui-yellow);
+}
+
+.reveal .gf-file .is-new {
+  color: var(--green);
+  font-weight: 850;
+}
+
+.reveal .gf-input.is-placeholder {
+  min-height: 48px;
+  align-items: flex-start;
+  color: var(--muted);
+}
+
+.reveal .gf-diff {
+  display: block !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.reveal .gf-diff p {
+  display: flex;
+  gap: 14px;
+  margin: 0;
+  padding: 4px 14px;
+  font-size: 15px;
+}
+
+.reveal .gf-diff p b {
+  width: 18px;
+  color: var(--muted);
+  font-weight: 400;
+  text-align: right;
+}
+
+.reveal .gf-diff code {
+  color: var(--ink) !important;
+  font-size: 15px;
+}
+
+.reveal .gf-diff .gf-diff-head {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.reveal .gf-diff .is-del {
+  background: rgb(240 143 115 / 14%);
+}
+
+.reveal .gf-diff .is-add {
+  background: rgb(62 207 142 / 14%);
+}
+
+.reveal .gf-diff {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-start;
+  place-content: initial !important;
+  justify-items: stretch !important;
+}
+
+.reveal .gf-diff .gf-diff-head + p {
+  margin-top: auto;
+}
+
+.reveal .gf-diff p:last-child {
+  margin-bottom: 18px;
+}
+
+/* VS Code · næste tilstand af knappen */
+.reveal .gf-merge.is-next {
+  display: grid !important;
+  gap: 2px;
+  justify-items: center;
+  border: 1px dashed var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+
+.reveal .gf-merge.is-next small {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.reveal .gf-dropdown {
+  top: 150px;
+  left: 440px;
+}
+
+.reveal .gf-dropdown .gf-dropdown-head {
+  padding: 2px 10px 6px;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .gf-next-row {
+  display: inline-flex !important;
+  gap: 8px;
+  align-items: center;
+  font-weight: 800;
+}
+
+.reveal .gf-merge.is-next {
+  padding: 8px 12px;
+}
+
+/* Slide 10 · tættere på Vercels rigtige skærme */
+.reveal .gf-mock-import {
+  gap: 12px !important;
+  padding-top: 6px;
+}
+
+.reveal .gf-mock-import span {
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.reveal .gf-mock-import small {
+  font-size: 15px;
+}
+
+.reveal .gf-deploy-btn {
+  display: block;
+  padding: 8px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: #0b0f0d;
+  font-size: 16px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.reveal .gf-overview {
+  gap: 12px;
+}
+
+.reveal .gf-ov-row {
+  display: grid !important;
+  grid-template-columns: 1fr auto;
+  gap: 2px 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.reveal .gf-ov-row small {
+  grid-column: 1 / -1;
+  font-size: 14px !important;
+}
+
+.reveal .gf-ov-row code {
+  color: var(--ink) !important;
+  font-size: 16px !important;
+}
+
+.reveal .gf-ov-row em {
+  color: var(--green);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.reveal .gf-ov-row.is-dim {
+  opacity: 0.55;
+}
+
+.reveal .gf-ov-row.is-dim em {
+  color: var(--muted);
+}
+
+/* Slide 17 · Vercels egen formulering */
+.reveal .gf-mock-quote {
+  display: block !important;
+  margin-top: 6px !important;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--ink) !important;
+  font-size: 17px !important;
+  font-style: italic;
+}
+
+/* Når det driller · fire rækker */
+.reveal .gf-debug .why-row {
+  min-height: 92px;
+}
+
+.reveal .gf-debug-icon .gs-deploy {
+  stroke-width: 2;
+}
+
+.reveal .gw-pill.is-rollback rect {
+  fill: rgb(101 167 255 / 14%);
+  stroke: var(--dui-blue);
+}
+
+.reveal .gw-pill.is-rollback text {
+  fill: var(--dui-blue);
+}
