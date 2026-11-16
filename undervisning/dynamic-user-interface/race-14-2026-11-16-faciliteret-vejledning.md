@@ -48,7 +48,7 @@ Dagen starter med et kort oplæg om, hvordan I samarbejder i gruppen og deployer
 <li><em>Fra template:</em> Tryk <em>Use this template → Create a new repository</em> på et af RACE's Next.js-repos, fx <a href="https://github.com/cederdorff/nextjs-supabase-posts">nextjs-supabase-posts</a>, <a href="https://github.com/cederdorff/nextjs-supabase-auth">nextjs-supabase-auth</a> eller <a href="https://github.com/cederdorff/nextjs-headless-wordpress">nextjs-headless-wordpress</a>. Vælg <em>Public</em>, og klon repoet med <em>Code → Open with GitHub Desktop</em> eller i VS Code.</li>
 <li><em>Fra bunden:</em> Opret en tom mappe, åbn den i VS Code, og kør:
 <pre><code class="language-bash">npx create-next-app@latest . --js --no-tailwind --eslint --app --no-src-dir --import-alias "@/*" --no-react-compiler --cache-components</code></pre>
-Publicér derefter med <em>Publish Branch → Publish to GitHub public repository</em> i Source Control eller <em>Publish repository</em> i GitHub Desktop (fjern fluebenet i <em>Keep this code private</em>).</li>
+Publicér derefter med <em>Publish Branch → Publish to GitHub public repository</em> i Source Control eller <em>File → Add Local Repository… → Publish repository</em> i GitHub Desktop (fjern fluebenet ved <em>Keep this code private</em>).</li>
 </ul>
 </li>
 <li><strong>Trin 2 · GitHub:</strong> Inviter gruppen under <em>Settings → Collaborators → Add people</em>. Slå <em>Automatically delete head branches</em> til under <em>Settings → General → Pull Requests</em>.</li>
@@ -62,8 +62,8 @@ Publicér derefter med <em>Publish Branch → Publish to GitHub public repositor
 <ol>
 <li>Acceptér invitationen (på mail eller under notifikationer på GitHub).</li>
 <li>Klon repoet med <em>Code → Open with GitHub Desktop</em> eller i VS Code.</li>
-<li>Kør <code>npm install</code> i terminalen i VS Code – og derefter <code>npm run dev</code>.</li>
 <li>Opret jeres egen <code>.env.local</code>. Nøglerne får I fra tovholderen uden om Git. <code>.env.local</code> står i <code>.gitignore</code> og bliver aldrig committet. Kan I se den under <em>Changes</em>? Så stop, og spørg.</li>
+<li>Kør <code>npm install</code> i terminalen i VS Code – og derefter <code>npm run dev</code>.</li>
 </ol>
 </details>
 
@@ -76,19 +76,19 @@ Publicér derefter med <em>Publish Branch → Publish to GitHub public repositor
 <tr><td>1. Hent nyeste <code>main</code></td><td><em>Current branch → main → Fetch origin → Pull origin</em></td><td>Klik på branch-navnet nederst til venstre → <em>main</em> → <em>… → Pull</em></td></tr>
 <tr><td>2. Lav en branch</td><td><em>Branch → New branch…</em>, fx <code>feature/login-form</code> → <em>Publish branch</em></td><td>Klik på branch-navnet → <em>Create new branch…</em> → <em>Publish Branch</em></td></tr>
 <tr><td>3. Commit og push i små skridt</td><td>Skriv en kort besked → <em>Commit to feature/…</em> → <em>Push origin</em></td><td>Skriv en kort besked → <em>Commit</em> → <em>Sync Changes</em></td></tr>
-<tr><td>4. Opret pull request</td><td><em>Branch → Create pull request</em> (åbner GitHub i browseren)</td><td>Gå til repoet på GitHub → <em>Compare &amp; pull request</em></td></tr>
-<tr><td>5. Merge</td><td colspan="2">Ens for begge, på GitHub: <em>Files changed → Merge pull request → Confirm merge</em>. Vercel deployer <code>main</code>.</td></tr>
+<tr><td>4. Opret pull request</td><td><em>Create Pull Request</em> – vises, når branchen er pushet (eller <em>Branch → Create pull request</em>). Åbner GitHub i browseren.</td><td>Gå til repoet på GitHub → <em>Compare &amp; pull request</em></td></tr>
+<tr><td>5. Merge</td><td colspan="2">Ens for begge, på GitHub: <em>Files changed → Conversation → Merge pull request → Confirm merge</em>. Vercel deployer <code>main</code>.</td></tr>
 <tr><td>6. Efter merge</td><td>Skift til <em>main</em> → <em>Pull origin</em></td><td>Skift til <em>main</em> → <em>Sync Changes</em></td></tr>
 </tbody>
 </table>
-<p>Én opgave pr. branch. Næste opgave starter forfra ved trin 1 – i en ny branch fra den opdaterede <code>main</code>.</p>
+<p>Én opgave pr. branch. Næste opgave starter forfra ved trin 1 – i en ny branch fra den opdaterede <code>main</code>. Bagefter viser decket alle seks trin samlet i GitHub Desktop og VS Code.</p>
 </details>
 
 <details style="margin-left: 1.5rem;">
 <summary><strong>5. Lad en anden merge – og fra merge til live</strong></summary>
 <ul>
-<li><strong>Best practice – et råd, ikke et krav:</strong> Lad en anden i gruppen kigge pull requesten igennem og merge den: Læs beskrivelsen, kig under <em>Files changed</em>, og skriv en kommentar. Så har to set koden, før den går live.</li>
-<li><strong>Fra merge til live:</strong> Vercel deployer, hver gang <code>main</code> får et nyt commit – også ved et direkte push, og derfor holder I <code>main</code> ren. Vercel henter koden, kører <code>npm install</code> og <code>npm run build</code> med de environment variables, der ligger på Vercel (ikke dem fra <code>.env.local</code>), og deployer. Lykkes buildet, er den nye version live. Fejler det, er den gamle version stadig live – læs build-loggen, ret i en ny branch, og merge igen.</li>
+<li><strong>Best practice – et råd, ikke et krav:</strong> Lad en anden i gruppen kigge pull requesten igennem og merge den: Er tjekkene grønne (<em>All checks have passed</em> – Vercel har bygget branchen – og <em>No conflicts with base branch</em>)? Læs beskrivelsen, kig under <em>Files changed</em>, og skriv en kommentar. Vercel-botten kommenterer af sig selv på pull requesten – I behøver ikke gøre noget. Så har to set koden, før den går live.</li>
+<li><strong>Fra merge til live:</strong> Vercel deployer, hver gang <code>main</code> får et nyt commit – også ved et direkte push, og derfor holder I <code>main</code> ren. Vercel siger det selv: <em>“To update your Production Deployment, push to the main branch.”</em> Vercel bygger appen med <code>npm install</code> og <code>npm run build</code> med de environment variables, I har kopieret ind på Vercel (<code>.env.local</code> uploades aldrig), og deployer. Lykkes buildet, er den nye version live. Fejler det, er den gamle version stadig live – læs build-loggen, ret i en ny branch, og merge igen.</li>
 </ul>
 </details>
 
@@ -96,7 +96,7 @@ Publicér derefter med <em>Publish Branch → Publish to GitHub public repositor
 <summary><strong>6. Seks vaner, der sparer jer for bøvl</strong></summary>
 <ol>
 <li><strong>Aftal, hvem der laver hvad.</strong> To, der retter i den samme fil samtidig, giver konflikter.</li>
-<li><strong>Hent <code>main</code> ofte</strong> – hver morgen og før hver ny branch. Så bygger I på det nyeste.</li>
+<li><strong>Hent <code>main</code> ofte.</strong> Før ny branch: skift til <em>main</em> → <em>Pull</em>. Midt i en branch: <em>Branch → Update from main</em>. Pull på en feature-branch henter kun den branch – ikke <code>main</code>.</li>
 <li><strong>Navngiv branchen efter opgaven</strong>, fx <code>feature/login-form</code> eller <code>fix/navbar-mobile</code>.</li>
 <li><strong>Kør <code>npm run build</code> før pull request.</strong> Det er den samme build, Vercel kører – så fanges fejlen hos jer.</li>
 <li><strong>Skriv hvad og hvorfor</strong> i pull requesten – gerne med et skærmbillede.</li>
@@ -107,9 +107,8 @@ Publicér derefter med <em>Publish Branch → Publish to GitHub public repositor
 <details style="margin-left: 1.5rem;">
 <summary><strong>7. Når det driller</strong></summary>
 <ul>
-<li><strong>Branchen er bagud, eller pull requesten melder konflikt:</strong> Tryk <em>Update branch</em> på pull requesten på GitHub, eller vælg <em>Branch → Update from main</em> i GitHub Desktop. Løs konflikter i VS Code's merge editor.</li>
+<li><strong>Branchen er bagud, eller pull requesten melder konflikt:</strong> Hent <code>main</code> ind i branchen: <em>Branch → Update from main</em> i GitHub Desktop eller <em>⋯ → Branch → Merge… → origin/main</em> i VS Code. Løs konflikter i VS Codes merge editor, commit, og push – så opdaterer pull requesten sig selv.</li>
 <li><strong>Deploy fejler:</strong> Læs build-loggen på Vercel, og kør <code>npm run build</code> lokalt.</li>
-<li><strong>En fejl er kommet live:</strong> Buildet lykkedes, men koden har en fejl. Brug <em>Instant Rollback</em> på projektets forside på Vercel, og ret fejlen i en ny branch.</li>
 <li><strong>Login sender jer til <code>localhost</code>:</strong> Tilføj Vercel-URL'en under <em>Supabase → Authentication → URL Configuration</em>.</li>
 </ul>
 </details>
@@ -152,7 +151,7 @@ Publicér derefter med <em>Publish Branch → Publish to GitHub public repositor
   - [Source Control i VS Code](https://code.visualstudio.com/docs/sourcecontrol/overview)
   - [GitHub Desktop](https://docs.github.com/en/desktop)
   - [Creating a repository from a template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
-  - [Keeping your pull request in sync with the base branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/keeping-your-pull-request-in-sync-with-the-base-branch)
+  - [GitHub Desktop: Syncing your branch](https://docs.github.com/en/desktop/working-with-your-remote-repository-on-github-or-github-enterprise/syncing-your-branch-in-github-desktop)
   - [VS Code: Merge conflicts](https://code.visualstudio.com/docs/sourcecontrol/merge-conflicts)
   - [Inviting collaborators](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)
   - [Automatic deletion of branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-the-automatic-deletion-of-branches)
@@ -161,7 +160,7 @@ Publicér derefter med <em>Publish Branch → Publish to GitHub public repositor
   - [Next.js: Deploying](https://nextjs.org/docs/app/getting-started/deploying)
   - [Vercel: Next.js on Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs)
   - [Vercel: Environment variables](https://vercel.com/docs/environment-variables)
-  - [Vercel: Builds](https://vercel.com/docs/deployments/builds) · [Troubleshoot a build](https://vercel.com/docs/deployments/troubleshoot-a-build) · [Instant Rollback](https://vercel.com/docs/instant-rollback)
+  - [Vercel: Builds](https://vercel.com/docs/deployments/builds) · [Troubleshoot a build](https://vercel.com/docs/deployments/troubleshoot-a-build)
   - [Vercel: Troubleshoot project collaboration](https://vercel.com/docs/deployments/troubleshoot-project-collaboration) – Hobby-planen og private repositories
   - [Supabase: Redirect URLs](https://supabase.com/docs/guides/auth/redirect-urls)
 - **Next.js:**

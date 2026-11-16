@@ -228,7 +228,7 @@
                 <circle cx="95" cy="80" r="8" /><circle cx="125" cy="80" r="8" />
                 <circle class="is-p2" cx="275" cy="80" r="8" /><circle class="is-p2" cx="305" cy="80" r="8" />
                 <circle class="is-p3" cx="455" cy="80" r="8" /><circle class="is-p3" cx="485" cy="80" r="8" />
-                <circle class="is-live" cx="180" cy="150" r="11" /><circle class="is-live" cx="360" cy="150" r="11" /><circle class="is-live" cx="540" cy="150" r="11" />
+                <circle class="is-merge" cx="180" cy="150" r="11" /><circle class="is-merge" cx="360" cy="150" r="11" /><circle class="is-merge" cx="540" cy="150" r="11" />
                 <text class="gf-mini-note" x="300" y="182">merget samme dag eller dagen efter</text>
               </svg>
               <p class="gf-tags is-now"><span>Færre konflikter</span><span>Let at læse</span><span>Hurtigt live</span></p>
@@ -375,7 +375,7 @@
                 <p class="gf-mock-head"><b>Source Control</b><span class="gf-mock-button is-blue is-hl">Publish Branch</span></p>
                 <p class="gf-menu"><span>Publish to GitHub private repository</span><span class="is-hl">Publish to GitHub public repository</span></p>
               </div>
-              <p class="gf-alt">GitHub Desktop: <em>Publish repository</em>, og fjern fluebenet i <em>Keep this code private</em></p>
+              <p class="gf-alt">GitHub Desktop: <em>File → Add Local Repository…</em> → <em>Publish repository</em>, og fjern fluebenet ved <em>Keep this code private</em></p>
             </article>
           </div>
           <p class="po-source-link">
@@ -473,16 +473,7 @@
               <small>Eller klon i VS Code</small>
             </li>
             <li>
-              <span>3</span><b>Installér og start</b>
-              <div class="gf-mock gf-terminal" aria-hidden="true">
-                <p><i>$</i>npm install</p>
-                <p><i>$</i>npm run dev</p>
-                <p class="is-ok">Ready · localhost:3000</p>
-              </div>
-              <small>I terminalen i VS Code</small>
-            </li>
-            <li>
-              <span>4</span><b>Opret <code>.env.local</code></b>
+              <span>3</span><b>Opret <code>.env.local</code></b>
               <div class="gf-mock gf-tree" aria-hidden="true">
                 <p>app/</p>
                 <p>components/</p>
@@ -490,6 +481,15 @@
                 <p>.gitignore</p>
               </div>
               <small>Nøglerne fra tovholderen — uden om Git</small>
+            </li>
+            <li>
+              <span>4</span><b>Installér og start</b>
+              <div class="gf-mock gf-terminal" aria-hidden="true">
+                <p><i>$</i>npm install</p>
+                <p><i>$</i>npm run dev</p>
+                <p class="is-ok">Ready · localhost:3000</p>
+              </div>
+              <small>I terminalen i VS Code</small>
             </li>
           </ol>
           <p class="dui-lead-note is-warning">
@@ -513,76 +513,15 @@
             <circle class="gs-commit" cx="210" cy="70" r="10" /><circle class="gs-commit" cx="250" cy="70" r="10" />
             <g class="gs-pr"><rect x="282" y="52" width="70" height="36" rx="9" /><text x="317" y="77">PR</text></g>
             <circle class="gs-merge" cx="430" cy="220" r="13" />
-            <g class="gs-step"><circle cx="90" cy="258" r="19" /><text x="90" y="266">1</text></g>
-            <g class="gs-step"><circle cx="54" cy="130" r="19" /><text x="54" y="138">2</text></g>
-            <g class="gs-step"><circle cx="230" cy="26" r="19" /><text x="230" y="34">3</text></g>
-            <g class="gs-step"><circle cx="317" cy="26" r="19" /><text x="317" y="34">4</text></g>
-            <g class="gs-step"><circle cx="466" cy="130" r="19" /><text x="466" y="138">5</text></g>
-            <g class="gs-step"><circle cx="430" cy="258" r="19" /><text x="430" y="266">6</text></g>
+            <g class="gs-step"><circle cx="90" cy="258" r="21" /><text x="90" y="266">1</text></g>
+            <g class="gs-step"><circle cx="54" cy="130" r="21" /><text x="54" y="138">2</text></g>
+            <g class="gs-step"><circle cx="230" cy="26" r="21" /><text x="230" y="34">3</text></g>
+            <g class="gs-step"><circle cx="317" cy="26" r="21" /><text x="317" y="34">4</text></g>
+            <g class="gs-step"><circle cx="466" cy="130" r="21" /><text x="466" y="138">5</text></g>
+            <g class="gs-step"><circle cx="430" cy="258" r="21" /><text x="430" y="266">6</text></g>
             <path class="gc-arrow is-dashed" d="M430 284C360 318 160 318 90 284" />
             <text class="gc-label" x="260" y="326">… og forfra</text>
           </svg>
-        </section>
-
-        <section class="po-slide" id="knapper">
-          <span class="eyebrow">Dagligt workflow · her sidder knapperne</span>
-          <h2>Samme trin — to værktøjer</h2>
-          <div class="gf-tools" aria-hidden="true">
-            <figure class="gf-desktop">
-              <figcaption>GitHub Desktop</figcaption>
-              <div class="gf-app">
-                <p class="gf-menubar"><span>File</span><span>Edit</span><span>View</span><span>Repository</span><span class="is-hl is-open">Branch</span><span>Help</span></p>
-                <div class="gf-dropdown">
-                  <p class="gf-dropdown-head">Branch-menuen</p>
-                  <p class="is-hl"><span>New branch…</span><kbd>⇧⌘N</kbd><i class="gf-pin">2</i></p>
-                  <p><span>Update from main</span><kbd>⇧⌘U</kbd></p>
-                  <p class="is-hl"><span>Create pull request</span><kbd>⌘R</kbd><i class="gf-pin">4</i></p>
-                </div>
-                <div class="gf-toolbar">
-                  <p><small>Current repository</small>memory-app ▾</p>
-                  <p class="is-hl"><small>Current branch</small>feature/login-form ▾ <i class="gf-pin">1</i><i class="gf-pin">6</i></p>
-                  <p class="is-hl"><small>Fetch → Pull → Push · samme knap</small>Push origin <b class="gf-ahead">↑1</b> <i class="gf-pin">1</i><i class="gf-pin">3</i><i class="gf-pin">6</i></p>
-                </div>
-                <div class="gf-desktop-body">
-                  <div class="gf-desktop-side">
-                    <p class="gf-tabs"><span class="is-on">Changes <b>2</b></span><span>History</span></p>
-                    <p class="gf-file is-head"><i class="gf-check"></i>2 changed files</p>
-                    <p class="gf-file"><i class="gf-check"></i>app/page.js<small class="is-mod">●</small></p>
-                    <p class="gf-file"><i class="gf-check"></i>components/LoginForm.js<small class="is-new">+</small></p>
-                    <div class="gf-commit">
-                      <p class="gf-input">Add login form</p>
-                      <p class="gf-input is-placeholder">Description</p>
-                      <span class="gf-merge is-blue is-hl">Commit to feature/login-form <i class="gf-pin">3</i></span>
-                    </div>
-                  </div>
-                  <div class="gf-desktop-main gf-diff">
-                    <p class="gf-diff-head">app/page.js</p>
-                    <p class="is-del"><b>4</b><code>  return &lt;h1&gt;Hello&lt;/h1&gt;;</code></p>
-                    <p class="is-add"><b>4</b><code>  return &lt;LoginForm /&gt;;</code></p>
-                    <p><b>5</b><code>}</code></p>
-                  </div>
-                </div>
-              </div>
-            </figure>
-            <figure class="gf-vscode">
-              <figcaption>VS Code · Source Control</figcaption>
-              <div class="gf-app">
-                <p class="gf-panel-head">SOURCE CONTROL <span class="is-hl">⋯ <i class="gf-pin">1</i></span></p>
-                <div class="gf-vscode-body">
-                  <p class="gf-input">Add login form</p>
-                  <span class="gf-merge is-blue is-hl">✓ Commit <i class="gf-pin">3</i></span>
-                  <span class="gf-merge is-next is-hl"><small>efter commit bliver knappen til</small><span class="gf-next-row">Sync Changes ↑1 <i class="gf-pin">3</i><i class="gf-pin">6</i></span></span>
-                  <p class="gf-tabs"><span class="is-on">Changes 2</span></p>
-                  <p class="gf-file">page.js <small>M</small></p>
-                  <p class="gf-file">LoginForm.js <small>U</small></p>
-                </div>
-                <p class="gf-statusbar"><span class="is-hl">feature/login-form <i class="gf-pin">1</i><i class="gf-pin">2</i></span><span>↻</span></p>
-              </div>
-            </figure>
-          </div>
-          <p class="gf-pin-legend">
-            <span><i class="gf-pin">1</i>Hent main</span><span><i class="gf-pin">2</i>Ny branch</span><span><i class="gf-pin">3</i>Commit og push</span><span><i class="gf-pin">4</i>Pull request</span><span><i class="gf-pin">6</i>Efter merge</span>
-          </p>
         </section>
 
         <section class="po-slide" id="workflow-1">
@@ -594,18 +533,18 @@
             <g class="gs-local">
               <path class="gs-branch" d="M150 80C150 42 170 24 220 24H860C910 24 930 42 930 80" />
               <circle class="gs-commit" cx="390" cy="24" r="9" /><circle class="gs-commit" cx="430" cy="24" r="9" /><circle class="gs-commit" cx="470" cy="24" r="9" />
-              <g class="gs-step"><circle cx="150" cy="128" r="17" /><text x="150" y="135">1</text></g>
-              <g class="gs-step"><circle cx="250" cy="128" r="17" /><text x="250" y="135">2</text></g>
-              <g class="gs-step"><circle cx="430" cy="128" r="17" /><text x="430" y="135">3</text></g>
+              <g class="gs-step"><circle cx="150" cy="128" r="21" /><text x="150" y="135">1</text></g>
+              <g class="gs-step"><circle cx="250" cy="128" r="21" /><text x="250" y="135">2</text></g>
+              <g class="gs-step"><circle cx="430" cy="128" r="21" /><text x="430" y="135">3</text></g>
             </g>
             <g class="gs-remote">
               <g class="gs-pr"><rect x="660" y="6" width="76" height="36" rx="9" /><text x="698" y="31">PR</text></g>
               <circle class="gs-merge" cx="930" cy="80" r="13" />
               <path class="gs-deploy" d="M1150 80H1200" />
               <g class="gs-live"><rect x="1206" y="62" width="150" height="36" rx="18" /><text x="1281" y="86">Vercel · live</text></g>
-              <g class="gs-step"><circle cx="698" cy="128" r="17" /><text x="698" y="135">4</text></g>
-              <g class="gs-step"><circle cx="930" cy="128" r="17" /><text x="930" y="135">5</text></g>
-              <g class="gs-step"><circle cx="1070" cy="128" r="17" /><text x="1070" y="135">6</text></g>
+              <g class="gs-step"><circle cx="698" cy="128" r="21" /><text x="698" y="135">4</text></g>
+              <g class="gs-step"><circle cx="930" cy="128" r="21" /><text x="930" y="135">5</text></g>
+              <g class="gs-step"><circle cx="1070" cy="128" r="21" /><text x="1070" y="135">6</text></g>
             </g>
           </svg>
           <div class="gf-table" role="table" aria-label="Trin 1 til 3 i GitHub Desktop og VS Code Source Control">
@@ -627,7 +566,7 @@
             </div>
           </div>
           <p class="dui-lead-note">
-            <strong>Én opgave pr. branch.</strong> Jo kortere den lever, jo færre konflikter.
+            <strong>Én opgave pr. branch.</strong> Jo kortere den lever, jo færre konflikter. 
           </p>
           <p class="po-source-link">
             <a href="https://docs.github.com/en/desktop/making-changes-in-a-branch/managing-branches-in-github-desktop" target="_blank" rel="noreferrer">GitHub Desktop: Branches ↗</a>
@@ -645,30 +584,30 @@
             <g class="gs-local">
               <path class="gs-branch" d="M150 80C150 42 170 24 220 24H860C910 24 930 42 930 80" />
               <circle class="gs-commit" cx="390" cy="24" r="9" /><circle class="gs-commit" cx="430" cy="24" r="9" /><circle class="gs-commit" cx="470" cy="24" r="9" />
-              <g class="gs-step"><circle cx="150" cy="128" r="17" /><text x="150" y="135">1</text></g>
-              <g class="gs-step"><circle cx="250" cy="128" r="17" /><text x="250" y="135">2</text></g>
-              <g class="gs-step"><circle cx="430" cy="128" r="17" /><text x="430" y="135">3</text></g>
+              <g class="gs-step"><circle cx="150" cy="128" r="21" /><text x="150" y="135">1</text></g>
+              <g class="gs-step"><circle cx="250" cy="128" r="21" /><text x="250" y="135">2</text></g>
+              <g class="gs-step"><circle cx="430" cy="128" r="21" /><text x="430" y="135">3</text></g>
             </g>
             <g class="gs-remote">
               <g class="gs-pr"><rect x="660" y="6" width="76" height="36" rx="9" /><text x="698" y="31">PR</text></g>
               <circle class="gs-merge" cx="930" cy="80" r="13" />
               <path class="gs-deploy" d="M1150 80H1200" />
               <g class="gs-live"><rect x="1206" y="62" width="150" height="36" rx="18" /><text x="1281" y="86">Vercel · live</text></g>
-              <g class="gs-step"><circle cx="698" cy="128" r="17" /><text x="698" y="135">4</text></g>
-              <g class="gs-step"><circle cx="930" cy="128" r="17" /><text x="930" y="135">5</text></g>
-              <g class="gs-step"><circle cx="1070" cy="128" r="17" /><text x="1070" y="135">6</text></g>
+              <g class="gs-step"><circle cx="698" cy="128" r="21" /><text x="698" y="135">4</text></g>
+              <g class="gs-step"><circle cx="930" cy="128" r="21" /><text x="930" y="135">5</text></g>
+              <g class="gs-step"><circle cx="1070" cy="128" r="21" /><text x="1070" y="135">6</text></g>
             </g>
           </svg>
           <div class="gf-table" role="table" aria-label="Trin 4 til 6 i GitHub Desktop og VS Code Source Control">
             <div class="gf-row gf-head" role="row"><span role="columnheader">Trin</span><span role="columnheader">GitHub Desktop</span><span role="columnheader">VS Code · Source Control</span></div>
             <div class="gf-row" role="row">
               <b role="rowheader"><i>4</i>Opret pull request</b>
-              <p role="cell" class="gf-clicks"><em>Branch</em><i>→</i><em>Create pull request</em><small>åbner GitHub</small></p>
+              <p role="cell" class="gf-clicks"><em>Create Pull Request</em><small>vises efter push · eller Branch-menuen · åbner GitHub</small></p>
               <p role="cell" class="gf-clicks"><em>Repoet på GitHub</em><i>→</i><em>Compare &amp; pull request</em></p>
             </div>
             <div class="gf-row is-shared" role="row">
               <b role="rowheader"><i>5</i><span>Merge<small>ens for begge · på GitHub</small></span></b>
-              <p role="cell" class="gf-clicks"><em>Files changed</em><i>→</i><em class="is-merge">Merge pull request</em><i>→</i><em>Confirm merge</em><small>Vercel deployer main</small></p>
+              <p role="cell" class="gf-clicks"><em>Files changed</em><i>→</i><em>Conversation</em><i>→</i><em class="is-merge">Merge pull request</em><i>→</i><em>Confirm merge</em><small>Vercel deployer main</small></p>
             </div>
             <div class="gf-row" role="row">
               <b role="rowheader"><i>6</i>Efter merge</b>
@@ -677,12 +616,72 @@
             </div>
           </div>
           <p class="dui-lead-note">
-            <strong>Næste opgave starter forfra ved trin 1</strong> — i en ny branch fra den opdaterede <code>main</code>.
+            <strong>Næste opgave starter forfra ved trin 1</strong> — i en ny branch fra den opdaterede <code>main</code>. <a class="gf-inline-link" href="#/knapper">Se alle knapperne samlet →</a>
           </p>
           <p class="po-source-link">
             <a href="https://docs.github.com/en/desktop/working-with-your-remote-repository-on-github-or-github-enterprise/creating-an-issue-or-pull-request-from-github-desktop" target="_blank" rel="noreferrer">GitHub Desktop: Pull request ↗</a>
             ·
             <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request" target="_blank" rel="noreferrer">GitHub: Merging a pull request ↗</a>
+          </p>
+        </section>
+
+        <section class="po-slide" id="knapper">
+          <span class="eyebrow">Dagligt workflow · alle seks trin samlet</span>
+          <h2>Samme trin — to værktøjer</h2>
+          <div class="gf-tools" aria-hidden="true">
+            <figure class="gf-desktop">
+              <figcaption>GitHub Desktop</figcaption>
+              <div class="gf-app">
+                <p class="gf-menubar"><span>File</span><span>Edit</span><span>View</span><span>Repository</span><span class="is-hl is-open">Branch</span><span>Help</span></p>
+                <div class="gf-dropdown">
+                  <p class="is-hl"><span>New branch…</span><kbd>⇧⌘N</kbd><i class="gf-pin">2</i></p>
+                  <p><span>Update from main</span><kbd>⇧⌘U</kbd></p>
+                  <p><span>Create pull request</span><kbd>⌘R</kbd></p>
+                </div>
+                <div class="gf-toolbar">
+                  <p><small>Current repository</small>memory-app ▾</p>
+                  <p class="is-hl"><small>Current branch</small>feature/login-form ▾ <i class="gf-pin">1</i><i class="gf-pin">6</i></p>
+                  <p class="is-hl"><small>Fetch → Pull → Push · samme knap</small>Push origin <b class="gf-ahead">↑1</b> <i class="gf-pin">1</i><i class="gf-pin">3</i><i class="gf-pin">6</i></p>
+                </div>
+                <div class="gf-desktop-body">
+                  <div class="gf-desktop-side">
+                    <p class="gf-tabs"><span class="is-on">Changes <b>2</b></span><span>History</span></p>
+                    <p class="gf-file is-head"><i class="gf-check"></i>2 changed files</p>
+                    <p class="gf-file"><i class="gf-check"></i>app/page.js<small class="is-mod">●</small></p>
+                    <p class="gf-file"><i class="gf-check"></i>components/LoginForm.js<small class="is-new">+</small></p>
+                    <div class="gf-commit">
+                      <p class="gf-input">Add login form</p>
+                      <p class="gf-input is-placeholder">Description</p>
+                      <span class="gf-merge is-blue is-hl">Commit to feature/login-form <i class="gf-pin">3</i></span>
+                    </div>
+                  </div>
+                  <div class="gf-desktop-main gf-after-push">
+                    <div class="gf-pr-card">
+                      <p><small class="gf-after-label">Efter push</small><b>Create a Pull Request from your current branch</b><small>Branch menu or ⌘R</small></p>
+                      <span class="gf-merge is-blue is-hl">Create Pull Request <i class="gf-pin">4</i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </figure>
+            <figure class="gf-vscode">
+              <figcaption>VS Code · Source Control</figcaption>
+              <div class="gf-app">
+                <p class="gf-panel-head">SOURCE CONTROL <span class="is-hl">⋯ <i class="gf-pin">1</i></span></p>
+                <div class="gf-vscode-body">
+                  <p class="gf-input">Add login form</p>
+                  <span class="gf-merge is-blue is-hl">✓ Commit <i class="gf-pin">3</i></span>
+                  <span class="gf-merge is-next is-hl"><small>efter commit bliver knappen til</small><span class="gf-next-row">Sync Changes ↑1 <i class="gf-pin">3</i><i class="gf-pin">6</i></span></span>
+                  <p class="gf-tabs"><span class="is-on">Changes 2</span></p>
+                  <p class="gf-file">page.js <small>M</small></p>
+                  <p class="gf-file">LoginForm.js <small>U</small></p>
+                </div>
+                <p class="gf-statusbar"><span class="is-hl">feature/login-form <i class="gf-pin">1</i><i class="gf-pin">2</i></span><span>↻</span></p>
+              </div>
+            </figure>
+          </div>
+          <p class="gf-pin-legend">
+            <span><i class="gf-pin">1</i>Hent main</span><span><i class="gf-pin">2</i>Ny branch</span><span><i class="gf-pin">3</i>Commit og push</span><span><i class="gf-pin">4</i>Pull request</span><span class="is-dim"><i class="gf-pin">5</i>Merge · på GitHub</span><span><i class="gf-pin">6</i>Efter merge</span>
           </p>
         </section>
 
@@ -693,21 +692,25 @@
             <div class="gf-pr" aria-hidden="true">
               <div class="au-hero-bar"><i></i><i></i><i></i><span>github.com · pull/12</span></div>
               <div class="gf-pr-body">
-                <b>Add login form <small>#12</small></b>
-                <p class="gf-branches"><code>main</code><span>←</span><code class="is-p1">feature/login-form</code></p>
-                <p class="gf-files"><span>Files changed</span><b>3</b></p>
-                <p class="gf-comment"><b>Ali</b> Virker på mobil. Knappen mangler fokus-stil.</p>
-                <span class="gf-merge">Merge pull request</span>
+                <b><span class="gf-open">Open</span>Add login form <small>#12</small></b>
+                <p class="gf-branches"><span>Sara vil merge 1 commit ind i</span><code>main</code><span>fra</span><code class="is-p1">feature/login-form</code></p>
+                <p class="gf-bot"><i></i><span><strong>vercel</strong> Bot · kommenterer automatisk</span></p>
+                <div class="gf-checks-box">
+                  <p class="is-hl"><i></i><span><b>All checks have passed</b><small>Vercel har bygget branchen</small></span></p>
+                  <p><i></i><span><b>No conflicts with base branch</b><small>Merging can be performed automatically</small></span></p>
+                  <span class="gf-merge is-blue">Merge pull request</span>
+                </div>
               </div>
             </div>
             <ol class="gf-checks">
+              <li><b>Er tjekkene grønne?</b><span>Vercel har bygget branchen, og der er ingen konflikter</span></li>
               <li><b>Læs beskrivelsen</b><span>Hvad er lavet — og hvorfor?</span></li>
               <li><b>Kig under <em>Files changed</em></b><span>Er ændringen lille, og hører den til opgaven?</span></li>
-              <li><b>Skriv en kommentar</b><span>Spørg, ros eller foreslå — og merge, når I er enige</span></li>
+              <li><b>Skriv en kommentar, og merge</b><span>Spørg, ros eller foreslå — og merge, når I er enige</span></li>
             </ol>
           </div>
           <p class="dui-lead-note">
-            <strong>Hvorfor smart?</strong> Så har to set koden, før den går live — og alle i gruppen kender mere af appen.
+            <strong>Hvorfor smart?</strong> Så har to set koden, før den går live. Vercel-botten kommenterer af sig selv — I behøver ikke gøre noget.
           </p>
           <p class="po-source-link">
             <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews" target="_blank" rel="noreferrer">GitHub: Pull request reviews ↗</a>
@@ -717,29 +720,17 @@
         <section class="po-slide" id="deploy">
           <span class="eyebrow">Deployment · hver gang main får et nyt commit</span>
           <h2>Fra merge til live på Vercel</h2>
-          <div class="gf-pipeline">
+          <div class="gf-pipeline is-trim">
             <article class="is-github">
               <span>GitHub</span>
               <b>Merge til <code>main</code></b>
               <small><em>Merge pull request</em> = nyt commit på <code>main</code></small>
             </article>
             <i aria-hidden="true">→</i>
-            <article>
-              <span>Vercel · 1</span>
-              <b>Henter koden</b>
-              <small>den nyeste <code>main</code></small>
-            </article>
-            <i aria-hidden="true">→</i>
-            <article>
-              <span>Vercel · 2</span>
-              <b><code>npm install</code></b>
-              <small>pakkerne fra <code>package.json</code></small>
-            </article>
-            <i aria-hidden="true">→</i>
             <article class="is-build">
-              <span>Vercel · 3</span>
-              <b><code>npm run build</code></b>
-              <small>det samme som lokalt</small>
+              <span>Vercel · automatisk</span>
+              <b>Bygger appen</b>
+              <small><code>npm install</code> + <code>npm run build</code> — det samme som lokalt</small>
             </article>
             <i aria-hidden="true">→</i>
             <article class="is-live">
@@ -749,22 +740,16 @@
             </article>
             <p class="gf-env">
               <b>Environment Variables</b>
-              <small>fra Vercel · Settings — ikke fra <code>.env.local</code></small>
+              <small>kopieret ind på Vercel — <code>.env.local</code> uploades aldrig</small>
             </p>
           </div>
-          <div class="gf-deploy-result">
-            <div class="gf-mock" aria-hidden="true">
-              <p class="gf-mock-head"><b><i class="gf-vercel-logo"></i>Deployments</b><small>main</small></p>
-              <p class="gf-mock-row is-bad"><i></i>Show error on failed login<span class="gf-status is-bad">Error</span></p>
-              <p class="gf-mock-row is-current"><i></i>Add login form<span class="gf-status is-current">Current</span><span class="gf-status is-ok">Ready</span></p>
-              <p class="gf-mock-row"><i></i>Fix navbar on mobile<span class="gf-status is-ok">Ready</span></p>
-              <p class="gf-mock-quote">“To update your Production Deployment, push to the <code>main</code> branch.”</p>
-            </div>
-            <div class="gf-outcomes">
-              <p class="is-ok"><b>Buildet lykkes</b><span>Den nye version er live — I gør ingenting</span></p>
-              <p class="is-bad"><b>Buildet fejler</b><span>Den gamle version er stadig live. Læs build-loggen, ret i en ny branch, og merge igen</span></p>
-            </div>
+          <div class="gf-outcomes is-row">
+            <p class="is-ok"><b>Buildet lykkes</b><span>Den nye version er live — I gør ingenting</span></p>
+            <p class="is-bad"><b>Buildet fejler</b><span>Den gamle version er stadig live. Læs build-loggen, ret i en ny branch, og merge igen</span></p>
           </div>
+          <p class="dui-lead-note">
+            <strong>Vercel siger det selv:</strong> “To update your Production Deployment, push to the <code>main</code> branch.”
+          </p>
           <p class="po-source-link">
             <a href="https://vercel.com/docs/deployments/builds" target="_blank" rel="noreferrer">Vercel: Builds ↗</a>
             ·
@@ -788,10 +773,11 @@
             </li>
             <li>
               <div class="gf-mock gf-center" aria-hidden="true">
-                <span class="gf-merge is-blue is-hl">Pull origin · Sync Changes</span>
+                <p class="gf-habit-rows"><small>Før ny branch</small><span class="gf-merge is-blue is-hl">main → Pull</span></p>
+                <p class="gf-habit-rows"><small>Midt i en branch</small><span class="gf-merge is-ghost is-hl">Update from main</span></p>
               </div>
               <b>Hent <code>main</code> ofte</b>
-              <span>Hver morgen og før hver ny branch — så bygger I på det nyeste</span>
+              <span>Pull på en feature-branch henter kun den branch — ikke <code>main</code></span>
             </li>
             <li>
               <div class="gf-mock gf-center" aria-hidden="true">
@@ -831,19 +817,17 @@
           <h2>Det sker — sådan kommer I videre</h2>
           <div class="why-table gf-debug" role="table" aria-label="Typiske problemer, årsag og løsning">
             <div class="why-row why-head" role="row"><span></span><span>Det sker</span><span>Derfor</span><span class="is-next">Gør sådan</span></div>
-            <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><path class="gs-main" d="M6 54H114" /><path class="gs-branch" d="M22 54C22 26 32 16 50 16H80C94 16 100 30 100 46" /><g class="gw-conflict"><circle cx="100" cy="54" r="12" /><path d="M94 48L106 60M106 48L94 60" /></g></svg><b>Branchen er bagud, eller pull requesten melder konflikt</b><span><code>main</code> har ændret sig, siden I lavede branchen</span><span class="is-next"><em>Update branch</em> på pull requesten · eller <em>Branch → Update from main</em> i GitHub Desktop. Løs konflikter i VS Code's merge editor</span></div>
+            <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><path class="gs-main" d="M6 54H114" /><path class="gs-branch" d="M22 54C22 26 32 16 50 16H80C94 16 100 30 100 46" /><g class="gw-conflict"><circle cx="100" cy="54" r="12" /><path d="M94 48L106 60M106 48L94 60" /></g></svg><b>Branchen er bagud, eller pull requesten melder konflikt</b><span><code>main</code> har ændret sig, siden I lavede branchen</span><span class="is-next">Hent <code>main</code> ind i branchen: <em>Branch → Update from main</em> i GitHub Desktop · eller <em>⋯ → Branch → Merge… → origin/main</em> i VS Code. Løs konflikter i VS Codes merge editor, commit, og push</span></div>
             <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-bad"><rect x="10" y="20" width="100" height="32" rx="16" /><text x="60" y="42">Error</text></g></svg><b>Deploy fejler</b><span>Appen kan ikke bygge — fx en manglende variabel</span><span class="is-next">Læs build-loggen på Vercel, og kør <code>npm run build</code> lokalt</span></div>
-            <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-rollback"><rect x="4" y="20" width="112" height="32" rx="16" /><text x="60" y="42">↺ rollback</text></g></svg><b>En fejl er kommet live</b><span>Buildet lykkedes, men koden har en fejl</span><span class="is-next"><em>Instant Rollback</em> på projektets forside på Vercel — og ret fejlen i en ny branch</span></div>
-            <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-bad"><rect x="4" y="20" width="112" height="32" rx="16" /><text x="60" y="42">localhost</text></g></svg><b>Login sender jer til <code>localhost</code></b><span>Supabase kender ikke Vercel-URL'en</span><span class="is-next">Tilføj den under <em>Supabase → Authentication → URL Configuration</em></span></div>
+            <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-bad"><rect x="4" y="20" width="112" height="32" rx="16" /><text x="60" y="42">localhost</text></g></svg><b>Login sender jer til <code>localhost</code></b><span>Supabase kender ikke Vercel-URL'en</span><span class="is-next">Tilføj Vercel-URL'en under <em>Supabase → Authentication → URL Configuration</em></span></div>
           </div>
           <p class="po-source-link">
-            <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/keeping-your-pull-request-in-sync-with-the-base-branch" target="_blank" rel="noreferrer">GitHub: Update branch ↗</a>
+            <a href="https://docs.github.com/en/desktop/working-with-your-remote-repository-on-github-or-github-enterprise/syncing-your-branch-in-github-desktop" target="_blank" rel="noreferrer">GitHub Desktop: Sync branch ↗</a>
             ·
             <a href="https://code.visualstudio.com/docs/sourcecontrol/merge-conflicts" target="_blank" rel="noreferrer">VS Code: Merge conflicts ↗</a>
             ·
             <a href="https://vercel.com/docs/deployments/troubleshoot-a-build" target="_blank" rel="noreferrer">Vercel: Troubleshoot a build ↗</a>
-            ·
-            <a href="https://vercel.com/docs/instant-rollback" target="_blank" rel="noreferrer">Instant Rollback ↗</a>
+
             ·
             <a href="https://supabase.com/docs/guides/auth/redirect-urls" target="_blank" rel="noreferrer">Supabase: Redirect URLs ↗</a>
           </p>
@@ -901,10 +885,10 @@
             <circle class="gs-merge" cx="830" cy="80" r="13" />
             <path class="gs-deploy" d="M1150 80H1200" />
             <g class="gs-live"><rect x="1206" y="62" width="150" height="36" rx="18" /><text x="1281" y="86">Vercel · live</text></g>
-            <g class="gs-step is-work"><circle cx="95" cy="128" r="17" /><text x="95" y="135">1</text></g>
-            <g class="gs-step is-work"><circle cx="380" cy="128" r="17" /><text x="380" y="135">2</text></g>
-            <g class="gs-step is-work"><circle cx="638" cy="128" r="17" /><text x="638" y="135">3</text></g>
-            <g class="gs-step is-work"><circle cx="830" cy="128" r="17" /><text x="830" y="135">4</text></g>
+            <g class="gs-step is-work"><circle cx="95" cy="128" r="21" /><text x="95" y="135">1</text></g>
+            <g class="gs-step is-work"><circle cx="380" cy="128" r="21" /><text x="380" y="135">2</text></g>
+            <g class="gs-step is-work"><circle cx="638" cy="128" r="21" /><text x="638" y="135">3</text></g>
+            <g class="gs-step is-work"><circle cx="830" cy="128" r="21" /><text x="830" y="135">4</text></g>
           </svg>
           <ol class="gf-today">
             <li>
@@ -923,7 +907,7 @@
               <span>3 · Én i gruppen</span>
               <h3>Første pull request</h3>
               <p>En lille ændring i en branch, fx en overskrift.</p>
-              <p class="gf-jump"><a href="#/workflow-1">Trin 1–3</a><a href="#/workflow-2">Trin 4–6</a><a href="#/gode-vaner">Gode vaner</a></p>
+              <p class="gf-jump"><a href="#/workflow-1">Trin 1–3</a><a href="#/workflow-2">Trin 4–6</a><a href="#/knapper">Knapperne</a></p>
             </li>
             <li>
               <span>4 · Gerne en anden</span>
@@ -937,6 +921,8 @@
             live.
           </p>
         </section>
+
+
       </div>
     </div>
     <script type="module" src="../shared/deck.js"></script>

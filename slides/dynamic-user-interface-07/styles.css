@@ -2913,3 +2913,274 @@
 .reveal .gw-pill.is-rollback text {
   fill: var(--dui-blue);
 }
+
+/* Kontrolrunde · rettelser */
+.reveal .gf-mini-graph circle.is-merge {
+  fill: var(--dui);
+}
+
+.reveal .gf-habit-rows {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reveal .gf-habit-rows small {
+  font-size: 14px !important;
+}
+
+.reveal .gf-habits .gf-habit-rows .gf-merge {
+  padding: 4px 10px;
+  font-size: 14px;
+}
+
+.reveal .gf-pin-legend .is-dim {
+  opacity: 0.55;
+}
+
+.reveal .gf-inline-link {
+  margin-left: 8px;
+  color: var(--dui) !important;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+/* Strips · større tekst til projektor */
+.reveal .gs-name { font-size: 22px; }
+.reveal .gs-step text { font-size: 21px; }
+.reveal .gs-pr text { font-size: 19px; }
+.reveal .gs-live text { font-size: 17px; }
+
+/* Slide 17 · trimmet pipeline */
+.reveal .gf-pipeline.is-trim {
+  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1.2fr) 48px minmax(0, 1fr);
+  grid-template-rows: 190px auto;
+  margin-top: 40px;
+}
+
+.reveal .gf-pipeline.is-trim article {
+  padding: 24px 26px;
+}
+
+.reveal .gf-pipeline.is-trim b {
+  font-size: 32px;
+}
+
+.reveal .gf-pipeline.is-trim b code {
+  font-size: 28px;
+}
+
+.reveal .gf-pipeline.is-trim small {
+  font-size: 20px;
+}
+
+.reveal .gf-pipeline.is-trim small code {
+  font-size: 18px;
+}
+
+.reveal .gf-pipeline.is-trim > i {
+  font-size: 40px;
+}
+
+.reveal .gf-pipeline.is-trim .gf-env {
+  grid-column: 3 / 4;
+  padding: 14px 20px;
+}
+
+.reveal .gf-pipeline.is-trim .gf-env b {
+  font-size: 21px;
+}
+
+.reveal .gf-pipeline.is-trim .gf-env small {
+  font-size: 17px;
+}
+
+.reveal .gf-outcomes.is-row {
+  grid-template-columns: 1fr 1fr;
+  margin-top: 30px;
+}
+
+.reveal .gf-outcomes.is-row b {
+  font-size: 25px;
+}
+
+.reveal .gf-outcomes.is-row span {
+  font-size: 20px;
+}
+
+.reveal #deploy .dui-lead-note {
+  margin-top: 24px !important;
+}
+
+/* Slide 3 · grafteksten skal kunne læses på projektoren */
+.reveal #hvorfor .gw-msg { font-size: 17px; }
+.reveal #hvorfor .gw-name { font-size: 20px; }
+.reveal #hvorfor .gw-prod { font-size: 17px; }
+.reveal #hvorfor .gw-pr text { font-size: 16px; }
+.reveal #hvorfor .gw-callout { font-size: 20px; }
+.reveal #hvorfor .gw-comment text { font-size: 18px; }
+.reveal #hvorfor .gw-pill text { font-size: 17px; }
+
+.reveal #hvorfor .gf-why .gf-why-graph {
+  height: 290px;
+}
+
+/* Slide 17 · PR-siden som på GitHub */
+.reveal .gf-open {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #238636;
+  color: #fff;
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+.reveal .gf-pr-body .gf-branches {
+  flex-wrap: wrap;
+  font-size: 16px;
+}
+
+.reveal .gf-pr-body .gf-branches code {
+  font-size: 15px;
+}
+
+.reveal .gf-pr-body .gf-bot {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.reveal .gf-pr-body .gf-bot i {
+  width: 0;
+  height: 0;
+  border-right: 9px solid transparent;
+  border-bottom: 15px solid var(--ink);
+  border-left: 9px solid transparent;
+}
+
+.reveal .gf-pr-body .gf-bot strong {
+  color: var(--ink);
+}
+
+.reveal .gf-checks-box {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #2f6fde;
+  border-radius: 10px;
+}
+
+.reveal .gf-checks-box > p {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 4px 6px;
+  border-radius: 8px;
+}
+
+.reveal .gf-checks-box > p i {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #2f6fde;
+}
+
+.reveal .gf-checks-box > p i::after {
+  width: 5px;
+  height: 10px;
+  margin-top: -3px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  content: "";
+}
+
+.reveal .gf-checks-box > p span {
+  display: grid;
+  gap: 2px;
+}
+
+.reveal .gf-checks-box b {
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.reveal .gf-checks-box small {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.reveal .gf-checks-box .gf-merge {
+  justify-self: start;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.reveal .gf-review {
+  align-items: start;
+}
+
+.reveal .gf-checks li {
+  padding: 16px 22px;
+}
+
+/* Slide 15 · Desktop efter push */
+.reveal .gf-after-push {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch !important;
+  padding: 18px !important;
+  text-align: left !important;
+}
+
+.reveal .gf-after-label {
+  margin-bottom: 8px !important;
+  color: var(--muted);
+  font-size: 13px !important;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .gf-pr-card {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #2f6fde;
+  border-radius: 10px;
+  background: rgb(47 111 222 / 14%);
+}
+
+.reveal .gf-pr-card p {
+  display: grid !important;
+  gap: 4px;
+}
+
+.reveal .gf-pr-card b {
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.reveal .gf-pr-card small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.reveal .gf-pr-card .gf-merge {
+  justify-self: start;
+}
+
+.reveal .gf-dropdown {
+  top: 140px;
+}
