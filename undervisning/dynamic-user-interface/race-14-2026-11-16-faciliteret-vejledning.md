@@ -4,7 +4,7 @@
 
 I dag er der faciliteret vejledning. Det er frivilligt at møde op, og I bruger dagen på jeres projekt. Jeg er tilgængelig fra kl. 8.15 i lokale 4.05.
 
-Dagen starter med et kort oplæg om, hvordan I samarbejder i gruppen og deployer jeres Next.js-app til Vercel. Kort sagt: Arbejd samtidig – uden at ødelægge live-sitet. Målet er, at alt nyt når `main` via en pull request, og hvert nyt commit på `main` går live på Vercel. Derefter er der vejledning i grupperne.
+Dagen starter med et kort oplæg om, hvordan I samarbejder i gruppen og deployer jeres Next.js-app til Vercel. Kort sagt: Arbejd samtidig – uden at ødelægge live-sitet. Målet: intet når `main` uden en pull request, og hvert nyt commit på `main` går live på Vercel. Derefter er der vejledning i grupperne.
 
 <hr style="margin: 2rem 0;">
 
@@ -25,7 +25,7 @@ Dagen starter med et kort oplæg om, hvordan I samarbejder i gruppen og deployer
 <summary><strong>1. Vercel, flowet – og hvorfor I bruger branches og pull requests</strong></summary>
 <ul>
 <li><strong>Hvad er Vercel?</strong> En hosting-platform, der bygger jeres Next.js-app og lægger den online – automatisk, hver gang <code>main</code> ændrer sig. Lavet af firmaet bag Next.js. I kender GitHub Pages fra Product Optimization: Vercel gør det samme for Next.js – uden workflow-fil. Pages kan kun vise statiske filer, men Next.js kører også kode på serveren. Hobby-planen er gratis og nok til jeres projekt – med et public repo.</li>
-<li><strong>Målet: alt nyt når <code>main</code> via en pull request.</strong> Branch fra nyeste <code>main</code> → små commits → pull request → merge til <code>main</code> → Vercel deployer automatisk.</li>
+<li><strong>Målet: intet når <code>main</code> uden en pull request.</strong> Branch fra nyeste <code>main</code> → små commits → pull request → merge til <code>main</code> → Vercel deployer automatisk.</li>
 <li>Vercel deployer, hver gang <code>main</code> får et nyt commit. I jeres flow sker det, når I merger en pull request.</li>
 <li><strong>Hvorfor? Arbejd samtidig – uden at ødelægge live-sitet.</strong> Branches = I kan arbejde samtidig. Pull requests = kun det, der er klar, kommer ind i <code>main</code> – og går live.
 <ul>
@@ -34,7 +34,7 @@ Dagen starter med et kort oplæg om, hvordan I samarbejder i gruppen og deployer
 <li><em>Overblik:</em> <code>fix</code>, <code>update</code>, <code>asdf</code> fortæller ingenting. Pull requesten forklarer hvad og hvorfor.</li>
 </ul>
 </li>
-<li><strong>Én opgave = én kort branch</strong>, fx <code>feature/login-form</code> – ikke <code>feature/alt-det-nye</code>. Jo kortere tid en branch lever, jo mindre når <code>main</code> at ændre sig, og jo færre konflikter får I. Kan I ikke navngive branchen kort, er den for stor.</li>
+<li><strong>Én opgave = én kort branch</strong>, fx <code>feature/login-form</code>, <code>fix/navbar-mobile</code> eller <code>feature/post-list</code> – ikke <code>feature/alt-det-nye</code>. Jo kortere tid en branch lever, jo mindre når <code>main</code> at ændre sig, og jo færre konflikter får I. Kan I ikke navngive branchen kort, er den for stor.</li>
 <li><strong>Én commit fortæller én ting.</strong> Commit, hver gang et lille stykke virker, og skriv en kort besked, som en anden forstår, fx <em>Add login form</em> eller <em>Validate email field</em> – ikke <em>update</em> eller <em>fix</em>. Så kan I se, hvad der er ændret, finde den commit, der ødelagde noget, og fortryde lige præcis den.</li>
 </ul>
 </details>

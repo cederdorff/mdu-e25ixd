@@ -3441,3 +3441,16 @@
   font-style: normal;
   font-weight: 850;
 }
+
+/* Slide 5 · fulde branchnavne, centreret og forskudt */
+.reveal .gf-mini-name.is-mid {
+  font-size: 15px;
+  text-anchor: middle;
+}
+
+/* Slide 3 · længere overskrift på én linje */
+.reveal .slides #flow > h2 {
+  max-width: none;
+  font-size: 64px;
+  white-space: nowrap;
+}
