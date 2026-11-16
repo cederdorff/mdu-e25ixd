@@ -2192,3 +2192,386 @@
 .reveal .gf-mini-graph path.is-p3 { stroke: var(--gf-p3); stroke-opacity: 0.75; }
 .reveal .gf-mini-graph circle.is-p2, .reveal .gf-mini-name.is-p2 { fill: var(--gf-p2); }
 .reveal .gf-mini-graph circle.is-p3, .reveal .gf-mini-name.is-p3 { fill: var(--gf-p3); }
+
+/* ------------------------------------------------------------------
+   Samme grafsprog i hele decket · main grå · personfarver · PR violet · Vercel blå
+   ------------------------------------------------------------------ */
+
+/* Personfarver i mockups */
+.reveal .gf-mock-row i.is-p1 { background: var(--gf-p1); }
+.reveal .gf-mock-row i.is-p2 { background: var(--gf-p2); }
+.reveal .gf-mock-row i.is-p3 { background: var(--gf-p3); }
+
+.reveal .gf-mock-row i.is-group {
+  background: conic-gradient(var(--gf-p1) 0 33%, var(--gf-p2) 0 66%, var(--gf-p3) 0);
+}
+
+.reveal .gf-branches code.is-p1,
+.reveal .gf-branch-names code.is-p1 {
+  background: rgb(62 207 142 / 14%);
+  color: var(--gf-p1) !important;
+}
+
+.reveal .gf-branch-names code.is-p2 {
+  background: rgb(246 169 78 / 14%);
+  color: var(--gf-p2) !important;
+}
+
+/* Strip · mini-version af slide 2 */
+.reveal .gf-strip {
+  display: block;
+  width: 100%;
+  height: 96px;
+  margin-top: 18px;
+}
+
+.reveal .gs-main {
+  fill: none;
+  stroke: rgb(245 247 246 / 40%);
+  stroke-linecap: round;
+  stroke-width: 7;
+}
+
+.reveal .gs-name {
+  fill: var(--muted);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 18px;
+}
+
+.reveal .gs-branch {
+  fill: none;
+  stroke: var(--gf-p1);
+  stroke-linecap: round;
+  stroke-opacity: 0.75;
+  stroke-width: 6;
+}
+
+.reveal .gs-commit {
+  fill: var(--gf-p1);
+}
+
+.reveal .gs-pr rect {
+  fill: var(--bg);
+  stroke: var(--dui);
+  stroke-width: 3;
+}
+
+.reveal .gs-pr text {
+  fill: var(--dui);
+  font-size: 17px;
+  font-weight: 850;
+  text-anchor: middle;
+}
+
+.reveal .gs-merge {
+  fill: var(--dui);
+}
+
+.reveal .gs-deploy {
+  fill: none;
+  stroke: var(--dui-blue);
+  stroke-dasharray: 6 6;
+  stroke-width: 3;
+}
+
+.reveal .gs-live rect {
+  fill: var(--dui-blue);
+}
+
+.reveal .gs-live text {
+  fill: #06142b;
+  font-size: 16px;
+  font-weight: 850;
+  text-anchor: middle;
+}
+
+.reveal .gs-step circle {
+  fill: var(--dui-soft);
+  stroke: var(--dui);
+  stroke-width: 2;
+}
+
+.reveal .gs-step text {
+  fill: var(--dui);
+  font-size: 17px;
+  font-weight: 850;
+  text-anchor: middle;
+}
+
+.reveal .gs-step.is-work circle {
+  fill: var(--green-soft);
+  stroke: var(--green);
+}
+
+.reveal .gs-step.is-work text {
+  fill: var(--green);
+}
+
+/* Den del af flowet, tabellen handler om, står frem */
+.reveal .gf-strip.is-local .gs-remote,
+.reveal .gf-strip.is-remote .gs-local {
+  opacity: 0.25;
+}
+
+.reveal #workflow-1 .gf-table,
+.reveal #workflow-2 .gf-table {
+  margin-top: 14px;
+}
+
+.reveal #workflow-1 .gf-row:not(.gf-head),
+.reveal #workflow-2 .gf-row:not(.gf-head) {
+  min-height: 100px;
+}
+
+.reveal #workflow-1 .dui-lead-note,
+.reveal #workflow-2 .dui-lead-note {
+  margin-top: 18px !important;
+}
+
+/* Slide 5 · commits som git-graf */
+.reveal .gf-log {
+  width: 100%;
+  height: 200px;
+}
+
+.reveal .gl-line {
+  fill: none;
+  stroke: var(--gf-p1);
+  stroke-linecap: round;
+  stroke-opacity: 0.75;
+  stroke-width: 6;
+}
+
+.reveal .gl-commit {
+  fill: var(--gf-p1);
+}
+
+.reveal .gl-commit.is-bad {
+  fill: var(--surface);
+  stroke: var(--coral);
+  stroke-width: 5;
+}
+
+.reveal .gl-msg {
+  fill: var(--ink);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 21px;
+}
+
+.reveal .gl-msg.is-bad {
+  fill: var(--coral);
+}
+
+.reveal .gl-files {
+  fill: var(--muted);
+  font-size: 18px;
+  text-anchor: end;
+}
+
+/* Kapitelslides · lille visual til højre */
+.reveal .gf-chapter-visual {
+  position: absolute;
+  top: 180px;
+  right: 120px;
+  width: 520px;
+  height: 300px;
+}
+
+.reveal .gc-person circle {
+  stroke: var(--bg);
+  stroke-width: 4;
+}
+
+.reveal .gc-person.is-p1 circle { fill: var(--gf-p1); }
+.reveal .gc-person.is-p2 circle { fill: var(--gf-p2); }
+.reveal .gc-person.is-p3 circle { fill: var(--gf-p3); }
+.reveal .gc-person.is-p4 circle { fill: var(--gf-p4); }
+
+.reveal .gc-person text,
+.reveal .gc-label {
+  fill: var(--muted);
+  font-size: 18px;
+  text-anchor: middle;
+}
+
+.reveal .gc-box rect {
+  fill: var(--surface);
+  stroke: var(--dui);
+  stroke-width: 3;
+}
+
+.reveal .gc-box.is-vercel rect {
+  stroke: var(--dui-blue);
+}
+
+.reveal .gc-box text {
+  fill: var(--ink);
+  font-size: 20px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+.reveal .gc-box text.is-sub {
+  fill: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.reveal .gc-arrow {
+  fill: none;
+  stroke: rgb(245 247 246 / 45%);
+  stroke-width: 3;
+}
+
+.reveal .gc-arrow.is-blue {
+  stroke: var(--dui-blue);
+  stroke-dasharray: 6 6;
+}
+
+.reveal .gc-arrow.is-dashed {
+  stroke-dasharray: 6 6;
+}
+
+.reveal .gf-chapter-visual .gs-step circle {
+  stroke-width: 3;
+}
+
+.reveal .gf-chapter-visual .gs-step text {
+  font-size: 19px;
+}
+
+/* Når det driller · lille visual pr. række */
+.reveal .gf-debug .why-row {
+  grid-template-columns: 120px 300px minmax(0, 0.8fr) minmax(0, 1.2fr);
+}
+
+.reveal .gf-debug-icon {
+  width: 120px;
+  height: 70px;
+}
+
+.reveal .gf-debug-icon .gs-branch {
+  stroke-width: 5;
+}
+
+.reveal .gf-debug-icon .gs-main {
+  stroke-width: 6;
+}
+
+/* Prøv selv · strip over kortene */
+.reveal .gf-strip.is-today {
+  margin-top: 26px;
+}
+
+.reveal .gf-strip.is-today .gc-box text {
+  font-size: 17px;
+}
+
+.reveal .gf-today {
+  height: 360px;
+  margin-top: 18px;
+}
+
+.reveal .gf-chapter-visual {
+  top: 300px;
+  width: 440px;
+  height: 254px;
+}
+
+.reveal #kap-opsaetning .kicker,
+.reveal #kap-workflow .kicker {
+  max-width: 860px;
+}
+
+/* Slide 3 · stikord som tre par: samarbejde, kvalitet, overblik */
+.reveal .gf-why {
+  height: 560px;
+  margin-top: 24px;
+}
+
+.reveal .gf-why > article {
+  gap: 12px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.reveal .gf-why .gf-why-graph {
+  height: 230px;
+}
+
+.reveal .gf-points {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .gf-points li {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  align-items: baseline;
+  padding: 6px 0 6px 14px;
+  border-left: 3px solid rgb(240 143 115 / 60%);
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.reveal .gf-points.is-now li {
+  border-color: var(--dui-line);
+}
+
+.reveal .gf-points small {
+  grid-row: span 2;
+  color: var(--coral);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.reveal .gf-points.is-now small {
+  color: var(--dui);
+}
+
+.reveal .gf-points b {
+  color: var(--ink);
+}
+
+.reveal .gf-points code {
+  color: var(--coral) !important;
+  font-size: 18px;
+}
+
+.reveal .gf-why .nx-verdict {
+  margin-top: auto !important;
+  padding: 12px 18px;
+  font-size: 21px;
+}
+
+.reveal #hvorfor .dui-lead-note {
+  margin-top: 14px !important;
+  padding: 12px 20px;
+}
+
+.reveal .gf-points li {
+  grid-template-columns: 136px 1fr;
+  align-items: center;
+}
+
+.reveal .gf-points small {
+  grid-row: auto;
+}
+
+.reveal .gf-why {
+  height: 540px;
+}
+
+.reveal .gf-points li {
+  grid-template-columns: 150px 1fr;
+}
+
+.reveal .gf-points.is-now code {
+  color: var(--dui) !important;
+}

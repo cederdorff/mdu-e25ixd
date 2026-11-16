@@ -28,7 +28,7 @@
               <div class="au-hero-bar"><i></i><i></i><i></i><span>github.com · pull/12</span></div>
               <div class="gf-hero-pr">
                 <b>Add login form <small>#12</small></b>
-                <p class="gf-branches"><code>main</code><span>←</span><code>feature/login-form</code></p>
+                <p class="gf-branches"><code>main</code><span>←</span><code class="is-p1">feature/login-form</code></p>
                 <p class="gf-comment"><b>Sara</b> Ser godt ud. Jeg merger.</p>
                 <span class="gf-merge">Merge pull request</span>
               </div>
@@ -148,7 +148,7 @@
                 <text class="gw-msg is-bad" x="430" y="166">final</text>
                 <text class="gw-msg" x="500" y="166">update</text>
                 <g class="gw-conflict"><circle cx="255" cy="74" r="17" /><path d="M247 66L263 82M263 66L247 82" /></g>
-                <text class="gw-callout is-bad" x="255" y="38">konflikt</text>
+                <text class="gw-callout is-bad" x="255" y="38">konflikt i samme fil</text>
                 <text class="gw-callout is-bad" x="430" y="94">fejl</text>
                 <path class="gw-line is-prod" d="M20 250H580" />
                 <path class="gw-deploy" d="M80 182V236M150 182V236M220 182V236M290 182V236M360 182V236M500 182V236" />
@@ -158,7 +158,11 @@
                 <g class="gw-pill is-bad"><rect x="380" y="234" width="100" height="32" rx="16" /><text x="430" y="256">fejl live</text></g>
                 <text class="gw-prod" x="20" y="284">Vercel · production</text>
               </svg>
-              <p class="gf-tags is-before"><span>Konflikter</span><span>Fejl går direkte live</span><span>Hvem? Hvorfor?</span></p>
+              <ul class="gf-points is-before">
+                <li><small>Samarbejde</small><span><b>To i samme fil</b> — konflikter direkte på <code>main</code></span></li>
+                <li><small>Kvalitet</small><span><b>Ingen styr på <code>main</code></b> — alt går direkte live</span></li>
+                <li><small>Overblik</small><span><b><code>fix</code>, <code>update</code>, <code>asdf</code></b> — hvem og hvorfor?</span></li>
+              </ul>
               <p class="nx-verdict is-before">Live-sitet er altid ét push fra en fejl</p>
             </article>
             <article class="is-new">
@@ -185,7 +189,11 @@
                 <g class="gw-pill is-live"><rect x="520" y="234" width="60" height="32" rx="16" /><text x="550" y="256">v3</text></g>
                 <text class="gw-prod" x="20" y="284">Vercel · production</text>
               </svg>
-              <p class="gf-tags is-now"><span>Et sted at tale om koden</span><span>Fejl fanges før live</span><span>Hvem og hvorfor</span></p>
+              <ul class="gf-points is-now">
+                <li><small>Samarbejde</small><span><b>Hver i sin branch</b> — konflikter løses dér</span></li>
+                <li><small>Kvalitet</small><span><b>Styr på <code>main</code></b> — kun det, der er set i en PR</span></li>
+                <li><small>Overblik</small><span><b>Pull requesten forklarer</b> hvad og hvorfor</span></li>
+              </ul>
               <p class="nx-verdict is-now"><code>main</code> er det, der er live — og det, I viser til eksamen</p>
             </article>
           </div>
@@ -246,23 +254,31 @@
           <div class="nx-two gf-small">
             <article>
               <span>Én stor commit om dagen</span>
-              <div class="gf-mock" aria-hidden="true">
-                <p class="gf-mock-head"><b>History</b><small>filer</small></p>
-                <p class="gf-mock-row is-bad"><i></i>update<small>23</small></p>
-                <p class="gf-mock-row is-bad"><i></i>fix<small>9</small></p>
-                <p class="gf-mock-row is-bad"><i></i>final final virker nu<small>14</small></p>
-              </div>
+              <svg class="gf-log" viewBox="0 0 600 200" aria-hidden="true">
+                <path class="gl-line is-p1" d="M40 20V180" />
+                <circle class="gl-commit is-big is-bad" cx="40" cy="40" r="17" />
+                <circle class="gl-commit is-big is-bad" cx="40" cy="100" r="17" />
+                <circle class="gl-commit is-big is-bad" cx="40" cy="160" r="17" />
+                <text class="gl-msg is-bad" x="80" y="47">update</text><text class="gl-files" x="580" y="47">23 filer</text>
+                <text class="gl-msg is-bad" x="80" y="107">fix</text><text class="gl-files" x="580" y="107">9 filer</text>
+                <text class="gl-msg is-bad" x="80" y="167">final final virker nu</text><text class="gl-files" x="580" y="167">14 filer</text>
+              </svg>
               <p class="gf-tags is-before"><span>Hvad skete der?</span><span>Hvor gik det galt?</span><span>Svær at fortryde</span></p>
               <p class="nx-verdict is-before">Historikken fortæller ingenting</p>
             </article>
             <article class="is-new">
               <span>Små commits med en klar besked</span>
-              <div class="gf-mock" aria-hidden="true">
-                <p class="gf-mock-head"><b>History</b><small>filer</small></p>
-                <p class="gf-mock-row"><i></i>Add login form<small>2</small></p>
-                <p class="gf-mock-row"><i></i>Validate email field<small>1</small></p>
-                <p class="gf-mock-row"><i></i>Show error on failed login<small>1</small></p>
-              </div>
+              <svg class="gf-log" viewBox="0 0 600 200" aria-hidden="true">
+                <path class="gl-line is-p1" d="M40 20V180" />
+                <circle class="gl-commit is-p1" cx="40" cy="34" r="10" />
+                <circle class="gl-commit is-p1" cx="40" cy="78" r="10" />
+                <circle class="gl-commit is-p1" cx="40" cy="122" r="10" />
+                <circle class="gl-commit is-p1" cx="40" cy="166" r="10" />
+                <text class="gl-msg" x="80" y="41">Add login form</text><text class="gl-files" x="580" y="41">2 filer</text>
+                <text class="gl-msg" x="80" y="85">Validate email field</text><text class="gl-files" x="580" y="85">1 fil</text>
+                <text class="gl-msg" x="80" y="129">Show error on failed login</text><text class="gl-files" x="580" y="129">1 fil</text>
+                <text class="gl-msg" x="80" y="173">Style login button</text><text class="gl-files" x="580" y="173">1 fil</text>
+              </svg>
               <p class="gf-tags is-now"><span>Let at se hvad</span><span>Let at finde fejlen</span><span>Let at fortryde</span></p>
               <p class="nx-verdict is-now">Commit, hver gang et lille stykke virker</p>
             </article>
@@ -279,6 +295,20 @@
           <span class="eyebrow">Opsætning · én gang</span>
           <h2>Én sætter op —<br />resten kloner</h2>
           <p class="kicker">Tovholderen laver repo og Vercel-projekt. De andre er i gang på få minutter.</p>
+          <svg class="gf-chapter-visual" viewBox="0 0 520 300" aria-hidden="true">
+            <g class="gc-person is-p1"><circle cx="60" cy="70" r="26" /><text x="60" y="122">tovholder</text></g>
+            <path class="gc-arrow" d="M94 70H168" />
+            <g class="gc-box is-github"><rect x="176" y="40" width="160" height="60" rx="12" /><text x="256" y="68">GitHub</text><text class="is-sub" x="256" y="88">public repo</text></g>
+            <path class="gc-arrow is-blue" d="M344 70H398" />
+            <g class="gc-box is-vercel"><rect x="406" y="40" width="104" height="60" rx="12" /><text x="458" y="76">Vercel</text></g>
+            <path class="gc-arrow is-dashed" d="M216 108C190 170 150 200 120 222" />
+            <path class="gc-arrow is-dashed" d="M256 108V212" />
+            <path class="gc-arrow is-dashed" d="M296 108C322 170 362 200 392 222" />
+            <g class="gc-person is-p2"><circle cx="104" cy="240" r="22" /></g>
+            <g class="gc-person is-p3"><circle cx="256" cy="240" r="22" /></g>
+            <g class="gc-person is-p4"><circle cx="408" cy="240" r="22" /></g>
+            <text class="gc-label" x="256" y="292">resten kloner</text>
+          </svg>
           <dl class="chapter-definition">
             <div>
               <dt>Tovholder</dt>
@@ -300,7 +330,7 @@
               <div class="gf-mock" aria-hidden="true">
                 <p class="gf-mock-head"><b>gruppe-7 / memory-app</b><span class="gf-status is-public">Public</span></p>
                 <p class="gf-mock-row"><i class="is-eye"></i>RACE og censor<small>kan læse koden</small></p>
-                <p class="gf-mock-row"><i></i>Gruppen<small>kan ændre koden</small></p>
+                <p class="gf-mock-row"><i class="is-group"></i>Gruppen<small>kan ændre koden</small></p>
               </div>
               <h3>RACE og censor kan se koden</h3>
             </article>
@@ -371,9 +401,9 @@
               <p class="gf-path"><em>Settings</em><i>→</i><em>Collaborators</em><i>→</i><em>Add people</em></p>
               <div class="gf-mock" aria-hidden="true">
                 <p class="gf-mock-head"><b>Manage access</b><span class="gf-mock-button">Add people</span></p>
-                <p class="gf-mock-row"><i></i>tovholder<small>Owner</small></p>
-                <p class="gf-mock-row"><i></i>gruppemedlem-2<small>Collaborator</small></p>
-                <p class="gf-mock-row is-pending"><i></i>gruppemedlem-3<small>Pending invite</small></p>
+                <p class="gf-mock-row"><i class="is-p1"></i>tovholder<small>Owner</small></p>
+                <p class="gf-mock-row"><i class="is-p2"></i>gruppemedlem-2<small>Collaborator</small></p>
+                <p class="gf-mock-row is-pending"><i class="is-p3"></i>gruppemedlem-3<small>Pending invite</small></p>
               </div>
               <p>De andre får en invitation på mail og under notifikationer på GitHub.</p>
             </article>
@@ -482,6 +512,21 @@
           <span class="eyebrow">Dagligt workflow</span>
           <h2>Seks trin —<br />hver gang</h2>
           <p class="kicker">GitHub Desktop eller Source Control i VS Code. Samme trin, bare forskellige knapper.</p>
+          <svg class="gf-chapter-visual is-loop" viewBox="0 0 520 300" aria-hidden="true">
+            <path class="gs-main" d="M10 230H510" />
+            <path class="gs-branch" d="M70 230C70 120 110 70 180 70H340C410 70 450 120 450 230" />
+            <circle class="gs-commit" cx="210" cy="70" r="10" /><circle class="gs-commit" cx="250" cy="70" r="10" />
+            <g class="gs-pr"><rect x="290" y="52" width="70" height="36" rx="9" /><text x="325" y="77">PR</text></g>
+            <circle class="gs-merge" cx="450" cy="230" r="13" />
+            <g class="gs-step"><circle cx="70" cy="230" r="19" /><text x="70" y="238">1</text></g>
+            <g class="gs-step"><circle cx="96" cy="128" r="19" /><text x="96" y="136">2</text></g>
+            <g class="gs-step"><circle cx="230" cy="28" r="19" /><text x="230" y="36">3</text></g>
+            <g class="gs-step"><circle cx="388" cy="28" r="19" /><text x="388" y="36">4</text></g>
+            <g class="gs-step"><circle cx="424" cy="128" r="19" /><text x="424" y="136">5</text></g>
+            <g class="gs-step"><circle cx="490" cy="196" r="19" /><text x="490" y="204">6</text></g>
+            <path class="gc-arrow is-dashed" d="M450 262C380 296 140 296 70 262" />
+            <text class="gc-label" x="260" y="296">… og forfra</text>
+          </svg>
         </section>
 
         <section class="po-slide" id="knapper">
@@ -538,6 +583,26 @@
         <section class="po-slide" id="workflow-1">
           <span class="eyebrow">Dagligt workflow · trin 1–3 · lokalt</span>
           <h2>Fra <code>main</code> til jeres egen branch</h2>
+          <svg class="gf-strip is-local" viewBox="0 0 1376 120" aria-hidden="true">
+            <path class="gs-main" d="M20 92H1150" />
+            <text class="gs-name" x="20" y="74">main</text>
+            <g class="gs-local">
+              <path class="gs-branch" d="M150 92C150 50 170 30 220 30H860C910 30 930 50 930 92" />
+              <circle class="gs-commit" cx="390" cy="30" r="9" /><circle class="gs-commit" cx="430" cy="30" r="9" /><circle class="gs-commit" cx="470" cy="30" r="9" />
+              <g class="gs-step"><circle cx="150" cy="92" r="17" /><text x="150" y="99">1</text></g>
+              <g class="gs-step"><circle cx="250" cy="30" r="17" /><text x="250" y="37">2</text></g>
+              <g class="gs-step"><circle cx="530" cy="30" r="17" /><text x="530" y="37">3</text></g>
+            </g>
+            <g class="gs-remote">
+              <g class="gs-pr"><rect x="660" y="12" width="76" height="36" rx="9" /><text x="698" y="37">PR</text></g>
+              <circle class="gs-merge" cx="930" cy="92" r="13" />
+              <path class="gs-deploy" d="M1150 92H1200" />
+              <g class="gs-live"><rect x="1206" y="74" width="150" height="36" rx="18" /><text x="1281" y="98">Vercel · live</text></g>
+              <g class="gs-step"><circle cx="784" cy="30" r="17" /><text x="784" y="37">4</text></g>
+              <g class="gs-step"><circle cx="980" cy="56" r="17" /><text x="980" y="63">5</text></g>
+              <g class="gs-step"><circle cx="1070" cy="92" r="17" /><text x="1070" y="99">6</text></g>
+            </g>
+          </svg>
           <div class="gf-table" role="table" aria-label="Trin 1 til 3 i GitHub Desktop og VS Code Source Control">
             <div class="gf-row gf-head" role="row"><span role="columnheader">Trin</span><span role="columnheader">GitHub Desktop</span><span role="columnheader">VS Code · Source Control</span></div>
             <div class="gf-row" role="row">
@@ -569,6 +634,26 @@
         <section class="po-slide" id="workflow-2">
           <span class="eyebrow">Dagligt workflow · trin 4–6 · GitHub og Vercel</span>
           <h2>Fra pull request til live-site</h2>
+          <svg class="gf-strip is-remote" viewBox="0 0 1376 120" aria-hidden="true">
+            <path class="gs-main" d="M20 92H1150" />
+            <text class="gs-name" x="20" y="74">main</text>
+            <g class="gs-local">
+              <path class="gs-branch" d="M150 92C150 50 170 30 220 30H860C910 30 930 50 930 92" />
+              <circle class="gs-commit" cx="390" cy="30" r="9" /><circle class="gs-commit" cx="430" cy="30" r="9" /><circle class="gs-commit" cx="470" cy="30" r="9" />
+              <g class="gs-step"><circle cx="150" cy="92" r="17" /><text x="150" y="99">1</text></g>
+              <g class="gs-step"><circle cx="250" cy="30" r="17" /><text x="250" y="37">2</text></g>
+              <g class="gs-step"><circle cx="530" cy="30" r="17" /><text x="530" y="37">3</text></g>
+            </g>
+            <g class="gs-remote">
+              <g class="gs-pr"><rect x="660" y="12" width="76" height="36" rx="9" /><text x="698" y="37">PR</text></g>
+              <circle class="gs-merge" cx="930" cy="92" r="13" />
+              <path class="gs-deploy" d="M1150 92H1200" />
+              <g class="gs-live"><rect x="1206" y="74" width="150" height="36" rx="18" /><text x="1281" y="98">Vercel · live</text></g>
+              <g class="gs-step"><circle cx="784" cy="30" r="17" /><text x="784" y="37">4</text></g>
+              <g class="gs-step"><circle cx="980" cy="56" r="17" /><text x="980" y="63">5</text></g>
+              <g class="gs-step"><circle cx="1070" cy="92" r="17" /><text x="1070" y="99">6</text></g>
+            </g>
+          </svg>
           <div class="gf-table" role="table" aria-label="Trin 4 til 6 i GitHub Desktop og VS Code Source Control">
             <div class="gf-row gf-head" role="row"><span role="columnheader">Trin</span><span role="columnheader">GitHub Desktop</span><span role="columnheader">VS Code · Source Control</span></div>
             <div class="gf-row" role="row">
@@ -604,7 +689,7 @@
               <div class="au-hero-bar"><i></i><i></i><i></i><span>github.com · pull/12</span></div>
               <div class="gf-pr-body">
                 <b>Add login form <small>#12</small></b>
-                <p class="gf-branches"><code>main</code><span>←</span><code>feature/login-form</code></p>
+                <p class="gf-branches"><code>main</code><span>←</span><code class="is-p1">feature/login-form</code></p>
                 <p class="gf-files"><span>Files changed</span><b>3</b></p>
                 <p class="gf-comment"><b>Sara</b> Virker på mobil. Knappen mangler fokus-stil.</p>
                 <span class="gf-merge">Merge pull request</span>
@@ -689,8 +774,8 @@
           <ol class="gf-habits">
             <li>
               <div class="gf-mock" aria-hidden="true">
-                <p class="gf-mock-row"><i></i>Sara<small>LoginForm.js</small></p>
-                <p class="gf-mock-row"><i></i>Ali<small>Navbar.js</small></p>
+                <p class="gf-mock-row"><i class="is-p1"></i>Sara<small>LoginForm.js</small></p>
+                <p class="gf-mock-row"><i class="is-p2"></i>Ali<small>Navbar.js</small></p>
               </div>
               <b>Aftal, hvem der laver hvad</b>
               <span>To, der retter i den samme fil samtidig, giver konflikter</span>
@@ -704,7 +789,7 @@
             </li>
             <li>
               <div class="gf-mock gf-center" aria-hidden="true">
-                <p class="gf-branch-names"><code>feature/login-form</code><code>fix/navbar-mobile</code></p>
+                <p class="gf-branch-names"><code class="is-p1">feature/login-form</code><code class="is-p2">fix/navbar-mobile</code></p>
               </div>
               <b>Navngiv branchen efter opgaven</b>
               <span>Så kan alle se, hvad den handler om</span>
@@ -739,10 +824,10 @@
           <span class="eyebrow">Når det driller</span>
           <h2>Det sker — sådan kommer I videre</h2>
           <div class="why-table gf-debug" role="table" aria-label="Typiske problemer, årsag og løsning">
-            <div class="why-row why-head" role="row"><span>Det sker</span><span>Derfor</span><span class="is-next">Gør sådan</span></div>
-            <div class="why-row" role="row"><b>Branchen er bagud, eller pull requesten melder konflikt</b><span><code>main</code> har ændret sig, siden I lavede branchen</span><span class="is-next"><em>Update branch</em> på pull requesten · eller <em>Branch → Update from main</em> i GitHub Desktop. Løs konflikter i VS Code's merge editor</span></div>
-            <div class="why-row" role="row"><b>Deploy fejler</b><span>Appen kan ikke bygge — fx en manglende variabel</span><span class="is-next">Læs build-loggen på Vercel, og kør <code>npm run build</code> lokalt</span></div>
-            <div class="why-row" role="row"><b>Login sender jer til <code>localhost</code></b><span>Supabase kender ikke Vercel-URL'en</span><span class="is-next">Tilføj den under <em>Supabase → Authentication → URL Configuration</em></span></div>
+            <div class="why-row why-head" role="row"><span></span><span>Det sker</span><span>Derfor</span><span class="is-next">Gør sådan</span></div>
+            <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><path class="gs-main" d="M6 54H114" /><path class="gs-branch" d="M22 54C22 26 32 16 50 16H80C94 16 100 30 100 46" /><g class="gw-conflict"><circle cx="100" cy="54" r="12" /><path d="M94 48L106 60M106 48L94 60" /></g></svg><b>Branchen er bagud, eller pull requesten melder konflikt</b><span><code>main</code> har ændret sig, siden I lavede branchen</span><span class="is-next"><em>Update branch</em> på pull requesten · eller <em>Branch → Update from main</em> i GitHub Desktop. Løs konflikter i VS Code's merge editor</span></div>
+            <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-bad"><rect x="10" y="20" width="100" height="32" rx="16" /><text x="60" y="42">Error</text></g></svg><b>Deploy fejler</b><span>Appen kan ikke bygge — fx en manglende variabel</span><span class="is-next">Læs build-loggen på Vercel, og kør <code>npm run build</code> lokalt</span></div>
+            <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-bad"><rect x="4" y="20" width="112" height="32" rx="16" /><text x="60" y="42">localhost</text></g></svg><b>Login sender jer til <code>localhost</code></b><span>Supabase kender ikke Vercel-URL'en</span><span class="is-next">Tilføj den under <em>Supabase → Authentication → URL Configuration</em></span></div>
           </div>
           <p class="po-source-link">
             <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/keeping-your-pull-request-in-sync-with-the-base-branch" target="_blank" rel="noreferrer">GitHub: Update branch ↗</a>
@@ -798,6 +883,20 @@
         <section class="po-slide mode-work" id="opgave">
           <span class="eyebrow">Prøv selv i dag</span>
           <h2>Én ændring hele vejen til live</h2>
+          <svg class="gf-strip is-today" viewBox="0 0 1376 120" aria-hidden="true">
+            <g class="gc-box is-github"><rect x="20" y="62" width="150" height="52" rx="10" /><text x="95" y="95">repo + Vercel</text></g>
+            <path class="gs-main" d="M178 88H1150" />
+            <path class="gs-branch" d="M380 88C380 50 400 30 450 30H760C810 30 830 50 830 88" />
+            <circle class="gs-commit" cx="520" cy="30" r="9" />
+            <g class="gs-pr"><rect x="600" y="12" width="76" height="36" rx="9" /><text x="638" y="37">PR</text></g>
+            <circle class="gs-merge" cx="830" cy="88" r="13" />
+            <path class="gs-deploy" d="M1150 88H1200" />
+            <g class="gs-live"><rect x="1206" y="70" width="150" height="36" rx="18" /><text x="1281" y="94">Vercel · live</text></g>
+            <g class="gs-step is-work"><circle cx="95" cy="30" r="17" /><text x="95" y="37">1</text></g>
+            <g class="gs-step is-work"><circle cx="290" cy="56" r="17" /><text x="290" y="63">2</text></g>
+            <g class="gs-step is-work"><circle cx="720" cy="30" r="17" /><text x="720" y="37">3</text></g>
+            <g class="gs-step is-work"><circle cx="1000" cy="56" r="17" /><text x="1000" y="63">4</text></g>
+          </svg>
           <ol class="gf-today">
             <li>
               <span>1 · Tovholder</span>
