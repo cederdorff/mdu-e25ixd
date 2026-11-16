@@ -1948,7 +1948,7 @@
 /* Slide 2 · én farve pr. person */
 :root {
   --gf-p1: #3ecf8e;
-  --gf-p2: #f6a94e;
+  --gf-p2: #5ad8e6;
   --gf-p3: #f29fd8;
 }
 
@@ -2002,7 +2002,7 @@
 
 /* Slide 3 · hvorfor · to små grafer med samme farver som slide 2 */
 :root {
-  --gf-p4: #f4c95d;
+  --gf-p4: #c6e86b;
 }
 
 .reveal .gf-why {
@@ -2213,7 +2213,7 @@
 }
 
 .reveal .gf-branch-names code.is-p2 {
-  background: rgb(246 169 78 / 14%);
+  background: rgb(90 216 230 / 14%);
   color: var(--gf-p2) !important;
 }
 
@@ -3183,4 +3183,261 @@
 
 .reveal .gf-dropdown {
   top: 140px;
+}
+
+/* "Når det driller" · konflikt-rækken som klik-chips pr. værktøj */
+.reveal .gf-debug .gf-fix {
+  display: grid;
+  gap: 6px;
+}
+
+.reveal .gf-fix > span {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 5px;
+  align-items: center;
+}
+
+.reveal .gf-fix small {
+  min-width: 96px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.reveal .gf-fix em {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgb(255 255 255 / 5%);
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.reveal .gf-fix i {
+  color: var(--dui);
+  font-style: normal;
+  font-weight: 850;
+}
+
+.reveal .gf-fix .gf-fix-end {
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.reveal .gf-debug .why-row:nth-child(2) {
+  min-height: 150px;
+}
+
+.reveal .gf-path .is-login {
+  border-color: rgb(101 167 255 / 45%);
+}
+
+.reveal .gf-debug .why-row {
+  grid-template-columns: 120px 260px minmax(0, 0.6fr) minmax(0, 1.6fr);
+}
+
+.reveal #vercel .gf-path {
+  flex-wrap: nowrap;
+  gap: 6px;
+}
+
+.reveal #vercel .gf-path em {
+  padding: 6px 10px;
+  font-size: 17px;
+  white-space: nowrap;
+}
+
+/* Hvad er Vercel? */
+.reveal .gf-def {
+  margin-top: 30px !important;
+}
+
+.reveal .gf-def div {
+  border-color: var(--dui-blue);
+  background: linear-gradient(90deg, var(--dui-blue-soft), transparent 90%);
+}
+
+.reveal .gf-def dt::before {
+  color: var(--dui-blue);
+}
+
+.reveal .gf-def dd {
+  font-size: 24px;
+}
+
+.reveal .gf-what {
+  grid-template-rows: 150px;
+  margin-top: 30px;
+}
+
+.reveal .gf-what-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reveal .gf-what-points li {
+  display: grid;
+  gap: 6px;
+  padding-left: 16px;
+  border-left: 3px solid var(--dui-blue);
+}
+
+.reveal .gf-what-points b {
+  color: var(--ink);
+  font-size: 22px;
+}
+
+.reveal .gf-what-points span {
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.35;
+}
+
+/* ------------------------------------------------------------------
+   Konsistent farvesprog: grøn/cyan/pink/lime = personer · violet = PR/merge
+   blå = Vercel/live · koral = fejl/advarsel · gul ramme = klik her
+   ------------------------------------------------------------------ */
+.reveal .gf-title h1 span {
+  color: var(--dui-blue);
+}
+
+.reveal .gf-hero-chip.is-prod {
+  border-color: rgb(101 167 255 / 45%);
+}
+
+.reveal .gf-hero-chip.is-prod small {
+  color: var(--dui-blue);
+}
+
+/* GitHubs merge-knap er grøn overalt */
+.reveal .gf-merge:not(.is-blue):not(.is-ghost):not(.is-next) {
+  background: #238636;
+}
+
+/* Advarsler er koral, ikke gule */
+.reveal .dui-lead-note.is-warning {
+  border-color: var(--coral);
+  background: linear-gradient(90deg, rgb(240 143 115 / 12%), transparent 80%);
+}
+
+/* Env-boksen er input til Vercels build: blå */
+.reveal .gf-env {
+  border-color: rgb(101 167 255 / 55%);
+  background: var(--dui-blue-soft);
+}
+
+.reveal .gf-env::before,
+.reveal .gf-env b {
+  color: var(--dui-blue);
+}
+
+/* Succes = live = blå */
+.reveal .gf-outcomes p.is-ok {
+  border-color: var(--dui-blue);
+  background: linear-gradient(90deg, var(--dui-blue-soft), transparent 90%);
+}
+
+/* Sektioner og niveauer i neutral/violet — ikke personfarver */
+.reveal .gf-steps li {
+  border-top-color: var(--dui);
+  background: linear-gradient(180deg, var(--dui-soft), var(--surface) 55%);
+}
+
+.reveal .gf-steps li > span {
+  color: var(--dui);
+}
+
+.reveal .gf-start article.is-scratch {
+  --gf-accent: var(--dui);
+}
+
+.reveal .gf-levels .is-must {
+  --gf-accent: var(--ink);
+}
+
+.reveal .gf-levels .is-try {
+  --gf-accent: var(--dui);
+}
+
+.reveal .gf-levels .is-bonus {
+  --gf-accent: var(--dui-blue);
+}
+
+.reveal .gf-mock-row i.is-neutral {
+  background: rgb(245 247 246 / 55%);
+}
+
+.reveal .gc-label {
+  font-size: 22px;
+}
+
+/* Konfliktrækken · to trin × to værktøjer */
+.reveal .gf-debug .why-row.is-wide {
+  grid-template-columns: 120px 260px minmax(0, 1fr);
+}
+
+.reveal .gf-debug .why-row.is-wide > b {
+  display: grid;
+  gap: 6px;
+}
+
+.reveal .gf-debug .why-row.is-wide > b small {
+  color: var(--muted);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.reveal .gf-fix-grid {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px 16px;
+  align-items: center;
+  padding-left: 18px;
+  border-left: 4px solid var(--dui);
+}
+
+.reveal .gf-fix-grid > small {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.reveal .gf-fix-head {
+  color: var(--dui);
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.reveal .gf-fix-grid .gf-fix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 5px;
+  align-items: center;
+}
+
+.reveal .gf-fix-grid em {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgb(255 255 255 / 5%);
+  color: var(--ink);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.reveal .gf-fix-grid i {
+  color: var(--dui);
+  font-style: normal;
+  font-weight: 850;
 }

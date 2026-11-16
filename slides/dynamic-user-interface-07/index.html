@@ -44,9 +44,52 @@
           </div>
         </section>
 
+        <section class="po-slide" id="vercel-hvad">
+          <span class="eyebrow">Hvad er Vercel?</span>
+          <h2>Vercel lægger jeres app online</h2>
+          <dl class="chapter-definition gf-def">
+            <div>
+              <dt>Vercel</dt>
+              <dd>En hosting-platform, der <b>bygger</b> jeres Next.js-app og lægger den <b>online</b> — automatisk, hver gang
+                <code>main</code> ændrer sig. Lavet af firmaet bag Next.js.</dd>
+            </div>
+          </dl>
+          <div class="gf-pipeline is-trim gf-what">
+            <article class="is-github">
+              <span>GitHub</span>
+              <b>Koden</b>
+              <small>repoet med <code>main</code></small>
+            </article>
+            <i aria-hidden="true">→</i>
+            <article class="is-build">
+              <span>Vercel</span>
+              <b>Bygger appen</b>
+              <small>og kører den på en server</small>
+            </article>
+            <i aria-hidden="true">→</i>
+            <article class="is-live">
+              <span>Production</span>
+              <b>Live</b>
+              <small><code>jeres-app.vercel.app</code></small>
+            </article>
+          </div>
+          <ul class="gf-what-points">
+            <li><b>Kender I GitHub Pages?</b><span>Fra Product Optimization. Vercel gør det samme for Next.js — uden workflow-fil.</span></li>
+            <li><b>Hvorfor ikke Pages?</b><span>Next.js kører også kode på serveren. Pages kan kun vise statiske filer.</span></li>
+            <li><b>Gratis</b><span>Hobby-planen er nok til jeres projekt — med et public repo.</span></li>
+          </ul>
+          <p class="po-source-link">
+            <a href="https://vercel.com/docs/getting-started-with-vercel" target="_blank" rel="noreferrer">Vercel: Getting started ↗</a>
+            ·
+            <a href="https://nextjs.org/docs/app/getting-started/deploying" target="_blank" rel="noreferrer">Next.js: Deploying ↗</a>
+            ·
+            <a href="https://vercel.com/docs/plans/hobby" target="_blank" rel="noreferrer">Hobby-planen ↗</a>
+          </p>
+        </section>
+
         <section class="po-slide" id="flow">
           <span class="eyebrow">Hele flowet · GitHub Flow</span>
-          <h2>Intet når <code>main</code> uden en pull request</h2>
+          <h2>Målet: alt nyt når <code>main</code> via en pull request</h2>
           <figure class="gf-graph">
             <svg viewBox="0 0 1376 540" role="img" aria-labelledby="gf-graph-title">
               <title id="gf-graph-title">
@@ -222,9 +265,9 @@
                 <path class="is-branch is-p1" d="M40 150C40 100 55 80 80 80H140C165 80 180 100 180 150" />
                 <path class="is-branch is-p2" d="M220 150C220 100 235 80 260 80H320C345 80 360 100 360 150" />
                 <path class="is-branch is-p3" d="M400 150C400 100 415 80 440 80H500C525 80 540 100 540 150" />
-                <text class="gf-mini-name" x="40" y="50">login-form</text>
-                <text class="gf-mini-name is-p2" x="230" y="50">navbar</text>
-                <text class="gf-mini-name is-p3" x="410" y="50">post-list</text>
+                <text class="gf-mini-name" x="30" y="50">feature/…</text>
+                <text class="gf-mini-name is-p2" x="230" y="50">fix/…</text>
+                <text class="gf-mini-name is-p3" x="410" y="50">feature/…</text>
                 <circle cx="95" cy="80" r="8" /><circle cx="125" cy="80" r="8" />
                 <circle class="is-p2" cx="275" cy="80" r="8" /><circle class="is-p2" cx="305" cy="80" r="8" />
                 <circle class="is-p3" cx="455" cy="80" r="8" /><circle class="is-p3" cx="485" cy="80" r="8" />
@@ -273,7 +316,7 @@
                 <text class="gl-msg" x="80" y="173">Style login button</text><text class="gl-files" x="580" y="173">1 fil</text>
               </svg>
               <p class="gf-tags is-now"><span>Let at se hvad</span><span>Let at finde fejlen</span><span>Let at fortryde</span></p>
-              <p class="nx-verdict is-now">Commit, hver gang et lille stykke virker</p>
+              <p class="nx-verdict is-now">Commit hver gang et lille stykke virker</p>
             </article>
           </div>
           <p class="dui-lead-note">
@@ -322,7 +365,7 @@
               <span>01 · Til eksamen</span>
               <div class="gf-mock" aria-hidden="true">
                 <p class="gf-mock-head"><b>gruppe-7 / memory-app</b><span class="gf-status is-public">Public</span></p>
-                <p class="gf-mock-row"><i class="is-eye"></i>RACE og censor<small>kan læse koden</small></p>
+                <p class="gf-mock-row"><i class="is-neutral"></i>RACE og censor<small>kan læse koden</small></p>
                 <p class="gf-mock-row"><i class="is-group"></i>Gruppen<small>kan ændre koden</small></p>
               </div>
               <h3>RACE og censor kan se koden</h3>
@@ -407,7 +450,7 @@
                 <p class="gf-mock-head"><b>Pull Requests</b></p>
                 <p class="gf-mock-check"><i></i><span><b>Automatically delete head branches</b><small>Deleted branches will still be able to be restored.</small></span></p>
               </div>
-              <p>Branchen slettes på GitHub, når pull requesten er merget. Så ser I kun det, der er i gang.</p>
+              <p>Branchen slettes på GitHub, når pull requesten er merget. Så er listen af branches på GitHub kort og overskuelig.</p>
             </article>
           </div>
           <p class="po-source-link">
@@ -422,8 +465,8 @@
           <h2>Forbind Vercel</h2>
           <div class="gf-settings">
             <article class="is-vercel">
-              <span>Importér repoet</span>
-              <p class="gf-path"><em>Add New…</em><i>→</i><em>Project</em><i>→</i><em>Import</em></p>
+              <span>Log ind med GitHub · importér repoet</span>
+              <p class="gf-path"><em class="is-login">Continue with GitHub</em><i>→</i><em>Add New…</em><i>→</i><em>Project</em><i>→</i><em>Import</em></p>
               <div class="gf-mock" aria-hidden="true">
                 <p class="gf-mock-head"><b>Environment Variables</b></p>
                 <p class="gf-mock-env"><code>NEXT_PUBLIC_SUPABASE_URL</code><span>https://…supabase.co</span></p>
@@ -526,7 +569,7 @@
 
         <section class="po-slide" id="workflow-1">
           <span class="eyebrow">Dagligt workflow · trin 1–3 · lokalt</span>
-          <h2>Fra <code>main</code> til jeres egen branch</h2>
+          <h2>Fra <code>main</code> til din egen branch</h2>
           <svg class="gf-strip is-local" viewBox="0 0 1376 150" aria-hidden="true">
             <path class="gs-main" d="M20 80H1150" />
             <text class="gs-name" x="20" y="64">main</text>
@@ -611,8 +654,8 @@
             </div>
             <div class="gf-row" role="row">
               <b role="rowheader"><i>6</i>Efter merge</b>
-              <p role="cell" class="gf-clicks"><em>main</em><i>→</i><em>Pull origin</em></p>
-              <p role="cell" class="gf-clicks"><em>main</em><i>→</i><em>Sync Changes</em></p>
+              <p role="cell" class="gf-clicks"><em>Skift til main</em><i>→</i><em>Pull origin</em></p>
+              <p role="cell" class="gf-clicks"><em>Skift til main</em><i>→</i><em>⋯</em><i>→</i><em>Pull</em></p>
             </div>
           </div>
           <p class="dui-lead-note">
@@ -667,16 +710,16 @@
             <figure class="gf-vscode">
               <figcaption>VS Code · Source Control</figcaption>
               <div class="gf-app">
-                <p class="gf-panel-head">SOURCE CONTROL <span class="is-hl">⋯ <i class="gf-pin">1</i></span></p>
+                <p class="gf-panel-head">SOURCE CONTROL <span class="is-hl">⋯ <i class="gf-pin">1</i><i class="gf-pin">6</i></span></p>
                 <div class="gf-vscode-body">
                   <p class="gf-input">Add login form</p>
                   <span class="gf-merge is-blue is-hl">✓ Commit <i class="gf-pin">3</i></span>
-                  <span class="gf-merge is-next is-hl"><small>efter commit bliver knappen til</small><span class="gf-next-row">Sync Changes ↑1 <i class="gf-pin">3</i><i class="gf-pin">6</i></span></span>
+                  <span class="gf-merge is-next is-hl"><small>efter commit bliver knappen til</small><span class="gf-next-row">Sync Changes ↑1 <i class="gf-pin">3</i></span></span>
                   <p class="gf-tabs"><span class="is-on">Changes 2</span></p>
                   <p class="gf-file">page.js <small>M</small></p>
                   <p class="gf-file">LoginForm.js <small>U</small></p>
                 </div>
-                <p class="gf-statusbar"><span class="is-hl">feature/login-form <i class="gf-pin">1</i><i class="gf-pin">2</i></span><span>↻</span></p>
+                <p class="gf-statusbar"><span class="is-hl">feature/login-form <i class="gf-pin">1</i><i class="gf-pin">2</i><i class="gf-pin">6</i></span><span>↻</span></p>
               </div>
             </figure>
           </div>
@@ -698,7 +741,7 @@
                 <div class="gf-checks-box">
                   <p class="is-hl"><i></i><span><b>All checks have passed</b><small>Vercel har bygget branchen</small></span></p>
                   <p><i></i><span><b>No conflicts with base branch</b><small>Merging can be performed automatically</small></span></p>
-                  <span class="gf-merge is-blue">Merge pull request</span>
+                  <span class="gf-merge">Merge pull request</span>
                 </div>
               </div>
             </div>
@@ -706,7 +749,7 @@
               <li><b>Er tjekkene grønne?</b><span>Vercel har bygget branchen, og der er ingen konflikter</span></li>
               <li><b>Læs beskrivelsen</b><span>Hvad er lavet — og hvorfor?</span></li>
               <li><b>Kig under <em>Files changed</em></b><span>Er ændringen lille, og hører den til opgaven?</span></li>
-              <li><b>Skriv en kommentar, og merge</b><span>Spørg, ros eller foreslå — og merge, når I er enige</span></li>
+              <li><b>Skriv en kommentar og merge</b><span>Spørg, ros eller foreslå — og merge, når I er enige</span></li>
             </ol>
           </div>
           <p class="dui-lead-note">
@@ -773,7 +816,7 @@
             </li>
             <li>
               <div class="gf-mock gf-center" aria-hidden="true">
-                <p class="gf-habit-rows"><small>Før ny branch</small><span class="gf-merge is-blue is-hl">main → Pull</span></p>
+                <p class="gf-habit-rows"><small>Før ny branch</small><span class="gf-merge is-ghost is-hl">main → Pull</span></p>
                 <p class="gf-habit-rows"><small>Midt i en branch</small><span class="gf-merge is-ghost is-hl">Update from main</span></p>
               </div>
               <b>Hent <code>main</code> ofte</b>
@@ -817,7 +860,17 @@
           <h2>Det sker — sådan kommer I videre</h2>
           <div class="why-table gf-debug" role="table" aria-label="Typiske problemer, årsag og løsning">
             <div class="why-row why-head" role="row"><span></span><span>Det sker</span><span>Derfor</span><span class="is-next">Gør sådan</span></div>
-            <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><path class="gs-main" d="M6 54H114" /><path class="gs-branch" d="M22 54C22 26 32 16 50 16H80C94 16 100 30 100 46" /><g class="gw-conflict"><circle cx="100" cy="54" r="12" /><path d="M94 48L106 60M106 48L94 60" /></g></svg><b>Branchen er bagud, eller pull requesten melder konflikt</b><span><code>main</code> har ændret sig, siden I lavede branchen</span><span class="is-next">Hent <code>main</code> ind i branchen: <em>Branch → Update from main</em> i GitHub Desktop · eller <em>⋯ → Branch → Merge… → origin/main</em> i VS Code. Løs konflikter i VS Codes merge editor, commit, og push</span></div>
+            <div class="why-row is-wide" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><path class="gs-main" d="M6 54H114" /><path class="gs-branch" d="M22 54C22 26 32 16 50 16H80C94 16 100 30 100 46" /><g class="gw-conflict"><circle cx="100" cy="54" r="12" /><path d="M94 48L106 60M106 48L94 60" /></g></svg><b>Branchen er bagud, eller pull requesten melder konflikt<small><code>main</code> har ændret sig — hent den ind i jeres branch</small></b>
+              <div class="gf-fix-grid is-next">
+                <span></span><span class="gf-fix-head">1 · Hent <code>main</code> ind</span><span class="gf-fix-head">2 · Løs konflikten</span>
+                <small>Desktop</small>
+                <span class="gf-fix"><em>Branch</em><i>→</i><em>Update from main</em></span>
+                <span class="gf-fix"><em>Open in Visual Studio Code</em><i>→</i><em>Continue merge</em><i>→</i><em>Push origin</em></span>
+                <small>VS Code</small>
+                <span class="gf-fix"><em>⋯</em><i>→</i><em>Pull, Push</em><i>→</i><em>Fetch</em><i>·</i><em>⋯</em><i>→</i><em>Branch</em><i>→</i><em>Merge…</em><i>→</i><em>origin/main</em></span>
+                <span class="gf-fix"><em>Resolve in Merge Editor</em><i>→</i><em>Complete Merge</em><i>→</i><em>Sync Changes</em></span>
+              </div>
+            </div>
             <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-bad"><rect x="10" y="20" width="100" height="32" rx="16" /><text x="60" y="42">Error</text></g></svg><b>Deploy fejler</b><span>Appen kan ikke bygge — fx en manglende variabel</span><span class="is-next">Læs build-loggen på Vercel, og kør <code>npm run build</code> lokalt</span></div>
             <div class="why-row" role="row"><svg class="gf-debug-icon" viewBox="0 0 120 70" aria-hidden="true"><g class="gw-pill is-bad"><rect x="4" y="20" width="112" height="32" rx="16" /><text x="60" y="42">localhost</text></g></svg><b>Login sender jer til <code>localhost</code></b><span>Supabase kender ikke Vercel-URL'en</span><span class="is-next">Tilføj Vercel-URL'en under <em>Supabase → Authentication → URL Configuration</em></span></div>
           </div>
@@ -912,7 +965,7 @@
             <li>
               <span>4 · Gerne en anden</span>
               <h3>Merge og se det live</h3>
-              <p>Test, merge, og find ændringen på produktions-URL'en.</p>
+              <p>Test, merge og find ændringen live.</p>
               <p class="gf-jump"><a href="#/pull-request">Review</a><a href="#/fejl">Når det driller</a></p>
             </li>
           </ol>
