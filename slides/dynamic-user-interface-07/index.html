@@ -29,7 +29,7 @@
               <div class="gf-hero-pr">
                 <b>Add login form <small>#12</small></b>
                 <p class="gf-branches"><code>main</code><span>←</span><code class="is-p1">feature/login-form</code></p>
-                <p class="gf-comment"><b>Sara</b> Ser godt ud. Jeg merger.</p>
+                <p class="gf-comment"><b>Ali</b> Ser godt ud. Jeg merger.</p>
                 <span class="gf-merge">Merge pull request</span>
               </div>
             </div>
@@ -51,7 +51,7 @@
             <svg viewBox="0 0 1376 540" role="img" aria-labelledby="gf-graph-title">
               <title id="gf-graph-title">
                 Tre personer i gruppen, vist med hver sin farve, laver hver sin korte branch fra main, committer i små skridt og opretter en pull
-                request. Den ene får kommentaren "Ret knappen", retter og merger bagefter. Hvert nyt commit på main bliver
+                request. Hvert nyt commit på main bliver
                 automatisk deployet af Vercel som en ny version i production.
               </title>
               <defs>
@@ -78,17 +78,12 @@
               <circle class="gf-g-commit is-p2" cx="465" cy="205" r="10" />
               <g class="gf-g-pr is-small"><rect x="490" y="187" width="60" height="36" rx="9" /><text x="520" y="212">PR</text></g>
 
-              <!-- Branch C · post-list · med en rettelse efter kommentar -->
+              <!-- Branch C · post-list -->
               <path class="gf-g-line is-p3" d="M820 300C820 180 850 140 920 140H1180C1240 140 1270 180 1270 300" />
               <text class="gf-g-name is-p3" x="950" y="182">feature/post-list</text>
               <circle class="gf-g-commit is-p3" cx="980" cy="140" r="11" />
               <circle class="gf-g-commit is-p3" cx="1030" cy="140" r="11" />
               <g class="gf-g-pr"><rect x="1070" y="118" width="80" height="44" rx="10" /><text x="1110" y="148">PR</text></g>
-              <circle class="gf-g-commit is-fix is-p3" cx="1195" cy="140" r="11" />
-              <g class="gf-g-comment">
-                <path d="M1060 50H1260V86H1124L1110 102L1104 86H1060Z" />
-                <text x="1160" y="74">“Ret knappen”</text>
-              </g>
 
               <!-- Fork og merge på main -->
               <circle class="gf-g-fork" cx="110" cy="300" r="12" />
@@ -102,7 +97,6 @@
               <text class="gf-g-label is-start" x="60" y="346">Branch fra nyeste main</text>
               <text class="gf-g-label" x="340" y="56">Små commits</text>
               <text class="gf-g-label" x="510" y="56">Pull request</text>
-              <text class="gf-g-label is-fix is-end" x="1046" y="76">Ikke klar? Ret videre</text>
               <text class="gf-g-label is-end" x="584" y="346">Merge til main</text>
 
               <!-- Vercel · production -->
@@ -126,7 +120,7 @@
 
         <section class="po-slide" id="hvorfor">
           <span class="eyebrow">Hvorfor branches og pull requests?</span>
-          <h2>Fire personer — ét live-site</h2>
+          <h2>Arbejd samtidig — uden at ødelægge live-sitet</h2>
           <div class="nx-two gf-why">
             <article class="is-direct">
               <span>Alle pusher direkte til <code>main</code></span>
@@ -163,7 +157,6 @@
                 <li><small>Kvalitet</small><span><b>Ingen styr på <code>main</code></b> — alt går direkte live</span></li>
                 <li><small>Overblik</small><span><b><code>fix</code>, <code>update</code>, <code>asdf</code></b> — hvem og hvorfor?</span></li>
               </ul>
-              <p class="nx-verdict is-before">Live-sitet er altid ét push fra en fejl</p>
             </article>
             <article class="is-new">
               <span>Branches og pull requests</span>
@@ -194,11 +187,11 @@
                 <li><small>Kvalitet</small><span><b>Styr på <code>main</code></b> — kun det, der er set i en PR</span></li>
                 <li><small>Overblik</small><span><b>Pull requesten forklarer</b> hvad og hvorfor</span></li>
               </ul>
-              <p class="nx-verdict is-now"><code>main</code> er det, der er live — og det, I viser til eksamen</p>
             </article>
           </div>
-          <p class="dui-lead-note">
-            <strong>Hvorfor smart?</strong> Sådan arbejder stort set alle udviklingsteams — også dem, I møder i praktikken.
+          <p class="dui-lead-note is-answer">
+            <strong>Branches</strong> = I kan arbejde samtidig. <strong>Pull requests</strong> = kun det, der er klar,
+            kommer ind i <code>main</code> — og går live.
           </p>
         </section>
 
@@ -512,20 +505,20 @@
           <span class="eyebrow">Dagligt workflow</span>
           <h2>Seks trin —<br />hver gang</h2>
           <p class="kicker">GitHub Desktop eller Source Control i VS Code. Samme trin, bare forskellige knapper.</p>
-          <svg class="gf-chapter-visual is-loop" viewBox="0 0 520 300" aria-hidden="true">
-            <path class="gs-main" d="M10 230H510" />
-            <path class="gs-branch" d="M70 230C70 120 110 70 180 70H340C410 70 450 120 450 230" />
+          <svg class="gf-chapter-visual is-loop" viewBox="0 0 520 330" aria-hidden="true">
+            <path class="gs-main" d="M10 220H510" />
+            <path class="gs-branch" d="M90 220C90 120 130 70 200 70H320C390 70 430 120 430 220" />
             <circle class="gs-commit" cx="210" cy="70" r="10" /><circle class="gs-commit" cx="250" cy="70" r="10" />
-            <g class="gs-pr"><rect x="290" y="52" width="70" height="36" rx="9" /><text x="325" y="77">PR</text></g>
-            <circle class="gs-merge" cx="450" cy="230" r="13" />
-            <g class="gs-step"><circle cx="70" cy="230" r="19" /><text x="70" y="238">1</text></g>
-            <g class="gs-step"><circle cx="96" cy="128" r="19" /><text x="96" y="136">2</text></g>
-            <g class="gs-step"><circle cx="230" cy="28" r="19" /><text x="230" y="36">3</text></g>
-            <g class="gs-step"><circle cx="388" cy="28" r="19" /><text x="388" y="36">4</text></g>
-            <g class="gs-step"><circle cx="424" cy="128" r="19" /><text x="424" y="136">5</text></g>
-            <g class="gs-step"><circle cx="490" cy="196" r="19" /><text x="490" y="204">6</text></g>
-            <path class="gc-arrow is-dashed" d="M450 262C380 296 140 296 70 262" />
-            <text class="gc-label" x="260" y="296">… og forfra</text>
+            <g class="gs-pr"><rect x="282" y="52" width="70" height="36" rx="9" /><text x="317" y="77">PR</text></g>
+            <circle class="gs-merge" cx="430" cy="220" r="13" />
+            <g class="gs-step"><circle cx="90" cy="258" r="19" /><text x="90" y="266">1</text></g>
+            <g class="gs-step"><circle cx="54" cy="130" r="19" /><text x="54" y="138">2</text></g>
+            <g class="gs-step"><circle cx="230" cy="26" r="19" /><text x="230" y="34">3</text></g>
+            <g class="gs-step"><circle cx="317" cy="26" r="19" /><text x="317" y="34">4</text></g>
+            <g class="gs-step"><circle cx="466" cy="130" r="19" /><text x="466" y="138">5</text></g>
+            <g class="gs-step"><circle cx="430" cy="258" r="19" /><text x="430" y="266">6</text></g>
+            <path class="gc-arrow is-dashed" d="M430 284C360 318 160 318 90 284" />
+            <text class="gc-label" x="260" y="326">… og forfra</text>
           </svg>
         </section>
 
@@ -583,24 +576,24 @@
         <section class="po-slide" id="workflow-1">
           <span class="eyebrow">Dagligt workflow · trin 1–3 · lokalt</span>
           <h2>Fra <code>main</code> til jeres egen branch</h2>
-          <svg class="gf-strip is-local" viewBox="0 0 1376 120" aria-hidden="true">
-            <path class="gs-main" d="M20 92H1150" />
-            <text class="gs-name" x="20" y="74">main</text>
+          <svg class="gf-strip is-local" viewBox="0 0 1376 150" aria-hidden="true">
+            <path class="gs-main" d="M20 80H1150" />
+            <text class="gs-name" x="20" y="64">main</text>
             <g class="gs-local">
-              <path class="gs-branch" d="M150 92C150 50 170 30 220 30H860C910 30 930 50 930 92" />
-              <circle class="gs-commit" cx="390" cy="30" r="9" /><circle class="gs-commit" cx="430" cy="30" r="9" /><circle class="gs-commit" cx="470" cy="30" r="9" />
-              <g class="gs-step"><circle cx="150" cy="92" r="17" /><text x="150" y="99">1</text></g>
-              <g class="gs-step"><circle cx="250" cy="30" r="17" /><text x="250" y="37">2</text></g>
-              <g class="gs-step"><circle cx="530" cy="30" r="17" /><text x="530" y="37">3</text></g>
+              <path class="gs-branch" d="M150 80C150 42 170 24 220 24H860C910 24 930 42 930 80" />
+              <circle class="gs-commit" cx="390" cy="24" r="9" /><circle class="gs-commit" cx="430" cy="24" r="9" /><circle class="gs-commit" cx="470" cy="24" r="9" />
+              <g class="gs-step"><circle cx="150" cy="128" r="17" /><text x="150" y="135">1</text></g>
+              <g class="gs-step"><circle cx="250" cy="128" r="17" /><text x="250" y="135">2</text></g>
+              <g class="gs-step"><circle cx="430" cy="128" r="17" /><text x="430" y="135">3</text></g>
             </g>
             <g class="gs-remote">
-              <g class="gs-pr"><rect x="660" y="12" width="76" height="36" rx="9" /><text x="698" y="37">PR</text></g>
-              <circle class="gs-merge" cx="930" cy="92" r="13" />
-              <path class="gs-deploy" d="M1150 92H1200" />
-              <g class="gs-live"><rect x="1206" y="74" width="150" height="36" rx="18" /><text x="1281" y="98">Vercel · live</text></g>
-              <g class="gs-step"><circle cx="784" cy="30" r="17" /><text x="784" y="37">4</text></g>
-              <g class="gs-step"><circle cx="980" cy="56" r="17" /><text x="980" y="63">5</text></g>
-              <g class="gs-step"><circle cx="1070" cy="92" r="17" /><text x="1070" y="99">6</text></g>
+              <g class="gs-pr"><rect x="660" y="6" width="76" height="36" rx="9" /><text x="698" y="31">PR</text></g>
+              <circle class="gs-merge" cx="930" cy="80" r="13" />
+              <path class="gs-deploy" d="M1150 80H1200" />
+              <g class="gs-live"><rect x="1206" y="62" width="150" height="36" rx="18" /><text x="1281" y="86">Vercel · live</text></g>
+              <g class="gs-step"><circle cx="698" cy="128" r="17" /><text x="698" y="135">4</text></g>
+              <g class="gs-step"><circle cx="930" cy="128" r="17" /><text x="930" y="135">5</text></g>
+              <g class="gs-step"><circle cx="1070" cy="128" r="17" /><text x="1070" y="135">6</text></g>
             </g>
           </svg>
           <div class="gf-table" role="table" aria-label="Trin 1 til 3 i GitHub Desktop og VS Code Source Control">
@@ -634,24 +627,24 @@
         <section class="po-slide" id="workflow-2">
           <span class="eyebrow">Dagligt workflow · trin 4–6 · GitHub og Vercel</span>
           <h2>Fra pull request til live-site</h2>
-          <svg class="gf-strip is-remote" viewBox="0 0 1376 120" aria-hidden="true">
-            <path class="gs-main" d="M20 92H1150" />
-            <text class="gs-name" x="20" y="74">main</text>
+          <svg class="gf-strip is-remote" viewBox="0 0 1376 150" aria-hidden="true">
+            <path class="gs-main" d="M20 80H1150" />
+            <text class="gs-name" x="20" y="64">main</text>
             <g class="gs-local">
-              <path class="gs-branch" d="M150 92C150 50 170 30 220 30H860C910 30 930 50 930 92" />
-              <circle class="gs-commit" cx="390" cy="30" r="9" /><circle class="gs-commit" cx="430" cy="30" r="9" /><circle class="gs-commit" cx="470" cy="30" r="9" />
-              <g class="gs-step"><circle cx="150" cy="92" r="17" /><text x="150" y="99">1</text></g>
-              <g class="gs-step"><circle cx="250" cy="30" r="17" /><text x="250" y="37">2</text></g>
-              <g class="gs-step"><circle cx="530" cy="30" r="17" /><text x="530" y="37">3</text></g>
+              <path class="gs-branch" d="M150 80C150 42 170 24 220 24H860C910 24 930 42 930 80" />
+              <circle class="gs-commit" cx="390" cy="24" r="9" /><circle class="gs-commit" cx="430" cy="24" r="9" /><circle class="gs-commit" cx="470" cy="24" r="9" />
+              <g class="gs-step"><circle cx="150" cy="128" r="17" /><text x="150" y="135">1</text></g>
+              <g class="gs-step"><circle cx="250" cy="128" r="17" /><text x="250" y="135">2</text></g>
+              <g class="gs-step"><circle cx="430" cy="128" r="17" /><text x="430" y="135">3</text></g>
             </g>
             <g class="gs-remote">
-              <g class="gs-pr"><rect x="660" y="12" width="76" height="36" rx="9" /><text x="698" y="37">PR</text></g>
-              <circle class="gs-merge" cx="930" cy="92" r="13" />
-              <path class="gs-deploy" d="M1150 92H1200" />
-              <g class="gs-live"><rect x="1206" y="74" width="150" height="36" rx="18" /><text x="1281" y="98">Vercel · live</text></g>
-              <g class="gs-step"><circle cx="784" cy="30" r="17" /><text x="784" y="37">4</text></g>
-              <g class="gs-step"><circle cx="980" cy="56" r="17" /><text x="980" y="63">5</text></g>
-              <g class="gs-step"><circle cx="1070" cy="92" r="17" /><text x="1070" y="99">6</text></g>
+              <g class="gs-pr"><rect x="660" y="6" width="76" height="36" rx="9" /><text x="698" y="31">PR</text></g>
+              <circle class="gs-merge" cx="930" cy="80" r="13" />
+              <path class="gs-deploy" d="M1150 80H1200" />
+              <g class="gs-live"><rect x="1206" y="62" width="150" height="36" rx="18" /><text x="1281" y="86">Vercel · live</text></g>
+              <g class="gs-step"><circle cx="698" cy="128" r="17" /><text x="698" y="135">4</text></g>
+              <g class="gs-step"><circle cx="930" cy="128" r="17" /><text x="930" y="135">5</text></g>
+              <g class="gs-step"><circle cx="1070" cy="128" r="17" /><text x="1070" y="135">6</text></g>
             </g>
           </svg>
           <div class="gf-table" role="table" aria-label="Trin 4 til 6 i GitHub Desktop og VS Code Source Control">
@@ -691,7 +684,7 @@
                 <b>Add login form <small>#12</small></b>
                 <p class="gf-branches"><code>main</code><span>←</span><code class="is-p1">feature/login-form</code></p>
                 <p class="gf-files"><span>Files changed</span><b>3</b></p>
-                <p class="gf-comment"><b>Sara</b> Virker på mobil. Knappen mangler fokus-stil.</p>
+                <p class="gf-comment"><b>Ali</b> Virker på mobil. Knappen mangler fokus-stil.</p>
                 <span class="gf-merge">Merge pull request</span>
               </div>
             </div>
@@ -883,19 +876,19 @@
         <section class="po-slide mode-work" id="opgave">
           <span class="eyebrow">Prøv selv i dag</span>
           <h2>Én ændring hele vejen til live</h2>
-          <svg class="gf-strip is-today" viewBox="0 0 1376 120" aria-hidden="true">
-            <g class="gc-box is-github"><rect x="20" y="62" width="150" height="52" rx="10" /><text x="95" y="95">repo + Vercel</text></g>
-            <path class="gs-main" d="M178 88H1150" />
-            <path class="gs-branch" d="M380 88C380 50 400 30 450 30H760C810 30 830 50 830 88" />
-            <circle class="gs-commit" cx="520" cy="30" r="9" />
-            <g class="gs-pr"><rect x="600" y="12" width="76" height="36" rx="9" /><text x="638" y="37">PR</text></g>
-            <circle class="gs-merge" cx="830" cy="88" r="13" />
-            <path class="gs-deploy" d="M1150 88H1200" />
-            <g class="gs-live"><rect x="1206" y="70" width="150" height="36" rx="18" /><text x="1281" y="94">Vercel · live</text></g>
-            <g class="gs-step is-work"><circle cx="95" cy="30" r="17" /><text x="95" y="37">1</text></g>
-            <g class="gs-step is-work"><circle cx="290" cy="56" r="17" /><text x="290" y="63">2</text></g>
-            <g class="gs-step is-work"><circle cx="720" cy="30" r="17" /><text x="720" y="37">3</text></g>
-            <g class="gs-step is-work"><circle cx="1000" cy="56" r="17" /><text x="1000" y="63">4</text></g>
+          <svg class="gf-strip is-today" viewBox="0 0 1376 150" aria-hidden="true">
+            <g class="gc-box is-github"><rect x="20" y="56" width="150" height="48" rx="10" /><text x="95" y="86">repo + Vercel</text></g>
+            <path class="gs-main" d="M178 80H1150" />
+            <path class="gs-branch" d="M380 80C380 42 400 24 450 24H760C810 24 830 42 830 80" />
+            <circle class="gs-commit" cx="520" cy="24" r="9" />
+            <g class="gs-pr"><rect x="600" y="6" width="76" height="36" rx="9" /><text x="638" y="31">PR</text></g>
+            <circle class="gs-merge" cx="830" cy="80" r="13" />
+            <path class="gs-deploy" d="M1150 80H1200" />
+            <g class="gs-live"><rect x="1206" y="62" width="150" height="36" rx="18" /><text x="1281" y="86">Vercel · live</text></g>
+            <g class="gs-step is-work"><circle cx="95" cy="128" r="17" /><text x="95" y="135">1</text></g>
+            <g class="gs-step is-work"><circle cx="380" cy="128" r="17" /><text x="380" y="135">2</text></g>
+            <g class="gs-step is-work"><circle cx="638" cy="128" r="17" /><text x="638" y="135">3</text></g>
+            <g class="gs-step is-work"><circle cx="830" cy="128" r="17" /><text x="830" y="135">4</text></g>
           </svg>
           <ol class="gf-today">
             <li>

@@ -2575,3 +2575,58 @@
 .reveal .gf-points.is-now code {
   color: var(--dui) !important;
 }
+
+/* Slide 3 · essensen som svar */
+.reveal #hvorfor > h2 {
+  font-size: 64px;
+}
+
+.reveal .dui-lead-note.is-answer {
+  color: var(--ink) !important;
+  font-size: 25px !important;
+}
+
+.reveal .dui-lead-note.is-answer strong {
+  color: var(--dui);
+}
+
+.reveal #hvorfor > h2 {
+  font-size: 66px;
+}
+
+.reveal #hvorfor .gf-why {
+  height: 500px;
+  margin-top: 30px;
+}
+
+.reveal #hvorfor .gf-why .gf-why-graph {
+  height: 250px;
+}
+
+.reveal #hvorfor .gf-points {
+  margin-top: auto;
+}
+
+.reveal #hvorfor .dui-lead-note.is-answer {
+  margin-top: 24px !important;
+  padding: 18px 24px;
+}
+
+.reveal .slides #hvorfor > h2 {
+  max-width: none;
+  font-size: 62px !important;
+  white-space: nowrap;
+}
+
+.reveal #hvorfor .gf-why {
+  height: 520px;
+}
+
+/* Strips · tal på en fast række under grafen */
+.reveal .gf-strip {
+  height: 112px;
+}
+
+.reveal .gf-chapter-visual.is-loop {
+  height: 280px;
+}
