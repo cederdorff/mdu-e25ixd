@@ -24,6 +24,53 @@ Grundlag: [2-semester/feedback.md](2-semester/feedback.md), [3-semester/feedback
 | 3.1 Product Optimization | Samme | Robusthed, arkitektur, datamodellering, a11y, performance |
 | 3.2 Dynamic User Interface | + WordPress REST API + Supabase Auth | Auth, roller, motion i kode |
 
+## Gennemgående i alle fire forløb
+
+### Fra Figma til kode
+
+Det, de designer i Figma, skal kunne genkendes direkte i koden. Én fælles oversættelsesmodel bruges fra 2.1 og frem:
+
+| Figma | Kode |
+| --- | --- |
+| Variables / styles (farver, typografi, spacing) | CSS-variabler i `global.css` |
+| Component | React-komponent + CSS-fil |
+| Variant / property | Props (`variant="primary"`, `size="small"`) |
+| Auto layout | Flexbox / grid, `gap`, `padding` |
+| Frame / page | Route i React Router |
+| Prototype-interaktion | State, event handler, transition |
+
+- Komponentnavne i Figma og React er de samme (`ProductCard` i begge).
+- Det skal aftales med MNOR (designsystemer på 2. semester) og NKKR (designsystem i Case 3 og Figma → React i DUI), så de bruger samme begreber.
+
+### AI og håndværk
+
+Holdning: håndværket først, men AI bliver ikke forbudt. AI-brugen udvikler sig i takt med, hvad de selv kan læse og forstå.
+
+| Forløb | AI som … |
+| --- | --- |
+| 2.1 | **Tutor:** forklar et koncept, en fejlbesked eller en linje kode. Ingen genereret kode i afleveringen, som de ikke kan forklare linje for linje. |
+| 2.2 | **Makker:** foreslå løsninger, som de læser, tester og tilpasser. Refleksion over AI-brug indgår allerede i det skriftlige (ca. 2 sider). |
+| 3.1 | **Reviewer:** AI som kodegennemgang i optimeringen, med en vurdering af om forslagene er rigtige. |
+| 3.2 | **Værktøj:** fri brug, men gruppen skal kunne forklare og forsvare koden til den mundtlige eksamen. |
+
+- Det skal kobles til EAAA's regler for generativ AI (studieordningen henviser til intranettet).
+
+### Git tidligt og løbende
+
+- Git kommer fra første uge i 2.1. Hver øvelse ligger i eget repo med commits og deploy til GitHub Pages.
+- Samarbejde (branches, pull requests, merge) ligger lige før de begynder at kode sammen i Customer Experience-projektet.
+- Samme flow i alle senere projekter. Det introduceres ikke igen.
+
+## Tjek mod studieordningen (august 2026)
+
+[Studieordning, lokal del, Interactive Design](https://www.eaaa.dk/media/fvufnqle/studieordning-multimediedesigner-lokal-del-interactive-design-august-2026.pdf)
+
+- **Ingen læringsmål kræver Next.js.** DUI handler om dynamiske elementer og deres API'er, designsystemer, a11y og it-sikkerhed samt performance. Det dækkes af React + WordPress REST + Supabase Auth/RLS.
+- **CX** kræver "sikker lagring, strukturering og udveksling af data" og "konsistent udtryk i grænseflader". Det understøtter JSON-strukturen og koblingen fra Figma til kode.
+- **Web App** (Interactive Design 1) kræver frontend, der interagerer med eksterne API'er, it-sikkerhed og tilgængelighed. Der står også **"programmering af alternative brugergrænseflader ud over de traditionelle web og mobilplatforme"**. Det er uklart, hvor det dækkes i dag. Det skal afklares.
+- **Product Optimization** kræver ressourceoptimering, bæredygtighed og præsentation af data. Det passer til Case 1 (performance, Lighthouse) og datamodellering.
+- **Gamification** står i både PO og DUI. Det dækkes i DUI's mindeværdighedsfokus, men tjek, om det er synligt nok i PO.
+
 ## 2. semester · Forløb 1 · Customer Experience
 
 **Mål:** Solidt JS-fundament og React så simpelt som muligt. Webshop med flere sider.
@@ -33,7 +80,9 @@ Grundlag: [2-semester/feedback.md](2-semester/feedback.md), [3-semester/feedback
 - **Behold – React Router, kun declarative mode:** `BrowserRouter`, `Routes`, `Route`, `Link`, `NavLink` og `useParams` til produktoversigt og -detaljeside.
 - **Justér – data som importeret JSON:** `import products from "./data/products.json"`. Så slipper de for fetch og useEffect i dette forløb, og en detaljeside er bare `find()` på et id.
 - **Justér – styling uden CSS Modules:** CSS Modules var svært i 2026 (RACE). Brug almindelig CSS: én `global.css` med CSS-variabler (tokens fra Figma-designsystemet) og en CSS-fil pr. komponent, der importeres direkte (`import "./ProductCard.css"`). Klassenavne følger komponentnavnet (`.product-card`, `.product-card__title`). Der er ingen sammenligning af styling-tilgange. A11y fylder som semantik, labels og fokus, ikke som et særskilt emne.
-- **Flyt – Git før kick-off:** Repo, Source Control og GitHub Pages før projektstart. I 2026 kom det to uger efter.
+- **Flyt – Git fra start, samarbejde før kick-off:** Repo, Source Control og GitHub Pages fra første uge. Branches og pull requests ligger lige før projektstart. I 2026 kom det hele to uger efter.
+- **Behold – RACE godkender JSON-strukturen:** Giv en starterfil med et eksempel på et produkt, som grupperne udvider. Så bliver godkendelsen hurtig og handler om indholdet.
+- **Justér – Figma → kode:** Card design og designsystem hos MNOR bliver direkte til React-komponenter og CSS-variabler (se den gennemgående model).
 - **Erstat – platforme:** Notion-øvelser, PDF-slides og react-products/react-router-spa samles i `mdu-e26ixd` med Reveal-slides og ét gennemgående eksempelprojekt.
 - **Drop:** useEffect, data fetching og styling-sammenligning (useEffect og fetch flyttes til 2.2).
 

@@ -10,6 +10,7 @@ Arbejdsmappe til evaluering af 2. og 3. semester IxD og planlægning af næste g
 | [3-semester/oversigt.md](3-semester/oversigt.md) | Forløb og RACE-gange fra efterår 2026 med links til repoet |
 | [3-semester/feedback.md](3-semester/feedback.md) | Rå feedback (udfyldes af RACE) |
 | [aendringer-2027.md](aendringer-2027.md) | Analyse og ændringer pr. forløb for E26 |
+| [spoergeskema-e25.md](spoergeskema-e25.md) | Anonymt spørgeskema til E25 om programmering |
 
 ## Næste trin
 
