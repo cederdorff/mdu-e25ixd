@@ -1,9 +1,18 @@
 # Spørgeskema til MDU-E25IXD · programmering på 2. og 3. semester
 
-Anonymt. Kan sættes op som Canvas-survey (ugraded, anonym) eller Padlet. Sendes inden eksamen 9. december. 8 spørgsmål, heraf 3 åbne.
+Anonymt. Kan sættes op som Canvas-survey (ugraded, anonym) eller Padlet. Sendes inden eksamen 9. december. 9 spørgsmål, heraf 3 åbne (det sidste er valgfrit).
 
 **Intro til de studerende:**
-Du har været igennem hele programmeringsforløbet på 2. og 3. semester, og det gør dig til den bedste til at vurdere det. Hjælp mig med at gøre det bedre for næste hold. Det er anonymt, og der er ingen rigtige eller forkerte svar – jo mere ærligt, jo mere kan jeg bruge det. /RACE
+Hej IxD'ere!
+
+I er snart igennem både 2. og 3. semester på IxD – og I er det allerførste hold, der har været hele vejen igennem linjen. Det gør jer til eksperterne i, hvad der virkede, og hvad der godt kunne have været anderledes.
+
+Jeg er så småt gået i gang med at planlægge næste rul, og jeg vil rigtig gerne have jeres hjælp til at gøre det endnu bedre. Spørgsmålene handler mest om min undervisning – altså programmeringen (JavaScript, React, data, Git og alt det der). Til sidst er der også plads til at sige noget om IxD-linjen generelt.
+
+Det er helt anonymt, og der er ingen rigtige eller forkerte svar. Jo mere ærlige I er, jo mere kan jeg bruge det.
+
+Tusind tak – det betyder meget!
+/RACE
 
 ## Emner
 
@@ -12,16 +21,26 @@ Spørgsmål 1–3 bruger den samme emneliste:
 - A · JavaScript-basics (arrays, objekter, funktioner, map/filter)
 - B · React: komponenter, props og state
 - C · React Router: flere sider
-- D · Data fra API'er (fetch, async/await, Supabase)
-- E · CSS og styling i React (inkl. CSS Modules)
-- F · Fra Figma-design til komponenter og CSS
-- G · Git og samarbejde (branches, pull requests)
-- H · Login, roller og beskyttet adgang
-- I · Next.js og headless WordPress
+- D · Data fra API'er og JSON (fetch, async/await, useEffect)
+- E · Fejlhåndtering og UI-states (loading, error, tom tilstand)
+- F · Supabase: forms, CRUD, datamodellering og relationer
+- G · Login, roller og beskyttet adgang (Auth, RLS)
+- H · CSS og styling i React (inkl. CSS Modules)
+- I · Accessibility (semantik, labels, fokus, tastatur)
+- J · Fra Figma-design til komponenter og CSS
+- K · Motion og microinteractions i kode
+- L · Udviklingsværktøjer (VS Code, GitHub Desktop, browser DevTools, Thunder Client)
+- M · Git, samarbejde og deployment (branches, pull requests, GitHub Pages/Vercel)
+- N · Performance og Lighthouse
+- O · Next.js og headless WordPress
 
 1. **Hvor sikker er du i dag på hvert emne?** (1 = slet ikke, 5 = meget sikker)
 2. **Hvilke emner ville du gerne have haft mere tid til?** (vælg op til tre)
 3. **Hvilke emner kunne være kortere eller udgå?** (vælg op til tre)
+
+   Spørgsmål 2 og 3 har også valget "Andet (skriv hvilket i spørgsmålet nedenfor)".
+
+3b. **Andet emne? (valgfri)** Mangler der et emne i listen ovenfor? Skriv hvilket, hvor sikker du er på det, og om det skulle have mere eller mindre tid. (fritekst)
 
 ## Tempo
 
@@ -46,15 +65,22 @@ Spørgsmål 1–3 bruger den samme emneliste:
 
 ## Set i bakspejlet
 
-7. **Hvad ville du gerne have, der havde været anderledes?** (fritekst)
-8. **Hvad skal vi endelig beholde?** (fritekst)
+7. **Hvad ville du gerne have, der havde været anderledes i programmeringsundervisningen?** (fritekst)
+8. **Hvad skal jeg endelig beholde?** (fritekst)
+
+## IxD-linjen generelt
+
+Ikke kun programmering, men linjen som helhed: forløb, projekter, samarbejde, sammenhæng mellem fagene og det at være på IxD.
+
+9. **Hvad har været det bedste ved IxD-linjen, og hvad ville du ændre?** (fritekst, valgfri)
 
 ## Sådan bruges svarene
 
-| Svar | Bruges til |
-| --- | --- |
-| 1 lav sikkerhed + 2 "mere tid" | Emner, der skal have mere plads og flere øvelser i 2027 |
-| 3 "kortere/udgå" | Bekræfter eller udfordrer, at Next.js (I) og CSS Modules (E) droppes |
-| 4–5 | Om problemet er mængden af emner, øvetid eller manglende fundament |
-| 6 | Grundlag for AI-progressionen (tutor → makker → reviewer → værktøj) |
-| 7–8 | Det, vi ikke har tænkt på, og det, der ikke må forsvinde |
+| Svar                           | Bruges til                                                           |
+| ------------------------------ | -------------------------------------------------------------------- |
+| 1 lav sikkerhed + 2 "mere tid" | Emner, der skal have mere plads og flere øvelser i 2027              |
+| 3 "kortere/udgå"               | Bekræfter eller udfordrer, at Next.js (O) og CSS Modules (H) droppes |
+| 4–5                            | Om problemet er mængden af emner, øvetid eller manglende fundament   |
+| 6                              | Grundlag for AI-progressionen (tutor → makker → reviewer → værktøj)  |
+| 7–8                            | Det, vi ikke har tænkt på, og det, der ikke må forsvinde             |
+| 9                              | Deles med kollegerne på IxD (MNOR, LAES, BKI, NKKR)                  |
