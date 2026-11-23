@@ -18,23 +18,26 @@ MNOR kigger også med og giver feedback.
 
 Efter hver pitch er der 5 minutter til evaluering og skift.
 
-| Tid   | Gruppe                                  | Pitch   |
-| ----- | --------------------------------------- | ------- |
-| 08.15 | Velkomst                                |         |
-| 08.20 | Gruppe 10 · Fredrik og Cille            | 9 min.  |
-| 08.34 | Gruppe 1 · Lærke, Ditte og Signe        | 12 min. |
-| 08.51 | Gruppe 4 · Mille og Mathilde            | 9 min.  |
-| 09.05 | Gruppe 2 · Nanna, Frida, Mia og Freia   | 12 min. |
-| 09.22 | Gruppe 5 · Jeppe og Kejser              | 9 min.  |
-| 09.36 | Gruppe 3 · Caroline, Laura og Cecilie V | 12 min. |
-| 09.53 | Pause                                   | 15 min. |
-| 10.08 | Gruppe 6 · Benjamin og Benjamin         | 9 min.  |
-| 10.22 | Gruppe 7 · Sebastian, Martin og Daniel  | 12 min. |
-| 10.39 | Gruppe 8 · Magnus og Mathias            | 9 min.  |
-| 10.53 | Gruppe 11 · Skalle, Kübra og Julie      | 12 min. |
-| 11.10 | Gruppe 9 · Mikkel og Jarl               | 9 min.  |
-| 11.24 | Gruppe 12 · Celina, Line og Kuppe       | 12 min. |
-| 11.41 | Afrunding                               |         |
+<table style="width: 100%; max-width: 640px; border-collapse: collapse;">
+<thead><tr><th style="text-align: left; padding: 8px 12px; border-bottom: 2px solid #333;">Tid</th><th style="text-align: left; padding: 8px 12px; border-bottom: 2px solid #333;">Gruppe</th><th style="text-align: left; padding: 8px 12px; border-bottom: 2px solid #333;">Navne</th><th style="text-align: left; padding: 8px 12px; border-bottom: 2px solid #333;">Pitch</th></tr></thead>
+<tbody>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">08.15</td><td colspan="3" style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><em>Velkomst</em></td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">08.20</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 10</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Fredrik og Cille</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">9 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">08.34</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 1</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Lærke, Ditte og Signe</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">12 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">08.51</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 4</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Mille og Mathilde</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">9 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">09.05</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 2</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Nanna, Frida, Mia og Freia</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">12 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">09.22</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 5</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Jeppe og Kejser</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">9 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">09.36</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 3</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Caroline, Laura og Cecilie V</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">12 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd; background: #f3f3f3;">09.53</td><td colspan="3" style="padding: 8px 12px; border-bottom: 1px solid #ddd; background: #f3f3f3;"><em>Pause · 15 min.</em></td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">10.08</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 6</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Benjamin og Benjamin</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">9 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">10.22</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 7</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Sebastian, Martin og Daniel</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">12 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">10.39</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 8</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Magnus og Mathias</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">9 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">10.53</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 11</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Skalle, Kübra og Julie</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">12 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">11.10</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 9</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Mikkel og Jarl</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">9 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">11.24</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><strong>Gruppe 12</strong></td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">Celina, Line og Kuppe</td><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">12 min.</td></tr>
+<tr><td style="padding: 8px 12px; border-bottom: 1px solid #ddd;">11.41</td><td colspan="3" style="padding: 8px 12px; border-bottom: 1px solid #ddd;"><em>Afrunding</em></td></tr>
+</tbody>
+</table>
 
 Tiderne kan rykke sig en smule i løbet af dagen. Sørg for at være klar i god tid.
 
