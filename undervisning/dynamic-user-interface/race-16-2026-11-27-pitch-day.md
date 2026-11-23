@@ -6,6 +6,8 @@ I dag pitcher hver gruppe sit produkt for os og resten af holdet. I får feedbac
 
 MNOR kigger også med og giver feedback.
 
+<hr style="margin: 2rem 0;">
+
 ## Forberedelse
 
 - Byg pitchen op på samme måde, som NKKR har gennemgået i løbet af semesteret: [NKKRs slides om pitch](https://www.figma.com/deck/ocXuOAeALMMFS2XUrplgOC).
