@@ -3,3 +3,6 @@ node_modules/
 dist/
 slides/.DS_Store
 undervisning/.DS_Store
+
+# Private evaluation feedback
+evaluering/*/feedback.md
