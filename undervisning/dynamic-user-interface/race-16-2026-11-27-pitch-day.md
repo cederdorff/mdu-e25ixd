@@ -1,12 +1,14 @@
-# BKI/NKKR/RACE - Dynamic User Interface: Pitch Day - 27-11-2026
+# BKI/NKKR/RACE/MNOR - Dynamic User Interface: Pitch Day - 27-11-2026
 
 ## Formål
 
-I dag pitcher hver gruppe sit produkt for os og resten af holdet. I får feedback, som I kan bruge til at vælge jeres optimeringer i uge 49.
+I dag pitcher hver gruppe sit produkt for os og resten af holdet. I får feedback, som I kan bruge som en del af jeres optimeringer i uge 49.
+
+MNOR kigger også med og giver feedback.
 
 ## Forberedelse
 
-- Byg pitchen op på samme måde, som Nikolaj har gennemgået i løbet af semesteret: [link følger].
+- Byg pitchen op på samme måde, som NNKR har gennemgået i løbet af semesteret: [link følger].
 - Hold jer inden for jeres tid: **9 minutter** for 2-mandsgrupper og **12 minutter** for 3- og 4-mandsgrupper. Vi stopper jer, når tiden er gået.
 - Test jeres demo på forhånd, så I er sikre på, at den virker på dagen. Vi har ikke tid til at fejlfinde under pitchen.
 
@@ -42,4 +44,4 @@ Tiderne kan rykke sig en smule i løbet af dagen. Sørg for at være klar i god 
 
 - **Eksamensbeskrivelse:**
   - [Dynamic User Interface – Eksamensbeskrivelse](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/eksamensbeskrivelse.md)
-- **Pitch:** Nikolajs materiale om pitch [link følger]
+- **Pitch:** NKKRs materiale om pitch [link følger]

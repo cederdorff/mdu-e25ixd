@@ -65,7 +65,7 @@ NKKR/RACE - Dynamic User Interface: Faciliteret vejledning - 16-11-2026
 NKKR - Dynamic User Interface: Faciliteret vejledning - 18-11-2026
 NKKR - Dynamic User Interface: Faciliteret vejledning - 20-11-2026
 RACE - Dynamic User Interface: Faciliteret vejledning - 23-11-2026
-BKI/NKKR/RACE - Dynamic User Interface: Pitch Day - 27-11-2026
+BKI/NKKR/RACE/MNOR - Dynamic User Interface: Pitch Day - 27-11-2026
 RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 01-12-2026
 NKKR/RACE - Dynamic User Interface: Optimering og eksamensforberedelse - 03-12-2026
 NKKR - Dynamic User Interface: Optimering og eksamensforberedelse - 04-12-2026

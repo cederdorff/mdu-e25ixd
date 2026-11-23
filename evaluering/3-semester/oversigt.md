@@ -49,7 +49,7 @@ Eksamen: [eksamensbeskrivelse](../../undervisning/product-optimization/eksamensb
 | **16. nov.** | **Faciliteret vejledning · samarbejde og deployment** | RACE | [race-14](../../undervisning/dynamic-user-interface/race-14-2026-11-16-faciliteret-vejledning.md) |
 | 18.–20. nov. | Faciliteret vejledning | NKKR | |
 | **23. nov.** | **Faciliteret vejledning** | RACE | [race-15](../../undervisning/dynamic-user-interface/race-15-2026-11-23-faciliteret-vejledning.md) |
-| **27. nov.** | **Pitch Day** | BKI/NKKR/RACE | [race-16](../../undervisning/dynamic-user-interface/race-16-2026-11-27-pitch-day.md) |
+| **27. nov.** | **Pitch Day** | BKI/NKKR/RACE/MNOR | [race-16](../../undervisning/dynamic-user-interface/race-16-2026-11-27-pitch-day.md) |
 | **1.–4. dec.** | **Optimering og eksamensforberedelse** | RACE/NKKR | [race-17](../../undervisning/dynamic-user-interface/race-17-2026-12-01-optimering-og-eksamensforberedelse.md) · [race-18](../../undervisning/dynamic-user-interface/race-18-2026-12-03-optimering-og-eksamensforberedelse.md) |
 | 9.–11. dec. | Eksamen | NKKR/RACE | [eksamensbeskrivelse](../../undervisning/dynamic-user-interface/eksamensbeskrivelse.md) |
 
