@@ -8,7 +8,7 @@ MNOR kigger også med og giver feedback.
 
 ## Forberedelse
 
-- Byg pitchen op på samme måde, som NNKR har gennemgået i løbet af semesteret: [link følger].
+- Byg pitchen op på samme måde, som NKKR har gennemgået i løbet af semesteret: [NKKRs slides om pitch](https://www.figma.com/deck/ocXuOAeALMMFS2XUrplgOC).
 - Hold jer inden for jeres tid: **9 minutter** for 2-mandsgrupper og **12 minutter** for 3- og 4-mandsgrupper. Vi stopper jer, når tiden er gået.
 - Test jeres demo på forhånd, så I er sikre på, at den virker på dagen. Vi har ikke tid til at fejlfinde under pitchen.
 
@@ -47,4 +47,5 @@ Tiderne kan rykke sig en smule i løbet af dagen. Sørg for at være klar i god 
 
 - **Eksamensbeskrivelse:**
   - [Dynamic User Interface – Eksamensbeskrivelse](https://github.com/cederdorff/mdu-e25ixd/blob/main/undervisning/dynamic-user-interface/eksamensbeskrivelse.md)
-- **Pitch:** NKKRs materiale om pitch [link følger]
+- **Pitch:**
+  - [NKKRs slides om pitch](https://www.figma.com/deck/ocXuOAeALMMFS2XUrplgOC)
