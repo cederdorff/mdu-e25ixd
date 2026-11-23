@@ -1,6 +1,6 @@
 # Spørgeskema til MDU-E25IXD · programmering på 2. og 3. semester
 
-Anonymt. Kan sættes op som Canvas-survey (ugraded, anonym) eller Padlet. Sendes inden eksamen 9. december. 9 spørgsmål, heraf 3 åbne (det sidste er valgfrit).
+Anonymt. Kan sættes op som Canvas-survey (ugraded, anonym) eller Padlet. Deadline 1. december. 9 spørgsmål, heraf 3 åbne (det sidste er valgfrit).
 
 **Intro til de studerende:**
 Hej IxD'ere!
